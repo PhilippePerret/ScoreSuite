@@ -1,0 +1,32 @@
+'use strict';
+
+class AppClass {
+
+  /**
+   * Méthode appelée au chargement de l'application pour savoir
+   * si une analyse est en cours
+   */
+  load_analyse_if_exist(){
+    WAA.send({
+      id:'ANAGetIfExist',
+      class:'ScoreAnalyse::Analyse',
+      method:'get_analyse_if_exist'
+    })
+  }
+
+  /**
+   * Si une analyse est en cours, cette méthode reçoit les éléments
+   */
+  onload_analyse(data){
+    if (data) {
+      var analyse = new Analyse(data)
+      analyse.checkSystems()
+      analyse.display()
+      Preferences.afterLoadingAnalyse()
+    } else {
+      console.log("Pas d'analyse courante à afficher.")
+    }
+  }
+
+}
+const App = new AppClass()

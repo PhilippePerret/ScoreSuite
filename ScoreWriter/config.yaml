@@ -1,0 +1,16 @@
+---
+:path: "/Users/philippeperret/Library/Mobile Documents/com~apple~CloudDocs/ICARE_EDITIONS/_LIVRES_/Musique/_Analyses_/SATIE_Gymnopedie/Images/writer/essai"
+:config:
+  page: a4
+  mesure: 
+  systeme: piano
+  proximity: 
+  barres: true
+  stems: true
+  tune: C
+  time: 3/4
+  auto_update_after_change: true
+  staves_vspace: 
+  disposition: left_right
+  note_tune_fixed: false
+:used_at: 1662980097

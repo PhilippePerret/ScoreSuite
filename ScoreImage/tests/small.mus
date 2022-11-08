@@ -1,0 +1,23 @@
+# 
+# Un essai minimal
+# 
+
+mesure1=
+a b c d
+
+mesure1
+
+--piano
+
+mesure1=
+a b c d |.
+d c b a
+
+-> fichier_piano_final
+mesure1
+mesure1
+
+# Une autre image sans nom, mais en piano
+
+c2 e4 g |.
+c8 g' e g c, g' e g

@@ -1,0 +1,92 @@
+# 
+# Ce fichier contient un essai complet de notation
+# 
+# 
+
+--only_new
+
+# Pour essayer plus tard une variable globale
+variable_globale==
+c g' e c' g' e c'
+
+# Le code suivant sera enregistré dans :
+# 	essai_complet/essai_complet-1.svg
+c d e f g a b c
+
+# Définition du fichier dans lequel on doit placer l'image
+-> nom_fichier_fourni
+c' b a g f e d c
+
+# Utilisation d'une armure
+--tune A
+a b cis d e fis gis a
+
+# Utilisation d'une définition
+var=
+c e g c g e c
+
+-> avec_variable
+var
+
+# Utilisation d'une transposition
+# Note : 
+
+-> avec_variable_transposed
+var \transpose c f { var }
+
+# Production d'une portée piano avec des barres
+-> portee_piano_simple
+--piano
+--barres
+c2 e4 g | b4.
+c8 g' e g c, g' e g | d2
+
+# Production d'une portée piano avec des variables pour chaque main
+# TODO
+
+# Portée piano avec des variables à deux mains
+-> piano_variable_deux_mains
+mesure1=
+c'2 e4 g
+\clef "treble" c8 g' e g c, g' e g
+
+mesure2=
+b'4.( c16 d) c4 r
+\clef "treble" d g f g c, g' e g
+
+mesure1 mesure2
+
+# Des portée piano avec définitions simples dans définitions à voix
+# multiples
+md1=
+c2 e4 g
+
+mg1=
+g8( a b c) c2
+
+md2=
+b4. c8 c4 r
+
+mg2=
+\cle G d8 g f g c, g' e g
+
+# Définitions à voix multiples
+tout=
+md1 md2
+mg1 mg2
+
+-> piano_def_simple_in_def_multiple
+tout
+
+
+--piano OFF
+
+# Une définition globale peut être utilisée après beaucoup d'images
+-> avec_variable_globale
+variable_globale
+
+# Avec des changements de clé
+--keep
+-> cles
+c \cle U4 c \cle U3 c \cle U2 c \cle U1 c \cle F c \cle F3 c \cle G1 c
+

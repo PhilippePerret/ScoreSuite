@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TABLE D'ANALYSE</title>
+  <script type="text/javascript" src="js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery.form.min.js"></script>
+  <script type="text/javascript" src="js/waa_tests.js" defer></script>
+
+  <!-- Communs à la suite Score -->
+  <script type="text/javascript" src="../lib/js/WAA.js"></script>
+  <script type="text/javascript" src="../lib/js/common.js"></script>
+  <script type="text/javascript" src="../lib/js/Message.js"></script>
+
+  <!-- STYLES -->
+  <link rel="stylesheet" type="text/css" href="js/jquery/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/AObjet.css">
+  <link rel="stylesheet" type="text/css" href="css/AMark.css">
+  <link rel="stylesheet" type="text/css" href="css/Preferences.css">
+  <link rel="stylesheet" type="text/css" href="css/Manuel.css">
+  <link rel="stylesheet" type="text/css" href="css/Editeur.css">
+  <link rel="stylesheet" type="text/css" href="css/GetterInList.css">
+
+</head>
+<body>
+
+  <!-- 
+
+      TABLE D'ANALYSE 
+
+    -->
+  <section id="content">
+    <!-- Partie où seront placés tous les éléments de l'analyse -->
+  </section>
+
+  <!--
+      
+      PANNEAU INFOS DE L'ANALYSE
+
+    -->
+  <div id="panneau_infos" class="panneau hidden">
+
+    <h3>MÉTADONNÉES DE L'ANALYSE</h3>
+    <table id="table_metadata">
+      <tr>
+        <td>Titre de la pièce</td>
+        <td><input type="text" id="metadata_piece_title"></td>
+      </tr>
+      <tr>
+        <td>Compositeur</td>
+        <td><input type="text" id="metadata_composer"></td>
+      </tr>
+      <tr>
+        <td>Titre de l'analyse</td>
+        <td><input type="text" id="metadata_analyse_title"></td>
+      </tr>
+      <tr>
+        <td>Identifiant/Affixe</td>
+        <td><input type="text" id="metadata_analyse_id" placeholder="Identifiant (a-zA-Z0-9_-)"></td>
+      </tr>
+      <tr>
+        <td>Chemin d'accès</td>
+        <td><input type="text" id="metadata_folder" placeholder="chemin d'accès (dossier)"></td>
+      </tr>
+      <tr>
+        <td>Analyste</td>
+        <td><input type="text" id="metadata_analyst" placeholder="Analyste" value="Philippe Perret"></td>
+      </tr>
+    </table>
+
+    <div class="buttons right">
+      <button onclick="Analyse.closePanneau.call(Analyse)" style="float:left;">Fermer</button>
+      <button onclick="Analyse.createNew.call(Analyse)">Créer nouvelle analyse</button>
+      <button onclick="Analyse.current.saveInfos.call(Analyse.current)">Enregistrer</button>
+    </div>
+
+  </div><!-- / fin du panneau -->
+
+  <!-- 
+
+    PANNEAU OUTILS
+
+    -->
+  <div id="panneau_outils" class="panneau hidden">
+
+    <div>
+      <button onclick="Analyse.current.refresh.call(Analyse.current)">Rafraichir</button>
+      <div class="explication">(en cas de changement des images de systèmes (ajout ou suppression)</div>
+    </div>
+
+    <div>    
+      <button onclick="Tools.distributeSystem.call(Tools, DGet('#tool_inter_system').value)">Répartir les systèmes</button> <span>Écart entre les systèmes : </span>
+      <input type="text" id="tool_inter_system" value="" style="width:60px">
+      <div class="explication">(si l'écart n'est pas précisé, ce sera la valeur définie en préférence qui sera appliquée, qui vaut <span id="value_ecart_preferences">XXX</span>px</div>
+    </div>
+
+    <div>
+      <h2>Export de l'image de l'analyse</h2>
+      <fieldset>      
+        <div>
+          <span>Systèmes </span><input type="text" id="systems_to_export" value="1">
+          <div class='explication'>Systèmes à produire. Laisser vide pour tous</div>
+        </div>
+        <div>
+          <input type="checkbox" id="export_one_image_per_system">
+          <label for="export_one_image_per_system">Une image par système</label>
+        </div>
+        <div class="buttons">
+          <button onclick="Analyse.exportImage.call(Analyse)">Produire l'image (statique)</button>
+          <span>   </span>
+          <button onclick="Analyse.exportToSvg.call(Analyse)">Produire l'image SVG (non fonctionnel)</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="buttons">
+      <button onclick="Tools.togglePanneau.call(Tools)">Fermer</button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    
+    <span>Manuel : ⇧M</span><span> | </span><span>Préférences : ⇧P</span>
+
+    <button id="btn-new-analyse" onclick="Analyse.togglePanneau.call(Analyse)">Infos</button>
+
+    
+    <img id="cb_staves_lock" class="btn fright" src="img/staves_lock.svg" />
+    
+    <button id="cb_recording" class="fright">Enregistrer</button>
+    <div id="red-light"></div>
+    
+    <button onclick="Tools.togglePanneau.call(Tools)">Outils</button>
+
+    <select id="outil_alignement" style="width:80px;">
+      <option>Aligner…</option>
+      <option value="right">… à droite</option>
+      <option value="left">… à gauche</option>
+      <option value="top">… en haut</option>
+      <option value="bottom">… en bas</option>
+      <option value="cancel">Annuler l’alignement</option>
+    </select>
+
+
+  </footer>
+
+
+
+  <!-- <script type="text/javascript" src="js/Tone.js"></script> -->
+  <script type="text/javascript" src="js/webmidi-2.5.3/webmidi.min.js"></script>
+  <script type="text/javascript" src="js/Constants.js"></script>
+  <script type="text/javascript" src="js/GetterInList.js"></script>
+
+  <script type="text/javascript" src="js/AObjet.js"></script>
+
+  <script type="text/javascript" src="js/Panneau.js"></script>
+  <script type="text/javascript" src="js/dom.js" defer></script>
+  <script type="text/javascript" src="js/main.js" defer></script>
+  <script type="text/javascript" src="js/App.js" defer></script>
+  <script type="text/javascript" src="js/handies.js" defer></script>
+  <script type="text/javascript" src="js/UI.js" defer></script>
+  <script type="text/javascript" src="js/Preferences.js" defer></script>
+  <script type="text/javascript" src="js/Preferences_AppData.js" defer></script>
+  <script type="text/javascript" src="js/TableAnalyse.js" defer></script>
+  <script type="text/javascript" src="js/Analyse.js" defer></script>
+  <script type="text/javascript" src="js/Manuel.js" defer></script>
+  <script type="text/javascript" src="js/Manuel_AppData.js" defer></script>
+  <script type="text/javascript" src="js/AMark.js" defer></script>
+  <script type="text/javascript" src="js/AMark_Editor.js" defer></script>
+  <script type="text/javascript" src="js/Systeme.js" defer></script>
+  <script type="text/javascript" src="js/Editeur.js" defer></script>
+  <script type="text/javascript" src="js/KeyboardEvents.js" defer></script>
+  <script type="text/javascript" src="js/AnalyseSaver.js" defer></script>
+  <script type="text/javascript" src="js/AnalyseDisplayer.js"></script>
+  <script type="text/javascript" src="js/Mouse.js" defer></script>
+  <script type="text/javascript" src="js/PanneauAnalyse.js" defer></script>
+  <script type="text/javascript" src="js/Tools.js" defer></script>
+</body>
+</html>

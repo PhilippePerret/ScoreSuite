@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   width="43.990643mm"
+   height="14.673447mm"
+   viewBox="0 0 25.033099 8.3500007"
+   id="svg54"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs58" />
+  <style
+     text="style/css"
+     id="style2"><![CDATA[
+tspan { white-space: pre; }
+]]></style>
+  <!-- Page: 1/1 -->
+  <line
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke-width="0.1"
+     stroke="currentColor"
+     x1="0.050000001"
+     y1="6.8099999"
+     x2="24.983101"
+     y2="6.8099999"
+     id="line4" />
+  <line
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke-width="0.1"
+     stroke="currentColor"
+     x1="0.050000001"
+     y1="5.8099999"
+     x2="24.983101"
+     y2="5.8099999"
+     id="line6" />
+  <line
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke-width="0.1"
+     stroke="currentColor"
+     x1="0.050000001"
+     y1="4.8099999"
+     x2="24.983101"
+     y2="4.8099999"
+     id="line8" />
+  <line
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke-width="0.1"
+     stroke="currentColor"
+     x1="0.050000001"
+     y1="3.8099999"
+     x2="24.983101"
+     y2="3.8099999"
+     id="line10" />
+  <line
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke-width="0.1"
+     stroke="currentColor"
+     x1="0.050000001"
+     y1="2.8099999"
+     x2="24.983101"
+     y2="2.8099999"
+     id="line12" />
+  <rect
+     x="17.688601"
+     y="2.8099999"
+     width="0.19"
+     height="4"
+     ry="0.0000"
+     fill="currentColor"
+     id="rect14" />
+  <rect
+     x="19.952801"
+     y="8.8817842e-16"
+     width="0.13"
+     height="3.6238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect16" />
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:15:23"
+     id="a20"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,41.5408,16.4311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path18" />
+  </a>
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:17:25"
+     id="a24"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,44.7931,15.4311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path22" />
+  </a>
+  <rect
+     x="23.205099"
+     y="8.8817842e-16"
+     width="0.13"
+     height="2.6238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect26" />
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:8:16"
+     id="a30"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,31.5645,15.4311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path28" />
+  </a>
+  <rect
+     x="9.9764996"
+     y="8.8817842e-16"
+     width="0.13"
+     height="2.6238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect32" />
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:2:10"
+     id="a36"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,28.5622,15.9311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path34" />
+  </a>
+  <path
+     d="M 1.864,8.3499999 H 1.84 c -0.432,0 -0.78,-0.352 -0.78,-0.788 0,-0.232 0.212,-0.412 0.448,-0.412 0.216,0 0.38,0.188 0.38,0.412 0,0.208 -0.172,0.38 -0.38,0.38 -0.044,0 -0.084,-0.008 -0.124,-0.024 0.104,0.156 0.272,0.26 0.468,0.26 h 0.016 z m 0.78,-1.728 c 0.272,-0.096 0.452,-0.38 0.452,-0.656 0,-0.36 -0.264,-0.716 -0.692,-0.76 0.096,0.464 0.184,0.924 0.24,1.416 z m -1.548,-0.924 c 0,0.54 0.516,0.988 1.056,0.988 0.112,0 0.22,-0.008 0.328,-0.024 -0.056,-0.508 -0.148,-0.98 -0.252,-1.456 -0.316,0.032 -0.496,0.244 -0.496,0.476 0,0.176 0.1,0.364 0.324,0.492 0.02,0.02 0.028,0.04 0.028,0.06 0,0.044 -0.04,0.088 -0.088,0.088 -0.012,0 -0.024,-0.004 -0.036,-0.008 -0.32,-0.172 -0.468,-0.46 -0.468,-0.74 0,-0.352 0.232,-0.696 0.64,-0.788 -0.056,-0.232 -0.116,-0.468 -0.184,-0.7 -0.428,0.484 -0.852,0.972 -0.852,1.612 z m 1.044,1.16 c -0.752,0 -1.332,-0.688 -1.332,-1.496 0,-0.708 0.524,-1.224 0.992,-1.764 -0.076,-0.248 -0.148,-0.5 -0.18,-0.76 -0.024,-0.208 -0.028,-0.416 -0.028,-0.624 0,-0.46 0.22,-0.896 0.596,-1.168 0.024,-0.02 0.056,-0.02 0.08,0 0.284,0.336 0.532,0.98 0.532,1.432 0,0.572 -0.344,1.02 -0.72,1.456 0.084,0.272 0.156,0.552 0.224,0.828 0.016,0 0.036,-0.004 0.052,-0.004 0.62,0 1.024,0.512 1.024,1.044 0,0.304 -0.132,0.616 -0.428,0.84 -0.088,0.068 -0.188,0.112 -0.292,0.144 0.012,0.14 0.02,0.28 0.02,0.42 0,0.076 -0.004,0.156 -0.008,0.232 -0.028,0.476 -0.352,0.9 -0.808,0.912 l 0.004,-0.172 c 0.372,-0.008 0.612,-0.368 0.636,-0.764 0.004,-0.072 0.008,-0.148 0.008,-0.22 0,-0.124 -0.004,-0.244 -0.016,-0.368 -0.116,0.02 -0.232,0.032 -0.356,0.032 z m 0.372,-4.712 c 0,-0.22 -0.016,-0.316 -0.08,-0.516 -0.396,0.192 -0.648,0.596 -0.648,1.036 0,0.296 0.072,0.532 0.144,0.776 0.32,-0.388 0.584,-0.792 0.584,-1.296 z"
+     fill="currentColor"
+     id="path38"
+     style="stroke-width:0.004" />
+  <rect
+     x="6.9741998"
+     y="8.8817842e-16"
+     width="0.13"
+     height="3.1238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect40" />
+  <rect
+     x="15.731"
+     y="8.8817842e-16"
+     width="0.13"
+     height="4.6238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect42" />
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:12:20"
+     id="a46"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,37.319,17.4311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path44" />
+  </a>
+  <rect
+     x="12.9787"
+     y="8.8817842e-16"
+     width="0.13"
+     height="2.1238999"
+     ry="0.039999999"
+     fill="currentColor"
+     id="rect48" />
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/ICARE_EDITIONS/livres/musique/xDev/scripts/music-score/Manuel/images/exemples/hampes_plusieurs_vers_haut-not-trimed.ly:28:10:18"
+     id="a52"
+     transform="translate(-22.7622,-12.6211)">
+    <path
+       transform="matrix(0.004,0,0,-0.004,34.5667,14.9311)"
+       d="m 218,136 c 55,0 108,-28 108,-89 0,-71 -55,-121 -102,-149 -35,-21 -75,-34 -116,-34 -55,0 -108,28 -108,89 0,71 55,121 102,149 35,21 75,34 116,34 z"
+       fill="currentColor"
+       id="path50" />
+  </a>
+</svg>

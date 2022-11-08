@@ -1,0 +1,17 @@
+--keep
+--staves 3
+--staves_names Main gauche, Milieu, Main droite
+--staves_keys F, UT3, G
+--barres
+--time 4/4
+
+-> trois_portees
+a2 b c d
+e2 f g a
+c2 d e f
+
+
+#-> trois_portees_trois_cles
+#\cle G a2 b c d
+#\cle UT3 e2 f g a
+#\cle F c2 d e f

@@ -1,0 +1,15 @@
+[0;96m⚙️  Production de l'image "visu"[0m
+** (process:53032): WARNING **: 07:20:35.581: Unable to create profile directory (Permission denied) (13)
+2022-07-03 07:20:35.758 inkscape[53032:143963] XType: failed to connect - Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service named com.apple.fonts was invalidated: failed at lookup with error 3 - No such process." UserInfo={NSDebugDescription=The connection to service named com.apple.fonts was invalidated: failed at lookup with error 3 - No such process.}
+2022-07-03 07:20:35.758 inkscape[53032:143963] Font server protocol version mismatch (expected:5 got:0), falling back to local fonts
+2022-07-03 07:20:35.758 inkscape[53032:143963] XType: unable to make a connection to the font daemon!
+2022-07-03 07:20:35.758 inkscape[53032:143963] XType: XTFontStaticRegistry is enabled as fontd is not available.
+** Message: 07:20:35.759: Impossible de cr?er le dossier de profil /Library/Application Support/org.inkscape.Inkscape/config/inkscape.
+** Message: 07:20:35.759: Inkscape va d?marrer avec les pr?f?rences par d?faut.
+Les nouvelles pr?f?rences ne seront pas enregistr?es. 
+
+** (org.inkscape.Inkscape:53032): WARNING **: 07:20:35.852: Could not create directory '/Library/Application Support/org.inkscape.Inkscape/config/inkscape'
+
+** (org.inkscape.Inkscape:53032): WARNING **: 07:20:35.852: Impossible de cr?er le journal d'erreurs de l'extension?: ??/Library/Application Support/org.inkscape.Inkscape/config/inkscape/extension-errors.log??
+2022-07-03 07:20:35.985 inkscape[53032:143963] +[NSXPCSharedListener endpointForReply:withListenerName:]: an error occurred while attempting to obtain endpoint for listener 'ClientCallsAuxiliary': Connection invalid
+[0;92m🎹 L'image visu.svg a été produite avec succès.[0m

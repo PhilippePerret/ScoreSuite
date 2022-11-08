@@ -1,0 +1,78 @@
+body {
+  position: relative;
+  font-size:  16pt;
+  font-family: 'Arial Narrow', serif;
+  margin: 0;
+  padding: 0;
+}
+
+.invisible {
+  visibility: hidden;
+}
+.hidden {
+  display: none;
+}
+.right {text-align: right}
+
+button, textarea, input[type="text"] {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+}
+input[type="text"] {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+input[type="text"].short:not(.very) {width: 40px}
+input[type="text"].very.short {width: 28px}
+
+select, select option {
+  all: unset;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 4px 12px;
+  border: 1px solid #CCC;
+  pointer: cursor;
+}
+select:focus {
+  outline-offset: -2px;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+}
+
+footer {
+  position: fixed;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  padding-left: 1em;
+}
+
+
+form#ajax_form {display: none}
+
+input[type="checkbox"]+label {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+
+div#boite_confirmation {
+  position: fixed;
+  top: 200px;
+  left: calc(50% - 200px);
+  width: 400px;
+  background-color: white;
+  z-index: 1000;
+  padding: 1em 2em;
+  border: 1px solid black;
+}
+div#boite_confirmation div.buttons {
+  text-align: right;
+}
+div#boite_confirmation div.buttons button {
+  margin-right: 0.5em;
+}

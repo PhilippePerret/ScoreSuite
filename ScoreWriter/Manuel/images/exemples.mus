@@ -1,0 +1,197 @@
+--open OFF
+--barres
+--time
+--piano
+--verbose
+--only_new
+
+mes12==
+a'8 b cis d cis4 cis
+<a, cis e>1
+
+mes13==
+a'8 b cis d cis4 cis
+<a, cis e>1
+
+mes14==
+a'8 b cis d cis4 cis
+<a, cis e>1
+
+mes15==
+a'8 b cis d cis4 cis
+<a, cis e>1
+
+-> partition-12a15
+--mesure 12
+--proximity 7
+mes12<->15
+
+
+--piano OFF
+--time OFF
+--barres OFF
+
+
+-> cle-de-fa-4e
+\cle F c1
+
+-> cle-de-fa-3e
+\cle F3 c1
+
+-> cle-de-sol-2e
+\cle G c1
+
+-> cle-de-sol-1ere
+\cle G1 c1
+
+
+-> cle-ut-1ere
+\cle UT1 c1
+
+-> cle-ut-2e
+\cle UT2 c1
+
+-> cle-ut-3e
+\cle UT3 c1
+
+-> cle-ut-4e
+\cle UT4 c1
+
+-> cle-ut-5e
+\cle UT5 c1
+
+
+
+-> triolets
+3{c8 e g} 3{c16 e g}
+
+
+-> accord
+<c e g c>2.
+
+
+--barres
+
+
+-> liaison-de-duree
+c1~ c2
+
+
+-> liaison-de-jeu
+a'( b c d)
+
+
+-> liaison-accords
+<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2
+
+
+-> hampes-accroched
+a'16[ a a a a a a a]
+
+
+-> hampes-forced-haut
+e'16^[ e e e] e
+
+
+-> hampes-forced-bas
+a'16_[ a a a] a
+
+
+-> voix-simultanees
+<< { e'2 f e f } \\ { c,4 g' d g a e' d c } >>
+
+
+-> grace-note
+\grace ais'16  b4
+
+
+-> slashed-grace-note
+\slashedGrace ais'16  b4
+
+-> appoggiatura
+\appoggiatura ais'16  b4
+
+-> acciaccatura
+\acciaccatura ais'16  b4
+
+-> plusieurs-acciaccatura
+\grace [ais'16 b c]  b4
+
+-> sans-proximity
+c4 d e f g a b c d e f g a
+
+
+# === TRILLES ===
+
+
+-> trille
+\tr(c'1)
+
+
+-> trille_longue
+\tr(c'1)- c a \-tr
+
+-> trille_notes_fins
+\tr(cis'1)- (b16 cis)\-tr d1
+
+-> trille_note_precise
+\tr(cis'1 dis)
+
+-> trille_non_naturelle_et_notes_fins
+\tr(cis'1 dis)- (b16 cis)\-tr d1
+
+
+# === GRACES NOTES ===
+
+-> grace_simple
+\gr(b'8) a gis16 fis e4
+
+-> grace_appoggiature
+\gr(b'8-) a gis16 fis e4
+
+-> grace_acciaccatura
+\gr(b'8/-) a4
+
+-> grace_multiple
+\gr(b'16 gis) a4
+
+-> grace_appoggiature_multiple
+\gr(b'8 gis-) a4
+
+-> grace_slashed
+\gr(b'8/) a4
+
+-> grace_slashed_multiple
+\gr(b'16 gis/) a4
+
+
+# -> proximity
+# --proximity 1-10
+# c4 d e f g a b c d e f g a
+
+-> proximity-prox15
+--proximity 15
+c4 d e f g a b c d e f g a
+
+-> proximity-prox20
+--proximity 20
+c4 d e f g a b c d e f g a
+
+-> proximity-prox50
+--proximity 50
+c4 d e f g a b c d e f g a
+
+-> hampes_vers_le_haut
+e'4^[]
+
+-> hampes_plusieurs_vers_haut
+e'4^[ f g b, d f]
+
+-> hampes_plusieurs_vers_haut_separees
+e'4^[] f^[] g^[] b,^[] d^[] f^[]
+
+-> hampes_vers_le_bas
+g_[]
+
+-> hampes_vers_haut_avec_stemup
+\stemUp e'4

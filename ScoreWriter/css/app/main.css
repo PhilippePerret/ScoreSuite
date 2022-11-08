@@ -1,0 +1,115 @@
+/*
+
+  Styles propres à l'application
+  
+*/
+
+section#score_container {
+  position: fixed;
+  display: block;
+  border: 1px dashed red;
+  overflow: auto;
+}
+section#score_container img {
+  display: block;
+}
+
+img#score {
+  width: 100%;
+}
+
+section#code_container {
+  position: fixed;
+  display: block;
+  overflow: auto;
+  border: 1px dashed green;
+}
+
+
+/*
+  La bande des outils à droite
+*/
+div#bloc_tools_right {
+  position: fixed;
+  background-color: white;
+  right: 0;
+  top: 1em;
+  width: 150px;
+  overflow: hidden;
+  height: calc(100% - 2em);
+  min-height: calc(100% - 2em);
+  border-left: 1px solid #CCC;
+  text-align: center;
+  z-index: 200;
+}
+
+div#options {
+  margin: 1em 0;
+}
+div#options table#table_options {}
+div#options table#table_options td {padding: 0.3em}
+
+.libelle {
+  margin-right: 0.2em;
+  color: #999;
+}
+
+div#bottom_tools {
+  position: absolute;
+  bottom: 0;  
+}
+div#main_onglets {
+  margin-bottom: 2em;
+}
+/*
+  Les boutons d'onglet (pour activer les panneaux)
+*/
+div#main_onglets button {
+  font-variant: all-small-caps;
+  margin-top: 4px;
+  background-color: aquamarine;
+  width: 130px;
+  border: none;
+  cursor: pointer;
+}
+div#main_onglets button.activated {
+  background-color: rgb(74, 111, 73);
+  color: white;
+}
+
+div.panneau {
+  position: fixed;
+  border: 1px solid #CCC;
+  padding: 1em;
+  border-radius: 0.6em 0 0 0;
+  height: 500px;
+  background-color: white;
+  width: calc(1000px - 1em);
+  overflow: auto;
+  z-index: 100;
+  bottom: 0;
+}
+div.panneau:not(.closed){
+  right: 140px; /* largeur de la bande droite d'outils */
+  transition: right 0.5s;
+}
+div.panneau.closed {
+  right: -1000px;
+  transition: right 0.5s;
+}
+
+div.panneau > div {
+  margin-top: 1em;
+}
+
+div.panneau > legend {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: 'Arial Narrow';
+  font-weight: 400;
+  font-style: italic;
+  color: #bebebe;
+  font-size: 24pt;
+}
+

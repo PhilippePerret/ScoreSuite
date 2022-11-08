@@ -1,0 +1,8 @@
+Durée totale : 1 mns 4s
+c         4    16.0s
+e         3    12.0s
+f         3    12.0s
+b         2    8.0s
+d         2    8.0s
+a         1    4.0s
+g         1    4.0s

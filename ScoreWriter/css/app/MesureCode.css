@@ -1,0 +1,23 @@
+div.mesure_code {
+  display: inline-block;
+  margin-right: 2px;
+  font-family: monospace!important;
+  font-size: 22pt!important;
+}
+
+div.mesure_code input[type="text"].mesure_code {
+  display: block;
+  background-color: #333;
+  color: white;
+  width: 180px;
+  border: none;
+  margin-top: 2px;
+  font-size: 16pt;
+}
+div.mesure_code div.mesure_number {
+  font-family: Georgia;
+  font-size: 11pt;
+}
+div.mesure_code div.mesure_number:before {
+  content: 'mes. ';
+}
