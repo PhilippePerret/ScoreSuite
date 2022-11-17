@@ -16,6 +16,7 @@ function onKeypressOnAnalyse(e){
       Preferences.toggle.call(Preferences)
       break
 
+
     default:
 
       console.log("e.key = '%s'", e.key, e)
@@ -33,6 +34,20 @@ onKeyDownOnAnalyse = function(e){
   if ( returnU === true || returnU === false) {
     return returnU
   }
+
+  switch(e.key){
+  case 'ArrowRight':
+  case 'ArrowLeft':
+  case 'ArrowDown':
+  case 'ArrowUp':
+    sens = e.key.replace(/^Arrow/,'').toLowerCase()
+    multi     = e.shiftKey  ? 10 : 1
+    precision = e.altKey    ? 1  : 4
+    AMark.moveSelection(sens,multi,precision)
+    return stopEvent(e)
+  }
+
+  console.log("e.key = '%s'", e.key)
 
 }
 

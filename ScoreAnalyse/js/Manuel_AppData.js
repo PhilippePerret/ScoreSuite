@@ -112,6 +112,11 @@ const ManuelShortcutsData = [
     , shortcut: '⌘ s'
   }
 , {
+      operation: 'Déplacement des objets sélectionnés avec les flèches'
+    , shortcut: '↑ ↓ ← →'
+    , precision: 'En tenant ⇧, on augmente le pas, en tenant ⌥, on affine le pas'
+  }
+, {
       operation:'Verrouiller/déverrouiller les portées'
     , shortcut: 'l ("L" min.) [ne semble pas fonctionner]'
     , precision: "On peut aussi utiliser le bouton de pied de page."

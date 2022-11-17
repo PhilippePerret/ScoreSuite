@@ -48,6 +48,24 @@ class AMark extends AObjet {
   }
 
 /**
+* Pour déplacer la sélection avec les flèches
+*/
+static moveSelection(sens, multiplicateur, precision){
+  if (!Analyse.current) return
+  var prop, factor, methode
+  switch(sens){
+  case 'right': [prop, factor] = ['left', 1]  ; break
+  case 'left' : [prop, factor] = ['left',-1]  ; break
+  case 'down' : [prop, factor] = ['top',  1]  ; break
+  case 'up'   : [prop, factor] = ['top', -1]  ; break
+  }
+  factor = factor * multiplicateur
+  methode = function(aob) { aob[prop] += precision * factor}
+  AObjet.eachSelection(methode)
+  
+}
+
+/**
  * Pour aligner la sélection
  */
 static alignerSelection(){
