@@ -64,6 +64,21 @@ getData(){
   return prefs
 }
 
+erreurNoSavePrefs(){
+  erreur("Pour le moment, je ne sais pas enregistrer les préférences. Éditer le fichier 'preferences.yaml' pour modifier les valeurs.")
+}
+
+saveData(key,value){
+  console.log("Je dois apprendre à sauver %s dans %s", value, key)
+  // Rectification de la valeur en fonction du typeV
+  switch(this.data[key].typeV){
+  case 'number': value = Number(value)
+  }
+  Object.assign(this.data[key], {value: value})
+  // console.debug("this.data = ", this.data)
+  this.erreurNoSavePrefs()
+}
+
 /**
  * Appel au chargement de l'application
  */
@@ -77,6 +92,7 @@ toggle(){
 }
 // Pour ouvrir le panneau
 open(){
+  return this.erreurNoSavePrefs()
   this.obj ? this.show() : this.build()
   this.isOpened = true
 }

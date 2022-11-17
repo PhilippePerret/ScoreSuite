@@ -60,5 +60,5 @@ const TYPES_NOTES = {
 }
 
 // Liste des types (ci-dessus) qui doivent utiliser la 
-// fonte PhilHarm (PhilNote2 maintenant)
+// fonte PhilNote (PhilNote2 maintenant)
 const TYPES_PHILHARMONIEFONT = ['acc','har','mod','emp','cad','ped']

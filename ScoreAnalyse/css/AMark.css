@@ -14,22 +14,22 @@ div.amark.selected {
   z-index: 20;
 }
 
-div.amark:not(.philharm):not(.deg) span.content {
+div.amark:not(.philnote):not(.deg) span.content {
   font-family: 'Arial Narrow', Arial, Helvetica, Geneva;
 }
 
 @font-face {
-  font-family:  PhilHarm;
+  font-family:  PhilNote;
   src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Regular.otf");
 }
 @font-face {
-  font-family:  PhilHarm;
+  font-family:  PhilNote;
   src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Bold.otf");
   font-weight: bold;
 }
-div.amark.philharm span.content, 
-.amark.philharm {
-  font-family: PhilHarm;
+div.amark.philnote span.content, 
+.amark.philnote {
+  font-family: PhilNote;
   font-size: 32pt;
 }
 
@@ -136,17 +136,20 @@ div.amark.emp:before
   top: 40px;
   left: -6px;
 }
+div.amark.emp:before {
+  border-color: #b9b9b9;
+}
 div.amark.emp span.content,
 div.amark.mod span.content {
   display: inline-block;
   padding: unset;
   transform: rotate(-30deg);
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 36px;
 }
 div.amark.emp span.content {
-  margin-left: 16px;
+  color: #b9b9b9;
 }
 div.amark.mod span.content {
   margin-left: 0px;
@@ -201,7 +204,7 @@ div.amark.cad div.mtype {
 
 div.amark.deg {
   font-size: 1.5em;
-  font-family: PhilHarm;
+  font-family: PhilNote;
   font-weight: bold;
 }
 
@@ -335,4 +338,12 @@ div.amark span.vline {
 div.amark.prt span.vline {
   height: 200px;
 }
+
+/*
+    TEXTES
+
+    Les styles div.amark.txt.size1 etc. sont définis en dur dans la
+    page construite en fonction des préférences.
+    
+*/
 

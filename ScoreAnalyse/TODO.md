@@ -10,7 +10,7 @@
   Mais attention, il faudrait une autre propriété que data.objets, qui est utilisée pour les associations volatiles, à chaque fois calculées au chargement de l'analyse.
 
   * Pour des cercles, des segments, etc., faire pareil que l'édition, mais ne mettre que :
-    'seg' ou 'cir' ou 'text:Le texte à afficher' (pas PhilHarmonieFont, donc — maintenant, c'est Philutura ou quelque chose comme ça)
+    'seg' ou 'cir' ou 'text:Le texte à afficher' (pas PhilNoteonieFont, donc — maintenant, c'est Philutura ou quelque chose comme ça)
     -> préférences pour les tailles (ou utiliser resizeable de jQuery, qui serait pratique, ici)
 
 

@@ -16,6 +16,7 @@ class AMark extends AObjet {
    */
   static createNew(e, params){
     if ( undefined == params ) {
+
       const editor = new AMark_Editor({event:e, onReleaseMethod: this.createNew.bind(this, e)})
       return editor.proceed()
 
@@ -39,6 +40,7 @@ class AMark extends AObjet {
       newMark.setValues(params)
       newMark.build_and_observe()
       newMark.toggleFromSelection(/* keep_other = */ false)
+      newMark.ajustePosition(newMark.left, newMark.top)
       UI.allumeRedLight()
 
       return newMark
@@ -233,6 +235,7 @@ setValue(newvalue){
 get isCadence(){ return this.type == 'cad'}
 get isPartie(){ return this.type == 'prt'}
 get isModulation(){return this.type == 'mod' || this.type == 'emp'}
+get isText(){return this.type == 'txt'}
 
 /**
  * Si le type de la marque est une cadence (markType = 'cad') alors
@@ -296,14 +299,16 @@ build_and_observe(){
 }
 
 /**
- * Construction de la marque d'harmonie
- * 
+ ***********************************
+ ***  Construction de la marque  ***
+ ***********************************
  */
 build(){
   // Main objet
   this.obj = DCreate('DIV', {id:this.domId})
   const o = this.obj
   UI.TableAnalyse.appendChild(o)
+
   // Content
   this.contentSpan = DCreate('SPAN', {class:'content', text:this.content})
   o.appendChild(this.contentSpan)
@@ -311,9 +316,12 @@ build(){
   // Style de la marque
   var css = ['amark', 'aobj']
   css.push(this.type)
-  if ( TYPES_PHILHARMONIEFONT.includes(this.type) ) css.push('philharm')
+  if ( TYPES_PHILHARMONIEFONT.includes(this.type) ) css.push('philnote')
   this.subtype && css.push(this.subtype)
   o.className = css.join(' ')
+  if (this.id == 252) {
+    console.debug("this.subtype, this.data", this.subtype, this.data)
+  }
 
   // Ligne supplémentaire et bouton "+"
   this.hasVerticalLine && this.buildVerticalLine()
@@ -723,6 +731,14 @@ set type(t){
   this._type = t
   this.data.type = t
   this.obj && this.obj.classList.add(this._type)
+}
+get subtype(){return this._subtype || (this._sybtype = this.data.subtype)}
+set subtype(v){
+  // On retire le sous-type éventuellement appliqué
+  this.obj && this._subtype && this.obj.classList.remove(this._subtype)
+  this._subtype = v
+  this.data.subtype = v
+  this.obj && this.obj.classList.add(this._subtype)
 }
 
 // Le contenu complet, avec préfixe (aka type). Pour l'édition, par

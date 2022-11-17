@@ -2,17 +2,17 @@
   Pour les exports SVG
 */
 @font-face {
-  font-family:  PhilHarm;
+  font-family:  PhilNote;
   src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Regular.otf");
 }
 @font-face {
-  font-family:  PhilHarm;
+  font-family:  PhilNote;
   src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Bold.otf");
   font-weight: bold;
 }
 
 
-.philharm {
-  font-family: PhilHarm;
+.philnote {
+  font-family: PhilNote;
   font-size: 32px;  
 }
