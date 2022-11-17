@@ -258,6 +258,7 @@ checkSystems(){
    */
   get tags(){
     const my = this
+    my._lastId = 0
     if (undefined == this._tags) {
       AObjet.items || AObjet.init() // indispensable pour instanciation
       const idchecker = {}
@@ -291,7 +292,8 @@ checkSystems(){
       if ( erreurDoublons ) {
         erreur("Des doubles d'identifiants ont été trouvés. Il serait plus prudent de les corriger (en éditant le fichier analyse_tags.yaml) et de recharger l'analyse. Les IDs sont indiqués en console.")
       }
-      console.log("Tags instanciées :", this._tags)
+      console.info("_lastId (après chargement) = ", this._lastId)
+      // console.log("Tags instanciées :", this._tags)
     }; return this._tags;
   }
 

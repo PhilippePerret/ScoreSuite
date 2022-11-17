@@ -218,8 +218,8 @@ static areNotAjustable(type1, type2){
     this.analyse && (this.analyse.modified = true)
   }
   getHeight(){
-    console.log(" -> getHeight / systeme %i", this.id)
-    console.log("this.obj = ", this.obj)
+    // console.log(" -> getHeight / systeme %i", this.id)
+    // console.log("this.obj = ", this.obj)
     return this.obj && this.obj.offsetHeight
   }
 
