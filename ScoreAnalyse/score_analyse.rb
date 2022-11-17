@@ -7,9 +7,23 @@
 =end
 require_relative 'lib/required'
 
+driver_on = false
+
 begin
 
-  if ['help','aide','-h','--help'].include?(ARGV[0])
+  if ARGV[0].nil?
+
+    puts "
+    Il faut passer le chemin d'accès au dossier de l'analyse en
+    premier argument.
+    Le plus simple est d'ouvrir une fenêtre Terminal au dossier
+    contenant l'analyse (ou devant la contenir) et de mettre en
+    premier argument seulement le nom.
+
+    Jouer ".rouge + 'score-analyse help'.jaune + " pour obtenir de l'aide.
+    ".rouge
+
+  elsif ['help','aide','-h','--help'].include?(ARGV[0])
 
     ScoreAnalyse::App.aide
 
@@ -24,11 +38,12 @@ begin
       # table d'analyse
       # 
       WAA.goto File.join(__dir__,'index.html')
+      driver_on = true
       WAA.run
     end
   end
 rescue Exception => e
   puts e.message + "\n" + e.backtrace.join("\n")
 ensure
-  WAA.driver.quit
+  WAA.driver.quit if driver_on
 end
