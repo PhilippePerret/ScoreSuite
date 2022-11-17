@@ -1,3 +1,7 @@
+/**
+* Voir la classe UI qui définit ces raccourcis. 
+*/
+
 function onKeypressOnAnalyse(e){
 
   switch(e.key){
@@ -18,7 +22,19 @@ function onKeypressOnAnalyse(e){
   }
 }
 
-onKeyDownOnAnalyse = function(e){}
+onKeyDownOnAnalyse = function(e){
+
+  var returnU = onKeyDownUniversel(e)
+  
+  // 
+  // Si la combinaison a été traitée par le gestionnaire
+  // universel
+  // 
+  if ( returnU === true || returnU === false) {
+    return returnU
+  }
+
+}
 
 onKeyUpOnAnalyse = function(e){
   // console.log("[KEY UP] e.key = '%s'", e.key)
@@ -26,13 +42,22 @@ onKeyUpOnAnalyse = function(e){
     case 'Backspace':
       AObjet.removeCurrentSelection()
       break
-
-    case 's':
-      if ( e.ctrlKey ) {
-        console.log("Enregistrement…")
-        Analyse.current && Analyse.current.saveAnalyseTags()
-        return stopEvent(e)        
-      }
-      break
   }
+}
+
+/**
+* Quelle que soit la situation, ce gestionnaire de Key-down est 
+* appelé.
+* Il doit absolument retourne null s'il n'a rien faire et true ou
+* false dans l'autre cas, pour retourner cette valeur.
+*/
+onKeyDownUniversel = function(e){
+
+  if ( e.metaKey && e.key == 's' ) {
+    console.log("Enregistrement…")
+    Analyse.current && Analyse.current.saveAnalyseTags()
+    return stopEvent(e)
+  }
+
+  return null;
 }

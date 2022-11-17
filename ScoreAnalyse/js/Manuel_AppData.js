@@ -97,6 +97,7 @@ Pédale         : commencer la ligne par 'PED:' ('PED:5')
   }
 , {
       operation: 'Enregistrement de l’analyse'
+    , shortcut: '⌘ s'
     , procedure: [
             'Pour enregistrer l’analyse, cliquer sur le bouton «Sauver».',
             'Cela enregistre les marques d’analyse (les «tags»), la position des systèmes, les informations sur l’analyse ainsi que les préférences.'
@@ -107,8 +108,12 @@ Pédale         : commencer la ligne par 'PED:' ('PED:5')
 
 const ManuelShortcutsData = [
   {
+      operation:'Enregistrer l’analyse'
+    , shortcut: '⌘ s'
+  }
+, {
       operation:'Verrouiller/déverrouiller les portées'
-    , shortcut: 'l (L min.)'
+    , shortcut: 'l ("L" min.) [ne semble pas fonctionner]'
     , precision: "On peut aussi utiliser le bouton de pied de page."
   }
 ]

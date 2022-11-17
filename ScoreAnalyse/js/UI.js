@@ -19,7 +19,7 @@ class UIClass {
   desactiveCurrentShortcuts(){
     console.info("-> désactivation des raccourcis d'analyse")
     window.onkeyup    = null
-    window.onkeydown  = null
+    window.onkeydown  = onKeyDownUniversel
     window.onkeypress = null
   }
 
