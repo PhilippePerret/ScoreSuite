@@ -59,6 +59,13 @@ const TYPES_NOTES = {
   , 'an': {name:'Anacrouse',        value:'an', autocontent:'AN'  , shortcut:'s'}
 }
 
+const TYPES_SEGMENT = [
+    {name:'À plat sur la portée'    , value:'h-up'    , shortcut: 'u'}
+  , {name:'À plat sous la portée'   , value:'h-down'  , shortcut: 'd'}
+  , {name:'Droit à gauche'          , value:'v-left'  , shortcut: 'l'}
+  , {name:'Droit à droite'          , value:'v-right' , shortcut: 'r'}
+]
+
 // Liste des types (ci-dessus) qui doivent utiliser la 
 // fonte PhilNote (PhilNote2 maintenant)
 const TYPES_PHILHARMONIEFONT = ['acc','har','mod','emp','cad','ped']

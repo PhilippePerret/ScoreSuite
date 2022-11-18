@@ -266,7 +266,7 @@ get paramsGetterOfSubtype(){
       break
     case 'seg':
       d = {
-          values:[{name:'À plat sur la portée', value:'h-up'}, {name:'À plat sous la portée', value:'h-down'}, {name:'Droit à gauche', value:'v-left'}, {name:'Droit à droite', value:'v-right'}]
+          values: TYPES_SEGMENT
         , message:"Disposition du segment"
       }
       break
