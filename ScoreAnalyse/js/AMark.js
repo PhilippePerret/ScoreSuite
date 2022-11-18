@@ -81,16 +81,10 @@ static alignerSelection(){
     var methodValue ;
     switch(align) {
       case 'left':
-        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob.left < AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob.left }}
-        break
       case 'right':
-        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob.right > AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob.right }}
-        break
       case 'top':
-        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob.top < AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob.top }}
-        break
       case 'bottom':
-        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob.bottom > AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob.bottom }}
+        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob[align] < AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob[align] }}
         break
     }
     // Récupération de la valeur de référence
@@ -364,7 +358,13 @@ observe(){
   listen(this.obj, 'click', this.onClick.bind(this))
   listen(this.obj, 'dblclick', this.onDoubleClick.bind(this))
   if (['box','cir','seg'].includes(this.type) ) {
-    $(this.obj).resizable()
+    $(this.obj).resizable({
+      handles:'e'
+    , stop: function(e, ui){
+        my.width = my.getWidth()
+        console.debug("Je mets ma longueur à ", my.width)
+      }
+    })
   }
   if ( this.hasVerticalLine ) { 
     $(this.obj).resizable({
@@ -741,7 +741,11 @@ set height(v){
 setWidth(v) {
   const my  = this
   super.width = v
-  my.hasProlongLine && my.setProlongLineWidth()
+  if (my.hasProlongLine) {
+    my.setProlongLineWidth()
+  } else { // les objets allongeables
+    my.obj.style.width = px(v)
+  }
 }
 
 get type(){return this._type}

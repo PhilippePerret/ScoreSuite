@@ -267,9 +267,10 @@ static areNotAjustable(type1, type2){
   }
 
   get width(){ return this.data.width || this.getWidth() }
-  set width(v) { 
+  set width(v) {
+    var isModified = v != this.data.width
     this.data.width = v 
-    this.analyse && this.analyse.setModified()
+    this.analyse && isModified && this.analyse.setModified()
   }
 
   getWidth(){
