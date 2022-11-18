@@ -378,6 +378,9 @@ observe(){
   // Pour sélection avec MAJ par simple passage sur l'élément
   listen(this.obj, 'mouseover', this.onMouseOver.bind(this))
   listen(this.obj, 'mouseout',  this.onMouseOut.bind(this))
+  // Pour tout déselectionner même lors d'un déplacement
+  // cf. bug #10
+  listen(this.obj, 'mousedown', this.onMouseDown.bind(this))
 
   // Draggable
   $(this.obj).draggable({
@@ -478,6 +481,11 @@ onMouseOver(e){
 onMouseOut(e){
   this.isOver = false
   return stopEvent(e)
+}
+
+// cf. issue #10
+onMouseDown(e){
+  e.shiftKey || AObjet.deselectAll()
 }
 
 toggleFromSelection(keep_other){
