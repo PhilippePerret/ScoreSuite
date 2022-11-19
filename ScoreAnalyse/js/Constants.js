@@ -17,14 +17,15 @@ const TAILLES_TEXTE = {
 }
 
 const TYPES_NOTES = {
-    'np': {name:'Note de passage',  value:'np', autocontent:'NP'  , shortcut:'p'}
-  , 'ap': {name:'Appoggiature',     value:'ap', autocontent:'AP'  , shortcut:'a'}
-  , 'ac': {name:'Appog.chromatique',value:'ac', autocontent:'AC'  , shortcut:'c'}
-  , 're': {name:'Retard',           value:'re', autocontent:'R'   , shortcut:'r'}
-  , 'br': {name:'Broderie',         value:'br', autocontent:'BR'  , shortcut:'b'}
-  , 'db': {name:'Double-broderie',  value:'db', autocontent:'DB'  , shortcut:'d'}
-  , 'in': {name:'Note naturelle',   value:'in', autocontent:'NN'  , shortcut:'n'}
-  , 'an': {name:'Anacrouse',        value:'an', autocontent:'AN'  , shortcut:'s'}
+    'np': {name:'Note de passage'   , value:'np', autocontent:'NP'  , shortcut:'p'}
+  , 'ap': {name:'Appoggiature'      , value:'ap', autocontent:'AP'  , shortcut:'a'}
+  , 'ac': {name:'Appog.chromatique' , value:'ac', autocontent:'AC'  , shortcut:'c'}
+  , 're': {name:'Retard'            , value:'re', autocontent:'R'   , shortcut:'r'}
+  , 'br': {name:'Broderie'          , value:'br', autocontent:'BR'  , shortcut:'b'}
+  , 'db': {name:'Double-broderie'   , value:'db', autocontent:'DB'  , shortcut:'d'}
+  , 'ec': {name:'Échappée'          , value:'ec', autocontent:'E'   , shortcut:'e'}
+  , 'in': {name:'Note naturelle'    , value:'in', autocontent:'NN'  , shortcut:'n'}
+  , 'an': {name:'Anacrouse'         , value:'an', autocontent:'AN'  , shortcut:'s'}
 }
 
 /**
