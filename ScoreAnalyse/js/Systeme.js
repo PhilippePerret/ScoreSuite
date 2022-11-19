@@ -21,7 +21,10 @@ class Systeme extends AObjet {
    */
   static getData(){
     var data_systems = []
-    this.all.forEach(sys => data_systems.push(sys.data2save))
+    this.all.forEach(sys => {
+      console.debug("Données enregistrées pour le système %s : ", sys.index, sys.data2save)
+      data_systems.push(sys.data2save)
+    })
     return data_systems
   }
 
@@ -43,7 +46,20 @@ class Systeme extends AObjet {
     return Analyse.current.systems
   }
 
-
+  /**
+  * Pour déplacer tous les systèmes (et seulement les systèmes) de
+  * la valeur positive ou négative (+diff+) à partir du système 
+  * (inclus) +isystem+
+  */
+  static moveAllFrom(isystem, diff){
+    const lastIndex = this.all.length
+    for (var idx = isystem; idx <= lastIndex; ++idx) {
+      const sys = this.getByIndex(idx)
+      console.log("Déplacement du système %i de %i à %i", idx, sys.top, sys.top + diff)
+      sys.positionne(sys.top + diff, /* onlySystem = */ true)
+    }
+    Analyse.current && Analyse.current.setModified()
+  }
 
   /**
    * @return Le système associé à la marque +aobj+
@@ -246,7 +262,6 @@ class Systeme extends AObjet {
     Systeme.incrementeNombreImagesSystemes()
     img.src = `${this.analyse.path}/systems/${this.image_name}`
     img.onload = function(e) {
-      console.log("J'ai fini de charger %s", my.image_name)
       Systeme.decrementeNombreImagesSystemes()
     }
     img.draggable   = false // supprimer ghost-image quand on move
@@ -265,7 +280,7 @@ class Systeme extends AObjet {
     const iniTop = parseInt(this.top,10)
     const diff = top - iniTop
     if ( diff == 0 ) return 
-    else { Analyse.current && Analyse.current.setModified()}
+    else { Analyse.current && Analyse.current.setModified() }
     // console.log("DATA: Top actuel = %i, Nouveau top = %i, différence = %i", iniTop,top,diff)
     this.top = top
     // Déplacement des objets associés
@@ -366,14 +381,25 @@ class Systeme extends AObjet {
       // => on doit fixer à la nouvelle position
       // 
       const onlySystem = true == e.altKey
+      const onlyAllSystems = onlySystem && e.shiftKey
       const initTop = this.top
       this.positionne(e.clientY - this.rectTop, onlySystem)
       this.obj.classList.remove('selected')
+      /*
+      |  La différence de position (négative ou positive)
+      */
+      const diff = this.top - initTop
 
-      if ( ! onlySystem ) {
-        // 
-        // Pour déplacer tous les objets en dessous
-        // (sauf le système et les objects associés)
+      if ( onlyAllSystems ) {
+        /*
+        |  Pour déplacer les systèmes suivants et seulement les
+        |  systèmes.
+        */
+        Systeme.moveAllFrom(this.index + 1, diff)
+      } else if ( ! onlySystem ) {
+        /*
+        |  Pour déplacer tous les systèmes et les objets suivants
+        */
         var saufs = this.objets.map(ao => {return ao.domId})
         saufs.push(this.domId)
         AObjet.moveAllBelow({

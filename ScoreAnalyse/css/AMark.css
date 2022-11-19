@@ -109,11 +109,12 @@ div.amark.ped span.content {
   color: white;
 }
 
-/*Emprunt et modulation*/
+/* Emprunt et modulation */
 div.amark.emp, 
 div.amark.mod {
   width: 134px;
   height: 110px;
+  z-index: 0;
 }
 div.amark.emp {
   padding-top: 70px;
@@ -315,6 +316,12 @@ div.amark.box {
 
 /* PARTIES & SECTIONS */
 
+div.amark.prt,
+div.amark.prtz,
+div.amark.sec,
+div.amark.secz  {
+  z-index:0;
+}
 div.amark.prt span.content,
 div.amark.prtz span.content,
 div.amark.sec span.content,

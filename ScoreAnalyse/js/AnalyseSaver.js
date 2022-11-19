@@ -31,9 +31,11 @@ class AnalyseSaver {
    */
   static save(){
     if ( Analyse.current ) {
+      console.log("Enregistrement…")
       this.saveAnalyseTags(Analyse.current)
       this.savePreferences(Analyse.current)
       this.saveInfos(Analyse.current)
+      console.log("Enregistrement terminé.")
     } else {
       erreur("Il faut ouvrir ou créer une analyse, pour la sauver.")
     }

@@ -248,7 +248,6 @@ checkSystems(){
         Object.assign(dsys, {index: ++index})
         return new Systeme(this, dsys) 
       })
-      console.log("Systèmes instanciés :", this._systems)
     }; return this._systems
   }
   set systems(v){ this._systems = v }

@@ -69,8 +69,7 @@ onKeyUpOnAnalyse = function(e){
 onKeyDownUniversel = function(e){
 
   if ( e.metaKey && e.key == 's' ) {
-    console.log("Enregistrement…")
-    Analyse.current && Analyse.current.saveAnalyseTags()
+    Analyse.current && AnalyseSaver.save(Analyse.current)
     return stopEvent(e)
   }
 
