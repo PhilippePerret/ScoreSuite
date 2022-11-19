@@ -216,7 +216,9 @@ div.amark.deg {
 }
 
 div.amark.seg {
-  border: 6px solid #333;
+  border-style: solid;
+  border-color: #333;
+  border-width: 2px; /* sera redéfini par les préférences */
   overflow: visible;
 }
 div.amark.seg span.content {
