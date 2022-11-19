@@ -63,12 +63,38 @@ const ManuelData = [
 , {
       operation: "Créer une nouvelle marque d'analyse"
     , procedure: ["Double-cliquer à l'endroit voulu", "régler la nouvelle marque en indiquant la marque (cf. ci-dessous"]
-    , precision: `<pre><code>Prolongation   : terminer le nom par '--' ('cm--')
-Modulation     : commencer la ligne par 'MOD:' ('MOD:C')
-Emprunt        : commencer la ligne par 'EMP:' ('EMP:D')
-Pédale         : commencer la ligne par 'PED:' ('PED:5')
-</code></pre>
-`
+    , precision: `<pre><code>Prolongation   : terminer le nom par '--' ('cm--')</code></pre>`
+  }
+, {
+      operation: "Les types de marque d'analyse"
+    , procedure: `<pre><code>
+Accord      : marque d'accord au dessus de la portée
+Harmonie    : marque en chiffre romain sous la portée indiquant le degré de l'accord
+Modulation  : marque de modulation
+Emprunt     : marque d'emprunt à un tonalité passagère
+Cadence     : marque de cadence
+Pédale      : une pédale (souvent le degré ou la note)
+Types de notes :
+    Note de passage
+    Appoggiature
+    Appoggiature chromatique
+    Retard
+    Broderie
+    Double-broderie
+    Échappée
+    Note naturelle
+    Anacrouse
+Degré de la note : son degré absolu (tonalité) ou relatif (accord)
+Cadre (types de cadres) - b comme "border"
+    Une partie    : marque de partie/section dans la pièce
+    Fin de partie : marque de fin de partie 
+    Cellule       : une cellule (cadre avec nom au-dessus)
+Texte       : un texte quelconque, de 4 tailles différentes
+Segment     : pour délimiter un segment, horizontalement ou verti-
+              calement.
+Cercle      : un cercle autour d'une note par exemple
+</code></pre>`
+      
   }
 , {
       operation: 'Créer une marque avec ligne de prolongation'

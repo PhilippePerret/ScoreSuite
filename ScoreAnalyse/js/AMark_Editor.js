@@ -156,16 +156,20 @@ onSetContent(content){
  * 
  */
 setAutoContent(){
-  switch(this.amark_type){
-    case 'cad':
-      this._amark_content = CADENCES[this.amark_subtype].autocontent
-      break
-    case 'not':
-      this._amark_content = TYPES_NOTES[this.amark_subtype].autocontent
-      break
-    default:
-      erreur("Impossible de définir l'autocontent du type '"+this.amark_type+"'…")
-  }
+  const my = this
+  this._amark_content = (function(value){
+    switch(value){
+      case 'cad':
+        return CADENCES[my.amark_subtype].autocontent
+      case 'not':
+        return TYPES_NOTES[my.amark_subtype].autocontent
+      case 'box':
+        return TYPES_CADRE[my.amark_subtype].autocontent
+      default:
+        erreur("Impossible de définir l'autocontent du type '"+my.amark_type+"'…")
+        return null
+    }
+  })(this.amark_type)
 }
 
 /**
@@ -175,10 +179,20 @@ setAutoContent(){
  * 
  */
 get isRequiringSubType(){
-  return undefined != this.dataOfType.subtype
+  return (this.dataOfType.subdata || undefined != this.dataOfType.subtype)
 }
+/**
+* @return true si un contenu est attendu pour la marque ou la 
+*         sous-marque. Pour la sous-marque, le contenu est attendu
+*         si .subdata est défini dans les données du type et que le
+*         sous-type définit un :default
+*/  
 get isRequiringContent(){
-  return undefined != this.dataOfType.default
+  if ( this.isRequiringSubType && this.dataOfType.subdata ) {
+    return undefined != this.dataOfSubType.default
+  } else {
+    return undefined != this.dataOfType.default
+  }
 }
 get hasAutoContent(){
   return this.dataOfType.autocontent == true
@@ -197,14 +211,28 @@ get positionFixed(){
   return this._posfixed || (this._posfixed = {top:this.event.clientY - 40, left:this.event.clientX - 40})
 }
 
-// La valeur par défaut, en fonction du type
+// La valeur par défaut, en fonction du type et en fonction du fait
+// que ce type a des sous-valeurs
 get defaultValue(){
-  return this.dataOfType.default
+  if (this.isRequiringSubType) {
+    console.debug("this.amark_subtype = ", this.amark_subtype)
+    return this.dataOfSubType.default || this.dataOfType.default
+  } else {
+    return this.dataOfType.default
+  }
 }
 
 // Les données du type (dans AMARQUES_TYPES)
 get dataOfType(){
   return this._datatype || ( this._datatype = AMARQUES_TYPES[this.amark_type])
+}
+get dataOfSubType(){
+  if ( this.dataOfType.subdata ) {
+    return this.dataOfType.subdata[this.amark_subtype]
+  } else {
+    // Si le type ne définit pas sont .subdata dans AMARQUES_TYPES
+    return {}
+  }
 }
 
 /**
@@ -245,34 +273,29 @@ get paramsGetterOfType(){
 // Paramètres pour le getter de sous-type
 get paramsGetterOfSubtype(){
   var d = {}
-  switch(this.amark_type){
-    case 'cad':
-      d = {
-          values: Object.values(CADENCES)
-        , message:"Type de la cadences"
-      }
-      break
-    case 'not':
-      d = {
-          values: Object.values(TYPES_NOTES)
-        , message:"Type de la note :"
-      }
-      break
-    case 'txt':
-      d = {
-          values: TAILLES_TEXTE
-        , message:"Taille du texte"
-      }
-      break
-    case 'seg':
-      d = {
-          values: TYPES_SEGMENT
-        , message:"Disposition du segment"
-      }
-      break
-    default:
-      erreur("Le type '"+this.amark_type+"' ne définit pas son sous-type…")
-      return null
+  if ( this.dataOfType.subdata) {
+    d = {
+        values: Object.values(this.dataOfType.subdata)
+      , message: this.dataOfType.message
+    }
+  } else {
+    switch(this.amark_type){
+      case 'cad':
+        d = {
+            values: Object.values(CADENCES)
+          , message:"Type de la cadences"
+        }
+        break
+      case 'seg':
+        d = {
+            values: TYPES_SEGMENT
+          , message:"Disposition du segment"
+        }
+        break
+      default:
+        erreur("Le type '"+this.amark_type+"' ne définit pas son sous-type…")
+        return null
+    }
   }
   return Object.assign(d, {onChooseMethod: this.onChooseSubtype.bind(this)})
 }
