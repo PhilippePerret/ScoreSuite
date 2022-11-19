@@ -113,12 +113,15 @@ class Systeme extends AObjet {
   static toggleLock(e, lockState){
     if ( undefined == lockState ) lockState = !Preferences.get('lock_systems')
     this.systemsLocked = lockState
-    console.log("-> toggleLock(%s)", lockState)
     UI.btnLockSystems.classList[this.systemsLocked?'add':'remove']('pressed')
     if ( this.systemsLocked ) {
       this.lockAll()
     } else {
       this.unlockAll()
+      message(`
+        <p>Par défaut, toutes les marques d'analyse ainsi que les autres systèmes suivront le déplacement.</p>
+        <p>Pour ne déplacer qu'UN SEUL SYSTÈME, tenir la touche ⌥ appuyée.</p>
+        <p>Pour ne déplacer que le système et les systèmes suivants, tenir ⌥ et ⇧.</p>`)
     }
     Preferences.set('lock_systems', this.systemsLocked)
     return e && stopEvent(e)
@@ -261,6 +264,8 @@ class Systeme extends AObjet {
     // console.log("-> positionne à %i le système et les objets : ", top, this.objets)
     const iniTop = parseInt(this.top,10)
     const diff = top - iniTop
+    if ( diff == 0 ) return 
+    else { Analyse.current && Analyse.current.setModified()}
     // console.log("DATA: Top actuel = %i, Nouveau top = %i, différence = %i", iniTop,top,diff)
     this.top = top
     // Déplacement des objets associés
