@@ -133,10 +133,13 @@ class Systeme extends AObjet {
       this.lockAll()
     } else {
       this.unlockAll()
-      message(`
-        <p>Par défaut, toutes les marques d'analyse ainsi que les autres systèmes suivront le déplacement.</p>
-        <p>Pour ne déplacer qu'UN SEUL SYSTÈME, tenir la touche ⌥ appuyée.</p>
-        <p>Pour ne déplacer que le système et les systèmes suivants, tenir ⌥ et ⇧.</p>`)
+      if ( not(this.alerteDeplacementSystemesOK) ) {      
+        message(`
+          <p>Par défaut, toutes les marques d'analyse ainsi que les autres systèmes suivront le déplacement.</p>
+          <p>Pour ne déplacer qu'UN SEUL SYSTÈME, tenir la touche ⌥ appuyée.</p>
+          <p>Pour ne déplacer que le système et les systèmes suivants, tenir ⌥ et ⇧.</p>`)
+        this.alerteDeplacementSystemesOK = true
+      }
     }
     Preferences.set('lock_systems', this.systemsLocked)
     return e && stopEvent(e)
