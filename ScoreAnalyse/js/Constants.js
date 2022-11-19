@@ -25,6 +25,10 @@ const AMARQUES_TYPES = {
 }
 
 
+/**
+* Les types de marques qu'on doit toujours aligner si elle se trouve
+* assez proche verticalement.
+*/
 const TYPES_AJUSTABLES = {
    'acc':['acc']
  , 'har':['har','cad']
@@ -65,6 +69,14 @@ const TYPES_SEGMENT = [
   , {name:'Droit à gauche'          , value:'v-left'  , shortcut: 'l'}
   , {name:'Droit à droite'          , value:'v-right' , shortcut: 'r'}
 ]
+
+const TAILLES_TEXTE = [
+    {name:"Gros"    , value:'size1' , shortcut: '4'}
+  , {name:"Moyen"   , value:'size2' , shortcut: '3'}
+  , {name:"Petit"   , value:'size3' , shortcut: '2'}
+  , {name:"Mini"    , value:'size4' , shortcut: '1'}
+]
+
 
 // Liste des types (ci-dessus) qui doivent utiliser la 
 // fonte PhilNote (PhilNote2 maintenant)

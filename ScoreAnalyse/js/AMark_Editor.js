@@ -260,7 +260,7 @@ get paramsGetterOfSubtype(){
       break
     case 'txt':
       d = {
-          values: [{name:"Gros", value:'size1'}, {name:"Moyen", value:'size2'}, {name:"Petit", value:'size3'}]
+          values: TAILLES_TEXTE
         , message:"Taille du texte"
       }
       break
