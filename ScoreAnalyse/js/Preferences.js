@@ -145,6 +145,7 @@ updateStylesInHead(){
 buildSelectorsInHead(){
   const my = this
   var selectors = []
+  selectors.push('/* Code produit automatiquement par les propriétés \'selector:\' des préférences */')
   Object.values(PreferencesAppData).forEach(dp => {
     if ( undefined == dp.selector ) return ;
     selectors.push(`${dp.selector} {${dp.selector_value.replace(/__VALUE__/g, my.get(dp.id))}}`)

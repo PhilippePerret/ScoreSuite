@@ -3,8 +3,9 @@ div.container_getter_in_list {
   top: 6em;
   left: 12em;
   width: 300px;
-  height: 400px;
-  max-height: 400px;
+  min-height: 300px;
+  max-height: 600px;
+  padding-bottom: 2em;
   font-size: 0.85em;
   border: 1px solid;
   background-color: #EEE;

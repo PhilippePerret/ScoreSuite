@@ -19,6 +19,7 @@ const PreferencesAppData = {
   , marque_texte_size_1:    {type:'inputtext'   ,typeV:'number'   ,default:60       ,label:"Taille des gros textes",   unite:'px', selector:'div.amark.txt.size1 span.content',   selector_value:'font-size:__VALUE__px;'}
   , marque_texte_size_2:    {type:'inputtext'   ,typeV:'number'   ,default:40       ,label:"Taille des textes moyens", unite:'px', selector:'div.amark.txt.size2 span.content', selector_value:'font-size:__VALUE__px;'}
   , marque_texte_size_3:    {type:'inputtext'   ,typeV:'number'   ,default:24       ,label:"Taille des petits textes", unite:'px', selector:'div.amark.txt.size3 span.content', selector_value:'font-size:__VALUE__px;'}
+  , marque_texte_size_4:    {type:'inputtext'   ,typeV:'number'   ,default:16       ,label:"Taille des textes très petis", unite:'px', selector:'div.amark.txt.size4 span.content', selector_value:'font-size:__VALUE__px;'}
   , note_volume:            {type:'inputtext'   ,typeV:'float'    ,default:0.5      ,label:"Volume de départ des notes (entre 0.0 — silence – et 1.0 — volume max."}
   , vitesse_relecture:      {type:'inputtext'   ,typeV:'number'   ,default:20       ,label:"Vitesse de la relecture (de 1 à 100)", precision:"Ça détermine le temps d'affichage d'un objet en mode relecture. Avec la valeur 100, tous les objets sont à peu près ré-écrit en même temps."}
   , minimum_duree_notes:    {type:'inputtext'   ,typeV:'number'   ,default:0.5      ,label:"Durée minimum des notes jouées (secondes)", precision:"Même si une note est “piquée” sur le clavier, elle sera jouée ce temps."}
