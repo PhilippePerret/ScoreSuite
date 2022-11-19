@@ -405,7 +405,7 @@ div.amark.prtz span.vline {
   height: 200px;
 }
 div.amark.prt span.vline {border-left-width:4px;}
-div.amark.sec span.vline {border-left-width:2px;}
+div.amark.sec span.vline {border-left-width:4px;}
 
 div.amark.prt span.vline,
 div.amark.sec span.vline {

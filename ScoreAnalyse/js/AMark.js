@@ -349,7 +349,7 @@ build(){
 }
 
 get isHresizable(){
-  return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp'].includes(this.type))
+  return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
 }
 get isVresizable(){
   return this._isvresize || (this._isvresize = (['emp'].includes(this.type) || ['cel'].includes(this.subtype)))
