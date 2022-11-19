@@ -313,31 +313,73 @@ div.amark.box {
   border: 5px solid #555;
 }
 
-/* PARTIE */
-div.amark.prt {
+/* PARTIES & SECTIONS */
+
+div.amark.prt span.content,
+div.amark.prtz span.content,
+div.amark.sec span.content,
+div.amark.secz span.content  {
+  color: #444444;
+  z-index:0;
+}
+div.amark.prt, 
+div.amark.prtz {
+  font-size: 24pt;
+  overflow: visible;
+}
+div.amark.sec, div.amark.secz {
   font-size: 22pt;
   overflow: visible;
 }
-div.amark.prt span.content {
+div.amark.prt span.content, 
+div.amark.prtz span.content {
+  display: inline-block;
+  border: 4px solid #777;
+  padding: 4px;  
+}
+div.amark.sec span.content, 
+div.amark.secz span.content {
   display: inline-block;
   border: 2px solid #777;
   padding: 4px;  
 }
 /*
     LIGNE VERTICALE
+    (pour modulation, partie, section)
 */
 div.amark span.vline {
   display: inline-block;
   position: absolute;
-  left: 0px;  
   width: 20px;
-  border-left: 2px solid #777;
+  height: 100px;
+  left:0px;
+  border-color: #777;
+  border-style: solid;
+  border-width: 0px;
+  border-left-width: 2px;
   background-color: transparent;
 }
 /* Partie : ligne verticale */
-div.amark.prt span.vline {
+div.amark.prt span.vline,
+div.amark.prtz span.vline {
   height: 200px;
 }
+div.amark.prt span.vline {border-left-width:4px;}
+div.amark.sec span.vline {border-left-width:2px;}
+
+div.amark.prt span.vline,
+div.amark.sec span.vline {
+  left: 0px;
+}
+/* Fin de Partie : ligne verticale */
+div.amark.prtz span.vline,
+div.amark.secz span.vline {
+  left: auto;
+  border-left: none;
+  right: 0px;
+}
+div.amark.prtz span.vline {border-right-width:4px}
+div.amark.secz span.vline {border-right-width:2px}
 
 /*
     TEXTES

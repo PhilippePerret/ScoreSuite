@@ -246,7 +246,8 @@ setValue(newvalue){
 }
 
 get isCadence(){ return this.type == 'cad'}
-get isPartie(){ return this.type == 'prt'}
+get isPartie(){ return this.type == 'bbx' && this.subtype.startsWith('prt')}
+get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
 get isModulation(){return this.type == 'mod' || this.type == 'emp'}
 get isText(){return this.type == 'txt'}
 
@@ -332,9 +333,6 @@ build(){
   if ( TYPES_PHILHARMONIEFONT.includes(this.type) ) css.push('philnote')
   this.subtype && css.push(this.subtype)
   o.className = css.join(' ')
-  if (this.id == 252) {
-    console.debug("this.subtype, this.data", this.subtype, this.data)
-  }
 
   // Ligne supplémentaire et bouton "+"
   this.hasVerticalLine && this.buildVerticalLine()
@@ -530,7 +528,7 @@ get isTypeAjustable(){
 
 // @return true si la marque a une ligne verticale
 get hasVerticalLine(){
-  return this.isPartie || this.isModulation
+  return this.isPartie || this.isSection || this.isModulation
 }
 
 /**

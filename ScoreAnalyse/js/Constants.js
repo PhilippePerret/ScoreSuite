@@ -3,6 +3,8 @@
 const TYPES_CADRE = {
     'prt' : {name:'Partie (début)'  , shortcut:'a'  , value:'prt'   , default:'EXPO'}
   , 'prtz': {name:'Fin de partie'   , shortcut:'z'  , value:'prtz'  , default:'EXPO'}
+  , 'sec' : {name:'Début section'   , shortcut:'s'  , value:'sec'   , default:'SECTION'}
+  , 'secz': {name:'Fin de section'  , shortcut:'f'  , value:'secz'  , default:'SECTION'}
   , 'cel' : {name:'Cellule'         , shortcut:'c'  , value:'cel'   , default:'C1'}
   , 'box' : {name:'Cadre simple'    , shortcut:'x'  , value:'box'} // pas de default: => pas de texte
 }
