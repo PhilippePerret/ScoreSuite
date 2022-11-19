@@ -248,7 +248,8 @@ setValue(newvalue){
 get isCadence(){ return this.type == 'cad'}
 get isPartie(){ return this.type == 'bbx' && this.subtype.startsWith('prt')}
 get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
-get isModulation(){return this.type == 'mod' || this.type == 'emp'}
+get isModulation(){return this.type == 'mod'}
+get isEmprunt()   {return this.type == 'emp'}
 get isText(){return this.type == 'txt'}
 
 /**
@@ -347,6 +348,13 @@ build(){
 
 }
 
+get isHresizable(){
+  return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp'].includes(this.type))
+}
+get isVresizable(){
+  return this._isvresize || (this._isvresize = ['emp'].includes(this.type))
+}
+
 /**
  * Observation de la marque
  * 
@@ -355,12 +363,20 @@ observe(){
   const my = this ;
   listen(this.obj, 'click', this.onClick.bind(this))
   listen(this.obj, 'dblclick', this.onDoubleClick.bind(this))
-  if (['box','cir','seg'].includes(this.type) ) {
+  if ( this.isVresizable && this.isHresizable ) {
+    $(this.obj).resizable({
+        handles: 'e,s'
+      , stop: function(e, ui){
+          my.width  = my.getWidth()
+          my.height = my.getHeight()
+      }
+    })
+  } else if ( this.isHresizable ) {
     $(this.obj).resizable({
       handles:'e'
     , stop: function(e, ui){
         my.width = my.getWidth()
-        console.debug("Je mets ma longueur à ", my.width)
+        // console.debug("Je mets ma longueur à ", my.width)
       }
     })
   }
@@ -534,7 +550,6 @@ get hasVerticalLine(){
 /**
  * Traitement de la ligne verticale pour les styles :
  * - Partie (prt)
- * - Texte lié à partition (TODO)
  * 
  */
 buildVerticalLine(){
