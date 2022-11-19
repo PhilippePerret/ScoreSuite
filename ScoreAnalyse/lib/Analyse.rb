@@ -79,7 +79,7 @@ class Analyse
     end
 
     #
-    # Le dossier courant est-il analyse ?
+    # Le dossier courant est-il une analyse ?
     # 
     if analyse_conform?(CURRENT_FOLDER)
       self.current = new(CURRENT_FOLDER)
@@ -168,7 +168,8 @@ class Analyse
     if self.current
 
       # cf. [N0001]
-      self.current = Analyse.new(current.path)
+      self.current = Analyse.new(File.expand_path(current.path))
+      self.current.make_backup
       out("OPE: Chargement de l'analyse #{current.name.inspect} de la pièce #{current.piece_title.inspect}.")
 
       WAA.send({
@@ -441,6 +442,7 @@ class Analyse
   def save_analyse_tags
     File.open(analyse_tags_path,'wb'){|f|f.write analyse_tags.to_yaml}    
   end
+
   def analyse_tags
     @analyse_tags ||= begin
       if File.exist?(analyse_tags_path)
@@ -573,9 +575,40 @@ class Analyse
 
   end
 
+  # --- Backups Methods ---
+
+  def make_backup
+    pth = mkdir(File.join(backup_folder,"#{Time.now.strftime('%Y%m%d-%H-%M')}-Backup"))
+    [
+      [analyse_tags_path  , File.join(pth,'analyse_tags.yaml')],
+      [infos_path         , File.join(pth,'infos.yaml')],
+      [preferences_path   , File.join(pth,'preferences.yaml')],
+    ].each do |src, dst|
+      FileUtils.cp(src, dst)
+      puts "Backup de\n#{src}\nvers :\n#{dst}"
+    end
+    # 
+    # Faut-il supprimer un backup ? (on en garde seulement 30)
+    # 
+    backups = Dir["#{backup_folder}/*"]
+    while backups.count > 50
+      FileUtils.rm_rf(backups.sort.first)
+      backups = Dir["#{backup_folder}/*"]
+    end
+  end
+
+  def backup_folder
+    @backup_folder ||= mkdir(File.join(path,'backups'))
+  end
+
+  # --- Data Systems Methods ---
+
   def data_systems
     @data_systems ||= infos['systems'] || []
   end
+
+
+  # --- Paths Methods ---
 
   # Dossier contenant les images des systèmes (dans l'ordre)
   def folder_systems
@@ -584,6 +617,11 @@ class Analyse
 
   def folder_export
     @folder_export ||= mkdir(File.join(path,'export'))
+  end
+
+
+  def images_folder
+    @images_folder ||= mkdir(File.join(path,'images'))
   end
   
   def piece_title

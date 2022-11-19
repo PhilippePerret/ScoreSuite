@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'yaml'
+require 'fileutils'
 
 APP_FOLDER = File.dirname(__dir__)
 
