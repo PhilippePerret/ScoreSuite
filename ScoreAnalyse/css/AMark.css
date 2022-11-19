@@ -349,15 +349,13 @@ div.amark.sec, div.amark.secz {
   font-size: 22pt;
   overflow: visible;
 }
-div.amark.prt span.content, 
+div.amark.cell span.content,
+div.amark.prt span.content,
 div.amark.prtz span.content {
-  display: inline-block;
-  border: 4px solid #777;
   padding: 4px 20px;
 }
 div.amark.sec span.content, 
 div.amark.secz span.content {
-  display: inline-block;
   border: 2px solid #777;
   padding: 4px 12px;  
 }
@@ -377,6 +375,30 @@ div.amark span.vline {
   border-left-width: 2px;
   background-color: transparent;
 }
+
+/*
+    LES TYPES BOITES (bbx, partie, section, celllule, …)
+*/
+
+div.amark.bbx, div.amark.bbx span.content {
+  z-index: 0 !important;
+}
+div.amark.bbx:not(.cel) span.content {
+  border: 4px solid #777;
+}
+div.amark.cel span.content {
+  position: absolute;
+  top: -1.7em;
+  width: max-content;
+  text-align:center;
+}
+div.amark.cel {
+  border: 5px solid #777;
+  min-width: 60px;
+  min-height: 30px;
+  width: max-content;
+}
+
 /* Partie : ligne verticale */
 div.amark.prt span.vline,
 div.amark.prtz span.vline {
@@ -406,6 +428,4 @@ div.amark.secz span.vline {border-right-width:2px}
     page construite en fonction des préférences.
     
 */
-div.amark.bbx, div.amark.bbx span.content {
-  z-index: 0 !important;
-}
+

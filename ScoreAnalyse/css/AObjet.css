@@ -4,6 +4,9 @@
 
 .aobj:not(.selected) {
   border-color: transparent;
+}
+
+.aobj:not(.selected):not(.systeme) {
   z-index: 2;
 }
 
