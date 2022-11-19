@@ -36,7 +36,11 @@ class AMark extends AObjet {
       console.info("CREATE: Marque d'analyse avec données : ", params)
       // Identifiant unique
       Object.assign(params, { id: Analyse.current.newId() })
-      const newMark = new AMark(Analyse.current, params)
+      if ( params.type == 'img' ) {
+        const newMark = new AMImage(Analyse.current, params)
+      } else {
+        const newMark = new AMark(Analyse.current, params)
+      }
       newMark.setValues(params)
       newMark.build_and_observe()
       newMark.toggleFromSelection(/* keep_other = */ false)

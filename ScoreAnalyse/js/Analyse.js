@@ -286,7 +286,11 @@ checkSystems(){
         /*
          * --- L'instance à retourner ---
          */
-        return new AMark(this, dtag)
+        if ( dtag.type == 'img' ) {
+          return new AMImage(this, dtag)
+        } else {
+          return new AMark(this, dtag)
+        }
       })
       if ( erreurDoublons ) {
         erreur("Des doubles d'identifiants ont été trouvés. Il serait plus prudent de les corriger (en éditant le fichier analyse_tags.yaml) et de recharger l'analyse. Les IDs sont indiqués en console.")

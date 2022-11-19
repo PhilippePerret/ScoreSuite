@@ -155,17 +155,17 @@ setFinLecture(){
   console.log("Fin de la lecture")
 }
 
-/**
- * Lecture (création) de l'objet de données +data+
- * 
- */
-drawAMarque(data){
-  // console.log("Je traite la lecture de l'objet : ", data)
-  const o = new AMark(data)
-  o.setValues(data)
-  o.build_and_observe()
-  // TODO Scroller pour voir la marque
-}
+// /**
+//  * Lecture (création) de l'objet de données +data+
+//  * 
+//  */
+// drawAMarque(data){
+//   // console.log("Je traite la lecture de l'objet : ", data)
+//   const o = new AMark(data)
+//   o.setValues(data)
+//   o.build_and_observe()
+//   // TODO Scroller pour voir la marque
+// }
 
   
 }// AnalyseDisplayer

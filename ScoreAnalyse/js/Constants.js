@@ -42,12 +42,13 @@ const AMARQUES_TYPES = {
   , 'mod': {name:'Modulation'   , shortcut:'m', ajustX:24,  ajustY:-80,   value:'mod', default:'C', message:"Nouvelle tonalité"}
   , 'emp': {name:'Emprunt'      , shortcut:'e', ajustX:4,   ajustY:-60,   value:'emp', default:'C', message:"Tonalité de l'emprunt"}
   , 'cad': {name:'Cadence…'     , shortcut:'c', ajustX:-70, ajustY:14,    value:'cad', subtype:true, autocontent:true}
-  , 'ped': {name:'Pédale'       , shortcut:'p', ajustX:20,  ajustY:10,    value:'ped', default:'5', message:"Degré de la pédale"}
+  , 'bbx': {name:'Cadre'        , shortcut:'b', value:'bbx', subdata:TYPES_CADRE, message:'Type de cadre'}
   , 'not': {name:'Type de note…', shortcut:'n', value:'not', subdata:TYPES_NOTES, autocontent:true, message:'Type de la note'}
   , 'deg': {name:'Degré note'   , shortcut:'d', ajustX:26,  ajustY:24,  value:'deg', default:'1', message:'Degré de la note'}
-  , 'bbx': {name:'Cadre'        , shortcut:'b', value:'bbx', subdata:TYPES_CADRE, message:'Type de cadre'}
+  , 'seg': {name:'Segment'      , shortcut:'s', value:'seg', subtype:true   , default:'membre 1', message:"Légende (vide si aucune)"}
+  , 'img': {name:'Image'        , shortcut:'i', value:'img' , default:'image.jpg'  , message:"Image à insérer (path dans le dossier 'images')"}
   , 'txt': {name:'Texte'        , shortcut:'t', ajustX:0,   ajustY:23       ,value:'txt', subdata:TAILLES_TEXTE,  message:"Texte à afficher"}
-  , 'seg': {name:'Segment'      , shortcut:'s', value:'seg', subtype:true   ,default:'membre 1', message:"Légende (vide si aucune)"}
+  , 'ped': {name:'Pédale'       , shortcut:'p', ajustX:20,  ajustY:10,    value:'ped', default:'5', message:"Degré de la pédale"}
   , 'cir': {name:'Cercle'       , shortcut:'r', value:'cir'}
 }
 
