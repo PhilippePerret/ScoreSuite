@@ -25,6 +25,7 @@ function onKeypressOnAnalyse(e){
 
 onKeyDownOnAnalyse = function(e){
 
+  console.debug("-> onKeyDownOnAnalyse")
   var returnU = onKeyDownUniversel(e)
   
   // 

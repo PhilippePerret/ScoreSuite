@@ -167,13 +167,11 @@ static checkPositionAndAdjust(amark){
   const snap = Preferences.get('snap_for_adjust_pos')
   for (var aobj of this.items){
     if ( this.areNotAjustable(aobj.type, amark.type) ){ 
-      console.info("%s et %s ne sont pas des types ajustables.", aobj.type, amark.type)
       continue ;
     }
     // S'il y a trop d'écart entre les deux éléments de type 
     // ajustable, on ne les bouge pas
     if ( Math.abs(aobj.top - amark.top) > snap ) {
-      console.info("%s et %s sont de même type mais trop éloignés.", aobj.id, amark.id)
       continue ;
     }
     // Sinon, on ajuste

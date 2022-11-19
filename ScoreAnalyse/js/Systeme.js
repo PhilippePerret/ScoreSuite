@@ -22,7 +22,6 @@ class Systeme extends AObjet {
   static getData(){
     var data_systems = []
     this.all.forEach(sys => {
-      console.debug("Données enregistrées pour le système %s : ", sys.index, sys.data2save)
       data_systems.push(sys.data2save)
     })
     return data_systems

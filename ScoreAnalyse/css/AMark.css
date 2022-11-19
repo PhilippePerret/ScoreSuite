@@ -51,6 +51,12 @@ div.amark:not(.not) span.pline {
 div.amark.ped span.pline {
   padding-bottom: 9px;
 }
+div.amark.har,
+div.amark.acc,
+div.amark.har span.content,
+div.amark.acc span.content {
+  z-index: 5 !important;  
+}
 div.amark.har span.pline,
 div.amark.acc span.pline
 {

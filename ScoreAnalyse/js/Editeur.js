@@ -53,6 +53,7 @@ class Editeur {
   // Fermer l'éditeur
   hide(){
     this.obj.classList.add('hidden')
+    UI.reactiveCurrentShortcuts()
   }
 
   set titre(v){
