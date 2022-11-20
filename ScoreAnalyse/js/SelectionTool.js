@@ -52,7 +52,6 @@ class SelectionTool {
     // Méthode générale qui reçoit le choix d'un outil dans le menu
     const tool = this.menu.value
     if ( tool == '…' ) return // sécurité
-    console.debug("tool = ", tool)
     this["onActive_"+tool].call(this)
     this.menu.selectedIndex = 0
   }
@@ -66,15 +65,19 @@ class SelectionTool {
         firstTag.groupWith(tag)
       }
     }
-    console.log("Les tags ont été associés.")
+    console.info("Les tags ont été associés.")
   }
 
   static onActive_degroupSelection(){
-    message("Je dois apprendre à dégrouper la sélection.")
+    AObjet.eachSelection(tag => {
+      delete tag.grp
+      tag.grp = null
+    })
+    console.info("Tous les objets sont dégroupés.")
   }
 
   static onActive_selectAll(){
-    message("Je dois apprendre à tout sélectionner.")
+    message("Je dois apprendre à sélectionner tous les éléments d'un certain type.")
   }
 
   /* --- Méthode concernant le groupement de tags --- */

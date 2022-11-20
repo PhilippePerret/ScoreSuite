@@ -48,7 +48,7 @@ onKeyDownOnAnalyse = function(e){
     return stopEvent(e)
   }
 
-  console.log("e.key = '%s'", e.key)
+  // console.log("e.key = '%s'", e.key)
 
 }
 

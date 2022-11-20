@@ -110,8 +110,21 @@ class AObjet {
   static updateMenuSelectionTool(){
 
     const severalTags       = this.selection.length > 1
-    const hasGroupedTags    = false
-    const allTagsAreGrouped = false
+    var hasGroupedTags    = false
+    var allTagsAreGrouped = false
+
+    if ( severalTags ) {
+      allTagsAreGrouped = true
+      const firstTag = this.selection[0]
+      this.eachSelection((tag) => {
+        if ( tag.isGrouped ) { 
+          hasGroupedTags = true
+          if ( allTagsAreGrouped && not(firstTag.isGroupedWith(tag))) {
+            allTagsAreGrouped = false
+          }
+        } else { allTagsAreGrouped = false }
+      })
+    }
 
     const menGroupEna   = severalTags && not(allTagsAreGrouped)
     const menDegroupEna = severalTags && hasGroupedTags
