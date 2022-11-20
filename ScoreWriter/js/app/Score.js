@@ -140,6 +140,8 @@ getEnteteCodeMus(c){
     c.push('--piano')
   } else if ( this.isQuatuor ) {
     c.push('--quatuor')
+  } else if ( this.nombrePortees == 1 ) {
+    c.push('--staves 1')
   } else if ( this.nombrePortees > 1) {
     c.push('--staves ' + this.nombrePortees)
   }

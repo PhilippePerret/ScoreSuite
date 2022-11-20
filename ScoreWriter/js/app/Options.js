@@ -18,7 +18,7 @@ const DATA_OPTIONS = {
   , 'time'    :       {type:'select'}
   , 'auto_update_after_change': {type:'checkbox'}
   , 'staves_vspace':  {type:'text'}
-  , 'staves'        : {type:'method', getter:'getStaves', setter:'setStaves'}
+  , 'staves'        : {type:'method', getter:'getStavesData', setter:'setStavesData'}
   , 'staves_names'  : {type:'none'}
   , 'staves_keys'   : {type:'none'}
   , 'disposition':    {type:'select'}
@@ -263,6 +263,10 @@ applique(opts){
       case 'disposition':
         UI.setDisposition.call(UI, valOption)
         break
+      case 'staves_keys':
+      case 'staves_names':
+        this.setStavesData(keyOption, valOption)
+        break
       case 'systeme':
       case 'staves':
         this.setSysteme(valOption)
@@ -333,20 +337,6 @@ get menuTuneNote(){return DGet('select#tune_note')}
 get menuTuneAlt (){return DGet('select#tune_alteration')}
 
 
-/**
- * Pour définir les portées
- * Appelée par la méthode setProperties l'option 'staves', mais on
- * s'occupera dedans de toutes les définitions de staves (noms, 
- * clés, etc.)
- */
-setStaves(staves){
-  console.log("staves reçu par la méthode Options.setStaves :", staves)
-  // this.setSystemsData()
-}
-getStaves(){
-  console.warn("On doit implémenter la méthode getStaves")
-}
-
 
 /**
  * Réglage du système
@@ -410,6 +400,18 @@ getStavesData(){
   namesArePertinent && Object.assign(d, {names: dataNames})
   return d
 }
+
+/**
+ * Pour définir les portées
+ * Appelée par la méthode setProperties l'option 'staves', mais on
+ * s'occupera dedans de toutes les définitions de staves (noms, 
+ * clés, etc.)
+ */
+setStavesData(keyOption, staves){
+  console.log("%s reçu par la méthode Options.setStavesData :", keyOption, staves)
+  // this.setSystemsData()
+}
+
 
 /**
  * Les options définies en configuration (config.js)

@@ -51,18 +51,16 @@ static removeStaves(){
  */
 static buildStavesInOptions(){
   let nombrePortees = Score.nombrePortees
-  console.info("[setStavesData] Nombre de portées définies : %i", nombrePortees)
-  var currentStaff, lastStaff;
-  for(var istaff = 0; istaff < nombrePortees; ++istaff){
-    if ( istaff > 0 ) {
-      // 
+  for(var istaff = 1; istaff <= nombrePortees; ++istaff){
+    if ( istaff > 1 ) {
       // Création et réglage d'une nouvelle staff (en options)
-      // 
-      const newStaff = this.get(1+istaff)
+      const newStaff = this.get(istaff)
       newStaff.buildInOptions()
+    } else {
+      // La première
+      this.firstStaff.setValues()
     }
   }
-  this.firstStaff.setValues()
 }
 
 /**
@@ -70,7 +68,7 @@ static buildStavesInOptions(){
  * 
  */
 static dataForStaff(staff_id){
-  // console.log("***** -> dataForStaff(%i)", staff_id, this.data)
+  // console.debug("***** -> dataForStaff(%i)", staff_id, this.data)
   const idx = staff_id - 1
   return {id:staff_id, name:this.data.names[idx], key:this.data.keys[idx]}
 }

@@ -1,4 +1,19 @@
 ---
 :path: "/Users/philippeperret/Library/Mobile Documents/com~apple~CloudDocs/Musique/Analyses/SCHUBERT-Trio100/schub_trio100/images/_Chantier/C1"
-:config: {}
-:used_at: 1668919772
+:config:
+  page: a4
+  mesure:
+  systeme: mono
+  proximity: '20'
+  barres: true
+  stems: true
+  tune: Eb
+  time: 3/4
+  auto_update_after_change: false
+  staves_vspace:
+  staves:
+    keys:
+    - F
+  disposition: up_down
+  note_tune_fixed: false
+:used_at: 1668922955
