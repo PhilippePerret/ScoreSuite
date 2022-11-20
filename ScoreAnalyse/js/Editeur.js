@@ -123,6 +123,7 @@ class Editeur {
   onFocusTextField(e){
     UI.desactiveCurrentShortcuts()
     window.onkeypress = this.onKeyPress.bind(this)
+    window.onkeyup    = this.onKeyUp.bind(this)
   }
   onBlurTextField(e){
     UI.reactiveCurrentShortcuts()
@@ -133,6 +134,10 @@ class Editeur {
     if (e.key == 'Enter') return this.onClickOK.call(this, e)
     else if (e.key == 'Backspace') return stopEvent(e)
     else return true
+  }
+  onKeyUp(e){
+    // console.log("e.key = '%s'", e.key)
+    if (e.key == 'Escape') return this.onClickCancel.call(this,e)
   }
 
   /**
