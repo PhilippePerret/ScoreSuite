@@ -46,6 +46,9 @@ class UIClass {
 
     // Le menu du pied de page
     SelectionTool.init()
+
+    // Le menu "Bords" du pied de page
+    BordersTool.init()
         
     const hauteurFen  = window.innerHeight
     const moitieFen   = parseInt(hauteurFen / 2,10)

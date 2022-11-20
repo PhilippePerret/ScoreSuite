@@ -151,10 +151,23 @@
   
 
     <select id="selection_tool" style="width:80px;">
-      <option>…</option>
+      <option>Selection…</option>
       <option value="groupSelection">Grouper les éléments sélectionnés</option>
       <option value="degroupSelection">Dégrouper les éléments sélectionnés</option>
       <option value="selectAll">Sélectionner tous les…</option>
+    </select>
+
+
+    <select id="borders_tool" style="width:80px">
+      <option>Bords…</option>
+      <option value="add" data-css="no_left_border">Supprimer le bord gauche</option>
+      <option value="remove" data-css="no_left_border">Remettre le bord gauche</option>
+      <option value="add" data-css="no_right_border">Supprimer le bord droit</option>
+      <option value="remove" data-css="no_right_border">Remettre le bord droit</option>
+      <option value="add" data-css="no_bottom_border">Supprimer le bord bas</option>
+      <option value="remove" data-css="no_bottom_border">Remettre le bord bas</option>
+      <option value="add" data-css="no_top_border">Supprimer le bord haut</option>
+      <option value="remove" data-css="no_top_border">Remettre le bord haut</option>
     </select>
 
 
@@ -193,5 +206,6 @@
   <script type="text/javascript" src="js/PanneauAnalyse.js" defer></script>
   <script type="text/javascript" src="js/Tools.js" defer></script>
   <script type="text/javascript" src="js/SelectionTool.js" defer></script>
+  <script type="text/javascript" src="js/BordersTool.js" defer></script>
 </body>
 </html>

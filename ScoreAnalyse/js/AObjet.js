@@ -42,6 +42,7 @@ class AObjet {
     this.selectionIds = []
     this.selectionTbl = {}
     this.updateMenuSelectionTool()
+    BordersTool.desactivate()
   }
 
   /**
@@ -61,6 +62,7 @@ class AObjet {
       this.insertUniqObjectInSelection(aobjet)
     }
     this.updateMenuSelectionTool()
+    BordersTool.setMenuBordsFor(this.selection[0])
   }
 
   // Méthode fonctionnelle privée (cf. ci-dessus)

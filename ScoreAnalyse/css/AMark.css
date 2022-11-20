@@ -441,3 +441,21 @@ div.amark.img img.content {
   width: 100%;
   height: 100%;
 }
+
+/*
+  
+    GESTION DES BORDS
+
+*/
+div.amark.no_left_border {
+  border-left-color: transparent !important;
+}
+div.amark.no_right_border {
+  border-right-color: transparent !important;
+}
+div.amark.no_top_border {
+  border-top-color: transparent !important;
+}
+div.amark.no_bottom_border {
+  border-bottom-color: transparent !important;
+}

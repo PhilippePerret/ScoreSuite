@@ -332,6 +332,30 @@ setGroup(grp) {
 
 /* ---/fin des méthodes de groupe */
 
+/* --- Classes CSS Methods --- */
+
+addCss(classe){
+  if (!this.data.css) this.data.css = []
+  if ( not(this.data.css.includes(classe)) ) this.data.css.push(classe)
+}
+removeCss(classe){
+  if ( !this.data.css) return // on ne sait jamais…
+  const idx = this.data.css.indexOf(classe)
+  if (idx < 0) return // on ne sait jamais
+    this.data.css.splice(idx, 1)
+  if ( this.data.css.length == 0) {
+    delete this.data.css
+    this.data.css = undefined
+  }
+}
+/**
+* À la construction du tag, pour appliquer ses css ajoutés
+*/
+applyCss(){
+  if ( !this.data.css ) return ;
+  this.data.css.forEach(classe => this.obj.classList.add(classe))
+}
+
 /**
  * Si le type de la marque est une cadence (markType = 'cad') alors
  * il faut choisir ce type
@@ -425,6 +449,9 @@ build(){
   this.data.height && (this.height = this.data.height)  
   this.obj.style.left = px(this.left)
   this.obj.style.top  = px(this.top)
+
+  // Css suplémentaires
+  this.applyCss()
 
 }
 
