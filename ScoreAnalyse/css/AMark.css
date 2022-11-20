@@ -447,12 +447,28 @@ div.amark.img img.content {
     GESTION DES BORDS
 
 */
-div.amark.no_left_border {
-  border-left-color: transparent !important;
+/* Bord gauche */
+div.amark.no_left_border {border-left-color: transparent !important;}
+div.amark.no_left_border:before {
+  content:'…';
+  position:absolute;
+  font-size:24pt;
+  left: -30px;
 }
-div.amark.no_right_border {
-  border-right-color: transparent !important;
+div.amark.no_left_border.h-up:before {top: -29px}
+div.amark.no_left_border.h-down:before {bottom: -29px}
+/* Bord droit */
+div.amark.no_right_border { border-right-color: transparent !important;}
+div.amark.no_right_border:after {
+  display: block;
+  position: absolute;
+  content: '…';
+  right: -30px;
+  font-size: 24pt;
 }
+div.amark.no_right_border.h-up:after { top: -29px; }
+div.amark.no_right_border.h-down:after { down: -29px; }
+
 div.amark.no_top_border {
   border-top-color: transparent !important;
 }
