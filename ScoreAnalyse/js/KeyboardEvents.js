@@ -19,7 +19,7 @@ function onKeypressOnAnalyse(e){
 
     default:
 
-      console.log("e.key = '%s'", e.key, e)
+      // console.log("e.key = '%s'", e.key, e)
   }
 }
 
