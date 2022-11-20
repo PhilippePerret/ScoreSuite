@@ -527,11 +527,25 @@ observe(){
   $(this.obj).draggable({
       rien:function(){}
     , drag:function(e,ui){
-        if ( e.shiftKey ){ ui.position.top = my.top }
+        // if ( e.shiftKey ){ ui.position.top = my.top }
         if ( this.forDuplication && !e.altKey ){
           // <= on a lâché la touche alt
           this.forDuplication = false
           my.obj.style.cursor = null
+        } else {
+          if ( my.isGrouped && e.shiftKey) {
+            /*
+            |  Pour voir les associés (groupe) se déplacer en même
+            |  temps.
+            */
+            this.movedGrp || (this.movedGrp = my.grp.map(tid => {return AObjet.get(tid)}))
+            var diffTop   = this.debTop - ui.offset.top
+            var diffLeft  = this.debLeft - ui.offset.left
+            this.movedGrp.forEach(tag => {
+              tag.obj.style.top   = px(tag.top - diffTop)
+              tag.obj.style.left  = px(tag.left - diffLeft)
+            })
+          }
         }
       }
     , start:function(e,ui){
@@ -541,6 +555,7 @@ observe(){
         //   ui_top: ui.position.top,
         //   ui_left: ui.position.left
         // })
+        this.movedGrp = undefined // pour les associés
         this.debTop  = 0 + parseInt(ui.position.top, 10)
         this.debLeft = 0 + parseInt(ui.position.left,10)
         if ( e.altKey ) {
