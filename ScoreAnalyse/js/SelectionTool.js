@@ -73,6 +73,7 @@ class SelectionTool {
       delete tag.grp
       tag.grp = null
     })
+    Analyse.current && Analyse.current.setModified()
     console.info("Tous les objets sont dégroupés.")
   }
 
