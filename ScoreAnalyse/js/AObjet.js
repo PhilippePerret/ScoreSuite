@@ -26,6 +26,8 @@ class AObjet {
     this.table = {}
   }
 
+  /* --- Selection Methods --- */
+
   /**
    * Pour boucle sur les objets sélectionnés avec
    * la méthode +method+
@@ -39,21 +41,33 @@ class AObjet {
     this.selection    = []
     this.selectionIds = []
     this.selectionTbl = {}
+    this.updateMenuSelectionTool()
   }
+
   /**
    * Pour ajouter un objet à la sélection courante
    */
   static addToSelection(aobjet) {
     if ( undefined == this.selection ) {
       this.resetSelection()
-    } else {
-      // Ne pas enregistrer deux fois un objet
-      if ( this.selectionTbl[aobjet.id] ) return 
+    } else if ( this.selectionTbl[aobjet.id] ) {
+      return // Ne pas enregistrer deux fois un objet
     }
+    if ( aobjet.isGrouped ) {
+      aobjet.grp.forEach( tid => {
+        this.insertUniqObjectInSelection(AObjet.get(tid))
+      })
+    } else {
+      this.insertUniqObjectInSelection(aobjet)
+    }
+    this.updateMenuSelectionTool()
+  }
+
+  // Méthode fonctionnelle privée (cf. ci-dessus)
+  static insertUniqObjectInSelection(aobjet){
     this.selection.push(aobjet)
     this.selectionIds.push(aobjet.id)
     Object.assign(this.selectionTbl, {[aobjet.id]: aobjet})
-    // console.log("this.selection =", this.selection)
     aobjet.setSelected()
   }
 
@@ -63,6 +77,7 @@ class AObjet {
     this.selectionIds.splice(dec, 1)
     delete this.selectionTbl[aobjet.id]
     aobjet.unsetSelected()
+    this.updateMenuSelectionTool()
   }
 
   /**
@@ -81,6 +96,7 @@ class AObjet {
     this.deselectAll()
     this.selection = [aobjet]
     this.selectionPointer = 0
+    this.updateMenuSelectionTool()
   }
 
   static deselectAll(e){
@@ -90,6 +106,32 @@ class AObjet {
     this.resetSelection()
     return e && stopEvent(e)
   }
+
+  static updateMenuSelectionTool(){
+
+    const severalTags       = this.selection.length > 1
+    const hasGroupedTags    = false
+    const allTagsAreGrouped = false
+
+    const menGroupEna   = severalTags && not(allTagsAreGrouped)
+    const menDegroupEna = severalTags && hasGroupedTags
+    /*
+    |  On règle la possibilité de grouper les éléments sélectionnés
+    |  Seulement :
+    |     - s'il y a plusieurs éléments
+    |     - si ces éléments ne sont pas déjà groupés
+    */
+    SelectionTool.toggleMenuGroupSelection(menGroupEna)
+
+    /*
+    |  On règle la possibilité de dégrouper les éléments sélectionnés
+    |  Note : seulement s'ils sont groupés.
+    */
+    SelectionTool.toggleMenuDegroupSelection(menDegroupEna)
+
+  }
+
+  /* ---/fin des méthodes de sélection */
 
   static remove(aobjet){
     var newItems = []

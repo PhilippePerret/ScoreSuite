@@ -36,11 +36,13 @@ class AMark extends AObjet {
       console.info("CREATE: Marque d'analyse avec données : ", params)
       // Identifiant unique
       Object.assign(params, { id: Analyse.current.newId() })
-      if ( params.type == 'img' ) {
-        const newMark = new AMImage(Analyse.current, params)
-      } else {
-        const newMark = new AMark(Analyse.current, params)
-      }
+      const newMark = ( function(type){
+        if ( type == 'img' ) {
+          return new AMImage(Analyse.current, params)
+        } else {
+          return new AMark(Analyse.current, params)
+        }
+      })(params.type)
       newMark.setValues(params)
       newMark.build_and_observe()
       newMark.toggleFromSelection(/* keep_other = */ false)
@@ -249,6 +251,86 @@ setValue(newvalue){
 
 }
 
+/* --- Méthodes de GROUPE --- */
+
+get grp(){ return this._grp || (this._grp = this.data.grp) }
+set grp(v){
+  this._grp = v
+  this.data.grp = v
+}
+
+get isGrouped(){
+  return this.grp && this.grp.length > 0
+}
+isGroupedWith(tag){
+  return this.grp && this.grp.includes(tag.id)
+}
+
+groupWith(tag){
+  // Permet de grouper le tag courant avec la tag +tag+
+  const moi = this
+
+  if ( moi.isGrouped && moi.isGroupedWith(tag) ){
+    return erreur("Les deux tags sont déjà associés.")
+  }
+
+  const tagIsGrouped = true && tag.isGrouped
+  const moiIsGrouped = true && self.isGrouped
+
+  /*
+  |  Les deux tags peuvent être déjà groupés avec d'autres
+  |  tags.
+  */
+  var tagAsso = tag.isGrouped ? tag.grp : [tag.id]
+  var moiAsso = moi.isGrouped ? moi.grp : [moi.id]
+
+  /*
+  |  On regroupe tous les tags associés.
+  */
+  const allTagsGrouped = moiAsso.concat(tagAsso)
+  moi.setGroup(allTagsGrouped)
+  tag.setGroup(allTagsGrouped)
+
+  Analyse.current && Analyse.current.setModified()
+
+}
+
+degroupFrom(tag){
+  /*
+  |  Dégroupe le tag courant et +tag+ ({AMark})
+  */
+  const moi = this
+
+  if ( not(this.isGroupedWith(tag)) ) {
+    return erreur("Les deux tags ne sont pas associés !")
+  }
+
+  if ( moi.grp.length == 2 ) { // <= une seule association
+    delete moi.grp
+    delete tag.grp
+  } else {
+    const idx = moi.grp.indexOf(tag.id)
+    moi.grp.splice(idx, 1)
+    this.segGroup(moi.grp)
+  }
+
+  Analyse.current && Analyse.current.setModified()
+}
+
+setGroup(grp) {
+  /*
+  |  Définit les associations de ce tag.
+  |  Attention, il ne faut appeler cette méthode que sur un seul tag
+  |  sinon elle tournera en boucle.
+  */
+  if ( this.isGrouped ) {
+    this.grp.forEach(tid => AMark.get(tid).grp = grp)
+  } else {
+    this.grp = grp
+  }
+}
+
+/* ---/fin des méthodes de groupe */
 
 /**
  * Si le type de la marque est une cadence (markType = 'cad') alors

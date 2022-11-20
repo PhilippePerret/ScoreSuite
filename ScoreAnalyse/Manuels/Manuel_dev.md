@@ -34,3 +34,38 @@ Le fichier des préférences porte le nom `preferences.yaml`. Il définit :
 ### Fichier des marques d'analyse
 
 Ce fichier contient toutes les marques d'analyse à poser sur la table d'analyse.
+
+
+
+## Groupement des tags
+
+Depuis la version de novembre 2022, on peut grouper les tags, ce qui permet notamment de les déplacer ou de les supprimer ensemble.
+
+QUESTION : comment les tags sont-ils groupés.
+
+C’est une propriété ‘grp’ qui signifie “groupe” qui liste tous les tags associés
+
+Pour le moment, je considère que cette liste doit contenir tous les ID de tags, même celui qui possède la propriété. Cela permet d’actualiser les listes très facilement, sans avoir à enlever l’ID du tag 
+
+Par exemple :
+
+~~~javascript
+T1 et T5 sont associés :
+T1.grp = [1, 5]
+T5.grp = [1, 5]
+~~~
+
+Les méthodes à créer
+
+~~~javascript
+groupWith(tag) // regroupe (attention 
+
+degroupFrom(tag) // dégroupe
+
+isGrouped // => true si le tag est associé
+
+isGroupedWith(tag) // => true si associé au tag +tag+
+~~~
+
+
+

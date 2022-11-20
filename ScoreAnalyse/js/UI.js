@@ -6,7 +6,7 @@ class UIClass {
    * 
    */
   reactiveCurrentShortcuts(){
-    console.info("-> activation des raccourcis d'analyse")
+    // console.info("-> activation des raccourcis d'analyse")
     window.onkeyup    = onKeyUpOnAnalyse.bind(null)
     window.onkeydown  = onKeyDownOnAnalyse.bind(null)
     window.onkeypress = onKeypressOnAnalyse.bind(null)
@@ -17,7 +17,7 @@ class UIClass {
    * 
    */
   desactiveCurrentShortcuts(){
-    console.info("-> désactivation des raccourcis d'analyse")
+    // console.info("-> désactivation des raccourcis d'analyse")
     window.onkeyup    = null
     window.onkeydown  = onKeyDownUniversel
     window.onkeypress = null
@@ -43,6 +43,9 @@ class UIClass {
   setInterface(){
 
     Preferences.init()
+
+    // Le menu du pied de page
+    SelectionTool.init()
         
     const hauteurFen  = window.innerHeight
     const moitieFen   = parseInt(hauteurFen / 2,10)
