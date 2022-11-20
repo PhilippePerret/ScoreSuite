@@ -17,9 +17,13 @@ set content(v){
   this.data.content = v
   this.img.src = this.srcPath
 }
-
-get srcPath(){
-  return this.analyse.path+'/images/'+this.data.content
+// Pourquoi est-on contraint de faire ça ?
+get content(){
+  return super.content
 }
 
-}// class AIMage
+get srcPath(){
+  return this.analyse.path+'/images/'+this.content
+}
+
+}// class AMIage

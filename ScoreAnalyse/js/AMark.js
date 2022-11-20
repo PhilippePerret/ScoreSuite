@@ -249,12 +249,6 @@ setValue(newvalue){
 
 }
 
-get isCadence(){ return this.type == 'cad'}
-get isPartie(){ return this.type == 'bbx' && this.subtype.startsWith('prt')}
-get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
-get isModulation(){return this.type == 'mod'}
-get isEmprunt()   {return this.type == 'emp'}
-get isText(){return this.type == 'txt'}
 
 /**
  * Si le type de la marque est une cadence (markType = 'cad') alors
@@ -358,6 +352,15 @@ buildSpanContent(){
   // construit pas un span mais une balise <img>
   return DCreate('SPAN', {class:'content', text:this.content})
 }
+
+/* --- Predicate Methods --- */
+
+get isCadence(){ return this.type == 'cad'}
+get isPartie(){ return this.type == 'bbx' && this.subtype.startsWith('prt')}
+get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
+get isModulation(){return this.type == 'mod'}
+get isEmprunt()   {return this.type == 'emp'}
+get isText(){return this.type == 'txt'}
 
 get isHresizable(){
   return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
@@ -818,7 +821,7 @@ set subtype(v){
 
 // Le contenu complet, avec préfixe (aka type). Pour l'édition, par
 // exemple, il faut tout remettre
-get content(){return this._content || (this._content = this.data.content)}
+get content(){ return this._content || (this._content = this.data.content)}
 set content(v){
   this._content = v
   this.data.content = v

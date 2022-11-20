@@ -7,13 +7,6 @@
  */
 function runAfterLoadingAndDisplayingAnalyse(){
   
-  return
-
-  message("Je vais lancer l'export des images dans 1 seconde…")
-  setTimeout(function(){
-    Analyse.exportImage.call(Analyse)
-    message("C'est parti !")
-  }, 1000)
 }
 
 

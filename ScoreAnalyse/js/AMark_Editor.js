@@ -19,13 +19,11 @@ constructor(data){
   this.data   = data
   this.event  = data.event
 
-  //* Pour écrire toutes les coordonnées
+  /* Pour écrire toutes les coordonnées
   var xy = {}
   for(var k in this.event){
     if ( k.endsWith('X') || k.endsWith('Y')) Object.assign(xy, {[k]: this.event[k]})
   }
-  console.log("Coordonnées du click ", xy)
-  console.log("Rappel : c'est PageX et PageY qui serviront à placer l'éditeur")
   //*/
 
 }
