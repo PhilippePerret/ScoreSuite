@@ -247,7 +247,7 @@ setValue(newvalue){
     this.signePlusCad || this.buildSignePlusCadence()
   }
 
-  Analyse.current.modified = true
+  Analyse.current.setModified()
 
 }
 

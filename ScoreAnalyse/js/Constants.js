@@ -60,8 +60,7 @@ const AMARQUES_TYPES = {
 const TYPES_AJUSTABLES = {
    'acc':['acc']
  , 'har':['har','cad']
- , 'mod':['mod','emp']
- , 'emp':['emp','mod']
+ , 'mod':['mod']
  , 'cad':['cad','har']
 }
 
