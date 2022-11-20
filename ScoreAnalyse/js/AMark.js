@@ -329,7 +329,7 @@ build(){
   UI.TableAnalyse.appendChild(o)
 
   // Content
-  this.contentSpan = DCreate('SPAN', {class:'content', text:this.content})
+  this.contentSpan = this.buildSpanContent()
   o.appendChild(this.contentSpan)
   
   // Style de la marque
@@ -352,12 +352,39 @@ build(){
 
 }
 
+buildSpanContent(){
+  // La méthode est "détachée" de #build pour pouvoir être surclassée
+  // par une méthode de classe fille. Un type image, par exemple, ne
+  // construit pas un span mais une balise <img>
+  return DCreate('SPAN', {class:'content', text:this.content})
+}
+
 get isHresizable(){
   return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
 }
 get isVresizable(){
   return this._isvresize || (this._isvresize = (['emp'].includes(this.type) || ['cel'].includes(this.subtype)))
 }
+
+get is2dimResizable(){
+  // Les objets qui sont redimensionnables dans les deux sens en même
+  // temps (comme les images)
+  return this._is2dimresize || (this._is2dimresize = (['img'].includes(this.type)))
+}
+
+get hasSigneMoinsCadence(){return this.signeMoinsCad }
+
+// @return true si le type de marque est ajustable
+get isTypeAjustable(){
+  return this._isajust || (this._isajust = undefined != TYPES_AJUSTABLES[this.type])
+}
+
+// @return true si la marque a une ligne verticale
+get hasVerticalLine(){
+  return this.isPartie || this.isSection || this.isModulation
+}
+
+/* --- Observation Methods --- */
 
 /**
  * Observation de la marque
@@ -367,7 +394,18 @@ observe(){
   const my = this ;
   listen(this.obj, 'click', this.onClick.bind(this))
   listen(this.obj, 'dblclick', this.onDoubleClick.bind(this))
-  if ( this.isVresizable && this.isHresizable ) {
+  if ( this.is2dimResizable ) {
+    // Attention : là il s'agit bien d'objets dont les deux dimen-
+    // sions se règlent EN MÊME TEMPS qui, donc, conservent leurs
+    // proportions
+    $(this.obj).resizable({
+        aspectRatio: true
+      , stop: function(e, ui){
+          my.width  = my.getWidth()
+          my.height = my.getHeight()
+      }
+    })
+  } else if ( this.isVresizable && this.isHresizable ) {
     $(this.obj).resizable({
         handles: 'e,s'
       , stop: function(e, ui){
@@ -541,15 +579,6 @@ ajustePosition(left, top){
   }
 }
 
-// @return true si le type de marque est ajustable
-get isTypeAjustable(){
-  return this._isajust || (this._isajust = undefined != TYPES_AJUSTABLES[this.type])
-}
-
-// @return true si la marque a une ligne verticale
-get hasVerticalLine(){
-  return this.isPartie || this.isSection || this.isModulation
-}
 
 /**
  * Traitement de la ligne verticale pour les styles :
@@ -571,8 +600,6 @@ setVerticalLineHeight(v){
 get verticalLine(){
   return this._vline
 }
-
-get hasSigneMoinsCadence(){return this.signeMoinsCad }
 
 /**
  * Construction du bouton pour réduire la cadence

@@ -429,3 +429,15 @@ div.amark.secz span.vline {border-right-width:2px}
     
 */
 
+/*
+
+    IMAGES
+
+*/
+div.amark.img {
+
+}
+div.amark.img img.content {
+  width: 100%;
+  height: 100%;
+}
