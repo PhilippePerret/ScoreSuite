@@ -15,7 +15,7 @@ buildSpanContent(){
 set content(v){
   this._content = v
   this.data.content = v
-  this.img.src = this.srcPath
+  this.img && (this.img.src = this.srcPath)
 }
 // Pourquoi est-on contraint de faire ça ?
 get content(){
