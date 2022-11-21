@@ -33,7 +33,7 @@ div.amark.philnote span.content,
   font-size: 32pt;
 }
 
-div.amark span.content {
+div.amark:not(.txt) span.content {
   padding: 8px;
 }
 
