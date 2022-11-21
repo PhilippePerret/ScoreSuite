@@ -1,5 +1,11 @@
 # Manuel du langage `music-score`
 
+
+
+[TOC]
+
+
+
 ## Introduction
 
 Le langage `music-score` est un langage de programmation qui permet de produire très facilement des images de partitions simples (simple portée ou portée piano — pour le moment) en utilisant dans son moteur le langage [LiliPond](http://www.lilypond.org).
@@ -345,6 +351,7 @@ Pour d’autres ornements, voir [https://lilypond.org/doc/v2.21/Documentation/no
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:300px;">Code</span> | <span style="display:inline-block;width:200px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | <img src="images/exemples/trille.svg" style="  width:120px;" /> | **`\tr(c') `**                                              | Noter la note trillée entre parenthèses.                     |
+| <img src="images/trille-lied.svg" style="  width:140px;" />  | **`\tr(aes8.) ( g32 aes)`**                                 | Noter la parenthèse qui commence la liaison sur la note triée qui est “détachée” de la trille. Sinon la trille serait mal interprétée |
 | <img src="images/exemples/trille_note_precise.svg" style="  width:120px;" /> | **`\tr(cis' dis) `**                                        | Pour triller avec une autre note que la note naturelle.      |
 | <img src="images/exemples/trille_longue.svg" style="  width:300px;" /> | **`\tr(c'1)- c a\-tr`**                                     | Noter le “tr-” pour commencer et le “-tr” pour finir         |
 | <img src="images/exemples/trille_notes_fins.svg" style="  width:300px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Note quand même la logique générale. |

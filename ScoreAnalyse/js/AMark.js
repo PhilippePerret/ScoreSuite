@@ -468,6 +468,7 @@ get formated_content(){
       .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
       .replace(/\*(.+?)\*/g, '<i>$1</i>')
       .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
+      .replace(/\^(e|er|re)/g, '<sup>$1</sup>')
   } else {
     return this.content
   }
