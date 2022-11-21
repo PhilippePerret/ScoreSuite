@@ -68,6 +68,41 @@ class App
   end
 
 
+  def self.run_score_writer(data)
+    puts "Je dois apprendre à lancer ScoreWriter avec #{data.inspect}"
+    infolder  = data['folder']
+    image     = data['image']
+    image = nil if image.nil? || image.empty?
+    # 
+    # On cherche la première image '.mus' qu'on peut trouver, pour
+    # l'ouvrir
+    # 
+    images = Dir["#{infolder}/**/*.mus"]
+    if images.count
+      chantier  = File.dirname(images.first)
+      if image.nil?
+        image = images.first
+        image = File.basename(image, File.extname(image))
+      end
+    else
+      chantier = File.join(infolder,'images','_Chantier')
+      `mkdir -p "#{chantier}"`
+    end
+    image ||= 'new_image'
+    p = Proc.new do 
+      Dir.chdir(chantier) do
+        # `score-writer #{image}`
+        ARGV.clear
+        ARGV << image
+        load File.join(Dir.home,'Programmes','ScoreSuite','ScoreWriter','score_writer.rb')
+      end
+    end
+    fork { p.call }
+
+    WAA.send(class:'Tools',method:'onRanScoreWriter',data:{ok:true})
+  end
+
+
 DEFAULT_PREFERENCES = {
   load_last_analyse: true,
   last_analyse_path: nil,

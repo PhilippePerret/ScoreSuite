@@ -3,6 +3,25 @@
 class Tools {
 
   /**
+  * Méthode appelée depuis le panneau pour lancer l'application
+  * ScoreWriter dans le dossier courant
+  */
+  static runScoreWriter(){
+    const image = DGet('input#scorewriter_image_to_edit').value
+    WAA.send({
+        class:  'ScoreAnalyse::App'
+      , method: 'run_score_writer'
+      , data:   {
+            folder: (Analyse.current && Analyse.current.path)
+          , image: image
+        }
+    })
+  }
+  static onRanScoreWriter(){
+    this.togglePanneau()
+  }
+
+  /**
    * Méthode permettant de répartir les systèmes de façon
    * uniforme.
    * Utilisé au tout départ pour écarter les systèmes.

@@ -86,6 +86,14 @@
   <div id="panneau_outils" class="panneau hidden">
 
     <div>
+      <button onclick="Tools.runScoreWriter.call(Tools)">Lancer Score-Writer</button>
+      <span style="margin-left:1em;margin-right:1em;">
+        Image à éditer/créer (affixe) :
+      </span>
+      <input type="text" id="scorewriter_image_to_edit" style="width:200px;" value="nouvelle-image">
+    </div>
+
+    <div>
       <button onclick="Analyse.current.refresh.call(Analyse.current)">Rafraichir</button>
       <div class="explication">(en cas de changement des images de systèmes (ajout ou suppression)</div>
     </div>

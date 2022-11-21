@@ -585,7 +585,7 @@ class Analyse
       [preferences_path   , File.join(pth,'preferences.yaml')],
     ].each do |src, dst|
       FileUtils.cp(src, dst)
-      puts "Backup de\n#{src}\nvers :\n#{dst}"
+      # puts "Backup de\n#{src}\nvers :\n#{dst}"
     end
     # 
     # Faut-il supprimer un backup ? (on en garde seulement 30)
