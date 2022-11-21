@@ -906,7 +906,7 @@ destroyLigneProlongation(){
   if (this.hasProlongLine){
     this.prolongLine.remove()
     delete this.prolongLine
-    $(this.obj).resizable("disabled")
+    $(this.obj).resizable("disable")
   }
 }
 
