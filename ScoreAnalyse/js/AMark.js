@@ -459,7 +459,18 @@ buildSpanContent(){
   // La méthode est "détachée" de #build pour pouvoir être surclassée
   // par une méthode de classe fille. Un type image, par exemple, ne
   // construit pas un span mais une balise <img>
-  return DCreate('SPAN', {class:'content', text:this.content})
+  return DCreate('SPAN', {class:'content', text:this.formated_content })
+}
+
+get formated_content(){
+  if ( this.isText ) {
+    return this.content
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/\*(.+?)\*/g, '<i>$1</i>')
+      .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
+  } else {
+    return this.content
+  }
 }
 
 /* --- Predicate Methods --- */
@@ -949,7 +960,7 @@ get content(){ return this._content || (this._content = this.data.content)}
 set content(v){
   this._content = v
   this.data.content = v
-  this.contentSpan && (this.contentSpan.innerHTML = v)
+  this.contentSpan && (this.contentSpan.innerHTML = this.formated_content )
 }
 
   get domId(){return this._domid || (this._domid = `amark-${this.id}`)}
