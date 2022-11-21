@@ -77,6 +77,9 @@ end
 #         Un nombre de portées.
 #
 def body(code, system)
+  if system.is_a?(Integer) && system == 1
+    system = 'solo'
+  end
   case system
   when 'solo', 'piano', 'quatuor' then send("system_for_#{system}", code)
   when Integer then system_for_x_staves(code)
