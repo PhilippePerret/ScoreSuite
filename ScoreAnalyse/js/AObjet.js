@@ -299,8 +299,8 @@ static areNotAjustable(type1, type2){
   }
 
   memoriseHauteurLignePartie(){
-    if (this.obj.querySelector('span.line')){
-      this.data.height = this.obj.querySelector('span.line').offsetHeight
+    if (this.obj.querySelector('span.vline')){
+      this.data.height = this.obj.querySelector('span.vline').offsetHeight
     } else {
       console.error("Une partie devrait comporter une ligne…")
       console.error("PARTIE : this.obj", this.obj)
