@@ -17,10 +17,19 @@
 * exemple : 'piece-metrique' => setPieceMetrique et getPieceMetrique
 */
 const NEWCONFIGS_DATA = [
-    {domId:'piece-tune-note'  ,default:'C'}
-  , {domId:'piece-tune-alter' ,default:'='}
-  , {domId:'piece-metrique'   ,default:'C'}
-  , {domId:'piece-staves-dispo',default:'piano'}
+    {domId:'piece-tune-note'      ,default:'C'}
+  , {domId:'piece-tune-alter'     ,default:'='}
+  , {domId:'piece-metrique'       ,default:'C'}
+  , {domId:'piece-staves-dispo'   ,default:'piano'}
+  , {domId:'mscore-image-name'    ,default:'essai'}
+  , {domId:'mscore-format-page'   ,default:'A4'}
+  , {domId:'mscore-first-mesure'  ,default:'1'}
+  , {domId:'mscore-proximity'     ,default:'5'}
+  , {domId:'mscore-opt-barres'    ,default:true, type:'cb'}
+  , {domId:'mscore-opt-stems'     ,default:true, type:'cb'}
+  , {domId:'mscore-tune-fixed'    ,default:false, type:'cb'}
+  , {domId:'mscore-staves-vspace' ,default:'9'}
+  , {domId:'ui-disposition'       ,default:'left_right'}
 ]
 
 class NewConfiguration {
@@ -34,8 +43,12 @@ class NewConfiguration {
   *   - s'il existe une méthode pour relever la donnée, on
   *     l'utilise.
   *   - sinon, on relève simplement la valeur dans le panneau
+  * 
+  * @return La table des données qu'il suffit d'enregistrer pour
+  * l'image donnée.
   */
   static getData(){
+    var data = {}
     NEWCONFIGS_DATA.forEach(dconfig => {
       var value ;
       const domId = dconfig.domId
@@ -44,11 +57,22 @@ class NewConfiguration {
       if ( 'function' == typeof this[getMethod] ){
         value = this[getMethod].call(this)
       } else {
-        value = DGet(`#config-${domId}`).value
+        const obj = DGet(`#config-${domId}`)
+        switch(dconfig.type){
+        case 'cb':
+          value = !!obj.checked; break
+        default:
+          value = obj.value
+        }
       }
-      Object.assign(dconfig, {value: value, prop: propN})
+      Object.assign(data, {[propN]: value})
+      /*
+      |  On les met aussi dans la donnée de configuration
+      */
+      Object.assign(dconfig , {value: value, prop: propN})
     })
-    console.debug("NEWCONFIGS_DATA", NEWCONFIGS_DATA)
+    // console.debug("Data config à enregistrer", data)
+    return data
   }
 
   /**
@@ -105,18 +129,15 @@ class NewConfiguration {
     }
   }
   static getPieceStavesDispo(){
-    switch(this.menuStaffDispo.value){
-    case 'piano':
-      return [{key:'G', name:null}, {key:'F', name:null}]
-    case 'sonate-violon':
-      return [{key:'G', name:'Vl.'}, [{key:'G', name:null}, {key:'F', name:null}]]
-    case 'quatuor':
-      return [{key:'G', name:'Vl.I'},{key:'G',name:'Vl.II'}, {key:'UT3',name:'Vla.'}, {key:'F',name:'Vlc.'}]
+    var value;
+    switch(value = this.menuStaffDispo.value){
+    case'piano':case'sonate-violon':case'quatuor':
+      return value
     default:
       /*
       |  Un nombre de mesures défini, avec clé et nom
       */
-      const staffCount = Number(this.menuStaffDispo.value)
+      const staffCount = Number(value)
       const staves = []
       for(var i = 1; i <= staffCount; ++i ) {
         const div = DGet(`divrow#config-staff-${i}`)
@@ -138,12 +159,14 @@ class NewConfiguration {
     var dispo = this.menuStaffDispo.value
     switch(dispo){
     case'piano': case'sonate-violon':case'quatuor':
-      this.menuStaffDispo.value = value
+      this.hideFirstStaff()
+      this.menuStaffDispo.value = dispo
       break
     default:
       /*
       |  Un nombre déterminé de portées (avec clé et nom)
       */
+      this.showFirstStaff()
       this.setStaff({key:'G',name:''}, 1)
       dispo = Number(dispo)
       for ( var idx = 2; idx <= dispo; ++idx){
@@ -165,6 +188,9 @@ class NewConfiguration {
     this.divOtherStaves.appendChild(divS)
     return divS
   }
+
+  static showFirstStaff(){this.divFirstStaff.classList.remove('hidden')}
+  static hideFirstStaff(){this.divFirstStaff.classList.add('hidden')}
 
   static get menuStaffDispo(){
     return DGet('select#config-piece-staff-dispo')
