@@ -86,9 +86,7 @@ class UIClass {
 
     listen(this.btnLockSystems, 'click', Systeme.toggleLock.bind(Systeme))
     listen(this.btnSaveAnalyse, 'click', AnalyseSaver.save.bind(AnalyseSaver))
-  
-    listen(DGet('#outil_alignement'), 'change', AMark.alignerSelection.bind(AMark))
-    
+      
     listen(DGet('footer'), 'click', function(e){return stopEvent(e)})
 
     // Pour gérer les sélections

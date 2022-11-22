@@ -72,54 +72,6 @@ static moveSelection(sens, multiplicateur, precision){
 }
 
 /**
- * Pour aligner la sélection
- */
-static alignerSelection(){
-  const menu = DGet('#outil_alignement')
-  const align = menu.value
-  /**
-   * Suivant la valeur de +align+, on prend une valeur de référence
-   * différente. Par exemple, si l'alignement est à gauche, on prend
-   * l'objet qui a le left le plus petit et on l'applique aux autres
-   */
-  if ( align != 'cancel') {
-    this.refAlignValue = null
-    var methodValue ;
-    switch(align) {
-      case 'left':
-      case 'right':
-      case 'top':
-      case 'bottom':
-        methodValue = function(aob){ if ( AMark.refAlignValue == null || aob[align] < AMark.refAlignValue ) { AMark.refAlignValue = 0 + aob[align] }}
-        break
-    }
-    // Récupération de la valeur de référence
-    AObjet.eachSelection(methodValue)
-  }
-  var methodOpe ;
-  switch(align){
-    case 'cancel':
-      methodOpe = function(aob){
-        ['left','right','top','bottom'].forEach( aprop => {
-          const old_prop = 'old_' + aprop;
-          if ( aob[old_prop] ) aob[aprop] = aob[old_prop]
-        })
-      }
-      break
-    case 'center','middle':
-      break
-    default:
-      methodOpe = function(aob){ 
-        const old_prop = 'old_' + align;
-        aob[old_prop] = 0 + aob[align] // pour annulation
-        aob[align] = AMark.refAlignValue 
-      }
-  }
-  AObjet.eachSelection(methodOpe)
-
-  menu.selectedIndex = 0
-}
-/**
  * Nettoyage de la table d'analyse (par exemple avant lecture)
  * 
  */

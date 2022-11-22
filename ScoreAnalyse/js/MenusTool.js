@@ -13,7 +13,13 @@
     du nom de la classe. 
     Dans le cas contraire, 'static get menuId' doit retourner cet ID
 
-  * <option value="maMethode"> => ClassTool.onActivate_maMethode(e, option)
+  * SOIT
+    Une méthode générale onActivate(e, value, option)
+    Qui reçoit, quand un menu est activé : l'évènement change, la
+    valeur de l'option (on pourrait faire aussi option.value) et 
+    le menu activé.
+    SOIT 
+    <option value="maMethode"> => ClassTool.onActivate_maMethode(e, option)
     Chaque <option> doit définir l'attribut 'value' qui déterminera
     la fonction à appeler dans la classe. Si 'value="selectAll"'
     alors la classe fille devra implémenter la méthode 
@@ -39,6 +45,10 @@ class MenusTool {
   }
 
   static observe(){
+    if ( not(this.menu) ) {
+      console.error("Le menu de la classe %s est introuvable… Je ne pourrai pas gérer son menu.", this.name)
+      return
+    }
     this.menu.style.width = px(MAIN_MENUS_WIDTH)
     listen(this.menu, 'change', this.onActivateTool.bind(this))
   }
@@ -61,7 +71,9 @@ class MenusTool {
     /*
     |  Méthode opératrice
     */
-    if ( 'function' == typeof this["onActivate_"+tool] ) {
+    if ( 'function' == typeof this.onActivate ) {
+      this.onActivate(e, tool, option)
+    } else if ( 'function' == typeof this["onActivate_"+tool] ) {
       this["onActivate_"+tool].call(this, e, option)
     } else {
       console.error("La méthode %s::onActivate_%s doit être définie.", this.name, tool)

@@ -43,6 +43,7 @@ class AObjet {
     this.selectionTbl = {}
     this.updateMenuSelectionTool()
     BordersTool.desactivate()
+    AlignMenu.setStateBySelection(0)
   }
 
   /**
@@ -63,6 +64,7 @@ class AObjet {
     }
     this.updateMenuSelectionTool()
     BordersTool.setMenuBordsFor(this.selection[0])
+    AlignMenu.setStateBySelection(this.selection.length)
   }
 
   // Méthode fonctionnelle privée (cf. ci-dessus)
@@ -80,6 +82,7 @@ class AObjet {
     delete this.selectionTbl[aobjet.id]
     aobjet.unsetSelected()
     this.updateMenuSelectionTool()
+    AlignMenu.setStateBySelection(this.selection.length)
   }
 
   /**
@@ -319,6 +322,12 @@ static areNotAjustable(type1, type2){
     this.data.left = v
     this.modified = true
     this.analyse && this.analyse.setModified()
+  }
+
+  get right(){return this._right || (this._right = this.left + this.width) }
+  set right(v){
+    this._right = v
+    this.left   = v - this.width
   }
 
   get width(){ return this.data.width || this.getWidth() }

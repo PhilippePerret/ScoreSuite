@@ -23,13 +23,6 @@ class SelectionTool extends MenusTool {
   }
 
 
-  static get optionGroupSelection(){
-    return this._optgrpsel || (this._optgrpsel = DGet('option[value="groupSelection"]', this.menu))
-  }
-  static get optionDegroupSelection(){
-    return this._optdegrpsel || (this._optdegrpsel = DGet('option[value="degroupSelection"]', this.menu))
-  }
-
   /* --- Gestionnaires d'évènements --- */
 
   static onActivate_groupSelection(){
@@ -67,6 +60,16 @@ class SelectionTool extends MenusTool {
 
   static toggleMenuDegroupSelection(enabled = false){
     this.optionDegroupSelection.disabled = not(enabled)
+  }
+
+  /* --- HTML Elements --- */
+
+  static get optionGroupSelection(){
+    return this._optgrpsel || (this._optgrpsel = DGet('option[value="groupSelection"]', this.menu))
+  }
+
+  static get optionDegroupSelection(){
+    return this._optdegrpsel || (this._optdegrpsel = DGet('option[value="degroupSelection"]', this.menu))
   }
 
 }

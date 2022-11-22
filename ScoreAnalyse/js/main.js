@@ -9,8 +9,6 @@ function runAfterLoadingAndDisplayingAnalyse(){
   
 }
 
-
-
 $(document).ready(function(e){
   Message.init()
   UI.setInterface()
