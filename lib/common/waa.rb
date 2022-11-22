@@ -70,7 +70,7 @@ class Waa
     state = 1
     iloop = 20 # pour des essais
     wait.until do
-      check_clsv_message
+      check_clsv_message || break
       # 
       # Pour des essais
       # 
@@ -93,16 +93,24 @@ class Waa
   def check_clsv_message
     begin
       msg = driver.execute_script('return WAA.get_message()')
+    rescue Selenium::WebDriver::Error::InvalidSessionIdError
+      # 
+      # Cette erreur est générée lorsqu'on a quitté le navigateur
+      # (c'est-à-dire l'application)
+      # 
+      puts "L'application a été quittée. Je m'arrête là."
+      return false
     rescue Exception => e
       # Par exemple quand on recharge la page
       puts "ERREUR BLOQUÉE : #{e.message}".orange
-      return 
+      return true
     end
     if msg
       traite_message(msg)
     else
       # out("Aucun message envoyé.")
     end
+    return true
   end
 
   def traite_message(msg)
@@ -120,19 +128,10 @@ class Waa
   def driver
     @driver ||= begin
       if browser == :firefox
-        opts = Selenium::WebDriver::Firefox::Options.new(
-          # args: ['-devtools'], # -headless, -devtools, -jsconsole
-          args: ['-devtools'], # -headless, -devtools, -jsconsole
-          prefs: {
-            'devtools.debugger.start-panel-collapsed': true,
-            'devtools.toolbox.zoomValue': 4,
-            'devtools.toolsidebar-height.inspector': 300,
-            'devtools.chrome.enabled': true
-          }
-          # à essayer :
-          # devtools.debugger.ui.editor-wrapping true/false
-          # devtools.debugger.ui.panes-visible-on-startup
-        )
+        opts = Selenium::WebDriver::Firefox::Options.new({
+          args: ['-devtools'],  # pour ouvrir les dev tools
+          profile: 'aScenario'
+        })
       else
         opts = {}
       end

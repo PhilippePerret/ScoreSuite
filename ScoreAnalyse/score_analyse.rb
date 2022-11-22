@@ -45,5 +45,5 @@ begin
 rescue Exception => e
   puts e.message + "\n" + e.backtrace.join("\n")
 ensure
-  WAA.driver.quit if driver_on
+  WAA.driver.quit rescue nil if driver_on
 end
