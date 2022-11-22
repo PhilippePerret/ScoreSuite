@@ -1,9 +1,33 @@
 # TODO list
 
-* Pouvoir produire directement le fichier data_mesures.rb avec le code
-* Quand on choisit 'quatuor à cordes', les clés attribuées sont bonnes dans le panneau configuration, elles sont bonnes quand on demande le code final, mais elles ne sont pas bonnes dans l'image (comme si score-image les traiter mal)
-* Vérifier qu'un changement de portée sans application ne soit pas pris en compte par la configuration (pour le moment, ça l'est…)
-* Supprimer le message d'actualisation quand on remonte après la construction de l'image
-* Pouvoir indiquer deux mesures identiques en donnant simplement son numéro à la seconde [Normalement, c'est implémenté, mais ça ne semble pas fonctionner…]
-* (re)Mettre en place l'ouverture du manuel
-* Utiliser un rescue (où ?) pour empêcher d'envoyer plein de code quand on quitte Firefox au lieu d'éteindre le programme par Ctrl-C dans le Terminal.
+cf. `ghi list -L writer`
+
+* reprise complète de l'implémentation, pour supprimer les bugs. Cf. ci-dessous.
+
+
+## REPRISE IMPLÉMENTATION
+
+Pour fonctionner, l'application s'appuie en premier lieu sur :
+
+* la configuration de l'extrait (tonalité, portées, métrique, etc.)
+* les notes définies dans l'interface
+
+### Déjà à régler 
+
+* ne pas tout mélanger : 
+  - la disposition de l'application n'a rien à faire dans la configuration de la pièce
+  - le format de la page
+  => Faire une propriété qui ne concerne que la musique
+    - tonalité
+    - métrique
+    - systèmes (portée — nombre, clé et nom)
+  => Faire une propriété qui concerne le traitement par lilypond
+    - la proximité
+    - la dimension de page
+    - l'affichage des barres ou non
+    - l'affichage des hampes ou non
+    - espacement vertical entre portées
+    - notes en valeurs absolues
+  => Faire une propriété qui concerne le comportement de l'application
+    - auto actualisation après changement
+    - disposition (position du code par rapport à l'image)

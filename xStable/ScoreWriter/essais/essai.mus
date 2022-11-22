@@ -1,0 +1,14 @@
+--page a4
+--piano
+--barres
+--staves_vspace 11
+--tune G
+--time 2/4
+
+mesure1==
+a b c d
+c b a g
+
+-> essai_variables
+mesure1
+mesure1

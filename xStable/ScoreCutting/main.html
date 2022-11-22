@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Score Cutting</title>
+  
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/jquery.form.min.js"></script>
+  <script type="text/javascript" src="js/WAA.js"></script>
+  <script type="text/javascript" src="js/main.js" defer></script>
+</head>
+<body>
+
+
+  <!-- L'image de la partition -->
+  <img id="score" src="" />    
+  
+  <footer>
+    <button id="renoncer_decoupe" class="invisible" onclick="App.renoncerDecoupe.call(App)">Ajuster les lignes</button>
+  
+    <button onclick="UI.removeAllLines()" class="small">Supprimer toutes les lignes</button>
+    <fieldset style="display:inline-block;">
+      <span class="small">Zoom de la partition : </span>
+      <span id="zoom_value" style="display:inline-block;width:68px">100 %</span>
+      <span> </span>
+      <button onclick="App.zoomIn()" class="tiny">➕</button>
+      <button onclick="App.zoomOut()" class="tiny">➖</button>
+    </fieldset>
+
+
+    <span>N° premier système : </span>
+    <input type="text" id="num_first_system" value="1" style="text-align:center">
+    <button id="decouper" class="main" onclick="App.buildCodeDecoupe.call(App)">Découper</button>
+    <button id="confirmer_decoupe" class="invisible main inactif" onclick="App.buildCodeDecoupe.call(App, true)">Procéder à la découpe</button>
+
+  </footer>
+
+
+  <form id="form-code-decoupe" method="post" style="display:none;">
+    <textarea id="code_decoupe" name="code_decoupe" style="display:none;"></textarea>
+  </form>
+  <div id="panneau_information" class="hidden">
+    <div class="content"></div>
+    <div class="right"><button onclick="UI.hidePanneauInformation.call(UI)">OK</button></div>
+  </div>
+  <div id="message" class="hidden" onclick="UI.hideMessage.call(UI)"></div>
+
+  <script type="text/javascript" src="js/App.js" defer></script>
+  <script type="text/javascript" src="js/data.js" defer></script>
+  <script type="text/javascript" src="js/handies.js" defer></script>
+  <script type="text/javascript" src="js/UI.js" defer></script>
+  <script type="text/javascript" src="js/LigneCoupe.js" defer></script>
+</body>
+</html>

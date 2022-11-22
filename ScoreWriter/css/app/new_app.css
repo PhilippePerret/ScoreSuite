@@ -1,0 +1,35 @@
+div.panneau {
+  height: auto!important;
+  width:  auto!important;
+}
+fieldset {
+  margin-bottom:1em;
+  border-radius: 0.5em;
+  padding-top:1em;
+}
+divrow {
+  display: block;
+  margin-bottom: 12px;
+}
+divrow > libelle {
+  display:inline-block;
+  width: 180px;
+  font-style: italic;
+  color: #777777;
+  vertical-align: top;
+}
+divrow > content {
+  display: inline-block;
+  width: 240px;
+}
+divrow > content > input:not(.inline),
+divrow > content > button:not(.inline) {
+  width: 96%;
+}
+divrow > content > select:not(.inline) {
+  width: 90%;
+}
+
+divrow > content > button:not(.inline) + button {
+  margin-top: 0.5em;
+}

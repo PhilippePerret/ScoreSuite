@@ -7,7 +7,7 @@ class AppClass {
  * le code actuel de la partition
  */
 onGetCode(data){
-  console.info("Retour de la relève du code serveur = ", data)
+  console.info("Relève code serveur = ", data)
   if (data.ok) {  
     if (data.code) {
       App.traiteCodeInitial(data.code)

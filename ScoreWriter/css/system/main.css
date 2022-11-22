@@ -13,6 +13,16 @@ body {
   display: none;
 }
 .right {text-align: right}
+.center {text-align: center}
+
+.explication {
+  font-size: 0.75em;
+  font-style: italic;
+  color: #CCCCCC;
+}
+.explication:hover {
+  color: #000000;
+}
 
 button, textarea, input[type="text"] {
   font-family: inherit;

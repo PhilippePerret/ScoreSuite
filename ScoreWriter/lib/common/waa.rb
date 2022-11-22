@@ -131,7 +131,7 @@ class Waa
       if browser == :firefox
         # options = Selenium::WebDriver::Firefox::Options.new(profile: profile)
         opts = Selenium::WebDriver::Firefox::Options.new(
-          # args: ['-devtools'], # -headless, -devtools, -jsconsole
+          args: ['-devtools'], # -headless, -devtools, -jsconsole
           # args: ['-devtools'], # -headless, -devtools, -jsconsole
           # args: ['-jsconsole'], # ce n'est pas console des devtools
           # prefs: {

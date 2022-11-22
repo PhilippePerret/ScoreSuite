@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Music Score Writer</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/system/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/app/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/app/MesureCode.css" />
+  <script type="text/javascript" src="js/system/jquery.js"></script>
+  <script type="text/javascript" src="js/system/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/system/jquery.form.min.js"></script>
+  <script type="text/javascript" src="js/system/Handies.js"></script>
+  <script type="text/javascript" src="js/system/UISystem.js"></script>
+  <script type="text/javascript" src="js/system/dom.js"></script>
+
+  <!-- Communs à la suite Score -->
+  <script type="text/javascript" src="../lib/js/WAA.js"></script>
+  <script type="text/javascript" src="../lib/js/Message.js"></script>
+
+</head>
+<body>
+
+  <!-- 
+
+    BLOC D'OUTILS SUR MARGE DROITE
+   
+   -->
+  <div id="bloc_tools_right">
+    <button onclick="ImgScore.diminueSize.call(ImgScore)" style="font-size:22px">🔍</button>
+    <button onclick="ImgScore.augmenteSize.call(ImgScore)" style="font-size:32px">🔍</button>
+
+    <div id="bottom_tools">
+      <!-- Les outils du bas de la colonne droite d'outils -->
+      
+      <!--
+        ONGLETS POUR OUVRIR LES PANNEAUX
+       -->
+      <div id="main_onglets">
+        <button id="onglet_tools" class="onglet" data-panneau-id="tools">Outils</button>
+        <button id="onglet_snippets" class="onglet" data-panneau-id="snippets">Snippets</button>
+        <button id="onglet_options" class="onglet" data-panneau-id="options">Configuration</button>
+        <button id="onglet-quick_aide" class="onglet" data-panneau-id="quick_aide">Aide</button>
+      </div>
+
+      <div>
+        <!-- 
+          Bouton pour construire l'image
+         -->
+        <div style="margin-bottom:2em;">
+          <button onclick="App.submitCode.call(App)">BUILD</button>
+        </div>
+       <!-- 
+          Boutons "+" et "-" pour ajouter et supprimer des mesures
+         -->
+        <button onclick="MesureCode.createNew.call(MesureCode)">➕</button>
+        <button onclick="MesureCode.removeCurrent.call(MesureCode)">➖</button>
+      </div>
+
+    </div><!-- #bottom_tools -->
+
+  </div>
+
+
+  <!-- 
+    Image(s) de la partition
+   -->
+  <section id="score_container">
+    <img id="score" src="" />
+  </section>
+
+  <!-- 
+
+    LA SECTION PRINCIPAL CONTENANT NOTAMMENT LE CHAMP POUR LE CODE
+
+   -->
+  <section id="code_container">
+
+    <div id="mesures_code"><!--  
+      Pour mettre les mesures-code de code
+    --></div>
+
+  </section>
+
+  <!-- 
+
+      SECTION DES PANNEAUX
+
+   -->
+
+  <section id="panneaux">
+
+    <!-- 
+
+      LE PANNEAU DES SNIPPETS
+
+     -->
+
+     <div id="snippets" class="panneau closed">
+       <legend>Snippets/Raccourcis</legend>
+
+      <div>
+        <button onclick="Tools.writeInCurrent('double_voix')">Double voix même portée</button>
+        <button onclick="Tools.writeInCurrent('debut_reprise')"> |: </button>
+        <button onclick="Tools.writeInCurrent('fin_reprise')"> :| </button>
+        <button onclick="Tools.writeInCurrent('fin_debut_reprise')"> :|: </button>
+        <button onclick="Tools.writeInCurrent('fin')">Fin morceau</button>
+      </div>
+
+      <div>
+        <span>Triolet :</span>
+        <input type="text" id="triolet_note-1" class="very short">
+        <input type="text" id="triolet_note-2" class="very short">
+        <input type="text" id="triolet_note-3" class="very short">
+        <select id="triolet_duree_note">
+          <option value="8">croche</option>
+          <option value="16">double-croche</option>
+          <option value="4">noire</option>
+          <option value="8.">croche pointée</option>
+        </select>
+        <button onclick="Tools.insertTriolet.call(Tools)">Insérer</button>
+      </div>
+
+     </div><!-- /div#snippets -->
+
+    <!-- 
+
+      Le PANNEAU DES OUTILS
+
+     -->
+    <div id="tools" class="panneau closed">
+      
+      <legend>Outils</legend>
+
+      <div>
+        <div>
+          <button onclick="App.submitCode.call(App)">CONSTRUIRE L'IMAGE</button>
+          <button onclick="App.produceFinalCode.call(App)">PRODUIRE LE CODE FINAL</button>
+          <button onclick="App.produceMesureDataFile.call(App)">Produire mesures_data.rb</button>        
+          <div>
+            <span>Format </span>
+            <select id="output_format" style="width:150px;white-space:nowrap;">
+              <option value="normal">Normal</option>
+              <option value="data">Table de données des mesures (pour extraction)</option>
+              <option value="variables">Mesures in variables</option>
+            </select>          
+            <span class="libelle">De la mesure</span><input type="text" id="output_from_mesure" class="very short" />
+            <span class="libelle">à la mesure</span><input type="text" id="output_to_mesure" class="very short" />
+          </div>
+        </div>
+        <textarea id="final_code" style="width:100%;" placeholder="CODE FINAL"></textarea>
+        <div class="right">
+          <button onclick="App.forceCodeFinal.call(App)">Forcer la production du code final (après bug)</button>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <button onclick="App.traiteCodeInitial.call(App)">Traiter le code initial complet :</button>
+        </div>
+        <textarea id="ini_code" style="width:100%;height:100px;" placeholder="CODE INITIAL"></textarea>
+      </div>
+
+      <div>
+        <button onclick="Tools.resetAll.call(Tools)">Tout effacer</button>
+      </div>
+
+      <div>
+        <button onclick="Tools.openManuelEditable.call(Tools)">Ouvrir version éditable du Manuel</button>
+        <button onclick="Tools.forceUpdateImage.call(Tools)">Forcer le rechargement de l'image</button>
+      </div>
+
+      <div>
+        <textarea id="code_a_tester" style="width:100%;height:140px;display:block;"></textarea>
+        <button onclick="Tools.execCodeInApp.call(Tools)">Exécuter ce code dans l'application</button>
+      </div>
+    
+    </div>
+
+    <!-- 
+    
+
+      Le PANNEAU DE CONFIGURATION à appliquer à la partition
+    
+
+     -->
+    <div id="options" class="panneau closed">
+
+      <legend>Options</legend>
+
+      <table id="table_options">
+        <!--
+          Ligne de nom de l'image
+        -->
+        <tr>
+          <td colspan="3">
+            <span class="libelle">Nom de l'image</span><input type="text" id="image_name" placeholder="Nom de l'image" />
+            <span style="color:#777;">(Changer le nom + BUILD pour nouvelle image)</span>
+          </td>
+        </tr>
+        <!-- 
+          Première ligne d'options
+         -->
+        <tr>
+          <td>
+            <!-- Format de page -->
+            <span class="libelle">Page</span><select id="page">
+              <option value="">---</option>
+              <option value="a3">A3</option>
+              <option value="a4">A4</option>
+              <option value="a5">A5</option>
+            </select>
+            <!-- Première mesure -->
+            <span class="libelle">1<sup>ère</sup> mesure</span><input type="text" id="mesure" value="" class="short" />
+          </td>
+          <td>
+            <span class="libelle">Système</span><select id="systeme" onchange="Options.onChange.call(Options, this)">
+              <option value="mono">Mono</option>
+              <option value="piano" SELECTED>Piano</option>
+              <option value="duo">Duo</option>
+              <option value="trio">Trio</option>
+              <option value="quatuor">Quatuor à cordes</option>
+              <option value="xxx">autre :</option>
+            </select><input type="text" id="other_systeme" class="short">
+          </td>
+          <td>
+            <span class="libelle">Proximité</span><select id="proximity">
+              <option value="">---</option>
+              <option value="1">1 (notes très proches)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (normal)</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="50">50 (très espacé)</option>
+            </select>
+          </td>
+        </tr>
+        <!--  
+          LIGNES (au pluriel) de définition des portées
+        -->
+        <tr class="tr_staff_data" id="tr_staff-1">
+          <td class="right">
+            <strong>Portée <span class="staff_number">1</span> : </strong>
+            <span class="libelle">Clé</span><select class="staff_key" id="staff1-key">
+              <option value="G">SOL</option>
+              <option value="F">FA</option>
+              <option value="UT3">UT 3</option>
+              <option value="UT4">UT 4</option>
+              <option value="UT1">UT 1</option>
+              <option value="UT2">UT 2</option>
+            </select>
+          </td>
+          <td class="td_staff_name">
+            <span class="libelle">Nom</span>
+            <input type="text" id="staff1-name" class="staff_name" />
+          </td>
+          <td class="td_staff_options">
+            
+          </td>
+        </tr>
+        <!-- 
+          Deuxième (sans compter la ligne des définitions des portées) ligne d'options
+         -->
+        <tr>
+          <td>
+            <span class="libelle">Tonalité</span><select id="tune_note">
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+            </select><select id="tune_alteration">
+              <option value="">naturel</option>
+              <option value="b">bémol</option>
+              <option value="#">dièse</option>
+            </select>
+          </td>
+
+          <td>
+            <span class="libelle">Métrique</span><select id="time">
+              <option value="">---</option>
+              <option value="OFF">OFF (ne pas afficher)</option>
+              <option value="C">C</option>
+              <option value="4/4">4/4</option>
+              <option value="2/2">C barré</option>
+              <option value="2/2">2/2</option>
+              <option value="3/4">3/4</option>
+              <option value="2/4">2/4</option>
+              <option value="3/8">3/8</option>
+              <option value="6/8">6/8</option>
+              <option value="9/8">9/8</option>
+              <option id="xxx">autre :</option>
+            </select><input type="text" id="other_time" class="short" />            
+          </td>
+
+          <td>
+            <input type="checkbox" id="cb_barres"> <label class="libelle" for="cb_barres" CHECKED>Barres mesures</label>
+            <input type="checkbox" id="cb_stems"> <label class="libelle" for="cb_stems" CHECKED>Hampes</label>            
+          </td>
+        </tr>
+
+        <!-- 
+          TROISIÈME LIGNE D'OPTIONS
+         -->
+         <tr>
+           <td>
+             <span class="libelle">Espace entre portées (9 = normal)</span><input type="text" id="staves_vspace" class="short" />
+           </td>
+         </tr>
+      </table>
+
+      <div>
+        <input type="checkbox" id="cb_auto_update_after_change" /><label for="cb_auto_update_after_change">Actualiser automatiquement la partition lors d'une modification de mesure</label>
+      </div>
+      <div>
+        <input type="checkbox" id="cb_note_tune_fixed" /><label for="cb_note_tune_fixed">Note en hauteur absolue (\fixed c')</label>
+      </div>
+      <div>
+        <span class="libelle">Disposition lignes code / Image partition</span><select id="disposition" onchange="Options.onChange.call(Options,this)">
+          <option value="up_down">Image au-dessus / Code en dessous</option>
+          <option value="down_up">Image en dessous / Code au-dessus</option>
+          <option value="left_right">Image à gauche / Code à droite</option>
+          <option value="right_left">Image à droite / Code à gauche</option>
+        </select>
+      </div>
+
+      <div class="right">
+        <button onclick="Options.apply.call(Options, true)">Tout effacer et appliquer cette configuration</button>
+        <button onclick="Options.apply.call(Options, false)">Appliquer cette configuration</button>
+        <button onclick="Score.resetOptions.call(Score)">Remettre les options par défaut</button>
+      </div>
+
+    </div>
+    <!-- /FIN du Panneau des options      -->    
+
+    <div id="quick_aide" class="panneau closed">
+
+      <div><a href="Manuel/Manuel.pdf" target="_blank">Manuel MSWriter</a></div>
+      <div><a href="Manuel.pdf" target="_blank">Manuel MusicScore</a></div>
+
+
+      <legend>Aide rapide</legend>
+
+      <h2>Nouvelle image</h2>
+      <ol>
+        <li>Ouvrir un Terminal au dossier où créer l'image,</li>
+        <li>jouer la commande <code>score-writer &lt;nom-nouvelle-image&gt;</code>,</li>
+        <li>=> l'image est instanciée</li>
+        <li>régler la configuration de l'image dans le panneau CONFIGURATION,</li>
+        <li>implémenter le code pseudo-lilypond,</li>
+        <li>cliquez sur “Build” pour construire l'image.</li>
+      </ol>
+
+      <h2>Édition d'une image existante</h2>
+
+      <ol>
+        <li>Ouvrir une fenêtre Terminal au dossier de l'image,</li>
+        <li>jouer la commande <code>score-writer nom-image</code>,</li>
+        <li>=> l'image est mise en édition.</li>
+      </ol>
+
+      <div class="italic small">Dans cette version WAA de l'application, il est inutile de copier-coller le texte puisqu'il est directement placé dans le fichier de l'image.</div>
+
+    </div><!-- fin panneau -->
+
+  </section>
+
+  <!-- 
+    Formulaire soumis pour actualisation de l'image
+   -->
+  <form id="ajax_form">
+    <textarea id="ajax_data" name="ajax_data"></textarea>
+    <input type="hidden" name="image_name" id="image_name_in_form" value="" />
+    <input type="hidden" name="script_name" id="script_name" value="" />
+  </form>
+
+  <footer>
+  </footer>
+  <div id="message" class="hidden" onclick="UI.hideMessage.call(UI)"></div>
+
+  <script type="text/javascript" src="js/app/config.js" defer></script>
+  <script type="text/javascript" src="js/app/App.js" defer></script>
+  <script type="text/javascript" src="js/app/Onglet.js" defer></script>
+  <script type="text/javascript" src="js/app/data.js" defer></script>
+  <script type="text/javascript" src="js/app/UI.js" defer></script>
+  <script type="text/javascript" src="js/app/Score.js" defer></script>
+  <script type="text/javascript" src="js/app/ImgScore.js" defer></script>
+  <script type="text/javascript" src="js/app/KeyEvent.js" defer></script>
+  <script type="text/javascript" src="js/app/MesureCode.js" defer></script>
+  <script type="text/javascript" src="js/app/Tools.js" defer></script>
+  <script type="text/javascript" src="js/app/Options.js" defer></script>
+  <script type="text/javascript" src="js/app/Staff.js" defer></script>
+  <script type="text/javascript" src="js/app/ready.js" defer></script>
+</body>
+</html>
