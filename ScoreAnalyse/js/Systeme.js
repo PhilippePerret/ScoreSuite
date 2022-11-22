@@ -54,7 +54,7 @@ class Systeme extends AObjet {
     const lastIndex = this.all.length
     for (var idx = isystem; idx <= lastIndex; ++idx) {
       const sys = this.getByIndex(idx)
-      console.log("Déplacement du système %i de %i à %i", idx, sys.top, sys.top + diff)
+      // console.debug("Déplacement du système %i de %i à %i", idx, sys.top, sys.top + diff)
       sys.positionne(sys.top + diff, /* onlySystem = */ true)
     }
     Analyse.current && Analyse.current.setModified()
@@ -65,43 +65,45 @@ class Systeme extends AObjet {
    * 
    */
   static getSystemeAssociated(aobj) {
-    // 
-    // On cherche le système avant et le système après
-    //
+    /*
+    |  Systèmes avant et après (if any)
+    */
     var [sysAuDessus, sysEnDessous] = this.getSystemAvantEtApres(aobj.top, aobj.bottom)
-    //
-    // En fonction du type de l'élément, on prend un
-    // système ou l'autre
-    //
-    switch(aobj.type){
-      // Les types qui sont toujours au-dessus
-      case 'acc': case 'mod': case 'emp': case 'prt' : return sysEnDessous
-      // Les types qui sont toujours en dessous
-      case 'har': case 'ped': case 'cad': return sysAuDessus
-      // Les autres types => on prend le système le plus près
-      default:
-        // SI le haut de la marque est au-dessus du bas du système
-        // supérieur, elle est forcément associée à ce système 
-        // supérieur
-        if (sysAuDessus && aobj.top < sysAuDessus.bottom) return sysAuDessus ;
-        // SINON, SI le bas de la marque est en dessous du haut du
-        // système inférieur, la marque est forcément associée à ce
-        // système inférieur
-        else if ( sysEnDessous && aobj.bottom > sysEnDessous.top ) return sysEnDessous ;
-        // SINON, SI la distance entre le haut de la marque et le
-        // bas du système supérieur est plus petite que la distance
-        // entre le bas de l'objet et le haut du système inférieur,
-        // alors la marque est associée au système supérieur
-        else if ( sysAuDessus && sysEnDessous && aobj.top - sysAuDessus.bottom < sysEnDessous.top - aobj.bottom){
-          return sysAuDessus
-        } 
-        // Dans tous les autres cas, la marque est associé au 
-        // système inférieur.
-        else {
-          if ( sysEnDessous ) return sysEnDessous
-          else return sysAuDessus
-        }
-    }// switch aobjet.type
+
+
+    if ( not(sysEnDessous) ) {
+
+      return sysAuDessus // peut-être null
+
+    } else if ( not(sysAuDessus) ) {
+
+      return sysEnDessous
+
+    } else if ( TYPES_OU_SOUSTYPES_AU_DESSUS.includes(aobj.type) || (aobj.subtype && TYPES_OU_SOUSTYPES_AU_DESSUS.includes(aobj.subtype)) ){
+
+      return sysEnDessous
+
+    } else if ( TYPES_OU_SOUSTYPES_EN_DESSOUS.includes(aobj.type) || (aobj.subtype && TYPES_OU_SOUSTYPES_EN_DESSOUS.includes(aobj.subtype)) ) {
+
+      return sysAuDessus
+
+    } else {
+
+      /*
+      |  +aobj+ est un objet de type quelconque et les deux systèmes
+      |  sont définis.
+      */
+      const ecart_audessus  = Math.abs(aobj.top - sysAuDessus.bottom)
+      const ecart_endessous = Math.abs(sysEnDessous.top - aobj.bottom)
+
+      if ( ecart_audessus > ecart_endessous ) {
+        return sysEnDessous
+      } else {
+        return sysAuDessus
+      }
+
+    }
+
   }
 
   /**
@@ -285,7 +287,9 @@ class Systeme extends AObjet {
     else { Analyse.current && Analyse.current.setModified() }
     // console.log("DATA: Top actuel = %i, Nouveau top = %i, différence = %i", iniTop,top,diff)
     this.top = top
-    // Déplacement des objets associés
+    /*
+    |  Déplacement de tous ses objets associés
+    */
     onlySystem || this.objets.forEach(ao => { ao.top = ao.top + diff })
   }
 

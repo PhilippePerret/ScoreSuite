@@ -346,13 +346,12 @@ buildGetterTypeCadence(){
  * déplacé avec lui.
  * Les objets permettent aussi de définir le top et le height
  * réel de l'objet.
- *
- * L'association se fait simplement : si c'est un objet qu'on
- * met en dessous d'une portée, on associe l'objet avec le système
- * au-dessus, et inversement.
- *  
+ * 
+ * Pour le détail, consulter la partie "Association de l'objet avec
+ * son système" dans le manuel de développement
  */
 associateWithSystem(){
+  this._sys = null
   this.system && this.system.addObjet(this)
 }
 get system(){
@@ -662,12 +661,21 @@ unsetSelected(){
  * 
  */
 ajustePosition(left, top){
+  const initTop = 0 + this.data.top
   this.data.left = left
   this.left = left
   this.top  = top
   if (Preferences.get('adjust_same_mark') && this.isTypeAjustable ) {
+    /*
+    |  Ajustement précis de l'objet en fonction de son contexte
+    */
     AObjet.checkPositionAndAdjust(this)
   }
+  /*
+  |  Si l'objet a été déplacé verticalement, il faut actualiser son
+  |  appartenance à un système.
+  */
+  if ( initTop != this.top ) this.associateWithSystem()
 }
 
 

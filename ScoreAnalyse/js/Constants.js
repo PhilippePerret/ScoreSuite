@@ -1,5 +1,13 @@
 'use strict';
 
+
+const TYPES_OU_SOUSTYPES_AU_DESSUS = [
+  'acc', 'mod', 'emp', 'prt', 'prtz', 'sec','secz'
+]
+const TYPES_OU_SOUSTYPES_EN_DESSOUS = [
+  'har', 'ped', 'cad'
+]
+
 const TYPES_CADRE = {
     'prt' : {name:'Partie (début)'  , shortcut:'a'  , value:'prt'   , default:'EXPO'}
   , 'prtz': {name:'Fin de partie'   , shortcut:'z'  , value:'prtz'  , default:'EXPO'}

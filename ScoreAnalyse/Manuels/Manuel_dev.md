@@ -2,6 +2,28 @@
 
 # Manuel de développement
 
+
+
+[TOC]
+
+## Les objets
+
+### Association de l'objet avec son système
+
+Pour permettre leur déplacement avec le système (lorsque le système est déplacé, ce qui constitue une opération courante pour bien gérer l’espace) les objets sont associés à leur système.
+
+Pour certains objets, l’opération est simple : lorsque l’objet se trouve naturellement *sous* le système (chiffrage romain) alors il est associé au système juste au-dessus, si l’objet se trouve naturellement *au-dessus* du système (les accords, les parties, etc.) alors le système de l’objet est celui juste en dessous.
+
+Mais pour les autres types d’objets, il est nécessaire de trouver le système le plus prêt d’eux. Pour ce faire, on compare :
+
+~~~
+distance haut objet / bas du système au-dessus
+									<=>
+distance bas objet / haut du système au-dessous
+~~~
+
+Noter que les calculs fonctionnent aussi si l’objet se trouve à l’intérieur du système.
+
 ## Analyse
 
 Une analyse est consigné dans un dossier quelconque n'importe où sur tout support.
