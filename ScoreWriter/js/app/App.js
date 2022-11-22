@@ -23,35 +23,29 @@ onGetCode(data){
 }
 
 /**
- * Méthode qui envoie le code au serveur pour construire l'image
+ * = main =
  * 
+ * Méthode qui envoie le code au serveur pour construire l'image
+ * Dans beaucoup de cas, c'est la méthode la plus importante,
+ * puisqu'elle permet de produire le code MusisScore ainsi que 
+ * l'image SVG attendue.
  */
-submitCode(){
-  message("Actualisation en cours…", {keep: true})
+buildImage(){
+  message("Fabrication de l'image en cours…", {keep: true})
   const finalCode = Score.getCodeFinal()
-  //
-  // On met le nom de l'image dans le formulaire (même si ce nom est
-  // non défini)
-  // 
-  DGet('#image_name_in_form').value = Options.getImageName()
-  // 
-  // Envoi du code ou renoncement
-  // 
-  if ( ! finalCode ) {
-
-    // 
-    // S'il n'y a pas de code final (pour une erreur quelconque)
-    // 
-    console.error("Il n'y a pas de code… Score.getCodeFinal() n'a rien renvoyé.")
-    return erreur("Une erreur s'est produite. Consulter la console.")
-
-  } else {
+  if ( finalCode ) {
     WAA.send({class:'ScoreWriter::App',method:'build_score',
       data:{
         code:     finalCode,
         affixe:   Options.getImageName()
       }
     })
+  } else {
+    // 
+    // S'il n'y a pas de code final (pour une erreur quelconque)
+    // 
+    console.error("Il n'y a pas de code… Score.getCodeFinal() n'a rien renvoyé.")
+    return erreur("Une erreur s'est produite. Consulter la console.")
   }
 }
 

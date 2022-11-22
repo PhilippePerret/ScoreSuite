@@ -6,6 +6,9 @@
   ----------------------
   Gestion nouvelle des configurations
 
+  Utiliser la constance Config
+  Par exemple : Config.getData()
+
 */
 
 /**
@@ -23,16 +26,67 @@ const NEWCONFIGS_DATA = [
   , {domId:'piece-staves-dispo'   ,default:'piano'}
   , {domId:'mscore-image-name'    ,default:'essai'}
   , {domId:'mscore-format-page'   ,default:'A4'}
-  , {domId:'mscore-first-mesure'  ,default:'1'}
-  , {domId:'mscore-proximity'     ,default:'5'}
-  , {domId:'mscore-opt-barres'    ,default:true, type:'cb'}
-  , {domId:'mscore-opt-stems'     ,default:true, type:'cb'}
-  , {domId:'mscore-tune-fixed'    ,default:false, type:'cb'}
+  , {domId:'mscore-first-mesure'  ,default:'1'  ,type:'int'}
+  , {domId:'mscore-proximity'     ,default:'5'  ,type:'int'}
+  , {domId:'mscore-opt-barres'    ,default:true ,type:'cb'}
+  , {domId:'mscore-opt-stems'     ,default:true ,type:'cb'}
+  , {domId:'mscore-tune-fixed'    ,default:false,type:'cb'}
   , {domId:'mscore-staves-vspace' ,default:'9'}
   , {domId:'ui-disposition'       ,default:'left_right'}
 ]
 
 class NewConfiguration {
+
+  /* --- Public Methods --- */
+
+  reset(){
+    delete this._tbldata
+    this._tbldata = undefined
+  }
+
+  /**
+  * @return le nombre de portées
+  */
+  get stavesCount(){
+    var dispo
+    switch(dispo = this.get('piece-staves-dispo')){
+    case 'piano':         return 2
+    case 'sonate-violon': return 3
+    case 'quatuor':       return 4
+    default:              return Number(dispo)
+    }
+  }
+
+  // @return la tonalité ou 'C'
+  get tune(){
+    var t = this.get('piece-tune-note')
+    switch(this.get('piece-tune-alter')){
+    case '=': return t
+    case 'b': return t + 'es'
+    case '#': return t + 'is'
+    }
+  }
+
+  // @return la proximité ou null
+  get proximity(){
+    const p = this.get('mscore-proximity')
+    return p == 5 ? null : p
+  }
+
+  // @return true si la configuration des portées comporte une
+  // seule portée et que cette portée n'est pas en clé de SOL
+  get isOneStaffNotC(){
+    const dispo = this.get('piece-staves-dispo')
+    console.debug("dispo = ", dispo)
+    return dispo.length == 1 && dispo[0].key != 'G'
+  }
+
+  get(key) { return this.tableData[key] }
+  getValueOf(key){ return get(key) }
+
+  get tableData(){
+    return this._tbldata || (this._tbldata = this.getData())
+  }
 
   /**
   * = main =
@@ -47,7 +101,7 @@ class NewConfiguration {
   * @return La table des données qu'il suffit d'enregistrer pour
   * l'image donnée.
   */
-  static getData(){
+  getData(){
     var data = {}
     NEWCONFIGS_DATA.forEach(dconfig => {
       var value ;
@@ -61,11 +115,16 @@ class NewConfiguration {
         switch(dconfig.type){
         case 'cb':
           value = !!obj.checked; break
+        case 'int':
+          value = parseInt(value,10);break
         default:
           value = obj.value
         }
       }
-      Object.assign(data, {[propN]: value})
+      Object.assign(data, {
+          [propN]: value
+        , [domId]: value
+      })
       /*
       |  On les met aussi dans la donnée de configuration
       */
@@ -82,7 +141,7 @@ class NewConfiguration {
   * et les applique au panneau des configurations.
   * 
   */
-  static setData(data){
+  setData(data){
     const dataKeys = Object.keys(data)
     NEWCONFIGS_DATA.forEach(dconfig => {
       const domId = dconfig.domId
@@ -100,16 +159,29 @@ class NewConfiguration {
   }
 
   /**
+  * Méthode qui appliquer les données par défaut
+  */
+  initialize(){
+    var data = {}
+    NEWCONFIGS_DATA.forEach(dconfig => {
+      const domId = dconfig.domId
+      const propN = domId.replace(/\-([a-z])/g, '_$1')
+      Object.assign(data, {[propN]: dconfig.default})
+    })
+    this.setData(data)
+  }
+
+  /**
   * Méthode appelée quand on change la disposition de l'interface
   */
-  static onChangeUIDisposition(){
+  onChangeUIDisposition(){
     UI.setDisposition.call(UI, this.menuDisposition.value)
   }
 
   /* 
     --- Staff Methods ---
   */
-  static setPieceStavesDispo(value){
+  setPieceStavesDispo(value){
     /*
     |  On efface les éventuelles définition de portées
     */
@@ -128,7 +200,7 @@ class NewConfiguration {
       })
     }
   }
-  static getPieceStavesDispo(){
+  getPieceStavesDispo(){
     var value;
     switch(value = this.menuStaffDispo.value){
     case'piano':case'sonate-violon':case'quatuor':
@@ -154,7 +226,7 @@ class NewConfiguration {
   * Méthode appelée lorsque l'on change la valeur du nombre de
   * portées (la disposition, ou le dispositif).
   */
-  static onChangeStaffDispo(){
+  onChangeStaffDispo(){
     this.divOtherStaves.innerHTML = ""
     var dispo = this.menuStaffDispo.value
     switch(dispo){
@@ -175,13 +247,13 @@ class NewConfiguration {
     }
   }
 
-  static setStaff(staffData, index){
+  setStaff(staffData, index){
     const divStaff = DGet(`divrow#config-staff-${index}`) || this.buildStaff(index)
     DGet('select.staff-key', divStaff).value = staffData.key
     DGet('input.staff-name', divStaff).value = staffData.name
   }
 
-  static buildStaff(index){
+  buildStaff(index){
     const divS = this.divFirstStaff.cloneNode(true)
     divS.id = `config-staff-${index}`
     DGet('span.staff-index', divS).innerHTML = index
@@ -189,16 +261,16 @@ class NewConfiguration {
     return divS
   }
 
-  static showFirstStaff(){this.divFirstStaff.classList.remove('hidden')}
-  static hideFirstStaff(){this.divFirstStaff.classList.add('hidden')}
+  showFirstStaff(){this.divFirstStaff.classList.remove('hidden')}
+  hideFirstStaff(){this.divFirstStaff.classList.add('hidden')}
 
-  static get menuStaffDispo(){
+  get menuStaffDispo(){
     return DGet('select#config-piece-staff-dispo')
   }
-  static get divOtherStaves(){
+  get divOtherStaves(){
     return DGet('div#config-other-staves')
   }
-  static get divFirstStaff(){
+  get divFirstStaff(){
     return DGet('divrow#config-staff-1')
   }
 
@@ -206,15 +278,17 @@ class NewConfiguration {
     --- Metrique Methods --- 
   */
 
-  static getPieceMetrique(){
+  getPieceMetrique(){
     const value = this.menuMetrique.value
-    if ( value == 'xxx' ) {
+    if ( value == '') {
+      return null
+    } else if ( value == 'xxx' ) {
       return this.fieldAutreMetrique.value || 'C'
     } else {
       return value
     }
   }
-  static setPieceMetrique(value){
+  setPieceMetrique(value){
     if ( DGet(`option[value="${value}"]`,this.menuMetrique) ) {
       this.menuMetrique.value = value
     } else {
@@ -228,15 +302,15 @@ class NewConfiguration {
   * Méthode appelée quand on change la métrique (pour gérer le champ
   * qui permet d'en mettre une "à la main")
   */
-  static onChangeMetrique(){
+  onChangeMetrique(){
     const isVisible = this.menuMetrique.value == 'xxx'
     this.fieldAutreMetrique.classList[isVisible?'remove':'add']('invisible')
   }
 
-  static get menuMetrique(){
+  get menuMetrique(){
     return DGet('select#config-piece-metrique')
   }
-  static get fieldAutreMetrique(){
+  get fieldAutreMetrique(){
     return DGet('input#config-piece-autre-metrique')
   }
 
@@ -249,7 +323,7 @@ class NewConfiguration {
   * appliquer"
   * Si +resetAll+ est true, il faut tout effacer.
   */
-  static applyConfig(resetAll){
+  applyConfig(resetAll){
     console.debug("Je dois apprendre à appliquer les choix")
 
   }
@@ -259,8 +333,10 @@ class NewConfiguration {
   /* --- HTML Elements --- */
 
 
-  static get menuDisposition(){
+  get menuDisposition(){
     return DGet('select#config-ui-disposition')
   }
 
 }
+
+const Config = new NewConfiguration()

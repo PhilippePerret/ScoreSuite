@@ -51,7 +51,7 @@
           Bouton pour construire l'image
          -->
         <div style="margin-bottom:2em;">
-          <button onclick="App.submitCode.call(App)">BUILD</button>
+          <button onclick="App.buildImage.call(App)">BUILD</button>
         </div>
        <!-- 
           Boutons "+" et "-" pour ajouter et supprimer des mesures
@@ -109,11 +109,11 @@
           <select id="config-piece-tune-alter" class="inline"><option value="=">naturel</option><option value="b">bémol</option><option value="#">dièse</option></select>
         </content></divrow>
         <divrow><libelle>Métrique</libelle><content>
-          <select id="config-piece-metrique" class="inline" onchange="NewConfiguration.onChangeMetrique.call(NewConfiguration)"><option value="">---</option><option value="OFF">Pas affichée</option><option value="C">C</option><option value="4/4">4/4</option><option value="2/2">C barré</option><option value="2/2">2/2</option><option value="3/4">3/4</option><option value="2/4">2/4</option><option value="3/8">3/8</option><option value="6/8">6/8</option><option value="9/8">9/8</option><option value="xxx">autre :</option></select>
+          <select id="config-piece-metrique" class="inline" onchange="Config.onChangeMetrique.call(Config)"><option value="">---</option><option value="OFF">Pas affichée</option><option value="C">C</option><option value="4/4">4/4</option><option value="2/2">C barré</option><option value="2/2">2/2</option><option value="3/4">3/4</option><option value="2/4">2/4</option><option value="3/8">3/8</option><option value="6/8">6/8</option><option value="9/8">9/8</option><option value="xxx">autre :</option></select>
           <input type="text" id="config-piece-autre-metrique" class="inline invisible center" placeholder="N/D" style="width:98px;" />
         </content></divrow>
         <divrow><libelle>Disposition portées</libelle><content>
-          <select id="config-piece-staff-dispo" onchange="NewConfiguration.onChangeStaffDispo.call(NewConfiguration)">
+          <select id="config-piece-staff-dispo" onchange="Config.onChangeStaffDispo.call(Config)">
             <option value="piano">Piano</option>
             <option value="sonate-violon">Type sonate violon</option>
             <option value="quatuor">Quatuor à cordes</option>
@@ -126,8 +126,8 @@
         </content></divrow>
         <div id="config-other-staves"></div>
         <divrow><libelle></libelle><content>
-          <button onclick="NewConfiguration.applyConfig.call(NewConfiguration,false)">Appliquer</button>
-          <button onclick="NewConfiguration.applyConfig.call(NewConfiguration,true)">Tout effacer et appliquer</button>
+          <button onclick="Config.applyConfig.call(Config,false)">Appliquer</button>
+          <button onclick="Config.applyConfig.call(Config,true)">Tout effacer et appliquer</button>
         </content></divrow>
       </fieldset>
 
@@ -143,7 +143,7 @@
           <input type="text" id="config-mscore-first-mesure">
         </content></divrow>
         <divrow><libelle>Proximité notes</libelle><content>
-          <select id="config-mscore-proximity"><option value="">---</option><option value="1">1 (notes très proches)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (normal)</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50 (très espacé)</option></select>
+          <select id="config-mscore-proximity"><option value="5">---</option><option value="1">1 (notes très proches)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (normal)</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50 (très espacé)</option></select>
         </content></divrow>
         <divrow><libelle>Options diverses</libelle><content>
           <div><input type="checkbox" id="config-mscore-opt-barres"><label for="config-mscore-opt-barres">Afficher les barres</label></div>
@@ -158,7 +158,7 @@
       <fieldset>
         <legend>Configuration de l’interface</legend>
         <divrow><libelle>Disposition</libelle><content>
-          <select id="config-ui-disposition" onchange="NewConfiguration.onChangeUIDisposition.call(NewConfiguration)"><option value="up_down">Image au-dessus / Code en dessous</option><option value="down_up">Image en dessous / Code au-dessus</option><option value="left_right">Image à gauche / Code à droite</option><option value="right_left">Image à droite / Code à gauche</option></select>
+          <select id="config-ui-disposition" onchange="Config.onChangeUIDisposition.call(Config)"><option value="up_down">Image au-dessus / Code en dessous</option><option value="down_up">Image en dessous / Code au-dessus</option><option value="left_right">Image à gauche / Code à droite</option><option value="right_left">Image à droite / Code à gauche</option></select>
         </content></divrow>
         <divrow><libelle>Auto build</libelle><content>
           <div>
@@ -219,7 +219,7 @@
 
       <div>
         <div>
-          <button onclick="App.submitCode.call(App)">CONSTRUIRE L'IMAGE</button>
+          <button onclick="App.buildImage.call(App)">CONSTRUIRE L'IMAGE</button>
           <button onclick="App.produceFinalCode.call(App)">PRODUIRE LE CODE FINAL</button>
           <button onclick="App.produceMesureDataFile.call(App)">Produire mesures_data.rb</button>        
           <div>
@@ -463,15 +463,6 @@
     </div><!-- fin panneau -->
 
   </section>
-
-  <!-- 
-    Formulaire soumis pour actualisation de l'image
-   -->
-  <form id="ajax_form">
-    <textarea id="ajax_data" name="ajax_data"></textarea>
-    <input type="hidden" name="image_name" id="image_name_in_form" value="" />
-    <input type="hidden" name="script_name" id="script_name" value="" />
-  </form>
 
   <footer>
   </footer>

@@ -36,7 +36,7 @@ commonOnKeyDown(ev){
      * On soumet le code pour fabriquer la nouvelle image
      * 
      */
-    App.submitCode()
+    App.buildImage()
     return stopEvent(ev)
   } else if ( ev.key == 'Tab') {
     /**

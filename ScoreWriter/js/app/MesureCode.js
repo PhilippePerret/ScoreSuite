@@ -5,7 +5,8 @@
  * Pour les input-text qui contiennent chaque mesure de code.
  * 
  * Principe :
- *  - une mesure-code contient toujours ses deux lignes
+ *  - une mesure-code contient toujours ses x lignes suivant le 
+ *    nombre de portées
  * 
  */
 
@@ -629,7 +630,7 @@ onChangeMesure(mesure, ev){
   // définit la valeur the this.complete
   // 
   console.info("Options.auto_update_after_change = ", Options.auto_update_after_change)
-  Options.auto_update_after_change && this.isComplete() && App.submitCode()
+  Options.auto_update_after_change && this.isComplete() && App.buildImage()
 
   return stopEvent(ev)
 }
