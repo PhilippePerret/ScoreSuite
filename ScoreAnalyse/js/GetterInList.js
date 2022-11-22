@@ -62,7 +62,6 @@ class GetterInList {
   }
 
   show(params){
-    console.log("-> GetterInList.show(params)", params)
     params = params || {}
     if (params.top) this.obj.style.top = px(params.top)
     if (params.left) this.obj.style.left = px(params.left)
@@ -104,7 +103,6 @@ class GetterInList {
   }
 
   resetWindowObservers(){
-    console.log("-> GetterInList #resetWindowObservers")
     window.onkeypress = this.curOnKeyPress
     window.onkeyup    = this.curOnKeyUp
   }
@@ -179,17 +177,16 @@ class GetterInList {
     menu.innerHTML = ''
     var imenu = 0
     this.shortcuts = {}
-    const items = this.data.items
-    items.push({name:'Renoncer',shortcut:'Escape', value:null})
-    items.forEach(di => {
+    const fullchoix = this.data.items.concat([{name:'Renoncer',shortcut:'Escape', value:null}])
+    fullchoix.forEach(di => {
       var lab = di.name
-      //
-      // Raccourci
-      //
+      /*
+      |  Shortcut (keyboard)
+      */
       di.shortcut && (lab = `<span class="shortcut">${di.shortcut}</span> ${lab}`)
-      //
-      // Bouton pour supprimer
-      //
+      /*
+      |  Close Button
+      */
       if ( this.data.removeMethod ) {
         lab = `<span class="rem_btn">❌</span> ${lab}`
       }
