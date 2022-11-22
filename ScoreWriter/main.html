@@ -106,24 +106,25 @@
         <legend>Configuration de la pièce/de l’extrait</legend>
         <divrow><libelle>Tonalité</libelle><content>
           <select id="config-piece-tune-note" class="inline"><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="A">A</option><option value="B">B</option></select>
-          <select id="config-piece-tune-alters" class="inline"><option value="">naturel</option><option value="b">bémol</option><option value="#">dièse</option></select>
+          <select id="config-piece-tune-alter" class="inline"><option value="=">naturel</option><option value="b">bémol</option><option value="#">dièse</option></select>
         </content></divrow>
         <divrow><libelle>Métrique</libelle><content>
           <select id="config-piece-metrique" class="inline" onchange="NewConfiguration.onChangeMetrique.call(NewConfiguration)"><option value="">---</option><option value="OFF">Pas affichée</option><option value="C">C</option><option value="4/4">4/4</option><option value="2/2">C barré</option><option value="2/2">2/2</option><option value="3/4">3/4</option><option value="2/4">2/4</option><option value="3/8">3/8</option><option value="6/8">6/8</option><option value="9/8">9/8</option><option value="xxx">autre :</option></select>
           <input type="text" id="config-piece-autre-metrique" class="inline invisible center" placeholder="N/D" style="width:98px;" />
         </content></divrow>
         <divrow><libelle>Nombre de portées</libelle><content>
-          <select id="config-piece-staff-count" onchange="NewConfiguration.onChangeStaffCount.call(NewConfiguration)">
+          <select id="config-piece-staff-dispo" onchange="NewConfiguration.onChangeStaffDispo.call(NewConfiguration)">
             <option value="piano">Piano</option>
             <option value="sonate-violon">Type sonate violon</option>
             <option value="quatuor">Quatuor à cordes</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
           </select>
         </content></divrow>
-        <divrow id="config-staff-1"><libelle>Portée <span>1</span></libelle><content>
+        <divrow id="config-staff-1"><libelle>Portée <span class="staff-index">1</span></libelle><content>
           <select class="staff-key inline"><option value="G">SOL</option><option value="F">FA</option><option value="UT3">UT 3</option><option value="UT4">UT 4</option><option value="UT1">UT 1</option><option value="UT2">UT 2</option></select>
           <input type="text" class="staff-name inline" style="width:150px;" placeholder="Instru/Nom" />
         </content></divrow>
+        <div id="config-other-staves"></div>
         <divrow><libelle></libelle><content>
           <button onclick="NewConfiguration.applyConfig.call(NewConfiguration,false)">Appliquer</button>
           <button onclick="NewConfiguration.applyConfig.call(NewConfiguration,true)">Tout effacer et appliquer</button>
@@ -157,7 +158,7 @@
       <fieldset>
         <legend>Configuration de l’interface</legend>
         <divrow><libelle>Disposition</libelle><content>
-          <select id="config-ui-disposition" onchange="NewConfiguration.onChangeDisposition.call(NewConfiguration)"><option value="up_down">Image au-dessus / Code en dessous</option><option value="down_up">Image en dessous / Code au-dessus</option><option value="left_right">Image à gauche / Code à droite</option><option value="right_left">Image à droite / Code à gauche</option></select>
+          <select id="config-ui-disposition" onchange="NewConfiguration.onChangeUIDisposition.call(NewConfiguration)"><option value="up_down">Image au-dessus / Code en dessous</option><option value="down_up">Image en dessous / Code au-dessus</option><option value="left_right">Image à gauche / Code à droite</option><option value="right_left">Image à droite / Code à gauche</option></select>
         </content></divrow>
         <divrow><libelle>Auto build</libelle><content>
           <div>
@@ -476,6 +477,7 @@
   </footer>
   <div id="message" class="hidden" onclick="UI.hideMessage.call(UI)"></div>
 
+  <script type="text/javascript" src="../lib/js/common.js" defer></script>
   <script type="text/javascript" src="js/app/config.js" defer></script>
   <script type="text/javascript" src="js/app/App.js" defer></script>
   <script type="text/javascript" src="js/app/Onglet.js" defer></script>
