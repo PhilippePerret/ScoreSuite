@@ -136,25 +136,26 @@
   -->
   <footer>
     
-    <span>Manuel : ⇧M</span><span> | </span><span>Préférences : ⇧P</span>
-
-    <button id="btn-new-analyse" onclick="Analyse.togglePanneau.call(Analyse)">Infos</button>
-
-    
     <img id="cb_staves_lock" class="btn fright" src="img/staves_lock.svg" />
     
     <button id="cb_recording" class="fright">Enregistrer</button>
     <div id="red-light"></div>
-    
-    <button onclick="Tools.togglePanneau.call(Tools)">Outils</button>
 
-    <select id="options_tool" style="width:120px;">
+    <select id="open_menu">
+      <option value="">Ouvrir…</option>
+      <option value="prefs">Préférences ⇧P</option>
+      <option value="infosAnalyse">Informations analyse courante</option>
+      <option value="toolsPanel">Panneau des outils…</option>
+      <option value="manual">Manuel ⇧M</option>
+    </select>
+
+    <select id="options_tool">
       <option value="">Options…</option>
       <option value="toggleColor" data-checked="false">☐ Version couleur</option>
       <option value="toggleTips" data-checked="true">☒ Animé</option>
     </select>
 
-    <select id="outil_alignement" style="width:120px;">
+    <select id="outil_alignement">
       <option value="">Aligner…</option>
       <option value="right">… à droite</option>
       <option value="left">… à gauche</option>
@@ -162,15 +163,13 @@
       <option value="bottom">… en bas</option>
       <option value="cancel">Annuler l’alignement</option>
     </select>
-  
 
-    <select id="selection_tool" style="width:120px;">
+    <select id="selection_tool">
       <option value="">Selection…</option>
       <option value="groupSelection">Grouper les éléments sélectionnés</option>
       <option value="degroupSelection">Dégrouper les éléments sélectionnés</option>
       <option value="selectAll">Sélectionner tous les…</option>
     </select>
-
 
     <select id="borders_tool" style="width:120px">
       <option value="">Bords…</option>
@@ -220,8 +219,9 @@
   <script type="text/javascript" src="js/PanneauAnalyse.js" defer></script>
   <script type="text/javascript" src="js/Tools.js" defer></script>
   <script type="text/javascript" src="js/MenusTool.js"></script>
-  <script type="text/javascript" src="js/SelectionTool.js" defer></script>
-  <script type="text/javascript" src="js/BordersTool.js" defer></script>
-  <script type="text/javascript" src="js/OptionsTool.js" defer></script>
+  <script type="text/javascript" src="js/MenuSelection.js" defer></script>
+  <script type="text/javascript" src="js/MenuBords.js" defer></script>
+  <script type="text/javascript" src="js/MenuOptions.js" defer></script>
+  <script type="text/javascript" src="js/MenuOpen.js" defer></script>
 </body>
 </html>

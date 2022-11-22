@@ -13,13 +13,6 @@
     - créer la méthode statique SelectionTool::onActivate_<@value> 
       pour définir ce que doit faire l'outil.
 
-  TODO
-  ----
-
-  (Selection)
-  - quand on sélectionne un élément, on doit aussi sélectionner ses
-    éléments associés (idem quand on le désélectionne)
-
 **/
 class SelectionTool extends MenusTool {
 

@@ -52,6 +52,12 @@ class UIClass {
 
     // Le menu "Options" du pied de page
     OptionsTool.init()
+
+    // Le menu "Ouvrir"
+    OpenMenu.init()
+
+    // Le menu "Aligner…"
+    AlignMenu.init()
         
     const hauteurFen  = window.innerHeight
     const moitieFen   = parseInt(hauteurFen / 2,10)

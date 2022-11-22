@@ -29,6 +29,9 @@
     le menu (option) sélectionné.
 
 */
+// Largeur des menus du pied de page
+const MAIN_MENUS_WIDTH = 120
+
 class MenusTool {
   
   static init(){
@@ -36,6 +39,7 @@ class MenusTool {
   }
 
   static observe(){
+    this.menu.style.width = px(MAIN_MENUS_WIDTH)
     listen(this.menu, 'change', this.onActivateTool.bind(this))
   }
 
