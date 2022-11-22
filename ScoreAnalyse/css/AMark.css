@@ -54,7 +54,9 @@ div.amark.ped span.pline {
 div.amark.har,
 div.amark.acc,
 div.amark.har span.content,
-div.amark.acc span.content {
+div.amark.acc span.content,
+div.amark.txt,
+div.amark.txt span.content {
   z-index: 5 !important;  
 }
 div.amark.har span.pline,

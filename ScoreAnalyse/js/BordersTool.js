@@ -8,26 +8,27 @@
   les bords des éléments qui en contiennent (les cadres, les seg-
   ments, etc.)
 
+  Consulter la classe MenusTool pour voir comment fonctionne ce
+  menu.
+
 **/
 
-class BordersTool {
+class BordersTool extends MenusTool {
 
-  static get menu(){
-    return this._menu || (this._menu = DGet('select#borders_tool'))
+  /* --- Gestionnaires d'<option>s --- */
+
+  static onActivate_add(e){
+    const action = 'add'
+    this.modifyBorder('add')
+  }
+  static onActivate_remove(e){
+    this.modifyBorder('remove')
   }
 
-  static init(){
-    this.observe()
-  }
+  /* --- Fonctional Methods --- */
 
-  static observe(){
-    listen(this.menu,'change', this.onActiveMenu.bind(this))
-  }
-
-  static onActiveMenu(e){
-    const action = this.menu.value
+  static modifyBorder(action){
     const classe = this.menu.options[this.menu.selectedIndex].dataset.css
-    this.menu.selectedIndex = 0
 
     const tag = AObjet.selection[0]
     /*

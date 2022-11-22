@@ -85,7 +85,11 @@ static setPreferences(appPrefs){
       * pas défini.
       */  
     Object.keys(appPrefs).forEach(prefKey => {
-      PreferencesAppData[prefKey].value = appPrefs[prefKey]  
+      try {
+        PreferencesAppData[prefKey].value = appPrefs[prefKey]
+      } catch(erreur) {
+        console.error("Impossible de trouver la clé de préférence '%s' dans \nErreur soulevée : %s\nLes clés des préférences ont peut-être été modifiées depuis la création de cette analyse.", prefKey, erreur, PreferencesAppData)
+      }
     })
   }
   Preferences.init()

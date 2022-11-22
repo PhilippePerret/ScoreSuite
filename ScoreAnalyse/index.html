@@ -148,8 +148,14 @@
     
     <button onclick="Tools.togglePanneau.call(Tools)">Outils</button>
 
-    <select id="outil_alignement" style="width:80px;">
-      <option>Aligner…</option>
+    <select id="options_tool" style="width:120px;">
+      <option value="">Options…</option>
+      <option value="toggleColor" data-checked="false">☐ Version couleur</option>
+      <option value="toggleTips" data-checked="true">☒ Animé</option>
+    </select>
+
+    <select id="outil_alignement" style="width:120px;">
+      <option value="">Aligner…</option>
       <option value="right">… à droite</option>
       <option value="left">… à gauche</option>
       <option value="top">… en haut</option>
@@ -158,16 +164,16 @@
     </select>
   
 
-    <select id="selection_tool" style="width:80px;">
-      <option>Selection…</option>
+    <select id="selection_tool" style="width:120px;">
+      <option value="">Selection…</option>
       <option value="groupSelection">Grouper les éléments sélectionnés</option>
       <option value="degroupSelection">Dégrouper les éléments sélectionnés</option>
       <option value="selectAll">Sélectionner tous les…</option>
     </select>
 
 
-    <select id="borders_tool" style="width:80px">
-      <option>Bords…</option>
+    <select id="borders_tool" style="width:120px">
+      <option value="">Bords…</option>
       <option value="add" data-css="no_left_border">Supprimer le bord gauche</option>
       <option value="remove" data-css="no_left_border">Remettre le bord gauche</option>
       <option value="add" data-css="no_right_border">Supprimer le bord droit</option>
@@ -213,7 +219,9 @@
   <script type="text/javascript" src="js/Mouse.js" defer></script>
   <script type="text/javascript" src="js/PanneauAnalyse.js" defer></script>
   <script type="text/javascript" src="js/Tools.js" defer></script>
+  <script type="text/javascript" src="js/MenusTool.js"></script>
   <script type="text/javascript" src="js/SelectionTool.js" defer></script>
   <script type="text/javascript" src="js/BordersTool.js" defer></script>
+  <script type="text/javascript" src="js/OptionsTool.js" defer></script>
 </body>
 </html>

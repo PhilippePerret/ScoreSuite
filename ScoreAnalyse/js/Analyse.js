@@ -54,6 +54,37 @@ class Analyse {
     return this; // chainage
   }
 
+/* --- Color Methods --- */
+
+/**
+* Méthode qui bascule de la version couleur à la version noir et 
+* blanc de l'affichage de l'analyse.
+*/
+toggleModeColor(modeON){
+  if ( modeON && not(DGet('style#mode_couleur')) ) {
+    this.buildStyleTagForModeColor()
+  }
+  DGet('style#mode_couleur').disabled = !modeON
+}
+/**
+* Construire la balise <style> pour le mode couleur
+*/
+buildStyleTagForModeColor(){
+  var styles = []
+  Object.values(PreferencesAppData).forEach(dp =>{
+    if ( dp.typeV != 'color' ) return
+    var color = Preferences.get(dp.id)
+    styles.push(`${dp.selectors} {border-color:#${color}!important;color:#${color}!important;}`)
+  })
+  styles = "\n/* Ce code est produit automatiquement en fonction des préférences */\n" + 
+    styles.join("\n") + "\n"
+  const tag = DCreate('STYLE', {id:'mode_couleur', type:'text/css', text: styles})
+  console.debug("tag =", tag)
+  document.head.appendChild(tag)
+}
+
+/* --- Staff Methods --- */
+
 /**
  * Méthode qui compare les images systèmes du dossier 
  * (this.data.systems_in_folder) avec les systèmes définis pour le
