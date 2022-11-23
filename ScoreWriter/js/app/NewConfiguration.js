@@ -70,6 +70,12 @@ class NewConfiguration {
   getValueOf(key){ 
     /** @alias  **/
     return get(key) }
+  set(key, value){
+    /** Actualise la valeur, mais seulement dans la tableData
+     ** (pour ne pas avoir à tout réactualiser)
+     **/
+    Object.assign(this.tableData, {[key]: value})
+  }
 
   get tableData(){
     /** {Object} Table de toutes les valeurs de configuration 
@@ -93,7 +99,7 @@ class NewConfiguration {
   }
 
   get firstMesure(){
-    return this.get('mscore-first-mesure')
+    return this.get('mscore-first-mesure') || 1
   }
 
   get stavesCount(){
@@ -210,7 +216,7 @@ class NewConfiguration {
       const propN = domId.replace(/\-([a-z])/g, '_$1')
       if ( not(dataKeys.includes(propN)) ) return ;
       const value = data[propN]
-      // console.log("Set propriété '%s' avec la valeur %s", propN, value)
+      console.log("Set propriété '%s' avec la valeur %s", propN, value)
       this.setValue(domId, value)
     })
   }
@@ -265,19 +271,23 @@ class NewConfiguration {
      **/
     NEWCONFIGS_DATA.forEach(dconfig => {
       const propCam = dconfig.domId.replace(/\-([a-z])/g, function(tout, lettre){return lettre.toUpperCase()})
-      const onChangeMeth = `${propCam}`
+      const onChangeMeth = `onChange_${propCam}`
       if ( 'function' == typeof this[onChangeMeth] ) {
-        console.debug("Je pose un observer onChange sur le champ '%s'", dconfig.domId)
+        console.debug("Je pose un observer onChange sur le champ 'config-%s'", dconfig.domId)
         const obj = DGet(`#config-${dconfig.domId}`)
         listen( obj,'change', this[onChangeMeth].bind(this) )
       }
     })
   }
 
-  onChange_UiDisposition(){
+  onChange_uiDisposition(){
     /** Méthode appelée quand on change la disposition de l'interface
      **/
     UI.setDisposition.call(UI, this.menuDisposition.value)
+  }
+
+  get menuDisposition(){
+    return DGet('select#config-ui-disposition')
   }
 
   /* 
@@ -377,7 +387,7 @@ class NewConfiguration {
   hideFirstStaff(){this.divFirstStaff.classList.add('hidden')}
 
   get menuStaffDispo(){
-    return DGet('select#config-piece-staff-dispo')
+    return DGet('select#config-piece-staves-dispo')
   }
   get divOtherStaves(){
     return DGet('div#config-other-staves')
@@ -385,6 +395,10 @@ class NewConfiguration {
   get divFirstStaff(){
     return DGet('divrow#config-staff-1')
   }
+
+  /* 
+    -- F
+  */
 
   /* 
     --- Tune Methods ---
@@ -459,8 +473,13 @@ class NewConfiguration {
   /* --- First Measure Methods --- */
 
   onChange_mscoreFirstMesure(e){
-    const number = this.get('mscore-first-mesure')
+    const number = this.fieldFirstMeasure.value
+    this.set('mscore-first-mesure', number || null)
     MesureCode.onChangeFirstMesureNumber.call(MesureCode, number)
+  }
+
+  get fieldFirstMeasure(){
+    return DGet('#config-mscore-first-mesure')
   }
 
   /* --- General Methods --- */
@@ -474,15 +493,6 @@ class NewConfiguration {
   applyConfig(resetAll){
     console.debug("Je dois apprendre à appliquer les choix")
 
-  }
-
-
-
-  /* --- HTML Elements --- */
-
-
-  get menuDisposition(){
-    return DGet('select#config-ui-disposition')
   }
 
 }

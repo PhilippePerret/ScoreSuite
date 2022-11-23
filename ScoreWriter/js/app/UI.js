@@ -26,6 +26,8 @@ prepare(){
   Config.prepare()
 }
 
+
+
 /**
  * Réglage de la disposition de l'écran, qui peut mettre l'image de
  * la partition et le bloc des lignes de code à différents endroits.
@@ -39,7 +41,7 @@ prepare(){
  */
 setDisposition(dispo){
   dispo = dispo || Config.UIDisposition
-  // console.info("Disposition : %s", dispo)
+  console.info("Disposition : %s", dispo)
   const wWidth  = window.innerWidth - 140 // 140 = marge droite des outils
   const wHeight = window.innerHeight
   const sectionScore = document.querySelector('#score_container')

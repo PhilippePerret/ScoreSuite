@@ -21,6 +21,13 @@ function DGetAll(selector, container){
   return container.querySelectorAll(selector)
 }
 
+function listen(objet, eventType, method){
+  objet.addEventListener(eventType, method)
+}
+function unlisten(objet, eventType, method){
+  objet.removeEventListener(eventType, method)
+}
+
 /**
   Retourne une ligne div contenant un libellé et une valeur
 **/

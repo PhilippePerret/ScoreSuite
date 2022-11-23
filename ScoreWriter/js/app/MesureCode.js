@@ -469,12 +469,12 @@ updateId(newId){
  */
 updateMeasureNumber(){
   this._number = null
-  this.obj.querySelector('.mesure_number').innerHTML = this.number
+  DGet('.mesure_number', this.obj).innerHTML = this.number
 }
 get number(){return this._number || (this._number = this.calcNumber())}
 set number(v){this._number = v}
 calcNumber(){
-  return this.id + Config.firstMesure - 1
+  return Number(this.id) + Number(Config.firstMesure) - 1
 }
 
 
