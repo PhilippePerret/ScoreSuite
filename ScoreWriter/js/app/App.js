@@ -49,14 +49,16 @@ onGetCode(data){
 buildImage(){
   /** = main =
    ** 
-   ** Méthode qui envoie le code au serveur pour construire l'image
+   ** Envoie le code au serveur pour construire l'image
    ** Dans beaucoup de cas, c'est la méthode la plus importante,
    ** puisqu'elle permet de produire le code MusisScore ainsi que 
-   ** l'image SVG attendue.
+   ** l'image SVG attendue. C'est en quelque sort l'enregistrement de
+   ** l'image.
    **/
   message("Fabrication de l'image en cours…", {keep: true})
   const finalCode = Score.getCodeFinal()
   if ( finalCode ) {
+    Config.reset() // pour forcer le recalcul
     WAA.send({class:'ScoreWriter::App',method:'build_score',
       data:{
           code:     finalCode

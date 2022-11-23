@@ -35,7 +35,7 @@ const NEWCONFIGS_DATA = [
   , {domId:'piece-staves-dispo'   ,default:'piano'}
   , {domId:'mscore-image-name'    ,default:'essai'}
   , {domId:'mscore-format-page'   ,default:'A4'}
-  , {domId:'mscore-first-mesure'  ,default:1    ,type:'int'}
+  , {domId:'mscore-first-mesure'  ,default:null ,type:'int'}
   , {domId:'mscore-proximity'     ,default:5    ,type:'int'}
   , {domId:'mscore-opt-barres'    ,default:true ,type:'cb'}
   , {domId:'mscore-opt-stems'     ,default:true ,type:'cb'}
@@ -183,7 +183,8 @@ class NewConfiguration {
           value = !!obj.checked; break
         case 'int':
           value = obj.value || dconfig.default
-          value = parseInt(value,10);break
+          value = value && parseInt(value,10)
+          break
         default:
           value = obj.value || dconfig.default
         }
@@ -199,7 +200,7 @@ class NewConfiguration {
       */
       Object.assign(dconfig , {value: value, prop: propN})
     })
-    // console.debug("Data config à enregistrer", data)
+    console.debug("Data config à enregistrer", data)
     return data
   }
 
