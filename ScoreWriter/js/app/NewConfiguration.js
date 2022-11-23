@@ -151,9 +151,22 @@ class NewConfiguration {
       // console.log("Set propriété '%s' avec la valeur %s", propN, value)
       const setMethod = `set-${domId}`.replace(/\-([a-z])/g,function(tout, lettre){return lettre.toUpperCase()})
       if ( 'function' == typeof this[setMethod] ){
+        /*
+        |  Une méthode dédiée pour appliquer la valeur
+        */
         this[setMethod].call(this, value)
       } else {
-        DGet(`#config-${domId}`).value = value
+        /*
+        |  On met simplement la valeur dans le champ
+        */
+        const obj = DGet(`#config-${domId}`)
+        switch(dconfig.type){
+        case 'cb':
+          obj.checked = value
+          break
+        default:
+          obj.value = value
+        }
       }
     })
   }

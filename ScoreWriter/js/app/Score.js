@@ -61,7 +61,7 @@ reset(){
 getCodeFinal(params){
   params = params || {}
   var c = []
-  Config.reset
+  Config.reset()
 
   if ( params.outputFormat == 'data' ) {
 
@@ -88,7 +88,7 @@ getCodeFinal(params){
   */
   var fullCode = MesureCode.getFullCode(params)
   /*
-  |  Cas spéciale d'une portée unique avec clé différente de la
+  |  Cas spécial d'une portée unique avec clé différente de la
   |  clé de sol.
   */
   if ( Config.isOneStaffNotC ) {
