@@ -25,24 +25,41 @@ onGetCode(data){
   // console.debug("Relève code serveur = ", data)
   if (data.ok) {  
     if (data.code) {
-      App.traiteCodeInitial(data.code)
-      Score.setData(data)
-      Score.update(data.images, data.affixe)
-      if ( data.config ) {
-        if ( Number(data.config.app_version.split('.')[0]) >= 2 ) {
-          console.info("Configuration de version >=2 (=> application)")
-          Config.setData(data.config)
-        } else {
-          erreur("C'est un ancien fichier de configuration. Je ne peux plus le traiter. Il faut que tu règles à nouveau les configurations.")
-        }
-      } else {
-        Config.initialize()
+      try {
+        /*
+        |  On commence par appliquer la configuration
+        */
+        this.applyConfig(data.config)
+        const notes = App.traiteCodeInitial(data.code)
+        MesureCode.parse(notes)
+        Score.setData(data)
+        Score.update(data.images, data.affixe)
+        /*
+        |  On applique à nouveau les configurations
+        */
+        data.config && this.applyConfig(data.config)
+      } catch(err) {
+        console.error(err)
+        erreur(err + '<br>Je dois m’interrompre.')
       }
     } else {
       MesureCode.createNew()
     }  
   } else {
     erreur(data.err_msg)
+  }
+}
+
+applyConfig(config) {
+  if (config) {
+    if ( Number(config.app_version.split('.')[0]) >= 2 ) {
+      console.info("Configuration de version >=2 (=> application)")
+      Config.setData(config)
+    } else {
+      erreur("C'est un ancien fichier de configuration. Je ne peux plus le traiter. Il faut que tu règles à nouveau les configurations.")
+    }
+  } else {
+    Config.initialize()
   }
 }
 
@@ -190,7 +207,7 @@ traiteCodeInitial(fullcode){
   */
   notes = notes.join("\n").trim()
   // console.info("Notes récupérées : ", notes )
-  MesureCode.parse(notes)
+  return notes
 }
 
 /**

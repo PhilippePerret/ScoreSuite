@@ -89,6 +89,8 @@ class Waa
     end
   rescue Exception => e
     puts e.inspect
+    puts e.message
+    puts e.backtrace.join("\n")
   end
 
   #

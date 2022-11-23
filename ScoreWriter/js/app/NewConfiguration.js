@@ -30,7 +30,7 @@
 */
 const NEWCONFIGS_DATA = [
     {domId:'piece-tune-note'      ,default:'C'}
-  , {domId:'piece-tune-alter'     ,default:'='}
+  , {domId:'piece-tune-alter'     ,default:''}
   , {domId:'piece-metrique'       ,default:'C'}
   , {domId:'piece-staves-dispo'   ,default:'piano'}
   , {domId:'mscore-image-name'    ,default:'essai'}
@@ -104,8 +104,8 @@ class NewConfiguration {
 
   get stavesCount(){
     /** @return le nombre de portées **/
-    var dispo
-    switch(dispo = this.get('piece-staves-dispo')){
+    const dispo = this.getMenuDisposition()
+    switch(dispo) {
     case 'piano':         return 2
     case 'sonate-violon': return 3
     case 'quatuor':       return 4
@@ -200,7 +200,7 @@ class NewConfiguration {
       */
       Object.assign(dconfig , {value: value, prop: propN})
     })
-    console.debug("Data config à enregistrer", data)
+    // console.debug("Data config à enregistrer", data)
     return data
   }
 
@@ -296,6 +296,9 @@ class NewConfiguration {
   setMenuDisposition(value){
     this.menuStaffDispo.value = value
   }
+  getMenuDisposition(){
+    return this.menuStaffDispo.value
+  }
 
   setPieceStavesDispo(value){
     /** Application de la disposition des portées dans le panneau
@@ -314,6 +317,7 @@ class NewConfiguration {
       |  Un nombre déterminé de portées, avec des définitions
       */
       var idx = 0
+      this.setMenuDisposition(value.length)
       value.forEach(dstaff => {
         this.setStaff(dstaff, ++idx)
       })
@@ -407,18 +411,18 @@ class NewConfiguration {
   getPieceTune(){
     var t = this.menuTuneNote.value
     switch(this.menuTuneAlteration.value){
-      case '=': return t
-      case 'b': return t + 'es'
-      case '#': return t + 'is'
+      case '': return t
+      case 'b': return t + 'b'
+      case '#': return t + '#'
     }
   }
   setPieceTune(tune){
     this.menuTuneNote.value = tune.substring(0,1)
     this.menuTuneAlteration.value = (function(v){
       switch(v.substring(1, v.length)){
-      case ''   : return '='
-      case 'es' : return 'b'
-      case 'is' : return '#'
+      case ''   : return ''
+      case 'b' : return 'b'
+      case '#' : return '#'
       }
     })(tune)
   }
@@ -485,14 +489,14 @@ class NewConfiguration {
   /* --- General Methods --- */
 
 
-  /**
-  * Méthode appelée par les boutons "Appliquer" et "Tout effacer et
-  * appliquer"
-  * Si +resetAll+ est true, il faut tout effacer.
-  */
   applyConfig(resetAll){
-    console.debug("Je dois apprendre à appliquer les choix")
-
+    /** Appelée par les boutons  "Appliquer" et "Tout effacer et
+     ** appliquer" pour travailler avec une nouvelle configuration
+     **
+     ** Si +resetAll+ est true, il faut tout effacer.
+     **/ 
+    this.reset() // pour forcer la relève
+    resetAll && MesureCode.resetAll()
   }
 
 }

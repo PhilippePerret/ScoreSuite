@@ -158,7 +158,7 @@ function error(err, options){
   UISystem.showError(err, options)
   return false
 }
-function erreur(err,options){
+function erreur(err, options){
   return error(err,options)
 }
 

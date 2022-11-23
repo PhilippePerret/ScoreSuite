@@ -31,9 +31,9 @@ static getFullCode(params){
   const outputFormat = params.outputFormat || 'normal'
   if ( undefined == params.from ) params.from = 1;
   if ( undefined == params.to   ) params.to   = this.count;
-  const nombrePortees = Score.nombrePortees
+  const staffCount = Config.stavesCount
   console.info("Export du code de la mesure %i à la mesure %i", params.from, params.to)
-  for(var xportee = 0; xportee < nombrePortees; ++xportee){
+  for(var xportee = 0; xportee < staffCount; ++xportee){
     c.push([])
     for(var imesure = params.from - 1; imesure < params.to; ++ imesure){
       const mes = this.table_mesures[imesure]
@@ -84,9 +84,9 @@ static getFullCode(params){
 static getFullCodeNormal(params, portees){
   if ( Config.tuneIsFixed ) {
     console.info("Hauteur note en valeur absolue")
-    const nombrePortees = Score.nombrePortees
+    const staffCount = Config.stavesCount
     var portees_finales = []
-    for (var xportee = 0; xportee < nombrePortees; ++xportee) {
+    for (var xportee = 0; xportee < staffCount; ++xportee) {
       var iportee = parseInt(xportee,10) + 1
       var dataPortee = Staff.get(iportee)
       console.log("Data de portée %i : ", iportee, dataPortee)
@@ -120,7 +120,7 @@ static getFullCodeNormal(params, portees){
  *          »»»»»»»»»»»»»»»»
  */
 static getFullCodeInTableData(params, portees){
-  const nombrePortees = Score.nombrePortees
+  const staffCount = Config.stavesCount
   // 
   // Pour construire la table finale
   // 
@@ -174,13 +174,13 @@ static getFullCodeInTableData(params, portees){
  * dans une variable
  */
 static getFullCodeInVariables(params, portees){
-  const nombrePortees = Score.nombrePortees
+  const staffCount = Config.stavesCount
   var vars = []
   for(var xmesure = params.from; xmesure <= params.to; ++xmesure){
     const varName = 'mesure' + String(xmesure)
     const imesure = xmesure - params.from
     vars.push([varName])
-    for(var xportee = 0; xportee < nombrePortees; ++xportee){
+    for(var xportee = 0; xportee < staffCount; ++xportee){
       vars[imesure].push(portees[xportee][imesure])
     }
   }
@@ -201,7 +201,7 @@ static getFullCodeInVariables(params, portees){
   // 
   const lineScore = codescore.join(' ')
   codescore = []
-  for(var xportee = 0; xportee < nombrePortees; ++xportee){
+  for(var xportee = 0; xportee < staffCount; ++xportee){
     codescore.push("\\fixed c' { " + lineScore + ' }')
   }
 
@@ -214,31 +214,39 @@ static getFullCodeInVariables(params, portees){
 
 }
 
-/**
- * Méthode qui "parse" le code +code+
- * Parser signifie : le décomposer en systèmes (autant que de lignes)
- * et le découper en mesure, pour reconstruire l'affichage et pouvoir
- * le modifier.
- * 
- * Cette méthode est appelée par la méthode App.traiteCodeInitial()
- * qui parse un code complet donné par les outils pour reproduire un
- * code complet.
- * 
- */
 static parse(code){
+  /**
+   ** Parse le code +code+ (du code de note music-score normal, qui
+   ** est donc du code pseudo-Lilypond).
+   **
+   ** "Parser" signifie : le décomposer en systèmes (autant que de 
+   ** lignes) et le découper en mesure, pour reconstruire l'affichage
+   ** et pouvoir le modifier.
+   **
+   ** Appelée par après la méthode App.traiteCodeInitial() qui parse 
+   ** un code complet donné par les outils pour reproduire un code 
+   ** complet.
+   **/
+  /*
+  |  Réinitialise tout
+  */
   this.reset()
   // console.log("Je dois parser le code :", code)
   const porteesCode = code.split("\n")
-  const nombrePortees = Score.nombrePortees = porteesCode.length
-  // console.info("Nombre de portées = %i", nombrePortees)
-  for(var iportee = 0; iportee < nombrePortees; ++ iportee){
+  const staffCount = porteesCode.length
+  /*
+  |  Vérification avec la configuration
+  */
+  staffCount == Config.stavesCount || raise(`Le nombre de portées dans le code (${staffCount}) ne correspond pas au nombre défini dans les configurations (${Config.stavesCount})… Dans le code`)
+  // console.info("Nombre de portées = %i", staffCount)
+  for(var iportee = 0; iportee < staffCount; ++ iportee){
     var mesuresCode = porteesCode[iportee];
     while ( mesuresCode.endsWith('|') ){
       mesuresCode = mesuresCode.substring(0, mesuresCode.length - 1)
     }
-    // console.log("Étude de la mesuresCode : ", mesuresCode)
+    console.log("Étude de la mesuresCode : ", mesuresCode)
     mesuresCode = mesuresCode.split(' | ')
-    // console.log("Mesures de code : ", mesuresCode)
+    console.log("Mesures de code : ", mesuresCode)
     for(var imesure = 1, len = mesuresCode.length; imesure <= len; ++imesure){
       let mesure;
       if ( iportee == 0 ) {
@@ -333,9 +341,7 @@ static get count(){
 }
 
 static onChangeFirstMesureNumber(newNumber){
-  /**
-   ** Méthode appelée quand on change le numéro de la première mesure
-   **/
+  /** Appelée quand on change le numéro de la première mesure **/
   this.each(mescode => mescode.updateMeasureNumber())
 }
 
@@ -363,7 +369,7 @@ static reset(){
 
 
 static get container(){
-  return this._container || (this._container = document.querySelector('#mesures_code'))
+  return this._container || (this._container = DGet('#mesures_code'))
 }
 
 // --- INSTANCE ---
@@ -379,13 +385,17 @@ constructor(id, notes){
  */
 getPorteeCode(xportee) {
   xportee = xportee || 1
-  const val = this.obj.querySelector('.mesure_code.portee'+xportee).value
+  const val = DGet(`.mesure_code.portee${xportee}`, this.obj).value
   // console.info("Code de la portée " + xportee + " du système " + this.id, val)
   return val
 }
 setPorteeCode(xportee, code){
-  // console.log("Je dois mettre la portée " + xportee + " à : ", code)
-  this.obj.querySelector('.mesure_code.portee'+xportee).value = code
+  const o = DGet(`.mesure_code.portee${xportee}`, this.obj)
+  if ( o ){
+    o.value = code
+  } else {
+    console.error("Le champ .mesure_code.portee%i est introuvable…", xportee)
+  }
   this.setWidth()
 }
 
@@ -394,7 +404,7 @@ setPorteeCode(xportee, code){
  * 
  */
 get isEmpty(){
-  for(var iportee = 1; iportee <= Score.nombrePortees; ++iportee){
+  for(var iportee = 1; iportee <= Config.stavesCount; ++iportee){
     if ( this.getPorteeCode(iportee) != "" ) return false
   }
   return true
@@ -444,7 +454,8 @@ setWidth(){
  * 
  */
 focus(porteeIndex = 1){
-  this.obj.querySelector('.mesure_code.portee'+porteeIndex).focus()
+  const o = DGet(`.mesure_code.portee${porteeIndex}`, this.obj)
+  o && o.focus()
 }
 
 /**
@@ -489,9 +500,9 @@ get isLastMesure(){
  * 
  */
 eachObjetMesure(methode){
-  const nombrePortees = 0 + Score.nombrePortees
-  for (var iportee = 1; iportee <= nombrePortees; ++iportee) {
-    const omesure = this.obj.querySelector('.mesure_code.portee' + iportee)
+  const staffCount = 0 + Config.stavesCount
+  for (var iportee = 1; iportee <= staffCount; ++iportee) {
+    const omesure = DGet(`.mesure_code.portee${iportee}`, this.obj)
     methode(omesure)
   }  
 }
@@ -511,7 +522,7 @@ build(){
    * On ajoute autant de systèmes qu'il en faut
    * 
    */
-  for (var isys = 1; isys <= Score.nombrePortees; ++isys) {
+  for (var isys = 1; isys <= Config.stavesCount; ++isys) {
     this.createPortee(isys)
   }
 
@@ -569,7 +580,7 @@ onFocusPortee(mes, ev){
  */
 focusNextField(){
   const indexPorteeCourante = parseInt(this.currentField.getAttribute('data-portee'),10)
-  const isLastPortee = indexPorteeCourante == Score.nombrePortees ;
+  const isLastPortee = indexPorteeCourante == Config.stavesCount ;
   const isLastMesure = this.number == MesureCode.count
   if ( !isLastPortee ) {
     // 
@@ -660,7 +671,7 @@ isComplete(){
   return oui
 }
 // Nombre de portées réellement affichées
-get nombrePortees(){
+get staffCount(){
   return this._nbstaves || (this._nbstaves = this.portees.length)
 }
 // Les objets DOM de chaque portée

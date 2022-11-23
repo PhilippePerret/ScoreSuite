@@ -12,7 +12,7 @@ class MusScore
   attr_reader :affixe_path
 
   def initialize(affixe_path)
-    @affixe_path = affixe_path
+    @affixe_path = mkdir(affixe_path)
   end
 
   ##
@@ -98,7 +98,7 @@ class MusScore
   end
 
   def images_folder
-    @images_folder ||= File.join(affixe_path,affixe)
+    @images_folder ||= File.join(affixe_path, affixe)
   end
 
   def affixe
