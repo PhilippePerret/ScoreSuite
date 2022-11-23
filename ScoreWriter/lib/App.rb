@@ -19,7 +19,8 @@ module ScoreWriter
         err_msg:  @@errors
       }
       if muscore
-        data = data.merge(muscore.data_for_client)
+        data.merge!(muscore.data_for_client)
+        data.merge!(config: muscore.config)
       end
 
       #
@@ -28,9 +29,11 @@ module ScoreWriter
       WAA.send({
         class:  'App',
         method: 'onGetCode',
-        data: data
+        data:   data,
       })
 
+      # 
+      # Mettre cette image en dernière utilisation
       if muscore
         set_last_use_to(muscore)
       end
@@ -80,15 +83,25 @@ module ScoreWriter
       return nil # pas d'édition courante
     end
 
-    ##
-    # Appelé côté client pour traiter le code envoyé (construire 
-    # la nouvelle image de la partition)
     def self.build_score(data)
+      ##
+      ## Appelé côté client pour traiter le code envoyé (construire 
+      ## la nouvelle image de la partition)
+      ##
       @@errors = []
+      # 
+      # Le nom de l'image (normalement, avec la nouvelle configura-
+      # tion, il est toujours fourni)
+      # 
       affixe = data['affixe']||'default'
 
       # L'instance {MusScore} de la partition à construire
       muscore = MusScore.new(File.join(CURRENT_FOLDER,affixe))
+
+      #
+      # Enregistrement de la configuration avec l'image
+      # 
+      muscore.config = data['config']
 
       # 
       # Destruction des images existantes

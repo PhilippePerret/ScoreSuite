@@ -82,7 +82,7 @@ static getFullCode(params){
 }
 
 static getFullCodeNormal(params, portees){
-  if ( Options.note_tune_fixed ) {
+  if ( Config.tuneIsFixed ) {
     console.info("Hauteur note en valeur absolue")
     const nombrePortees = Score.nombrePortees
     var portees_finales = []
@@ -332,18 +332,13 @@ static get count(){
   return this.lastId
 }
 
-/**
- * Méthode appelée quand on change le numéro de la première mesure
- * 
- */
-static onChangeFirstMesureNumber(ev){
-  this.firstMeasureNumber = UI.getFirstNumber()
+static onChangeFirstMesureNumber(newNumber){
+  /**
+   ** Méthode appelée quand on change le numéro de la première mesure
+   **/
   this.each(mescode => mescode.updateMeasureNumber())
   return stopEvent(ev)
 }
-
-static get firstMeasureNumber(){return this._firstnum || ( this._firstnum = UI.getFirstNumber())}
-static set firstMeasureNumber(v){this._firstnum = v}
 
 
 static getNextId(){
@@ -480,7 +475,7 @@ updateMeasureNumber(){
 get number(){return this._number || (this._number = this.calcNumber())}
 set number(v){this._number = v}
 calcNumber(){
-  return this.id + this.constructor.firstMeasureNumber - 1
+  return this.id + Config.firstMesure - 1
 }
 
 
@@ -629,8 +624,7 @@ onChangeMesure(mesure, ev){
   // Noter qu'il faut le faire après setWidth car c'est setWidth qui
   // définit la valeur the this.complete
   // 
-  console.info("Options.auto_update_after_change = ", Options.auto_update_after_change)
-  Options.auto_update_after_change && this.isComplete() && App.buildImage()
+  Config.updateAfterChange && this.isComplete() && App.buildImage()
 
   return stopEvent(ev)
 }

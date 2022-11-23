@@ -18,6 +18,15 @@
 * doivent porter un nom en fonction de domId, en replaçant les 
 * "-<minuscule>" par des "<majuscules>" avec "get" devant. Par 
 * exemple : 'piece-metrique' => setPieceMetrique et getPieceMetrique
+* 
+* Méthodes onChange
+* ------------------
+* Si Config répond à une méthode dont le nom est :
+*     onChange_<domId camélisé>
+*     (par exemple, pour mscore-first-mesure :
+*        onChange_mscoreFirstMesure(e))
+* … alors cette méthode sera automatiquement appelée au changement
+* d'une valeur dans ce champ.
 */
 const NEWCONFIGS_DATA = [
     {domId:'piece-tune-note'      ,default:'C'}
@@ -26,14 +35,25 @@ const NEWCONFIGS_DATA = [
   , {domId:'piece-staves-dispo'   ,default:'piano'}
   , {domId:'mscore-image-name'    ,default:'essai'}
   , {domId:'mscore-format-page'   ,default:'A4'}
-  , {domId:'mscore-first-mesure'  ,default:'1'  ,type:'int'}
-  , {domId:'mscore-proximity'     ,default:'5'  ,type:'int'}
+  , {domId:'mscore-first-mesure'  ,default:1    ,type:'int'}
+  , {domId:'mscore-proximity'     ,default:5    ,type:'int'}
   , {domId:'mscore-opt-barres'    ,default:true ,type:'cb'}
   , {domId:'mscore-opt-stems'     ,default:true ,type:'cb'}
   , {domId:'mscore-tune-fixed'    ,default:false,type:'cb'}
   , {domId:'mscore-staves-vspace' ,default:'9'}
   , {domId:'ui-disposition'       ,default:'left_right'}
+  , {domId:'ui-auto-build'        ,default:false,type:'cb'}
 ]
+
+/**
+* Fabrication de la table de configuration
+* (pour pouvoir obtenir les données de configuration à partir de 
+*  leur clé)
+*/
+const NEWCONFIGS_TABLE = {}
+NEWCONFIGS_DATA.forEach(dconfig => {
+  Object.assign(NEWCONFIGS_TABLE, {[dconfig.domId]: dconfig})
+})
 
 class NewConfiguration {
 
@@ -44,10 +64,40 @@ class NewConfiguration {
     this._tbldata = undefined
   }
 
-  /**
-  * @return le nombre de portées
-  */
+  get(key) { 
+    /** @return La valeur de configuration de clé +key+. **/
+    return this.tableData[key] }
+  getValueOf(key){ 
+    /** @alias  **/
+    return get(key) }
+
+  get tableData(){
+    /** {Object} Table de toutes les valeurs de configuration 
+     ** relevées par this.getData. En clé l'identifiant (key) de
+     ** la valeur de configuration, avec trait ou trait plat (par
+     ** exemple 'mscore-image-name' ou 'mscore_image_name') et en
+     ** valeur sa valeur définie ou par défaut.
+     ** Note : c'est cette table qui est enregistrée dans le fichier
+     ** .config de l'image.
+     **/
+    return this._tbldata || (this._tbldata = this.getData())
+  }
+
+  /* --- Raccourcis pour les données --- */
+
+  get imageName(){
+    return this.get('mscore-image-name')
+  }
+  set imageName(v){
+    this.setValue('mscore-image-name', v)
+  }
+
+  get firstMesure(){
+    return this.get('mscore-first-mesure')
+  }
+
   get stavesCount(){
+    /** @return le nombre de portées **/
     var dispo
     switch(dispo = this.get('piece-staves-dispo')){
     case 'piano':         return 2
@@ -57,8 +107,8 @@ class NewConfiguration {
     }
   }
 
-  // @return la tonalité ou 'C'
   get tune(){
+    /** @return La tonalité, ou C **/
     var t = this.get('piece-tune-note')
     switch(this.get('piece-tune-alter')){
     case '=': return t
@@ -67,42 +117,55 @@ class NewConfiguration {
     }
   }
 
-  // @return la proximité ou null
+  get tuneIsFixed(){
+    /** @return true si les hauteurs de notes sont en valeur
+     ** absolues.
+     **/
+    return this.get('mscore-tune-fixed')
+  }
+
+  get updateAfterChange(){
+    /** @return true s'il faut actualiser l'image après toute
+     ** modification de mesure
+     **/
+    return this.get('ui-auto-build')
+  }
+
   get proximity(){
+    /** @return la proximité ou null **/
     const p = this.get('mscore-proximity')
     return p == 5 ? null : p
   }
 
-  // @return true si la configuration des portées comporte une
-  // seule portée et que cette portée n'est pas en clé de SOL
   get isOneStaffNotC(){
+    /** @return true si la configuration des portées comporte une
+     ** seule portée et que cette portée n'est pas en clé de SOL
+     **/
     const dispo = this.get('piece-staves-dispo')
-    console.debug("dispo = ", dispo)
     return dispo.length == 1 && dispo[0].key != 'G'
   }
 
-  get(key) { return this.tableData[key] }
-  getValueOf(key){ return get(key) }
-
-  get tableData(){
-    return this._tbldata || (this._tbldata = this.getData())
+  get UIDisposition(){
+    /** @return la configuration de l'écran **/
+    return this.get('ui-disposition')
   }
 
-  /**
-  * = main =
-  * Main method qui récolte toutes les données afin de pouvoir
-  * les enregistrer dans la configuration de l'image.
-  * 
-  * La relève fonctionne ainsi :
-  *   - s'il existe une méthode pour relever la donnée, on
-  *     l'utilise.
-  *   - sinon, on relève simplement la valeur dans le panneau
-  * 
-  * @return La table des données qu'il suffit d'enregistrer pour
-  * l'image donnée.
-  */
+  /* --- Functional Methods --- */
+
   getData(){
-    var data = {}
+    /** = main =
+     ** Main method qui récolte toutes les données afin de pouvoir
+     ** les enregistrer dans la configuration de l'image.
+     ** 
+     ** La relève fonctionne ainsi :
+     **   - s'il existe une méthode pour relever la donnée, on
+     **     l'utilise.
+     **   - sinon, on relève simplement la valeur dans le panneau
+     ** 
+     ** @return La table des données qu'il suffit d'enregistrer pour
+     ** l'image donnée.
+     **/
+    var data = {app_version: App.version}
     NEWCONFIGS_DATA.forEach(dconfig => {
       var value ;
       const domId = dconfig.domId
@@ -116,17 +179,20 @@ class NewConfiguration {
         case 'cb':
           value = !!obj.checked; break
         case 'int':
+          value = obj.value || dconfig.default
           value = parseInt(value,10);break
         default:
-          value = obj.value
+          value = obj.value || dconfig.default
         }
       }
-      Object.assign(data, {
-          [propN]: value
-        , [domId]: value
-      })
       /*
-      |  On les met aussi dans la donnée de configuration
+      |  On met la valeur dans la table, sous les deux noms de 
+      |  propriété, avec tiret et avec tiret plat.
+      */
+      Object.assign(data, {[propN]: value, [domId]: value})
+      /*
+      |  On les met aussi dans la donnée de configuration (même si
+      |  ça ne sert à rien pour le moment)
       */
       Object.assign(dconfig , {value: value, prop: propN})
     })
@@ -134,14 +200,13 @@ class NewConfiguration {
     return data
   }
 
-  /**
-  * = main =
-  * 
-  * Main method qui reçoit les données de configuration de l'image
-  * et les applique au panneau des configurations.
-  * 
-  */
   setData(data){
+    /** = main =
+     ** 
+     ** Main method qui reçoit les données de configuration de l'image
+     ** et les applique au panneau des configurations.
+     ** 
+     **/
     const dataKeys = Object.keys(data)
     NEWCONFIGS_DATA.forEach(dconfig => {
       const domId = dconfig.domId
@@ -149,32 +214,39 @@ class NewConfiguration {
       if ( not(dataKeys.includes(propN)) ) return ;
       const value = data[propN]
       // console.log("Set propriété '%s' avec la valeur %s", propN, value)
-      const setMethod = `set-${domId}`.replace(/\-([a-z])/g,function(tout, lettre){return lettre.toUpperCase()})
-      if ( 'function' == typeof this[setMethod] ){
-        /*
-        |  Une méthode dédiée pour appliquer la valeur
-        */
-        this[setMethod].call(this, value)
-      } else {
-        /*
-        |  On met simplement la valeur dans le champ
-        */
-        const obj = DGet(`#config-${domId}`)
-        switch(dconfig.type){
-        case 'cb':
-          obj.checked = value
-          break
-        default:
-          obj.value = value
-        }
-      }
+      this.setValue(domId, value)
     })
   }
 
-  /**
-  * Méthode qui appliquer les données par défaut
-  */
+  setValue(key, value){
+    /** Pour régler une valeur unique
+     **/
+    const dconf = NEWCONFIGS_TABLE[key]
+    const setMethod = `set-${key}`.replace(/\-([a-z])/g,function(tout, lettre){return lettre.toUpperCase()})
+    if ( 'function' == typeof this[setMethod] ){
+      /*
+      |  Une méthode dédiée pour appliquer la valeur
+      */
+      this[setMethod].call(this, value)
+    } else {
+      /*
+      |  Ou on la met telle quelle dans son champ
+      */
+      const obj = DGet(`#config-${key}`)
+      switch(dconf.type){
+      case 'cb':
+        obj.checked = value
+        break
+      default:
+        obj.value = value
+      }
+    }
+  }
+
   initialize(){
+    /** Applique les données de configuration par défaut
+     ** La méthode est appelée par le bouton "Tout réinitialiser"
+     **/
     var data = {}
     NEWCONFIGS_DATA.forEach(dconfig => {
       const domId = dconfig.domId
@@ -184,17 +256,36 @@ class NewConfiguration {
     this.setData(data)
   }
 
-  /**
-  * Méthode appelée quand on change la disposition de l'interface
-  */
-  onChangeUIDisposition(){
+  prepare(){
+    /** Prépare le panneau de configuration
+     ** Pour le moment, ne fait que poser les observeurs sur les
+     ** champs qui doivent être suivis.
+     **/
+    NEWCONFIGS_DATA.forEach(dconfig => {
+      const propCam = dconfig.domId.replace(/\-([a-z])/g, function(tout, lettre){return lettre.toUpperCase()})
+      const onChangeMeth = `${propCam}`
+      if ( 'function' == typeof this[onChangeMeth] ) {
+        console.debug("Je pose un observer onChange sur le champ '%s'", dconfig.domId)
+        const obj = DGet(`#config-${dconfig.domId}`)
+        listen( obj,'change', this[onChangeMeth].bind(this) )
+      }
+    })
+  }
+
+  onChange_UiDisposition(){
+    /** Méthode appelée quand on change la disposition de l'interface
+     **/
     UI.setDisposition.call(UI, this.menuDisposition.value)
   }
 
   /* 
     --- Staff Methods ---
   */
+
   setPieceStavesDispo(value){
+    /** Application de la disposition des portées dans le panneau
+     ** de configuration
+     **/
     /*
     |  On efface les éventuelles définition de portées
     */
@@ -214,6 +305,9 @@ class NewConfiguration {
     }
   }
   getPieceStavesDispo(){
+    /** Récupération de la disposition des portées dans le panneau
+     ** de configuration.
+     **/
     var value;
     switch(value = this.menuStaffDispo.value){
     case'piano':case'sonate-violon':case'quatuor':
@@ -239,7 +333,7 @@ class NewConfiguration {
   * Méthode appelée lorsque l'on change la valeur du nombre de
   * portées (la disposition, ou le dispositif).
   */
-  onChangeStaffDispo(){
+  onChange_pieceStaffDispo(){
     this.divOtherStaves.innerHTML = ""
     var dispo = this.menuStaffDispo.value
     switch(dispo){
@@ -308,14 +402,14 @@ class NewConfiguration {
       this.menuMetrique.value = 'xxx'
       this.fieldAutreMetrique.value = value
     }
-    this.onChangeMetrique()
+    this.onChange_pieceMetrique()
   }
 
   /**
   * Méthode appelée quand on change la métrique (pour gérer le champ
   * qui permet d'en mettre une "à la main")
   */
-  onChangeMetrique(){
+  onChange_pieceMetrique(){
     const isVisible = this.menuMetrique.value == 'xxx'
     this.fieldAutreMetrique.classList[isVisible?'remove':'add']('invisible')
   }
@@ -327,6 +421,12 @@ class NewConfiguration {
     return DGet('input#config-piece-autre-metrique')
   }
 
+  /* --- First Measure Methods --- */
+
+  onChange_mscoreFirstMesure(e){
+    const number = this.get('mscore-first-mesure')
+    MesureCode.onChangeFirstMesureNumber.call(MesureCode, number)
+  }
 
   /* --- General Methods --- */
 

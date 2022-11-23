@@ -7,12 +7,11 @@ window.onresize = function(ev){
 
 class UIClass {
 
-/**
- * Méthode principale qui prépare l'interface au chargement de
- * l'application.
- * 
- */
 prepare(){
+  /**
+   ** Méthode principale qui prépare l'interface au chargement de
+   ** l'application. 
+   **/
   /*
    | Position des messages
    */
@@ -21,30 +20,25 @@ prepare(){
    | Préparation de l'interface
    */ 
   Onglet.prepare()
-  /* 
-   | Réglage des options
-   */ 
-  Options.init()
-  /* 
-   | Observation de certains champs
-   */ 
-  this.observeSpecialFields()
+  /*
+  |  Préparation du panneau des configurations
+  */
+  Config.prepare()
 }
 
 /**
  * Réglage de la disposition de l'écran, qui peut mettre l'image de
  * la partition et le bloc des lignes de code à différents endroits.
  * 
- * La méthode est appelée quand on lance l'application, par la 
- * méthode Options.applique ou lorsqu'on change la disposition dans
- * le panneau des options.
+ * La méthode est appelée quand on lance l'application, ou lorsqu'on
+ * change la disposition dans le panneau des configurations.
  * 
  * @param dispo {String}
  *        up_down, down_up, left_right, right_left, correspondent à
  *        <position image partition>_<position lignes code>
  */
 setDisposition(dispo){
-  dispo = dispo || Options.getProperty('disposition')
+  dispo = dispo || Config.UIDisposition
   // console.info("Disposition : %s", dispo)
   const wWidth  = window.innerWidth - 140 // 140 = marge droite des outils
   const wHeight = window.innerHeight
@@ -116,52 +110,28 @@ setDisposition(dispo){
   }
 }
 
-/**
- * Observation de certains champs spéciaux (comme par exemple le
- * champs qui donne la première mesure)
- * 
- */
-observeSpecialFields(){
-  this.firstMesureField.addEventListener('change', MesureCode.onChangeFirstMesureNumber.bind(MesureCode))
+showBoutonsConfirmation(){
+  UI.showButtonConfirmer()
+  UI.showButtonRenoncer()    
+}
+hideBoutonsConfirmation(){
+  UI.hideButtonConfirmer()
+  UI.hideButtonRenoncer()
 }
 
-/**
- * Retourne le numéro de première mesure, qu'il soit défini ou non
- * 
- */
-getFirstNumber(){
-  let num = this.firstMesureField.value
-  if ( num == '' ){ num = 1 }
-  else { num = parseInt(num, 10) }
-  return num
+showButtonConfirmer(){this.btnConfirmer.classList.remove('invisible')}
+hideButtonConfirmer(){this.btnConfirmer.classList.add('invisible')}
+showButtonRenoncer(){this.btnRenoncer.classList.remove('invisible')}
+hideButtonRenoncer(){this.btnRenoncer.classList.add('invisible')}
+
+
+// Retourne le numéro du premier système voulu
+getNumberOfFirstSystem(){
+  return Number(this.firstNumberField.value || 1)
+
 }
 
-get firstMesureField(){
-  return this._firstmes || (this._firstmes = document.querySelector('#mesure'))
-}
-
-  showBoutonsConfirmation(){
-    UI.showButtonConfirmer()
-    UI.showButtonRenoncer()    
-  }
-  hideBoutonsConfirmation(){
-    UI.hideButtonConfirmer()
-    UI.hideButtonRenoncer()
-  }
-
-  showButtonConfirmer(){this.btnConfirmer.classList.remove('invisible')}
-  hideButtonConfirmer(){this.btnConfirmer.classList.add('invisible')}
-  showButtonRenoncer(){this.btnRenoncer.classList.remove('invisible')}
-  hideButtonRenoncer(){this.btnRenoncer.classList.add('invisible')}
-
-
-  // Retourne le numéro du premier système voulu
-  getNumberOfFirstSystem(){
-    return Number(this.firstNumberField.value || 1)
-
-  }
-
-  get score(){return this._score || (this._score = document.querySelector('img#score'))}
+get score(){return this._score || (this._score = document.querySelector('img#score'))}
 
 }
 const UI = new UIClass()

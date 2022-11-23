@@ -26,8 +26,7 @@ setData(data){
  * 
  */
 resetOptions(){
-  Options.applique(CONFIG.default_options) //TODO À SUPPRIMER
-  NewConfiguration.initialize()
+  Config.initialize()
 }
 
 reset(){
@@ -96,9 +95,6 @@ getCodeFinal(params){
   }
   c.push(fullCode)
   c = c.join("\n")
-  console.debug("Le code complet :\n", c)
-  
-  throw "Tout arrêter"
 
   return c
 }
@@ -106,6 +102,7 @@ getCodeFinal(params){
 /**
 * @return le code pour l'entête du fichier .mus qui servira à 
 * produire l'image.
+* @param c {Array} Liste des codes déjà insérés
 */
 getEnteteCodeMus(c){
   var dispo
@@ -127,7 +124,7 @@ getEnteteCodeMus(c){
   }
 
   /*
-  |  Prendre les valeurs utiles
+  |  Prendre les valeurs de configuration utiles
   */
   const metrique  = Config.get('piece-metrique')
   const st_vspace = Config.get('mscore-staves-vspace')

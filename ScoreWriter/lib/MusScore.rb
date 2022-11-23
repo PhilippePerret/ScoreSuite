@@ -23,7 +23,6 @@ class MusScore
       code:   code,
       images: images,
       affixe: affixe_path,
-      config: config
     }
   end
 
@@ -79,7 +78,7 @@ class MusScore
   def config
     @config ||= begin
       if File.exist?(config_path)
-        YAML.load_file(config_path)
+        YAML.load_file(config_path, aliases:true)
       else {} end
     end
   end
@@ -91,7 +90,7 @@ class MusScore
     File.open(config_path,'wb'){|f| f.write config.to_yaml}
   end
   def config_path
-    @config_path ||= "#{affixe_path}.config"
+    @config_path ||= "#{affixe_path}/#{affixe}.config"
   end
 
   def file_mus_path

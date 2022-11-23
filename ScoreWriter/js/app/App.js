@@ -2,18 +2,42 @@
 
 class AppClass {
 
-/**
- * Méthode appelée par App::get_code côté serveur, pour remonter
- * le code actuel de la partition
- */
+get version(){return '2.1.0'}
+
+getCode(){
+  /** = Main =
+   ** Méthode appelée au chargement de l'app pour remonter le code
+   ** de l'image spécifiée ou la dernière image éditée.
+   **/
+  WAA.send({
+      class:'ScoreWriter::App'
+    , method:'get_code'
+    , data: { default:null, config:null}
+  })
+}
+
 onGetCode(data){
+  /** = main =
+   **
+   ** Méthode qui reçoit le code de l'image remonté du serveur.
+   ** App.onGetCode
+   **/
   console.info("Relève code serveur = ", data)
   if (data.ok) {  
     if (data.code) {
       App.traiteCodeInitial(data.code)
       Score.setData(data)
       Score.update(data.images, data.affixe)
-      data.config && Options.applique(data.config)
+      if ( data.config ) {
+        if ( Number(data.config.app_version.split('.')[0]) >= 2 ) {
+          console.info("Configuration de version >=2 donc Je les applique")
+          Config.setData(data.config)
+        } else {
+          erreur("C'est un ancien fichier de configuration. Je ne peux plus le traiter. Il faut que tu règles à nouveau les configurations.")
+        }
+      } else {
+        Config.initialize()
+      }
     } else {
       MesureCode.createNew()
     }  
@@ -22,28 +46,28 @@ onGetCode(data){
   }
 }
 
-/**
- * = main =
- * 
- * Méthode qui envoie le code au serveur pour construire l'image
- * Dans beaucoup de cas, c'est la méthode la plus importante,
- * puisqu'elle permet de produire le code MusisScore ainsi que 
- * l'image SVG attendue.
- */
 buildImage(){
+  /** = main =
+   ** 
+   ** Méthode qui envoie le code au serveur pour construire l'image
+   ** Dans beaucoup de cas, c'est la méthode la plus importante,
+   ** puisqu'elle permet de produire le code MusisScore ainsi que 
+   ** l'image SVG attendue.
+   **/
   message("Fabrication de l'image en cours…", {keep: true})
   const finalCode = Score.getCodeFinal()
   if ( finalCode ) {
     WAA.send({class:'ScoreWriter::App',method:'build_score',
       data:{
-        code:     finalCode,
-        affixe:   Options.getImageName()
+          code:     finalCode
+        , affixe:   Config.imageName
+        , config:   Config.tableData
       }
     })
   } else {
-    // 
-    // S'il n'y a pas de code final (pour une erreur quelconque)
-    // 
+    /*
+    |  S'il n'y a pas de code final (pour une erreur quelconque)
+    */
     console.error("Il n'y a pas de code… Score.getCodeFinal() n'a rien renvoyé.")
     return erreur("Une erreur s'est produite. Consulter la console.")
   }
@@ -87,7 +111,7 @@ traiteCodeInitial(fullcode){
       // Nom de l'image
       // 
       const image_name = line.substring(2, line.length).trim()
-      Options.setImageName(image_name)
+      Config.imageName = image_name
 
     } else if ( line.substring(0, 2) == '--' ){
       // 
@@ -123,18 +147,14 @@ traiteCodeInitial(fullcode){
     
     }
   })
-  // 
-  // Pour mémoire
-  // 
-  Options.data_ini = options
-  // 
-  // Traitement des options
-  //
-  Staff.reset()
-  Options.applique(options)
-  // 
-  // Traitement des notes
-  // 
+  /*
+  |  Définition de la disposition des portées (application)
+  */
+  Config.onChange_pieceStaffDispo()
+
+  /*
+  |  Traitement des notes
+  */
   notes = notes.join("\n").trim()
   // console.info("Notes récupérées : ", notes )
   MesureCode.parse(notes)
@@ -161,7 +181,7 @@ produceFinalCode(){
   let to_mes    = DGet('#output_to_mesure').value.trim()
   to_mes    = to_mes == '' ? Score.count : to_mes
   Object.assign(params, {from: from_mes, to:to_mes})
-  const imgname = Options.getImageName()
+  const imgname = Config.imageName
   if ( imgname != '' ) Object.assign(params, {image_name:imgname})
 
   field.value = Score.getCodeFinal(params)
@@ -183,7 +203,7 @@ produceMesureDataFile(data){
         class:'ScoreWriter::App'
       , method:'build_mesures_data_file'
       , data:{
-            affixe: Options.getImageName()
+            affixe: Config.imageName
           , code: RubyCode
         }
       })
