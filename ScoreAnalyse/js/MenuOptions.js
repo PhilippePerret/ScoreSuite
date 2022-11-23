@@ -17,6 +17,12 @@ class OptionsTool extends MenusTool {
     option.dataset.checked = colorMode ? 'true' : 'false'
   }
 
+  static onActivate_toggleGrid(e, option){
+    var modeON = not(option.dataset.checked == 'true')
+    AMark.alignOnGrid = modeON
+    option.dataset.checked = modeON ? 'true' : 'false' 
+  }
+
   /**
   * Appelée après chaque choix de menu, cette méthode permet
   * de changer le nom pour activer ou désactiver l'option.

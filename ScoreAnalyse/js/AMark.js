@@ -478,6 +478,7 @@ observe(){
       , stop: function(e, ui){
           my.width  = my.getWidth()
           my.height = my.getHeight()
+          my.ajustePosition()
       }
     })
   } else if ( this.isVresizable && this.isHresizable ) {
@@ -486,6 +487,7 @@ observe(){
       , stop: function(e, ui){
           my.width  = my.getWidth()
           my.height = my.getHeight()
+          my.ajustePosition()
       }
     })
   } else if ( this.isHresizable ) {
@@ -670,6 +672,16 @@ ajustePosition(left, top){
     |  Ajustement précis de l'objet en fonction de son contexte
     */
     AObjet.checkPositionAndAdjust(this)
+  }
+  /*
+  |  Alignement sur une grille (en position et en dimension)
+  */
+  if ( this.type == 'bbx' && AMark.alignOnGrid ) {
+    const grid_hspace = 50, grid_vspace = 50
+    this.top    = Math.round(this.top / grid_vspace) * grid_vspace
+    this.left   = Math.round(this.left / grid_hspace) * grid_hspace
+    this.width  = Math.round(this.width / grid_hspace) * grid_hspace - 5
+    this.height = Math.round(this.height / grid_vspace) * grid_vspace - 5
   }
   /*
   |  Si l'objet a été déplacé verticalement, il faut actualiser son
