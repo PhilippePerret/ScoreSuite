@@ -1,14 +1,15 @@
 'use strict';
 /**
- * class MesureCode
- * -----------------
- * Pour les input-text qui contiennent chaque mesure de code.
- * 
- * Principe :
- *  - une mesure-code contient toujours ses x lignes suivant le 
- *    nombre de portées
- * 
- */
+ 
+  class MesureCode
+  -----------------
+  Gestion des input-text qui contiennent chaque mesure de code.
+  
+ Principe :
+  - une mesure-code contient toujours ses x lignes suivant le 
+    nombre de portées
+ 
+***/
 
 // Largeur pour un caractère dans les champs de mesure
 const WIDTH_PER_CHAR = 13
@@ -244,9 +245,7 @@ static parse(code){
     while ( mesuresCode.endsWith('|') ){
       mesuresCode = mesuresCode.substring(0, mesuresCode.length - 1)
     }
-    console.log("Étude de la mesuresCode : ", mesuresCode)
     mesuresCode = mesuresCode.split(' | ')
-    console.log("Mesures de code : ", mesuresCode)
     for(var imesure = 1, len = mesuresCode.length; imesure <= len; ++imesure){
       let mesure;
       if ( iportee == 0 ) {
@@ -371,6 +370,7 @@ static reset(){
 static get container(){
   return this._container || (this._container = DGet('#mesures_code'))
 }
+
 
 // --- INSTANCE ---
 
@@ -627,13 +627,13 @@ onBlurMesure(mesure, ev){
  */
 onChangeMesure(mesure, ev){
   this.setWidth()
-
-  // 
-  // Si la mesure est complète (toutes ses portées remplies) on doit
-  // actualiser la partition. 
-  // Noter qu'il faut le faire après setWidth car c'est setWidth qui
-  // définit la valeur the this.complete
-  // 
+  /*
+  |  S'il faut actualiser à chaque changement et que la mesure est
+  |  complète (i.e. définie pour toutes les portées) alors on re-
+  |  construit l'image.
+  */
+  console.debug("Config.updateAfterChange est", Config.updateAfterChange)
+  console.debug("this.isComplete() est ", this.isComplete())
   Config.updateAfterChange && this.isComplete() && App.buildImage()
 
   return stopEvent(ev)

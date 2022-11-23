@@ -135,7 +135,7 @@ traiteCodeInitial(fullcode){
       var valopt  = dopt.join(' ') || true
       switch(option){
         case'piano':case'sonate-violon':case'quatuor':
-          Config.setValue('piece-staves-dispo', valopt)
+          Config.setValue('piece-staves-dispo', option)
           break
         case 'staves': // Nombre de portées
           staffCount = Number(valopt)

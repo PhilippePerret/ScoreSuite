@@ -310,6 +310,7 @@ class NewConfiguration {
     this.divOtherStaves.innerHTML = ""
     switch(value){
     case'piano': case'sonate-violon':case'quatuor':
+      this.hideFirstStaff()
       this.setMenuDisposition(value)
       break
     default:
@@ -484,6 +485,17 @@ class NewConfiguration {
 
   get fieldFirstMeasure(){
     return DGet('#config-mscore-first-mesure')
+  }
+
+
+  /* --- Autobuild Methods --- */
+
+  onChange_uiAutoBuild(){
+    this.set('ui-auto-build', this.cbAutoBuild.checked )
+  }
+
+  get cbAutoBuild(){
+    return DGet('input#config-ui-auto-build')
   }
 
   /* --- General Methods --- */
