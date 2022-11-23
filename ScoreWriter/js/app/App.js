@@ -86,61 +86,82 @@ onScoreBuilt(data){
   }
 }
 
-/**
- *
- * Méthode générale principale traitant un code complet donné
- * (ou remonté au lancement) 
- */
 traiteCodeInitial(fullcode){
+  /** Méthode générale principale traitant un code complet donné ou
+   ** remonté au lancement 
+   **/
   console.info("fullcode reçu : ", fullcode)
-  if ( undefined == fullcode ) {
-    fullcode = DGet('#ini_code').value
-  }
-  if ( fullcode == '') {
-    return error("Aucun code n'a été fourni.")
-  }
-  // 
-  // On passe en revue chaque ligne pour définir les options
-  // 
+  fullcode = fullcode || DGet('#ini_code').value
+  fullcode || raise("Aucun code n'a été fourni.")
+  /*
+  |  On passe en revue chaque ligne pour ajuster les options
+  */
   var notes   = [] 
   var options = {}
+  var onlyOneStaff = false, staffCount, stavesKeys, stavesNames ;
   fullcode.forEach(line => {
     line = line.trim()
     if ( line.substring(0, 2) == '->') {
-      // 
-      // Nom de l'image
-      // 
-      const image_name = line.substring(2, line.length).trim()
-      Config.imageName = image_name
+      /*
+      |  Nom de l'image
+      */
+      Config.imageName = line.substring(2, line.length).trim()
 
     } else if ( line.substring(0, 2) == '--' ){
-      // 
-      // Une options quelconque
-      // 
-      var opts = line.substring(2, line.length).split(' ')
-      var option = opts.shift()
-      var valoption = opts.join(' ')
+      /*
+      |  Une option quelconque
+      */
+      var dopt    = line.substring(2, line.length).split(' ')
+      var option  = dopt.shift()
+      var valopt  = dopt.join(' ') || true
       switch(option){
-        case'piano': case'solo': case'duo': case'trio': case'quatuor':
-          console.info("Option %s rencontrée", option)
-          valoption = option
-          option    = 'systeme' 
+        case'piano':case'sonate-violon':case'quatuor':
+          Config.setValue('piece-staves-dispo', valopt)
+          break
+        case 'staves': // Nombre de portées
+          staffCount = Number(valopt)
+          Config.setMenuDisposition(staffCount)
+          onlyOneStaff = staffCount == 1
+          break
+        case 'staves_keys':
+          stavesKeys = valopt.split(',').reverse
+          stavesKeys.length == staffCount || raise(`Le nombre de clés définies (${stavesKeys.length}) ne correspond pas au nombre de portées (${staffCount})`)
+          break
+        case 'staves_names':
+          stavesNames = valopt.split(',').reverse
+          stavesNames.length == staffCount || raise(`Le nombre de clés définies (${stavesNames.length}) ne correspond pas au nombre de portées (${staffCount})`)
+          break
+        case'tune': case'metrique':
+          Config[option] = valopt
+          break
+        case 'barres': 
+          Config.setValue('mscore-opt-barres', true)
+          break
+        case 'no_stem':
+          Config.setValue('mscore-opt-stems', false)
           break
       }
-      if ( valoption == '' ) valoption = true
-      // console.log("L'option '%s' est mise à %s", option, valoption)
-      options[option] = valoption
     } else {
-      // 
-      // Une ligne de notes
-      // 
-      // Si la ligne commence par \fixed, il faut le traiter
+      /*
+      |  Une ligne de notes
+      */
       if ( line.match(/^\\fixed /)) {
-        // Retirer la marque
+        /*
+        |  Si la ligne indique que les notes sont en hauteur fixe, il
+        |  faut retirer cette marque et régler les configurations.
+        */
         var offset = line.indexOf('{') + 2
         line = line.substring(offset, line.length - 2)
-        // Mettre l'option "Hauteur fixe"
-        options['note_tune_fixed'] = true
+        Config.setValue('mscore-tune-fixed', true)
+      }
+      console.log("onlyOneStaff = ", onlyOneStaff)
+      console.debug("line = '%s'", line, line.startsWith('\\cle'))
+      if ( onlyOneStaff && line.startsWith('\\cle') ) {
+        /*
+        |  Cas d'une ligne unique avec une clé autre que G (on doit
+        |  retirer la clé)
+        */
+        line = line.replace(/^\\cle (F|UT[1-4]) /, '').trim()
       }
       // 
       notes.push(line)
@@ -148,9 +169,21 @@ traiteCodeInitial(fullcode){
     }
   })
   /*
-  |  Définition de la disposition des portées (application)
+  |  Définition de la disposition des portées (noter que pour le 
+  |  moment, si c'est une image qui a sa configuration, l'opération
+  |  sera faite deux fois : 1 fois ici, 1 fois avec le fichier de
+  |  configuration de l'image)
   */
-  Config.onChange_pieceStaffDispo()
+  if ( staffCount ) {
+    const data_staves = []
+    for (var i = 0 ; i < staffCount ; ++i) {
+      data_staves.push({
+          key:  (stavesKeys  && stavesKeys[i])  || 'G'
+        , name: (stavesNames && stavesNames[i]) || ''
+      })
+    }
+    Config.setValue('piece-staves-dispo', data_staves)
+  }
 
   /*
   |  Traitement des notes

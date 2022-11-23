@@ -108,13 +108,10 @@ class NewConfiguration {
   }
 
   get tune(){
-    /** @return La tonalité, ou C **/
-    var t = this.get('piece-tune-note')
-    switch(this.get('piece-tune-alter')){
-    case '=': return t
-    case 'b': return t + 'es'
-    case '#': return t + 'is'
-    }
+    return this.getPieceTune() // valeur composite (2 selects)
+  }
+  set tune(v){
+    this.setPieceTune(v) // valeur composite (2 selects)
   }
 
   get tuneIsFixed(){
@@ -221,7 +218,7 @@ class NewConfiguration {
   setValue(key, value){
     /** Pour régler une valeur unique
      **/
-    const dconf = NEWCONFIGS_TABLE[key]
+    const dconf = NEWCONFIGS_TABLE[key] || raise(`La clé '${key}' est introuvable dans les données de configurations.`)
     const setMethod = `set-${key}`.replace(/\-([a-z])/g,function(tout, lettre){return lettre.toUpperCase()})
     if ( 'function' == typeof this[setMethod] ){
       /*
@@ -240,6 +237,11 @@ class NewConfiguration {
       default:
         obj.value = value
       }
+      /*
+      |  Si une méthode onChange existe, il faut l'appeler
+      */
+      const meth = `onChange_${key}`.replace(/\-([a-z])/g,function(tout, lt){return lt.toUpperCase()})
+      if ('function' == typeof this[meth]) {this[meth].call(this) }
     }
   }
 
@@ -281,18 +283,21 @@ class NewConfiguration {
   /* 
     --- Staff Methods ---
   */
+  setMenuDisposition(value){
+    this.menuStaffDispo.value = value
+  }
 
   setPieceStavesDispo(value){
     /** Application de la disposition des portées dans le panneau
      ** de configuration
-     **/
+    ***/
     /*
     |  On efface les éventuelles définition de portées
     */
     this.divOtherStaves.innerHTML = ""
     switch(value){
     case'piano': case'sonate-violon':case'quatuor':
-      this.menuStaffDispo.value = value
+      this.setMenuDisposition(value)
       break
     default:
       /*
@@ -333,7 +338,7 @@ class NewConfiguration {
   * Méthode appelée lorsque l'on change la valeur du nombre de
   * portées (la disposition, ou le dispositif).
   */
-  onChange_pieceStaffDispo(){
+  onChange_pieceStavesDispo(){
     this.divOtherStaves.innerHTML = ""
     var dispo = this.menuStaffDispo.value
     switch(dispo){
@@ -379,6 +384,36 @@ class NewConfiguration {
   }
   get divFirstStaff(){
     return DGet('divrow#config-staff-1')
+  }
+
+  /* 
+    --- Tune Methods ---
+  */
+
+  getPieceTune(){
+    var t = this.menuTuneNote.value
+    switch(this.menuTuneAlteration.value){
+      case '=': return t
+      case 'b': return t + 'es'
+      case '#': return t + 'is'
+    }
+  }
+  setPieceTune(tune){
+    this.menuTuneNote.value = tune.substring(0,1)
+    this.menuTuneAlteration.value = (function(v){
+      switch(v.substring(1, v.length)){
+      case ''   : return '='
+      case 'es' : return 'b'
+      case 'is' : return '#'
+      }
+    })(tune)
+  }
+
+  get menuTuneNote(){
+    return DGet('select#config-piece-tune-note')
+  }
+  get menuTuneAlteration(){
+    return DGet('select#config-piece-tune-alter')
   }
 
   /* 

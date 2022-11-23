@@ -337,7 +337,6 @@ static onChangeFirstMesureNumber(newNumber){
    ** Méthode appelée quand on change le numéro de la première mesure
    **/
   this.each(mescode => mescode.updateMeasureNumber())
-  return stopEvent(ev)
 }
 
 
