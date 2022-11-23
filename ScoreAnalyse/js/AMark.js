@@ -438,7 +438,7 @@ get isHresizable(){
   return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
 }
 get isVresizable(){
-  return this._isvresize || (this._isvresize = (['emp'].includes(this.type) || ['cel'].includes(this.subtype)))
+  return this._isvresize || (this._isvresize = (['bbx','emp'].includes(this.type)))
 }
 
 get is2dimResizable(){

@@ -43,7 +43,7 @@ class AObjet {
     this.selectionTbl = {}
     this.updateMenuSelectionTool()
     BordersTool.desactivate()
-    AlignMenu.setStateBySelection(0)
+    this.setMenusState()
   }
 
   /**
@@ -62,9 +62,8 @@ class AObjet {
     } else {
       this.insertUniqObjectInSelection(aobjet)
     }
-    this.updateMenuSelectionTool()
     BordersTool.setMenuBordsFor(this.selection[0])
-    AlignMenu.setStateBySelection(this.selection.length)
+    this.setMenusState()
   }
 
   // Méthode fonctionnelle privée (cf. ci-dessus)
@@ -81,8 +80,13 @@ class AObjet {
     this.selectionIds.splice(dec, 1)
     delete this.selectionTbl[aobjet.id]
     aobjet.unsetSelected()
+    this.setMenusState()
+  }
+
+  static setMenusState(){
     this.updateMenuSelectionTool()
     AlignMenu.setStateBySelection(this.selection.length)
+    AdjustMenu.setStateBySelection(this.selection.length)
   }
 
   /**
@@ -320,7 +324,7 @@ static areNotAjustable(type1, type2){
     this._left = v
     this.obj && (this.obj.style.left = px(v))
     this.data.left = v
-    this.modified = true
+    // this.modified = true
     this.analyse && this.analyse.setModified()
   }
 
@@ -332,9 +336,10 @@ static areNotAjustable(type1, type2){
 
   get width(){ return this.data.width || this.getWidth() }
   set width(v) {
-    var isModified = v != this.data.width
+    if ( v == this.data.width ) return
     this.data.width = v 
-    this.analyse && isModified && this.analyse.setModified()
+    this.obj && (this.obj.style.width = px(v))
+    this.analyse && this.analyse.setModified()
   }
 
   getWidth(){

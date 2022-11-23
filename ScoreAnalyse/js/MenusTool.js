@@ -42,6 +42,7 @@ class MenusTool {
   
   static init(){
     this.observe()
+    this.menu.selectedIndex = 0
   }
 
   static observe(){

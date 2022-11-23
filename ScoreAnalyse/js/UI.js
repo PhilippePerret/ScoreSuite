@@ -58,6 +58,9 @@ class UIClass {
 
     // Le menu "Aligner…"
     AlignMenu.init()
+
+    // Le menu "Ajuster"
+    AdjustMenu.init()
         
     const hauteurFen  = window.innerHeight
     const moitieFen   = parseInt(hauteurFen / 2,10)
