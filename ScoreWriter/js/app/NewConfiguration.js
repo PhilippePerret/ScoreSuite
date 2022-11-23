@@ -40,7 +40,7 @@ const NEWCONFIGS_DATA = [
   , {domId:'mscore-opt-barres'    ,default:true ,type:'cb'}
   , {domId:'mscore-opt-stems'     ,default:true ,type:'cb'}
   , {domId:'mscore-tune-fixed'    ,default:false,type:'cb'}
-  , {domId:'mscore-staves-vspace' ,default:'9'}
+  , {domId:'mscore-staves-vspace' ,default:null}
   , {domId:'ui-disposition'       ,default:'left_right'}
   , {domId:'ui-auto-build'        ,default:false,type:'cb'}
 ]
