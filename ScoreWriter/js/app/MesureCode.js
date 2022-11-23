@@ -632,8 +632,8 @@ onChangeMesure(mesure, ev){
   |  complète (i.e. définie pour toutes les portées) alors on re-
   |  construit l'image.
   */
-  console.debug("Config.updateAfterChange est", Config.updateAfterChange)
-  console.debug("this.isComplete() est ", this.isComplete())
+  // console.debug("Config.updateAfterChange est", Config.updateAfterChange)
+  // console.debug("this.isComplete() est ", this.isComplete())
   Config.updateAfterChange && this.isComplete() && App.buildImage()
 
   return stopEvent(ev)
@@ -667,7 +667,7 @@ isComplete(){
     if ( !oui ) return // pour accélérer
     if ( oportee.value.trim().length == 0 ){ oui = false }
   })
-  console.info("isComplete ?", oui)
+  // console.info("isComplete ?", oui)
   return oui
 }
 // Nombre de portées réellement affichées

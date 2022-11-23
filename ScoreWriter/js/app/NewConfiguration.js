@@ -89,6 +89,21 @@ class NewConfiguration {
     return this._tbldata || (this._tbldata = this.getData())
   }
 
+  get data4save(){
+    /** Donnée de tableData, mais sans clé doublée (dans tableData,
+     ** par mesure de confort, on trouve les clés sous la forme 
+     ** tiret et tiret plat)
+     **/
+    const tblSave = {}
+    for( var cle in this.tableData) {
+      if ( cle.match(/_/) ) continue
+      else { Object.assign(tblSave, {[cle]: this.tableData[cle]})}
+    }
+    Object.assign(tblSave, {app_version: App.version})
+    console.debug("tblSave = ", tblSave)
+    return tblSave
+  }
+
   /* --- Raccourcis pour les données --- */
 
   get imageName(){
@@ -212,12 +227,13 @@ class NewConfiguration {
      ** 
      **/
     const dataKeys = Object.keys(data)
+    // console.debug("Data pour config : ", data)
     NEWCONFIGS_DATA.forEach(dconfig => {
       const domId = dconfig.domId
       const propN = domId.replace(/\-([a-z])/g, '_$1')
-      if ( not(dataKeys.includes(propN)) ) return ;
-      const value = data[propN]
-      // console.log("Set propriété '%s' avec la valeur %s", propN, value)
+      if ( not(dataKeys.includes(propN)) && not(dataKeys.includes(domId)) ) return ;
+      const value = data[domId] || data[propN]
+      // console.debug("Set propriété '%s' avec la valeur %s", propN, value)
       this.setValue(domId, value)
     })
   }

@@ -37,7 +37,7 @@ onGetCode(data){
         /*
         |  On applique à nouveau les configurations
         */
-        data.config && this.applyConfig(data.config)
+        this.applyConfig(data.config)
       } catch(err) {
         console.error(err)
         erreur(err + '<br>Je dois m’interrompre.')
@@ -52,7 +52,7 @@ onGetCode(data){
 
 applyConfig(config) {
   if (config) {
-    if ( Number(config.app_version.split('.')[0]) >= 2 ) {
+    if ( config.app_version && Number(config.app_version.split('.')[0]) >= 2 ) {
       console.info("Configuration de version >=2 (=> application)")
       Config.setData(config)
     } else {
@@ -80,7 +80,7 @@ buildImage(){
       data:{
           code:     finalCode
         , affixe:   Config.imageName
-        , config:   Config.tableData
+        , config:   Config.data4save
       }
     })
   } else {
