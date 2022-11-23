@@ -217,7 +217,7 @@ class NewConfiguration {
       const propN = domId.replace(/\-([a-z])/g, '_$1')
       if ( not(dataKeys.includes(propN)) ) return ;
       const value = data[propN]
-      console.log("Set propriété '%s' avec la valeur %s", propN, value)
+      // console.log("Set propriété '%s' avec la valeur %s", propN, value)
       this.setValue(domId, value)
     })
   }
@@ -274,7 +274,6 @@ class NewConfiguration {
       const propCam = dconfig.domId.replace(/\-([a-z])/g, function(tout, lettre){return lettre.toUpperCase()})
       const onChangeMeth = `onChange_${propCam}`
       if ( 'function' == typeof this[onChangeMeth] ) {
-        console.debug("Je pose un observer onChange sur le champ 'config-%s'", dconfig.domId)
         const obj = DGet(`#config-${dconfig.domId}`)
         listen( obj,'change', this[onChangeMeth].bind(this) )
       }

@@ -41,7 +41,6 @@ prepare(){
  */
 setDisposition(dispo){
   dispo = dispo || Config.UIDisposition
-  console.info("Disposition : %s", dispo)
   const wWidth  = window.innerWidth - 140 // 140 = marge droite des outils
   const wHeight = window.innerHeight
   const sectionScore = document.querySelector('#score_container')

@@ -22,7 +22,7 @@ onGetCode(data){
    ** Méthode qui reçoit le code de l'image remonté du serveur.
    ** App.onGetCode
    **/
-  console.info("Relève code serveur = ", data)
+  // console.debug("Relève code serveur = ", data)
   if (data.ok) {  
     if (data.code) {
       App.traiteCodeInitial(data.code)
@@ -30,7 +30,7 @@ onGetCode(data){
       Score.update(data.images, data.affixe)
       if ( data.config ) {
         if ( Number(data.config.app_version.split('.')[0]) >= 2 ) {
-          console.info("Configuration de version >=2 donc Je les applique")
+          console.info("Configuration de version >=2 (=> application)")
           Config.setData(data.config)
         } else {
           erreur("C'est un ancien fichier de configuration. Je ne peux plus le traiter. Il faut que tu règles à nouveau les configurations.")
@@ -156,8 +156,6 @@ traiteCodeInitial(fullcode){
         line = line.substring(offset, line.length - 2)
         Config.setValue('mscore-tune-fixed', true)
       }
-      console.log("onlyOneStaff = ", onlyOneStaff)
-      console.debug("line = '%s'", line, line.startsWith('\\cle'))
       if ( onlyOneStaff && line.startsWith('\\cle') ) {
         /*
         |  Cas d'une ligne unique avec une clé autre que G (on doit

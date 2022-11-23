@@ -27,7 +27,6 @@ setScoreContainer(data){
  * Méthode appelée à chaque changement/rafraichissement d'image
  */
 setZoomOnUpdate(){
-  console.log("-> setZoomOnUpdate / size = %i %", this.size)
   this.changeSize(this.size) 
 }
 

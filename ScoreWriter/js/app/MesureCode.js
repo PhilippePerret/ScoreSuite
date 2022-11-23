@@ -126,10 +126,10 @@ static getFullCodeInTableData(params, portees){
   // 
   var table = []
   table.push('# encoding: UTF-8')
-  table.push('# Il faut copier ce code dans un fichier "data_mesures.rb" dans un')
-  table.push('# dossier dédié. Ensuite, il suffit d’ouvrir un terminal à ce dossier')
-  table.push('# et de lancer "score-extract <from mesure> <to mesure> [options]"')
-  table.push("# pour obtenir un extrait des mesures voulues.\n\n")
+  table.push('# Ouvrir un terminal à ce dossier et lancer :')
+  table.push('# "score-extract <from mesure> <to mesure> [options]"')
+  table.push("# … pour obtenir un extrait des mesures voulues.")
+  table.push("\n")
   table.push('DATA_MESURES = {')
   // 
   // Pour pour obtenir chaque mesure
@@ -230,7 +230,7 @@ static parse(code){
   // console.log("Je dois parser le code :", code)
   const porteesCode = code.split("\n")
   const nombrePortees = Score.nombrePortees = porteesCode.length
-  console.info("Nombre de portées = %i", nombrePortees)
+  // console.info("Nombre de portées = %i", nombrePortees)
   for(var iportee = 0; iportee < nombrePortees; ++ iportee){
     var mesuresCode = porteesCode[iportee];
     while ( mesuresCode.endsWith('|') ){
