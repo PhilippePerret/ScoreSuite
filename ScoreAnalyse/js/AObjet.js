@@ -271,19 +271,6 @@ static areNotAjustable(type1, type2){
   get id(){return this._id}
   set id(v){this._id = v}
 
-  get height(){return this._height || (this._height = this.getHeight())}
-  set height(v){
-    this._height = v
-    this.obj && (this.obj.style.height = px(v))
-    this.data.height = v
-    this.modified = true
-    this.analyse && (this.analyse.modified = true)
-  }
-  getHeight(){
-    // console.log(" -> getHeight / systeme %i", this.id)
-    // console.log("this.obj = ", this.obj)
-    return this.obj && this.obj.offsetHeight
-  }
 
   get top(){
     return this._top || (this._top = this.getTop() ) 
@@ -342,6 +329,15 @@ static areNotAjustable(type1, type2){
     this.analyse && this.analyse.setModified()
   }
 
+  get height(){return this._height || (this._height = this.getHeight())}
+  set height(v){
+    this._height = v
+    this.obj && (this.obj.style.height = px(v))
+    this.data.height = v
+    this.modified = true
+    this.analyse && this.analyse.setModified()
+  }
+
   getWidth(){
     if (this.obj) {
       if ( this.obj.style.width ) {
@@ -351,4 +347,11 @@ static areNotAjustable(type1, type2){
       }
     }
   }
+
+  getHeight(){
+    // console.log(" -> getHeight / systeme %i", this.id)
+    // console.log("this.obj = ", this.obj)
+    return this.obj && this.obj.offsetHeight
+  }
+
 }
