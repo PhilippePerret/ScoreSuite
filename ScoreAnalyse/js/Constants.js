@@ -14,6 +14,7 @@ const TYPES_CADRE = {
   , 'sec' : {name:'Début section'   , shortcut:'s'  , value:'sec'   , default:'SECTION'}
   , 'secz': {name:'Fin de section'  , shortcut:'f'  , value:'secz'  , default:'SECTION'}
   , 'cel' : {name:'Cellule'         , shortcut:'c'  , value:'cel'   , default:'C1'}
+  , 'bxt' : {name:'Texte dans cadre', shortcut:'t'  , value:'bxt'   , default:'Texte **stylé** et _stylé_.'}
   , 'box' : {name:'Cadre simple'    , shortcut:'x'  , value:'box'} // pas de default: => pas de texte
 }
 

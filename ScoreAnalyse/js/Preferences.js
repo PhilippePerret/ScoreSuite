@@ -30,7 +30,7 @@ setValuesSaved(savedData){
  * @usage     pref(<key>) OU Preferences.get(<key>)
  */
 get(key){
-  console.log("pref %s = %s (%s) in ", key, this.data[key].value, typeof this.data[key].value, this.data)
+  // console.debug("pref %s = %s (%s) in ", key, this.data[key].value, typeof this.data[key].value, this.data)
   return this.data[key].value || this.data[key].default
 }
 set(key,value){

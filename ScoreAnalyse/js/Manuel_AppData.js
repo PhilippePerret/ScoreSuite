@@ -71,6 +71,10 @@ const ManuelData = [
     , precision: `<pre><code>Prolongation   : terminer le nom par '--' ('cm--')</code></pre>`
   }
 , {
+      operation: 'Créer un texte dans un cadre'
+    , procedure: ["Double-cliquer à l'endroit voulu","Taper 'b' ou choisir 'Cadre'","Taper 't' ou choisir 'Texte dans cadre'."]
+  }
+, {
       operation: "Les types de marque d'analyse"
     , procedure: `<pre><code>
 Accord      : marque d'accord au dessus de la portée
@@ -94,7 +98,10 @@ Cadre (types de cadres) - b comme "border"
     Une partie    : marque de partie/section dans la pièce
     Fin de partie : marque de fin de partie 
     Cellule       : une cellule (cadre avec nom au-dessus)
-Texte       : un texte quelconque, de 4 tailles différentes
+    Un texte dans un cadre : b + t
+Texte       : 
+    Un texte quelconque, de 4 tailles différentes
+    Un texte dans un cadre : b + t
 Segment     : pour délimiter un segment, horizontalement ou verti-
               calement.
 Cercle      : un cercle autour d'une note par exemple

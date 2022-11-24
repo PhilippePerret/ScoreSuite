@@ -440,14 +440,24 @@ buildSpanContent(){
 
 get formated_content(){
   if ( this.hasFormatedText && this.content ) {
-    return this.content
-      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
-      .replace(/\*(.+?)\*/g, '<i>$1</i>')
-      .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
-      .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
+    const str = this.markdownize(this.content)
+    if ( this.subtype == 'bxt' ) {
+      /** Boite de texte **/
+      return '<span class="realcontent">' + str + '</span>'
+    } else {    
+      /** Content stylisé **/
+      return str
+    }
   } else {
     return this.content
   }
+}
+markdownize(str){
+  return str.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+          .replace(/\*(.+?)\*/g, '<i>$1</i>')
+          .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
+          .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
+
 }
 
 /* --- Predicate Methods --- */
