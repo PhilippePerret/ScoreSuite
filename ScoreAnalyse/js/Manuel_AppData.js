@@ -46,6 +46,11 @@ const ManuelData = [
     , procedure: [Ouvrir_preferences, "régler la taille de l'élément voulu."]
     , precision: "On peut pratiquement régler les tailles de tous les éléments, à savoir :<ul><li>la largeur des systèmes,</li><li>la marge haute du premier système,</li><li>l'espacement entre les systèmes,</li><li>la taille des accords,</li><li>la taille des marques d'harmonie</li><li>le volume des notes</li><li>etc.</li></ul>"
   }
+, {
+      operation: 'Alignement des éléments'
+    , procedure: "On peut aligner très précisément des éléments en utilisant la « grille magnétique ». Elle s'active depuis le menu 'Options' »."
+    , precision: "Les éléments sont alignés aussi en longueur et en hauteur.<br />Idéal pour construire par exemple un plan de l'œuvre."
+  }
 , { 
       operation: "Ouvrir le panneau des préférences"
     , procedure: ["Jouer le raccourci clavier ⇧P"]
