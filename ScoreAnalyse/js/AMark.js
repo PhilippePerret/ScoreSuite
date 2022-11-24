@@ -907,13 +907,16 @@ buildLigneProlongation(){
     , start: function(e, ui){
       }
     , stop: function(e, ui){
-        my.applyWidth(my.prolongLine.offsetWidth + my.contentSpan.offsetWidth + 10)
+        my.applyWidth(my.prolongLine.offsetWidth + my.contentSpan.offsetWidth + 20)
       }
   })
 }
 
-setProlongLineWidth(){
-  this.prolongLine.style.width = px(this.width - 10 - this.contentSpan.offsetWidth)
+setProlongLineWidth(v){
+  // longueur du span content + longueur de la ligne
+  const lineWidth = v - (this.contentSpan.offsetWidth + 20)
+  this.prolongLine.style.width = px(lineWidth)
+  this.width = v
 }
 
 get hasProlongLine(){return not(undefined == this.prolongLine) }
@@ -944,8 +947,11 @@ set height(v){
 
 applyWidth(v) {
   const my  = this
-  this.setWidth(this.width)
-  my.hasProlongLine && my.setProlongLineWidth()
+  if ( my.hasProlongLine ) {
+    my.setProlongLineWidth(v)
+  } else {
+    this.setWidth(this.width)
+  }
 }
 
 get type(){return this._type}
