@@ -674,10 +674,12 @@ toggleFromSelection(keep_other){
 
 setSelected(){
   this.obj.classList.add('selected')
+  this.obj.style.zIndex = 10
   this.isSelected = true
 }
 unsetSelected(){
   this.obj.classList.remove('selected')
+  this.obj.style.zIndex = null
   this.isSelected = false
 }
 
