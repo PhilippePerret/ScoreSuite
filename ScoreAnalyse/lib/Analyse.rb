@@ -410,6 +410,10 @@ class Analyse
     File.exist?(path)
   end
 
+  def window_size
+    return [preferences['window_width']||1000,preferences['window_height']||1000]
+  end
+
   ##
   # Création de l'analyse à partir des données +data+ (qui viennent,
   # normalement, du browser)

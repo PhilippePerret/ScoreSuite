@@ -37,7 +37,7 @@ begin
       # Fonctionnement normal : ouverture de la 
       # table d'analyse
       # 
-      WAA.goto File.join(__dir__,'index.html')
+      WAA.goto(File.join(__dir__,'index.html'), ScoreAnalyse::Analyse.current.window_size)
       driver_on = true
       WAA.run
     end

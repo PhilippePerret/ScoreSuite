@@ -24,6 +24,7 @@ class AppClass {
       Preferences.setValuesSaved(data.preferences)
       analyse.checkSystems()
       analyse.display()
+      analyse.scrollToLastPosition()
       Preferences.afterLoadingAnalyse()
     } else {
       console.log("Pas d'analyse courante à afficher.")
@@ -32,3 +33,9 @@ class AppClass {
 
 }
 const App = new AppClass()
+
+window.onresize = function(){
+  if ( Analyse.current ) {
+    Analyse.current.defineWindowSize(window.outerWidth, window.outerHeight)
+  }
+}

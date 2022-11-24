@@ -26,6 +26,21 @@ class Analyse {
   setModified(){this.modified = true}
   unsetModified(){this.modified = false}
 
+
+  defineWindowSize(largeur, hauteur){
+    /**
+     ** Méthode appelée quand on change la taille de la fenêtre, pour
+     ** pouvoir l'enregistrer. 
+     **/
+    Preferences.set('window_width'  , largeur)
+    Preferences.set('window_height' , hauteur)
+    this.setModified()
+  }
+
+  scrollToLastPosition(){
+    window.scrollTo({top:pref('last_scroll') || 0})
+  }
+
   /**
    * Retourne un nouvel identifiant unique
    * 

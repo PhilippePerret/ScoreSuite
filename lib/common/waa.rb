@@ -58,7 +58,8 @@ class Waa
     @browser = browser
   end
 
-  def goto(file)
+  def goto(file, dim_fenetre = nil)
+    driver.manage.window.resize_to(*dim_fenetre) if dim_fenetre
     driver.navigate.to 'file://'+file
   end
 
@@ -129,7 +130,10 @@ class Waa
     @driver ||= begin
       if browser == :firefox
         opts = Selenium::WebDriver::Firefox::Options.new({
-          args: ['-devtools'],  # pour ouvrir les dev tools
+          args: [
+            '-devtools',
+            "window-size=500,500"
+          ],  # pour ouvrir les dev tools
           profile: 'aScenario'
         })
       else
