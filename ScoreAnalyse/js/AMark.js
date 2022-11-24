@@ -226,6 +226,20 @@ setValue(newvalue){
 
 }
 
+lock(){
+  this.data.locked = true
+  this.obj.classList.add('locked')
+  $(this.obj).draggable("disable")
+}
+unlock(){
+  delete this.data.locked
+  this.obj.classList.remove('locked')
+  $(this.obj).draggable("enable")
+}
+get isLocked(){
+  return this.data.locked == true
+}
+
 /* --- Méthodes de GROUPE --- */
 
 get grp(){ return this._grp || (this._grp = this.data.grp) }

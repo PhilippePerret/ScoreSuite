@@ -9,6 +9,21 @@ div.amark:hover {
   cursor: pointer;
 }
 
+div.amark.locked:hover {
+  cursor:not-allowed;
+}
+@media screen {
+  div.amark.locked {opacity: 0.6}
+  div.amark.locked:before {
+    position:absolute;
+    top:-24px;
+    left:-28px;
+    content:'⚓︎';
+    color:#FFA1A1;
+    font-size:24pt;
+  }
+}
+
 div.amark.selected {
   background-color: rgba(150,180,250, 0.4);
   z-index: 20;

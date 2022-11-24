@@ -87,6 +87,7 @@ class AObjet {
     this.updateMenuSelectionTool()
     AlignMenu.setStateBySelection(this.selection.length)
     AdjustMenu.setStateBySelection(this.selection.length)
+    AmarkMenu.setAllMenus(this.selection.length > 0)
   }
 
   /**

@@ -53,6 +53,9 @@ class UIClass {
     // Le menu "Options" du pied de page
     OptionsTool.init()
 
+    // Le menu "AMarque"
+    AmarkMenu.init()
+
     // Le menu "Ouvrir"
     OpenMenu.init()
 
