@@ -98,13 +98,13 @@ static toggleGridMode(modeON){
   console.log("this.bSnap = ", this.bSnap)
 }
 
-static snapVertical(v, addBorder){
+static snapVertical(v){
   if ( !this.vSnap ) return v ;
-  return Math.round(v / this.vSnap) * this.vSnap + (addBorder ? this.bSnap : 0)
+  return Math.round(v / this.vSnap) * this.vSnap
 }
-static snapHorizontal(v, addBorder){
+static snapHorizontal(v){
   if ( !this.hSnap ) return v ;
-  return Math.round(v / this.hSnap) * this.hSnap + (addBorder ? this.bSnap : 0)
+  return Math.round(v / this.hSnap) * this.hSnap
 }
 
 static get bSnap(){
@@ -308,6 +308,8 @@ setGroup(grp) {
 /* ---/fin des méthodes de groupe */
 
 /* --- Classes CSS Methods --- */
+
+
 
 addCss(classe){
   if (!this.data.css) this.data.css = []

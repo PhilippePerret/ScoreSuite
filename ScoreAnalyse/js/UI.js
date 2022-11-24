@@ -154,7 +154,7 @@ class UIClass {
     /*
     |  Les lignes horizontales
     */
-    var curTop =  4 /* rectif */
+    var curTop =  0 /* rectif */
     while ( curTop < maxTop ) {
       const hLine = DCreate('DIV', {style:`top:${curTop}px;width:${maxLeft}px;position:absolute;height:1px;background-color:pink;opacity:0.5;`})
       this.MagneticGrid.appendChild(hLine)
@@ -163,7 +163,7 @@ class UIClass {
     /*
     |  Les lignes verticales
     */
-    var curLeft = 4 /* rectif */
+    var curLeft = 0 /* rectif */
     while ( curLeft < maxLeft ) {
       const vLine = DCreate('DIV', {style:`left:${curLeft}px;height:${maxTop}px;position:absolute;top:0px;width:1px;background-color:pink;opacity:0.5;`})
       this.MagneticGrid.appendChild(vLine)

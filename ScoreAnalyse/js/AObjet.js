@@ -282,6 +282,18 @@ static areNotAjustable(type1, type2){
     }
   }
 
+getCssProp(prop, notANumber){
+  /** @return la valeur "computée" de +prop+, qu'elle soit définie
+   ** dans la classe CSS ou dans le style de l'objet.
+   ** La plupart du temps, c'est une dimension, on la renvoie sous
+   ** forme de nombre. Dans le cas contraire, il faut mettre 
+   ** +notANumber+ à true pour renvoyer la valeur brute.
+   **/
+  var cval = getComputedStyle(this.obj).getPropertyValue(prop)
+  if ( notANumber ) return cval
+  return Number(unpx(cval))
+}
+
 
   get top(){
     return this._top || (this._top = this.getTop() ) 
@@ -298,7 +310,7 @@ static areNotAjustable(type1, type2){
     this.analyse && this.analyse.setModified()
   }
   getTop(){
-    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('top'))
+    return this.obj && this.getCssProp('top')
   }
   setTop(v){
     this.obj && (this.obj.style.top = px(v))    
@@ -313,10 +325,9 @@ static areNotAjustable(type1, type2){
   get left(){return this._left || (this._left = this.data.left || this.obj.offsetLeft)}
   set left(v){
     if ( v == this.data.left ) return
-    v = AMark.snapHorizontal(v, true)
-    this._left = v
-    this.setLeft(v)
-    this.data.left = v
+    this.data.left = AMark.snapHorizontal(v)
+    this._left = this.data.left
+    this.setLeft(this.data.left)
     this.analyse && this.analyse.setModified()
   }
   setLeft(v){
@@ -325,7 +336,7 @@ static areNotAjustable(type1, type2){
 
   get right(){return this._right || (this._right = this.left + this.width) }
   set right(v){
-    v = AMark.snapHorizontal(v, false)
+    v = this.snapHorizontal(v)
     this._right = v
     this.left   = v - this.width
   }
@@ -334,20 +345,27 @@ static areNotAjustable(type1, type2){
   set width(v) {
     if ( v == this.data.width ) return
     // console.debug("width à l'entrée = %i", 0 + v)
-    v = AMark.snapHorizontal(v, false)
     // console.debug("width ajustée = %i", 0 + v)
-    this.data.width = v 
-    this.setWidth(v)
+    this.data.width = this.snapHorizontal(v, this.getCssProp('border-left-width'))
+    this.setWidth(this.data.width)
     this.analyse && this.analyse.setModified()
+  }
+  snapHorizontal(v, retrait){
+    if ( ! AMark.hSnap ) return v
+    return AMark.snapHorizontal(v) - retrait
+  }
+
+  snapVertical(v, retrait){
+    if ( ! AMark.vSnap ) return v
+    return AMark.snapVertical(v) - retrait
   }
 
   get height(){return this._height || this.data.height || (this._height = this.getHeight())}
   set height(v){
     if ( v == this.data.height ) return
-    v = AMark.snapVertical(v, false)
-    this._height = v
-    this.setHeight(v)
-    this.data.height = v
+    this.data.height = this.snapVertical(v, this.getCssProp('border-top-width'))
+    this._height = this.data.height
+    this.setHeight(this.data.height)
     this.analyse && this.analyse.setModified()
   }
 
@@ -356,7 +374,6 @@ static areNotAjustable(type1, type2){
   }
   setWidth(v){
     /** Appliquer la largeur à l'objet **/
-    // console.debug("Appliquer la largeur %i à", v, this.obj)
     this.obj && (this.obj.style.width = px(v))
   }
 
@@ -365,7 +382,6 @@ static areNotAjustable(type1, type2){
   }
   setHeight(v){
     /** Appliquer la hauteur à l'objet **/
-    // console.debug("Appliquer la hauteur %i à ", v, this.obj)
     this.obj && (this.obj.style.height = px(v))
   }
 }
