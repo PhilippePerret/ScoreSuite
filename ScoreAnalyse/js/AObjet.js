@@ -55,7 +55,6 @@ class AObjet {
     } else if ( this.selectionTbl[aobjet.id] ) {
       return // Ne pas enregistrer deux fois un objet
     }
-    aobjet.obj.style.zIndex = 10
     if ( aobjet.isGrouped ) {
       aobjet.grp.forEach( tid => {
         this.insertUniqObjectInSelection(AObjet.get(tid))

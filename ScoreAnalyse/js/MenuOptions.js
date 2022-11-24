@@ -24,7 +24,8 @@ class OptionsTool extends MenusTool {
     **/
     var modeON = not(option.dataset.checked == 'true')
     AMark.toggleGridMode(modeON)
-    option.dataset.checked = modeON ? 'true' : 'false' 
+    option.dataset.checked = modeON ? 'true' : 'false'
+    UI.toggleGridDisplay(modeON)
   }
 
   /**

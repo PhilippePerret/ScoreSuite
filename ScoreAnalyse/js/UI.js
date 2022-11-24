@@ -122,6 +122,57 @@ class UIClass {
   }
 
 
+  /* --- Grid Methods --- */
+
+  toggleGridDisplay(modeON){
+    /**
+     ** Méthode appelée quand on active ou désactive le mode Grid (a-
+     ** lignement sur une grille). Elle affiche (construit) ou la 
+     ** masque  
+    */
+    this.MagneticGrid || this.buildGrid()
+    this.MagneticGrid.classList[modeON?'remove':'add']('hidden')
+  }
+  buildGrid(){
+    /**
+     ** (Re)Construction de la grille magnétique.
+     **/
+    /*
+    |  La grille (objet DOM)
+    */
+    this.MagneticGrid = DCreate('DIV',{id:'magnetic-grid',class:'hidden',style:'position:absolute;top:0px;left:0px;'})
+    document.body.appendChild(this.MagneticGrid)
+
+    /*
+    |  Les valeurs à utiliser
+    */
+    const hsnap   = Number(pref('grid_horizontal_space'))
+    const vsnap   = Number(pref('grid_vertical_space'))
+    const maxTop  = unpx(DGet('section#content').style.height) + 500
+    console.debug("maxTop = ", maxTop, typeof maxTop)
+    const maxLeft = unpx(getComputedStyle(DGet('section#content')).getPropertyValue('width')) + 100
+    /*
+    |  Les lignes horizontales
+    */
+    var curTop =  4 /* rectif */
+    while ( curTop < maxTop ) {
+      const hLine = DCreate('DIV', {style:`top:${curTop}px;width:${maxLeft}px;position:absolute;height:1px;background-color:pink;opacity:0.5;`})
+      this.MagneticGrid.appendChild(hLine)
+      curTop += vsnap
+    }
+    /*
+    |  Les lignes verticales
+    */
+    var curLeft = 4 /* rectif */
+    while ( curLeft < maxLeft ) {
+      const vLine = DCreate('DIV', {style:`left:${curLeft}px;height:${maxTop}px;position:absolute;top:0px;width:1px;background-color:pink;opacity:0.5;`})
+      this.MagneticGrid.appendChild(vLine)
+      curLeft += hsnap
+    }
+  
+  }
+
+
   /**
    * Méthode qui déplace tous les objets se situant en dessous de
    * +fromTop+ d'un montant de +dec+ pixels (+dec+ peut être négatif)
