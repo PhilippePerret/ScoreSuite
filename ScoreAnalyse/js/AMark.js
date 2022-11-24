@@ -454,14 +454,7 @@ buildSpanContent(){
 
 get formated_content(){
   if ( this.hasFormatedText && this.content ) {
-    const str = this.markdownize(this.content)
-    if ( this.subtype == 'bxt' ) {
-      /** Boite de texte **/
-      return '<span class="realcontent">' + str + '</span>'
-    } else {    
-      /** Content stylisé **/
-      return str
-    }
+    return this.markdownize(this.content)
   } else {
     return this.content
   }
