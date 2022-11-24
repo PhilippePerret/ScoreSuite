@@ -283,6 +283,8 @@ static areNotAjustable(type1, type2){
     }
   }
   set top(v){
+    // Grid adjustment
+    this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
     const currentTop = 0 + this.data.top
     this._top = v
     this.obj && (this.obj.style.top = px(v))
@@ -303,11 +305,13 @@ static areNotAjustable(type1, type2){
 
   get bottom(){ return this.top + this.height }
   set bottom(v){
+    this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
     this.top = v - this.height
   }
 
   get left(){return this._left || (this._left = this.data.left || this.obj.offsetLeft)}
   set left(v){
+    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
     this._left = v
     this.obj && (this.obj.style.left = px(v))
     this.data.left = v
@@ -317,12 +321,14 @@ static areNotAjustable(type1, type2){
 
   get right(){return this._right || (this._right = this.left + this.width) }
   set right(v){
+    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
     this._right = v
     this.left   = v - this.width
   }
 
   get width(){ return this.data.width || this.getWidth() }
   set width(v) {
+    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
     if ( v == this.data.width ) return
     this.data.width = v 
     this.obj && (this.obj.style.width = px(v))
@@ -331,6 +337,7 @@ static areNotAjustable(type1, type2){
 
   get height(){return this._height || (this._height = this.getHeight())}
   set height(v){
+    this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
     this._height = v
     this.obj && (this.obj.style.height = px(v))
     this.data.height = v
@@ -349,8 +356,6 @@ static areNotAjustable(type1, type2){
   }
 
   getHeight(){
-    // console.log(" -> getHeight / systeme %i", this.id)
-    // console.log("this.obj = ", this.obj)
     return this.obj && this.obj.offsetHeight
   }
 

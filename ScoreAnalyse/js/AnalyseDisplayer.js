@@ -20,8 +20,6 @@ class AnalyseDisplayer {
  * @return TRUE si l'affichage s'est bien passé
  */
 static display(analyse){
-  console.log("-> AnalyseDisplayer.display()", analyse)
-  // return
   /** 
    * Nettoyage général et notamment de la table d'analyse
    * s'il y avait déjà une analyse affichée. Normalement ça
@@ -92,8 +90,6 @@ static setPreferences(appPrefs){
       }
     })
   }
-  Preferences.init()
-
 }
 
 /**

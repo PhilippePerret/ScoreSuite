@@ -7,12 +7,10 @@ function onKeypressOnAnalyse(e){
   switch(e.key){
 
     case 'M':
-      console.log("Ouverture du manuel")
       Manuel.toggle.call(Manuel)
       break
 
     case 'P':
-      console.log("Ouverture les préférences")
       Preferences.toggle.call(Preferences)
       break
 

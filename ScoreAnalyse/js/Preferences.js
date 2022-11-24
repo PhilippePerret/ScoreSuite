@@ -19,26 +19,49 @@ get(key){return this.data[key].value || this.data[key].default}
 set(key,value){
   this.data[key].value = value
 
-  if ( this.prefsBuilt ) {  
-    let element = DGet(`#${key}`)
-    if ( element ) {  
-      switch(this.data[key].type){
-        case 'checkbox':
-          element.checked = value
-          break
-        case 'inputtext':
-          element.value = value
-          break
-      }
-    } else {
-      console.error("L'élément préférences #%s est introuvable…", key)
+  let element = DGet(`#pref-${key}`)
+  if ( element ) {  
+    switch(this.data[key].type){
+      case 'checkbox':
+        element.checked = value
+        break
+      case 'inputtext':
+        element.value = value
+        break
     }
+  } else {
+    console.error("L'élément préférences #%s est introuvable…", key)
   }
 
 }
 
 toggle(key){
   this.set(key, !this.get(key))
+}
+
+onChange_thiness_cellule_line(){
+  AMark.bSnap = this.getValueOf('thiness_cellule_line')
+}
+onChange_grid_horizontal_space(){
+  AMark.snap && (AMark.snap = this.getValueOf('grid_horizontal_space'))
+}
+onChange_grid_vertical_space(){
+  AMark.snap && (AMark.snap = this.getValueOf('grid_vertical_space'))
+}
+
+getValueOf(key, defaut){
+  /**
+   ** Méthode retournant la valeur de la clé préférence +key+ dans
+   ** son champ (souvent après une modification) en lui donnant son
+   ** bon type (défini en vtype dans les préférences de l'app.)
+   **/
+  const dkey = PreferencesAppData[key]
+  switch(dkey.type){
+  case 'checkbox':
+    return DGet(`pref-${key}`).checked
+  default:
+    return DGet(`pref-${key}`).value || defaut
+  }
 }
 
 /**
@@ -65,6 +88,7 @@ getData(){
 }
 
 saveData(key,value){
+  // console.debug("-> saveData(%s, %s)", key, value)
   // Rectification de la valeur en fonction du typeV
   switch(this.data[key].typeV){
   case 'number': value = Number(value)
@@ -78,7 +102,35 @@ saveData(key,value){
  */
 init(){
   this.data = PreferencesAppData;
+  this.build()
   this.insertStylesCSSInHead();
+  this.prepareOnChangeMethods()
+}
+
+prepareOnChangeMethods(){
+  const my = this
+  Object.values(PreferencesAppData).forEach(dpref => {
+    const key = dpref.id
+    const methChange = `onChange_${key}`
+    const obj = DGet(`#pref-${key}`)
+    if ( 'function' == typeof my[methChange] ) {
+      listen(obj,'change', my[methChange].bind(my))
+    }
+    /*
+    |   Dans tous les cas, on met une méthode lambda qui va consigner
+    |   la valeur
+    */
+    var methode ;
+    switch(dpref.type){
+    case 'checkbox':
+      methode = (function(key, obj){this.saveData(key, obj.checked)}).bind(my, key, obj)
+      break
+    case 'inputtext':
+      methode = (function(key, obj){this.saveData(key, obj.value)}).bind(my, key, obj)
+      break
+    }
+    listen(obj,'change', methode)
+  })
 }
 
 toggle(){
@@ -86,7 +138,7 @@ toggle(){
 }
 // Pour ouvrir le panneau
 open(){
-  this.obj ? this.show() : this.build()
+  this.show()
   this.isOpened = true
 }
 hide(){
@@ -95,11 +147,6 @@ hide(){
 }
 show(){
   this.obj.classList.remove('hidden')
-}
-
-// @return TRUE si le panneau des préférences a été construit
-get prefsBuilt(){
-  return true && this.obj
 }
 
 /**
@@ -148,7 +195,11 @@ buildSelectorsInHead(){
 
 // Construction du panneau
 build(){
-  var o = DCreate('SECTION', {id:'preferences-panel'})
+  if ( this.isBuilt ) {
+    console.error("Le panneau préférences est déjà construit.")
+    return
+  }
+  var o = DCreate('SECTION', {id:'preferences-panel', class:'hidden'})
   o.appendChild(DCreate('DIV', {id:'tip-close', text:"(⇧ P pour fermer)"}))
   o.appendChild(DCreate('H2',{text:'Préférences'}))
 
@@ -173,6 +224,9 @@ build(){
 
   this.obj = o
   this.observe()
+
+  this.isBuilt = true
+
 }
 
 observe(){
@@ -196,8 +250,13 @@ observe(){
 buildCheckBox(params){
   const d = DCreate('DIV', {class:'div-checkbox div-data'})
 
+  /*
+  |  ID DOM de l'élément
+  */
+  const domId = `pref-${params.id}`
+
   // La case à cocher    
-  const cb = DCreate('INPUT',{type:'checkbox', id: params.id, value:params.value})
+  const cb = DCreate('INPUT',{type:'checkbox', id: domId, value:params.value})
   d.appendChild(cb)
 
   if ( undefined == params.value ) {
@@ -213,7 +272,7 @@ buildCheckBox(params){
   })
 
   // Le label
-  const lab = DCreate('LABEL', {for:params.id, text: params.label})
+  const lab = DCreate('LABEL', {for:domId, text: params.label})
   d.appendChild(lab)
 
   // listen(lab, 'click', e => {
@@ -272,23 +331,24 @@ buildChoixPressoirs(params){
  */
 buildInputText(params){
   const my = this
+  const domId = `pref-${params.id}`
   const prop = params.id.split('-')[1]
   const div = DCreate('DIV', {id:`div-${params.id}`, class:'type-valeur div-data'})
   const lab = DCreate('LABEL', {text:params.label})
   div.appendChild(lab)
-  const field = DCreate('INPUT', {type:'text', id:params.id, value: params.value||params.default})
+  const field = DCreate('INPUT', {type:'text', id:domId, value: params.value||params.default})
   div.appendChild(field)
-  field.addEventListener('change', function(e){my.saveData(params.id, field.value)})
   // La description (if any)
   if (params.description){
     div.appendChild(DCreate('DIV', {class:'description', text:params.description}))
   };
-
   return div
 }
 
+
 }//PreferencesClass
 const Preferences = new PreferencesClass()
+const pref = Preferences.get.bind(Preferences)
 // Si on veut utiliser 'Pref[<key>]' on peut ajouter à la fin de
 // Preferences_AppData.js :
 //    const Pref = Preferences.data

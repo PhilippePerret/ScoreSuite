@@ -18,8 +18,14 @@ class OptionsTool extends MenusTool {
   }
 
   static onActivate_toggleGrid(e, option){
+    /**
+     ** Appelée quand on active ou désactive le menu d'alignement
+     ** sur la grille. 
+    **/
     var modeON = not(option.dataset.checked == 'true')
-    AMark.alignOnGrid = modeON
+    AMark.vSnap = modeON ? pref('grid_vertical_space')   : null
+    AMark.hSnap = modeON ? pref('grid_horizontal_space') : null
+    AMark.bSnap = modeON ? pref('thiness_cellule_line')  : null
     option.dataset.checked = modeON ? 'true' : 'false' 
   }
 

@@ -9,12 +9,11 @@
 class OpenMenu extends MenusTool {
 
   static onActivate_prefs(){
-    console.log("Je dois apprendre à ouvrir les préférences")
-
+    Preferences.toggle.call(Preferences)
   }
 
   static onActivate_manual(){
-    console.log("Je dois apprendre à ouvrir le manuel d'utilisation")    
+    Manuel.toggle.call(Manuel)
   }
 
   static onActivate_infosAnalyse(){
