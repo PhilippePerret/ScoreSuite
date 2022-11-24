@@ -13,7 +13,15 @@ class PreferencesClass {
 
 setValuesSaved(savedData){
   for(var prop in savedData){
-    Object.assign(this.data[prop], {value: savedData[prop]})
+    const dprop = this.data[prop]
+    const value = (function(v, type){
+      switch(type){
+      case 'boolean': return v == 'true';
+      case 'number' : return Number(v);
+      default: return v
+      }
+    })(savedData[prop], dprop.typeV)
+    Object.assign(this.data[prop], {value: value})
   }
 }
 
@@ -22,7 +30,7 @@ setValuesSaved(savedData){
  * @usage     pref(<key>) OU Preferences.get(<key>)
  */
 get(key){
-  console.log("pref %s = '%s' in ", key, this.data[key].value, this.data)
+  console.log("pref %s = %s (%s) in ", key, this.data[key].value, typeof this.data[key].value, this.data)
   return this.data[key].value || this.data[key].default
 }
 set(key,value){
