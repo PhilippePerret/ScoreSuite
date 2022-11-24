@@ -23,9 +23,7 @@ class OptionsTool extends MenusTool {
      ** sur la grille. 
     **/
     var modeON = not(option.dataset.checked == 'true')
-    AMark.vSnap = modeON ? pref('grid_vertical_space')   : null
-    AMark.hSnap = modeON ? pref('grid_horizontal_space') : null
-    AMark.bSnap = modeON ? pref('thiness_cellule_line')  : null
+    AMark.toggleGridMode(modeON)
     option.dataset.checked = modeON ? 'true' : 'false' 
   }
 

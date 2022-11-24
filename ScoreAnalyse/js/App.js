@@ -18,8 +18,10 @@ class AppClass {
    * Si une analyse est en cours, cette méthode reçoit les éléments
    */
   onload_analyse(data){
+    console.debug("DATA REMONTÉES :", data)
     if (data) {
       var analyse = new Analyse(data)
+      Preferences.setValuesSaved(data.preferences)
       analyse.checkSystems()
       analyse.display()
       Preferences.afterLoadingAnalyse()

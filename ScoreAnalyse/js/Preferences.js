@@ -11,11 +11,20 @@
 
 class PreferencesClass {
 
+setValuesSaved(savedData){
+  for(var prop in savedData){
+    Object.assign(this.data[prop], {value: savedData[prop]})
+  }
+}
+
 /**
  * @return la valeur de préférence de la clé +key+
- * @usage     Preferences.get(<key>)
+ * @usage     pref(<key>) OU Preferences.get(<key>)
  */
-get(key){return this.data[key].value || this.data[key].default}
+get(key){
+  console.log("pref %s = '%s' in ", key, this.data[key].value, this.data)
+  return this.data[key].value || this.data[key].default
+}
 set(key,value){
   this.data[key].value = value
 
@@ -56,11 +65,15 @@ getValueOf(key, defaut){
    ** bon type (défini en vtype dans les préférences de l'app.)
    **/
   const dkey = PreferencesAppData[key]
+  if ( not(DGet(`#pref-${key}`)) ) {
+    erreur("Impossible de trouver l'élément préférence d'identifiant #"+key)
+    return null
+  }
   switch(dkey.type){
   case 'checkbox':
-    return DGet(`pref-${key}`).checked
+    return DGet(`#pref-${key}`).checked
   default:
-    return DGet(`pref-${key}`).value || defaut
+    return DGet(`#pref-${key}`).value || defaut
   }
 }
 
@@ -69,6 +82,9 @@ getValueOf(key, defaut){
  * fabrication des systèmes)
  */
 afterLoadingAnalyse(){
+  this.build()
+  this.insertStylesCSSInHead();
+  this.prepareOnChangeMethods()
   const locked = this.get('lock_systems')
   Systeme[locked ? 'lockAll':'unlockAll'].call(Systeme)
   UI.btnLockSystems.classList[ locked ? 'add' : 'remove']('pressed')
@@ -99,12 +115,10 @@ saveData(key,value){
 
 /**
  * Appel au chargement de l'application
+ * (avant le chargement de l'analyse)
  */
 init(){
   this.data = PreferencesAppData;
-  this.build()
-  this.insertStylesCSSInHead();
-  this.prepareOnChangeMethods()
 }
 
 prepareOnChangeMethods(){
@@ -171,8 +185,9 @@ insertStylesCSSInHead(){
   if ( this.stylesTagInHead ) {
     this.updateStylesInHead()
   } else {
-    this.stylesTagInHead = DCreate('STYLE',{type:'text/css', text: this.buildSelectorsInHead()})
+    this.stylesTagInHead = DCreate('STYLE',{id:'styles-selectors', type:'text/css', text: this.buildSelectorsInHead()})
     document.head.appendChild(this.stylesTagInHead)
+    this.stylesTagInHead.disabled = false
   }
 }
 /**
@@ -190,7 +205,9 @@ buildSelectorsInHead(){
     if ( undefined == dp.selector ) return ;
     selectors.push(`${dp.selector} {${dp.selector_value.replace(/__VALUE__/g, my.get(dp.id))}}`)
   })
-  return selectors.join("\n")  
+  selectors = selectors.join("\n")
+  // console.debug("selectors = ", selectors)
+  return selectors
 }
 
 // Construction du panneau

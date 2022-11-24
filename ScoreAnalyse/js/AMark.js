@@ -89,6 +89,29 @@ static cleanUp(){
   AObjet.resetSelection()
 }
 
+/* --- Snap Grid Methods --- */
+
+static toggleGridMode(modeON){
+  this.vSnap = modeON ? pref('grid_vertical_space')   : null
+  this.hSnap = modeON ? pref('grid_horizontal_space') : null
+  this.bSnap = modeON ? pref('thiness_cellule_line')  : 0
+  console.log("this.bSnap = ", this.bSnap)
+}
+
+static snapVertical(v, addBorder){
+  if ( !this.vSnap ) return v ;
+  return Math.round(v / this.vSnap) * this.vSnap + (addBorder ? this.bSnap : 0)
+}
+static snapHorizontal(v, addBorder){
+  if ( !this.hSnap ) return v ;
+  return Math.round(v / this.hSnap) * this.hSnap + (addBorder ? this.bSnap : 0)
+}
+
+static get bSnap(){
+  return this._bSnap || (this._bSnap = pref('thiness_cellule_line'))
+}
+static set bSnap(v){ this._bSnap = v}
+
 
 //##################################################################
 
@@ -396,10 +419,10 @@ build(){
   this.isCadence  && this.buildSignePlusCadence()
   
   // Position et taille de la marque
-  this.data.width  && this.setWidth(this.width)
-  this.data.height && (this.height = this.data.height)  
-  this.obj.style.left = px(this.left)
-  this.obj.style.top  = px(this.top)
+  this.data.width   && this.applyWidth(this.width)
+  this.data.height  && this.setHeight(this.height)
+  this.setLeft(this.left)
+  this.setTop(this.top)
 
   // Css suplémentaires
   this.applyCss()
@@ -414,12 +437,12 @@ buildSpanContent(){
 }
 
 get formated_content(){
-  if ( this.isText ) {
+  if ( this.hasFormatedText && this.content ) {
     return this.content
       .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
       .replace(/\*(.+?)\*/g, '<i>$1</i>')
       .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
-      .replace(/\^(e|er|re)/g, '<sup>$1</sup>')
+      .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
   } else {
     return this.content
   }
@@ -435,6 +458,9 @@ get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
 get isModulation(){return this.type == 'mod'}
 get isEmprunt()   {return this.type == 'emp'}
 get isText(){return this.type == 'txt'}
+get hasFormatedText(){
+  return this._hasformtxt || (this._hasformtxt = ['txt','bbx'].includes(this.type))
+}
 
 get isHresizable(){
   return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
@@ -478,26 +504,25 @@ observe(){
     $(this.obj).resizable({
         aspectRatio: true
       , stop: function(e, ui){
-          my.width  = my.getWidth()
-          my.height = my.getHeight()
-          my.ajustePosition()
+          my.width  = my.getWidth.call(my)
+          my.height = my.getHeight.call(my)
+          my.ajustePosition.call(my)
       }
     })
   } else if ( this.isVresizable && this.isHresizable ) {
     $(this.obj).resizable({
         handles: 'e,s'
       , stop: function(e, ui){
-          my.width  = my.getWidth()
-          my.height = my.getHeight()
-          my.ajustePosition()
+          my.width  = my.getWidth.call(my)
+          my.height = my.getHeight.call(my)
+          my.ajustePosition.call(my)
       }
     })
   } else if ( this.isHresizable ) {
     $(this.obj).resizable({
       handles:'e'
     , stop: function(e, ui){
-        my.width = my.getWidth()
-        // console.debug("Je mets ma longueur à ", my.width)
+        my.width = my.getWidth.call(my)
       }
     })
   }
@@ -666,10 +691,9 @@ unsetSelected(){
  */
 ajustePosition(left, top){
   const initTop = 0 + this.data.top
-  this.data.left = left
   this.left = left
   this.top  = top
-  if (Preferences.get('adjust_same_mark') && this.isTypeAjustable ) {
+  if (pref('adjust_same_mark') && this.isTypeAjustable ) {
     /*
     |  Ajustement précis de l'objet en fonction de son contexte
     */
@@ -847,7 +871,7 @@ buildLigneProlongation(){
   if ( my.hasProlongLine ) return
   my.prolongLine = DCreate('SPAN', {class:'pline'})
   my.obj.appendChild(this.prolongLine)
-  my.data.width || my.setWidth(200)
+  my.data.width || my.applyWidth(200)
   // Resizable
   $(my.obj).resizable({
       alsoResize: my.prolongLine
@@ -855,7 +879,7 @@ buildLigneProlongation(){
     , start: function(e, ui){
       }
     , stop: function(e, ui){
-        my.setWidth(my.prolongLine.offsetWidth + my.contentSpan.offsetWidth + 10)
+        my.applyWidth(my.prolongLine.offsetWidth + my.contentSpan.offsetWidth + 10)
       }
   })
 }
@@ -886,20 +910,14 @@ get height(){
   }
 }
 set height(v){
-  if ( this.isPartie ) {
-    this.setVerticalLineHeight(v)
-  }
+  this.isPartie && this.setVerticalLineHeight(v)
   super.height = v
 }
 
-setWidth(v) {
+applyWidth(v) {
   const my  = this
-  super.width = v
-  if (my.hasProlongLine) {
-    my.setProlongLineWidth()
-  } else { // les objets allongeables
-    my.obj.style.width = px(v)
-  }
+  this.setWidth(this.width)
+  my.hasProlongLine && my.setProlongLineWidth()
 }
 
 get type(){return this._type}

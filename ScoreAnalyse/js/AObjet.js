@@ -272,27 +272,6 @@ static areNotAjustable(type1, type2){
   set id(v){this._id = v}
 
 
-  get top(){
-    return this._top || (this._top = this.getTop() ) 
-  }
-  getTop(){
-    if ( undefined == this.data.top ) {
-      return this.obj.offsetTop
-    } else {
-      return this.data.top
-    }
-  }
-  set top(v){
-    // Grid adjustment
-    this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
-    const currentTop = 0 + this.data.top
-    this._top = v
-    this.obj && (this.obj.style.top = px(v))
-    this.data.top = v
-    this.modified = true
-    this.isPartie && this.obj && this.currentTop != v && this.memoriseHauteurLignePartie() // pour la ligne verticale
-    this.analyse && this.analyse.setModified()
-  }
 
   memoriseHauteurLignePartie(){
     if (this.obj.querySelector('span.vline')){
@@ -303,6 +282,28 @@ static areNotAjustable(type1, type2){
     }
   }
 
+
+  get top(){
+    return this._top || (this._top = this.getTop() ) 
+  }
+  set top(v){
+    if ( v == this.data.top ) return
+    v = AMark.snapVertical(v, true) // Grid adjustment
+    const currentTop = 0 + this.data.top
+    this._top = v
+    this.obj && (this.obj.style.top = px(v))
+    this.data.top = v
+    this.modified = true
+    this.isPartie && this.obj && this.currentTop != v && this.memoriseHauteurLignePartie() // pour la ligne verticale
+    this.analyse && this.analyse.setModified()
+  }
+  getTop(){
+    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('top'))
+  }
+  setTop(v){
+    this.obj && (this.obj.style.top = px(v))    
+  }
+
   get bottom(){ return this.top + this.height }
   set bottom(v){
     this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
@@ -311,52 +312,60 @@ static areNotAjustable(type1, type2){
 
   get left(){return this._left || (this._left = this.data.left || this.obj.offsetLeft)}
   set left(v){
-    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
+    if ( v == this.data.left ) return
+    v = AMark.snapHorizontal(v, true)
     this._left = v
-    this.obj && (this.obj.style.left = px(v))
+    this.setLeft(v)
     this.data.left = v
-    // this.modified = true
     this.analyse && this.analyse.setModified()
+  }
+  setLeft(v){
+    this.obj && (this.obj.style.left = px(v))
   }
 
   get right(){return this._right || (this._right = this.left + this.width) }
   set right(v){
-    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
+    v = AMark.snapHorizontal(v, false)
     this._right = v
     this.left   = v - this.width
   }
 
   get width(){ return this.data.width || this.getWidth() }
   set width(v) {
-    this.isMark && AMark.hSnap && (v = Math.round(v / AMark.hSnap) * AMark.hSnap)
     if ( v == this.data.width ) return
+    // console.debug("width à l'entrée = %i", 0 + v)
+    v = AMark.snapHorizontal(v, false)
+    // console.debug("width ajustée = %i", 0 + v)
     this.data.width = v 
-    this.obj && (this.obj.style.width = px(v))
+    this.setWidth(v)
     this.analyse && this.analyse.setModified()
   }
 
-  get height(){return this._height || (this._height = this.getHeight())}
+  get height(){return this._height || this.data.height || (this._height = this.getHeight())}
   set height(v){
-    this.isMark && AMark.vSnap && (v = Math.round(v / AMark.vSnap) * AMark.vSnap)
+    if ( v == this.data.height ) return
+    v = AMark.snapVertical(v, false)
     this._height = v
-    this.obj && (this.obj.style.height = px(v))
+    this.setHeight(v)
     this.data.height = v
-    this.modified = true
     this.analyse && this.analyse.setModified()
   }
 
   getWidth(){
-    if (this.obj) {
-      if ( this.obj.style.width ) {
-        return unpx(this.obj.style.width)
-      } else {
-        return this.obj.offsetWidth
-      }
-    }
+    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('width'))
+  }
+  setWidth(v){
+    /** Appliquer la largeur à l'objet **/
+    // console.debug("Appliquer la largeur %i à", v, this.obj)
+    this.obj && (this.obj.style.width = px(v))
   }
 
   getHeight(){
-    return this.obj && this.obj.offsetHeight
+    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('height'))
   }
-
+  setHeight(v){
+    /** Appliquer la hauteur à l'objet **/
+    // console.debug("Appliquer la hauteur %i à ", v, this.obj)
+    this.obj && (this.obj.style.height = px(v))
+  }
 }

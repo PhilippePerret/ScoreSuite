@@ -7,9 +7,9 @@
 
 const PreferencesAppData = {
     lock_systems            :{type:'checkbox'    ,typeV:'boolean'  ,default:false    ,label:'Verrouiller les systèmes'}
-  , systeme_width           :{type:'inputtext'   ,typeV:'number'   ,default:1860     ,label:"Largeur (en pixels) des systèmes", selector:'img.systeme', selector_value:"width:__VALUE__px;"}
   , grid_horizontal_space   :{type:'inputtext'   ,typeV:'number'   ,default:50       ,label:'Espacement horizontal sur le grille'}
   , grid_vertical_space     :{type:'inputtext'   ,typeV:'number'   ,default:50       ,label:'Espacement vertical sur le grille'}
+  , systeme_width           :{type:'inputtext'   ,typeV:'number'   ,default:1860     ,label:"Largeur (en pixels) des systèmes", selector:'img.systeme', selector_value:"width:__VALUE__px;"}
   , top_first_system        :{type:'inputtext'   ,typeV:'number'   ,default:50       ,label:"Décalage haut du premier système (en pixels)"}
   , distance_systemes       :{type:'inputtext'   ,typeV:'number'   ,default:50       ,label:"Distance par défaut (en pixels) des système"}
   , adjust_same_mark        :{type:'checkbox'    ,typeV:'boolean'  ,default:true     ,label:"Ajuster en hauteur les marques de même type"}
@@ -19,8 +19,8 @@ const PreferencesAppData = {
   , marque_modulation_size  :{type:'inputtext'   ,typeV:'number'   ,default:26       ,label:"Taille des marques d'harmonie"  ,unite:'pt' ,selector:'div.aobj.mod span.content', selector_value:'font-size:__VALUE__pt;'}
   , marque_emprunt_size     :{type:'inputtext'   ,typeV:'number'   ,default:24       ,label:"Taille des marques d'emprunt"   ,unite:'pt' ,selector:'div.aobj.emp span.content', selector_value:'font-size:__VALUE__pt;'}
   , marque_cellule_size     :{type:'inputtext'   ,typeV:'number'   ,default:26       ,label:"Taille des noms de cellules"    ,unite:'pt' ,selector:'div.amark.cel span.content', selector_value:'font-size:__VALUE__pt;'}
-  , thiness_segment_line    :{type:'inputtext'   ,typeV:'number'   ,default:4        ,label:"Grosseur trait segments"        ,unite:'px' ,selector:'div.amark.seg'   ,selector_value:'border-width:__VALUE__px;'}
-  , thiness_cellule_line    :{type:'inputtext'   ,typeV:'number'   ,default:5        ,label:"Grosseur trait cellules"        ,unite:'px' ,selector:'div.amark.cel'   ,selector_value:'border-width:__VALUE__px;'}
+  , thiness_segment_line    :{type:'inputtext'   ,typeV:'number'   ,default:4        ,label:"Épaisseur trait segments"        ,unite:'px' ,selector:'div.amark.seg'   ,selector_value:'border-width:__VALUE__px;'}
+  , thiness_cellule_line    :{type:'inputtext'   ,typeV:'number'   ,default:5        ,label:"Épaisseur trait cellules"        ,unite:'px' ,selector:'div.amark.cel'   ,selector_value:'border-width:__VALUE__px;'}
   , marque_pedale_size      :{type:'inputtext'   ,typeV:'number'   ,default:40       ,label:"Taille des pédales"             ,unite:'px' ,selector:'div.aobj.ped span.content', selector_value:'font-size:__VALUE__px;width:calc(__VALUE__px / 2);height:calc(__VALUE__px / 2);line-height:calc(__VALUE__px / 2);'}
   , marque_texte_size_1     :{type:'inputtext'   ,typeV:'number'   ,default:60       ,label:"Taille des gros textes"         ,unite:'px' ,selector:'div.amark.txt.size1 span.content',   selector_value:'font-size:__VALUE__px;'}
   , marque_texte_size_2     :{type:'inputtext'   ,typeV:'number'   ,default:40       ,label:"Taille des textes moyens"       ,unite:'px' ,selector:'div.amark.txt.size2 span.content', selector_value:'font-size:__VALUE__px;'}
