@@ -32,23 +32,35 @@ class AnalyseSaver {
   static save(){
     if ( Analyse.current ) {
       console.log("Enregistrement…")
-      /*
-      |  On prend le scroll actuel pour pouvoir le remettre
-      */
-      Preferences.set('last_scroll' , window.scrollY)
-      /*
-      |  Sauvegarde des marques
-      */
-      this.saveAnalyseTags(Analyse.current)
-      /*
-      |  Sauvegarde des préférences
-      */
-      this.savePreferences(Analyse.current)
-      /*
-      |  Sauvegarde des informations et des systèmes
-      */
-      this.saveInfos(Analyse.current)
-      console.log("Enregistrement terminé.")
+      try {      
+        /*
+        |  On vérifie qu'il n'y ait pas de problèmes
+        */
+        Analyse.current.checkDataBeforeSave()
+        /*
+        |  On prend le scroll actuel pour pouvoir le remettre
+        */
+        Preferences.set('last_scroll' , window.scrollY)
+        /*
+        |  Sauvegarde des marques
+        */
+        this.saveAnalyseTags(Analyse.current)
+        /*
+        |  Sauvegarde des préférences
+        */
+        this.savePreferences(Analyse.current)
+        /*
+        |  Sauvegarde des informations et des systèmes
+        */
+        this.saveInfos(Analyse.current)
+        console.log("Enregistrement terminé.")
+
+      } catch(err){
+        
+        erreur(err + '<br><br>Je ne peux pas procéder à l’enregistrement.')
+        console.error("Enregistrement interrompu.")
+      
+      }
     } else {
       erreur("Il faut ouvrir ou créer une analyse, pour la sauver.")
     }

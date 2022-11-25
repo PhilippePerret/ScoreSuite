@@ -21,3 +21,8 @@ function coordonnate(x, y){
   window.__xyfield || (window.__xyfield = DGet('#coordonnates'))
   window.__xyfield.innerHTML = `x: ${x} y: ${y}`
 }
+
+function raise(msg){
+  erreur(msg)
+  throw new Error(msg)
+}

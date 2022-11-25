@@ -196,6 +196,21 @@ checkSystems(){
   savePreferences(){  AnalyseSaver.savePreferences(this)}
   saveAnalyseTags(){  AnalyseSaver.saveAnalyseTags(this)}
 
+  checkDataBeforeSave(){
+    /**
+     ** Méthode qui fait quelques vérification avant de procéder à
+     ** l'enregistrement des données.
+     ** @return true en cas de succès, false otherwise
+     **/
+    AObjet.items.forEach(aobj => {
+      if ( not(aobj.left || aobj.type == 'systeme') || not(aobj.top) ) {
+        console.error(aobj)
+        raise("Il manque le top ou le left de l'élément mis en console.")
+      }
+    })
+
+    return true
+  }
   /**
    * Pour actualiser une donnée général (métadonnée, data)
    * 
