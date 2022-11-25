@@ -204,3 +204,8 @@ div#coordonnates {
   background-color:black;
   color:white;
 }
+
+mus {
+  font-family:'PhilNote2';
+  font-size: inherit;
+}

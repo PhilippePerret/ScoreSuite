@@ -459,7 +459,7 @@ buildSpanContent(){
 
 get formated_content(){
   if ( this.hasFormatedText && this.content ) {
-    return this.markdownize(this.content)
+    return this.markdownize(this.notize(this.content))
   } else {
     return this.content
   }
@@ -469,7 +469,10 @@ markdownize(str){
           .replace(/\*(.+?)\*/g, '<i>$1</i>')
           .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
           .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
-
+}
+notize(str){
+  /** Repère les notes dans +str+ et leur met la bonne fonte **/
+  return str.replace(/\b([A-H][\-\+=]?m?)(\+?[24579][\-\+]?)?([\s\.\,])/, '<mus>$1</mus>$2')
 }
 
 /* --- Predicate Methods --- */
