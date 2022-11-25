@@ -273,6 +273,15 @@ static areNotAjustable(type1, type2){
   set id(v){this._id = v}
 
 
+  corrigeDataValue(prop){
+    /**
+     ** Permet de corriger la valeur de la propriété +prop+ dans les
+     ** données de l'objet.
+     ** Cette méthode est appelée juste avant l'enregistrement,
+     ** lorsque le programme s'assure que les valeurs sont bonnes.
+     **/
+    Object.assign(this.data, {[prop]: this.getCssProp(prop)})
+  }
 
   memoriseHauteurLignePartie(){
     if (this.obj.querySelector('span.vline')){
@@ -373,7 +382,7 @@ getCssProp(prop, notANumber){
   }
 
   getWidth(){
-    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('width'))
+    return this.obj && this.getCssProp('width')
   }
   setWidth(v){
     /** Appliquer la largeur à l'objet **/
@@ -381,7 +390,7 @@ getCssProp(prop, notANumber){
   }
 
   getHeight(){
-    return this.obj && unpx(getComputedStyle(this.obj).getPropertyValue('height'))
+    return this.obj && this.getCssProp('height')
   }
   setHeight(v){
     /** Appliquer la hauteur à l'objet **/

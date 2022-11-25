@@ -472,7 +472,7 @@ markdownize(str){
 }
 notize(str){
   /** Repère les notes dans +str+ et leur met la bonne fonte **/
-  return str.replace(/\b([A-H][\-\+=]?m?)(\+?[24579][\-\+]?)?([\s\.\,])/, '<mus>$1</mus>$2')
+  return str.replace(/\b([A-H][\-\+=]?m?)(\+?[24579][\-\+]?)?([\s\.\,])/, '<mus>$1</mus>$3')
 }
 
 /* --- Predicate Methods --- */

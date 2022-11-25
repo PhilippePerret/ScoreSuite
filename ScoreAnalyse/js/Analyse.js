@@ -212,10 +212,12 @@ checkSystems(){
             /*
             |  Check des marques d'analyse
             */
-            o.top         || raise("Le top de l'objet n'est pas défini.")
-            o.left        || raise("Le left ne l'objet n'est pas défini.")
-            isNaN(o.top)  && raise("Le top devrait être un nombre.")
-            isNaN(o.left) && raise("Le left de l'objet devrait être un nombre")
+            o.data.top  || o.corrigeDataValue('top')
+            o.data.left || o.corrigeDataValue('left')
+            o.data.top          || raise("Le top de l'objet n'est pas défini.")
+            o.data.left         || raise("Le left ne l'objet n'est pas défini.")
+            isNaN(o.data.top)   && raise("Le top devrait être un nombre.")
+            isNaN(o.data.left)  && raise("Le left de l'objet devrait être un nombre")
           }
         } catch(err) {
           console.error("Objet erroné : ", o)
