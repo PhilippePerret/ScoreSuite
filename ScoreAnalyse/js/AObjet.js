@@ -12,6 +12,30 @@
 
 class AObjet {
 
+  static each(method){
+    this.items.forEach(aobjet => method(aobjet))
+  }
+
+
+  static select(method){
+    /** Retourne toutes les marques qui retournent true avec la 
+     ** méthode +method+ **/
+    var liste = []
+    this.each(aobjet => {
+      method(aobjet) === true && liste.push(aobjet)
+    })
+    return liste
+  }
+
+  static selectFirst(method){
+    /** Retourne le premier objet qui renvoie true avec la méthode
+     ** +method+ **/
+    for (var aobjet of this.items ) {
+      if ( aobjet.type == 'systeme') continue ;
+      if ( method(aobjet) === true ) return aobjet
+    }
+  }
+
   static add(objet){
     this.items.push(objet)
     Object.assign(this.table, {[objet.id]: objet})

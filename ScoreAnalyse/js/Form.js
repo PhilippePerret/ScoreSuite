@@ -277,16 +277,26 @@ class FormObj {
 
   goToMesure(){
     /** Rejoint la mesure de la partie désignée **/
-    console.warn("Je dois apprendre à rejoindre la partie désignée. Pour cela, il faut que je crée le type 'mea' pour 'measure', afin de pouvoir le répérer")
+    const my = this
     /*
     |  On boucle sur les marques de type "measure" pour trouver celle
     |  qui se rapproche le plus de celles courantes.
     */
-    // TODO
+    var mesure
+    const mesures = AObjet.select(aobj => { return aobj.subtype == 'mes'})
+    mesures.sort(function(a,b){
+      return Number(a.content.trim()) - Number(b.content.trim()) ;
+    })
+    for ( var mes of mesures ) {
+      if ( Number(mes.content.trim()) >= this.start ) {
+        mesure = mes
+        break
+      }
+    }
     /*
     |  On scroll jusqu'à cette mesure
     */
-    // TODO
+    window.scrollTo({top: mesure.top - 200})
   }
 
   buildInList(container){

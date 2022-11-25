@@ -131,6 +131,10 @@ Cercle      : un cercle autour d'une note par exemple
     , procedure: ["Sélectionner la marque d'analyse", "activer la poignée de la ligne", "déplacer la poignée pour définir la longueur", "cliquer à nouveau sur la poignée pour finir."]
   }
 , {
+      operation: "Se déplacer rapidement de partie en partie de la partition"
+    , procedure: ['Numéroter les mesures (au moins les premières des systèmes),', 'créer les parties de la pièce (ou utiliser la forme pour définir des repères),', 'bien régler les numéros de mesures de ces parties,', 'cliquer sur le bouton ⎆ pour rejoindre aussitôt ces parties/repères.']
+  }
+, {
       operation: "Changer le type de la marque"
     , procedure: [
             'Il n’existe pas de moyen de changer le type d’une marque (pour le moment, mais c’est dans les tuyaux).',
