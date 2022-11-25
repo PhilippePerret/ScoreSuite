@@ -69,7 +69,10 @@ class AnalyseSaver {
   static saveInfos(analyse){
     this.analyse = analyse
     var newInfos = Analyse.panneau_infos.getData()
-    Object.assign(newInfos, {systems: Systeme.getData()})
+    Object.assign(newInfos, {
+        systems:  Systeme.getData()
+      , form:     Form.getData()
+    })
     analyse.data.infos = newInfos
     WAA.send({
       class:    'ScoreAnalyse::Analyse',

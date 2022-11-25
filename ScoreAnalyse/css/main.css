@@ -8,6 +8,11 @@ body {
   font-size: 16pt;
 }
 
+input, textarea, select, select > option {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 .fright {float: right}
 
 .invisible {

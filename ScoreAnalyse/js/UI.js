@@ -64,6 +64,9 @@ class UIClass {
 
     // Le menu "Ajuster"
     AdjustMenu.init()
+
+    // Tout ce qui concerne la forme
+    Form.init()
         
     const hauteurFen  = window.innerHeight
     const moitieFen   = parseInt(hauteurFen / 2,10)

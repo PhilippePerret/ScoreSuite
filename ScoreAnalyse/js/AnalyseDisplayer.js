@@ -50,6 +50,11 @@ static display(analyse){
   //
   this.displayAnalyseTags(analyse.tags)
 
+  /*
+  |  Données de forme
+  */
+  Form.setData(analyse.infos.form)
+
   console.log("= AFFICHAGE OK =")
 
   return true

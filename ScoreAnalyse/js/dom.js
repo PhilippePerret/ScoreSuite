@@ -28,6 +28,10 @@ function DGet(selector, container){
   container = container || document
   return container.querySelector(selector)
 }
+function DGetAll(selector, container){
+  container = container || document
+  return container.querySelectorAll(selector)
+}
 
 function DCreate(tagName,attrs){
   attrs = attrs || {}
