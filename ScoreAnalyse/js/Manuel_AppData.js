@@ -122,16 +122,24 @@ Cercle      : un cercle autour d'une note par exemple
     , procedure: ["Créer l'originale si nécessaire", "presser la touche ALT", "avec la touche ALT pressée, déplacer la marque d'analyse à dupliquer à l'endroit voulu."]
   }
 , {
+      operation:'Formatage des textes'
+    , procedure: ["C'est du pseudo-markdown.","**gras**","*italique*","_souligné_","^exposant","¡plus petit¡"] 
+    , precision: "Normalement, les notes sont automatiquement détectées."
+  }
+, {
       operation: "Allonger/raccourcir la ligne de prolongation"
     , procedure: ["Sélectionner la marque d'analyse", "activer la poignée de la ligne", "déplacer la poignée pour définir la longueur", "cliquer à nouveau sur la poignée pour finir."]
   }
-
 , {
       operation: "Changer le type de la marque"
     , procedure: [
-            'Il n’existe pas de moyen de changer le type d’une marque.',
+            'Il n’existe pas de moyen de changer le type d’une marque (pour le moment, mais c’est dans les tuyaux).',
             "Le seul moyen est de détruire la marque actuelle et d'en créer une nouvelle du type voulu."
             ]
+  }
+, {
+      operation: "Définir la forme"
+    , procedure: ["Cliquer sur le bouton 'Forme…'","Ajouter autant d'éléments que voulus","Cliquer sur les boutons ⍗ pour construire l'élément sur la table d'analyse (se mettre en grille magnétique pour assembler correctement les éléments)", "Cliquer sur les boutons ⎆ pour rejoindre les mesures de la partie"]
   }
 , {
       operation: 'Enregistrement de l’analyse'

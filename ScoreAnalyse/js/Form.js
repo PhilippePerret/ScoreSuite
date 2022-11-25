@@ -64,7 +64,6 @@ class Form {
     fobj.edit.call(fobj)
   }
 
-
   static add(fobj){
     /** Ajoute l'objet form +fobj+
      ** La méthode est aussi bien appelée à la création d'un nouvel
@@ -210,7 +209,6 @@ class FormObj {
     this.name   = DGet('input.fobj-name', this.obj).value || `${FORMOBJ_TYPES[this.type].name} sans nom`
     this.start  = DGet('input.fobj-start',this.obj).value || 0
     this.end    = DGet('input.fobj-end', this.obj).value
-    this.inplan = DGet('input.fobj-inplan').checked
     this.save()
     return stopEvent(e)
   }
@@ -245,9 +243,6 @@ class FormObj {
           continue
         }
         switch(prop){
-        case 'inplan':
-          oprop.checked = value
-          break
         case 'type':
           oprop.innerHTML = FORMOBJ_TYPES[value].name
           break
@@ -275,9 +270,23 @@ class FormObj {
   }
 
   setState(inEdition){
-    DGetAll('input', this.obj).forEach(o => o.disabled = not(inEdition))
+    DGetAll('input[type="text"]', this.obj).forEach(o => o.disabled = not(inEdition))
     this.obj.dataset.edit = inEdition ? 'true' : 'false'
     this.setButtons(inEdition)
+  }
+
+  goToMesure(){
+    /** Rejoint la mesure de la partie désignée **/
+    console.warn("Je dois apprendre à rejoindre la partie désignée. Pour cela, il faut que je crée le type 'mea' pour 'measure', afin de pouvoir le répérer")
+    /*
+    |  On boucle sur les marques de type "measure" pour trouver celle
+    |  qui se rapproche le plus de celles courantes.
+    */
+    // TODO
+    /*
+    |  On scroll jusqu'à cette mesure
+    */
+    // TODO
   }
 
   buildInList(container){
@@ -288,10 +297,6 @@ class FormObj {
     this.obj = o
     container.appendChild(o)
     o.classList.remove('hidden')
-    /* - Réglage plus fin - */
-    DGet('.fobj-inplan', o).id = `fobj-${this.id}-disp`
-    // console.debug("o = ", o)
-    DGet('label.fobj-disp-lab', o).setAttribute('for', `fobj-${this.id}-disp`)
     /*
     |  On peut mettre les valeurs
     */
@@ -302,11 +307,44 @@ class FormObj {
     listen(DGet('button.btn-edit', o)   ,'click'  ,this.onEdit.bind(this))
     listen(DGet('button.btn-save', o)   ,'click'  ,this.onSave.bind(this))
     listen(DGet('button.btn-delete', o) ,'click'  ,this.onClickDelete.bind(this))
+    listen(this.btnBuildOnPlan          ,'click'  ,this.buildOnTable.bind(this))
+    listen(this.btnGotoMesure           ,'click'  ,this.goToMesure.bind(this))
   }
   
 
   buildOnTable(){
     /** Construction sur la table d'analyse, au curseur **/
+    const tag = this.tag && AObjet.get(Number(this.tag))
+    if ( tag ) {
+      message(`L’élément '${this.name}' possède déjà une marque. Je vais seulement l'actualiser.`)
+      tag.content = this.formatedContent
+    } else {
+      const y = window.scrollY + parseInt(window.innerHeight/2,10)
+      const x = parseInt(window.innerWidth / 4,10)
+      const calcWidth = 14 * (this.name.length + String(this.start).length + String(this.end).length + this.tons.length * 3 + 8)
+      const amark = new AMark(Analyse.current, {
+          id:       Analyse.current.newId()
+        , top:      y
+        , left:     x
+        , width:    calcWidth
+        , height:   pref('grid_vertical_space')
+        , type:     'bbx'
+        , subtype:  'bxt'
+        , content:  this.formatedContent
+      })
+      amark.build_and_observe()
+      amark.data.form = this.id
+      this.tag = amark.id
+      tooltip(`${this.humanType} associé${this.f_e} à mark #${this.tag}`)
+    }
+  }
+
+  get formatedContent(){
+    var c = []
+    c.push(`**${this.name.toUpperCase()}**`)
+    c.push(`mm ${this.start}-${this.end}`)
+    c.push(this.tons.map(ton => {return `<mus>${ton}</mus>`}).join('¡ ➤ ¡'))
+    return c.join(', ')
   }
 
 
@@ -321,13 +359,16 @@ class FormObj {
   set end(v){this.data.end = v}
   get tons(){return this.data.tons || []}
   set tons(v){this.data.tons = v}
-  get inplan(){return this.data.inplan}
-  set inplan(v){this.data.inplan = v}
 
   /* --- Volatile Values --- */
 
+  get isFem(){return this._isfem || (this._isfem = FORMOBJ_TYPES[this.type].genre == 'F')}
+  get f_e(){return this.isFem ? 'e' : ''}
+  get humanType(){return FORMOBJ_TYPES[this.type].name}
   get domId(){return this._domid || (this._domid = `fobj-${this.id}`)}
   get fieldType(){ return DGet('span.fobj-type', this.obj)}
   get fieldParent(){ return DGet('span.fobj-parent', this.obj)}
+  get btnBuildOnPlan(){return DGet('button.btn-build-on-table', this.obj)}
+  get btnGotoMesure(){return DGet('button.btn-goto-measure', this.obj)}
 
 }

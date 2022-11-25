@@ -19,6 +19,8 @@ class MouseClass {
   onMove(e){
     // console.log(e.clientY, e.clientX)
     // console.log("e = ", e)
+    this.x = e.layerX
+    this.y = e.layerY
     coordonnate(e.layerX, e.layerY)
   }
 

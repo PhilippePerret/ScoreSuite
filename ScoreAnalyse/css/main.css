@@ -15,6 +15,8 @@ input, textarea, select, select > option {
 
 .fright {float: right}
 
+.smaller {font-size:0.75em;}
+
 .invisible {
   visibility: hidden;
 }
@@ -116,7 +118,7 @@ footer button#btn-activer-son {
 footer span#tooltip {
   display:inline-block;
   background-color:#F0AE94;
-  color:yellow;
+  color:#ba3535;
   width:300px;
   overflow:hidden;
   text-overflow:ellipsis;

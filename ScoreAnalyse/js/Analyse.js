@@ -9,6 +9,13 @@
  * 
  */
 class Analyse {
+
+
+  static setModified(){
+    /** Pour avoir à seulement utiliser Analyse.setModified() **/
+    this.current && this.current.setModified()
+  }
+
   constructor(data){
     this.data = data;
   }

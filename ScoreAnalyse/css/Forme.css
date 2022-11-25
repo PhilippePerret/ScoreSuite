@@ -68,6 +68,8 @@ div.fobj input.fobj-ton
 
 div.fobj span.mini-btns:not(.edition) {
   float:right;
+  display:flex;
+  align-items: center;
   opacity:0.3;
 }
 div.fobj span.mini-btns:hover,
@@ -83,6 +85,9 @@ div.fobj span.mini-btns button {
 }
 div.fobj span.mini-btns button.btn-save {
   font-size:16pt;
+}
+div.fobj span.mini-btns button.btn-build-on-table {
+  font-size:20pt;
 }
 div.fobj span.mini-btns button.btn-delete {
   opacity:0.6;
