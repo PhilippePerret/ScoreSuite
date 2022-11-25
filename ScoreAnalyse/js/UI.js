@@ -127,12 +127,17 @@ class UIClass {
 
   /* --- Grid Methods --- */
 
+  get magneticGridON(){
+    return this._maggridON == true
+  }
+
   toggleGridDisplay(modeON){
     /**
      ** Méthode appelée quand on active ou désactive le mode Grid (a-
      ** lignement sur une grille). Elle affiche (construit) ou la 
      ** masque  
     */
+    this._maggridON = modeON
     this.MagneticGrid || this.buildGrid()
     this.MagneticGrid.classList[modeON?'remove':'add']('hidden')
   }

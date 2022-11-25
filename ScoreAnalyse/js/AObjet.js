@@ -344,10 +344,11 @@ getCssProp(prop, notANumber){
 
   get width(){ return this.data.width || this.getWidth() }
   set width(v) {
+    v = this.snapHorizontal(v, this.getCssProp('border-left-width'))
     if ( v == this.data.width ) return
     // console.debug("width à l'entrée = %i", 0 + v)
     // console.debug("width ajustée = %i", 0 + v)
-    this.data.width = this.snapHorizontal(v, this.getCssProp('border-left-width'))
+    this.data.width = v
     this.setWidth(this.data.width)
     this.analyse && this.analyse.setModified()
   }
@@ -363,8 +364,9 @@ getCssProp(prop, notANumber){
 
   get height(){return this._height || this.data.height || (this._height = this.getHeight())}
   set height(v){
+    v = this.snapVertical(v, this.getCssProp('border-top-width'))
     if ( v == this.data.height ) return
-    this.data.height = this.snapVertical(v, this.getCssProp('border-top-width'))
+    this.data.height = v
     this._height = this.data.height
     this.setHeight(this.data.height)
     this.analyse && this.analyse.setModified()

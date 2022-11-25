@@ -202,12 +202,26 @@ checkSystems(){
      ** l'enregistrement des données.
      ** @return true en cas de succès, false otherwise
      **/
-    AObjet.items.forEach(aobj => {
-      if ( not(aobj.left || aobj.type == 'systeme') || not(aobj.top) ) {
-        console.error(aobj)
-        raise("Il manque le top ou le left de l'élément mis en console.")
-      }
-    })
+      AObjet.items.forEach(o => {
+        try {
+          if ( o.type == 'systeme' ) {
+            /*
+            |  Check des systèmes
+            */
+          } else {
+            /*
+            |  Check des marques d'analyse
+            */
+            o.top         || raise("Le top de l'objet n'est pas défini.")
+            o.left        || raise("Le left ne l'objet n'est pas défini.")
+            isNaN(o.top)  && raise("Le top devrait être un nombre.")
+            isNaN(o.left) && raise("Le left de l'objet devrait être un nombre")
+          }
+        } catch(err) {
+          console.error("Objet erroné : ", o)
+          raise(err)
+        }
+      })
 
     return true
   }

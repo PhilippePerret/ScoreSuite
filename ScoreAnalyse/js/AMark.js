@@ -33,6 +33,11 @@ class AMark extends AObjet {
       // Paramètres fournis, on peut construire la marque
       //
 
+      /*
+      |  Si la grille est activée et que c'est une boite, il faut
+      |  ajuster ses données (noter que dans +params+ ne se trouvent
+      |  ni sa largeur ni sa hauteur)
+      */
       console.info("CREATE: Marque d'analyse avec données : ", params)
       // Identifiant unique
       Object.assign(params, { id: Analyse.current.newId() })
@@ -481,6 +486,10 @@ get hasFormatedText(){
   return this._hasformtxt || (this._hasformtxt = ['txt','bbx'].includes(this.type))
 }
 
+get isGridAjustable(){
+  /** @return true si le type est ajustable sur la grille **/
+  return this._isgridadjust ||= (this._isgridadjust = ['bbx'].includes(this.type))
+}
 get isHresizable(){
   return this._ishresize || (this._ishresize = ['bbx','cir','seg','emp','txt'].includes(this.type))
 }
@@ -712,13 +721,22 @@ unsetSelected(){
  */
 ajustePosition(left, top){
   const initTop = 0 + this.data.top
+  this.data.left = left - 1
+  this.data.top  = top - 1
   this.left = left
   this.top  = top
   if (pref('adjust_same_mark') && this.isTypeAjustable ) {
     /*
-    |  Ajustement précis de l'objet en fonction de son contexte
+    |  Ajustement précis de l'objet par rapport aux autres marques
     */
     AObjet.checkPositionAndAdjust(this)
+  } else if ( this.isGridAjustable && UI.magneticGridON ) {
+    /*
+    |  Sinon, si la grille est activée, on ajuste aussi la longueur
+    |  et la hauteur des boites.
+    */
+    this.width  = this.width
+    this.height = this.height
   }
   /*
   |  Si l'objet a été déplacé verticalement, il faut actualiser son
