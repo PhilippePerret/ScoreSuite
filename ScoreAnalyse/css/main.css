@@ -108,6 +108,18 @@ footer button#btn-activer-son {
   margin-right: 4em;
 }
 
+footer span#tooltip {
+  display:inline-block;
+  background-color:#F0AE94;
+  color:yellow;
+  width:300px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin-right:1em;
+  margin-top:6px;
+  padding:0 0.5em;
+}
+
 div.aobj {
   position: absolute;
 }
@@ -181,4 +193,14 @@ div#panneau_infos div.buttons {
 
 div#panneau_outils > div {
   margin-top: 1em;
+}
+div#coordonnates {
+  position:fixed;
+  width:150px;
+  bottom:47px;
+  text-align:center;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  background-color:black;
+  color:white;
 }

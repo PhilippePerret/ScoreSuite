@@ -18,6 +18,8 @@ class MouseClass {
 
   onMove(e){
     // console.log(e.clientY, e.clientX)
+    // console.log("e = ", e)
+    coordonnate(e.layerX, e.layerY)
   }
 
   observe(){
@@ -26,5 +28,5 @@ class MouseClass {
   }
 
 }
-// const Mouse = new MouseClass
-// Mouse.observe()
+const Mouse = new MouseClass
+Mouse.observe()
