@@ -24,12 +24,34 @@ class Form {
     this.items.forEach(fobj => alldata.push(fobj.data))
     return alldata
   }
-  static setData(data){
+
+  static setData(alldata){
     this.items = []
-    if ( not(data) || data.length == 0 ) return
-    data.forEach(dobj => {
+    if ( not(alldata) || alldata.length == 0 ) return
+    alldata.forEach(dobj => {
       const fobj = new FormObj(dobj)
-      this.add(fobj)      
+      this.add(fobj)
+    })
+  }
+
+  static updateOrdreObjets(){
+    /** Après une modification quelconque, on actualise toujours 
+     ** l'ordre des éléments par mesure, dans l'affichage générale
+     ** de la forme ainsi que dans le menu 'Parent'
+     **/
+    const menuParents = FormObj.menuParents
+    menuParents.innerHTML = ''
+    this.items.sort(function(a,b){
+      return a.start - b.start
+    }).forEach(fobj => {
+      /*
+      |  Dans le menu 'Parent de…'
+      */
+      menuParents.appendChild(DCreate('OPTION',{value:fobj.id, text:fobj.name}))
+      /*
+      |  Dans l'affichage de la forme
+      */
+      this.listing.appendChild(fobj.obj)
     })
   }
 
@@ -48,8 +70,8 @@ class Form {
      ** La méthode est aussi bien appelée à la création d'un nouvel
      ** objet formel qu'au chargement de l'analyse. 
      **/
-    fobj.buildInList(this.listing)
     this.items.push(fobj)
+    fobj.buildInList(this.listing)
   }
 
 
@@ -90,7 +112,6 @@ class Form {
   /* - boutons - */
   static get btnToggle(){return DGet('#form_button')}
   static get btnAdd(){return DGet('.btn-add', this.panel)}
-  static get btnSup(){return DGet('.btn-sup', this.panel)}
 
 }
 
@@ -119,15 +140,6 @@ class FormObj {
   static get objTemplate(){return DGet('#formobj_template')}
   static get menuTypes(){ return this._menutypes || (this._menutypes = DGet('select#fobj_types'))}
   static get menuParents(){return this._menuparents || (this._menuparents = DGet('select#fobj_parents'))}
-  
-  static updateMenuParents(){
-    this.menuParents.innerHTML = ''
-    Form.items.sort(function(a,b){
-      return Number(a.start||0) < Number(b.start||0) ? -1 : 0
-    }).forEach(fobj => {
-      this.menuParents.appendChild(DCreate('OPTION',{value:fobj.id, text:fobj.name}))
-    })
-  }
 
 
   static hideMenuTypeAndReturnValue(){
@@ -164,19 +176,11 @@ class FormObj {
     this.fieldType.classList.add('hidden')
     FormObj.showMenuParentAndSetValue(this)
     this.fieldParent.classList.add('hidden')
-    DGet('input.fobj-name', this.obj).value = this.name
-    DGet('input.fobj-start',this.obj).value = this.start
-    DGet('input.fobj-end', this.obj).value  = this.end
-    DGet('input.fobj-inplan').checked       = this.inplan
-    this.setTonalites(this.tons)
-
-    this.setButtons(true)
   }
 
   save(){
-    this.setButtons(false)
+    Form.updateOrdreObjets()
     this.toggleState()
-    FormObj.updateMenuParents()
     Analyse.current && Analyse.current.setModified()
   }
 
@@ -194,7 +198,6 @@ class FormObj {
   }
 
   onSave(e){
-    console.debug("-> onsave", this)
     /*
     |  On remplace le menu des types par son champ input-text
     */
@@ -204,11 +207,16 @@ class FormObj {
     this.parent = FormObj.hideMenuParentAndReturnValue()
     this.fieldParent.innerHTML = this.parent ? FormObj.get(this.parent).name : 'La pièce'
     this.tons   = this.getTonalites()
-    this.name = DGet('input.fobj-name', this.obj).value || `${FORMOBJ_TYPES[this.type].name} sans nom`
+    this.name   = DGet('input.fobj-name', this.obj).value || `${FORMOBJ_TYPES[this.type].name} sans nom`
     this.start  = DGet('input.fobj-start',this.obj).value || 0
     this.end    = DGet('input.fobj-end', this.obj).value
     this.inplan = DGet('input.fobj-inplan').checked
     this.save()
+    return stopEvent(e)
+  }
+
+  onClickDelete(e){
+    message("Je dois apprendre à supprimer un élément")
     return stopEvent(e)
   }
 
@@ -220,17 +228,56 @@ class FormObj {
     }
     return tons
   }
+
+  setValues(){
+    /** 
+     ** Pour mettre les valeurs dans les champs
+     ** (après la construction de l'objet dans sa liste)
+    **/
+    for(var prop in this.data){
+      const value = this.data[prop]
+      if ( prop == 'tons') {
+        this.setTonalites(this.data.tons)
+      } else {
+        const oprop = DGet(`.fobj-${prop}`, this.obj) // n'existe pas toujours
+        if ( not(oprop) ) {
+          console.warn("L'objet .fobj-%s n'existe pas", prop)
+          continue
+        }
+        switch(prop){
+        case 'inplan':
+          oprop.checked = value
+          break
+        case 'type':
+          oprop.innerHTML = FORMOBJ_TYPES[value].name
+          break
+        case 'parent':
+          oprop.innerHTML = value ? Form.get(Number(value)).name : '---'
+          break
+        default:
+          oprop.value = value
+        }
+      }
+    }
+    this.setState(/* inEdition = */ false)
+  }
+
   setTonalites(tonalites){
     tonalites = tonalites || []
     for(var i = 1; i < 7; ++i){
-      DGet(`input.fobj-ton${i}`, this.obj).value = tonalites[i]||''
+      DGet(`input.fobj-ton${i}`, this.obj).value = tonalites[i-1]||''
     }
   }
 
   toggleState(){
-    const newState = not(this.obj.dataset.edit == 'true')
-    DGetAll('input', this.obj).forEach(o => o.disabled = newState)
-    this.obj.dataset.edit = newState ? 'true' : 'false'
+    const inEdition = not(this.obj.dataset.edit == 'true')
+    this.setState(inEdition)
+  }
+
+  setState(inEdition){
+    DGetAll('input', this.obj).forEach(o => o.disabled = not(inEdition))
+    this.obj.dataset.edit = inEdition ? 'true' : 'false'
+    this.setButtons(inEdition)
   }
 
   buildInList(container){
@@ -246,11 +293,18 @@ class FormObj {
     // console.debug("o = ", o)
     DGet('label.fobj-disp-lab', o).setAttribute('for', `fobj-${this.id}-disp`)
     /*
+    |  On peut mettre les valeurs
+    */
+    this.setValues()
+    /*
     |  Observation des éléments
     */
-    listen(DGet('button.btn-edit', o) ,'click'  ,this.onEdit.bind(this))
-    listen(DGet('button.btn-save', o) ,'click'  ,this.onSave.bind(this))
+    listen(DGet('button.btn-edit', o)   ,'click'  ,this.onEdit.bind(this))
+    listen(DGet('button.btn-save', o)   ,'click'  ,this.onSave.bind(this))
+    listen(DGet('button.btn-delete', o) ,'click'  ,this.onClickDelete.bind(this))
   }
+  
+
   buildOnTable(){
     /** Construction sur la table d'analyse, au curseur **/
   }

@@ -55,7 +55,9 @@ div.fobj > div > span
 
 }
 
-div.fobj input.fobj-name {width: 380px}
+div.fobj input.fobj-name {width: 280px}
+div.fobj select.fobj-parent {width: 200px}
+
 div.fobj input.fobj-start,
 div.fobj input.fobj-end,
 div.fobj input.fobj-ton
