@@ -23,10 +23,11 @@ const PreferencesAppData = {
   , thiness_cellule_line    :{type:'inputtext'    ,typeV:'number'   ,default:5        ,label:"Épaisseur trait cellules"         ,unite:'px' ,selector:'div.amark.cel'   ,selector_value:'border-width:__VALUE__px;'}
   , thiness_border          :{type:'inputtext'    ,typeV:'number'   ,default:4        ,label: 'Épaisseur des traits de boites'  ,unite:'px' ,selector:'div.amark.bbx:not(.cel):not(.bxt) span.content, div.amark.bbx.bxt' ,selector_value:'border-width:__VALUE__px;'}
   , marque_pedale_size      :{type:'inputtext'    ,typeV:'number'   ,default:40       ,label:"Taille des pédales"             ,unite:'px' ,selector:'div.aobj.ped span.content', selector_value:'font-size:__VALUE__px;width:calc(__VALUE__px / 2);height:calc(__VALUE__px / 2);line-height:calc(__VALUE__px / 2);'}
-  , marque_texte_size_1     :{type:'inputtext'    ,typeV:'number'   ,default:60       ,label:"Taille des gros textes"         ,unite:'px' ,selector:'div.amark.txt.size1 span.content',   selector_value:'font-size:__VALUE__px;'}
-  , marque_texte_size_2     :{type:'inputtext'    ,typeV:'number'   ,default:40       ,label:"Taille des textes moyens"       ,unite:'px' ,selector:'div.amark.txt.size2 span.content', selector_value:'font-size:__VALUE__px;'}
-  , marque_texte_size_3     :{type:'inputtext'    ,typeV:'number'   ,default:24       ,label:"Taille des petits textes"       ,unite:'px' ,selector:'div.amark.txt.size3 span.content', selector_value:'font-size:__VALUE__px;'}
-  , marque_texte_size_4     :{type:'inputtext'    ,typeV:'number'   ,default:16       ,label:"Taille des textes très petis"   ,unite:'px' ,selector:'div.amark.txt.size4 span.content', selector_value:'font-size:__VALUE__px;'}
+  , marque_texte_size_1     :{type:'inputtext'    ,typeV:'number'   ,default:60       ,label:"Taille des gros textes"         ,unite:'px' ,selector:'div.amark.txt.size1 span.content'    ,selector_value:'font-size:__VALUE__px;'}
+  , marque_texte_size_2     :{type:'inputtext'    ,typeV:'number'   ,default:40       ,label:"Taille des textes moyens"       ,unite:'px' ,selector:'div.amark.txt.size2 span.content'    ,selector_value:'font-size:__VALUE__px;'}
+  , marque_measure          :{type:'inputtext'    ,typeV:'number'   ,default:24       ,label:"Taille numéros de mesures"        ,unite:'px' ,selector:'div.amark.txt.mes span.content'    ,selector_value:'font-size:__VALUE__px;'}
+  , marque_texte_size_3     :{type:'inputtext'    ,typeV:'number'   ,default:24       ,label:"Taille des petits textes"         ,unite:'px' ,selector:'div.amark.txt.size3 span.content'  ,selector_value:'font-size:__VALUE__px;'}
+  , marque_texte_size_4     :{type:'inputtext'    ,typeV:'number'   ,default:16       ,label:"Taille des textes très petis"     ,unite:'px' ,selector:'div.amark.txt.size4 span.content'  ,selector_value:'font-size:__VALUE__px;'}
   
   // --- Window ---
   , window_width            :{type:'inputtext'    ,typeV:'number'   ,default:null     ,label:'Largeur de la fenêtre à l’ouverture'}

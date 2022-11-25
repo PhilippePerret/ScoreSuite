@@ -512,7 +512,7 @@ get hasSigneMoinsCadence(){return this.signeMoinsCad }
 
 // @return true si le type de marque est ajustable
 get isTypeAjustable(){
-  return this._isajust || (this._isajust = undefined != TYPES_AJUSTABLES[this.type])
+  return this._isajust || (this._isajust = (TYPES_AJUSTABLES[this.type]||SUBTYPES_AJUSTABLES[this.subtype]))
 }
 
 // @return true si la marque a une ligne verticale
@@ -972,18 +972,22 @@ applyWidth(v) {
 
 get type(){return this._type}
 set type(t){
+  const type_ini = `${this.data.type}`
   this.obj && this._type && this.obj.classList.remove(this._type)
   this._type = t
   this.data.type = t
   this.obj && this.obj.classList.add(this._type)
+  t != type_ini && Analyse.setModified()
 }
 get subtype(){return this._subtype || (this._sybtype = this.data.subtype)}
 set subtype(v){
   // On retire le sous-type éventuellement appliqué
+  const subtype_ini = `${this.data.subtype}`
   this.obj && this._subtype && this.obj.classList.remove(this._subtype)
   this._subtype = v
   this.data.subtype = v
   this.obj && this.obj.classList.add(this._subtype)
+  v != subtype_ini && Analyse.setModified()
 }
 
 // Le contenu complet, avec préfixe (aka type). Pour l'édition, par

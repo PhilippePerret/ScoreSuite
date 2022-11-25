@@ -19,10 +19,12 @@ const TYPES_CADRE = {
 }
 
 const TAILLES_TEXTE = {
-    'size1': {name:"Gros"    , value:'size1' , shortcut: '4', default:'Gros texte'}
-  , 'size2': {name:"Moyen"   , value:'size2' , shortcut: '3', default:'Texte moyen'}
-  , 'size3': {name:"Petit"   , value:'size3' , shortcut: '2', default:'Petit texte'}
-  , 'size4': {name:"Mini"    , value:'size4' , shortcut: '1', default:'Texte miniature'}
+    'size1' : {name:"Gros"              ,value:'size1'  ,shortcut: '4'  ,default:'Gros texte'}
+  , 'size2' : {name:"Moyen"             ,value:'size2' ,shortcut: '3'   ,default:'Texte moyen'}
+  , 'size3' : {name:"Petit"             ,value:'size3' ,shortcut: '2'   ,default:'Petit texte'}
+  , 'size4' : {name:"Mini"              ,value:'size4' ,shortcut: '1'   ,default:'Texte miniature'}
+  , 'mes'   : {name:'Numéro de mesure'  ,value:'mes'   ,shortcut:'m'    ,default:'1'}
+  , 'idx'   : {name:'En marge (index)'  ,value:'idx'   ,shortcut:'i'    ,default:'Index'}
 }
 
 const TYPES_NOTES = {
@@ -71,6 +73,9 @@ const TYPES_AJUSTABLES = {
  , 'har':['har','cad']
  , 'mod':['mod']
  , 'cad':['cad','har']
+}
+const SUBTYPES_AJUSTABLES = {
+    'mes':['mes']
 }
 
 

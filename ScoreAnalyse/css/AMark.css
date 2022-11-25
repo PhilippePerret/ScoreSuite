@@ -462,6 +462,15 @@ div.amark.secz span.vline {border-right-width:4px}
     page construite en fonction des préférences.
     
 */
+div.amark.txt.mes {
+  /* défini en dur */
+/*  color:blue; *//* Pour les distinguer */
+}
+div.amark.txt.idx {
+  left:   10px!important;
+  color:  blue;
+  font-weight:bold;
+}
 
 /*
 

@@ -229,9 +229,9 @@ class AObjet {
  * 
  */
 static checkPositionAndAdjust(amark){
-  const snap = Preferences.get('snap_for_adjust_pos')
+  const snap = pref('snap_for_adjust_pos')
   for (var aobj of this.items){
-    if ( this.areNotAjustable(aobj.type, amark.type) ){ 
+    if ( this.areNotAjustable(aobj.type, amark.type) && this.areNotAjustable(aobj.subtype, amark.subtype)){ 
       continue ;
     }
     // S'il y a trop d'écart entre les deux éléments de type 
@@ -244,9 +244,12 @@ static checkPositionAndAdjust(amark){
   }
 }
 static areAjustable(type1, type2){
-  if ( type1 == type2 ) { return true }
-  if ( TYPES_AJUSTABLES[type1] ) {
+  if ( type1 == type2 ) { 
+    return true
+  } else if ( TYPES_AJUSTABLES[type1] ) {
     return TYPES_AJUSTABLES[type1].includes(type2)
+  } else if ( SUBTYPES_AJUSTABLES[type1]) {
+    return SUBTYPES_AJUSTABLES[type1].includes[type2]
   }
 }
 static areNotAjustable(type1, type2){

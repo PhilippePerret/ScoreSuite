@@ -10,6 +10,23 @@
  *    - son type 
  *    - son sous-type (éventuellement)
  *    - son texte (le plus souvent)
+ * 
+ * Fonctionnement :
+ * 
+ *  const editor = new AMark_Editor(<data>)
+ *  editor.proceed()
+ * 
+ *  <data> doit définir :
+ *    - onReleaseMethod     
+ *      La méthode qui recevra en premier argument les données 
+ *      récoltée
+ *    - event 
+ *      L'évènement pour trouver la position de la boite
+ * 
+ *    OPTIONNEL
+ *    ---------
+ *    - mettre 'onlyType' à true pour ne choisir que le type et
+ *      sous-type de la marque
  */
 
 
@@ -40,7 +57,7 @@ proceed(){
   // console.log("-> proceed() / amark_data = ", this.amark_data)
   if ( !this.amark_type ) return this.getAMarkType()
   if ( this.isRequiringSubType && !this.amark_subtype) return this.getAMarkSubType()
-  if ( this.isRequiringContent && undefined == this.amark_content) return this.getAMarkContent()
+  if ( not(this.data.onlyType) && this.isRequiringContent && undefined == this.amark_content) return this.getAMarkContent()
   this.hasAutoContent && this.setAutoContent()
   this.finishWith(this.amark_data)
 }

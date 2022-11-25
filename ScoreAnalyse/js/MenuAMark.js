@@ -31,11 +31,29 @@ class AmarkMenu extends MenusTool {
     AObjet.eachSelection(methode)
   }
 
+  /* --- OnActivate Methods --- */
+
   static onActivate_toogleLock(){
     /** Verrouiller ou déverrouiller les marques sélectionnées **/
     const ope = this.menuLock.dataset.ope
     this.boucle(tag => { tag[ope].call(tag) })
     this.setAllMenus()
+  }
+
+  static onActivate_changeType(e){
+    const dataEdit = {
+        onReleaseMethod:  this.onTypeChosen.bind(this)
+      , event:            e
+      , onlyType:         true
+    }
+    const editor = new AMark_Editor(dataEdit)
+    editor.proceed()
+  }
+  static onTypeChosen(data){
+    this.boucle(tag => {
+      tag.type    = data.type
+      tag.subtype = data.subtype
+    })
   }
 
 
