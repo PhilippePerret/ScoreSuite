@@ -6,12 +6,30 @@ class << self
     retour = {ok: true, error: nil}
     puts "code_html : #{data['code_html']}"
 
+    # 
+    # Le code HTML initial
+    # 
+    hcode = data['code_html']
 
-    full_code = head + data['code_html'] + '</body></html>'
+    # 
+    # Rapatriement des images
+    # 
+    images_folder = mkdir(File.join(analyse.folder_export,'images'))
+    hcode = hcode.gsub(/<img(.*?)src=\"(.+?)\"/) do
+      ent = $1.freeze
+      src = $2.freeze
+      nom = File.basename(src)
+      dst = File.join(images_folder, nom)
+      File.exist?(dst) || FileUtils.cp(src, dst)
+       # remplacement
+       "<img#{ent}src=\"images/#{nom}\""
+    end
+
+    full_code = head + hcode + '</body></html>'
 
     html_path = File.join(analyse.folder_export, "analyse.html")
     retour.merge!(path: html_path)
-    
+
     File.write(html_path, full_code)
 
     WAA.send(
