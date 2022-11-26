@@ -328,6 +328,20 @@ static areNotAjustable(type1, type2){
   return !this.areAjustable(type1, type2)
 }
 
+static lastMeasureNumber(){
+  /**
+   ** Retourne le dernier numéro de mesure utilisé (pour le
+   ** champ de création d'un nouveau numéro de mesure)
+   **/
+  var lastNum = 0
+  this.each(amark => {
+    if ( amark.subtype != 'mes' ) return
+    const objNum = Number(amark.content.trim())
+    if ( objNum > lastNum ) lastNum = objNum
+  })
+  return lastNum + 1
+}
+
 // ===============================================================
 
   constructor(analyse, data){

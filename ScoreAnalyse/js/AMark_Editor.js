@@ -229,12 +229,17 @@ get positionFixed(){
 // La valeur par défaut, en fonction du type et en fonction du fait
 // que ce type a des sous-valeurs
 get defaultValue(){
-  if (this.isRequiringSubType) {
-    console.debug("this.amark_subtype = ", this.amark_subtype)
-    return this.dataOfSubType.default || this.dataOfType.default
-  } else {
-    return this.dataOfType.default
+  let defautValue = (function(me){
+    if (me.isRequiringSubType) {
+      return me.dataOfSubType.default || me.dataOfType.default
+    } else {
+      return me.dataOfType.default
+    }
+  })(this)
+  if ( 'function' == typeof defautValue ) { 
+    defautValue = defautValue.call()
   }
+  return defautValue
 }
 
 // Les données du type (dans AMARQUES_TYPES)

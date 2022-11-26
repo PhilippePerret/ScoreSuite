@@ -23,7 +23,7 @@ const TAILLES_TEXTE = {
   , 'size2' : {name:"Moyen"             ,value:'size2' ,shortcut: '3'   ,default:'Texte moyen'}
   , 'size3' : {name:"Petit"             ,value:'size3' ,shortcut: '2'   ,default:'Petit texte'}
   , 'size4' : {name:"Mini"              ,value:'size4' ,shortcut: '1'   ,default:'Texte miniature'}
-  , 'mes'   : {name:'Numéro de mesure'  ,value:'mes'   ,shortcut:'m'    ,default:'1'}
+  , 'mes'   : {name:'Numéro de mesure'  ,value:'mes'   ,shortcut:'m'    ,default: function(){return AObjet.lastMeasureNumber()}}
   , 'idx'   : {name:'En marge (index)'  ,value:'idx'   ,shortcut:'i'    ,default:'Index'}
 }
 
