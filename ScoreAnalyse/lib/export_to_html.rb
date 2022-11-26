@@ -25,12 +25,29 @@ class << self
        "<img#{ent}src=\"images/#{nom}\""
     end
 
+    #
+    # Fontes
+    #
+    fonts_folder = mkdir(File.join(analyse.folder_export,'fonts'))
+    Dir["#{APP_FOLDER}/assets/fonts/*.otf"].each do |src|
+      font_name = File.basename(src)
+      dst = File.join(fonts_folder, font_name)
+      FileUtils.cp(src, dst)
+    end
+
     full_code = head + page_titre(analyse) + hcode + '</body></html>'
 
     html_path = File.join(analyse.folder_export, "analyse.html")
     retour.merge!(path: html_path)
 
     File.write(html_path, full_code)
+
+    retour[:ok] = File.exist?(html_path)
+
+    #
+    # Ouvrir le dossier du fichier
+    #
+    `open -a Finder "#{File.dirname(html_path)}"`
 
     WAA.send(
       class:  'Analyse', 
@@ -71,6 +88,20 @@ class << self
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Analyse </title>
       <style type="text/css">
+        @font-face {
+          font-family:  PhilNote;
+          src: url("fonts/PhilNote2-Regular.otf");
+        }
+        @font-face {
+          font-family:  PhilNote;
+          src: url("/fonts/PhilNote2-Bold.otf");
+          font-weight: bold;
+        }
+        .philnote {
+          font-family: PhilNote;
+          font-size: 32px;  
+        }
+
         div#page_titre {
           padding:4em;
           margin-bottom:4em;
