@@ -61,6 +61,16 @@ class AObjet {
     this.selection.forEach(method)
   }
 
+  static dupSelection(){
+    /**
+     ** Retourne une nouvelle liste avec les tags sélectionnés,
+     ** qui pourra être modifiée sans toucher à la liste originale
+     **/
+    var liste = []
+    this.eachSelection(aobj => liste.push(aobj))
+    return liste
+  }
+
   static resetSelection(){
     this.selection    = []
     this.selectionIds = []

@@ -27,22 +27,92 @@ class AdjustMenu extends MenusTool {
   }
 
 
+  /* --- On Activate Methods --- */
 
   static onActivate(e, adjust, option) {
     switch(adjust){
     case 'cancel':
-      this.cancelLastAjustement()
-      break
+      return this.cancelLastAjustement()
     case 'V':
-      this.ajusterVerticalement()
-      break
+      return this.ajusterVerticalement()
     case 'H':
-      this.ajusterHorizontalement()
-      break
+      return this.ajusterHorizontalement()
+    case 'SH':
+      return this.spreadHorizontaly()
+    case 'SV':
+      return this.spreadVerticaly()
     default:
       erreur(`Je ne sais pas traiter l'ajustement '${adjust}'.`)
     }
   }
+
+  static spreadHorizontaly(){
+    /**
+     ** Répartit les éléments de la sélection horizontalement
+     **/
+    this.spreadTo('H')
+  }
+  static spreadVerticaly(){
+    /**
+     ** Répartit les éléments de la sélection verticalement
+     **/
+    this.spreadTo('V')
+  }
+  static spreadTo(direction){
+    /**
+     ** Répartit les éléments de la sélection verticalement ou 
+     ** horizontalement en fonction de +direction+ qui peut être 
+     ** 'H' ou 'V'
+     **
+     ** Cela consiste à mettre le même écart entre tous les éléments
+     ** sélectionné, verticalement.
+     **
+     **/
+    /*
+    |  Les propriétés à prendre en compte en fonction de la 
+    |  direction de l'alignement.
+    */
+    const prevProp = (direction == 'H') ? 'right' : 'bottom'
+    const nextProp = (direction == 'H') ? 'left'  : 'top'
+    /*
+    |  On met les éléments dans l'ordre
+    */
+    const selection = AObjet.dupSelection()
+    /*
+    |  Les blocs dans l'ordre
+    */
+    selection.sort(function(a,b) { return a[nextProp] - b[nextProp] })
+    /*
+    |  Pour simplifier le code
+    */
+    const nombreTags = selection.length
+    /*
+    |  On fait la somme de ce qui sépare chaque bloc (pour en faire
+    |  ensuite la moyenne à appliquer entre chacun d'entre eux)
+    */
+    var ecart_total = 0
+    for ( var i = 1; i < nombreTags ; ++i){
+      const curtag = selection[i]
+      const pretag = selection[i-1]
+      pretag[`_${prevProp}`] = null // pour forcer le recalcul
+      ecart_total += curtag[nextProp] - pretag[prevProp]
+    }
+    // console.debug("écart total = %i", ecart_total)
+    /*
+    |  On applique la moyenne
+    */
+    const ecart_moyen = ecart_total / (nombreTags - 1)
+    // console.debug("écart moyen = %i", ecart_moyen)
+    for ( var i = 1; i < nombreTags - 1; ++i ) {
+      const curtag = selection[i]
+      const pretag = selection[i-1]
+      pretag[`_${prevProp}`] = null // pour forcer le recalcul
+      curtag[nextProp] = selection[i-1][prevProp] + ecart_moyen
+    }
+  }
+
+
+  /* --- Functional Methods --- */
 
 
   static ajusterVerticalement(){
@@ -171,76 +241,6 @@ class AdjustMenu extends MenusTool {
     const wborder = getComputedStyle(obj,null).getPropertyValue(`border-${side}-width`)
     return Number(wborder.replace(/(px|pt|em|rem|cm|mm)/,'')) // normalement, toujours en px, mais plus tard ?…
   }
-
-  // static ajusterHorizontalement(){
-  //   /**
-  //   ** Prend les boites qui sont à peu près aligner horizontalement
-  //   ** et les met bord à bord et de même taille vertical
-  //   **/
-  //   const selection = AObjet.selection
-  //   const boucle = AObjet.eachSelection.bind(AObjet)
-  //   /*
-  //   |  Prendre le plus haut top
-  //   */
-  //   var minTop = null
-  //   boucle(tag => {
-  //     if ( not(minTop) || tag.top > minTop ) {
-  //       minTop = tag.top
-  //     }
-  //   })
-  //   console.debug("minTop = %i", minTop)
-  //   /*
-  //   |  La plus haute boite
-  //   */
-  //   var maxHeight = 0
-  //   boucle(tag => {
-  //     if ( tag.height > maxHeight ) maxHeight = tag.height
-  //   })
-  //   console.debug("maxHeight = %i", maxHeight)
-
-  //   /*
-  //   |  Classer les boites dans l'ordre de leur left
-  //   */
-  //   selection.sort(function(a, b){
-  //     return (a.left < b.left) ? -1 : 1
-  //   })
-
-  //   /*
-  //   |  On boucle sur chaque boite dans l'ordre pour :
-  //   |   - ajuster leur top
-  //   |   - mettre le bord left de la suivante au bord right de la
-  //   |     précédente
-  //   |   - leur donner la même hauteur
-  //   */
-  //   this.lastAdjustedTags = []
-  //   var rBorder ;
-  //   const nombreBoites = selection.length
-  //   for (var i = 0; i < nombreBoites; ++i) {
-  //     const currtag = selection[i]
-  //     /*
-  //     |  On conserve les valeurs actuelles pour pouvoir les
-  //     |  remettre en cas d'annulation.
-  //     */
-  //     currtag.lastLeft = 0 + currtag.left
-  //     currtag.lastTop = 0 + currtag.top
-  //     currtag.lastHeight = 0 + currtag.height
-
-  //     if ( i > 0 ) {
-  //       /*
-  //       |  Si ce n'est pas la première boite, il faut la coller
-  //       |  à la boite précédente.
-  //       */
-  //       const prevtag = selection[i-1]
-  //       rBorder = getComputedStyle(prevtag.obj,null).getPropertyValue('border-right-width')
-  //       rBorder = Number(rBorder.replace(/(px|pt|em|rem|cm|mm)/,'')) // normalement, toujours en px, mais plus tard ?…
-  //       currtag.left = prevtag.right - rBorder
-  //     }
-  //     currtag.top     = minTop
-  //     currtag.height  = maxHeight
-  //     this.lastAdjustedTags.push(currtag)
-  //   }
-  // } // /AjusterHorizontalement
-
 
   static cancelLastAjustement(){
     /**
