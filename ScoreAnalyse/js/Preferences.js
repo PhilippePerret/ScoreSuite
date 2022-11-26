@@ -43,6 +43,7 @@ set(key,value){
         element.checked = value
         break
       case 'inputtext':
+      case 'select':
         element.value = value
         break
     }
@@ -65,6 +66,17 @@ onChange_grid_horizontal_space(){
 onChange_grid_vertical_space(){
   AMark.snap && (AMark.snap = this.getValueOf('grid_vertical_space'))
 }
+onChange_theme(){
+  const theme = this.getValueOf('theme')
+  const theme_data = this.themes[theme]
+  console.debug("theme_data = ", theme_data)
+  message("Apprendre à gérer le menu thème mis à " + theme)
+  for (var key in theme_data) {
+    if ( key == 'name' ) continue
+    this.set(key, theme_data[key])
+  }
+}
+
 
 getValueOf(key, defaut){
   /**
@@ -98,6 +110,49 @@ afterLoadingAnalyse(){
   UI.btnLockSystems.classList[ locked ? 'add' : 'remove']('pressed')
 }
 
+/* --- Themes Methods --- */
+
+themesAsMenu(){
+  /**
+   ** Retourne la liste des thèmes pour peupler le menu des thèmes
+   **/
+  return this.themes || this.loadThemes()
+}
+
+loadThemes(){
+  /**
+   ** Méthode qui charge les thèmes pour les afficher dans les 
+   ** préférences
+   **/
+  WAA.send({class:'ScoreAnalyse::App', method:'load_themes', data:{}})
+  return [{name:'Commun', value:'commun'}, {name:'Discret', value:'discret'}]
+}
+onLoadedThemes(data){
+  /**
+   ** Méthode qui reçoit vraiment la liste des thèmes et leurs 
+   ** données et alimente le menu pour choisir le thème courant
+   **/
+  this.menuThemes = DGet('select#pref-theme')
+  this.menuThemes.innerHTML = ''
+  const themes = data.themes
+  this.themes = {}
+  themes.forEach(theme => {
+    console.debug("theme = ", theme)
+    var name = theme.name
+    name = name.substring(0,1).toUpperCase() + name.substring(1, name.length).toLowerCase()
+    this.menuThemes.appendChild(DCreate('OPTION',{value:theme.name, text:name }))
+    Object.assign(this.themes, {[theme.name]: theme})
+  })
+}
+
+loadTheme(theme_name){
+  WAA.send({class:'ScoreAnalyse::App', method:'load_theme', data:{theme_name: theme_name}})
+}
+onLoadedTheme(data){
+  // data.theme_data = les données du thème
+  // data.theme_name = le nom du thème (son affixe de fichier)
+}
+
 /**
  * @return Une table des données avec en clé la clé des préférences
  * et en valeur la valeur. Pour enregistrement.
@@ -118,7 +173,7 @@ saveData(key,value){
   case 'number': value = Number(value)
   }
   Object.assign(this.data[key], {value: value})
-  Analyse.current && Analyse.current.setModified()
+  Analyse.setModified()
 }
 
 /**
@@ -148,6 +203,7 @@ prepareOnChangeMethods(){
       methode = (function(key, obj){this.saveData(key, obj.checked)}).bind(my, key, obj)
       break
     case 'inputtext':
+    case 'select':
       methode = (function(key, obj){this.saveData(key, obj.value)}).bind(my, key, obj)
       break
     }
@@ -236,6 +292,8 @@ build(){
       o.appendChild(this.buildInputText(dp))
     } else if ( dp.type == 'checkbox' ) {
       o.appendChild(this.buildCheckBox(dp))
+    } else if ( dp.type == 'select' ) {
+      o.appendChild(this.buildMenuSelect(dp))
     } else if ( dp.type == 'pressoir' ) {
       o.appendChild(this.buildChoixPressoirs(dp))
     }
@@ -268,6 +326,29 @@ observe(){
 }
  
 
+buildMenuSelect(params){
+  /**
+   ** Construit et retourne un menu select
+   **/
+  const div = DCreate('DIV', {class:'div-data type-valeur'})
+
+  const label = DCreate('LABEL', {text: params.label })
+  div.appendChild(label)
+
+  const menu = DCreate('SELECT', {id: `pref-${params.id}`})
+  div.appendChild(menu)
+
+  
+  var values = params.values;
+  if ( 'function' == typeof values) {
+    values = values.call()
+  }
+  values.forEach( dvalue => {
+    menu.appendChild( DCreate('OPTION',{value:dvalue.value, text:dvalue.name} ) )
+  })
+
+  return div
+}
 /**
  * Construction d'un checkbox pour le panneau de préférences
  * 

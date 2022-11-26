@@ -6,7 +6,8 @@
  */
 
 const PreferencesAppData = {
-    lock_systems            :{type:'checkbox'     ,typeV:'boolean'  ,default:false    ,label:'Verrouiller les systèmes'}
+    theme                   :{type:'select'       ,typeV:'string'   ,default:null     ,label:'Thème analyse', values: function(){return Preferences.themesAsMenu()}, precision:'Définit les tailles à appliquer ainsi que les couleurs (dans le mode couleur de l’analyse)'}
+  , lock_systems            :{type:'checkbox'     ,typeV:'boolean'  ,default:false    ,label:'Verrouiller les systèmes'}
   , grid_horizontal_space   :{type:'inputtext'    ,typeV:'number'   ,default:50       ,label:'Espacement horizontal sur le grille'}
   , grid_vertical_space     :{type:'inputtext'    ,typeV:'number'   ,default:50       ,label:'Espacement vertical sur le grille'}
   , systeme_width           :{type:'inputtext'    ,typeV:'number'   ,default:1860     ,label:"Largeur (en pixels) des systèmes", selector:'img.systeme', selector_value:"width:__VALUE__px;"}

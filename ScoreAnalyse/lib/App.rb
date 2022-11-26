@@ -35,6 +35,30 @@ class App
   end
 
   ##
+  # Pour charger les thèmes et leurs données
+  # et les remonter côté serveur
+  def self.load_themes(data)
+    folder_themes = mkdir(File.join(APP_FOLDER,'assets','themes'))
+    themes = Dir["#{folder_themes}/*.yaml"].map do |pth|
+      dtheme = YAML.load_file(pth, aliases:true)
+      dtheme.merge!(name: File.basename(pth, File.extname(pth)))
+    end
+    WAA.send(class:'Preferences', method:'onLoadedThemes', data:{themes: themes})
+  end
+
+  ##
+  # Pour charger un thème (ses données)
+  #
+  def self.load_theme(data)
+    folder_themes = mkdir(File.join(APP_FOLDER,'assets','themes'))
+    theme_path = File.join(folder_themes,data['theme_name'])
+    data_theme = YAML.load_file(theme_path, aliases:true)
+    data = data.merge!(theme_data: data_theme)
+    WAA.send({class:'Preferences',method:'onLoadedTheme', data:data})
+  end
+
+
+  ##
   # @return true s'il faut charger la dernière analyse
   #
   def self.load_last_analyse?

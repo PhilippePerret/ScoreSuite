@@ -36,7 +36,8 @@ section#preferences-panel div.div-data input[type="checkbox"] {
   scale:  1.7;
   vertical-align: unset;
 }
-section#preferences-panel div.div-data input[type="checkbox"] + label {
+section#preferences-panel div.div-data input[type="checkbox"] + label
+{
   margin-left: 0.5em;
   vertical-align: middle;
 }
