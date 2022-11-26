@@ -485,7 +485,7 @@ changeTextAlignement(css){
 
 get formated_content(){
   if ( this.hasFormatedText && this.content ) {
-    return this.markdownize(this.notize(this.content))
+    return this.markdownize(this.tunize(this.content))
   } else {
     return this.content
   }
@@ -497,8 +497,9 @@ markdownize(str){
           .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
           .replace(/¡(.+?)¡/g,'<span class="smaller">$1</span>')
           .replace(/__RET__/g, '<br>')
+          .replace(/\[#([0-9]+?)\]/, '<span onclick="AObjet.goto($1)">⎆</span>')
 }
-notize(str){
+tunize(str){
   /** Repère les notes dans +str+ et leur met la bonne fonte **/
   return str.replace(/\b([A-H][\-\+=]?m?)(\+?[24579][\-\+]?)?([\s\.\,])/, '<mus>$1</mus>$3')
 }

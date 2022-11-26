@@ -187,7 +187,7 @@ class Analyse
   end
 
   def self.save_infos(data)
-    puts "-> save_infos(#{data.inspect})"
+    # puts "-> save_infos(#{data.inspect})"
     analyse_id = data['infos']['analyse_id']
     analyse = Analyse.new(data['path'])
     data['infos'].merge!('updated_at' => Time.new.to_i)
@@ -198,7 +198,7 @@ class Analyse
   end
 
   def self.save_preferences(data)
-    puts "-> save_preferences(#{data.inspect})"
+    # puts "-> save_preferences(#{data.inspect})"
     analyse = Analyse.new(data['path'])
     analyse.preferences = data['preferences']
     analyse.save_preferences
@@ -207,7 +207,7 @@ class Analyse
   end
 
   def self.save_tags(data)
-    puts "-> save_tags(#{data.inspect})"
+    # puts "-> save_tags(#{data.inspect})"
     analyse_id = data['analyse_id']
     analyse = Analyse.new(data['path'])
     analyse.analyse_tags = data['tags']

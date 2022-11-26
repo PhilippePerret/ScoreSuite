@@ -50,6 +50,16 @@ class AObjet {
     this.table = {}
   }
 
+  static goto(aobj_id){
+    const tag = this.get(aobj_id)
+    if ( tag ) {
+      window.scrollTo({top:tag.top - 100})
+      tag.clignote()
+    } else {
+      erreur(`Le tag ${aobj_id} n'existe plus. Vous devriez supprimer ce lien.`)
+    }
+  }
+
   /* --- Selection Methods --- */
 
   /**
@@ -134,6 +144,7 @@ class AObjet {
       this.insertUniqObjectInSelection(aobjet)
     }
     BordersTool.setMenuBordsFor(this.selection[0])
+    tooltip(`Lien : [#${aobjet.id}]`)
     this.setMenusState()
   }
 
@@ -361,6 +372,27 @@ static lastMeasureNumber(){
   get id(){return this._id}
   set id(v){this._id = v}
 
+
+  clignote(){
+    /**
+     ** Pour faire clignoter l'élément, pour mieux le localiser
+     **/
+    this.iclignotant = 0
+    this.timerClignotant = setInterval(this.toggleBorder.bind(this), 150)
+  }
+  toggleBorder(){
+    if ( this.iclignotant > 4) {
+      clearInterval(this.timerClignotant)
+      this.isSelected ? this.setSelected() : this.unsetSelected()
+    } else {
+      ++ this.iclignotant
+      if ( this.obj.classList.contains('selected') ) {
+        this.obj.classList.remove('selected')
+      } else {
+        this.obj.classList.add('selected')
+      }
+    }
+  }
 
   corrigeDataValue(prop){
     /**
