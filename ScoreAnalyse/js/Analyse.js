@@ -76,6 +76,8 @@ class Analyse {
     return this; // chainage
   }
 
+
+
 /* --- Color Methods --- */
 
 /**
@@ -449,6 +451,27 @@ checkSystems(){
     })
     // Note : la suite se fera dans onCreate
   }
+
+/* --- Export Methods --- */
+
+static exportCurrentToHtml(){
+  if ( not(this.current) ) {
+    return erreur("Il n'y a pas d'analyse courante à exporter !")
+  }
+  const code = DGet('section#content').outerHTML
+  WAA.send({
+      class:  'ScoreAnalyse::Analyse'
+    , method: 'exportToHTML'
+    , data:   {code_html: code, path:this.current.path }
+  })
+}
+static onExportedCurrentToHtml(data){
+  if (data.ok) {
+    message("L'analyse a bien été exportée dans " + data.path)
+  } else {
+    erreur("L'analyse n'a pas pu être exportée : ", data.error)
+  }
+}
 
   static exportImage(){
     if ( ! this.current ) {

@@ -240,6 +240,16 @@ class Analyse
     )
   end
 
+
+  ##
+  # Pour exporter l'analyse sous forme de fichier HTML
+  # 
+  def self.exportToHTML(data)
+    require_relative 'export_to_html'
+    analyse = Analyse.new(data['path'])
+    proceed_export_to_html(analyse, data)
+  end
+
   ##
   # Permet de produire l'image PNG/JPG de l'analyse
   #
