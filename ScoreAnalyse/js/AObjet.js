@@ -80,6 +80,34 @@ class AObjet {
     this.setMenusState()
   }
 
+  static applyToSelection(change){
+    /**
+     ** Applique un changement à tous les objets de la sélection en
+     ** fonction du contenu de +change+ qui peut contenir :
+     **   width:    On doit appliquer cette longueur à tous
+     **   height:   On doit appliquer cette hauteur à tous
+     **   dWidth:   (delta width) on doit appliquer cette différence
+     **             de longueur à tous
+     **   dHeight:  (delta height) on doit appliquer cette différence
+     **             de hauteur à tous
+     **   adjust:   Si true, on doit appeler la méthode ajustePosition
+     **             sur chaque objet.
+     **/
+    if ( change.width ) {
+      this.eachSelection(tag => {tag.width = change.width})
+    } else if ( change.dWidth ) {
+      this.eachSelection(tag => {tag.width = tag.width + change.dWidth})
+    }
+    if ( change.height ) {
+      this.eachSelection(tag => {tag.height = change.height})
+    } else if ( change.dHeight ) {
+      this.eachSelection(tag => {tag.height = tag.height + change.dHeight})
+    }
+    if ( change.adjust ) {
+      this.eachSelection(tag => tag.ajustePosition.call(tag) )
+    }
+  }
+
   /**
    * Pour ajouter un objet à la sélection courante
    */

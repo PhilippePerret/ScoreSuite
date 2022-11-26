@@ -565,25 +565,36 @@ observe(){
     $(this.obj).resizable({
         aspectRatio: true
       , stop: function(e, ui){
-          my.width  = my.getWidth.call(my)
-          my.height = my.getHeight.call(my)
-          my.ajustePosition.call(my)
+          const wDiff = my.getWidth.call(my) - my.width
+          const hDiff = my.getHeight.call(my) - my.height
+          AObjet.applyToSelection({dWidth: wDiff, dHeight:hDiff, adjust:true})
+          // Avant :
+          // my.width  = my.getWidth.call(my)
+          // my.height = my.getHeight.call(my)
+          // my.ajustePosition.call(my)
       }
     })
   } else if ( this.isVresizable && this.isHresizable ) {
     $(this.obj).resizable({
         handles: 'e,s'
       , stop: function(e, ui){
-          my.width  = my.getWidth.call(my)
-          my.height = my.getHeight.call(my)
-          my.ajustePosition.call(my)
+          const wDiff = my.getWidth.call(my) - my.width
+          const hDiff = my.getHeight.call(my) - my.height
+          AObjet.applyToSelection({dWidth: wDiff, dHeight:hDiff, adjust:true})
+          // Avant :
+          // my.width  = my.getWidth.call(my)
+          // my.height = my.getHeight.call(my)
+          // my.ajustePosition.call(my)
       }
     })
   } else if ( this.isHresizable ) {
     $(this.obj).resizable({
       handles:'e'
     , stop: function(e, ui){
-        my.width = my.getWidth.call(my)
+        const wDiff = my.getWidth.call(my) - my.width
+        AObjet.applyToSelection({dWidth: wDiff})
+        // Avant :
+        // my.width = my.getWidth.call(my)
       }
     })
   }

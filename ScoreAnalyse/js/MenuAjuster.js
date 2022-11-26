@@ -22,7 +22,9 @@ class AdjustMenu extends MenusTool {
   static setAllMenusAjustement(state){
     const dernierMenu = this.menu.options.length - 1
     for(var i = 1; i < dernierMenu; ++i){
-      this.menu.options[i].disabled = not(state)
+      const menu = this.menu.options[i]
+      // if ( ['SYS'].includes(menu.value) ) continue
+      menu.disabled = not(state)
     }
   }
 
@@ -41,10 +43,30 @@ class AdjustMenu extends MenusTool {
       return this.spreadHorizontaly()
     case 'SV':
       return this.spreadVerticaly()
+    case 'SYS':
+      return this.ajusterSystemsEtObjets()
     default:
       erreur(`Je ne sais pas traiter l'ajustement '${adjust}'.`)
     }
   }
+
+
+  /* --- Operational Methods --- */
+
+  static ajusterSystemsEtObjets(){
+    /**
+     ** Répartit les systèmes et leurs objets. C'est-à-dire qu'on
+     ** met toujours le même écart entre l'objet le plus bas d'un
+     ** système et l'objet le plus haut du système suivant.
+     **/
+    const nombreSystemes = Systeme.count
+    for(var i = 1; i < nombreSystemes; ++i) {
+      const cursys = Systeme.all[i]
+      const presys = Systeme.all[i-1]
+      console.debug("Système %i, top: %i", i, cursys.real_top, cursys.real_top + cursys.full_height)
+    }
+  }
+
 
   static spreadHorizontaly(){
     /**
@@ -144,7 +166,7 @@ class AdjustMenu extends MenusTool {
         minVal = tag[minProp] 
       }
     })
-    console.debug("minVal = ", minVal)
+    // console.debug("minVal = ", minVal)
 
     /*
     |  Prendre la valeur maximale
@@ -154,7 +176,7 @@ class AdjustMenu extends MenusTool {
     boucle(tag => {
       if ( tag[maxProp] > maxVal ) maxVal = tag[maxProp]
     })
-    console.debug("maxVal = ", maxVal)
+    // console.debug("maxVal = ", maxVal)
 
     /*
     |  Classer les boites
