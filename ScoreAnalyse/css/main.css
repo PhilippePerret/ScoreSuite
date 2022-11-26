@@ -216,3 +216,43 @@ mus {
   font-family:'PhilNote2';
   font-size: inherit;
 }
+
+/*
+  --- ANNULATIONS ---
+*/
+div#historique_annulations {
+  position:fixed;
+  bottom: 48px;
+  right: 8px;
+  z-index: 100;
+  background-color:#CCC;
+  border:1px solid black;
+  width:300px;
+  min-height: 400px;
+  max-height: 2000px;
+  y-overflow: auto;
+  padding-top: 2em;
+}
+div#historique_annulations span.close-box {
+  position:absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 10pt;
+  cursor:pointer;
+}
+div#historique_annulations > div {
+  padding:0.5em 1em;
+  border-bottom:1px solid white;
+  border-top:1px solid white;
+}
+div#historique_annulations > div:hover {
+  background-color:#DDD;
+}
+div#historique_annulations > div:hover:before {
+  position:absolute;
+  left:-60px;
+  content: "Annuler :";
+  font-weight:bold;
+  color:red;
+  z-index:101;
+}

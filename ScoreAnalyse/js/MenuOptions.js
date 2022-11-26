@@ -44,6 +44,7 @@ class OptionsTool extends MenusTool {
   * de changer le nom pour activer ou désactiver l'option.
   */
   static afterActivate(e, option){
+    if ( option.dataset.role != 'cb' ) return
     var text = option.innerHTML
     text = text.substring(1, text.length)
     text = (option.dataset.checked == 'true' ? '☒' : '☐') + text

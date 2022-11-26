@@ -38,31 +38,42 @@ class CancelManager {
     if ( this.items.length == 0 ) {
       return tooltip('Aucune action n’est annulable.')
     } else {
-      const lastZ = this.items.pop()
-      try {
-        /*
-        |  On indique que l'annulation est en cours, pour rediriger
-        |  les méthodes qui enregistrent des annulations
-        */
-        this.ON = true
-        /*
-        |  On procède à l'annulation
-        */
-        lastZ.method.call()
-      } catch(err) {
-
-      } finally {
-        /*
-        |  On indique que l'annulation n'est plus active
-        */
-        this.ON = false
-      }
+      this.execCancel(this.items.pop())
     }
     /*
     |  S'il y a un menu d'annulation, on le renseigne
     */
     this.defineZMenu()
     return stopEvent(e)
+  }
+
+  zIndex(idx){
+    /**
+     ** Annule l'annulation d'index +idx+
+     **/
+    this.execCancel(this.items.splice(idx,1)[0])
+  }
+
+  execCancel(data){
+    // console.debug("Je dois annuler : ", data)
+    try {
+      /*
+      |  On indique que l'annulation est en cours, pour rediriger
+      |  les méthodes qui enregistrent des annulations
+      */
+      this.ON = true
+      /*
+      |  On procède à l'annulation
+      */
+      data.method.call()
+    } catch(err) {
+
+    } finally {
+      /*
+      |  On indique que l'annulation n'est plus active
+      */
+      this.ON = false
+    }
   }
 
   unzLast(e){
@@ -85,10 +96,9 @@ class CancelManager {
     if ( this.ON ) {
       this.unz(data)
     } else {    
-      console.debug("-> Cancel.z")
       Object.assign(data, {time: new Date()})
       this.items.push(data)
-      console.debug("Annulation enregistrée : ", data)
+      // console.debug("Annulation enregistrée : ", data)
       this.defineZMenu()
     }
   }
@@ -105,6 +115,11 @@ class CancelManager {
      ** pouvoir supprimer celles qui sont choisies (dans n'importe
      ** quel ordre, contrairement aux annulations classique)
      **/
+    if ( this.items.length == 0 ) {
+      erreur("Aucune action à annuler.")
+    } else {
+      this.zChoose()
+    }
     return e && stopEvent(e)
   }
 
@@ -122,6 +137,22 @@ class CancelManager {
      ** Construction de la liste des annulations possibles
      ** Produire this.obj
      **/
+    this.obj = DCreate('DIV', {id:'historique_annulations', class:'hidden'})
+    const closeBox = DCreate('SPAN', {text:'❌', class:'close-box'})
+    listen(closeBox, 'click', this.hideList.bind(this))
+    this.obj.appendChild(closeBox)
+    for(var i = 0, len = this.items.length; i < len; ++i){
+      const item = this.items[i]
+      const dom  = DCreate('DIV', {text: `Changement : ${item.name}`})
+      this.obj.appendChild(dom)
+      listen(dom, 'click', this.onCancelInHisto.bind(this, dom, i))
+    }
+    document.body.appendChild(this.obj)
+  }
+
+  onCancelInHisto(dom, idx){
+    this.zIndex(idx)
+    dom.remove()
   }
 
   showList(){
