@@ -10,6 +10,27 @@ div.mini_editeur div.titre {
   margin-bottom: 1em;
   font-weight: bold;
 }
+
+/* Le mini-editeur, en règle générale, peut éditer un texte
+  court mais il y a aussi la possibilité d'éditer  un texte long */
+div.mini_editeur:not(.longtext) textarea {
+  display:none;
+}
+div.mini_editeur.longtext {
+  width:  740px;
+  height: 620px;
+}
+div.mini_editeur.longtext input[type="text"] {
+  display:none;
+}
+div.mini_editeur.longtext textarea {
+  width: 100%;
+  height: calc(80%);
+  resize: none;
+}
+
+
+
 div.mini_editeur input[type="text"] {
   width: 100%;
   font-size: 20pt;

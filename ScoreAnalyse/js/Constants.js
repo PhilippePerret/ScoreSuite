@@ -1,6 +1,5 @@
 'use strict';
 
-
 const TYPES_OU_SOUSTYPES_AU_DESSUS = [
   'acc', 'mod', 'emp', 'prt', 'prtz', 'sec','secz'
 ]
@@ -9,7 +8,7 @@ const TYPES_OU_SOUSTYPES_EN_DESSOUS = [
 ]
 
 const TYPES_CADRE = {
-    'prt' : {name:'Partie (début)'  , shortcut:'a'  , value:'prt'   , default:'EXPO'}
+  'prt' : {name:'Partie (début)'  , shortcut:'a'  , value:'prt'   , default:'EXPO'}
   , 'prtz': {name:'Fin de partie'   , shortcut:'z'  , value:'prtz'  , default:'EXPO'}
   , 'sec' : {name:'Début section'   , shortcut:'s'  , value:'sec'   , default:'SECTION'}
   , 'secz': {name:'Fin de section'  , shortcut:'f'  , value:'secz'  , default:'SECTION'}
@@ -19,16 +18,17 @@ const TYPES_CADRE = {
 }
 
 const TAILLES_TEXTE = {
-    'size1' : {name:"Gros"              ,value:'size1'  ,shortcut: '4'  ,default:'Gros texte'}
-  , 'size2' : {name:"Moyen"             ,value:'size2' ,shortcut: '3'   ,default:'Texte moyen'}
-  , 'size3' : {name:"Petit"             ,value:'size3' ,shortcut: '2'   ,default:'Petit texte'}
-  , 'size4' : {name:"Mini"              ,value:'size4' ,shortcut: '1'   ,default:'Texte miniature'}
-  , 'mes'   : {name:'Numéro de mesure'  ,value:'mes'   ,shortcut:'m'    ,default: function(){return AObjet.lastMeasureNumber()}}
-  , 'idx'   : {name:'En marge (index)'  ,value:'idx'   ,shortcut:'i'    ,default:'Index'}
+  'size1' : {name:"Gros"              ,value:'size1'    ,shortcut:'4' ,default:'Gros texte'}
+  , 'size2' : {name:"Moyen"             ,value:'size2'  ,shortcut:'3' ,default:'Texte moyen'}
+  , 'size3' : {name:"Petit"             ,value:'size3'  ,shortcut:'2' ,default:'Petit texte'}
+  , 'size4' : {name:"Mini"              ,value:'size4'  ,shortcut:'1' ,default:'Texte miniature'}
+  , 'mes'   : {name:'Numéro de mesure'  ,value:'mes'    ,shortcut:'m' ,default: function(){return AObjet.lastMeasureNumber()}}
+  , 'long'  : {name:'Texte long'        ,value:'long'   ,shortcut:'l' ,default: 'Texte long (command + ENTER pour finir)'}
+  , 'idx'   : {name:'En marge (index)'  ,value:'idx'    ,shortcut:'i' ,default:'Index'}
 }
 
 const TYPES_NOTES = {
-    'np': {name:'Note de passage'   , value:'np', autocontent:'NP'  , shortcut:'p'}
+  'np': {name:'Note de passage'   , value:'np', autocontent:'NP'  , shortcut:'p'}
   , 'ap': {name:'Appoggiature'      , value:'ap', autocontent:'AP'  , shortcut:'a'}
   , 'ac': {name:'Appog.chromatique' , value:'ac', autocontent:'AC'  , shortcut:'c'}
   , 're': {name:'Retard'            , value:'re', autocontent:'R'   , shortcut:'r'}
@@ -48,7 +48,7 @@ const TYPES_NOTES = {
  * 
  */
 const AMARQUES_TYPES = {
-    'acc': {name:'Accord'       , shortcut:'a', ajustX:12,  ajustY:8,     value:'acc', default:'C', message:"Nom de l'accord"}
+  'acc': {name:'Accord'       , shortcut:'a', ajustX:12,  ajustY:8,     value:'acc', default:'C', message:"Nom de l'accord"}
   , 'har': {name:'Harmonie'     , shortcut:'h', ajustX:16,  ajustY:8,     value:'har', default:'I', message:"Chiffrage"}
   , 'mod': {name:'Modulation'   , shortcut:'m', ajustX:24,  ajustY:-80,   value:'mod', default:'C', message:"Nouvelle tonalité"}
   , 'emp': {name:'Emprunt'      , shortcut:'e', ajustX:4,   ajustY:-60,   value:'emp', default:'C', message:"Tonalité de l'emprunt"}
@@ -75,7 +75,7 @@ const TYPES_AJUSTABLES = {
  , 'cad':['cad','har']
 }
 const SUBTYPES_AJUSTABLES = {
-    'mes':['mes']
+  'mes':['mes']
 }
 
 
@@ -84,7 +84,7 @@ const SUBTYPES_AJUSTABLES = {
  * 
  */
 const CADENCES = {
-    'par': {name:'Cadence parfaite',   value:'par', autocontent:'I',  shortcut:'p'}
+  'par': {name:'Cadence parfaite',   value:'par', autocontent:'I',  shortcut:'p'}
   , 'imp': {name:'Cadence imparfaite', value:'imp', autocontent:'I',  shortcut:'n'}
   , 'dem': {name:'Demi-cadence',       value:'dem', autocontent:'V',  shortcut:'d'}
   , 'ita': {name:'Cadence italienne',  value:'ita', autocontent:'I',  shortcut:'i'}

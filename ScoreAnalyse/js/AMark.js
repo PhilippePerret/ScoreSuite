@@ -38,7 +38,7 @@ class AMark extends AObjet {
       |  ajuster ses données (noter que dans +params+ ne se trouvent
       |  ni sa largeur ni sa hauteur)
       */
-      console.info("CREATE: Marque d'analyse avec données : ", params)
+      // console.info("CREATE: Marque d'analyse avec données : ", params)
       // Identifiant unique
       Object.assign(params, { id: Analyse.current.newId() })
       const newMark = ( function(type){
@@ -185,8 +185,6 @@ setValues(values){
  * 
  * Est appelée seulement par le mini-éditeur lorsque l'on veut 
  * modifier le texte de la marque.
- * Rappel : pour chager de marque (de type), il faut détruire la
- * marque actuelle et en créer une autre.
  * 
  *  '--' à la fin indique qu'il faut un trait de prolongation
  * 
@@ -487,7 +485,6 @@ changeTextAlignement(css){
 
 get formated_content(){
   if ( this.hasFormatedText && this.content ) {
-    // return this.content
     return this.markdownize(this.notize(this.content))
   } else {
     return this.content
@@ -499,6 +496,7 @@ markdownize(str){
           .replace(/\b_(.+?)_\b/g, '<u>$1</u>')
           .replace(/\^(te|re|er|e)/g, '<sup>$1</sup>')
           .replace(/¡(.+?)¡/g,'<span class="smaller">$1</span>')
+          .replace(/__RET__/g, '<br>')
 }
 notize(str){
   /** Repère les notes dans +str+ et leur met la bonne fonte **/
@@ -1031,6 +1029,7 @@ set subtype(v){
 // exemple, il faut tout remettre
 get content(){ return this._content || (this._content = this.data.content)}
 set content(v){
+  v = v.replace(/\r?\n/g,'__RET__')
   this._content = v
   this.data.content = v
   this.contentSpan && (this.contentSpan.innerHTML = this.formated_content )

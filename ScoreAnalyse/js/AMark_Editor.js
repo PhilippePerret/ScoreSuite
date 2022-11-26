@@ -88,9 +88,9 @@ get amark_data(){
   }
 }
 
-get amark_type(){return this._amark_type}
-get amark_subtype(){return this._amark_subtype}
-get amark_content(){return this._amark_content}
+get amark_type()    {return this._amark_type}
+get amark_subtype() {return this._amark_subtype}
+get amark_content() {return this._amark_content}
 
 /**
  * Rectification du left et du top par rapport au clic de souris

@@ -24,7 +24,8 @@
 class Editeur {
   constructor(owner, data){
     this.owner  = owner
-
+    console.debug("owner = ", owner)
+    console.debug("data = ", data)
     data = data || {}
     if ( ! data.setMethod ) {
       if ( 'function' == typeof owner.setValue){
@@ -47,13 +48,25 @@ class Editeur {
     position && this.positionne(position)
     message  && (this.titre = message)
     this.obj.classList.remove('hidden')
-    this.textField.focus()
-    this.textField.select()
+    this.obj.classList[this.isLongText?'add':'remove']('longtext')
+    var fieldText ;
+    if ( this.isLongText ) {
+      fieldText = this.textarea
+    } else {
+      fieldText = this.textField
+    }
+    fieldText.focus()
+    fieldText.select()
   }
+
   // Fermer l'éditeur
   hide(){
     this.obj.classList.add('hidden')
     UI.reactiveCurrentShortcuts()
+  }
+
+  get isLongText(){
+    return this.owner._amark_type == 'txt' && this.owner._amark_subtype == 'long'
   }
 
   set titre(v){
@@ -84,7 +97,13 @@ class Editeur {
     this.hide()
   }
 
-  getValue(){return this.textField.value}
+  getValue(){
+    if ( this.isLongText ) {
+      return this.textarea.value
+    } else {
+      return this.textField.value
+    }
+  }
 
   set value(v){
     this.init()
@@ -103,6 +122,8 @@ class Editeur {
     o.appendChild(this.spanTitre)
     this.textField = DCreate('INPUT',{type:'text', value:this.value})
     o.appendChild(this.textField)
+    this.textarea = DCreate('TEXTAREA',{})
+    o.appendChild(this.textarea)
     const divBoutons = DCreate('DIV', {class:'buttons right'})
     divBoutons.appendChild(DCreate('BUTTON', {text:'Renoncer', class:'cancel'}))
     // divBoutons.appendChild(DCreate('BUTTON', {text:'OK', class:'ok'}))
@@ -117,6 +138,8 @@ class Editeur {
     listen(this.obj,        'dblclick', e => {return stopEvent(e)})
     listen(this.textField,  'focus', this.onFocusTextField.bind(this))
     listen(this.textField,  'blur',  this.onBlurTextField.bind(this))
+    listen(this.textarea,   'focus', this.onFocusTextField.bind(this))
+    listen(this.textarea,   'blur',  this.onBlurTextField.bind(this))
     $(this.obj).draggable()
   }
 
@@ -124,6 +147,7 @@ class Editeur {
     UI.desactiveCurrentShortcuts()
     window.onkeypress = this.onKeyPress.bind(this)
     window.onkeyup    = this.onKeyUp.bind(this)
+    window.onkeydown  = this.onKeyDown.bind(this)
   }
   onBlurTextField(e){
     UI.reactiveCurrentShortcuts()
@@ -131,13 +155,30 @@ class Editeur {
 
   onKeyPress(e){
     // console.log("e.key = '%s'", e.key)
-    if (e.key == 'Enter') return this.onClickOK.call(this, e)
+    if (e.key == 'Enter') {
+      if ( this.isLongText ) {
+        if ( e.metaKey ) {
+          
+        } else {
+          return true 
+        }
+      } else { 
+        return this.onClickOK.call(this, e) 
+      }
+    }
     else if (e.key == 'Backspace') return stopEvent(e)
     else return true
   }
+  onKeyDown(e){
+    if (this.isLongText && e.metaKey && e.key == 'Enter') {
+      return this.onClickOK.call(this, e)
+    }
+  }
   onKeyUp(e){
-    // console.log("e.key = '%s'", e.key)
-    if (e.key == 'Escape') return this.onClickCancel.call(this,e)
+    // console.log("e.key = '%s'", e)
+    if (e.key == 'Escape'){ 
+      return this.onClickCancel.call(this,e)
+    }
   }
 
   /**
