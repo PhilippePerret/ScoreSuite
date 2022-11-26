@@ -27,9 +27,6 @@ class AmarkMenu extends MenusTool {
   }
 
   static get selection(){ return AObjet.selection || []}
-  static boucle(methode){
-    AObjet.eachSelection(methode)
-  }
 
   /* --- OnActivate Methods --- */
 
@@ -49,6 +46,20 @@ class AmarkMenu extends MenusTool {
     const editor = new AMark_Editor(dataEdit)
     editor.proceed()
   }
+
+  static onActivate_justifyText()     { this.applyStyleText('justify')  }
+  static onActivate_alignTextLeft()   { this.applyStyleText('left')     }
+  static onActivate_alignTextRight()  { this.applyStyleText('right')    }
+  static onActivate_alignTextCenter() { this.applyStyleText('center')   }
+
+
+  /* --- Functional Methods --- */
+
+  static boucle(methode){
+    AObjet.eachSelection(methode)
+    Analyse.setModified()
+  }
+
   static onTypeChosen(data){
     this.boucle(tag => {
       tag.type    = data.type
@@ -56,6 +67,17 @@ class AmarkMenu extends MenusTool {
     })
   }
 
+  static applyStyleText(css) {
+    /**
+     ** Appliquer un alignement au texte
+     **/
+    this.boucle(tag => {
+      if ( not(tag.spanContent) ) return
+      else tag.changeTextAlignement(css)
+    })
+  }
+
+  /* --- HTML Elements ---  */
 
   static get menuLock(){
     return DGet('option[value="toogleLock"]', this.menu)

@@ -348,8 +348,12 @@ removeCss(classe){
 * À la construction du tag, pour appliquer ses css ajoutés
 */
 applyCss(){
-  if ( !this.data.css ) return ;
-  this.data.css.forEach(classe => this.obj.classList.add(classe))
+  if ( this.data.css ) {
+    this.data.css.forEach(classe => this.obj.classList.add(classe))
+  }
+  if ( this.data.align ) {
+    this.spanContent.classList.add(this.data.align)
+  }
 }
 
 /**
@@ -454,7 +458,31 @@ buildSpanContent(){
   // La méthode est "détachée" de #build pour pouvoir être surclassée
   // par une méthode de classe fille. Un type image, par exemple, ne
   // construit pas un span mais une balise <img>
-  return DCreate('SPAN', {class:'content', text:this.formated_content })
+  this.spanContent = DCreate('SPAN', {class:'content', text:this.formated_content })
+  return this.spanContent
+}
+
+changeTextAlignement(css){
+  /** 
+   ** Applique un style au span content pour aligner le texte de
+   ** la façon définie par +css+ 
+   **/
+  /*
+  |  Rien à faire si le texte est déjà aligné comme ça
+  */
+  if ( this.data.align && this.data.align == css) {
+    return
+  }
+  if ( this.data.align ) {
+    this.spanContent.classList.remove(this.data.align)
+  }
+  this.data.align = css
+  /*
+  |  On applique l'alignement
+  */
+  this.spanContent.classList.add(css)
+  // Marquer l'analyse modifiée
+  Analyse.setModified()
 }
 
 get formated_content(){

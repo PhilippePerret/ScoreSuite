@@ -3,6 +3,14 @@ div.amark {
   overflow: visible;
   z-index: 2;
 }
+div.amark span.content {
+  display:inline-block; /* pour pouvoir aligner le texte */
+}
+
+div.amark span.content.left     {text-align:left    }
+div.amark span.content.right    {text-align:right   }
+div.amark span.content.center   {text-align:center  }
+div.amark span.content.justify  {text-align:justify }
 
 div.amark:hover {
   cursor: pointer;
