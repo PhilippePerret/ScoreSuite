@@ -24,7 +24,7 @@
 class Editeur {
   constructor(owner, data){
     this.owner  = owner
-    console.debug("owner = ", owner)
+    console.debug("Nouvel éditeur pour ", owner)
     console.debug("data = ", data)
     data = data || {}
     if ( ! data.setMethod ) {
@@ -48,7 +48,8 @@ class Editeur {
     position && this.positionne(position)
     message  && (this.titre = message)
     this.obj.classList.remove('hidden')
-    this.obj.classList[this.isLongText?'add':'remove']('longtext')
+    console.debug("editeur", this)
+    this.obj.classList[this.isLongText ? 'add' : 'remove']('longtext')
     var fieldText ;
     if ( this.isLongText ) {
       fieldText = this.textarea
@@ -66,7 +67,13 @@ class Editeur {
   }
 
   get isLongText(){
-    return this.owner._amark_type == 'txt' && this.owner._amark_subtype == 'long'
+    if ( this.owner.data.type ) {
+      console.debug("Je prends le owner.data.type")
+      return this.owner.data.type == 'txt' && this.owner.data.subtype == 'long'
+    } else {
+      console.debug("Je recherche le owner._amark_type")
+      return this.owner._amark_type == 'txt' && this.owner._amark_subtype == 'long'
+    }
   }
 
   set titre(v){
@@ -107,7 +114,11 @@ class Editeur {
 
   set value(v){
     this.init()
-    this.textField.value = v
+    if ( this.isLongText ) {
+      this.textarea.value = v.replace(/__RET__/g,"\n")
+    } else {
+      this.textField.value = v
+    }
   }
 
   set setMethod(m){ Object.assign(this.data, {setMethod: m})}

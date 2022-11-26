@@ -162,7 +162,7 @@ edit(){
 
 destroy(){
   this.obj.remove() // c'est tout ? OUI
-  Analyse.current.modified = true
+  Analyse.setModified()
 }
 
 /**
