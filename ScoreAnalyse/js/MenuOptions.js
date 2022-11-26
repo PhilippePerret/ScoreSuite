@@ -8,6 +8,11 @@
 */
 class OptionsTool extends MenusTool {
 
+  static init(){
+    super.init()
+    Cancel.zMenu = DGet('option[value="cancel"]', this.menu)
+  }
+
 
   /* --- Gestionnaires d'évènement menu ---  */
 
@@ -28,6 +33,12 @@ class OptionsTool extends MenusTool {
     UI.toggleGridDisplay(modeON)
   }
 
+  static onActivate_cancel(e, option){
+    Cancel.zLast(e)
+  }
+  static onActivate_cancelInList(e, option) {
+    Cancel.zInList(e)
+  }
   /**
   * Appelée après chaque choix de menu, cette méthode permet
   * de changer le nom pour activer ou désactiver l'option.

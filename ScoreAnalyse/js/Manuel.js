@@ -146,6 +146,7 @@ class ManuelItem {
         return '<p>' + this.procedure + '</p>'
       }
     } else {
+      console.debug("this", this)
       var c = this.procedure.map(p => `<li>${p}</li>`).join('')
       return '<ul>' + c + '</ul>'
     }

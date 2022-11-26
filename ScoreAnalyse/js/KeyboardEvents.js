@@ -67,9 +67,18 @@ onKeyUpOnAnalyse = function(e){
 */
 onKeyDownUniversel = function(e){
 
-  if ( e.metaKey && e.key == 's' ) {
-    Analyse.current && AnalyseSaver.save(Analyse.current)
-    return stopEvent(e)
+  if ( e.metaKey ) {
+    switch(e.key) {
+      case 's':
+        Analyse.current && AnalyseSaver.save(Analyse.current)
+        return stopEvent(e)
+      case 'z':
+        if (e.shiftKey) {
+          return Cancel.unzLast(e)
+        } else {
+          return Cancel.zLast(e)
+        }
+    }
   }
 
   return null;

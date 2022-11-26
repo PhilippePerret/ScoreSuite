@@ -93,6 +93,13 @@ class AObjet {
      **   adjust:   Si true, on doit appeler la méthode ajustePosition
      **             sur chaque objet.
      **/
+    /*
+    |  S'il faut ajouter un tag (celui qui a généré ça)
+    */
+    change.me && this.addToSelection(change.me)
+    /*
+    |  Exécution des opérations en fonction de +change+
+    */
     if ( change.width ) {
       this.eachSelection(tag => {tag.width = change.width})
     } else if ( change.dWidth ) {
@@ -110,6 +117,8 @@ class AObjet {
 
   /**
    * Pour ajouter un objet à la sélection courante
+   * 
+   * Note : s'il y ait déjà, on ne l'ajoute pas deux fois
    */
   static addToSelection(aobjet) {
     if ( undefined == this.selection ) {
@@ -130,6 +139,7 @@ class AObjet {
 
   // Méthode fonctionnelle privée (cf. ci-dessus)
   static insertUniqObjectInSelection(aobjet){
+    if ( this.selectionIds.includes(aobjet.id) ) return
     this.selection.push(aobjet)
     this.selectionIds.push(aobjet.id)
     Object.assign(this.selectionTbl, {[aobjet.id]: aobjet})
@@ -357,6 +367,14 @@ static areNotAjustable(type1, type2){
     }
   }
 
+setProp(prop,value){
+  /**
+   ** Méthode principale utilisée par le manager d'annulation pour
+   ** remettre une propriété à une autre valeur
+   **/
+  this[prop]= value
+}
+
 getCssProp(prop, notANumber){
   /** @return la valeur "computée" de +prop+, qu'elle soit définie
    ** dans la classe CSS ou dans le style de l'objet.
@@ -374,15 +392,20 @@ getCssProp(prop, notANumber){
     return this._top || (this._top = this.getTop() ) 
   }
   set top(v){
-    if ( v == this.data.top ) return
     v = AMark.snapVertical(v, true) // Grid adjustment
+    if ( v == this.data.top ) return
+    const top_ini = 0 + this.top
     const currentTop = 0 + this.data.top
     this._top = v
     this.obj && (this.obj.style.top = px(v))
     this.data.top = v
     this.modified = true
-    this.isPartie && this.obj && this.currentTop != v && this.memoriseHauteurLignePartie() // pour la ligne verticale
-    this.analyse && this.analyse.setModified()
+    this.isPartie && this.obj && this.top_ini != v && this.memoriseHauteurLignePartie() // pour la ligne verticale
+    Cancel.z({
+        name:`top de #${this.id}`
+      , method: this.setProp.bind(this, 'top', top_ini)
+    })    
+    Analyse.setModified()
   }
   getTop(){
     return this.obj && this.getCssProp('top')
@@ -399,11 +422,17 @@ getCssProp(prop, notANumber){
 
   get left(){return this._left || (this._left = this.data.left || this.obj.offsetLeft)}
   set left(v){
+    const left_ini = 0 + this.left
+    v = AMark.snapHorizontal(v)
     if ( v == this.data.left ) return
-    this.data.left = AMark.snapHorizontal(v)
+    this.data.left = v
     this._left = this.data.left
     this.setLeft(this.data.left)
-    this.analyse && this.analyse.setModified()
+    Cancel.z({
+        name:`left de #${this.id}`
+      , method: this.setProp.bind(this, 'left', left_ini)
+    })
+    Analyse.setModified()
   }
   setLeft(v){
     this.obj && (this.obj.style.left = px(v))
@@ -418,14 +447,27 @@ getCssProp(prop, notANumber){
 
   get width(){ return this.data.width || this.getWidth() }
   set width(v) {
+    const width_ini = 0 + this.data.width
     v = this.snapHorizontal(v, this.getCssProp('border-left-width'))
     if ( v == this.data.width ) return
     // console.debug("width à l'entrée = %i", 0 + v)
     // console.debug("width ajustée = %i", 0 + v)
     this.data.width = v
     this.setWidth(this.data.width)
-    this.analyse && this.analyse.setModified()
+    Cancel.z({
+        name:`width de #${this.id}`
+      , method: this.setProp.bind(this, 'width', width_ini)
+    })
+    Analyse.setModified()
   }
+  getWidth(){
+    return this.obj && this.getCssProp('width')
+  }
+  setWidth(v){
+    /** Appliquer la largeur à l'objet **/
+    this.obj && (this.obj.style.width = px(v))
+  }
+
   snapHorizontal(v, retrait){
     if ( ! AMark.hSnap ) return v
     return AMark.snapHorizontal(v) - retrait
@@ -440,20 +482,16 @@ getCssProp(prop, notANumber){
   set height(v){
     v = this.snapVertical(v, this.getCssProp('border-top-width'))
     if ( v == this.data.height ) return
+    const height_ini = 0 + this.height
     this.data.height = v
     this._height = this.data.height
     this.setHeight(this.data.height)
-    this.analyse && this.analyse.setModified()
+    Cancel.z({
+        name:`height de #${this.id}`
+      , method: this.setProp.bind(this, 'height', height_ini)
+    })
+    Analyse.setModified()
   }
-
-  getWidth(){
-    return this.obj && this.getCssProp('width')
-  }
-  setWidth(v){
-    /** Appliquer la largeur à l'objet **/
-    this.obj && (this.obj.style.width = px(v))
-  }
-
   getHeight(){
     return this.obj && this.getCssProp('height')
   }
@@ -461,4 +499,6 @@ getCssProp(prop, notANumber){
     /** Appliquer la hauteur à l'objet **/
     this.obj && (this.obj.style.height = px(v))
   }
+
+
 }

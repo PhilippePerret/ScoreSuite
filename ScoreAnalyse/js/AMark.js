@@ -227,7 +227,7 @@ setValue(newvalue){
     this.signePlusCad || this.buildSignePlusCadence()
   }
 
-  Analyse.current.setModified()
+  Analyse.setModified()
 
 }
 
@@ -567,7 +567,7 @@ observe(){
       , stop: function(e, ui){
           const wDiff = my.getWidth.call(my) - my.width
           const hDiff = my.getHeight.call(my) - my.height
-          AObjet.applyToSelection({dWidth: wDiff, dHeight:hDiff, adjust:true})
+          AObjet.applyToSelection({me:my, dWidth: wDiff, dHeight:hDiff, adjust:true})
           // Avant :
           // my.width  = my.getWidth.call(my)
           // my.height = my.getHeight.call(my)
@@ -579,8 +579,8 @@ observe(){
         handles: 'e,s'
       , stop: function(e, ui){
           const wDiff = my.getWidth.call(my) - my.width
-          const hDiff = my.getHeight.call(my) - my.height
-          AObjet.applyToSelection({dWidth: wDiff, dHeight:hDiff, adjust:true})
+          const hDiff = my.getHeight.call(my) - my.height          
+          AObjet.applyToSelection({me:my, dWidth: wDiff, dHeight:hDiff, adjust:true})
           // Avant :
           // my.width  = my.getWidth.call(my)
           // my.height = my.getHeight.call(my)
@@ -592,7 +592,7 @@ observe(){
       handles:'e'
     , stop: function(e, ui){
         const wDiff = my.getWidth.call(my) - my.width
-        AObjet.applyToSelection({dWidth: wDiff})
+        AObjet.applyToSelection({me:my, dWidth: wDiff})
         // Avant :
         // my.width = my.getWidth.call(my)
       }
@@ -765,8 +765,6 @@ unsetSelected(){
  */
 ajustePosition(left, top){
   const initTop = 0 + this.data.top
-  this.data.left = left - 1
-  this.data.top  = top - 1
   this.left = left
   this.top  = top
   if (pref('adjust_same_mark') && this.isTypeAjustable ) {
