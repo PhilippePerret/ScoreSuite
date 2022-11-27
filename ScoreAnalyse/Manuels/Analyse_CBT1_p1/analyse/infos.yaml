@@ -1,0 +1,60 @@
+---
+folder: "/Users/philippeperret/Programmes/ScoreSuite/ScoreAnalyse/Manuels/Analyse_CBT1_p1"
+analyse_id: analyse
+piece_title: Premier prélude du CBT1
+composer: Jean-Sébastien Bach
+analyse_title: Analyse du prélude
+analyste: Philippe Perret
+created_at: 1669565211
+updated_at: 1669565211
+waa_version: '1.0'
+app_version: '2.2'
+systems:
+- :image_name: system-1.jpg
+  :left: 0
+  :top: 0
+  :height: 100
+- :image_name: system-10.jpg
+  :left: 0
+  :top: 100
+  :height: 100
+- :image_name: system-11.jpg
+  :left: 0
+  :top: 200
+  :height: 100
+- :image_name: system-12.jpg
+  :left: 0
+  :top: 300
+  :height: 100
+- :image_name: system-2.jpg
+  :left: 0
+  :top: 400
+  :height: 100
+- :image_name: system-3.jpg
+  :left: 0
+  :top: 500
+  :height: 100
+- :image_name: system-4.jpg
+  :left: 0
+  :top: 600
+  :height: 100
+- :image_name: system-5.jpg
+  :left: 0
+  :top: 700
+  :height: 100
+- :image_name: system-6.jpg
+  :left: 0
+  :top: 800
+  :height: 100
+- :image_name: system-7.jpg
+  :left: 0
+  :top: 900
+  :height: 100
+- :image_name: system-8.jpg
+  :left: 0
+  :top: 1000
+  :height: 100
+- :image_name: system-9.jpg
+  :left: 0
+  :top: 1100
+  :height: 100

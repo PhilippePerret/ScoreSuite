@@ -18,7 +18,7 @@ class Analyse
   ##
   # Pour demander le chargement de l'analyse au besoin.
   # 
-  # Les différents cases dans l'ordre de précédence :
+  # Les différents cas dans l'ordre de précédence :
   # 
   #   ((s'il y a un argument en ligne de commande))
   #   - si cette analyse existe dans le dossier courant
@@ -363,7 +363,13 @@ class Analyse
       if Q.yes?("Il existe un dossier 'systems' dans ce dossier. Contient-il les systèmes à utiliser ?".jaune)
         folder_courant = File.join()
         Dir["#{CURRENT_FOLDER}/systems/*.{jpg,jpeg,png,svg}"].each do |fsys|
-          `cp "#{fsys}" "#{analyse.path}/systems/"`
+          `mv "#{fsys}" "#{analyse.path}/systems/"`
+        end
+        # 
+        # Si le précédent dossier systèmes est vide, on le détruit
+        # 
+        if Dir["#{CURRENT_FOLDER}/systems/*.{jpg,jpeg,png,svg}"].count == 0
+          FileUtils.rm(File.join(CURRENT_FOLDER,'systems'))
         end
         # 
         # Actualisation de la liste des systèmes
@@ -442,7 +448,8 @@ class Analyse
     # 
     # Création de fichier des préférences
     # 
-    save_preferences
+    preferences_model = File.join(APP_FOLDER,'assets','models','preferences.yaml')
+    FileUtils.cp(preferences_model, preferences_path)
     # 
     # Création le fichier des marques d'analyse
     # 

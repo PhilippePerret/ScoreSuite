@@ -1,3 +1,3 @@
 ---
 :load_last_analyse: true
-:last_analyse_path: "/Users/philippeperret/Downloads/SCHUBERT-Trio100/schub_trio100"
+:last_analyse_path: "/Users/philippeperret/Programmes/ScoreSuite/ScoreAnalyse/Manuels/Analyse_CBT1_p1/CBT1p1"
