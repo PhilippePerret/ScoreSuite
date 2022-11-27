@@ -105,11 +105,6 @@
       </div>
     </div>
 
-    <div>
-      <button onclick="Analyse.current.refresh.call(Analyse.current)">Rafraichir</button>
-      <div class="explication">(en cas de changement des images de systèmes (ajout ou suppression)</div>
-    </div>
-
     <div>    
       <button onclick="Tools.distributeSystem.call(Tools, DGet('#tool_inter_system').value)">Répartir les systèmes</button> <span>Écart entre les systèmes : </span>
       <input type="text" id="tool_inter_system" value="" style="width:60px">
@@ -187,9 +182,9 @@
       <option></option>
       <option value="exportToHTML">Exporter en HTML</option>
       <option></option>
-      <option value="toolsPanel">Panneau des outils…</option>
+      <option value="toolsPanel">Panneau des outils… ⇧O</option>
       <option></option>
-      <option value="manual">Manuel ⇧M</option>
+      <option value="manual">Manuel… ⇧M</option>
       <option></option>
       <option value="prefs">Préférences… ⇧P</option>
     </select>

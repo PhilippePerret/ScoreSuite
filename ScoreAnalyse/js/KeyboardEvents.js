@@ -14,6 +14,9 @@ function onKeypressOnAnalyse(e){
       Preferences.toggle.call(Preferences)
       break
 
+    case 'O':
+      Tools.togglePanneau.call(Tools)
+      break
 
     default:
 
