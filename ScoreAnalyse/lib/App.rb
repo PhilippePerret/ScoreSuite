@@ -92,8 +92,78 @@ class App
   end
 
 
+  ##
+  # Méthode appelée depuis le panneau des outils, pour construire
+  # rapidement une image en code muscore et en faire une image svg
+  # 
+  def self.build_image_from_code(data)
+    retour = {ok: true, image_name: nil, error:nil}
+
+    images_folder   = File.join(data['path'],'images')
+    chantier_folder = mkdir(File.join(images_folder,'_Chantier'))
+    code = data['code']
+    
+    # 
+    # Noms et paths de l'image
+    # 
+    image_affixe = 
+      if code.match?(/^-> ([a-z\-_0-9]+)$/i)
+        code.match(/^-> ([a-z\-_0-9]+)$/i)[1]
+      else
+        "img-#{Time.now.to_i}"
+      end 
+    code_mus_name     = "#{image_affixe}.mus"
+    code_mus_path     = File.join(chantier_folder,code_mus_name)
+    built_image_path  = File.join(chantier_folder,image_affixe,"#{image_affixe}.svg")
+    File.delete(built_image_path) if File.exist?(built_image_path)
+    final_image_path  = File.join(images_folder,"#{image_affixe}.svg")
+    File.delete(final_image_path) if File.exist?(final_image_path)
+    # 
+    # Écriture du code dans le fichier .mus
+    # 
+    File.write(code_mus_path, code)
+    # 
+    # On construit l'image
+    # 
+    res = produce_score_image(chantier_folder, code_mus_name)
+    # puts "Retour production : #{res.inspect}"
+    ok  = res.match?(/produite avec succès/) 
+    # 
+    # Vérification
+    # 
+    if ok && File.exist?(built_image_path)
+      FileUtils.mv(built_image_path, final_image_path)
+      retour.merge!({
+        ok: true,
+        image_name: "#{image_affixe}.svg"
+      })
+    else
+      retour.merge!({
+        ok:     false,
+        error:  "Problème : #{res}"
+      })
+    end
+    # 
+    # Nom de l'image dans le presse-papier
+    # 
+    `echo "#{image_affixe}.svg" | pbcopy`
+    # 
+    # Retourner le nom de l'image
+    # 
+    WAA.send({class:'Tools', method:'onBuiltScoreImage', data:retour})
+  end
+
+  ##
+  # Méthode qui produit l'image SVG à partir du code contenu dans le
+  # fichier +image_name+ qui se trouve dans +folder+
+  def self.produce_score_image(folder, image_name)
+    cmd = "#{SCORE_SUITE_FOLDER}/ScoreImage/score_image.rb"
+    cmd = "cd \"#{folder}\" && #{cmd} ./#{image_name}" # TODO stats ?
+    return `#{cmd} 2>&1`
+  end
+
+
   def self.run_score_writer(data)
-    puts "Je dois apprendre à lancer ScoreWriter avec #{data.inspect}"
     infolder  = data['folder']
     image     = data['image']
     image = nil if image.nil? || image.empty?
@@ -113,15 +183,8 @@ class App
       `mkdir -p "#{chantier}"`
     end
     image ||= 'new_image'
-    p = Proc.new do 
-      Dir.chdir(chantier) do
-        # `score-writer #{image}`
-        ARGV.clear
-        ARGV << image
-        load File.join(Dir.home,'Programmes','ScoreSuite','ScoreWriter','score_writer.rb')
-      end
-    end
-    fork { p.call }
+
+    `osascript -e 'Tell application "Terminal" to do shell script "cd \\"#{chantier}\\";score-writer \\"#{image}\\""'`
 
     WAA.send(class:'Tools',method:'onRanScoreWriter',data:{ok:true})
   end

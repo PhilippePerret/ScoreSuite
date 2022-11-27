@@ -17,9 +17,51 @@ class Tools {
         }
     })
   }
+  // Retour serveur de la précédente
   static onRanScoreWriter(){
     this.togglePanneau()
   }
+
+  /* --- MuScore Code Methods --- */
+
+  static assistantCode(){
+    /**
+     ** Méthode appelée pour assister le code muscore à utiliser
+     ** Elle est appelée par le menu qui permet d'insérer plein de
+     ** choses dans le code.
+     **/
+  }
+
+  static buildScoreFromCode(){
+    /**
+     ** Méthode appelée depuis le panneau des outils pour construire
+     ** rapidement une image SVG de partition simple à partir du 
+     ** code fourni.
+     **/
+    const muscode = DGet('textarea#music_score_code').value.trim()
+    if ( muscode ) {
+      WAA.send({
+          class:  'ScoreAnalyse::App'
+        , method: 'build_image_from_code'
+        , data:   {path: Analyse.current.path, code: muscode}
+      })
+    } else {
+      erreur("Il faut donner le code dans le champ.")
+    }
+  }
+  static onBuiltScoreImage(data){
+    /**
+     ** Retour serveur de la méthode précédente
+     **/
+    if (data.ok) {
+      console.debug("Retour de la construction de l'image : ", data)
+      message("L'image a été construite avec succès.\nSon nom est dans le presse-papier, tu peux créer une image pour la voir tout de suite.")
+    } else {
+      console.error(data.error)
+    }
+  }
+
+
 
   /**
    * Méthode permettant de répartir les systèmes de façon
