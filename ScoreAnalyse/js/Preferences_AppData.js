@@ -39,8 +39,8 @@ const PreferencesAppData = {
   , color_mesure            :{type:'inputtext'    ,typeV:'color'    ,default:'000099' ,label:'Couleur des numéros de mesure'      ,selectors:'div.amark.txt.mes span.content'}
   , color_accords           :{type:'inputtext'    ,typeV:'color'    ,default:'999999' ,label:'Couleur des noms d’accords'         ,selectors:'div.amark.acc span.content'}
   , color_harmonie          :{type:'inputtext'    ,typeV:'color'    ,default:'999999' ,label:'Couleur des chiffrages harmoniques' ,selectors:'div.amark.har span.content'}
-  , color_mark_parties      :{type:'inputtext'    ,typeV:'color'    ,default:'CC0000' ,label:'Couleur des marques de partie'      ,selectors:'div.amark.prt span.content, div.amark.prt span.vline'}
-  , color_mark_sections     :{type:'inputtext'    ,typeV:'color'    ,default:'CC0000' ,label:'Couleur des marques de sections'    ,selectors:'div.amark.sec span.content, div.amark.sec span.vline'}
+  , color_mark_parties      :{type:'inputtext'    ,typeV:'color'    ,default:'CC0000' ,label:'Couleur des marques de partie'      ,selectors:'div.amark.prt span.content, div.amark.prt span.vline, div.amark.prtz span.content, div.amark.prtz span.vline'}
+  , color_mark_sections     :{type:'inputtext'    ,typeV:'color'    ,default:'CC0000' ,label:'Couleur des marques de sections'    ,selectors:'div.amark.sec span.content, div.amark.sec span.vline, div.amark.secz span.content, div.amark.secz span.vline'}
   , color_cellule           :{type:'inputtext'    ,typeV:'color'    ,default:'8383ed' ,label:'Couleur pour les cellules & motifs' ,selectors:'div.amark.cel, div.amark.cel span.content'}
   , color_modulations       :{type:'inputtext'    ,typeV:'color'    ,default:'009900' ,label:'Couleur des marques de modulations' ,selectors:'div.amark.mod:before, div.amark.mod span.content, div.amark.mod span.vline'}
   , color_emprunts          :{type:'inputtext'    ,typeV:'color'    ,default:'22BB22' ,label:'Couleur des marques d’emprunts'     ,selectors:'div.amark.emp, div.amark.emp span.content'}
