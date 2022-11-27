@@ -69,12 +69,15 @@ onChange_grid_vertical_space(){
 onChange_theme(){
   const theme = this.getValueOf('theme')
   const theme_data = this.themes[theme]
-  console.debug("theme_data = ", theme_data)
-  message("Apprendre à gérer le menu thème mis à " + theme)
+  // console.debug("theme_data = ", theme_data)
   for (var key in theme_data) {
     if ( key == 'name' ) continue
     this.set(key, theme_data[key])
   }
+  /*
+  |  Actualisation des codes en dur pour l'analyse courante
+  */
+  this.insertStylesCSSInHead()
 }
 
 

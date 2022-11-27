@@ -18,8 +18,8 @@ thiness_border:         5
 color_mesure:           000099
 color_mark_parties:     CC0000
 color_mark_sections:    CC0000
-color_harmonie:         999999
-color_accords:          999999
+color_harmonie:         555555
+color_accords:          555555
 color_cellule:          8383ed
 color_segments:         333333
 color_modulations:      009900
