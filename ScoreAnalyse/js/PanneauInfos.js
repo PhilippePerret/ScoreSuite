@@ -1,5 +1,5 @@
 'use strict';
-class PanneauAnalyse extends Panneau {
+class PanneauInfos extends Panneau {
 
   get PROPS(){return ['piece_title', 'composer', 'analyse_title','analyse_id','folder','analyst']}
 

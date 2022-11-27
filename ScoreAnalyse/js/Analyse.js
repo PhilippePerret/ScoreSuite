@@ -413,19 +413,6 @@ checkSystems(){
 /*****************************************************************/
 
   /**
-   * Ouverture du panneau d'information
-   * 
-   */
-  static togglePanneau(){
-    this.panneau_infos.toggle()
-  }
-  static openPanneau(){
-    this.panneau_infos.show()
-  }
-  static closePanneau(){
-    this.panneau_infos.hide()
-  }
-  /**
    * Pour créer une nouvelle analyse
    * -------------------------------
    * (à partir des données de la fenêtre)
@@ -635,7 +622,7 @@ static onExportedCurrentToHtml(data){
   // @return l'objet DOM du panneau des informations de l'analyse
   static get panneau_infos(){
     if (undefined == this._panneau_infos) {
-      this._panneau_infos = new PanneauAnalyse()
+      this._panneau_infos = new PanneauInfos()
     } return this._panneau_infos
   }
  }

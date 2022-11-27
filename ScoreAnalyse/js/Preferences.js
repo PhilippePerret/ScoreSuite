@@ -9,7 +9,7 @@
 
 */
 
-class PreferencesClass {
+class PreferencesClass extends Panneau {
 
 setValuesSaved(savedData){
   for(var prop in savedData){
@@ -53,9 +53,9 @@ set(key,value){
 
 }
 
-toggle(key){
-  this.set(key, !this.get(key))
-}
+// toggle(key){ // collision avec Panneau
+//   this.set(key, !this.get(key))
+// }
 
 onChange_thiness_cellule_line(){
   AMark.bSnap = this.getValueOf('thiness_cellule_line')
@@ -140,7 +140,7 @@ onLoadedThemes(data){
   const themes = data.themes
   this.themes = {}
   themes.forEach(theme => {
-    console.debug("theme = ", theme)
+    // console.debug("theme = ", theme)
     var name = theme.name
     name = name.substring(0,1).toUpperCase() + name.substring(1, name.length).toLowerCase()
     this.menuThemes.appendChild(DCreate('OPTION',{value:theme.name, text:name }))
@@ -214,21 +214,6 @@ prepareOnChangeMethods(){
   })
 }
 
-toggle(){
-  this.isOpened ? this.hide() : this.open()
-}
-// Pour ouvrir le panneau
-open(){
-  this.show()
-  this.isOpened = true
-}
-hide(){
-  this.obj.classList.add('hidden')
-  this.isOpened = false
-}
-show(){
-  this.obj.classList.remove('hidden')
-}
 
 /**
  * Méthode qui applique les préférences de style dans l'interface

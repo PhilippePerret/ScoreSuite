@@ -15,20 +15,9 @@
  */
 
 
-class ManuelClass {
-  toggle(){
-    this[this.isOpened ? 'close' : 'open']()
-    this.isOpened = !this.isOpened
-  }  
-  open(){
-    this.obj || this.build()
-    this.obj.classList.remove('hidden')
-  }
-  close(){
-    this.obj.classList.add('hidden')
-  }
+class ManuelClass extends Panneau {
 
-   build(){
+  build(){
   
     this.buildShortcutPanel()
 

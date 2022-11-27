@@ -7,24 +7,27 @@ class Panneau {
   }
 
   toggle(){
-    if ( this.opened ) {
+    if ( this.isOpened ) {
       this.hide()
     } else {
       this.show()
     }
   }
+  togglePanel(){
+    return this.toggle()
+  }
+
   show(){
     UI.desactiveCurrentShortcuts()
+    this.obj || this.build()
     this.obj.classList.remove('hidden')
-    this.opened = true
-    this.observe()
-    'function' == typeof this.onOpen && this.onOpen()
+    this.isOpened = true
+    'function' == typeof this.onOpen  && this.onOpen()
   }
   hide(){
     this.obj.classList.add('hidden')
     UI.reactiveCurrentShortcuts()
-    this.opened = false
-    // this.unobserve()
+    this.isOpened = false
     'function' == typeof this.onClose && this.onClose()
   }
 
@@ -32,12 +35,9 @@ class Panneau {
     listen(this.obj, 'click', (e)=>{e.stopPropagation();return true})
   }
 
-  unobserve(){
-
-  }
-
   get obj(){
     return this._obj || (this._obj = DGet('#'+this.id))
   }
+  set obj(v){ this._obj = v }
   
 }

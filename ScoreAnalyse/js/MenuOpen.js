@@ -17,7 +17,7 @@ class OpenMenu extends MenusTool {
   }
 
   static onActivate_infosAnalyse(){
-    Analyse.togglePanneau.call(Analyse)
+    Analyse.panneau_infos.toggle()
   }
 
   static onActivate_toolsPanel(){

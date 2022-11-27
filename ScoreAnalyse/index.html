@@ -74,7 +74,7 @@
     </table>
 
     <div class="buttons right">
-      <button onclick="Analyse.closePanneau.call(Analyse)" style="float:left;">Fermer</button>
+      <button onclick="Analyse.panneau_infos.toggle.call(Analyse.panneau_infos)" style="float:left;">Fermer</button>
       <button onclick="Analyse.createNew.call(Analyse)">Créer nouvelle analyse</button>
       <button onclick="Analyse.current.saveInfos.call(Analyse.current)">Enregistrer</button>
     </div>
@@ -279,7 +279,7 @@
   <script type="text/javascript" src="js/AnalyseSaver.js" defer></script>
   <script type="text/javascript" src="js/AnalyseDisplayer.js"></script>
   <script type="text/javascript" src="js/Mouse.js" defer></script>
-  <script type="text/javascript" src="js/PanneauAnalyse.js" defer></script>
+  <script type="text/javascript" src="js/PanneauInfos.js" defer></script>
   <script type="text/javascript" src="js/Tools.js" defer></script>
   <script type="text/javascript" src="js/MenusTool.js"></script>
   <script type="text/javascript" src="js/MenuSelection.js" defer></script>
