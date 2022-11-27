@@ -7,20 +7,21 @@ class Tools {
   * ScoreWriter dans le dossier courant
   */
   static runScoreWriter(){
-    const image = DGet('input#scorewriter_image_to_edit').value
-    WAA.send({
-        class:  'ScoreAnalyse::App'
-      , method: 'run_score_writer'
-      , data:   {
-            folder: (Analyse.current && Analyse.current.path)
-          , image: image
-        }
-    })
+    return message("Je ne parviens pas à lancer proprement score-writer…")
+    // const image = DGet('input#scorewriter_image_to_edit').value
+    // WAA.send({
+    //     class:  'ScoreAnalyse::App'
+    //   , method: 'run_score_writer'
+    //   , data:   {
+    //         folder: (Analyse.current && Analyse.current.path)
+    //       , image: image
+    //     }
+    // })
   }
-  // Retour serveur de la précédente
-  static onRanScoreWriter(){
-    this.togglePanneau()
-  }
+  // // Retour serveur de la précédente
+  // static onRanScoreWriter(){
+  //   this.togglePanneau()
+  // }
 
   /* --- MuScore Code Methods --- */
 
