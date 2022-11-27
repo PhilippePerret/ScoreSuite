@@ -11,19 +11,12 @@ class << self
     # 
     hcode = data['code_html']
 
+    #
+    # Traitement des images
+    # (pour qu'elles soient moins gourmandes et les mettre dans un
+    #  dossier dédié avec le code)
     # 
-    # Rapatriement des images et modification des adresses
-    # 
-    images_folder = mkdir(File.join(analyse.folder_export,'images'))
-    hcode = hcode.gsub(/<img(.*?)src=\"(.+?)\"/) do
-      ent = $1.freeze
-      src = $2.freeze
-      nom = File.basename(src)
-      dst = File.join(images_folder, nom)
-      File.exist?(dst) || FileUtils.cp(src, dst)
-       # remplacement
-       "<img#{ent}src=\"images/#{nom}\""
-    end
+    hcode = traite_images_in(analyse, hcode)
 
     #
     # Fontes
@@ -56,6 +49,126 @@ class << self
     )
 
   end
+
+  ##
+  # Rapatriement des images et modification des adresses
+  # 
+  # Si on veut EMBEDDER LES IMAGES, utiliser :
+  #   > base64 -i from.jpg -o to.txt
+  # … pour obtenir le code puis remplacer l'image dans le code par :
+  #   <img src="data:image/png;base64,<<ligne rassemblées>>">
+  #   Note : remplacer 'image/png' par le format de l'image
+  # 
+  # 1. resizer les images pour qu'elles soient de la taille utilisée
+  #    dans l'analyse, pas plus grandes.
+  # 2. Essayer de les alléger, peut-être pour en faire des webp
+  # 
+  def traite_images_in(analyse, hcode)
+
+    #
+    # Remplacement du code HTML et relève des images (toutes les
+    # images, pas seulement les systèmes)
+    # 
+    hcode = hcode.gsub(/<img(.*?)src=\"(.+?)\"(.*?)>/) do
+      ent = $1.freeze
+      src = $2.freeze
+      fin = $3.freeze
+      # images << src
+      nom = File.basename(src)
+      ext = File.extname(src)
+      if nom.match?(/^system-/)
+      
+        # 
+        # Traitement des systèmes -> webp
+        # 
+        traite_image_system(analyse, src)
+        "<img#{ent}src=\"data:image/webp;base64,#{code_base64(src)}\"#{fin}>"
+
+      elsif ext == '.svg'
+      
+        #
+        # Traitement des images SVG
+        #
+        code_svg_in(src)
+
+      else
+      
+        #
+        # Traitement d'une image "normale"
+        #
+      
+        "<img#{ent}src=\"data:image/webp;base64,#{code_base64(src)}\"#{fin}>"
+      
+      end
+    end
+
+  end
+
+
+  ##
+  # @return le code BASE64 du fichier de chemin d'accès +src+ en
+  # le transformant si nécessaire en fichier .webp (plus léger)
+  # 
+  def code_base64(src)
+    dos = File.dirname(src)
+    ext = File.extname(src)
+    nom = File.basename(src)
+    cbase64 = nil
+    Dir.chdir(dos) do
+      # 
+      # Fabrication du fichier webp si nécessaire
+      # 
+      `convert "#{nom}" "#{nom}.webp"` unless File.exist?("#{nom}.webp")
+      # 
+      # Transformation en code 64
+      # 
+      cbase64 = `base64 -i "#{nom}.webp"`
+    end
+
+    return cbase64.gsub(/\n/,'')
+  end
+
+  ##
+  # @return le code SVG (<svg ... </svg>) du fichier +src+
+  # 
+  def code_svg_in(src)
+    c = File.read(src)
+    idx = c.index('<svg')
+    return c[idx..-1].strip
+  end
+
+  #
+  # Traitement de l'image système
+  # 
+  # Reçoit le path absolu de l'image et retourne son code base64
+  # pour être embeddé dans le code
+  # - redimensionne l'image
+  # - la reconvertit en webp
+  # - produit son code base64
+  # 
+  def traite_image_system(analyse, src)
+
+    # 
+    # Taille de l'image dans l'application
+    # 
+    @image_width ||= analyse.preferences['systeme_width']
+
+    dos     = File.dirname(src)
+    nom     = File.basename(src)
+    nom_web = "#{nom}.webp"
+
+    Dir.chdir(dos) do
+      # 
+      # Production de l'image .WEBP, à la bonne taille sauf
+      # si elle existe
+      # 
+      unless File.exist?(nom_web)
+        `convert -resize #{@image_width}x "#{nom}" #{nom_web}`
+      end
+    end
+
+  end
+
 
   # @return la page de titre pour l'analyse
   def page_titre(analyse)

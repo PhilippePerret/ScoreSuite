@@ -40,15 +40,6 @@ div.amark:not(.philnote):not(.deg) span.content {
   font-family: 'Arial Narrow', Arial, Helvetica, Geneva;
 }
 
-@font-face {
-  font-family:  PhilNote;
-  src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Regular.otf");
-}
-@font-face {
-  font-family:  PhilNote;
-  src: url("/Users/philippeperret/Library/Fonts/PhilNote2-Bold.otf");
-  font-weight: bold;
-}
 div.amark.philnote span.content, 
 .amark.philnote {
   font-family: PhilNote;
