@@ -25,12 +25,28 @@ class Tools {
 
   /* --- MuScore Code Methods --- */
 
-  static assistantCode(){
+  static onChooseAssistantCode(){
     /**
      ** Méthode appelée pour assister le code muscore à utiliser
      ** Elle est appelée par le menu qui permet d'insérer plein de
      ** choses dans le code.
      **/
+    try {
+      const code = this.menuAssistantCode.value
+      this.musCodeField.value = code + "\n" + this.musCodeField.value
+    } catch(err) {
+      erreur(err)
+    } finally {
+      this.menuAssistantCode.selectedIndex = 0
+    }
+
+  }
+
+  static get menuAssistantCode(){
+    return this._massmuscode || (this._massmuscode = DGet('select#assistant_muscode'))
+  }
+  static get musCodeField(){
+    return this._muscodefield || (this._muscodefield = DGet('textarea#music_score_code'))
   }
 
   static buildScoreFromCode(){
@@ -39,7 +55,7 @@ class Tools {
      ** rapidement une image SVG de partition simple à partir du 
      ** code fourni.
      **/
-    const muscode = DGet('textarea#music_score_code').value.trim()
+    const muscode = this.musCodeField.value.trim()
     if ( muscode ) {
       WAA.send({
           class:  'ScoreAnalyse::App'
