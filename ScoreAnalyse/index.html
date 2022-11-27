@@ -111,9 +111,6 @@
       <h2>Export de l'image de l'analyse</h2>
       <fieldset>      
         <div>
-          <button onclick="Analyse.exportCurrentToHtml.call(Analyse)">Exporter l'analyse en HTML</button>
-        </div>
-        <div>
           <span>Systèmes </span><input type="text" id="systems_to_export" value="1">
           <div class='explication'>Systèmes à produire. Laisser vide pour tous</div>
         </div>
@@ -176,11 +173,16 @@
     <button id="form_button" class="fright">Forme…</button>
 
     <select id="open_menu">
-      <option value="">Ouvrir…</option>
-      <option value="prefs">Préférences ⇧P</option>
-      <option value="infosAnalyse">Informations analyse courante</option>
+      <option value="">Fichier…</option>
+      <option value="infosAnalyse">Informations…</option>
+      <option></option>
+      <option value="exportToHTML">Exporter en HTML</option>
+      <option></option>
       <option value="toolsPanel">Panneau des outils…</option>
+      <option></option>
       <option value="manual">Manuel ⇧M</option>
+      <option></option>
+      <option value="prefs">Préférences… ⇧P</option>
     </select>
 
     <select id="options_tool">

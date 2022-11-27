@@ -458,6 +458,7 @@ static exportCurrentToHtml(){
   if ( not(this.current) ) {
     return erreur("Il n'y a pas d'analyse courante à exporter !")
   }
+  message("Exportation de l'analyse au format HTML. Patienter…")
   const code = DGet('section#content').outerHTML
   WAA.send({
       class:  'ScoreAnalyse::Analyse'
@@ -467,7 +468,7 @@ static exportCurrentToHtml(){
 }
 static onExportedCurrentToHtml(data){
   if (data.ok) {
-    message("L'analyse a bien été exportée dans " + data.path)
+    message("L'analyse a été exportée dans " + data.path)
   } else {
     erreur("L'analyse n'a pas pu être exportée : ", data.error)
   }

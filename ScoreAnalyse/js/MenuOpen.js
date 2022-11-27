@@ -24,6 +24,8 @@ class OpenMenu extends MenusTool {
     Tools.togglePanneau.call(Tools)
   }
 
-
+  static onActivate_exportToHTML(){
+    Analyse.exportCurrentToHtml()
+  }
 
 }
