@@ -1,3 +1,23 @@
+=begin
+
+Pour convertir une font en un fichier .json dont le code pourra
+être chargé :
+  https://github.com/gero3/facetype.js
+  https://gero3.github.io/facetype.js/
+
+Initialement, les fonts étaient placées dans un dossier 'fonts' et
+chargées dans le code par :
+@font-face {
+  font-family:  PhilNote;
+  src: url("fonts/PhilNote2-Regular.otf");
+}
+@font-face {
+  font-family:  PhilNote;
+  src: url("/fonts/PhilNote2-Bold.otf");
+  font-weight: bold;
+}
+
+=end
 module ScoreAnalyse
 class Analyse
 class << self
@@ -185,12 +205,14 @@ class << self
     HTML
   end
 
+  # Retourne tous les code CSS
   def styles_css
     ['AMark','AObjet','Forme','main','Print'].map do |affixe|
       css_path = File.join(APP_FOLDER,'css',"#{affixe}.css")
       File.read(css_path).force_encoding('utf-8')
     end.join("\n")
   end
+
 
   def head
     <<~HTML
@@ -236,6 +258,33 @@ class << self
       
     HTML
   end
+
+  # Rien de ci-dessous ne fonctionne…
+  # def code_fonte(filename)
+  #   # require 'charlock_holmes/string'
+  #   font_path = File.join(APP_FOLDER,'assets','fonts',filename)
+  #   # dencode = CharlockHolmes::EncodingDetector.detect(File.read(font_path))
+  #   return File.binread(font_path).encode('utf-8')
+  #   # contents = File.read(font_path)
+  #   # contents.detect_encoding!
+  #   # return contents.to_s.split("\n").join('')
+
+  #   # puts "dencode : #{dencode.inspect}"
+  #   # c = nil
+  #   # File.open(font_path,"r:#{dencode[:encoding]}:UTF-8") do |f|
+  #   #   c = f.read
+  #   # end
+  #   # # c = File.binread(font_path)
+  #   # return c.split("\n").join(' ')
+  # end
+
+  # # Je ne sais pas utiliser ça
+  # def code_json_for_fonts
+  #   Dir["#{APP_FOLDER}/assets/fonts/*.js"].map do |src|
+  #     File.read(src)
+  #   end.join("\n")
+  # end
+
 end #/<< self class Analyse
 end #/class Analyse
 end #/module ScoreAnalyse
