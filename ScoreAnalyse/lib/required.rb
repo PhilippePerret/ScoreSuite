@@ -13,5 +13,5 @@ end
 # Librairies de la suite Score
 require_relative '../../lib/required'
 
-require_relative 'App'
-require_relative 'Analyse'
+# Dossier required
+Dir["#{__dir__}/required/**/*.rb"].each{|m|require(m)}

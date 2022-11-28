@@ -31,6 +31,13 @@ class AppClass {
     }
   }
 
+  onError(data){
+    /**
+     ** Pour remonter une erreur depuis le serveur
+     **/
+    erreur(data.error)
+  }
+
 }
 const App = new AppClass()
 

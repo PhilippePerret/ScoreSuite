@@ -65,10 +65,10 @@ class Analyse
         # Nouvelle analyse à créer
         # 
         if Q.yes?("Dois-je créer la nouvelle analyse '#{affixe}' dans ce dossier ?".jaune)
-          self.current = assiste_creation({
-            'folder'      => CURRENT_FOLDER,
-            'analyse_id'  => affixe
-          }, true)
+          require_relative '../modules/create_analyse'
+          self.current = create_new_analyse(
+            {folder: CURRENT_FOLDER, analyse_id: affixe}
+          )
           return true
         else
           # Pour poursuivre
@@ -116,23 +116,6 @@ class Analyse
     self.current ||= last_analyse 
     
     return true # pour poursuivre
-  end
-
-  ##
-  # Méthode appelée pour créer une nouvelle analyse
-  # (lorsqu'un identifiant a été donné)
-  # 
-  # @return {Analyse} L'instance de l'analyse qui sera mise en 
-  # analyse courante
-  # 
-  def self.assiste_creation(data, before = false)
-    data.merge!({
-      'piece_title'   => Q.ask("Titre de la pièce".jaune),
-      'composer'      => Q.ask("Compositeur".jaune),
-      'analyse_title' => Q.ask('Titre de l’analyse'.jaune),
-      'analyste'      => Q.ask("Analyste", default:'Philippe Perret')
-    })
-    return create_new_analyse(data, before)
   end
 
   ##
@@ -245,28 +228,9 @@ class Analyse
   # Pour exporter l'analyse sous forme de fichier HTML
   # 
   def self.exportToHTML(data)
-    require_relative 'export_to_html'
+    require_relative '../modules/export_to_html'
     analyse = Analyse.new(data['path'])
     proceed_export_to_html(analyse, data)
-  end
-
-  ##
-  # Permet de produire l'image PNG/JPG de l'analyse
-  #
-  def self.output_image(data)
-    require_relative 'Analyse_output_image'
-    analyse = Analyse.new(data['path'])
-    analyse.produce_image_analyse(data)
-  end
-  
-  ##
-  # Permet de produire l'image SVG de l'analyse
-  # OBSOLÈTE
-  #
-  def self.output_svg(data)
-    require_relative 'Analyse_svg'
-    analyse = Analyse.new(data['path'])
-    analyse.produce_svg_image(data)
   end
 
 
@@ -283,130 +247,6 @@ class Analyse
       end
     end
   end
-
-
-  ##
-  # Pour créer une nouvelle analyse (en recevant toutes les
-  # données du client)
-  #
-  # @return L'instance Analyse de l'analyse
-  # 
-  # @param before {Boolean} Si la création se fait avant l'ouverture
-  #                         comme c'est le cas quand on crée en ligne
-  #                         de commande.
-  #
-  def self.create_new_analyse(data, before = false)
-    out("OPE: Je dois créer la nouvelle analyse avec #{data.inspect}")
-
-    begin
-      #
-      # Vérification des données
-      # (une première vérification a été déjà effectuée côté client)
-      # 
-      if data['folder'] == ''
-        # => Création de l'analyse dans le dossier courant
-        if CURRENT_FOLDER == APP_FOLDER
-          raise 'Vous ne pouvez pas créer une analyse dans le dossier ScoreAnalyse…'
-        else
-          data['folder'] = CURRENT_FOLDER
-        end
-      elsif data['folder'].start_with?('/')
-        File.exist?(data['folder']) || raise("Le dossier #{data['folder'].inspect} est introuvable.")
-      else
-        # Un sous-dossier du dossier courant
-        data['folder'] = File.join(CURRENT_FOLDER, data['folder'])
-      end
-      analyse_path = File.join(data['folder'], data['analyse_id'])
-      out("     Path: #{analyse_path}")
-      not(File.exist?(analyse_path)) || raise("Cette analyse existe déjà.")
-
-    rescue Exception => e
-      puts "ERR: Impossible de créer l'analyse : #{e.message}".rouge
-      if !before
-        WAA.send(class:'Analyse',method:'onErrorCreate',data:{error:e.message})
-      end
-      return
-    end
-
-    # 
-    # Affinement des données
-    # 
-    data.merge!(
-      'created_at'  => Time.now.to_i, 
-      'updated_at'  => Time.now.to_i,
-      'waa_version' => WAA.version,
-      'app_version' => App.version
-    )
-
-    # 
-    # Création du dossier
-    #
-    # (il a pu être créé avant)
-    `mkdir -p "#{analyse_path}"`
-    
-    # 
-    # Instanciation
-    # 
-    analyse = Analyse.new(analyse_path)
-
-    # 
-    # Création complète
-    # 
-    analyse.create_with(data)
-
-    #
-    # S'il existe un dossier 'systems' à la racine du dossier,
-    # on demande s'il faut le prendre comme dossier contenant les
-    # systèmes pour l'analyse.
-    # 
-    if File.exist?(File.join(CURRENT_FOLDER,'systems'))
-      if Q.yes?("Il existe un dossier 'systems' dans ce dossier. Contient-il les systèmes à utiliser ?".jaune)
-        folder_courant = File.join()
-        Dir["#{CURRENT_FOLDER}/systems/*.{jpg,jpeg,png,svg}"].each do |fsys|
-          `mv "#{fsys}" "#{analyse.path}/systems/"`
-        end
-        # 
-        # Si le précédent dossier systèmes est vide, on le détruit
-        # 
-        if Dir["#{CURRENT_FOLDER}/systems/*.{jpg,jpeg,png,svg}"].count == 0
-          FileUtils.rm(File.join(CURRENT_FOLDER,'systems'))
-        end
-        # 
-        # Actualisation de la liste des systèmes
-        # 
-        analyse.update_systems
-      end
-    end
-
-    # Suivi 
-    out("RES: Nouvelle analyse créée avec succès.")
-
-    # 
-    # Enregistrement comme analyse courante
-    # 
-    App.set_last_analyse(analyse)
-
-    # 
-    # Ouverture du dossier sur le finder
-    # 
-    `open -a Finder "#{analyse.path}"`
-
-    Analyse.current = analyse
-
-    if before
-      # 
-      # Quand l'opération de création a lieu avant l'ouverture de
-      # l'application dans le navigateur
-      # 
-      return analyse
-    else
-      # 
-      # Confirmation au client
-      # 
-      WAA.send(class:'Analyse',method:'onCreate',data:analyse.all_data_for_client)
-    end
-  end
-
 
   #################################################################
 
@@ -430,36 +270,6 @@ class Analyse
     return [preferences['window_width']||1000,preferences['window_height']||1000]
   end
 
-  ##
-  # Création de l'analyse à partir des données +data+ (qui viennent,
-  # normalement, du browser)
-  # 
-  def create_with(data)
-    # 
-    # Créer le fichier des infos
-    # 
-    @infos = data
-    save_infos
-    # 
-    # Créer le dossier des systèmes
-    # (noter que même si c'est une création il a pu être créé avant)
-    # 
-    `mkdir -p "#{path}/systems"`
-    # 
-    # Création de fichier des préférences
-    # 
-    preferences_model = File.join(APP_FOLDER,'assets','models','preferences.yaml')
-    FileUtils.cp(preferences_model, preferences_path)
-    # 
-    # Création le fichier des marques d'analyse
-    # 
-    # (NON sinon ça enregistre '-- false')
-    # save_analyse_tags
-
-    return true
-  end
-
-
   def save_analyse_tags
     File.open(analyse_tags_path,'wb'){|f|f.write analyse_tags.to_yaml}    
   end
@@ -481,7 +291,9 @@ class Analyse
   end
 
   # Sauver les infos (dont les données des systèmes)
-  def save_infos
+  def save_infos(new_infos = nil)
+    @infos = new_infos unless new_infos.nil?
+    # puts "Infos enregistrées : \n#{infos.to_yaml}"
     File.open(infos_path,'wb'){|f|f.write infos.to_yaml}    
   end
 
@@ -561,6 +373,7 @@ class Analyse
   # bouton client "Rafraichir", par exemple)
   #
   def update_systems
+    require 'dimensions'
     # 
     # Table avec en clé les systèmes actuels (pour voir
     # ceux qui existent et ceux qui ont été supprimés)
@@ -579,7 +392,7 @@ class Analyse
         dsys = table_per_image.delete(img)
       else
         # Ajouter ce système
-        dsys = {image_name: img, left:0, top:current_top, height:100}
+        dsys = {image_name: img, left:0, top:current_top, height:Dimensions.height(img)}
       end
       new_data_systems << dsys
       current_top += dsys[:height]
@@ -627,7 +440,6 @@ class Analyse
   def data_systems
     @data_systems ||= infos['systems'] || []
   end
-
 
   # --- Paths Methods ---
 

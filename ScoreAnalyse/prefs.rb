@@ -1,3 +1,3 @@
 ---
 :load_last_analyse: true
-:last_analyse_path: "/Users/philippeperret/Programmes/ScoreSuite/ScoreAnalyse/Manuels/Analyse_CBT1_p1/CBT1p1"
+:last_analyse_path: "/Users/philippeperret/Programmes/ScoreSuite/ScoreAnalyse/Manuels/Analyse_CBT1_p1/analyse"

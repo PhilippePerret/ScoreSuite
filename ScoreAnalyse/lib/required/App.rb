@@ -10,7 +10,7 @@ module ScoreAnalyse
 class App
 
   def self.aide
-    require_relative 'Aide'
+    require_relative '../modules/Aide'
     less(AIDE)  
   end
 

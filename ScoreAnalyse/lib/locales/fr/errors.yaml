@@ -1,0 +1,5 @@
+---
+no_analyse_in_app_folder: "Vous ne pouvez pas créer une analyse dans le dossier ScoreAnalyse…"
+folder_unfound: "Le dossier '%s' est introuvable…"
+analyse_already_exists: "L'analyse « %s » existe déjà dans le dossier '%s'…"
+analyse_id_invalid: "L'identifiant '%s' est invalide (il ne doit contenir que des lettres, des chiffres, des traits plats ou des tirets)"
