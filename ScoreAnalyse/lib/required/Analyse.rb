@@ -67,7 +67,8 @@ class Analyse
         if Q.yes?("Dois-je créer la nouvelle analyse '#{affixe}' dans ce dossier ?".jaune)
           require_relative '../modules/create_analyse'
           self.current = create_new_analyse(
-            {folder: CURRENT_FOLDER, analyse_id: affixe}
+            {folder: CURRENT_FOLDER, analyse_id: affixe},
+            true # pour indiquer que ça vient de la ligne de commande
           )
           return true
         else

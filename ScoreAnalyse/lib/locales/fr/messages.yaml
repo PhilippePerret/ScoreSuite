@@ -2,5 +2,7 @@
 hello: 'Bonjour'
 ask_use_systems_folder: "Il existe un dossier 'systems'. Contient-il les images de systèmes à utiliser ?"
 first_tags_at_creation: [
-  "Double-cliquer sur la table pour créer une nouvelle marque d'analyse à l'endroit voulu."
+  "Double-cliquer sur la table pour créer une nouvelle marque d'analyse à l'endroit voulu.",
+  "Jouer ⇧M pour ouvrir le manuel d'utilisation",
+  "Jouer ⇧T pour ouvrir le tutoriel"
 ]

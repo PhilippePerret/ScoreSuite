@@ -12,7 +12,7 @@ class << self
   # 
   # @return l'instance de la nouvelle analyse créée
   # 
-  def create_new_analyse(data = nil, from_client = false)
+  def create_new_analyse(data = nil, from_server = false)
     out("OPE: Je dois créer la nouvelle analyse avec #{data.inspect}")
 
     #
@@ -64,24 +64,24 @@ class << self
 
     out("RES: Nouvelle analyse créée avec succès.")
 
-    if from_client
+    if from_server
+      # Création en ligne de commande
+      # 
+      return analyse
+    else
+      # 
       # 
       # Création par le navigateur
       # 
       WAA.send(class:'Analyse',method:'onCreate',data:analyse.all_data_for_client)
-    else
-      # 
-      # Création en ligne de commande
-      # 
-      return analyse
     end
 
   rescue Exception => e
-    if from_client
-      WAA.send(class:'App',method:'onError',data:{error:e.message})      
-    else
+    if from_server
       out(e.message.rouge)
       puts e.backtrace[0..4].join("\n")
+    else
+      WAA.send(class:'App',method:'onError',data:{error:e.message})      
     end
   end
 
@@ -90,8 +90,9 @@ class << self
   # Retourne les premiers tags (explicatifs) à la création de
   # l'analyse.
   def first_tags_analyse
+    ary = []
     MESSAGES[:first_tags_at_creation].each_with_index do |msg, idx|
-      ary = [{id:1, top:100, left: 220 * idx, width: 200, type:'txt', subtype:'size3', content:msg}]
+      ary << {id:1, top:100, left: 220 * idx, width: 200, type:'txt', subtype:'size3', content:msg}
     end
     return ary
   end
@@ -108,7 +109,7 @@ class << self
   def prepare_positions_systems(data)
     require 'dimensions'
     folder_systems = File.join(data[:path],'systems')
-    curtop = 200
+    curtop = 400
     dsys = []
     Dir["#{folder_systems}/*.*"].sort.each do |path|
 
@@ -131,15 +132,17 @@ class << self
   # 
   def create_folders(data)
     # 
-    # Dossier principal
+    #   Dossier principal
+    # + Dossier des systèmes
+    # (mkdir crée la hiérarchie jusqu'au dossier)
     # 
-    `mkdir -p "#{data[:folder]}"`
+    sys_folder = mkdir(File.join(data[:path],'systems'))
+
     # 
-    # Dossier des systèmes
+    # Existe-t-il des systèmes à prendre ?
     # 
-    sys_folder = File.join(data[:path],'systems')
     original_sys_folder = File.join(CURRENT_FOLDER,'systems')
-    if File.exist?(original_sys_folder) && Q.yes?(MESSAGES[:ask_use_systems_folder])
+    if File.exist?(original_sys_folder) && Q.yes?(MESSAGES[:ask_use_systems_folder].jaune)
       Dir["#{original_sys_folder}/*.{jpg,jpeg,png,svg}"].each do |fsys|
         `mv "#{fsys}" "#{sys_folder}/"`
       end
@@ -147,7 +150,7 @@ class << self
         FileUtils.rm_rf(original_sys_folder)
       end
     else
-      `mkdir -p "#{sys_folder}"`
+      mkdir(sys_folder)
     end
 
   end
@@ -156,11 +159,12 @@ class << self
   # Pour compléter les données (infos)
   # 
   def complete_data(data)
+    clear unless debug?
     data ||= {
       # Juste pour voir toutes les données
       folder:         nil,
       analyse_id:     nil,
-      path:           nil, folder+analyse_id
+      path:           nil, # folder+analyse_id
       piece_title:    nil,
       composer:       nil,
       analyse_title:  nil,
@@ -171,16 +175,16 @@ class << self
       app_version:    nil
     }
 
-    data[:folder] = get_and_check_folder(data)
+    get_and_check_folder(data)
     while not(analyse_id_conform?(data))
       data[:analyse_id]     ||= Q.ask('Identifiant de l’analyse'.jaune)
     end
     data[:piece_title]    ||= Q.ask("Titre de l'œuvre".jaune)
     data[:composer]       ||= Q.ask("Compositeur de l'œuvre".jaune)
     data[:analyse_title]  ||= Q.ask('Titre de l’analyse'.jaune)
-    data[:analyste]       ||= Q.ask("Analyste")
+    data[:analyste]       ||= Q.ask("Analyste".jaune)
     data.merge!({
-      path:         File.join(folder, data[:analyse_id])
+      path:         File.join(CURRENT_FOLDER, data[:analyse_id]),
       created_at:   Time.now.to_i,
       updated_at:   Time.now.to_i,
       waa_version:  WAA.version,
