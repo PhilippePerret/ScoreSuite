@@ -120,7 +120,6 @@ class AnalyseSaver {
     var atags = []
     AObjet.items.forEach(objet => {
       if ( objet.isSystem  ) return
-      // if ( !objet.modified ) return  // TODO Pour n'enregistrer que les nouveaux et modifiés
       atags.push(objet.data)
     })
 
