@@ -65,11 +65,17 @@ class Analyse {
   display(){
     this.loading = true
     Analyse.current = this
+    /*
+    |  Affichage de l'analyse
+    */
     if ( false == AnalyseDisplayer.display(this) ) {
       Analyse.current = null
     } else {
       Systeme.setLockSystemsOnLoad()
       TableAnalyse.setHeight()
+      /*
+      |  Si on veut jouer du code après l'affichage de l'analyse
+      */
       runAfterLoadingAndDisplayingAnalyse()
     }
     this.loading = false
@@ -156,7 +162,7 @@ checkSystems(){
   */
   const nombreSystemesARetirer = Object.keys(table_systems).length
   if (unknownSystemsNames.length + nombreSystemesARetirer == 0) {
-    return console.info("= Les systèmes n'ont pas changé.")
+    return console.info("= Le nombre de systèmes n'a pas changé.")
   }
   if (unknownSystemsNames.length) {
     console.info("Nombre de systèmes à ajouter : %i", unknownSystemsNames.length)

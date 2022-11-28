@@ -27,27 +27,28 @@ static display(analyse){
    */ 
   this.cleanUp()
 
-  //
-  // Application des métadonnées
-  //
+  /*
+  |  Application des métadonnées
+  */
   Analyse.panneau_infos.setData(analyse.infos)
 
-  // 
-  // Application des préférences
-  // (elles serviront aussi pour l'affichage des systèmes et des
-  // marques, donc il faut les prendre avant d'inscrire les systèmes
-  // et les marques)
-  // 
+  /*
+  |  Application des préférences
+  |
+  |   (serviront aussi pour l'affichage des systèmes et des marques,
+  |    donc il faut les prendre avant d'inscrire les systèmes et les
+  |    marques)
+  */
   this.setPreferences(analyse.preferences)
 
-  //
-  // Affichage des systèmes
-  //
+  /*
+  |  Affichage des systèmes
+  */
   this.displaySystems(analyse)
 
-  //
-  // Affichage des marques d'analyse
-  //
+  /*
+  |  Affichage des marques d'analyse
+  */
   this.displayAnalyseTags(analyse.tags)
 
   /*
@@ -55,7 +56,7 @@ static display(analyse){
   */
   Form.setData(analyse.infos.form)
 
-  console.log("= AFFICHAGE OK =")
+  console.info("= AFFICHAGE OK =")
 
   return true
 }
@@ -97,18 +98,11 @@ static setPreferences(appPrefs){
   }
 }
 
-/**
- * Affichage des systèmes
- * 
- * On s'assure en même temps qu'ils soient bien répartis (espacés),
- * ce qui est surtout utile à la création de l'analyse
- * 
- */
 static displaySystems(analyse){
-  const systems = analyse.systems
-  systems.forEach(sys => {
-    sys.build()
-  })
+  /**
+   ** Affichage des systèmes
+   **/
+  analyse.systems.forEach(sys => sys.build())
 }
 
 /**
@@ -160,17 +154,5 @@ setFinLecture(){
   console.log("Fin de la lecture")
 }
 
-// /**
-//  * Lecture (création) de l'objet de données +data+
-//  * 
-//  */
-// drawAMarque(data){
-//   // console.log("Je traite la lecture de l'objet : ", data)
-//   const o = new AMark(data)
-//   o.setValues(data)
-//   o.build_and_observe()
-//   // TODO Scroller pour voir la marque
-// }
-
   
-}// AnalyseDisplayer
+}// class AnalyseDisplayer

@@ -33,7 +33,7 @@ class << self
     # 
     # Instanciation de l'analyse
     # 
-    analyse = Analyse.new(data[:path])
+    analyse = Analyse.new(data['path'])
 
     # 
     # Fichier de préférences par défaut
@@ -92,7 +92,7 @@ class << self
   def first_tags_analyse
     ary = []
     MESSAGES[:first_tags_at_creation].each_with_index do |msg, idx|
-      ary << {id:1, top:100, left: 220 * idx, width: 200, type:'txt', subtype:'size3', content:msg}
+      ary << {id:(idx + 1), top:100, left: 220 * idx, width: 200, type:'txt', subtype:'size3', content:msg}
     end
     return ary
   end
@@ -108,23 +108,22 @@ class << self
   # 
   def prepare_positions_systems(data)
     require 'dimensions'
-    folder_systems = File.join(data[:path],'systems')
+    folder_systems = File.join(data['path'],'systems')
     curtop = 400
     dsys = []
-    Dir["#{folder_systems}/*.*"].sort.each do |path|
-
-      dsys << {image_name: File.basename(path), top: curtop, left: 0}
+    Dir["#{folder_systems}/*.*"].sort.each_with_index do |path, idx|
+      h = Dimensions.height(path)
+      dsys << {id:(idx + 1), image_name:File.basename(path), top:curtop, left:0, height:h}
       # 
       # On calcule le prochain top en fonction de la hauteur du
       # système courant
       # 
-      h = Dimensions.height(path)
       curtop += h + 100
     end
     # 
     # On consigne ces systèmes
     # 
-    data.merge!(systems: dsys)
+    data.merge!('systems' => dsys)
   end
 
   ##
@@ -136,7 +135,7 @@ class << self
     # + Dossier des systèmes
     # (mkdir crée la hiérarchie jusqu'au dossier)
     # 
-    sys_folder = mkdir(File.join(data[:path],'systems'))
+    sys_folder = mkdir(File.join(data['path'],'systems'))
 
     # 
     # Existe-t-il des systèmes à prendre ?
@@ -162,33 +161,33 @@ class << self
     clear unless debug?
     data ||= {
       # Juste pour voir toutes les données
-      folder:         nil,
-      analyse_id:     nil,
-      path:           nil, # folder+analyse_id
-      piece_title:    nil,
-      composer:       nil,
-      analyse_title:  nil,
-      analyste:       nil,
-      created_at:     nil,
-      updated_at:     nil,
-      waa_version:    nil,
-      app_version:    nil
+      'folder'          => nil,
+      'analyse_id'      => nil,
+      'path'            => nil, # folder+analyse_id
+      'piece_title'     => nil,
+      'composer'        => nil,
+      'analyse_title'   => nil,
+      'analyste'        => nil,
+      'created_at'      => nil,
+      'updated_at'      => nil,
+      'waa_version'     => nil,
+      'app_version'     => nil
     }
 
     get_and_check_folder(data)
     while not(analyse_id_conform?(data))
-      data[:analyse_id]     ||= Q.ask('Identifiant de l’analyse'.jaune)
+      data['analyse_id']     ||= Q.ask('Identifiant de l’analyse'.jaune)
     end
-    data[:piece_title]    ||= Q.ask("Titre de l'œuvre".jaune)
-    data[:composer]       ||= Q.ask("Compositeur de l'œuvre".jaune)
-    data[:analyse_title]  ||= Q.ask('Titre de l’analyse'.jaune)
-    data[:analyste]       ||= Q.ask("Analyste".jaune)
+    data['piece_title']    ||= Q.ask("Titre de l'œuvre".jaune)
+    data['composer']       ||= Q.ask("Compositeur de l'œuvre".jaune)
+    data['analyse_title']  ||= Q.ask('Titre de l’analyse'.jaune)
+    data['analyste']       ||= Q.ask("Analyste".jaune)
     data.merge!({
-      path:         File.join(CURRENT_FOLDER, data[:analyse_id]),
-      created_at:   Time.now.to_i,
-      updated_at:   Time.now.to_i,
-      waa_version:  WAA.version,
-      app_version:  App.version
+      'path'        => File.join(CURRENT_FOLDER, data['analyse_id']),
+      'created_at'  => Time.now.to_i,
+      'updated_at'  => Time.now.to_i,
+      'waa_version' => WAA.version,
+      'app_version' => App.version
     })
 
     return data
@@ -199,24 +198,24 @@ class << self
   # conforme.
   # 
   def get_and_check_folder(data)
-    folder = data[:folder] || CURRENT_FOLDER
+    folder = data['folder'] || CURRENT_FOLDER
     folder != APP_FOLDER  || raise(ERRORS[:no_analyse_in_app_folder])
     File.exist?(folder)   || raise(ERRORS[:folder_unfound] % folder)
     # 
     # L'application ne doit pas déjà exister
     # 
-    File.exist?(File.join(folder,data[:analyse_id])) && begin
-      raise(ERRORS[:analyse_already_exists] % [data[:analyse_id], folder])
+    File.exist?(File.join(folder,data['analyse_id'])) && begin
+      raise(ERRORS[:analyse_already_exists] % [data['analyse_id'], folder])
     end
     # 
     # On prend ce dossier
     # 
-    data.merge!(folder: folder)
+    data.merge!('folder' => folder)
   end
 
   # @return true si l'identifiant d'analyse est conforme
   def analyse_id_conform?(data)
-    id = data[:analyse_id]
+    id = data['analyse_id']
     id || return
     id.gsub(/[a-zA-Z0-9_\-]/,'') == '' || raise(ERRORS[:analyse_id_invalid] % id)
   rescue Exception => e

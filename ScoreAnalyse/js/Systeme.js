@@ -163,15 +163,18 @@ class Systeme extends AObjet {
    * tous les systèmes.
    */
   static afterSystemsLoaded(){
-    this.checkAndRepareSystemsPosition()
+    // Plus rien à faire maintenant
   }
 
-  /**
-   * Vérifie la bonne position de tous les systèmes
-   * après leur création
-   *
-   */
   static checkAndRepareSystemsPosition(){
+    /**
+     ** Vérifie et corrige la position des systèmes.
+     **
+     ** Avant, la méthode était appelée systématiquement, mais 
+     ** maintenant la position des systèmes est bien calculée à la
+     ** création donc il n'y a pas besoin de la toucher systématique-
+     ** ment.
+     **/
     var lastSystem ;
     var modified = false ;
     this.each(sys => {
@@ -284,7 +287,7 @@ class Systeme extends AObjet {
     const iniTop = parseInt(this.top,10)
     const diff = top - iniTop
     if ( diff == 0 ) return 
-    else { Analyse.current && Analyse.current.setModified() }
+    else { Analyse.setModified() }
     // console.log("DATA: Top actuel = %i, Nouveau top = %i, différence = %i", iniTop,top,diff)
     this.top = top
     /*

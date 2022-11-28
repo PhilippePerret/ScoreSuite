@@ -46,7 +46,7 @@ Je controle-clique sur le dossier `Analyse_CBT1_p1` et j’ouvre un nouveau Term
 
 <command>score-cutting</command>
 
-Cela ouvre la première page dans Score-cutting. 
+Cela ouvre la première page dans **ScoreCutting**. 
 
 Il suffit maintenant de double-cliquer aux endroits où il faut faire la découpe, c’est-à-dire le plus près du haut et du bas de chaque système.
 
@@ -68,25 +68,31 @@ Si vous avez procédé correctement à l’opération, vous devez vous retrouver
 
 Replacer le fichier `page2.jpg` dans le dossier `Divers`, nous ne devrions plus en avoir besoin.
 
+#### Retouche des images systèmes
+
+On peut retoucher les images des systèmes dans n’importe quel logiciel de dessin (ou même Aperçu) pour supprimer les petits bouts de texte qui ont éventuellement dépassé.
+
 ### Mise en place de l’analyse
 
-Nous allons bientôt pouvoir procéder au début de l’analyse. Dans la fenêtre de Terminal que nous avons ouvert, tapons la commande :
+Nous allons bientôt pouvoir procéder au début de l’analyse. Dans la fenêtre de Terminal que nous avons ouverte (dans le dossier où nous voulons placer l’analyse), tapons la commande :
 
 <command>score-analyse analyse</command>
 
-L’application nous demande si nous voulons créer une nouvelle analyse dans ce dossier. Nous confirmons que lui.
+**ScoreAnalyse** nous demande si nous voulons créer une nouvelle analyse dans ce dossier, qui portera le nom « analyse ». Nous confirmons que c’est bien ça que nous voulons faire.
 
-L’application réclame alors quelques informations sur la pièce et l’analyse.
+L’application réclame alors quelques informations sur la pièce et l’analyse elle-même.
 
-L’application détecte le dossier `systems` et nous demande s’il contient les systèmes de la partition. Nous confirmons que oui.
+Elle détecte le dossier `systems` et nous demande s’il contient les systèmes de la partition. Nous confirmons que oui.
 
 **ScoreAnalyse** procède alors à la création de l’analyse, ce qui produit la hiérarchie suivante :
 
 ~~~bash
 Analyse_CBT1_p1 | 
-								| analyse | infos.yaml
+								| analyse | analyse_tags.yaml (fichier contenant les tags/marques)
+								|					| infos.yaml        (fichier des informations de l'analyse)
+								|					| backups | 				(dossier pour mettre les backups)
 								|					| preferences.yaml
-								|					| systems | (les systèmes)
+								|					| systems | 				(dossier des systèmes)
 								|
 								| Divers  |
 								|		 	  	| Partition_originale.pdf
@@ -99,7 +105,13 @@ Analyse_CBT1_p1 |
 
 
 
+<a name="backups"></a>
 
+### Récupération d’une sauvegarde
+
+Lorsque nous avons eu un problème ou que nous voulons revenir en arrière dans l’analyse, nous pouvons utiliser un des backups enregistrés dans le dossier `backups` de l’analyse. Il suffit de reprendre les fichiers consignés dans le dossier du backup voulu.
+
+> Les backups sont enregistrés à chaque chargement de l’analyse et les 100 derniers sont conservés.
 
 ---
 

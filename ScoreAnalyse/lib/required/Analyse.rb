@@ -67,7 +67,7 @@ class Analyse
         if Q.yes?("Dois-je créer la nouvelle analyse '#{affixe}' dans ce dossier ?".jaune)
           require_relative '../modules/create_analyse'
           self.current = create_new_analyse(
-            {folder: CURRENT_FOLDER, analyse_id: affixe},
+            {'folder' => CURRENT_FOLDER, 'analyse_id' => affixe},
             true # pour indiquer que ça vient de la ligne de commande
           )
           return true
@@ -426,7 +426,7 @@ class Analyse
     # Faut-il supprimer un backup ? (on en garde seulement 30)
     # 
     backups = Dir["#{backup_folder}/*"]
-    while backups.count > 50
+    while backups.count > 100
       FileUtils.rm_rf(backups.sort.first)
       backups = Dir["#{backup_folder}/*"]
     end
