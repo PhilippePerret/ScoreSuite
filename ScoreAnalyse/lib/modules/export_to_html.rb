@@ -33,8 +33,8 @@ class << self
 
     #
     # Traitement des images
-    # (pour qu'elles soient moins gourmandes et les mettre dans un
-    #  dossier dédié avec le code)
+    # (pour qu'elles soient moins gourmandes et les mettre en dur
+    #  dans le fichier HTML)
     # 
     hcode = traite_images_in(analyse, hcode)
 
@@ -85,7 +85,7 @@ class << self
   # 2. Essayer de les alléger, peut-être pour en faire des webp
   # 
   def traite_images_in(analyse, hcode)
-
+ 
     #
     # Remplacement du code HTML et relève des images (toutes les
     # images, pas seulement les systèmes)

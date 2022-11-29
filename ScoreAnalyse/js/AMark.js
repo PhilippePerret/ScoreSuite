@@ -514,6 +514,8 @@ get isSection(){ return this.type == 'bbx' && this.subtype.startsWith('sec')}
 get isModulation(){return this.type == 'mod'}
 get isEmprunt()   {return this.type == 'emp'}
 get isText(){return this.type == 'txt'}
+get isImage(){return this.type == 'img'}
+get isSVGImage(){return this.isImage && this.content.endsWith('.svg')}
 get hasFormatedText(){
   return this._hasformtxt || (this._hasformtxt = ['txt','bbx'].includes(this.type))
 }
@@ -564,13 +566,15 @@ observe(){
     $(this.obj).resizable({
         aspectRatio: true
       , stop: function(e, ui){
-          const wDiff = my.getWidth.call(my) - my.width
-          const hDiff = my.getHeight.call(my) - my.height
-          AObjet.applyToSelection({me:my, dWidth: wDiff, dHeight:hDiff, adjust:true})
-          // Avant :
-          // my.width  = my.getWidth.call(my)
-          // my.height = my.getHeight.call(my)
-          // my.ajustePosition.call(my)
+          // NON : pour les objets qui sont 2DRezable (aspectRatio = true),
+          // on part toujours du principe qu'on en redimensionne un 
+          // seul à la fois.
+          // const wDiff = my.getWidth.call(my) - my.width
+          // const hDiff = my.getHeight.call(my) - my.height
+          // AObjet.applyToSelection({me:my, dWidth: wDiff, dHeight:hDiff, adjust:true})
+          my.width  = my.getWidth.call(my)
+          my.height = my.getHeight.call(my)
+          my.ajustePosition.call(my)
       }
     })
   } else if ( this.isVresizable && this.isHresizable ) {
