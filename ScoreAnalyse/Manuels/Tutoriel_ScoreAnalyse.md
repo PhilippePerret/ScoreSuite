@@ -212,6 +212,16 @@ Lorsque nous avons eu un problème ou que nous voulons revenir en arrière dans 
 
 > Les backups sont enregistrés à chaque chargement de l’analyse et les 100 derniers sont conservés.
 
+
+
+<a name="exporter"></a>
+
+### Exporter l’analyse en HTML
+
+Je veux à présent exporter cette analyse en HTML pour pouvoir la partager avec une amie ou la déposer sur un site internet. Pour ce faire, j’utilise l’outil d’exportation en activant le menu `Fichier > Exporter en HTML…`.
+
+Un fichier `analyse-JJ_MM_YYYY.html` est produit dans le dossier `exports` de l’analyse (`JJ_MM_YYYY` est remplacé par la date du jour, par exemple `analyse-29-11-2022.html`). Ce dossier contient tous les éléments utiles, à commencer par les images et les fontes (au format `base64`).
+
 ---
 
 <a name="table-analyse"></a>

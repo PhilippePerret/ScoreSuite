@@ -50,7 +50,8 @@ class << self
 
     full_code = head + page_titre(analyse) + hcode + '</body></html>'
 
-    html_path = File.join(analyse.folder_export, "analyse.html")
+    html_name = "analyse-#{Time.now.strftime('%d_%m_%Y')}.html"
+    html_path = File.join(analyse.folder_export, html_name)
     retour.merge!(path: html_path)
 
     File.write(html_path, full_code)
@@ -270,32 +271,6 @@ class << self
       
     HTML
   end
-
-  # Rien de ci-dessous ne fonctionne…
-  # def code_fonte(filename)
-  #   # require 'charlock_holmes/string'
-  #   font_path = File.join(APP_FOLDER,'assets','fonts',filename)
-  #   # dencode = CharlockHolmes::EncodingDetector.detect(File.read(font_path))
-  #   return File.binread(font_path).encode('utf-8')
-  #   # contents = File.read(font_path)
-  #   # contents.detect_encoding!
-  #   # return contents.to_s.split("\n").join('')
-
-  #   # puts "dencode : #{dencode.inspect}"
-  #   # c = nil
-  #   # File.open(font_path,"r:#{dencode[:encoding]}:UTF-8") do |f|
-  #   #   c = f.read
-  #   # end
-  #   # # c = File.binread(font_path)
-  #   # return c.split("\n").join(' ')
-  # end
-
-  # # Je ne sais pas utiliser ça
-  # def code_json_for_fonts
-  #   Dir["#{APP_FOLDER}/assets/fonts/*.js"].map do |src|
-  #     File.read(src)
-  #   end.join("\n")
-  # end
 
 end #/<< self class Analyse
 end #/class Analyse
