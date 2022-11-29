@@ -156,7 +156,7 @@ Nous pouvons procéder de la même manière pour les accords au-dessus du systè
 
 Procédons à l’enregistrement de nos premiers « tags » (nos premières marques d’harmonie) à l’aide du raccourci clavier <key>⌘</key><key>s</key>.
 
-### Déplacement du système
+### Déplacement des systèmes
 
 Si nous trouvons que notre premier système est trop bas (ou trop haut), nous pouvons le déplacer.
 
@@ -186,7 +186,23 @@ Pour relancer l’analyse, nous allons revenir dans notre fenêtre Terminal et j
 
 Maintenant, nous avons besoin d’un extrait qui va reprendre la première mesure en la réduisant à un seul système, avec une seule voix. 
 
-Pour ce faire, nous allons utiliser l’outil de « partition rapide »
+Pour ce faire, nous allons utiliser l’outil de « partition rapide » dans le panneau Outils.
+
+Pour **ouvrir le panneau Outils**, nous pouvons activer le menu `Fichier > Panneau outils…` ou jouer le raccourci clavier <key>⇧ o</key> (« o » comme « Outils » bien sûr). 
+
+En haut de ce panneau, nous trouvons un champ (noir) dans lequel nous pouvons entrer du code *muscore* (pseudo Lilypond) qui sera transformé en partition. Un menu permet d’ajouter des précisions, comme par exemple la tonalité ou la suppression des hampes pour les notes.
+
+Tapons dans la champ `c16 e g c e g, c e`, et  cliquons sur le bouton <bouton>Construire</bouton> qui se situe en bas à droite du champ.
+
+Après quelques secondes, l’app renvoie un message indiquant que l’image a été construite et que **son nom a été placé dans le presse-papier**. Il nous suffit donc de l’insérer dans la page de cette manière :
+
+Nous fermons la boite à outils avec <key>⇧ o</key>, nous double-cliquons à l’endroit voulu sur la table d’analyse (ici, au-dessus de la première mesure), nous tapons <key>i</key> pour insérer une image et nous tapons <key>⌘v</key> pour coller le nom de l’image nouvellement créée. Nous confirmons enfin avec <key>↩︎</key> et l’image est posée sur la table d’analyse, à l’endroit double-cliqué.
+
+> Pour information, l’image, au format SVG, a été placé dans le dossier `images` de l’analyse et elle a été construite dans le dossier `images/_Chantier/`.
+
+### Fabrication d’un extrait complexe de musique
+
+L’outil « partition rapide » permet de composer des images simples (elle permet en fait de composer n’importe quelle image, mais l’interface est trop rudimentaire pour que ce soit confortable). Pour des images plus complexe — et surtout pour travailler de façon plus confortable —, nous pouvons utiliser **ScoreWriter** de la suite **ScoreSuite**. Reportez-vous à son manuel d’utilisation pour savoir comment l’utiliser.
 
 <a name="backups"></a>
 

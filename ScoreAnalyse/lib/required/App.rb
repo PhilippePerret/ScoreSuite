@@ -106,12 +106,13 @@ class App
     # 
     # Noms et paths de l'image
     # 
-    image_affixe = 
-      if code.match?(/^-> ([a-z\-_0-9]+)$/i)
-        code.match(/^-> ([a-z\-_0-9]+)$/i)[1]
-      else
-        "img-#{Time.now.to_i}"
-      end 
+    image_affixe = nil
+    if code.match?(/^-> ([a-z\-_0-9]+)$/i)
+      image_affixe = code.match(/^-> ([a-z\-_0-9]+)$/i)[1]
+    else
+      image_affixe = "img-#{Time.now.to_i}"
+      code = "-> #{image_affixe}\n#{code}"
+    end 
     code_mus_name     = "#{image_affixe}.mus"
     code_mus_path     = File.join(chantier_folder,code_mus_name)
     built_image_path  = File.join(chantier_folder,image_affixe,"#{image_affixe}.svg")
