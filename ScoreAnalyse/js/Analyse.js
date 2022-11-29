@@ -451,8 +451,12 @@ static exportCurrentToHtml(){
   if ( not(this.current) ) {
     return erreur("Il n'y a pas d'analyse courante à exporter !")
   }
-  message("Exportation de l'analyse au format HTML. Patienter…")
-  const code = DGet('section#content').outerHTML
+  message("Exportation de l'analyse au format HTML. Merci de patienter…")
+  let code = DGet('section#content').outerHTML
+  /*
+  |  Il faut ajouter le code CSS en dur (préférences)
+  */
+  code = `<style type="text/css">\n${Preferences.buildSelectorsInHead()}\n</style>\n${code}` 
   WAA.send({
       class:  'ScoreAnalyse::Analyse'
     , method: 'exportToHTML'
