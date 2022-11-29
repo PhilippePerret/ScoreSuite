@@ -454,9 +454,21 @@ static exportCurrentToHtml(){
   message("Exportation de l'analyse au format HTML. Merci de patienter…")
   let code = DGet('section#content').outerHTML
   /*
+  |  On épure le code en :
+  |  - retirant toutes les poignées jQuery
+  */
+  const lenStart = code.length
+  const reg = /<div class="ui\-resizable\-handle[^>]+><\/div>/g
+  code = code.replace(reg, '')
+  const lenEnd = code.length
+  const gaincar = lenStart - lenEnd
+  const gainpct = Math.round(100 / (lenStart / gaincar))
+  console.info("Gain de caractères = %i donc %i % (au départ: %i, à la fin: %i) ", gaincar, gainpct, lenStart, lenEnd)
+
+  /*
   |  Il faut ajouter le code CSS en dur (préférences)
   */
-  code = `<style type="text/css">\n${Preferences.buildSelectorsInHead()}\n</style>\n${code}` 
+  code = `<style type="text/css">\n${Preferences.buildSelectorsInHead()}\n</style>\n${code}`
   WAA.send({
       class:  'ScoreAnalyse::Analyse'
     , method: 'exportToHTML'
