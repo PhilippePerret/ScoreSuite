@@ -38,15 +38,15 @@ class << self
     # 
     hcode = traite_images_in(analyse, hcode)
 
-    #
-    # Fontes
-    #
-    fonts_folder = mkdir(File.join(analyse.folder_export,'fonts'))
-    Dir["#{APP_FOLDER}/assets/fonts/*.otf"].each do |src|
-      font_name = File.basename(src)
-      dst = File.join(fonts_folder, font_name)
-      FileUtils.cp(src, dst)
-    end
+    # #
+    # # Fontes
+    # #
+    # fonts_folder = mkdir(File.join(analyse.folder_export,'fonts'))
+    # Dir["#{APP_FOLDER}/assets/fonts/*.otf"].each do |src|
+    #   font_name = File.basename(src)
+    #   dst = File.join(fonts_folder, font_name)
+    #   FileUtils.cp(src, dst)
+    # end
 
     full_code = head + page_titre(analyse) + hcode + '</body></html>'
 
@@ -214,6 +214,18 @@ class << self
   end
 
 
+  def font_source(url)
+    if true # embeddé en dur
+      font_path = File.join(APP_FOLDER,'assets', url)
+      ba64_path = "#{font_path}.b64.txt"
+      `base64 "#{font_path}" > "#{ba64_path}"` unless File.exist?(ba64_path)
+      b64 = File.open(ba64_path,'rb').read.gsub(/\s\n/,'').strip
+      "data:font/otf;base64,#{b64}"
+    else
+      url
+    end
+  end
+
   def head
     <<~HTML
     <!DOCTYPE html>
@@ -225,11 +237,11 @@ class << self
       <style type="text/css">
         @font-face {
           font-family:  PhilNote;
-          src: url("fonts/PhilNote2-Regular.otf");
+          src: url(#{font_source("fonts/PhilNote2-Regular.otf")});
         }
         @font-face {
           font-family:  PhilNote;
-          src: url("/fonts/PhilNote2-Bold.otf");
+          src: url(#{font_source("/fonts/PhilNote2-Bold.otf")});
           font-weight: bold;
         }
         .philnote {

@@ -7,40 +7,40 @@ folder: "/Users/philippeperret/Programmes/ScoreSuite/ScoreAnalyse/Manuels/Analys
 analyst: ''
 systems:
 - image_name: system-1.jpg
-  top: 446
+  top: 687
   left: 0
 - image_name: system-10.jpg
-  top: 894
+  top: 1135
   left: 0
 - image_name: system-11.jpg
-  top: 1395
+  top: 1636
   left: 0
 - image_name: system-12.jpg
-  top: 1931
+  top: 2172
   left: 0
 - image_name: system-2.jpg
-  top: 2488
+  top: 2729
   left: 0
 - image_name: system-3.jpg
-  top: 2953
+  top: 3194
   left: 0
 - image_name: system-4.jpg
-  top: 3419
+  top: 3660
   left: 0
 - image_name: system-5.jpg
-  top: 3897
+  top: 4138
   left: 0
 - image_name: system-6.jpg
-  top: 4379
+  top: 4620
   left: 0
 - image_name: system-7.jpg
-  top: 4844
+  top: 5085
   left: 0
 - image_name: system-8.jpg
-  top: 5333
+  top: 5574
   left: 0
 - image_name: system-9.jpg
-  top: 5850
+  top: 6091
   left: 0
 form:
-updated_at: 1669630272
+updated_at: 1669629597

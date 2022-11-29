@@ -1,6 +1,17 @@
+<style type="text/css">
+.cmd {display:inline-block;background-color:#555;color:white;font-family:Courier;padding:4px 12px;}
+  .cmd:before {content:"$> ";}
+  .key, key {display:inline-block;border:1px solid;padding:0px 4px 1px;border-radius:4px;}
+</style>
+
+
 # Tutoriel Score-Analyse
 
 Ce tutoriel présente le procédure complète d’une analyse avec la suite **ScoreSuite** et principalement **ScoreAnalyse** qui en est la pièce centrale.
+
+
+
+[TOC]
 
 ## Procédure complète
 
@@ -44,7 +55,7 @@ Je commence par place l’image `page1.jpg` à la racine du dossier principal `A
 
 Je controle-clique sur le dossier `Analyse_CBT1_p1` et j’ouvre un nouveau Terminal à ce dossier. Et je joue la commande :
 
-<command>score-cutting</command>
+<span class="cmd">score-cutting</span>
 
 Cela ouvre la première page dans **ScoreCutting**. 
 
@@ -70,13 +81,13 @@ Replacer le fichier `page2.jpg` dans le dossier `Divers`, nous ne devrions plus 
 
 #### Retouche des images systèmes
 
-On peut retoucher les images des systèmes dans n’importe quel logiciel de dessin (ou même Aperçu) pour supprimer les petits bouts de texte qui ont éventuellement dépassé.
+On peut retoucher les images des systèmes dans n’importe quel logiciel de dessin (ou même Aperçu, en masquant les « taches » avec des cadres/formes blanches) pour supprimer les petits bouts de texte qui ont éventuellement dépassé.
 
 ### Mise en place de l’analyse
 
 Nous allons bientôt pouvoir procéder au début de l’analyse. Dans la fenêtre de Terminal que nous avons ouverte (dans le dossier où nous voulons placer l’analyse), tapons la commande :
 
-<command>score-analyse analyse</command>
+<span class="cmd">score-analyse analyse</span>
 
 **ScoreAnalyse** nous demande si nous voulons créer une nouvelle analyse dans ce dossier, qui portera le nom « analyse ». Nous confirmons que c’est bien ça que nous voulons faire.
 
@@ -102,6 +113,74 @@ Analyse_CBT1_p1 |
 													| system-02.jpg
 													| etc.
 ~~~
+
+### Ouverture de l’analyse
+
+L’analyse est aussitôt ouverte dans Firefox. Nous pouvons voir trois textes d’accueil expliquant les opérations de base et les systèmes que nous avons confectionnés, répartis régulièrement sur la page.
+
+### Définition de la taille de la fenêtre
+
+Nous pouvons redimensionner la fenêtre de Firefox pour voir entièrement les systèmes en largeur. 
+
+Pour conserver cette dimension, afin qu’elle soit appliquée à chaque chargement de l’analyse, nous enregistrons notre analyse. Cela peut se faire avec le raccourci <span class="key">⌘</span> <span class="key">s</span> ou en cliquant sur le bouton « Enregistrer ».
+
+### Sélection et destruction de marque/textes
+
+Nous allons commencer par supprimer les petits textes d’aide affichés en haut de page.
+
+Pour sélectionner, ScoreAnalyse utilise une fonctionnalité très pratique : inutile, comme dans les autres logiciels, de cliquer sur les éléments à sélectionner. Il suffit de tenir la touche majuscule appuyée (⇧) et de glisser la souris sur les éléments. C’est de cette manière que je sélectionne très rapidement les trois premiers textes.
+
+Je joue ensuite la touche <span class="key">⌫</span> (effacement arrière) pour supprimer ces trois textes. Je peux enregistrer l’analyse pour consigner ce choix.
+
+### Premiers accords et premières harmonies
+
+Nous allons créer nos premiers accords et nos premières harmonies. 
+
+Pour les accords, nous double-cliquons à l’endroit voulu au-dessus du premier système, nous choisissons « Accord » (ou nous tapons « a ») puis nous confirmons, puisque le premier accord est un DO majeur (C) et que c’est justement le choix par défaut. Nous pouvons ajuster la position de cet accord à la souris, ou avec les flèches. 
+
+Nous double-cliquons au-dessus de la deuxième mesure, nous tapons <key>a</key> puis « Dm7 » puisque c’est le second accord.
+
+> Si vous avez cliqué à peu près au niveau du premier accord (en hauteur), les deux accords **sont automatiquement alignés**.
+
+Nous pouvons placer les harmonies. Nous double-cliquons sous la première mesure, nous choisissons le menu « Harmonie » (ou nous tapons <key>h</key>) et nous confirmons puisque le premier choix est « I » (1 en chiffre romain) et que c’est justement le degré du premier accord. Ajustons la position avec les flèches du clavier, cette fois-ci.
+
+Plaçons de la même manière l’harmonie de la deuxième mesure. C’est un deuxième degré (II) dans sont 3e renversement, nous tapons donc « II*** » dans le champ puis nous tapons entrée. Vous notez que ScoreAnalyse ajoute automatiquement le « 7 » entendu qu’un accord dans son troisième renversement possède forcément sa septième.
+
+> À nouveau, les harmonies sont automatiquement alignées si elles sont proches.
+
+### Ligne de prolongation
+
+Ajoutons une ligne de prolongation à nos harmonies, entendu qu’elles perdurent sur toute la mesure. Pour ce faire, double-cliquons sur le « I » (il se met en édition) et ajoutons « -- » (deux tirets) après ce « I ». Entrée pour finir. Une ligne de prolongation a été ajoutée. Nous pouvons l’allonger sous toute la mesure en tirant sur sa poignée (qui apparait lorsqu’on glisse la souris vers sa fin).
+
+Nous pouvons procéder de la même manière pour les accords au-dessus du système.
+
+Procédons à l’enregistrement de nos premiers « tags » (nos premières marques d’harmonie) à l’aide du raccourci clavier <key>⌘</key><key>s</key>.
+
+### Déplacement du système
+
+Si nous trouvons que notre premier système est trop bas (ou trop haut), nous pouvons le déplacer.
+
+Par défaut, les systèmes sont verrouillés (pour éviter les erreurs), nous devons donc d’abord les déverrouiller en cliquant sur le cadenas en bas à droite de la fenêtre (qui est vert, indiquant que le verrou est actif). Maintenant les systèmes sont déverrouillés.
+
+Nous cliquons une fois sur le premier système (sans tenir la souris appuyée) et nous 
+
+### Quitter l’analyse
+
+Nous pouvons quitter l’analyse à l’aide du raccourci <key>⌘</key><key>q</key>.
+
+Nous pouvons aussi jouer le raccourci <key>⌃</key><key>c</key> dans la fenêtre Terminal ouverte pour lancer l’application (rappel : <key>⌃</key> correspond à la touche <key>control</key>).
+
+### Relancer l’analyse
+
+Pour relancer l’analyse, nous allons revenir dans notre fenêtre Terminal et jouer :
+
+<span class="cmd">cd analyse</span>
+
+… pour nous placer dans le dossier de l’analyse (rappelons-nous qu’il faut toujours se placer dans le dossier de l’analyse pour la charger à l’aide de la commande suivante) et taper :
+
+<span class="cmd">score-analyse .</span>
+
+> Ne pas oublier le point, qui signifie « dans le dossier courant ».
 
 
 
