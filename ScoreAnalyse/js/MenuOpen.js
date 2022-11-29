@@ -21,7 +21,7 @@ class OpenMenu extends MenusTool {
   }
 
   static onActivate_toolsPanel(){
-    Tools.togglePanneau.call(Tools)
+    Tools.panneau.toggle.call(Tools)
   }
 
   static onActivate_exportToHTML(){

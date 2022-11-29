@@ -15,7 +15,16 @@
  */
 
 
-class ManuelClass extends Panneau {
+class ManuelClass {
+
+  toggle(){this.panneau.toggle.call(this.panneau)}
+  get panneau(){return this._pano || (this._pano = new Panneau(this))}
+  get panneauId(){return 'manuel'}
+  onKeyPress(e){
+    var returnU = onKeyDownUniversel(e)
+    if ( isBool(returnU) ) return returnU
+    if ( e.shiftKey && e.key == 'M' ) return this.toggle()
+  }
 
   build(){
   
@@ -100,6 +109,11 @@ class ManuelClass extends Panneau {
 
   get manualContent(){return this._manualcont || (this._manualcont = DGet('#contenu_manuel', this.obj))}
 }
+
+/**
+*
+* INSTANCE MAMNUEL
+*/
 const Manuel = new ManuelClass()
 
 
@@ -135,7 +149,6 @@ class ManuelItem {
         return '<p>' + this.procedure + '</p>'
       }
     } else {
-      console.debug("this", this)
       var c = this.procedure.map(p => `<li>${p}</li>`).join('')
       return '<ul>' + c + '</ul>'
     }

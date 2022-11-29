@@ -2,26 +2,22 @@
 
 class Tools {
 
+  static toggle(){this.panneau.toggle.call(this.panneau)}
+  static get panneau(){return this._pano || (this._pano = new Panneau(this))}
+  static get panneauId(){return 'panneau_outils'}
+  static onKeyPress(e){
+    var returnU = onKeyDownUniversel(e)
+    if ( isBool(returnU) ) return returnU
+    if ( e.shiftKey && e.key == 'O' ) return this.toggle()
+  }
+
   /**
   * Méthode appelée depuis le panneau pour lancer l'application
   * ScoreWriter dans le dossier courant
   */
   static runScoreWriter(){
     return message("Je ne parviens pas à lancer proprement score-writer…")
-    // const image = DGet('input#scorewriter_image_to_edit').value
-    // WAA.send({
-    //     class:  'ScoreAnalyse::App'
-    //   , method: 'run_score_writer'
-    //   , data:   {
-    //         folder: (Analyse.current && Analyse.current.path)
-    //       , image: image
-    //     }
-    // })
   }
-  // // Retour serveur de la précédente
-  // static onRanScoreWriter(){
-  //   this.togglePanneau()
-  // }
 
   /* --- MuScore Code Methods --- */
 
@@ -98,14 +94,6 @@ class Tools {
       console.log("Système #%i top = %i heigh %i / real_top = %i full_height = %i", sys.index, sys.top, sys.height, sys.real_top, sys.full_height)
     })
     message("Il faut penser à enregistrer l'analyse.")
-  }
-
-  static togglePanneau(){
-    this.panneau.toggle()
-  }
-
-  static get panneau(){
-    return this._pano || (this._pano = new Panneau('panneau_outils'))
   }
 }
 

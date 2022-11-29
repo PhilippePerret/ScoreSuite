@@ -182,7 +182,11 @@ Pour relancer l’analyse, nous allons revenir dans notre fenêtre Terminal et j
 
 > Ne pas oublier le point, qui signifie « dans le dossier courant ».
 
+### Fabrication d’un extrait de musique
 
+Maintenant, nous avons besoin d’un extrait qui va reprendre la première mesure en la réduisant à un seul système, avec une seule voix. 
+
+Pour ce faire, nous allons utiliser l’outil de « partition rapide »
 
 <a name="backups"></a>
 

@@ -6,6 +6,10 @@ function onKeypressOnAnalyse(e){
 
   switch(e.key){
 
+    case 'I':
+      Analyse.panneau_infos.toggle.call(Analyse.panneau_infos)
+      break
+
     case 'M':
       Manuel.toggle.call(Manuel)
       break
@@ -15,7 +19,7 @@ function onKeypressOnAnalyse(e){
       break
 
     case 'O':
-      Tools.togglePanneau.call(Tools)
+      Tools.toggle.call(Tools)
       break
 
     default:

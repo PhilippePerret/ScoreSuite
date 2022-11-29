@@ -89,7 +89,7 @@
   <div id="panneau_outils" class="panneau hidden">
 
     <div>
-      <span>Construire une image à partir du code muscore : </span>
+      <span><b>Partition rapide</b><br>Construire une image à partir du code muscore : </span>
       <textarea id="music_score_code" style="width:100%;height:180px;background-color:black;color:white;"></textarea>
       <div class="right">
         <select id="assistant_muscode" onchange="Tools.onChooseAssistantCode.call(Tools)">
@@ -131,7 +131,7 @@
     </div>
 
     <div class="buttons">
-      <button onclick="Tools.togglePanneau.call(Tools)">Fermer</button>
+      <button onclick="Tools.panneau.toggle.call(Tools)">Fermer</button>
     </div>
 
   </div>
@@ -178,7 +178,7 @@
 
     <select id="open_menu">
       <option value="">Fichier…</option>
-      <option value="infosAnalyse">Informations…</option>
+      <option value="infosAnalyse">Informations… ⇧I</option>
       <option></option>
       <option value="exportToHTML">Exporter en HTML</option>
       <option></option>

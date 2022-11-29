@@ -1,10 +1,15 @@
 'use strict';
-class PanneauInfos extends Panneau {
+class PanneauInfos {
 
   get PROPS(){return ['piece_title', 'composer', 'analyse_title','analyse_id','folder','analyst']}
 
-  constructor(){
-    super('panneau_infos')
+  toggle(){ this.panneau.toggle.call(this.panneau)}
+  get panneau(){return this._pano||(this._pano = new Panneau(this))}
+  get panneauId(){return 'panneau_infos'}
+  onKeyPress(e){
+    var returnU = onKeyDownUniversel(e)
+    if ( isBool(returnU) ) return returnU
+    if ( e.shiftKey && e.key == 'I' ) return this.toggle()
   }
 
   /**

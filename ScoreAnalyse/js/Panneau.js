@@ -2,8 +2,9 @@
 
 class Panneau {
 
-  constructor(id){
-    this.id = id
+  constructor(owner){
+    this.owner = owner
+    this.id = owner.panneauId || raise(`${this.constructor.name} faut définir l'ID du panneau (<owner>.panneauId)`)
   }
 
   toggle(){
@@ -19,16 +20,17 @@ class Panneau {
 
   show(){
     UI.desactiveCurrentShortcuts()
-    this.obj || this.build()
+    if ( 'function' == typeof this.owner.onKeyPress) { window.onkeypress = this.owner.onKeyPress.bind(this)}
+    this.obj || this.owner.build()
     this.obj.classList.remove('hidden')
     this.isOpened = true
-    'function' == typeof this.onOpen  && this.onOpen()
+    'function' == typeof this.owner.onOpen  && this.owner.onOpen()
   }
   hide(){
     this.obj.classList.add('hidden')
     UI.reactiveCurrentShortcuts()
     this.isOpened = false
-    'function' == typeof this.onClose && this.onClose()
+    'function' == typeof this.owner.onClose && this.owner.onClose()
   }
 
   observe(){

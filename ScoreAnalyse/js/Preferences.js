@@ -9,7 +9,17 @@
 
 */
 
-class PreferencesClass extends Panneau {
+class PreferencesClass {
+
+toggle(){this.panneau.toggle.call(this.panneau)}
+get panneau(){return this._pano || (this._pano = new Panneau(this))}
+get panneauId(){return 'preferences-panel'}
+  onKeyPress(e){
+    var returnU = onKeyDownUniversel(e)
+    if ( isBool(returnU) ) return returnU
+    if ( e.shiftKey && e.key == 'P' ) return this.toggle()
+  }
+
 
 setValuesSaved(savedData){
   for(var prop in savedData){
@@ -261,6 +271,7 @@ buildSelectorsInHead(){
   // console.debug("selectors = ", selectors)
   return selectors
 }
+
 
 // Construction du panneau
 build(){
