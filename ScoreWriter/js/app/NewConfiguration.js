@@ -97,7 +97,9 @@ class NewConfiguration {
     const tblSave = {}
     for( var cle in this.tableData) {
       if ( cle.match(/_/) ) continue
-      else { Object.assign(tblSave, {[cle]: this.tableData[cle]})}
+      else if ( this.tableData[cle] ) {
+        Object.assign(tblSave, {[cle]: this.tableData[cle]})
+      }
     }
     Object.assign(tblSave, {app_version: App.version})
     console.debug("tblSave = ", tblSave)
@@ -129,6 +131,7 @@ class NewConfiguration {
   }
 
   get tune(){
+    console.debug("this.getPieceTune() = ", this.getPieceTune())
     return this.getPieceTune() // valeur composite (2 selects)
   }
   set tune(v){
@@ -426,9 +429,13 @@ class NewConfiguration {
   */
 
   getPieceTune(){
+    console.debug("this.menuTuneNote = ", this.menuTuneNote)
+    console.debug("this.menuTuneNote.value = ", this.menuTuneNote.value)
+    console.debug("this.menuTuneAlteration", this.menuTuneAlteration)
+    console.debug("this.menuTuneAlteration.value = ", this.menuTuneAlteration.value)
     var t = this.menuTuneNote.value
     switch(this.menuTuneAlteration.value){
-      case '': return t
+      case '':case'=':  return t
       case 'b': return t + 'b'
       case '#': return t + '#'
     }
@@ -438,8 +445,8 @@ class NewConfiguration {
     this.menuTuneAlteration.value = (function(v){
       switch(v.substring(1, v.length)){
       case ''   : return ''
-      case 'b' : return 'b'
-      case '#' : return '#'
+      case 'b'  : return 'b'
+      case '#'  : return '#'
       }
     })(tune)
   }

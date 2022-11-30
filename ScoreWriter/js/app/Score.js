@@ -127,7 +127,8 @@ getEnteteCodeMus(c){
   |  Prendre les valeurs de configuration utiles
   */
   const metrique  = Config.get('piece-metrique')
-  const st_vspace = Config.get('mscore-staves-vspace')
+  var st_vspace = Config.get('mscore-staves-vspace')
+  if ( st_vspace == 'undefined') st_vspace = null // bug
   const proximity = Config.get('mscore-proximity')
   const imageName = Config.get('mscore-image-name')
   const firstMesu = Config.get('mscore-first-mesure')
