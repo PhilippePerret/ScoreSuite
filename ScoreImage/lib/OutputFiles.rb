@@ -128,6 +128,7 @@ end
 
 # Rabbotement des images produites pour la partition
 def trim_all_files
+  exit 101 if svg_untrimed_files.count == 0
   svg_untrimed_files.each do |svg_untrimed_file|
     if trim_file(svg_untrimed_file) === false
       raise EMusicScore.new("Impossible de trimer le fichier #{svg_untrimed_file.inspect}…")

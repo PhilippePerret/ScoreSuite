@@ -3,6 +3,10 @@
 module ScoreWriter
   class App
 
+    def self.errors
+      @@errors
+    end
+
     ##
     # Appelée à l'ouverture pour charger le bout de partition
     # courant, s'il existe.
@@ -121,7 +125,7 @@ module ScoreWriter
       #
       # Données à retourner
       # 
-      data = {ok: @@errors.empty?, err_msg: @errors}
+      data = {ok: @@errors.empty?, err_msg: @@errors}
       data.merge!(muscore.data_for_client)
       
       #

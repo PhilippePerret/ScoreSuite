@@ -100,6 +100,7 @@ buildImage(){
 onScoreBuilt(data){
   if ( data.ok ) {
     Score.update(data.images)
+    message("Partition construite avec succès.")
   } else {
     erreur(data.err_msg.join('<br/>'))
   }
