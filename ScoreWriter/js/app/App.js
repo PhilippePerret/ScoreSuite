@@ -145,11 +145,13 @@ traiteCodeInitial(fullcode){
           break
         case 'staves_keys':
           stavesKeys = valopt.split(',').reverse
-          stavesKeys.length == staffCount || raise(`Le nombre de clés définies (${stavesKeys.length}) ne correspond pas au nombre de portées (${staffCount})`)
+          // Non : car le nombre de portées n'est pas encore définissable
+          // stavesKeys.length == staffCount || raise(`Le nombre de clés définies (${stavesKeys.length}) ne correspond pas au nombre de portées (${staffCount})`)
           break
         case 'staves_names':
           stavesNames = valopt.split(',').reverse
-          stavesNames.length == staffCount || raise(`Le nombre de clés définies (${stavesNames.length}) ne correspond pas au nombre de portées (${staffCount})`)
+          // Non : car le nombre de portées n'est pas encore définissable
+          // stavesNames.length == staffCount || raise(`Le nombre de clés définies (${stavesNames.length}) ne correspond pas au nombre de portées (${staffCount})`)
           break
         case'tune': case'metrique':
           Config[option] = valopt

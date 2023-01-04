@@ -117,9 +117,21 @@ getEnteteCodeMus(c){
     break
   default:
     c.push(`--staves ${dispo.length}`)
-    if ( Number(dispo) > 1 ) {
-      stavesData.keys   && c.push('--staves_keys '  + stavesData.keys.reverse().join(', '))
-      stavesData.names  && c.push('--staves_names ' + stavesData.names.reverse().join(', '))
+    if ( dispo.length > 1 ) {
+      var keys = [], names = [];
+      var has_names = false
+      for (var portee of dispo) {
+        if (portee.name && portee.name.length > 0 ) {
+          has_names = true
+          break
+        }
+      }
+      for ( portee of dispo) {
+        portee.key  && keys.push(portee.key)
+        has_names   && names.push(portee.name)
+      }
+      keys.length  && c.push(`--staves_keys  ${keys.reverse().join(', ')}`)
+      has_names && c.push(`--staves_names ${names.reverse().join(', ')}`)
     }
   }
 

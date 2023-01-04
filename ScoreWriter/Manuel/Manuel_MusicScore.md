@@ -419,9 +419,6 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | Exemple                                                      | **<c e g c>2.**                                             | <img src="images/exemples/accord.svg" style=" width:100px;" /> |
 | Snippet :                                                    | **`<`**                                                     |                                                              |
 
-
-SNIPPET: '<'
-
 #### Liaisons
 
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
@@ -457,6 +454,12 @@ https://lilypond.org/doc/v2.19/Documentation/notation/beams.fr.html
 
 Il semble qu'il faille utiliser :
 `\override Beam.auto-knee-gap = #<INTEGER>`
+
+#### Anacrouse
+
+Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant (`r`) :
+
+**`\partial <durée de l'anacrouse>`**
 
 #### Changement de positions des éléments
 
