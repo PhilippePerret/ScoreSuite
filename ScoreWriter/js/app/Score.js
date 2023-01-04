@@ -138,12 +138,13 @@ getEnteteCodeMus(c){
   /*
   |  Prendre les valeurs de configuration utiles
   */
-  const metrique  = Config.get('piece-metrique')
-  var st_vspace = Config.get('mscore-staves-vspace')
+  const metrique    = Config.get('piece-metrique')
+  var st_vspace     = Config.get('mscore-staves-vspace')
   if ( st_vspace == 'undefined') st_vspace = null // bug
-  const proximity = Config.get('mscore-proximity')
-  const imageName = Config.get('mscore-image-name')
-  const firstMesu = Config.get('mscore-first-mesure')
+  const proximity   = Config.get('mscore-proximity')
+  const imageName   = Config.get('mscore-image-name')
+  const firstMesu   = Config.get('mscore-first-mesure')
+  const pageFormat  = Config.get('mscore-format-page')
 
   Config.get('mscore-opt-stems')   || c.push('--no_stem')
   Config.get('mscore-opt-barres')  && c.push('--barres')
@@ -155,6 +156,7 @@ getEnteteCodeMus(c){
   metrique  && c.push(`--time ${metrique}`)
   st_vspace && c.push(`--staves_vspace ${st_vspace}`)
   proximity && c.push(`--proximity ${proximity}`)
+  pageFormat && c.push(`--page ${pageFormat}`)
   /*
   |  Nom de l'image
   */
