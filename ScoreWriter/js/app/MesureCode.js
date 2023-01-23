@@ -102,7 +102,7 @@ static getFullCodeNormal(params, portees){
 }
 
 /**
- * Méthode utilisée pour retourne une version "table de données des
+ * Méthode utilisée pour retourner une version "table de données des
  * mesures" de la partition, pour une utilisation avec score-extract
  * (extraction de n'importe quelle mesure)
  * 

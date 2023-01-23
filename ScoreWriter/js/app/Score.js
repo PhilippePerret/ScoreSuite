@@ -150,9 +150,12 @@ getEnteteCodeMus(c){
   Config.get('mscore-opt-barres')  && c.push('--barres')
   c.push(`--tune ${Config.tune}`)
   /*
+  |  Options obligatoirement définies
+  */
+  c.push(`--mesure ${firstMesu ? firstMesu : 'OFF'}`)
+  /*
   |  Options conditionnelles
   */
-  firstMesu && c.push(`--mesure ${firstMesu}`)
   metrique  && c.push(`--time ${metrique}`)
   st_vspace && c.push(`--staves_vspace ${st_vspace}`)
   proximity && c.push(`--proximity ${proximity}`)

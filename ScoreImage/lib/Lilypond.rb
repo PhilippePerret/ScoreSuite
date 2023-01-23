@@ -207,6 +207,7 @@ def header
   \\context {
     #{option_staves_spacing}
     #{option_proximity}
+    #{option_no_numero_mesure}
   }
   #{code_extraction_fragment}
 }
@@ -257,8 +258,18 @@ end
 def option_page_format
   options[:page] ? options[:page] : '"a0" \'landscape'
 end
+def option_no_numero_mesure
+  if options[:mesure] === false
+    '\\remove "Bar_number_engraver"'
+  end
+end
 def option_num_mesure
-  options[:mesure] ? premier_numero_mesure : ""
+  if options[:mesure] === false
+    # '\\omit BarNumber'
+    ''
+  else
+    options[:mesure] ? premier_numero_mesure : ""
+  end
 end
 def premier_numero_mesure
   <<-TXT
