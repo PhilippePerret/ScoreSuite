@@ -406,7 +406,7 @@ private
   end
 
   def translate_armure_from_ms(str)
-    str.gsub(/\\(?:tune|key) ([a-g])(es|is|d|b|)? /i) do
+    str = str.gsub(/\\(?:tune|key) ([a-g])(es|is|d|b)? /i) do
       ton   = $1.downcase.freeze
       alte  = ($2||'').freeze
       alte = case alte
@@ -414,7 +414,7 @@ private
       when 'd' then 'is'
       else alte
       end
-      "\\key #{ton}#{alte} "
+      "\\key #{ton}#{alte} \\major "
     end
     return str
   end

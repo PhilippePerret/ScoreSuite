@@ -386,6 +386,16 @@ c, e g \up c e c \down g e c
 
 ![changement_portee](Manuel/images/exemples/changement_portee.svg)
 
+#### Changement de tonalité
+
+Pour introduire un changement de tonalité marqué par une nouvelle armure, utiliser `\key` ou `\tune`. Par exemple : 
+
+~~~
+\key C c e g \key Eb c ees g
+~~~
+
+
+
 ---
 
 <a id="syntaxe_lilypond"></a>
