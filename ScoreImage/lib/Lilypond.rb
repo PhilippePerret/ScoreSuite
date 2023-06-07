@@ -10,6 +10,8 @@
 class MusicScore
 class Lilypond
 
+LILYPOND_VERSION = "2.24.0"
+
 CLE_TO_CLE_LILY = {
   'F' => 'bass', 'F3' => 'varbaritone',
   'G' => 'treble', 'G1' => 'french',
@@ -189,9 +191,10 @@ def staff_for(code, params)
   LILYPOND
 end
 
+
 def header
   <<-LILYPOND
-\\version "2.18.2"
+\\version "#{LILYPOND_VERSION}"
 
 #(set-default-paper-size #{option_page_format})
 
@@ -350,7 +353,11 @@ end
 def translate_from_music_score(str)
   str = " #{str} "
 
+  str = translate_octaves_from_ms(str)
+
   str = translate_barres_from_ms(str)
+
+  str = translate_armure_from_ms(str)
 
   str = translate_keys_from_ms(str)
 
@@ -370,6 +377,22 @@ end
 
 private
 
+  def translate_octaves_from_ms(str)
+    # Les marques d'octave se font par \8ve, \15ve, \-15ve, \-8ve, \0ve
+    str = str.gsub(/ \\(\-?(8|15|0))ve /) do
+      mark = $1.freeze
+      ' \\ottava #' + case mark
+      when '8'    then '1'
+      when '15'   then '2'
+      when '-8'   then '-1'
+      when '-15'  then '-2'
+      when '0'    then '0'
+      end + ' '
+    end
+
+    return str
+  end
+
   def translate_barres_from_ms(str)
     # Les barres de reprise sont simplement mises en '|:', ':|:' ou ':|'
     str = str.gsub(/:\|:/, '_DOUBLE_BARRES_REPRISE_')
@@ -379,6 +402,20 @@ private
           .gsub(/\|\|/, '\bar "||"')
     str = str.gsub(/_DOUBLE_BARRES_REPRISE_/, '\bar ":|.|:"')
     str = str.gsub(/_BARRES_REPRISE_FIN_/, '\bar ":|."')
+    return str
+  end
+
+  def translate_armure_from_ms(str)
+    str.gsub(/\\(?:tune|key) ([a-g])(es|is|d|b|)? /i) do
+      ton   = $1.downcase.freeze
+      alte  = ($2||'').freeze
+      alte = case alte
+      when 'b' then 'es'
+      when 'd' then 'is'
+      else alte
+      end
+      "\\key #{ton}#{alte} "
+    end
     return str
   end
 

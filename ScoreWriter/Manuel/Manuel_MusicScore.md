@@ -177,6 +177,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Ouvrir le fichier image après production   | **`--open`** | Ouvre tout de suite le fichier dans Affinity Designer, ce qui permet de le « simplifier ». |
 | Conserver le fichier LilyPond (`.ly`)| **`--keep`** | Cela permet de tester du code ou de voir où se situe un problème compliqué. |
 | Détail des erreurs | **`--verbose`** | Permet de donner les messages d’erreur dans leur intégralité et notamment avec leur backtrace. |
+| Nombre de portée | **`--staves <nombre>`**<br />**`--staves_keys G,A,...`**<br />**`--staves_names "1re","2e", ...`** | Permet de produire des portées empilées avec les clés et les noms voulus |
 
 <a id="options_musicales"></a>
 

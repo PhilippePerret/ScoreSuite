@@ -116,7 +116,8 @@ end
 
 # Production par lily2svg de l'image non trimée
 def build_svg_files
-  cmd  = '/Applications/LilyPond.app/Contents/Resources/bin/lilypond'
+  # cmd  = '/Applications/LilyPond.app/Contents/Resources/bin/lilypond'
+  cmd  = "lilypond"
   opts = ['--loglevel=ERROR', '-dbackend=svg']
   # opts << '-dclip-systems' # seulement un extrait de la partition (mais ça ne fonctionne pas encore)
   opts = opts.join(' ')
