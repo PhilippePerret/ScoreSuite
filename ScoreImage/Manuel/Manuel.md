@@ -290,6 +290,15 @@ Cette section présente les notations de l'expression pseudo-lilypond qui  diff�
 
 TODO La gestion des reprises avec première et autres fois
 
+### Répétition de motif
+
+| Objet                                                        | Code              | Note                      |
+| ------------------------------------------------------------ | ----------------- | ------------------------- |
+| ![repeat](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/repeat.svg) | `{ c16 d c d }x4` | Aucune espace entre `}x4` |
+|                                                              | { c2 }x2          | Idem                      |
+
+
+
 #### Clé de l'expression
 
 On peut utiliser les marques normale de LilyPond mais il peut être

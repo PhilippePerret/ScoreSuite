@@ -361,6 +361,8 @@ def translate_from_music_score(str)
 
   str = translate_keys_from_ms(str)
 
+  str = translate_percents_from_ms(str)
+
   str = translate_nuplets_from_ms(str)
 
   str = translate_trilles_from_ms(str)
@@ -425,6 +427,12 @@ private
     str.gsub(/\\clef? ((?:F|G|UT)[1-5]?) /){
       mark_cle = $1.freeze
       "\\clef \"#{CLE_TO_CLE_LILY[mark_cle]}\" "
+    }
+  end
+
+  def translate_percents_from_ms(str)
+    str.gsub(/\{ (.+?) \}x([2-4]) /){
+      "\\repeat percent #{$2} { #{$1} } "
     }
   end
 
