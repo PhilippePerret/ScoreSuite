@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Score Numbering</title>
+  <meta name="description" content="Numérotation des partitions" />
+  <link rel="stylesheet" type="text/css" href="css/system/Finder.css">
+  <link rel="stylesheet" type="text/css" href="css/system/QuickHelp.css">
+  <link rel="stylesheet" type="text/css" href="css/system/common.css">
+  <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-jquery-ui.structure.min.css">
+  <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-jquery-ui.theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/app/main.css">
+  <link rel="stylesheet" type="text/css" href="css/app/ui.css">
+
+
+  <!-- Scripts système -->
+  <script type="text/javascript">
+
+  </script>
+  <script type="text/javascript" src="js/system/jquery/jquery.js"></script>
+  <script type="text/javascript" src="js/system/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/system/jquery/jquery.caretposition.js"></script>
+  <script type="text/javascript" src="js/system/Log.js"></script>
+  <script type="text/javascript" src="js/system/common.js"></script>
+  <script type="text/javascript" src="js/system/Message.js"></script>
+  <script type="text/javascript" src="js/system/WAA.js"></script>
+  <script type="text/javascript" src="js/system/AbstractTableClass.js"></script>
+  <script type="text/javascript" src="js/system/dom.js"></script>
+  <script type="text/javascript" src="js/system/date.js"></script>
+  <script type="text/javascript" src="js/system/Finder.js"></script>
+  <script type="text/javascript" src="js/system/TableDisplay.js"></script>
+  <script type="text/javascript" src="js/system/SelectionManager.js"></script>
+  <script type="text/javascript" src="js/system/interactif.js"></script>
+  <script type="text/javascript" src="js/system/Panel.js"></script>
+  <script type="text/javascript" src="js/system/Time.js"></script>
+  <script type="text/javascript" src="js/system/Textarea.js"></script>
+  <script type="text/javascript" src="js/system/QuickHelp.js"></script>
+  <script type="text/javascript" src="js/system/marked.min.js"></script>
+  <!-- <script type="text/javascript" src="js/system/Help.js"></script> -->
+</head>
+<body>
+
+<header>
+  <span id="app-name">Score Numbering</span>
+  <span id="image-name"></span>
+</header>
+
+<section id="content">
+  
+  <!--
+    Pour glisser l’image
+  -->
+  <div id="image-dropper">
+    <span class="msg">Glisser déposer l’image du système ici.</span>
+  </div>
+  <div id="image-container" style="display:none;">
+    <img id="system" src="">
+  </div>
+
+</section>
+
+<footer id="main">
+  <button class="btn-manuel fleft">Aide (⌘P)</button>
+  <span class="text">Prochain numéro</span> <input type="text" id="next-numero" value="1" style="width:60px;">
+  <select id="font-family">
+    <option>Arial</option>
+    <option selected="SELECTED">Helvetica</option>
+    <option>Times</option>
+    <option>Georgia</option>
+  </select>
+  <select id="font-size">
+    <option>12</option>
+    <option>14</option>
+    <option>16</option>
+    <option>18</option>
+    <option>20</option>
+    <option>25</option>
+    <option>30</option>
+    <option selected="SELECTED">40</option>
+    <option>50</option>
+    <option>60</option>
+    <option>70</option>
+    <option>80</option>
+  </select>
+  <select id="font-color">
+    <option value="#000000">Noir</option>
+    <option value="#CCCCCC">Gris</option>
+    <option value="#008100">Vert</option>
+    <option value="#0000FE">Bleu</option>
+  </select>
+  <button id="btn-other" title="Ré-afficher le champ pour dropper un système"><span class="content">Autre système</span></button>
+  <button id="btn-next" title="Essayer de charger le système suivant"><span class="content">Système suivant</span></button>
+  <button id="btn-print" title="Imprimer les numéros sur le système"><span class="content">Imprimer</span></button>
+</footer>
+
+</body>
+<script type="text/javascript" src="js/app/constants.js"></script>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="js/app/App/Events.js"></script>
+<script type="text/javascript" src="js/app/Messages/Messages_et_errors.js"></script>
+<script type="text/javascript" src="js/app/App/UI.js"></script>
+<script type="text/javascript" src="js/app/App/ready.js"></script>
+<script type="text/javascript" src="js/app/App/App.js" defer></script>
+<script type="text/javascript" src="js/app/App/Score.js" defer></script>
+<script type="text/javascript" src="js/app/App/Styler.js" defer></script>
+<script type="text/javascript" src="js/app/App/Snippet.js" defer></script>
+<script type="text/javascript" src="js/test/Test.js" defer></script>
+</html>

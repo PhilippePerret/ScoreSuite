@@ -444,7 +444,17 @@ SNIPPET: '<'
 | Exemple simple                                               | **`c1~ c2`**                                                | <img src="images/exemples/liaison-de-duree.svg" style=" width:150px;" /> |
 | Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  |    <img src="images/exemples/liaison-accords.svg" style=" width:200px;" />                                                          |
 
+---
 
+#### Nuances
+
+| Objet         | Code                   | Rendu |
+| ------------- | ---------------------- | ----- |
+| Nuance piano  | **`c\p`**, **`c\pp`**, **`c\ppp`** | ![c-piano](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/c-piano.svg) |
+| Nuances forte | **`c\f`**, **`c\ff`**, **`c\fff`** etc.  | ![c-forte](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/c-forte.svg) |
+| Crescendo     |       **`c\<`** : **`c\< c c\f`**                | ![crescendo](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/crescendo.svg) |
+| Decrescendo   | **`c\>`** : **`c\> c c\pp`** | ![decrescendo](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/decrescendo.svg) |
+| Crescendo/decresc. | **`< >`**, **`c2\< c c\ff\> c c\!`**   | ![cresc-decresc](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/cresc-decresc.svg) |
 
 #### Attache des hampes des notes
 
