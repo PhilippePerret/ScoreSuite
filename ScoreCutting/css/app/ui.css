@@ -1,0 +1,74 @@
+header {
+  position:fixed;
+  width:100%;
+  background-color:#000;
+  color: #FFF;
+  padding:0.5em;
+}
+
+header span#image-name {
+  color:#68ff53;
+}
+
+footer#main {
+  width:80%;
+}
+footer#main {
+  position:fixed;
+  text-align:right;
+  bottom:0;
+  width:100%;
+  z-index:100;
+  background-color:black;
+  padding-right:2em;
+}
+footer#main button {
+  font-size: 20pt;
+  padding: 0.2em 1em;
+}
+footer span.text {color:white}
+
+button.btn-print {
+  width: 240px;
+  disabled: false;
+}
+button.btn-print.disabled {
+  disabled: true;
+  background-color: #FF5555;
+  border-color:red;
+}
+button.btn-print span.content {
+  color:black;
+}
+button.btn-print.disabled span.content {
+  color:white;
+  animation: blinker 1s linear infinite;
+}
+
+div#image-dropper {
+  width: 400px;
+  height: 200px;
+  background-color:#888888;
+  position:fixed;
+  top: 20%;
+  left:calc(50% - 200px);
+  padding:4em;
+}
+div#image-dropper.dropped {
+  background-color:#228822;
+}
+div#image-dropper span.msg {
+  z-index:-1;
+  color:white;
+}
+
+div#image-container {
+  padding:0;
+  border:1px solid black;
+  position:relative;
+}
+
+div.numero-mesure {
+  position:absolute;
+  cursor:move;
+}

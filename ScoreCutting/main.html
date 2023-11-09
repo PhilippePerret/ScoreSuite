@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <title>Score Cutting</title>
   
-  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/app/main.css">
+  <link rel="stylesheet" type="text/css" href="css/app/ui.css">
+  <script type="text/javascript" src="js/system/dom.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/jquery-ui.min.js"></script>
   <script type="text/javascript" src="js/jquery.form.min.js"></script>
@@ -12,6 +15,11 @@
   <script type="text/javascript" src="js/main.js" defer></script>
 </head>
 <body>
+
+<header>
+  <span id="app-name">Score Cutting</span>
+  <span id="image-name"></span>
+</header>
 
 
   <!-- L'image de la partition -->
@@ -34,6 +42,8 @@
     <input type="text" id="num_first_system" value="1" style="text-align:center">
     <button id="decouper" class="main" onclick="App.buildCodeDecoupe.call(App)">Découper</button>
     <button id="confirmer_decoupe" class="invisible main inactif" onclick="App.buildCodeDecoupe.call(App, true)">Procéder à la découpe</button>
+    <button id="prev-page" onclick="App.loadPrevPage.call(App)">Page précédente</button>
+    <button id="next-page" onclick="App.loadNextPage.call(App)">Page suivante</button>
 
   </footer>
 

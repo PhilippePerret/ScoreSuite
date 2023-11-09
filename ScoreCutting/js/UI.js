@@ -1,6 +1,17 @@
 'use strict';
 class UIClass {
 
+  prepare(){
+    // Quand on double clique sur la partition ou sur la planche,
+    // on produit une ligne
+    listen(UI.score,      'dblclick', UI.onDoubleClickOnScore.bind(UI))
+    listen(document.body, 'dblclick', UI.onDoubleClickOnScore.bind(UI)) 
+  }
+
+  setImageName(scoreName){
+    DGet('#image-name').innerHTML = scoreName || App.score_name
+  }
+
   showBoutonsConfirmation(){
     UI.showButtonConfirmer()
     UI.showButtonRenoncer()    
@@ -27,7 +38,9 @@ class UIClass {
   // Retourne le numéro du premier système voulu
   getNumberOfFirstSystem(){
     return Number(this.firstNumberField.value || 1)
-
+  }
+  setNumberOfFirstSystem(value){
+    this.firstNumberField.value = value 
   }
 
   // Pour placer le panneau d'information avec le texte +texte+
@@ -79,7 +92,8 @@ class UIClass {
   getTopsOfLignesCoupe(){
     var ls = []
     document.querySelectorAll('div.ligne_coupe').forEach(div => {
-      ls.push(unpx(div.style.top) - 20 /* padding-top de body */) 
+      // ls.push(unpx(div.style.top) - 20 /* padding-top de body */) 
+      ls.push(unpx(div.style.top) + 2 /* padding-top de body */) 
     })
     return ls.sort(function(a, b) {return a - b});
   }

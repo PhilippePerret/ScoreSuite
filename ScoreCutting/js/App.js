@@ -31,16 +31,17 @@ class AppClass {
    * La méthode est appelée pour faire la demande (data = undefined)
    * et pour la recevoir du serveur avec le chemin dans data
    */
-  askForScore(data){
-    if ( undefined == data ) {
+  askForScore(waadata){
+    if ( undefined == waadata ) {
       WAA.send({class:'ScoreCutting::App', method:'get_score_path'})
-    } else if ( data.ok ) {
-      this.load_image(data.path)
+    } else if ( waadata.ok ) {
+      UI.setNumberOfFirstSystem(waadata.next_system_number)
+      this.load_image(waadata.path)
     } else {
-      if ( data.error == ERROR_NO_IMAGE ) {
+      if ( waadata.error == ERROR_NO_IMAGE ) {
         message(AIDE_UTILISATION)
       } else {
-        erreur(data.error)
+        erreur(waadata.error)
       }
     }
   }
@@ -53,17 +54,48 @@ class AppClass {
     if ( !path || path == ''){
       return erreur("Il faut définir le chemin d'accès en premier argument.")
     } else {
+      console.info("Chargement de partition: ", path)
       this.source   = path
       UI.score.src  = path
-      UI.score.addEventListener('load', function(){
-        // Partition chargée, on peut commencer
-        App.start_decoupe()
+      UI.score.addEventListener('load', _ => {
+        /* -- Partition chargée -- */
+        UI.setImageName()
         message(AIDE_DECOUPAGE)
       })
       UI.score.addEventListener('error', function(e){
         alert("Une erreur s'est produite pendant le chargement. Vérifier le chemin d'accès à la partition.")
       })
     }
+  }
+
+
+  /**
+  * @api
+  * 
+  * Méthode appelée par le bouton "Page suivante" qui doit charger
+  * la page de partition suivante.
+  */
+  loadNextPage(){
+    WAA.send({class:"ScoreCutting::App", method:"get_other_page", data:{for_next:true, folder:this.score_folder, source:this.score_name}})
+  }
+  loadPrevPage(){
+    WAA.send({class:"ScoreCutting::App", method:"get_other_page", data:{for_next:false, folder:this.score_folder, source:this.score_name}})
+  }
+  onLoadOtherPage(waadata){
+    if (waadata.ok) {
+      const other_page = waadata.other_page
+      this.reset()
+      this.load_image([other_page.folder,other_page.source].join('/'))
+    } else {
+      erreur(waadata.msg)
+    }
+  }
+
+  reset(){
+    this._folder = null
+    this._name   = null
+    this.removeMarksEmportePiece()
+    this.removeDecoupeLines()
   }
 
   get score_folder(){
@@ -80,22 +112,11 @@ class AppClass {
     this._folder  = chemin.join('/')
   }
 
-  /**
-   * Pour commencer la découpe une fois que l'image est choisie
-   * 
-   * 
-   */
-  start_decoupe(){
-    // Quand on double clique sur la partition ou sur la planche,
-    // on produit une ligne
-    UI.score.addEventListener('dblclick', UI.onDoubleClickOnScore.bind(UI))
-    document.body.addEventListener('dblclick', UI.onDoubleClickOnScore.bind(UI)) 
-  }
 
   /**
    * Confirmer la découpe
    * 
-   * Dans cette méthode, on "surligne" les parties qui font produire
+   * Dans cette méthode, on "surligne" les parties qui vont produire
    * les systèmes (en indiquant leur) pour que l'utilisateur confirme
    * l'opération de découpe
    * 
@@ -137,11 +158,23 @@ class AppClass {
   }
 
   /**
+  * Une fois la découpe faite (dans l’image réelle), on peut supprimer les
+  * lignes de coupe
+  */
+  removeDecoupeLines(){
+    document.body.querySelectorAll('.ligne_coupe').forEach(div => div.remove())
+  }
+  removeMarksEmportePiece(){
+    document.body.querySelectorAll('.emporte_piece').forEach(div => div.remove())
+  }
+
+  /**
    * Pour renoncer à la découpe et ré-ajuster les lignes
    */
   renoncerDecoupe(){
     UI.hideBoutonsConfirmation()
-    $('.emporte_piece').remove()
+    this.removeDecoupeLines()
+    this.removeMarksEmportePiece()
   }
 
   /**
@@ -167,7 +200,7 @@ class AppClass {
      * (on doit tenir compte du zoom)
      */
     const zo = 100 / this.zoom ;
-    console.info("zo = ", zo)
+    // console.info("zo = ", zo)
     for (var i = 0; i < lignes.length ; i += 2){
       // data.top    = parseInt(lignes[i] * zo, 10)
       // data.bas    = parseInt(lignes[1 + i] * zo, 10)
@@ -182,13 +215,12 @@ class AppClass {
       })
       codes.push(code)
     }
+    // - On règle le numéro nature du prochain système -
+    UI.setNumberOfFirstSystem(1 + isysteme)
     codes = codes.join(";") + ' 2>&1'
     UI.codeField.value = codes
 
-    /* MAINTENANT, PAR WAA
-    */
     WAA.send({class:"ScoreCutting::App", method:"run_bash_code", data:{folder:this.score_folder, source:this.score_name, code: codes}})
-
   }
 
   onCutScore(data){
