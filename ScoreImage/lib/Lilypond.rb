@@ -259,7 +259,9 @@ def option_proximity
 end
 
 def option_page_format
-  options[:page] ? options[:page] : '"a0" \'landscape'
+  options[:page] ||= '"a0" \'landscape'
+  options[:page] = "\"#{options[:page]}\"" unless options[:page].start_with?('"')
+  return options[:page].downcase
 end
 def option_no_numero_mesure
   if options[:mesure] === false

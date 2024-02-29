@@ -60,6 +60,7 @@ class Waa
   # Instanciation
   #
   def initialize(browser = :firefox)
+  # def initialize(browser = :chrome)
     @browser = browser
   end
 
@@ -130,7 +131,8 @@ class Waa
   # Le driver
   def driver
     @driver ||= begin
-      if browser == :firefox
+      case browser
+      when :firefox
         # options = Selenium::WebDriver::Firefox::Options.new(profile: profile)
         opts = Selenium::WebDriver::Firefox::Options.new(
           args: ['-devtools'], # -headless, -devtools, -jsconsole
@@ -147,9 +149,14 @@ class Waa
           # devtools.debugger.ui.editor-wrapping true/false
           # devtools.debugger.ui.panes-visible-on-startup
         )
-      else
+      when :chrome
         opts = {}
+      else
+        raise "Browser inconnu : #{browser.inspect}"
       end
+      # 
+      # SI UN PROBLÈME SURVIENT ICI, IL SE PEUT QU’IL FAILLE 
+      # ACTUALISER geckodriver…
       Selenium::WebDriver.for(browser, options: opts)
     end
   end

@@ -108,6 +108,7 @@ def set_params(params = nil)
     parse_command_line
   else
     @options    = params.options
+    raise "@options = #{@options.inspect}"
     @expression = params.expression
     @mus_file   = MusFile.new(params.path)
   end 
