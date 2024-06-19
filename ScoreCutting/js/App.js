@@ -251,5 +251,5 @@ const AIDE_DECOUPAGE = `
 `
 
 // Si requête ajax : /opt/homebrew/bin/convert
-// const TEMP_CODE_DECOUPE = '/opt/homebrew/bin/convert /Users/philippeperret/Sites/ScoreCutting/__SOURCE__ -crop 0x__HEIGHT__+0+__TOP__ ./__DEST__ 2>&1'
-const TEMP_CODE_DECOUPE = 'cd "__FOLDER__" && /opt/homebrew/bin/convert ./__SOURCE__ -crop 0x__HEIGHT__+0+__TOP__ ./systems/__DEST__'
+// const TEMP_CODE_DECOUPE = '/opt/homebrew/bin/magick /Users/philippeperret/Sites/ScoreCutting/__SOURCE__ -crop 0x__HEIGHT__+0+__TOP__ ./__DEST__ 2>&1'
+const TEMP_CODE_DECOUPE = 'cd "__FOLDER__" && /opt/homebrew/bin/magick ./__SOURCE__ -crop 0x__HEIGHT__+0+__TOP__ ./systems/__DEST__'

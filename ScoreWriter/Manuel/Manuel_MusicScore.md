@@ -394,6 +394,16 @@ c, e g \up c e c \down g e c
 
 ![changement_portee](Manuel/images/exemples/changement_portee.svg)
 
+
+
+#### Marques d’octave
+
+Pour inscrire la marque d’octave, on peut utiliser `\8ve` (descendra les notes d’une octave et ajoutera la marque), `\15ve` (descendra les notes de deux octaves et ajoutera la double marque).
+
+On fait l’inverse avec `\-8ve` (pour remonter les notes d’une octave) et `\-15ve` (pour remonter les notes de deux octaves).
+
+On terminera toutes les marques précédentes avec `\0ve`.
+
 ---
 
 <a id="syntaxe_lilypond"></a>

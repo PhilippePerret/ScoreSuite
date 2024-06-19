@@ -41,6 +41,7 @@ class Waa
     puts "WAA.send: Data envoyée :" + data.pretty_inspect if verbose?
     data = data.to_json if not(data.is_a?(String))
     data = data.gsub(/"/,'\\"')
+    data = data.gsub(/'/,'\\\'')
     data = data.gsub(/\\n/,'\\\\\\n')
     resultat = driver.execute_script('return WAA.receive("'+data+'")')
   end
