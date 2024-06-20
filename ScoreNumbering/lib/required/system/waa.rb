@@ -54,6 +54,7 @@ class Waa
       puts "data est un string… Il ne vaudrait mieux pas.".orange
     end
     data = data.gsub(/"/,'\\"')
+    data = data.gsub(/'/,'\\\'')
     # data = data.gsub(/\`/,'\\\\`')
     data = data.gsub(/\\n/,'\\\\\\n')
     begin

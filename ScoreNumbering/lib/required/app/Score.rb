@@ -60,7 +60,7 @@ class << self
   end
 
   CMD_DRAW_NUMBER = '-draw "text %{x} %{y} \'%{numero}\'"'.freeze
-  CMD_PRINT_NUMBERS = 'convert "%{src}" -font %{fonte} -pointsize %{size} -fill "%{fill}" %{numeros} "%{dest}"'.freeze
+  CMD_PRINT_NUMBERS = 'magick "%{src}" -font %{fonte} -pointsize %{size} -fill "%{fill}" %{numeros} "%{dest}"'.freeze
 
 
   def get_next_system(data)

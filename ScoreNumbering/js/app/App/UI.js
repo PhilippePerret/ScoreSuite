@@ -14,6 +14,7 @@ class UI {
     listen(this.btnPrint, "click", this.onPrint.bind(this))
     listen(this.btnNext,  "click", this.onNextSystem.bind(this))
     listen(this.btnOther, "click", this.onReqDropOther.bind(this))
+    listen(this.verticalAlignField,'change', this.onChangeVerticalAdjust.bind(this))
 
   }
 
@@ -42,6 +43,15 @@ class UI {
     }
   }
 
+  /* Méthode appelée quand on change l’ajustement vertical */
+  static onChangeVerticalAdjust(){
+    let vda = Number(this.verticalAlignField.value);
+    if ( isNaN(vda) ) { vda = 0  }
+    Score.current.verticalAdjustment = vda
+    Score.current.positionneScorePerVerticalAdjustment()
+    message("L’ajustement vertical a été réglé.")
+  }
+
   static onReqDropOther(){
     this.hideImager()
     this.showDropper() 
@@ -51,6 +61,7 @@ class UI {
   static get btnPrint(){return DGet("#btn-print")}
   static get btnNext(){return DGet("#btn-next")}
   static get btnOther(){return DGet("#btn-other")}
+  static get verticalAlignField(){return DGet("#vertical-adjust")}
 
 
   /* Le "Dropper", pour déposer l’image */

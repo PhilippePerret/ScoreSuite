@@ -51,6 +51,7 @@ class Score {
     // console.log("Data :", this.data)
     Score.current = this
     this.numeros = []
+    this.verticalAdjustment = 0
   }
 
   /**
@@ -75,7 +76,7 @@ class Score {
       dataNumbers.push({
           numero:   numero.dataset.numero
         , x:        numero.offsetLeft - 3
-        , y:        numero.offsetTop + 38
+        , y:        numero.offsetTop + 38 - this.verticalAdjustment
       })
     })
     WAA.send({class:"ScoreNumbering::Score", method:"print_numbers", data:{filename:this.file.name, numbers:dataNumbers, style:{fonte:Styler.getFontFamily(), size:Styler.getFontSize(), color:Styler.getFontColor()}}})
@@ -87,6 +88,16 @@ class Score {
       erreur(waaData.msg)
     }
   }
+
+  /**
+   * Méthode appelée quand l’utilisateur modifie l’ajustement 
+   * vertical des numéros (verticalAdjustment
+   * 
+   */
+  positionneScorePerVerticalAdjustment(){
+    // this.system.style.marginTop = `${this.verticalAdjustment}px`
+  }
+
 
   /**
   * Méthode appelée pour ajouter un numéro de mesure à data.x et
@@ -166,6 +177,7 @@ class Score {
   get field(){
     return DGet("#system", UI.imager)
   }
+  get system(){return this.field}
 
   get type(){
     return this.item.type
