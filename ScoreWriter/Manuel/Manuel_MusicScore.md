@@ -133,7 +133,31 @@ Un dossier `partition` sera créé au même niveau que ce fichier, et contiendra
 
 Les images porteront le nom `partition-1.svg` `partition-2.svg`… `partition-N.svg` et seront placées dans le dossier `partition` ci-dessus.
 
+---
 
+<a name="include"></a>
+
+## Inclusions
+
+Dans les fichiers `.mus`, on peut inclure d’autres fichiers `.mus` à l’aide de la commande :
+
+~~~
+INCLUDE path/to/musFile
+~~~
+
+Le chemin `path/to/musFile` peut être relatif au fichier maitre ou relatif au dossier `libmus` de l’application **ScoreImage** qui définit des librairies standards.
+
+La première librairie à avoir été créée est la librairie `piano/Alberti.mus` qui définit toutes les basses d’Alberti dans des variables.
+
+Un fichier inclus peut définir n’importe quoi, pourvu que ce soit du code `.mus` à commencer par :
+
+* des options,
+* des variables,
+* des partitions.
+
+Pour la gestion des variables, voir [Gestion dynamique des variables](#dynamic-variable).
+
+---
 
 ## Statistiques
 
@@ -163,7 +187,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 > Pour désactiver une option après l'avoir activée, il faut utiliser :
 > `--<option> OFF`
 
-| <span style="display:inline-block;width:340px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | Notes  |
+| <span style="display:inline-block;width:180px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:240px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Affichage des barres de mesure | **`--barres`** |  |
 | Afficher la métrique | **`--time`**<br />**`--time OFF`**<br />**`--time 3/4`** |  |
@@ -177,7 +201,55 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Ouvrir le fichier image après production   | **`--open`** | Ouvre tout de suite le fichier dans Affinity Designer, ce qui permet de le « simplifier ». |
 | Conserver le fichier LilyPond (`.ly`)| **`--keep`** | Cela permet de tester du code ou de voir où se situe un problème compliqué. |
 | Détail des erreurs | **`--verbose`** | Permet de donner les messages d’erreur dans leur intégralité et notamment avec leur backtrace. |
-| Nombre de portée | **`--staves <nombre>`**<br />**`--staves_keys G,A,...`**<br />**`--staves_names "1re","2e", ...`** | Permet de produire des portées empilées avec les clés et les noms voulus |
+| Portées multiples (cf. ci-dessous) | **`--staves <nombre>`**<br />**`--staves_keys G,A,…`**<br />**`--staves_names 1re,2e…`** | Permet de produire des portées empilées avec les clés et les noms voulus. |
+| Nommage de la portée | **`--staves_names <nom>`** | Permet, notamment pour le piano, de préciser qu’il faut indiquer le nom (simplement en indiquant `--staves_names Piano`) |
+|  |  |  |
+
+<a id="options_portees"></a>
+
+### Portées multiples
+
+On définit les portées multiples à l’aide de `--staves <nombre de portées>`, `--staves_keys` (pour les clés) et `--staves_names` (pour les noms).
+
+On doit les définir de bas en haut. C’est-à-dire que si on veut un violon au-dessus d’un piano, on doit définir :
+
+~~~
+--staves 3
+--staves_keys F,G,G
+--staves_names Piano,Piano,Violon
+~~~
+
+Le simple fait qu’on trouve deux fois de suite le mot « piano » indique à ScoreImage de relier les deux portées.
+
+> Les noms des instruments doivent être mis en capitales si on veut qu’ils soient en capitales sur la partition.
+
+En fait, ci-dessus, la marque « Piano,Piano » (qui pourrait être aussi « PIANO,PIANO » indique à ImageScore qu’on a une portée de piano. Il produit alors deux portées reliées dans un système propre au piano, avec une accolade, et une portée de violon. On l’appelle une « sonate avec piano » (sonate with piano).
+
+#### Accolades précisées
+
+---PROJET--- (PAS ENCORE IMPLÉMENTÉ)
+
+On peut définir explicitement les accolades reliant les portées à l’aide du signe crochet et accolade dans `staves_names`. Par exemple :
+
+~~~
+--staves_names {Premier,Deuxième}, Troisième
+~~~
+
+… va relier la première et la deuxième portée (en commençant du bas) par une accolade.
+
+{{METTRE L’IMAGE ICI}}
+
+Tandis que : 
+
+~~~
+--staves_names Premier, [Deuxième, Troisième, Quatrième]
+~~~
+
+… va relier les trois portées supérieures à l’aide d’un crochet.
+
+{{METTRE L’IMAGE ICI}}
+
+/---PROJET---
 
 <a id="options_musicales"></a>
 
@@ -538,6 +610,7 @@ d8 g f g d g f g
 # Un segment comprenant ces deux mesures se définirait par :
 -> mesures-1-a-2
 mes1 mes2
+mes1 mes2
 ~~~
 
 
@@ -561,6 +634,54 @@ c b a g f e d c
 
 # La ligne vide ci-dessus met fin à la définition
 ~~~
+
+
+
+<a name="dynamic-variable"></a>
+
+### Variable dynamique
+
+Depuis 2024, les variables sont « dynamique », c’est-à-dire qu’elles peuvent varier en fonction de paramètres. À commencer par leur hauteur. 
+
+#### Hauteur de la variable
+
+Par exemple, soit la variable `maVar` définie par :
+
+~~~
+maVar=
+c d e f g
+~~~
+
+Alors si on utilise dans le code :
+
+~~~
+-> partition
+maVar' maVar maVar,
+~~~
+
+Cela produira les notes :
+
+~~~
+\relative c' { c' d e f g } \relative c' { c d e f g } \relative c' { c, d e f g }
+~~~
+
+C’est-à-dire que les marques « `’` »  et « `,` » , comme pour les notes, permettent de définir la hauteur où sera jouer la variable.
+
+#### Répétition de la variable
+
+De la même manière, on peut définir le nombre de fois où la variable doit être répétée avec `*N`. Par exemple :
+
+~~~
+-> partition
+maVar*4
+~~~
+
+Produira :
+
+~~~~
+\relative c' { c d e f g c d e f g c d e f g c d e f g }
+~~~~
+
 
 
 

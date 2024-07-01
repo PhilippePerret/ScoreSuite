@@ -18,7 +18,7 @@ attr_reader :music_score
 attr_reader :all_blocks
 
 ##
-# Instanciation du parser, avec l'instance MusicScore +music_score
+# Instanciation du parser, avec l'instance [MusicScore] +music_score+
 #
 def initialize(music_score)
   @music_score = music_score
@@ -34,7 +34,7 @@ end
 #   - les segments d'image
 #
 def parse
-  code = ini_code
+  code = ini_code # note : on a géré les inclusions
   #
   # Suppression des commentaires
   #
@@ -43,6 +43,10 @@ def parse
   # Réduction des retours chariot
   # 
   code = code.gsub(/\n\n\n+/, "\n\n").strip
+  #
+  # Remplacement des apostrophes courbes
+  # 
+  code = code.gsub('’', '\'')
 
   #
   # Les options courantes
@@ -115,9 +119,32 @@ def parse
 end
 #/parse
 
+# Le code MUS initial
+# @note
+#   Toutes les inclusions ont été traitées, c’est-à-dire que les codes
+#   ont été ajoutés au code initial
 def ini_code
-  @ini_code ||= music_score.expression.gsub(/\r?\n/, "\n").strip
+  @ini_code ||= begin
+    music_score.expression.gsub(INCLUDE_CODE) do
+      # - Traitement des fichiers inclus -
+      include_path_ini = $~[:include_path].strip.freeze
+      include_path_ini = "#{include_path_ini}.mus" unless include_path_ini.end_with?('.mus')
+      include_path = include_path_ini.dup
+      unless include_path.start_with?('/')
+        include_path = File.absolute_path(music_score.mus_file.folder,include_path)
+      end
+      if not(File.exist?(include_path)) || File.directory?(include_path)
+        include_path = File.join(APP_FOLDER,'libmus',include_path_ini)
+      end
+      File.exist?(include_path) || raise("Le fichier à inclure (INCLUDE #{include_path_ini}) est introuvable (#{include_path})")
+      # puts "include_path : #{include_path.inspect}".bleu
+      # sleep 10
+      IO.read(include_path)
+    end.gsub(/\r?\n/, "\n").strip
+  end
 end
+
+INCLUDE_CODE = /^INCLUDE(?<include_path>.+)$/.freeze
 
 end #/Parser
 end #/MusicScore

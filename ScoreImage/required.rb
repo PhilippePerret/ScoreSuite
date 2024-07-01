@@ -17,6 +17,6 @@ SHORT_OPTION_TO_LONG = {
 }
 OPTIONS = {} # conservera les options de la ligne de commande
 
-THISFOLDER = __dir__
+THISFOLDER = APP_FOLDER = __dir__
 Dir["#{THISFOLDER}/lib/**/*.rb"].each{|m|require(m)}
 

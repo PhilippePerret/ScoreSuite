@@ -17,7 +17,7 @@
   }
 }
 
-\Score {
+\score {
   \new StaffGroup <<
 \new Staff <<
   \new Voice \relative c'' {

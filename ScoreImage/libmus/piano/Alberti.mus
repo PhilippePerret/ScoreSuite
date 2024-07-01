@@ -1,0 +1,60 @@
+# 
+# Basses d'alberti pour le piano (ou autre)
+# 
+# Les accords, par défaut, sont toujours placés pour être à 
+# l’intérieur de la portée de F.
+# 
+# @rappel
+#   Pour les changer d’octave, il suffit d’ajouter ’ ou , après la
+#   variable.
+#   Pour les jouer plusieurs fois, il suffit d’utiliser <var>*N
+#
+
+# --- Accord de C ---
+alb_C=
+c g' e g
+
+# C sur basse E
+alb_C/e=
+e c' g c
+
+# C sur basse G
+alb_C/g=
+g e' c e
+
+
+# --- Accord Cm ---
+alb_Cm=
+c g' ees g
+
+
+# --- Accord D7 ---
+
+# basse d'alberti accord de D7 sur a
+alb_D7/a=
+a16 d c d
+
+
+# --- Accord Em ---
+
+# Em sur basse G
+alb_Cg=
+g16 e' c e
+
+alb_Em=
+e, b' g b
+
+
+
+# --- Accord G ---
+alb_G=
+g16 d' b d
+
+
+# G sur basse B
+alb_G/b=
+b, g' d g
+
+# G sur basse D
+alb_G/d=
+d b' g b

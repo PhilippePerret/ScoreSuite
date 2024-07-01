@@ -26,11 +26,12 @@ attr_reader :options
 ##
 # = main =
 #
-# @return {String}  Le code complet à copier dans le fichier lilypond
-#                   final, pour interprétation.
+# @return [String]  
+#     Le code complet à copier dans le fichier lilypond final, pour 
+#     interprétation.
 #
-# @param {Array} code     Les lignes de code (code Lilypond)
-# @param {Hash}  options  Les options
+# @param code     [Array] Les lignes de code (code Lilypond)
+# @param options  [Hash]  Les options
 #     Note :  la méthode options.to_sym permet d'avoir les clés en
 #             String et en Symbol, peu importe.
 #
@@ -40,6 +41,7 @@ def compose(code, options)
 end
 
 def rationnalise_options(options)
+  # puts "options = #{options}"
   #
   # Si les clés des portées sont définies, il faut les dispatcher
   #
@@ -50,7 +52,17 @@ def rationnalise_options(options)
   # Si les noms des portées sont définies, il faut les dispatcher
   #
   if options.key?('staves_names')
+
+    # TODO Maintenant, on peut avoir des regroupements forcés, avec
+    # des accolades ({…}) et des croches ([…]). Il faut les traiter,
+    # mais comment ? Il faudrait en fait arriver à quelque chose
+    # comme : [[A,B], {C,D,E}]
     options['staves_names'] = options['staves_names'].split(',').collect{|n|n.strip}.reverse
+  
+    if options['staves_keys'] && options['staves_keys'].count == 3 && options['staves_names'][1..2].join('').downcase == "pianopiano"
+      options.merge!(system: 'sonate_with_piano')
+    end
+
   end
   #
   # Si les clés ou les noms des portées sont définies, il faut
@@ -69,21 +81,27 @@ def rationnalise_options(options)
 end
 
 ##
-# @return {String} Le corps du code en fonction du système choisi.
+# @return [String] Le corps du code en fonction du système choisi.
 # 
-# @param {String} system
+# @param [String|Integer] system
 #         Valeurs possible :
 #         solo        Une seule portée
 #         piano       Piano
 #         quatuor     Quatuor à corde
-#         Un nombre de portées.
+#         sonate_with_piano   Type sonate pour violon, flûte, etc.
+#         Ou un nombre de portées.
 #
 def body(code, system)
-  if system.is_a?(Integer) && system == 1
-    system = 'solo'
-  end
+  system = 'solo' if system.is_a?(Integer) && system == 1
   case system
-  when 'solo', 'piano', 'quatuor' then send("system_for_#{system}", code)
+  when 'sonate_with_piano'
+    params = {name: options[:staves_names][0]}
+    systeme_for_sonate_with_piano(code, params)
+  when 'piano'
+    params = {name: (options[:staves_names]||[''])[0].downcase == 'piano' }
+    system_for_piano(code, params)
+  when 'solo', 'quatuor'
+    send("system_for_#{system}", code)
   when Integer then system_for_x_staves(code)
   else
     raise EMusicScore.new("La valeur '#{system}' pour 'system' est intraitable… (inconnue)")
@@ -91,55 +109,65 @@ def body(code, system)
 end
 
 def system_for_solo(code)
-  <<-LILYPOND
-<<
-#{markin_transposition}\\relative c' {
-  #{option_no_time}
-  #{option_no_barre}
-  #{option_no_stem}
-  \\clef "treble"
-  #{option_tonalite}
-  #{option_num_mesure}
-  #{code[0]}
-}
->>
+  <<~LILYPOND
+  <<
+  #{markin_transposition}\\relative c' {
+    #{option_no_time}
+    #{option_no_barre}
+    #{option_no_stem}
+    \\clef "treble"
+    #{option_tonalite}
+    #{option_num_mesure}
+    #{code[0]}
+  }
+  >>
   LILYPOND
 end
 #/system_for_solo
 
-def system_for_piano(code)
-    <<-LILYPOND
-\\new PianoStaff <<
-  \\new Staff = "haute" {
-    % enforce creation of all contexts at this point of time
-    \\clef "treble"
-    #{markin_transposition}\\relative c' {
-      #{option_no_time}
-      #{option_no_barre}
-      #{option_no_stem}
-      #{option_tonalite}
-      #{option_num_mesure}
-      #{code[0]}
+def systeme_for_sonate_with_piano(code, params)
+  <<~LILYPOND
+  <<
+    #{staff_for(code[0], params)}
+    #{system_for_piano(code[1..2], **{name:true})}
+  >>
+  LILYPOND
+end
+
+def system_for_piano(code, **params)
+  params.merge!(name: 'PIANO') if params[:name]
+  <<~LILYPOND
+  \\new PianoStaff #{mark_staff_name(params)}<<
+    \\new Staff = "haute" {
+      % enforce creation of all contexts at this point of time
+      \\clef "treble"
+      #{markin_transposition}\\relative c' {
+        #{option_no_time}
+        #{option_no_barre}
+        #{option_no_stem}
+        #{option_tonalite}
+        #{option_num_mesure}
+        #{code[0]}
+      }
     }
-  }
-  \\new Staff = "basse" {
-    \\clef bass
-    #{markin_transposition}\\relative c {
-      #{option_no_time}
-      #{option_no_barre}
-      #{option_no_stem}
-      #{option_tonalite}
-      #{code[1]}
+    \\new Staff = "basse" {
+      \\clef bass
+      #{markin_transposition}\\relative c {
+        #{option_no_time}
+        #{option_no_barre}
+        #{option_no_stem}
+        #{option_tonalite}
+        #{code[1]}
+      }
     }
-  }
->>
+  >>
   LILYPOND
 end
 #/system_for_piano
 
 def system_for_x_staves(code)
   c = []
-  c << "\\Score {"
+  c << "\\score {"
   c << "  \\new StaffGroup <<"
   code.each_with_index do |code_portee, idx|
     c << staff_for(code_portee, {name:options['staves_names'][idx], key:options['staves_keys'][idx]})
@@ -153,7 +181,7 @@ end
 
 def system_for_quatuor(code)
   <<-LILYPOND
-\\Score {
+\\score {
   \\new StaffGroup <<
     #{staff_for(code[0], {name:'Violon 1'})}
     #{staff_for(code[1], {name:'Violon 2'})}
@@ -166,31 +194,34 @@ end
 #/system_for_quatuor
 
 def staff_for(code, params)
-  staff_name = ""
-  if params[:name]
-    staff_name = "\\set Staff.instrumentName = #\"#{params[:name]} \"\n"
-  end
   relative = case params[:key]
   when 'F'    then ''
   when /^UT/  then "'"
   else "''"
   end
   staff_cle = params[:key] ? "\\clef #{CLE_TO_CLE_LILY[params[:key]]}\n" : ""
-  <<-LILYPOND
-\\new Staff <<
-  \\new Voice #{markin_transposition}\\relative c#{relative} {
-    #{staff_name}#{staff_cle}
-    #{option_no_time}
-    #{option_no_barre}
-    #{option_no_stem}
-    #{option_tonalite}
-    #{option_num_mesure}
-    #{code}
-  }
->>
+  <<~LILYPOND
+  \\new Staff #{mark_staff_name(params)}<<
+    \\new Voice #{markin_transposition}\\relative c#{relative} {
+      #{staff_cle}
+      #{option_no_time}
+      #{option_no_barre}
+      #{option_no_stem}
+      #{option_tonalite}
+      #{option_num_mesure}
+      #{code}
+    }
+  >>
   LILYPOND
 end
 
+def mark_staff_name(params)
+  if params[:name]
+    '\with { instrumentName = "%s" } '.freeze % params[:name]
+  else 
+    '' 
+  end
+end
 
 def header
   <<-LILYPOND
@@ -252,7 +283,7 @@ end
 def option_proximity
   if options[:proximity]
     <<-TEXT
-    \\Score
+    \\score
       \\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/#{options[:proximity]})
     TEXT
   else "" end
@@ -330,7 +361,7 @@ def option_espacements
   <<-LPOND
 \\layout {
  \\context {
-   \\Score
+   \\score
    \\override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/#{subdiv})
  }
 }

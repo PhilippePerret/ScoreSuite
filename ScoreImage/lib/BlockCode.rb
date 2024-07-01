@@ -96,7 +96,7 @@ def parse
   #
   # Est-ce une définition ?
   #
-  if lines[0].match?(/^[a-zA-Z0-9_]+\=\=?$/)
+  if lines[0].match?(/^[a-zA-Z0-9_\/]+\=\=?$/)
     # 
     # <= La première ligne termine par '=' ou '=='
     # => C'est une définition
@@ -229,6 +229,16 @@ def traite_definitions_in(str, line_idx)
 
   # puts "Définitions à traiter : #{definitions.inspect}"
 
+  # On boucle sur chaque définition (chaque "variables") pour la
+  # remplacer par ce qu’elle doit être.
+  # 
+  # @note
+  #   Les définitions sont maintenant "dynamique" (cf. le manuel)
+  #   ce qui fait qu’on peut trouver après des caractères pouvant
+  #   définir :
+  #   - la répétition du motif    *N
+  #   - la hauteur du motif       , ou '
+  # 
   definitions.each do |search, blocode|
     str.match?(search) || next
     remp = blocode.lines_code[line_idx] || blocode.lines_code[0]
@@ -250,9 +260,7 @@ def traite_definitions_in(str, line_idx)
       end
     end
     # puts "remp = #{remp.inspect}"
-    str = str.gsub(/ #{search} /, " \\relative c' { #{remp} } ")
-             .gsub(/ #{search} /, " \\relative c' { #{remp} } ")
-          # 2 fois car elles peuvent se toucher
+    str = remplace_variable_in_string(str, search, remp)
   end
 
   str = str.strip
@@ -262,6 +270,25 @@ def traite_definitions_in(str, line_idx)
   return str
 end #/traite_definitions_in
 
+def remplace_variable_in_string(str, var, remp)
+  # 2 fois car elles peuvent se "toucher" (en comptant 
+  # l’espace cherché)
+  2.times do
+    str = str.gsub(/ #{Regexp.escape(var)}(?<mark_hauteur>[,']+)?(?:\*(?<nombre_fois>[0-9]+))? /) do 
+      hauteur = $~[:mark_hauteur]
+      nb_fois = $~[:nombre_fois].to_i
+      nb_fois = 1 if nb_fois < 1
+      hauteur = "'#{hauteur}".gsub(/(',|,')/,'')
+      # puts "Nombre x : #{nb_fois.inspect}".bleu
+      # puts "Hauteur finale  : #{hauteur}".bleu
+      " \\relative c#{hauteur} { #{remp} } " * nb_fois
+    end
+  end
+  return str
+  # Initialement :
+  # str = str.gsub(/ #{search} /, " \\relative c' { #{remp} } ")
+  #          .gsub(/ #{search} /, " \\relative c' { #{remp} } ")
+end
 
 
 end #/BlockCode
