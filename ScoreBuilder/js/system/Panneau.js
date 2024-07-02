@@ -15,6 +15,15 @@ class Panneau {
   static watch(){
     listen(this.btnClose,'click', this.onClickCloseButton.bind(this))    
   }
+
+
+  static onClickCloseButton(ev){
+    stopEvent(ev)
+    this.close()
+    return false
+  }
+
+
   static open(){
     this.panneau.classList.remove('hidden')
   }

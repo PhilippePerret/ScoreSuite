@@ -11,14 +11,15 @@
 #
 
 # --- Accord de C ---
+
 alb_C=
 c16 g' e g
 
-# C sur basse E
+# sur basse 3ce
 alb_C/e=
 e16 c' g c
 
-# C sur basse G
+# sur basse 5
 alb_C/g=
 g16 e' c e
 
@@ -27,6 +28,7 @@ g16 e' c e
 
 
 # --- Accord Cm ---
+
 alb_Cm=
 c16 g' ees g
 
@@ -45,6 +47,7 @@ cis16, bes’ g bes
 
 alb_Cd7dim-5=
 cis16, bes’ e, bes’
+
 
 # --- Accord D ---
 

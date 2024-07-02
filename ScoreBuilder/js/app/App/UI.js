@@ -23,7 +23,7 @@ class UI {
   * Méthode appelée pour ouvrir le manuel
   */
   static onClickManual(ev){
-    window.open("Manuel","../ScoreImage/Manuel/Manuel_MusicScore.pdf")
+    console.error("Je dois apprendre à ouvrir le Manuel PDF (par Finder)")
     return stopEvent(ev)
   }
   /**

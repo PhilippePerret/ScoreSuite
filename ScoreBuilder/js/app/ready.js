@@ -6,6 +6,7 @@ $(document).ready(e => {
 
   UI.prepare()
   Options.prepare()
+  QuickAide.prepare()
   MusCode.prepare()
   OriginalScore.prepare()
   ScoreViewer.prepare()

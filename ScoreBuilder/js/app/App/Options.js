@@ -11,6 +11,9 @@ class Options extends Panneau {
 
   static getValues(){
     let data = []
+    // - Format papier - (p.e. a4 ou lettre)
+    const format = DGet('#option_format').value
+    data.push(`--page ${format}`)
     // - Système -
     let system = DGet('#option_systeme').value
     if ( system == "---"){
@@ -53,7 +56,7 @@ class Options extends Panneau {
       cb.checked = values[key]
     })
     let tuneMode, tuneNote, tuneAlte, tune = values.tune
-    console.log("tune = ", tune)
+    // console.log("tune = ", tune)
     if ( tune ) {
       tuneNote = tune.substr(0,1).toUpperCase()
       tuneAlte = tune.substr(1,1)
@@ -63,7 +66,7 @@ class Options extends Panneau {
       } else {
         tuneMode = tune.substr(2,1)
       }
-      console.log("Tune = ", tuneNote, tuneAlte, tuneMode)
+      // console.log("Tune = ", tuneNote, tuneAlte, tuneMode)
       DGet('#option_tune-note').value = tuneNote
       DGet('#option_tune-alte').value = tuneAlte
       DGet('#option_tune-mode').value = tuneMode
@@ -74,6 +77,10 @@ class Options extends Panneau {
       DGet('#option_time-deno').value = time.substr(0,1)
       DGet('#option_time-divi').value = time.substr(2,1)
     }
+
+    // - Format papier - (p.e. a4 ou lettre)
+    const format = values.format || 'a0'
+    DGet('#option_format').value = format
 
     const system = values.system
     if ( system ) {
@@ -105,13 +112,6 @@ class Options extends Panneau {
       }
     })
     return [notOptions.join("\n"), options]
-  }
-
-
-  static onClickCloseButton(ev){
-    stopEvent(ev)
-    this.close()
-    return false
   }
 
   static get btnClose(){
