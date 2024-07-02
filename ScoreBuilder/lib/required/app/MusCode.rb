@@ -10,20 +10,35 @@ class << self
   end
 
   def save_and_evaluate(waa_data)
-    puts "waa_data = #{waa_data}"
-    # Enregistrement du code transmis
+    # puts "waa_data reçu pour save = #{waa_data}"
+    muscode = MusCode.new(waa_data['mus_file'])
+    
+    # # On fait toujours une copie provisoire du code actuel
+    muscode.backup
 
-    # Évaluation par ScoreImage
+    code = waa_data['code']
 
-    # Retour du résultat
-    waa_data.merge!(
-      ok:         true, 
-      ope:        "Code enregistré et évalué.",
-      folder:     main_folder,
-      mus_file:   mus_file_path,
-      affixe:     mus_file_affixe,
-      svg_images: current_score_svgs,
-      )
+    if code.nil? || code.empty?
+
+      waa_data.merge!(ok: false, error: "Le code transmis est vide.")
+    
+    else
+    
+      # Enregistrement du code transmis
+      muscode.save(code)
+
+      # Production des images SVG
+      muscode.produce_svg
+
+      # Retour du résultat
+      waa_data.merge!(
+        ok:         true, 
+        ope:        "Code enregistré et évalué.",
+        folder:     main_folder,
+        affixe:     mus_file_affixe,
+        svg_images: current_score_svgs,
+        )
+    end
     WAA.send(class:"MusCode", method: "onSavedAndEvaluated", data: waa_data)
   end
 
@@ -94,6 +109,17 @@ end
 
 # === Functional Methods ===
 
+
+def save(new_code)
+  IO.write(mus_file, new_code)
+end
+
+def backup
+  backup_path = File.join(backup_folder, "#{affixe}-#{Time.now.to_i}.mus")
+  FileUtils.mv(mus_file, backup_path)
+end
+
+
 # Destruction de toutes les images SVG
 def remove_all_svg
   Dir["#{svg_folder}/*.svg"].each{|pth|File.delete(pth)}
@@ -118,6 +144,9 @@ def svg_folder
 end
 def affixe
   @affixe ||= File.basename(mus_file, File.extname(mus_file))
+end
+def backup_folder
+  @backup_folder ||= File.join(folder,'xbackups').freeze.tap{|d|FileUtils.mkdir_p(d)}
 end
 def folder
   @folder ||= File.dirname(mus_file).freeze

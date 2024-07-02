@@ -23,7 +23,7 @@ class MusCode {
   static saveAndEvaluateCode(){
     WAA.send({
       class: "ScoreBuilder::MusCode", method: "save_and_evaluate",
-      data: {code: this.getMusCode()}
+      data: {code: this.getMusCode(), mus_file: this.mus_file_path}
     })
   }
   /**
@@ -32,8 +32,13 @@ class MusCode {
    * Notamment, la méthode remonte les images produites
    */
   static onSavedAndEvaluated(waaData){
-    console.log("Retour Waa :", waaData)
-    ScoreViewer.setVignettes(waaData)
+    // console.log("Retour Waa :", waaData)
+    if (waaData.ok) {
+      ScoreViewer.setVignettes(waaData)
+    } else {
+      erreur(`Un problème est survenu : ${waaData.error}. Consulter le retour.`)
+      console.error(waaData)
+    }
   }
 
   static getMusCode(){
@@ -78,7 +83,7 @@ class MusCode {
       }
       break
     default:
-      console.info("Touche pressée :", ev.key)
+      // console.info("Touche pressée :", ev.key)
     }
   }
   // Quand on relève la touche
@@ -89,11 +94,10 @@ class MusCode {
     case "Control" : this.ControlOn = false ; break
     case "Shift" : this.ShiftOn = false ; break
     default:
-      console.info("Touche relevée :", ev.key)
+      // console.info("Touche relevée :", ev.key)
     }
   }
   static onTextChange(ev){
-    console.warn("Je dois apprendre à gérer le changement de texte.")
     return stopEvent(ev)
   }
 

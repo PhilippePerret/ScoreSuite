@@ -25,7 +25,11 @@ class ScoreViewer {
   }
 
   /**
-  * Pour définir les vignettes courantes
+  * Pour (re)définir les vignettes courantes
+  * 
+  * @note
+  *   La méthode est aussi appelée quand on actualise le code (c’est
+  *   -à-dire quand on l’enregistre et qu’il se réactualise)
   */
   static setVignettes(waaData) {
     let lastFilledVignette, vignette, imgName, imgPath ;

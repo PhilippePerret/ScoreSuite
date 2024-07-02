@@ -22,7 +22,8 @@ class Vignette {
 
   // Affiche la vignette dans le visualiseur du propriétaire
   affiche(){
-    this.owner.imgCurrentPage.src = this.src
+    if ( ! this.dispTime ) this.dispTime = 0
+    this.owner.imgCurrentPage.src = `${this.src}?${++this.dispTime}`
     if ( this.owner.currentVignette ) {
       this.owner.currentVignette.deselect()
     }
@@ -51,7 +52,8 @@ class Vignette {
   }
 
   display(){
-    this.img.src = this.src
+    if ( ! this.dispTime ) this.dispTime = 0
+    this.img.src = `${this.src}?${++this.dispTime}`
     if ( ! this.watched ) {
       listen(this.obj,'click', this.onClick.bind(this))
       this.addCss('clickable')
@@ -69,8 +71,10 @@ class Vignette {
 
   select(){
     this.addCss('selected')
+    this.selected = true
   }
   deselect(){
+    this.selected = false
     this.remCss('selected')
   }
 
