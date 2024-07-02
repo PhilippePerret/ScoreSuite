@@ -67,6 +67,12 @@ class Textarea {
   // Deux alias
   setSelection(rep,after){return this.replaceSelection(rep,after)}
   replace(rep,after) {return this.replaceSelection(rep,after)}
+  insertAtCursor(rep, backOffset) {
+    backOffset = backOffset || 0
+    this.dom.setRangeText(rep, this.selEnd, this.selEnd, 'select')
+    this.select(this.selEnd + backOffset, this.selEnd + backOffset)
+    return this
+  }
 
   /**
    * Pour EFFACER DU TEXTE dans le textarea

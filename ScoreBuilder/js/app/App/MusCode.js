@@ -50,14 +50,24 @@ class MusCode {
   }
 
   static setMusCode(code){
-    console.log("-> setMusCode avec ", code)
+    // console.log("-> setMusCode avec ", code)
     const decoupe = Options.extractOptionsFrom(code)
-    console.log("decoupe = ", decoupe)
     let [codeNotes, options] = decoupe
-    console.log("codeNotes = ", codeNotes)
-    console.log("options = ", options)
     Options.setValues(options)
     this.field.value = codeNotes
+  }
+
+
+  /* === Text Methods === */
+
+  /**
+  * @param offback [Number] Décalage (mettre en négatif pour remonter)
+  */
+  static insertAtCursor(what, offback) {
+    this.textarea.insertAtCursor(what, offback)
+  }
+  static get textarea(){
+    return this._textarea || (this._textarea = new Textarea(this.field))
   }
 
   // === Gestion des évènements ===
@@ -77,6 +87,9 @@ class MusCode {
     case "Alt" :      this.OptionOn   = true ; break
     case "Control" :  this.ControlOn  = true ; break
     case "Shift" :    this.ShiftOn    = true ; break
+    case 'o':
+      if ( this.ControlOn ) { return stopEvent(ev) }
+      break
     case "s" : case "b" :
       if ( this.MetaOn ) {
         // = SAUVEGARDER = 
@@ -84,6 +97,10 @@ class MusCode {
         stopEvent(ev)
         this.saveAndEvaluateCode()
         return false
+      } else if ( this.ControlOn ) {
+        // Raccourci pour placer une "blanche" => 2
+        stopEvent(ev)
+        return "2"
       }
       break
     default:
@@ -97,9 +114,38 @@ class MusCode {
     case "Alt" : this.OptionOn  = false ; break
     case "Control" : this.ControlOn = false ; break
     case "Shift" : this.ShiftOn = false ; break
+    case 'b':
+      if ( this.ControlOn ) {stopEvent(ev); this.insertAtCursor("2"); return false }
+      break
+    case 'c':
+      // Raccourci pour "croche" => 8
+      if ( this.ControlOn ) {
+        if ( this.lastLetter == 'o') {
+          stopEvent(ev); this.insertAtCursor("8{}", -1); return false
+        } else {
+          stopEvent(ev); this.insertAtCursor("8"); return false
+        }
+      }
+      break
+    case 'd':
+      if ( this.ControlOn ) {stopEvent(ev); this.insertAtCursor("16"); return false }
+      break
+    case 'n':
+      if ( this.ControlOn ) {stopEvent(ev); this.insertAtCursor("4"); return false }
+      break
+    case 'o':
+      if ( this.ControlOn ) { 
+        this.lastLetter = 'o'
+        return stopEvent(ev) 
+      }
+      break
+    case 't':
+      if ( this.ControlOn ) {stopEvent(ev); this.insertAtCursor("32"); return false }
+      break    
     default:
       // console.info("Touche relevée :", ev.key)
     }
+    this.lastLetter = ev.key
   }
   static onTextChange(ev){
     return stopEvent(ev)

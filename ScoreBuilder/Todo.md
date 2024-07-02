@@ -1,16 +1,4 @@
 # Todo
 
-* panneau d’options pour ne pas avoir à les mettre dans le code
-  * pouvoir définir les options
-  * pouvoir récupérer les options
-
-* Raccourcis pour les durées ctrl+<première lettre> pour mettre des chiffres
-    ctrl-t  = triple croche = 32
-    ctrl-d = double croche = 16
-    ctrl-c = croche = 8
-    ctrl-n = noire = 4
-    ctrl-b = blanche = 2
-    ctrl-oc = triolet de croche
-    ctrl-od = triolet de double croche
-
+* Fenêtre d’aide pour les raccourcis
 * un bloc-note pour prendre des notes
