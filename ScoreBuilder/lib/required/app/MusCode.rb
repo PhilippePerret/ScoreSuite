@@ -9,6 +9,18 @@ class << self
     muscode.produce_svg
   end
 
+  def cleanupBackups(waa_data)
+    muscode = MusCode.new(waa_data['mus_file'])
+    wd = 
+      if (err_msg = muscode.cleanup_backups)
+        {ok: false, error: err_msg}
+      else
+        {ok: true, nombre_backups: muscode.get_nombre_backups}
+      end
+
+    WAA.send(class: "UI", method:"onCleanedUpBackup", data:wd)
+  end
+
   def save_and_evaluate(waa_data)
     # puts "waa_data reçu pour save = #{waa_data}"
     muscode = MusCode.new(waa_data['mus_file'])
@@ -37,7 +49,8 @@ class << self
         folder:     main_folder,
         affixe:     mus_file_affixe,
         svg_images: current_score_svgs,
-        )
+        nb_backups: muscode.get_nombre_backups,
+      )
     end
     WAA.send(class:"MusCode", method: "onSavedAndEvaluated", data: waa_data)
   end
@@ -119,6 +132,23 @@ def backup
   FileUtils.mv(mus_file, backup_path)
 end
 
+def get_nombre_backups
+  Dir["#{backup_folder}/*"].count
+end
+
+# @return [String] Nettoie le dossier des backups
+def cleanup_backups
+  return nil if get_nombre_backups < 6
+  Dir["#{backup_folder}/*"].map do |bckup|
+    {name: File.basename(bckup), path: bckup}
+  end.sort_by do |dbck|
+    dbck[:name]
+  end.reverse[5..-1].each do |dbck|
+    File.delete( dbck[:path] )
+  end
+
+  return nil
+end
 
 # Destruction de toutes les images SVG
 def remove_all_svg

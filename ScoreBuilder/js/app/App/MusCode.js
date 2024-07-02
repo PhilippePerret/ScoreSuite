@@ -35,6 +35,7 @@ class MusCode {
     // console.log("Retour Waa :", waaData)
     if (waaData.ok) {
       ScoreViewer.setVignettes(waaData)
+      UI.setNameBackupButton(waaData.nb_backups)
     } else {
       erreur(`Un problème est survenu : ${waaData.error}. Consulter le retour.`)
       console.error(waaData)

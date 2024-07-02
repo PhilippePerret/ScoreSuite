@@ -14,6 +14,7 @@ class App {
     MusCode.mus_file_path = wData.folder + '/' + wData.mus_file
     OriginalScore.setPages(wData.folder, wData.original_score_pages)
     ScoreViewer.setVignettes(wData)
+    UI.setNameBackupButton(wData.nombre_backups)
   }
 
   /**
