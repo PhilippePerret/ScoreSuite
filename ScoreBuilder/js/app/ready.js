@@ -5,6 +5,7 @@ $(document).ready(e => {
   // Log.level = LOG_ALL
 
   UI.prepare()
+  Options.prepare()
   MusCode.prepare()
   OriginalScore.prepare()
   ScoreViewer.prepare()

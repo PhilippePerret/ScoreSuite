@@ -21,6 +21,8 @@ class MusCode {
 
   // Pour sauver le code, le faire évaluer et l’afficher
   static saveAndEvaluateCode(){
+    // => [String] Options les unes au-dessous des autres
+    //    (à mettre au-dessus du code)
     WAA.send({
       class: "ScoreBuilder::MusCode", method: "save_and_evaluate",
       data: {code: this.getMusCode(), mus_file: this.mus_file_path}
@@ -43,18 +45,19 @@ class MusCode {
   }
 
   static getMusCode(){
-    /**
-    * TODO Ajouter les options, qui seront sous forme de case à
-    * cocher et de menu
-    */
-    return this.field.value
+    const options = Options.getValues()
+    return options + "\n\n" + this.field.value
   }
+
   static setMusCode(code){
-    /**
-    * TODO Il faudrait prendre les options pour les mettre dans le
-    * tableau des options, pas dans le code
-    */
-    this.field.value = code
+    console.log("-> setMusCode avec ", code)
+    const decoupe = Options.extractOptionsFrom(code)
+    console.log("decoupe = ", decoupe)
+    let [codeNotes, options] = decoupe
+    console.log("codeNotes = ", codeNotes)
+    console.log("options = ", options)
+    Options.setValues(options)
+    this.field.value = codeNotes
   }
 
   // === Gestion des évènements ===
