@@ -1,0 +1,69 @@
+div.panel {
+  position: fixed;
+  font-size: 16pt;
+  font-family: 'Arial Narrow', Arial, Geneva, serif;
+  width: 840px;
+  background-color: #F8F9F9;
+  border: 1px solid;
+  box-shadow: 25px 26px 50px grey;
+  z-index: 1000;
+  top: 40px;
+}
+div.panel.hidden {display: none}
+
+div.panel-main-title {
+  font-size: 1.8em;
+  height: 40px;
+  padding: 1em 1em;
+}
+
+div.panel div.content {
+  height: 760px;
+  overflow-y: auto;
+  padding: 1em 2em;
+}
+div.panel div.tools {
+  text-align: right;
+  padding: 0.5em 1em;
+  background-color: grey;
+}
+
+div.panel div.tools button {
+  font-size: 1em;
+  padding: 0 1em;
+}
+
+div.panel div.tools button.btn-cancel {
+  float: left;
+}
+
+div.panel li p {
+  margin: 0;
+  padding: 0;
+}
+
+div.panel code {
+  font-family: monospace;
+  font-size: 0.85em;
+  background-color: #EEEEEE;
+}
+
+div.panel pre {
+  background-color: #EDEDED;
+  padding: 1em;  
+}
+
+div.panel table {
+  border:1px solid #BBBBBB;
+}
+div.panel table thead th {
+  font-weight: bold;
+}
+div.panel table td {
+  padding: 0.3em 1em;
+}
+
+div.panel table thead tr,
+div.panel table tr:nth-child(even) {
+  background-color:#EEEEEE;
+}

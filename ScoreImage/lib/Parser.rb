@@ -24,6 +24,8 @@ def initialize(music_score)
   @music_score = music_score
 end
 
+REG_3_VOIX = /<< (.+?) \/\/ (.+?) \/\/ (.+?) >>/.freeze
+REG_2_VOIX = /<< (.+?) \/\/ (.+?) >>/.freeze
 ##
 # @usage MusicScore::Parser.exec
 #
@@ -47,6 +49,12 @@ def parse
   # Remplacement des apostrophes courbes
   # 
   code = code.gsub('’', '\'')
+  #
+  # Remplacement des écritures multivoix (expérimental)
+  # 
+  code = code
+          .gsub(REG_3_VOIX, '<< { \1 } \\\\\\ { \2 } \\\\\\ { \3 } >>')
+          .gsub(REG_2_VOIX, '<< { \1 } \\\\\\ { \2 } >>')
 
   #
   # Les options courantes
@@ -90,23 +98,29 @@ def parse
     # à différents endroits.
     #
     if blocode.definition?
+      #
+      # Si c’est une définition de variable, on l’enregistre
+      # 
       if blocode.global?
         options[:definitions_globales].merge!( blocode.definition_name => blocode)
       else
         options[:definitions_locales].merge!( blocode.definition_name => blocode)
       end
     elsif blocode.only_options?
-      # 
-      # Seulement des options
-      # => on ne fait rien
+      #
+      # Si c’est seulement des options définies, on ne fait rien
+      # puisque ces options ont déjà été enregistrées
       #
     else
       # 
-      # En dernier recours, on ajoute le bloc de code courant
+      # Si ce n’est ni des options, ni une définition de variable,
+      # alors ce sont des notes, on enregistre le bloc dans la liste
+      # des blocs.
       #
       all_blocks << blocode
       #
       # Et on ré-initialise les définitions locales
+      # (pourquoi ?…)
       #
       options[:definitions_locales] = {}
     end

@@ -21,8 +21,11 @@ class Parser
 class BlockCode
 
 
-  # L'expression régulière qui traque les séquences d'images
-  REG_SEQUENCE_IMAGES = /\b([a-zA-Z]+)([0-9]+?)<\->([0-9]+?)\b/
+# L'expression régulière qui traque les séquences d'images
+REG_SEQUENCE_IMAGES = /\b([a-zA-Z]+)([0-9]+?)<\->([0-9]+?)\b/
+
+# # Expression régulière pour la définition d’une variable
+REG_DEFINITION = /^[a-zA-Z0-9_\/\-]+\=\=?$/.freeze
 
 attr_reader :raw_code
 attr_reader :options
@@ -96,7 +99,7 @@ def parse
   #
   # Est-ce une définition ?
   #
-  if lines[0].match?(/^[a-zA-Z0-9_\/]+\=\=?$/)
+  if lines[0].match?(REG_DEFINITION)
     # 
     # <= La première ligne termine par '=' ou '=='
     # => C'est une définition

@@ -1,0 +1,39 @@
+body {
+  margin:0;
+  padding:0;
+  font-size:16pt;
+}
+input, button, textarea, select, select option {
+  font-size: inherit;
+}
+
+.explication {
+  font-size:0.85em;
+  font-style:italic;
+  opacity:0.5;
+}
+.explication:hover {opacity:1}
+div.explication {padding:1em;}
+
+.fright {float:right;}
+.fleft {float:left;}
+
+div.buttons {
+  margin-top:1em;
+}
+div.buttons button + button {
+  margin-right: 12px;
+}
+
+button.warn {
+  background-color: #f54444;
+  color:white;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.clickable { cursor: pointer; }

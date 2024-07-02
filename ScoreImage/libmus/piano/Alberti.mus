@@ -12,27 +12,87 @@
 
 # --- Accord de C ---
 alb_C=
-c g' e g
+c16 g' e g
 
 # C sur basse E
 alb_C/e=
-e c' g c
+e16 c' g c
 
 # C sur basse G
 alb_C/g=
-g e' c e
+g16 e' c e
+
+alb_C/5=
+g16 e' c e
 
 
 # --- Accord Cm ---
 alb_Cm=
-c g' ees g
+c16 g' ees g
 
+alb_Cm/3=
+ees,16 c’ g c’
+
+alb_Cm/5=
+g,16 ees’ c ees
+
+
+
+# --- Accord C# 7dim ---
+
+alb_Cd7dim-3=
+cis16, bes’ g bes
+
+alb_Cd7dim-5=
+cis16, bes’ e, bes’
+
+# --- Accord D ---
+
+alb_D=
+d,16 a’ fis a
+
+# sur basse F#
+alb_D/3=
+fis, d’ a d
+
+# Sur basse A
+alb_D/5=
+a,16 fis’ d fis
 
 # --- Accord D7 ---
 
-# basse d'alberti accord de D7 sur a
+# Accord de D7 sur fondamentale sans la 3ce
+alb_D7-3=
+d,16 c’ a c
+
+# Accord de D7 sur a
 alb_D7/a=
 a16 d c d
+
+alb_D7/5=
+a16 d c d
+
+# --- Accord D# 5dim ---
+
+alb_Dd5dim=
+dis,16 a’ fis a
+
+# sur 3ce
+alb_Dd5dim/3=
+fis’16 dis’ a dis
+
+# sur 5te
+alb_Dd5dim/5=
+a,16 fis’ dis fis
+
+# --- Accord Eb ---
+
+alb_Eb=
+ees,16 bes’ g bes
+
+alb_Eb/3=
+g,16 ees’ bes ees
+
 
 
 # --- Accord Em ---
@@ -42,19 +102,148 @@ alb_Cg=
 g16 e' c e
 
 alb_Em=
-e, b' g b
+e,16 b' g b
+
+alb_Em/3=
+g,16 e’ b e
+
+alb_Em/5=
+b,16 g’ e g
 
 
+# --- Accord F ---
+
+alb_F=
+f,16 c’ a c
+
+alb_F/3=
+a,16 f’ c f
+
+alb_F/5=
+c,16 a’ f a
+
+
+# --- Accord F7 ---
+
+alb_F7-3=
+f,16 ees’ c ees
+
+alb_F7-5=
+f,16 ees’ a, ees’
+
+
+# --- Accord Fm ---
+
+alb_Fm=
+f,16 c’ aes c
+
+alb_Fm/3=
+aes,16 f’ c f
+
+# --- Accord F# 5dim ---
+
+alb_Fd5dim/5=
+c,16 a’ fis a
 
 # --- Accord G ---
+
 alb_G=
-g16 d' b d
+g,16 d' b d
 
 
 # G sur basse B
 alb_G/b=
-b, g' d g
+b,16 g' d g
+
+alb_G/3=
+b,16 g' d g
+
 
 # G sur basse D
 alb_G/d=
-d b' g b
+d,16 b' g b
+
+alb_G/5=
+d,16 b' g b
+
+
+#--- Accord G7 ---
+
+alb_G7-3=
+g,16 f’ d f
+
+alb_G7-3/7=
+f,16 d’ g, d’
+
+
+
+# --- Accord Gm ---
+
+alb_Gm=
+g,16 d’ bes d
+
+alb_Gm/3=
+bes,16 g’ d g
+
+alb_Gm/5=
+d,16 bes g bes
+
+# --- Accord A ---
+
+# --- Accord A7 ---
+
+# sur 1 sans la tierce
+alb_A7-3=
+a,16 g’ e g
+
+# sur 3ce
+alb_A7/3=
+cis,16 a’ g a
+
+# sur 5te
+alb_A7/5=
+e,16 a g a
+
+alb_A7/7-1=
+g,16 e’ cis e
+
+# --- Accord Am ---
+
+alb_Am=
+a16 e’ c e
+
+alb_Am/c=
+c,16 a’ e a
+
+
+# --- Accord A 5dim ---
+
+alb_A5dim=
+a,16 ees’ c ees
+
+alb_A5dim/3=
+c,16 a’ ees a
+
+
+# --- Accord Bb ---
+
+alb_Bb=
+bes,16 f’ d f’
+
+alb_Bb/3=
+d,16 bes’ f bes
+
+alb_Bb/5=
+f,16 d’ f d
+
+
+# --- Accord B 5dim ---
+
+alb_B5dim=
+b,16 f’ d f
+
+alb_B5dim/3=
+d,16 b’ f b
+
+alb_B5dim/5=
+f16 d’ b d

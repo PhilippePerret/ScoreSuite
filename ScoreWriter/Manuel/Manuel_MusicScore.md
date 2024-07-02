@@ -506,11 +506,13 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Liaisons de jeu                                              | **`note1( autres notes)`**                                  |                                                              |
+| **Liaisons de jeu**                                          | **`note1( autres notes)`**                                  |                                                              |
 | exemple                                                      | **`a'( b c d)`**                                            | <img src="images/exemples/liaison-de-jeu.svg" style=" width:150px;" /> |
-| Liaison de durée                                             | **`note~ note`**                                            |                                                              |
+| forcer en dessous                                            | **`a'_( b c d)`**                                           |                                                              |
+| forcer au-dessus                                             | **`a'^( b c d)`**                                           |                                                              |
+| **Liaison de durée**                                         | **`note~ note`**                                            |                                                              |
 | Exemple simple                                               | **`c1~ c2`**                                                | <img src="images/exemples/liaison-de-duree.svg" style=" width:150px;" /> |
-| Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  |    <img src="images/exemples/liaison-accords.svg" style=" width:200px;" />                                                          |
+| Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  | <img src="images/exemples/liaison-accords.svg" style=" width:200px;" /> |
 
 
 
@@ -558,6 +560,7 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 | <span style="display:inline-block;width:100px;">Objet</span> | <span style="display:inline-block;width:440px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 |                                                              | **`<< { note note note } \\ { note note note } >>`**        | Le plus clair et le plus simple est d'utiliser des [variables](#definitions) à la place des notes. La hauteur de la première note du second membre est calculée à partir de la première note du premier membre |
+| Version simplifiée                                           | **`<< note note // note note >>`**                          | C’est la version simplifiée de la précédente.                |
 | Exemple                                                      | **`<< { e'2 f e f } \\ { c,4 g' d g a e' d c } >>`**        | <img src="images/exemples/voix-simultanees.svg" style=" width:250px;" /> |
 | Snippet                                                      | **`2v`**                                                    |                                                              |
 
