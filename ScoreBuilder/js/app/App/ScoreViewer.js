@@ -28,36 +28,30 @@ class ScoreViewer {
   * Pour définir les vignettes courantes
   */
   static setVignettes(waaData) {
-    let vignette, imgName, imgPath ;
+    let lastFilledVignette, vignette, imgName, imgPath ;
     for ( var iVign in this.vignettes ) {
       vignette  = this.vignettes[iVign]
-      imgName   = waaData.svgs[iVign]
+      imgName   = waaData.svg_images[iVign]
       if ( imgName ) {
         // Cette image existe, on définit la vignette
         imgPath   = `${waaData.folder}/${waaData.affixe}/${imgName}`
         imgPath   = imgPath.replace(/ /,'\ ')
         vignette.image = imgPath
+        lastFilledVignette = vignette
       } else {
         // Pas d’image pour cette vignette
-        vignette.unsetImage()
+        vignette.unset()
       }
     }
     // On affiche la dernière
-    this.current = imgPath
-  }
-
-
-  // Pour définir l’image courante
-  static set current(path){
-    console.info("Path image courante : ", path)
-    this.imgCurrentPage.src = path
+    lastFilledVignette.affiche()
   }
 
 
   static buildVignettes(){
     this.vignettes = []
     let largeur = this.container.offsetWidth
-    while ( (largeur - 2 * MINIATURE_WIDTH) > 0 ) {
+    while ( (largeur - RESTE_SECU) > 0 ) {
       this.vignettes.push(this.buildVignette())
       largeur -= MINIATURE_WIDTH + MINIATURE_GUTTER;
     }

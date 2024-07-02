@@ -8,6 +8,9 @@ $(document).ready(e => {
   MusCode.prepare()
   OriginalScore.prepare()
   ScoreViewer.prepare()
+
+  App.loadCurrent()
+  
   console.log("Je suis fin prête.")
 
 })

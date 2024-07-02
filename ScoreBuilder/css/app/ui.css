@@ -74,7 +74,9 @@ body > section {
 }
 section#section-original-score { left: 0 }
 section#section-mus-code { left: 33% }
-section#section-viewer { left: 66% }
+section#section-viewer { 
+  left: 66.6%;
+}
 
 section > title {
   position:absolute;
@@ -117,13 +119,16 @@ div.vignettes-container:hover {opacity: 1;}
   float: left;
   min-height: 100px;
   background-color: #DDDDFF;
-  border: 1px solid;
+  border: 3px solid transparent;
 }
 .vignette img {
   width:100%;
 }
 .vignette.dropped {
   background-color:#228822;
+}
+.vignette.selected {
+  border-color: blue;
 }
 
 div.container-current-page {
@@ -135,4 +140,5 @@ div.container-current-page {
 
 div.container-current-page  img.current-page {
   max-width: 100%;
+  width: 100%;
 }

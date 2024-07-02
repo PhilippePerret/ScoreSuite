@@ -43,6 +43,13 @@ class MusCode {
     */
     return this.field.value
   }
+  static setMusCode(code){
+    /**
+    * TODO Il faudrait prendre les options pour les mettre dans le
+    * tableau des options, pas dans le code
+    */
+    this.field.value = code
+  }
 
   // === Gestion des évènements ===
 

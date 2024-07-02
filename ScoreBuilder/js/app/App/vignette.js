@@ -3,12 +3,33 @@
 
 const MINIATURE_WIDTH   = 60
 const MINIATURE_GUTTER  = 10
+// Pour ajouter des vignettes autant que possible
+const RESTE_SECU        = MINIATURE_WIDTH + MINIATURE_GUTTER + 100
 
 class Vignette {
 
+  /**
+  * @param owner [Class] ScoreViewer ou OriginalScore
+  * @param options [Hash]
+  *   Les options. Pour le moment seulement droppable pour dire si 
+  *   les images doivent être droppable (seulement pour la partition
+  *   originale)
+  */
   constructor(owner, options){
-    this.owner = owner
-    this.options = options
+    this.owner    = owner
+    this.options  = options
+  }
+
+  // Affiche la vignette dans le visualiseur du propriétaire
+  affiche(){
+    this.owner.imgCurrentPage.src = this.src
+    if ( this.owner.currentVignette ) {
+      this.owner.currentVignette.deselect()
+    }
+    this.select()
+    this.owner.currentVignette = this
+    // On retire toujours le texte d’explication
+    DGet('.explication-section',this.owner.container).remove()
   }
 
   build(){
@@ -30,7 +51,7 @@ class Vignette {
   }
 
   display(){
-    this.img.src = this.file.name
+    this.img.src = this.src
     if ( ! this.watched ) {
       listen(this.obj,'click', this.onClick.bind(this))
       this.addCss('clickable')
@@ -40,15 +61,22 @@ class Vignette {
   // Pour ne plus écouter le click sur la vignette
   unlisten(){
     if ( this.watched ) {
+      this.remCss('clickable')
       unlisten(this.obj,'click', this.onClick.bind(this))
       this.watched = false
     }
   }
 
+  select(){
+    this.addCss('selected')
+  }
+  deselect(){
+    this.remCss('selected')
+  }
+
   // @api
   // Pour définir l’image de la vignette
   set image(imgPath){
-    console.log("Image path mis à ", imgPath)
     this.file = {name: imgPath}
     this.display()
   }
@@ -58,15 +86,15 @@ class Vignette {
   * Méthode permettant de supprimer l’image qui est peut-être dans
   * le champs
   */
-  unsetImage(){
+  unset(){
     this.file = {name: ""}
-    this.display()
+    this.img.src = ""
     this.unlisten()
   }
 
   onClick(ev){
     stopEvent(ev)
-    this.owner.imgCurrentPage.src = this.file.name
+    this.affiche()
     return false
   }
 
@@ -108,6 +136,10 @@ class Vignette {
   }
   remCss(cssName){
     this.obj.classList.remove(cssName)
+  }
+
+  get src(){
+    return this.file.name
   }
 
   get img(){

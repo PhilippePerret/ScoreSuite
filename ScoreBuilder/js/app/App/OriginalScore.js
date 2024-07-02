@@ -26,15 +26,43 @@ class OriginalScore {
   }
 
   static buildVignettes(){
+    this.vignettes = []
     let largeur = this.container.offsetWidth
-    while ( (largeur - 2 * MINIATURE_WIDTH) > 0 ) {
-      this.buildVignette()
+    while ( (largeur - RESTE_SECU) > 0 ) {
+      this.vignettes.push(this.buildVignette())
       largeur -= MINIATURE_WIDTH + MINIATURE_GUTTER;
     }
   }
   static buildVignette(){
-    (new Vignette(this, {droppable: true})).build()
+    const vig = new Vignette(this, {droppable: true})
+    vig.build()
+    return vig
   }
+
+
+  /**
+  * Quand on remonte les informations sur la partition courante, 
+  * on affiche ici les pages de la partition originale
+  * 
+  * @param pagesRelpaths [Array<String>] Liste des chemins 
+  *     relatif (dossier/fichier) aux pages du score
+  *   
+  */
+  static setPages(main_folder, pagesRelpaths) {
+    let vig;
+    for ( var iPage in this.vignettes ) {
+      vig     = this.vignettes[iPage]
+      const relpath = pagesRelpaths[iPage]
+      if ( relpath ) {
+        vig.image = main_folder + '/' + relpath
+      } else {
+        vig.unset()
+      }
+    }
+    // On affiche la première
+    this.vignettes[0].affiche()
+  }
+
 
   static get imgCurrentPage(){
     return this._imgcurpage || (this._imgcurpage = DGet('img.current-page', this.containerCurrentPage))

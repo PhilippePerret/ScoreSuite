@@ -4,15 +4,15 @@ class App {
 
   static get NAME(){ return 'Score Builder' }
   
-  static onReady(){
+  static loadCurrent(){
+    WAA.send({class:"ScoreBuilder::App", method:"load", data:{}})
+  }
 
-    // console.info("WAA.mode_test = ", WAA.mode_test)
-    
-    /*
-    |  Préparation de l'interface
-    */
-    UI.prepare()
-
+  static onLoad(wData){
+    console.log("Je remonte avec : ", wData)
+    MusCode.setMusCode(wData.mus_code)
+    OriginalScore.setPages(wData.folder, wData.original_score_pages)
+    ScoreViewer.setVignettes(wData)
   }
 
   /**
