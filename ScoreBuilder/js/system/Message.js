@@ -72,7 +72,7 @@ class MessageClass {
 
   showText(str,type, options){
     this.panneauMessage.className = `${type} message`
-    if ( type !== 'error' && !options.keep ) this.msgTimer = setTimeout(this.hideMessage.bind(this),20*1000)
+    if ( type !== 'error' && !options.keep ) this.msgTimer = setTimeout(this.hideMessage.bind(this),this.dureeLecture * 1000)
   }
 
   hideMessage(){
@@ -84,6 +84,13 @@ class MessageClass {
       clearTimeout(this.msgTimer)
       this.msgTimer = null
     }
+  }
+
+  /**
+  * @return Le nombre de secondes nécessaires pour lire le message.
+  */
+  get dureeLecture(){
+    return this.content.split(' ').length * 1.2 / 2
   }
 
   /**
@@ -112,6 +119,7 @@ class MessageClass {
   }
 
   observe(){
+    listen(this.panneauMessage,'click', this.hideMessage.bind(this))
     this.closeBox.addEventListener('click', this.hideMessage.bind(this))
   }
 
