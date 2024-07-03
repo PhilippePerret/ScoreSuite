@@ -30,9 +30,9 @@ class << self
     folder_data = YAML.safe_load(IO.read(data_path),**YAML_OPTIONS)
     musfile = folder_data[:mus_file]
     folder_data.merge!(
-      mus_code: IO.read(musfile),
+      mus_code: CGI.escape(IO.read(musfile)),
       affixe: File.basename(musfile, File.extname(musfile)),
-      nombre_backups: MusCode.new(musfile).get_nombre_backups,
+      nombre_backups: MusCode.new(musfile).get_nombre_backups
     )
     WAA.send(class:"App", method:"onLoad", data: folder_data)
   end

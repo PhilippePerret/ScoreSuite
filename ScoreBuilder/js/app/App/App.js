@@ -9,8 +9,9 @@ class App {
   }
 
   static onLoad(wData){
-    // console.log("Je remonte avec : ", wData)
-    MusCode.setMusCode(wData.mus_code)
+    console.log("Je remonte avec : ", wData)
+    MusCode.setMusCode(decodeURIComponent(wData.mus_code.replace(/\+/g, ' ')))
+    // MusCode.setMusCode(decodeURI(wData.mus_code.replace(/\+/g, ' ')))
     MusCode.mus_file_path = wData.folder + '/' + wData.mus_file
     OriginalScore.setPages(wData.folder, wData.original_score_pages)
     ScoreViewer.setVignettes(wData)
