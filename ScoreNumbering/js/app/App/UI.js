@@ -115,7 +115,8 @@ class UI {
     stopEvent(ev)
     console.log("ev = ", ev)
     console.log("Vous avez cliqué sur l’image")
-    this.score.addMesureAt({x:ev.x, y: ev.y})
+    // this.score.addMesureAt({x:ev.x, y: ev.y})
+    this.score.addMesureAt({x:ev.pageX, y: ev.pageY})
   }
 
 

@@ -65,6 +65,7 @@ div#image-container {
   padding:0;
   border:1px solid black;
   position:relative;
+  margin-bottom:1000px;
 }
 
 div.numero-mesure {

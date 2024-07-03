@@ -117,7 +117,6 @@ class Score {
       class:"numero-mesure", 
       style:this.mesureStyle(data)
     })
-    // TODO Rendre le numéro draggable
     UI.imager.appendChild(obj)
     $(obj).draggable()
     this.numeros.push(obj) // plus tard, une instance
