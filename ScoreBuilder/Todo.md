@@ -2,8 +2,6 @@
 
 * Construction des champs pour les systèmes complexes
 
-* Quand on doit construire les SVG avant de lancer l’application, mettre un message pour patienter (en se servant du `do_with_message` de l’application score-numbering)
-
 * De façon générale, améliorer les retours d’erreur dès qu’il y a un problème (cf. ci-dessous)
 * un bloc-note pour prendre des notes
 * Pouvoir rouvrir le dernier fichier en faisant `score-builder last`

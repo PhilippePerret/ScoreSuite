@@ -4,11 +4,6 @@ module ScoreBuilder
 class MusCode
 class << self
 
-  def execute_mus_code_from_file(mus_file_path)
-    muscode = MusCode.new(mus_file_path)
-    muscode.produce_svg
-  end
-
   def cleanupBackups(waa_data)
     muscode = MusCode.new(waa_data['mus_file'])
     wd = 

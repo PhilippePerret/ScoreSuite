@@ -113,7 +113,12 @@ class FolderAnalyzer
       data.merge!(svg_images: get_svg_images_from(svg_folder))
 
       if not(File.exist?(svg_folder)) || data[:svg_images].empty?
-        MusCode.execute_mus_code_from_file(File.join(path, data[:mus_file]))
+        mIn   = "Production des images SVG."
+        mOut  = "🍺 Images SVG produites avec succès"
+        do_with_message(mIn, mOut) do
+          muscode = MusCode.new(File.join(path, data[:mus_file]))
+          muscode.produce_svg
+        end
         data.merge!(svg_images: get_svg_images_from(svg_folder))
       end
 
@@ -249,7 +254,7 @@ class FolderAnalyzer
   #   end
   # 
   def do_with_message(start_msg, end_msg, &block)
-    STDOUT.write start_msg.jaune
+    STDOUT.write "#{start_msg} Merci de patienter…".jaune
     yield
     puts "\r#{end_msg.ljust(start_msg.length + 10)}".vert
   end
