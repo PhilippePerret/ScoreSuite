@@ -112,6 +112,7 @@ class MessageClass {
   }
 
   observe(){
+    listen(this.panneauMessage,'click', this.hideMessage.bind(this))
     this.closeBox.addEventListener('click', this.hideMessage.bind(this))
   }
 
