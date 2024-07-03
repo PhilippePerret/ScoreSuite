@@ -19,13 +19,6 @@ class UI {
   }
 
   /**
-  * Méthode appelée pour ouvrir le manuel
-  */
-  static onClickManual(ev){
-    console.error("Je dois apprendre à ouvrir le Manuel PDF (par Finder)")
-    return stopEvent(ev)
-  }
-  /**
   * Méthode appelée quand on clique sur le bouton "Build" pour
   * forcer la construction de la partition.
   */

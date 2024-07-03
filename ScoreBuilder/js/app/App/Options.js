@@ -1,5 +1,7 @@
 'use strict';
 
+const OPTIONS_DIVERSES =  ['barres', 'keep']
+
 class Options extends Panneau {
 
   static prepare(){
@@ -35,7 +37,9 @@ class Options extends Panneau {
       data.push(`--staves_names ${names.join(',')}`)
     }
     // - Diverses Options -
-    DGet('#option_barres').checked && data.push('--barres')
+    OPTIONS_DIVERSES.forEach( key => {
+      DGet(`#option_${key}`).checked && data.push(`--${key}`)
+    })
     // - Tune -
     let tuneNote = DGet('#option_tune-note').value
     let tuneAlte = DGet('#option_tune-alte').value
@@ -50,8 +54,7 @@ class Options extends Panneau {
   }
   static setValues(values){
     // console.log("-> Options.setValues avec", values)
-    const optionsDiverses = ['barres']
-    optionsDiverses.forEach( key => {
+    OPTIONS_DIVERSES.forEach( key => {
       let cb = DGet(`#option_${key}`)
       cb.checked = values[key]
     })
