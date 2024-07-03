@@ -23,7 +23,8 @@ class << self
 
   def print_numbers(data)
     retour = {ok:true, msg: nil}
-    sys_numbered_systems = File.expand_path(File.join("../systems-numbered"))
+    curfolder_name = File.basename(App.current_folder)
+    sys_numbered_systems = File.expand_path(File.join("../#{curfolder_name}-N"))
     FileUtils.mkdir_p(sys_numbered_systems)
     fname   = data["filename"]
     extname = File.extname(fname)

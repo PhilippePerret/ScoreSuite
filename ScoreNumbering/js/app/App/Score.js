@@ -75,8 +75,8 @@ class Score {
     this.numeros.forEach(numero => {
       dataNumbers.push({
           numero:   numero.dataset.numero
-        , x:        numero.offsetLeft - 3
-        , y:        numero.offsetTop + 38 - this.verticalAdjustment
+        , x:        numero.offsetLeft + 1
+        , y:        numero.offsetTop + 19 - this.verticalAdjustment
       })
     })
     WAA.send({class:"ScoreNumbering::Score", method:"print_numbers", data:{filename:this.file.name, numbers:dataNumbers, style:{fonte:Styler.getFontFamily(), size:Styler.getFontSize(), color:Styler.getFontColor()}}})
@@ -105,8 +105,8 @@ class Score {
   */
   addMesureAt(data){
     // Rectification
-    data.y = data.y - 50
-    data.x = data.x - 10
+    data.y = data.y - 54
+    data.x = data.x - 6
     // Le numéro
     const numero = Score.nextNumero()
     var obj = DCreate("DIV", {
