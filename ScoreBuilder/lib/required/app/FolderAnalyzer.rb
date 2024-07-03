@@ -189,9 +189,42 @@ class FolderAnalyzer
   end
 
   # Extraire des images JPEG du score original
+  # 
   def extract_from_pdf(pdf_path)
-    cmd = 'magick "%s" -density 300 "%s/page.jpg"' % [pdf_path, original_score_folder]
-    result = `#{cmd} 2>&1`
+    ok = true
+    msg_start = "J’extrais les pages du fichier PDF…"
+    msg_end   = "🍺 Pages JPEG produites avec succès…"
+    do_with_message(msg_start, msg_end) do
+      cmd = 'magick "%s" -density 300 "%s/page.jpg"' % [pdf_path, original_score_folder]
+      result = `#{cmd} 2>&1`
+      # Si l’extraction a pu se faire avec succès, on déplace le
+      # fichier PDF de la partition originale vers le dossier backup
+      ok = Dir["#{original_score_folder}/*.jpg"].count > 0
+      if ok
+        # Déplacement du score original
+        dst_path = File.join(backups_folder, File.basename(pdf_path))
+        FileUtils.mv(pdf_path, dst_path)
+        # Renommage des fichiers (car il commence à 0)
+        Dir["#{original_score_folder}/page-*.jpg"].sort_by do |pth|
+          File.basename(pth)
+        end.reverse.each do |pth|
+          dossier = File.dirname(pth)
+          fname   = File.basename(pth)
+          fname = fname.sub(/([0-9]+)/) { ($1.to_i + 1).to_s }
+          FileUtils.mv(pth, File.join(dossier,fname))
+        end
+      end
+    end #/do with message
+    if ok
+      puts "🍺 Partition originale déplacée vers le fichier des backups.".vert
+      puts "Pensez à numéroter les mesures à l’aide de ’score-numbering’.".jaune
+    else
+      puts "Un problème est survenu, je ne trouve aucune page…".rouge
+    end      
+  end
+
+  def backups_folder
+    @backups_folder ||= File.join(path,'xbackups').freeze.tap{|d|FileUtils.mkdir_p(d)}
   end
 
   def original_score_folder
@@ -200,6 +233,25 @@ class FolderAnalyzer
 
   def data_file_path
     @data_file_path ||= File.join(path,'score_builder.yaml').freeze
+  end
+
+  # Pour exécuter un code assez long en affichant un premier message
+  # (en jaune), en exécutant le code transmis par bloc puis en 
+  # concluant avec un message vert qui efface le premier message
+  # 
+  # @usage
+  # 
+  #   msgStart = "Je commence"
+  #   msgEnd   = "Fini !"
+  #   do_with_message(msgStart, msgEnd) do
+  #     ... ici le code à exécuter ...
+  #     sleep 4
+  #   end
+  # 
+  def do_with_message(start_msg, end_msg, &block)
+    STDOUT.write start_msg.jaune
+    yield
+    puts "\r#{end_msg.ljust(start_msg.length + 10)}".vert
   end
 
 FIRST_CODE = <<~MUS
