@@ -44,6 +44,12 @@ class Score {
   static get nextNumField(){return DGet("#next-numero")}
 
 
+  static alignAllNumbers(ev){
+    if ( ! this.current ) {
+      return erreur("Il faut ouvrir une partition à numéroter.")
+    }
+    this.current.alignAllNumeros(ev.metaKey)
+  }
 
 
   constructor(data){
@@ -75,7 +81,7 @@ class Score {
     this.numeros.forEach(numero => {
       dataNumbers.push({
           numero:   numero.dataset.numero
-        , x:        numero.offsetLeft + 1
+        , x:        numero.offsetLeft
         , y:        numero.offsetTop + 19 - this.verticalAdjustment
       })
     })
@@ -87,6 +93,70 @@ class Score {
     } else {
       erreur(waaData.msg)
     }
+  }
+
+  /**
+  * Méthode qui va aligner les numéros
+  * 
+  * Fonctionnement : on commence par grouper les numéros d’une même
+  * ligne. Ensuite, on prend le plus haut (le plus petit) et on
+  * aligne tous les numéros du groupe dessus.
+  * 
+  * Si on tient la touche META en cliquant sur le bouton, on force
+  * l’alignement par le bas.
+  */
+  alignAllNumeros(alignOnBottom){
+    /**
+    * TEMPS 1 : Grouper les numéros par proximité
+    */
+    const groupes = []
+    let groupHasNotBeenFound = true;
+    this.numeros.forEach(numero => {
+      const numTop = numero.offsetTop
+      if ( groupes.length ) {
+        groupHasNotBeenFound = true
+        groupes.forEach( groupe => {
+          if ( numTop >= groupe.min && numTop <= groupe.max ) {
+            groupe.numeros.push(numero)
+            groupHasNotBeenFound = false
+          }
+        })
+      } else {
+        // Au tout début, on crée un groupe avec ce numéro
+        groupHasNotBeenFound = true
+      }
+      if ( groupHasNotBeenFound ) {
+        let top = numero.offsetTop
+        groupes.push({numeros: [numero], top: top, min: top-20, max: top+20 })
+      }
+    })
+    // console.log("groupes = ", groupes)
+    /**
+    * TEMPS 2 : Rechercher dans chaque groupe le numéro le plus haut
+    *           (ou le plus bas si alignOnBottom) et en tirer la 
+    *           valeur top valide
+    */
+    groupes.forEach(groupe => {
+      groupe.numeros.forEach( numero => {
+        const ntop = numero.offsetTop
+        const cond = alignOnBottom ? ntop > groupe.top : ntop < groupe.top;
+        if ( cond ) groupe.top = ntop
+      })
+    })
+    /**
+    * TEMPS 3 : Alignement de tous les numéros du groupe sur le top
+    *           défini pour ce groupe
+    */  
+    groupes.forEach(groupe => {
+      const top_px = px(groupe.top)
+      groupe.numeros.forEach( numero => {
+        numero.style.top  = top_px
+        numero.dataset.y  = groupe.top
+        // console.log("Numéro mis à %s", top_px, numero)
+      } )
+    })
+
+    message("Tous les numéros ont été alignés sur le plus haut.")
   }
 
   /**

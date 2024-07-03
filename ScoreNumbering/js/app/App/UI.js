@@ -15,7 +15,8 @@ class UI {
     listen(this.btnNext,  "click", this.onNextSystem.bind(this))
     listen(this.btnOther, "click", this.onReqDropOther.bind(this))
     listen(this.verticalAlignField,'change', this.onChangeVerticalAdjust.bind(this))
-
+    const btn = DGet('#btn-align-numeros')
+    listen(btn, 'click', Score.alignAllNumbers.bind(Score))
   }
 
   /**
