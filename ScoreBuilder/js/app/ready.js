@@ -16,7 +16,8 @@ $(document).ready(e => {
   
   console.log("Je suis fin prête.")
 
-  BlocNotes.open()
-  
+  // Pour gagner du temps au développement
+  // BlocNotes.open()
+
 })
 
