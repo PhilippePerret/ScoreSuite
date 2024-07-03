@@ -10,6 +10,11 @@ div.panneau {
   padding:2em;
 }
 
+div.panneau h2, div.panneau h3 {
+  margin-top: 0;
+  font-variant: all-small-caps;
+}
+
 div.panneau section.content {
   max-height: 600px;
   overflow-y: auto;
@@ -52,4 +57,37 @@ div#help-viewer-panneau {
 
 div.buttons button.fleft {
   margin-right: 20px;
+}
+
+div#panneau-blocnotes {
+  left:  50%;
+  width: 880px;
+  height: 760px;
+  background-color:#EEEEEE;
+}
+
+div#panneau-blocnotes span#nombre_et_index_note {
+  font-size: 14pt;
+}
+
+div#panneau-blocnotes nav#nav-in-notes {
+  float:right;
+}
+
+div#panneau-blocnotes div#blocknotes-reader,
+div#panneau-blocnotes textarea#blocknotes-editor
+{
+  height: calc(660px - 2em);
+}
+div#panneau-blocnotes div#blocknotes-reader {
+  background-color:white;
+  padding:1em 2em;
+  font-size: 20pt;
+  font-family:inherit;
+}
+div#panneau-blocnotes textarea#blocknotes-editor {
+  width: 100%;
+  resize:none;
+  font-size: 20pt;
+  font-family:inherit;
 }

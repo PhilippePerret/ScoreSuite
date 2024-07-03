@@ -148,6 +148,30 @@ c d ees f g aes
 
 
 
+<!-- 
+
+  LE PANNEAU BLOC-NOTES
+
+ -->
+
+<div id="panneau-blocnotes" class=panneau>
+  <nav id="nav-in-notes">
+    <span id="btn-prev-note" title="Avec META, on déplace la note courante.">◀️</span> 
+    <span id="btn-next-note" title="Avec META, on déplace la note courante.">▶️</span></nav>
+  <h2>Bloc-notes <span id="nombre_et_index_note"></span></h2>
+  <div id="blocknotes-reader">
+    <p class="italic">Cliquer sur le bouton ✛ ci-dessous pour ajouter votre première note.</p>
+  </div>
+  <textarea id="blocknotes-editor" class="hidden" placeholder="Placer ici votre note."></textarea>
+  <div class="buttons right">
+    <button class="btn-close fleft" style="margin-right:4em;">Fermer</button>
+    <button class="btn-add fleft" title="Ajouter une note">✛</button>
+    <button class="btn-sup fleft invisible" title="Supprimer la note courante.">✂︎</button>
+    <button class="btn-edit fleft invisible" title="Modifier la note courante">✎</button>
+    <button class="btn-save">Enregistrer</button>
+  </div>
+  
+</div>
 
 
 
@@ -226,10 +250,12 @@ c d ees f g aes
 
 
 <footer id="main">
+  <button id="btn-bloc-note" class="fleft">Bloc-notes</button>
   <menu-container class="fleft">    
     <menu id="helper" data-method="openManuel">
       <menu-item data-manuel="score-builder" data-updatable="true"
-        >Manuel Score-builder</menu-item>
+        >Manuel Score-builder
+      </menu-item>
       <menu-item data-manuel="code-mus" data-updatable="true"
         >Manuel code MUS
       </menu-item>
@@ -259,6 +285,7 @@ c d ees f g aes
 <script type="text/javascript" src="js/app/App/OriginalScore.js" defer></script>
 <script type="text/javascript" src="js/app/App/Snippet.js" defer></script>
 <script type="text/javascript" src="js/app/App/Options.js" defer></script>
+<script type="text/javascript" src="js/app/App/BlocNotes.js" defer></script>
 <script type="text/javascript" src="js/app/App/Helper.js" defer></script>
 <script type="text/javascript" src="js/test/Test.js" defer></script>
 <script type="text/javascript" src="js/app/ready.js"></script>

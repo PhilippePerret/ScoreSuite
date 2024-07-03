@@ -26,6 +26,9 @@ class Panneau {
 
   static open(){
     this.panneau.classList.remove('hidden')
+    if ( 'function' == typeof this.onOpen ) {
+      this.onOpen()
+    }
   }
   static show(){return this.open()}
   static close(){

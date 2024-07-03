@@ -9,7 +9,7 @@ class App {
   }
 
   static onLoad(wData){
-    console.log("Je remonte avec : ", wData)
+    // console.log("Je remonte avec : ", wData)
     MusCode.setMusCode(decodeURIComponent(wData.mus_code.replace(/\+/g, ' ')))
     // MusCode.setMusCode(decodeURI(wData.mus_code.replace(/\+/g, ' ')))
     MusCode.mus_file_path = wData.folder + '/' + wData.mus_file

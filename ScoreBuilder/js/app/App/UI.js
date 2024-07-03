@@ -2,6 +2,8 @@
 
 class UI {
   static prepare(){
+
+    let btn;
     
     this.espaceButtonTitle()
 
@@ -10,6 +12,9 @@ class UI {
 
     listen(this.btnBuild, "click", this.onClickBuild.bind(this))
     listen(this.btnBackup,'click', this.onClickBackup.bind(this))
+
+    btn = DGet('button#btn-bloc-note')
+    listen(btn, 'click', BlocNotes.open.bind(BlocNotes))
 
   }
 

@@ -37,6 +37,40 @@ class << self
     WAA.send(class:"App", method:"onLoad", data: folder_data)
   end
 
+  # @api
+  # 
+  # Chargement des notes
+  def load_notes(wdata)
+    notes = 
+      if File.exist?(notes_path)
+        YAML.safe_load(IO.read(notes_path),**YAML_OPTIONS)
+      else
+        ["Ma toute première note !"]
+      end
+    wdata.merge!(ok:true, notes: notes.map{|n|CGI.escape(n)})
+    WAA.send(class:"BlocNotes", method:"onLoadedNotes", data:wdata)
+  end
+
+  def notes_path
+    @notes_path ||= File.join(current_folder,'builder_notes.yaml').freeze
+  end
+
+  # @api
+  def save_notes(wdata)
+    begin
+      notes = wdata.delete('notes')
+      if notes.empty?
+        File.delete(notes_path) if File.exist?(notes_path)
+      else
+        IO.write(notes_path, notes.map{|n|CGI.unescape(n)}.to_yaml)
+      end
+      wdata.merge!(ok: true)
+    rescue Exception => e
+      wdata.merge!(ok: false, error: e.message)
+    end
+    WAA.send(class:"BlocNotes",method:"onSavedNotes", data:wdata)
+  end
+
   # @return Les paramètres pour WAA.goto
   def goto_params
     if File.exist?(config_path)

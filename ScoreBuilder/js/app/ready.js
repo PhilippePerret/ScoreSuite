@@ -6,6 +6,7 @@ $(document).ready(e => {
 
   UI.prepare()
   Options.prepare()
+  BlocNotes.prepare()
   Helper.prepare()
   MusCode.prepare()
   OriginalScore.prepare()
@@ -15,5 +16,7 @@ $(document).ready(e => {
   
   console.log("Je suis fin prête.")
 
+  BlocNotes.open()
+  
 })
 

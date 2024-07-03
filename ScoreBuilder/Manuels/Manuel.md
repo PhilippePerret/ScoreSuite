@@ -28,3 +28,34 @@ Si cette partition originale est en PDF, on peut ouvrir un Terminal au dossier d
 
 * l’extraction de chaque page de la partition en JPEG,
 * la création d’un fichier **`build_code.mus`** pour mettre le code mus de la partition
+
+
+
+## Production des images SVG
+
+En cliquant sur le bouton « Build & Save », on produit les images SVG de la partition et l’on enregistre le code MUS (avec les options) dans le fichier mus du dossier.
+
+### En cas d’erreur
+
+Parfois, une erreur non documentée est produite lors de la construction. Pour en découvrir l’origine, en l’absence de message d’erreur clair, on a plusieurs moyens.
+
+* Lancer la commande **`score-image -d`** directement dans le dossier de la pièce. Le `-d` permet de débugger l’application.
+* Ajouter l’option **`--keep`** pour conserver les fichiers Lilypond provisoires (`.ly`), puis les jouer en ouvrant un Terminal au dossier des images SVG et en jouant **`lilypond <nom fichier>`** .
+
+Si aucune de ces techniques ne porte ses fruits, il est possible de retirer petit à petit du code du fichier d’origine pour en tester seulement des bouts. Dans ce cas, le [bloc-notes](#blocnotes) est particulièrement utile, qu’on peut ouvrir en cliquant le bouton « Bloc-note ».
+
+---
+
+<a name="blocnotes"></a>
+
+## Bloc-notes
+
+Le bloc-notes permet de prendre des notes et/ou de copier des éléments de code.
+
+### Enregistrement et fermeture
+
+Pour enregistrer le bloc-notes et fermer la fenêtre en même temps, il suffit de tenir la touche ⌘ appuyée en cliquant sur le bouton d’enregistrement.
+
+### Déplacement des notes
+
+On peut déplacer les notes avec les boutons ⌘ + ◀️ et ⌘ + ▶️ qui permettent de choisir les autres notes.
