@@ -37,3 +37,19 @@ div.panneau div.div-shortcut span.shortcut {
   display: inline-block;
   width: 100px;
 }
+
+
+div#help-viewer-panneau {
+  position: absolute;
+  z-index:  10;
+  width:    1400px;
+  left:     calc(50% - 700px);
+  height:   auto;
+  top:      100px;
+  padding:  1em;
+  background-color: #444444;
+}
+
+div.buttons button.fleft {
+  margin-right: 20px;
+}

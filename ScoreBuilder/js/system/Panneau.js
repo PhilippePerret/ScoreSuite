@@ -27,6 +27,7 @@ class Panneau {
   static open(){
     this.panneau.classList.remove('hidden')
   }
+  static show(){return this.open()}
   static close(){
     this.panneau.classList.add('hidden')
   }

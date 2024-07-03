@@ -7,6 +7,7 @@
   <meta name="description" content="Numérotation des partitions" />
   <link rel="stylesheet" type="text/css" href="css/system/Finder.css">
   <link rel="stylesheet" type="text/css" href="css/system/common.css">
+  <link rel="stylesheet" type="text/css" href="css/system/Menu.css">
   <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-jquery-ui.structure.min.css">
   <link rel="stylesheet" type="text/css" href="js/system/jquery/jquery-jquery-ui.theme.min.css">
@@ -115,7 +116,7 @@ c d ees f g aes
   LE PANNEAU D’AIDE RAPIDE
 
  -->
-<div id="panneau-quick-aide" class="panneau">
+<div id="panneau-quick-aide" class="panneau hidden">
   <h3>Panneau d’aide rapide</h3>
   <section class="content">
     <fieldset>
@@ -135,17 +136,6 @@ c d ees f g aes
       <div class="div-shortcut">
         <span class="shortcut">⌃-b</span><span class="action">écrit 2 (blanche)</span>
       </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Description</legend>
-      <p>Score-builder a été conçu pour permettre de produire le plus rapidement possible des partitions pour les “Recueil (de partitions) sur Mesure”.</p>
-      <p>Pour ce faire, on trouve à gauche de l’écran une section permettant de visuation la partition originale (téléchargée sur ISMLP par exemple), au centre le champ pour définir le code mus de conception de la partition et à droite le résultat visuel du code mus.</p>
-      <p>Pour utiliser Score-builder, il suffit d’avoir dans un dossier :</p>
-      <ul>
-        <li>un fichier PDF de la partition originale portant le nom <strong>original_score.pdf</strong> — ou même un autre nom — (de préférence avec les <strong>mesures numérotées</strong>),</li>
-        <li>et… c’est tout. Tout le reste peut se faire automatiquement.</li>
-      </ul>
     </fieldset>
   </section>
 
@@ -235,8 +225,22 @@ c d ees f g aes
 
 
 <footer id="main">
-  <button id="btn-manual" class="fleft">Manuel</button>
-  <button id="btn-quick-help" class="fleft" onclick="QuickAide.open()">Quick Aide</button>
+  <menu-container class="fleft">    
+    <menu id="helper" data-method="openManuel">
+      <menu-item data-manuel="score-builder" data-updatable="true"
+        >Manuel Score-builder</menu-item>
+      <menu-item data-manuel="code-mus" data-updatable="true"
+        >Manuel code MUS
+      </menu-item>
+      <menu-item data-manuel="lilypond"
+        >Lilypond
+      </menu-item>
+      <menu-item data-manuel="quick-help" data-updatable="true"
+        >Aide rapide
+      </menu-item>
+      <menu-title>Manuel…</menu-title>
+    </menu>
+  </menu-container>
   <button id="btn-options" onclick="Options.open()">Options…</button>
   <button id="btn-backup" title="Cliquer sur ce bouton pour nettoyer le dossier des backups (n’en garder que 5)">Nettoyer les backups</button>
   <button id="btn-build" title="Construire la partition"><span class="content">Build & Save</span></button>
@@ -254,7 +258,7 @@ c d ees f g aes
 <script type="text/javascript" src="js/app/App/OriginalScore.js" defer></script>
 <script type="text/javascript" src="js/app/App/Snippet.js" defer></script>
 <script type="text/javascript" src="js/app/App/Options.js" defer></script>
-<script type="text/javascript" src="js/app/App/QuickAide.js" defer></script>
+<script type="text/javascript" src="js/app/App/Helper.js" defer></script>
 <script type="text/javascript" src="js/test/Test.js" defer></script>
 <script type="text/javascript" src="js/app/ready.js"></script>
 

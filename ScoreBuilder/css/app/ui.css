@@ -72,6 +72,13 @@ body > section {
   position:fixed;
   width: 33%;
 }
+
+body > section,
+body > div 
+{
+  z-index: 1;
+}
+
 section#section-original-score { left: 0 }
 section#section-mus-code { left: 33% }
 section#section-viewer { 

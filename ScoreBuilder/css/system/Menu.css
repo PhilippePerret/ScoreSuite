@@ -1,0 +1,57 @@
+/*
+  Pour gérer les menus personnalisés qu’on crée avec :
+
+  <menu>
+    <menu-title>Titre apparent quand fermé</menu-title>
+    <menu-item data-id="1">Premier menu</menu-item>
+    <menu-item data-id="2">Deuxième menu</menu-item>
+    etc.
+  </menu>
+*/
+menu-container {
+  position:relative;
+  display:inline-block;
+  margin-top:0;
+  font-size:20pt;
+  font-family:Arial,Helvetica,Geneva;
+}
+menu {
+  display:inline-block;
+  background-color: white;
+  border:2px solid #CCCCCC;
+  border-radius: 4px;
+  position:absolute;
+  text-align:left;
+  padding:0;
+  margin:0;
+}
+menu:not(hover) {
+  max-width:180px;
+}
+menu > menu-title {
+  display:inline-block;
+  text-align: center;
+  padding: 0.2em 1em;
+}
+
+menu > menu-item {
+  position:relative;
+  white-space:nowrap;
+  padding: 0.2em 1em;  
+}
+menu > menu-item:not(hover) {
+  display:none;
+}
+menu:hover {
+  max-width: 400px;
+  top: calc(-32px * 4) ;
+}
+menu:hover > menu-title { display: none }
+menu:hover > menu-item { 
+  display: inline-block;
+  width:calc(100% - 2em);
+}
+menu-item:hover {
+  background-color: #CCCCFF;
+  cursor: pointer;
+}

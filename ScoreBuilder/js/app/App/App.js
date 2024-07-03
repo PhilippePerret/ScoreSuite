@@ -9,7 +9,7 @@ class App {
   }
 
   static onLoad(wData){
-    console.log("Je remonte avec : ", wData)
+    // console.log("Je remonte avec : ", wData)
     MusCode.setMusCode(wData.mus_code)
     MusCode.mus_file_path = wData.folder + '/' + wData.mus_file
     OriginalScore.setPages(wData.folder, wData.original_score_pages)

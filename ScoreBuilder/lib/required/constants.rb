@@ -21,3 +21,5 @@ DYNAMIC_JS_CONSTANTES = [
   ['APP_FOLDER'     , APP_FOLDER],
   ['CURRENT_FOLDER' , CURRENT_FOLDER]
 ]
+
+SERVEUR_SSH = "icare@ssh-icare.alwaysdata.net"

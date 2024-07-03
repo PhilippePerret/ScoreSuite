@@ -9,7 +9,6 @@ class UI {
     window.resizeTo(screen.width, screen.height)
 
     listen(this.btnBuild, "click", this.onClickBuild.bind(this))
-    listen(this.btnManual,'click', this.onClickManual.bind(this))
     listen(this.btnBackup,'click', this.onClickBackup.bind(this))
 
   }
@@ -59,7 +58,6 @@ class UI {
 
   // Le bouton de construction
   static get btnBuild(){return DGet("#btn-build")}
-  static get btnManual(){return DGet("#btn-manual")}
   static get btnBackup(){return DGet("#btn-backup")}
 
   /**
