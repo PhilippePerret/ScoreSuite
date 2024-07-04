@@ -30,7 +30,7 @@ class << self
     extname = File.extname(fname)
     srcpath = File.expand_path(File.join(".", fname))
     affixe = File.basename(fname, extname)
-    dstpath = File.join(sys_numbered_systems,"#{affixe}N.#{extname}")
+    dstpath = File.join(sys_numbered_systems,"#{affixe}N#{extname}")
     File.delete(dstpath) if File.exist?(dstpath)
     numeros = []
     data["numbers"].each do |dnumber|
@@ -90,7 +90,6 @@ class << self
           File.basename(pth)
         end.sort.first
       end
-      puts "nextname = #{nextname.inspect}"
       nextpath = File.join(CURRENT_FOLDER, nextname)
       if File.exist?(nextpath)
         retour.merge!(next_system: nextname)
