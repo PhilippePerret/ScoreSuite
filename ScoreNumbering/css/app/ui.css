@@ -39,19 +39,17 @@ footer span.fleft {
   margin: 0.7em 8px 0;
 }
 
-button.btn-print {
+button#btn-print {
   width: 240px;
   disabled: false;
+  margin-right:6px;
 }
-button.btn-print.disabled {
+button#btn-print.disabled {
   disabled: true;
   background-color: #FF5555;
   border-color:red;
 }
-button.btn-print span.content {
-  color:black;
-}
-button.btn-print.disabled span.content {
+button#btn-print.disabled span.content {
   color:white;
   animation: blinker 1s linear infinite;
 }

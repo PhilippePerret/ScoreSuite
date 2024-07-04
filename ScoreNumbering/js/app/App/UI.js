@@ -53,9 +53,9 @@ class UI {
   static setBoutonNextName(){
     var btnName;
     if ( Score.current ) {
-      btnName = "Système suivant"
+      btnName = "Next System"
     } else {
-      btnName = "Premier système"
+      btnName = "First System"
     }
     this.btnNext.innerHTML = btnName
   }

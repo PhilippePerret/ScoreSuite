@@ -25,6 +25,11 @@ div.buttons button + button {
   margin-right: 12px;
 }
 
+button.main {
+  background: rgb(34,121,1);
+  background: linear-gradient(0deg, rgba(34,121,1,1) 0%, rgba(24,255,0,1) 77%);
+  color:white!important;
+}
 button.warn {
   background-color: #f54444;
   color:white;
