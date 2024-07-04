@@ -16,6 +16,22 @@ class UI {
     listen(this.btnOther, "click", this.onReqDropOther.bind(this))
     const btn = DGet('#btn-align-numeros')
     listen(btn, 'click', Score.alignAllNumbers.bind(Score))
+
+    this.setBoutonNextName()
+  }
+
+  /**
+  * Définit le nom du bouton suivant en fonction du fait qu’il y a
+  * un système affiché ou non.
+  */
+  static setBoutonNextName(){
+    var btnName;
+    if ( Score.current ) {
+      btnName = "Système suivant"
+    } else {
+      btnName = "Premier système"
+    }
+    this.btnNext.innerHTML = btnName
   }
 
   /**
@@ -30,7 +46,7 @@ class UI {
   * système suivant
   */
   static onNextSystem(){
-    WAA.send({class:"ScoreNumbering::Score", method:"get_next_system", data:{filename:Score.current.file.name}})
+    WAA.send({class:"ScoreNumbering::Score", method:"get_next_system", data:{filename:Score.current && Score.current.file.name}})
   }
   static onReturnNextSystem(waaData){
     if (waaData.ok) {

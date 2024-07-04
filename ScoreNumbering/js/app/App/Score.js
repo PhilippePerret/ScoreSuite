@@ -24,7 +24,15 @@ class Score {
     UI.score = score
     score.isValid()
       .then(score.display_and_wait.bind(score))
-      .catch(err => erreur(err))    
+      .catch(err => {
+        this.current = null
+        this.afterDisplay()
+        erreur(err)
+      })
+  }
+  
+  static afterDisplay(){
+    UI.setBoutonNextName()    
   }
 
   static prepare(){
@@ -68,6 +76,7 @@ class Score {
     UI.showImager()
     this.field.src = `system.jpg?${this.file.name}`
     UI.imageName = this.file.name
+    Score.afterDisplay()
     message(`Double-cliquer à l’endroit voulu pour placer le numéro ${Score.currentNumero()}.`)
   }
 

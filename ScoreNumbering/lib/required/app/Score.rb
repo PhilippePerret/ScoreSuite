@@ -67,19 +67,31 @@ class << self
   def get_next_system(data)
     retour = {ok:true, msg: nil}
     begin
+      # On prend le nom du fichier courant (pour obtenir l’index du
+      # fichier courant) — ce fichier peut ne pas exister (au charge-
+      # ment de l’application)
       fname = data["filename"]
-      raise if !fname || fname.empty?
-      raise "Ne contient pas de chiffre…" unless fname.match?(REG_SYSTEM_NAME)
-      pref, nombre, suf = fname.scan(REG_SYSTEM_NAME).to_a[0]
-      len_nombre = nombre.length
-      nombre = nombre.to_i
-      next_nombre = nombre + 1
-      nextname = "#{pref}#{next_nombre}#{suf}"
-      nextpath = File.join(CURRENT_FOLDER, nextname)
-      unless File.exist?(nextpath)
-        nextname = "#{pref}#{next_nombre.to_s.rjust(len_nombre,'0')}#{suf}"
+      # => [String] ou NilClass
+      unless fname.nil? || fname.empty?
+        raise "Ne contient pas de chiffre…" unless fname.match?(REG_SYSTEM_NAME)
+        pref, nombre, suf = fname.scan(REG_SYSTEM_NAME).to_a[0]
+        len_nombre = nombre.length
+        nombre = nombre.to_i
+        next_nombre = nombre + 1
+        nextname = "#{pref}#{next_nombre}#{suf}"
         nextpath = File.join(CURRENT_FOLDER, nextname)
+        unless File.exist?(nextpath)
+          nextname = "#{pref}#{next_nombre.to_s.rjust(len_nombre,'0')}#{suf}"
+        end
+      else
+        # <= Quand aucun fichier n’a été transmis
+        # => On essaie de trouver le premier fichier possible
+        nextname = Dir["#{CURRENT_FOLDER}/*.{jpg,jpeg,png,tiff}"].map do |pth|
+          File.basename(pth)
+        end.sort.first
       end
+      puts "nextname = #{nextname.inspect}"
+      nextpath = File.join(CURRENT_FOLDER, nextname)
       if File.exist?(nextpath)
         retour.merge!(next_system: nextname)
       else
