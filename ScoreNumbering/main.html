@@ -67,10 +67,16 @@
     title="En cliquant sur ce bouton, tous les numéros de mesure seront 
            alignés sur le numéro le plus haut pour un aspect optimal.
            Si la touche META est pressée, on aligne sur le numéro le 
-           plus bas">Align-all</button>
-  <span class="text">Prochain numéro</span> <input type="text" id="next-numero" value="1" style="width:60px;">
+           plus bas.
+           On peut régler la tolérance ci-contre. Deux numéros se trouvant
+           à cette distance ou moins sont considérés sur la même ligne.">Align-all</button>
+  <span class="text fleft">Tolérance</span>
+  <input 
+    type="text" 
+    id="align-tolerance" value="0" class="small fleft" title="Tolérance pour l’alignement des numéros.">
+  <span class="text">Prochain numéro</span> <input type="text" id="next-numero" value="1" class="small">
   <span class="text">V Adjust</span> 
-  <input type="text" id="vertical-adjust" value="0" style="width:60px;">
+  <input type="text" id="vertical-adjust" value="0" class="small">
   <select id="font-family">
     <option>Arial</option>
     <option selected="SELECTED">Helvetica</option>

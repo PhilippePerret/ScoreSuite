@@ -154,6 +154,7 @@ class Score {
   * l’alignement par le bas.
   */
   alignAllNumeros(alignOnBottom){
+    const tolerance = Math.round(UI.alignTolerance / 2)
     /**
     * TEMPS 1 : Grouper les numéros par proximité
     */
@@ -175,7 +176,7 @@ class Score {
       }
       if ( groupHasNotBeenFound ) {
         let top = numero.offsetTop
-        groupes.push({numeros: [numero], top: top, min: top-20, max: top+20 })
+        groupes.push({numeros: [numero], top: top, min: top-tolerance, max: top+tolerance })
       }
     })
     // console.log("groupes = ", groupes)

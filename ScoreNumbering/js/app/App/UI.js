@@ -1,5 +1,9 @@
 'use strict';
 
+// Tolérance verticale pour considérer que deux numéros sont sur la
+// même ligne (peut être rectifié dans l’interface)
+const TOLERANCE_VALIGNMENT = 50;
+
 class UI {
   static prepare(){
     
@@ -17,9 +21,31 @@ class UI {
     const btn = DGet('#btn-align-numeros')
     listen(btn, 'click', Score.alignAllNumbers.bind(Score))
 
+    this.alignTolerance = String(TOLERANCE_VALIGNMENT)
+
     this.setBoutonNextName()
+
+    // Dès qu’on focus dans un input-text, il doit se sélectionner
+    document.querySelectorAll('input[type="text"]').forEach( input => {
+      listen(input,'focus', this.onFocus.bind(this, input))
+    })
   }
 
+  static onFocus(field){
+    field.select()
+  }
+
+  // La tolérance pour l’alignement des numéros. Deux numéros à cette
+  // distance ou moins sont considérés sur la même ligne.
+  static get alignTolerance(){
+    return this.alignToleranceField.value
+  }
+  static set alignTolerance(v){
+    this.alignToleranceField.value = v
+  }
+  static get alignToleranceField(){
+    return this._aligntolefield || (this._aligntolefield = DGet('input#align-tolerance'))
+  }
   /**
   * Définit le nom du bouton suivant en fonction du fait qu’il y a
   * un système affiché ou non.

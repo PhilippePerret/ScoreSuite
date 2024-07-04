@@ -27,6 +27,18 @@ footer#main button {
 }
 footer span.text {color:white}
 
+footer input[type="text"] { 
+  text-align: center;
+  font-size: 16pt;
+  padding:8.3px;
+}
+footer input[type="text"].small {
+  width: 40px;
+}
+footer span.fleft {
+  margin: 0.7em 8px 0;
+}
+
 button.btn-print {
   width: 240px;
   disabled: false;
