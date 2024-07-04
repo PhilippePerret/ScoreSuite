@@ -88,6 +88,13 @@ class Waa {
    */
   receive(data_message){
     // return false
+
+    // Nouveau traitement avec CGI.escape pour envoyer la donnée
+    console.log("Message reçu par WAA.receive:", data_message)
+    data_message = data_message.replace(/\+/g,' ')
+    data_message = decodeURIComponent(data_message)
+    console.log("Message après décodage:", data_message)
+
     try {
       try {
         data_message = JSON.parse(data_message)  
@@ -99,6 +106,13 @@ class Waa {
       const err_msg = "Une erreur fatale est survenue. Consulter la console pour y remédier."
       erreur(err_msg)
       console.error("Impossible de dejissonner (JSON.parse) le message de retour : ", data_message, err)
+      // On essaie de localiser précisément l’erreur
+      var found, column, extrait ;
+      if ( found = String(err).match(/JSON data at line 1 column ([0-9]+)/) ){
+        column = Number(found[1])
+        extrait = data_message.substr(column - 30, 60)
+        console.error("L’erreur semble se trouver vers : ", extrait)
+      }
       return false
     }
 

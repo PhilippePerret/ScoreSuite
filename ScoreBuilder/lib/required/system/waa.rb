@@ -53,10 +53,15 @@ class Waa
     else
       puts "data est un string… Il ne vaudrait mieux pas.".orange
     end
-    data = data.gsub(/"/,'\\"')
-    data = data.gsub(/'/,'\\\'')
-    # data = data.gsub(/\`/,'\\\\`')
-    data = data.gsub(/\\n/,'\\\\\\n')
+
+
+    # data = data.gsub(/"/,'\\"')
+    # data = data.gsub(/'/,'\\\'')
+    # data = data.gsub(/\\n/,'\\\\\\n')
+
+    # Essai pour mieux passer (en supprimant les 3 lignes précédentes)
+    data = CGI.escape(data)
+
     begin
       resultat = driver.execute_script('return WAA.receive("'+data+'")')
     rescue Exception => e
@@ -213,7 +218,12 @@ class Message
   def method_args;  @method_args  ||= data['data']          end
 
   def data
-    @data ||= JSON.parse(@raw_data)
+    @data ||= begin
+      JSON.parse(@raw_data)
+    rescue Exception => e
+      puts "Problème avec :\n#{@raw_data}"
+      puts e.message.rouge
+    end
   end
 
 end #/class Message
