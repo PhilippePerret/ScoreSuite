@@ -13,11 +13,11 @@
 # --- Accord de C ---
 
 alb_C=
-c16 g' e g
+c,16 g' e g
 
 # sur basse 3ce
 alb_C/e=
-e16 c' g c
+e,16 c' g c
 
 # sur basse 5
 alb_C/g=
@@ -30,7 +30,7 @@ g16 e' c e
 # --- Accord Cm ---
 
 alb_Cm=
-c16 g' ees g
+c,16 g' ees g
 
 alb_Cm/3=
 ees,16 c’ g c’
@@ -70,10 +70,10 @@ d,16 c’ a c
 
 # Accord de D7 sur a
 alb_D7/a=
-a16 d c d
+a,16 d c d
 
 alb_D7/5=
-a16 d c d
+a,16 d c d
 
 # --- Accord D# 5dim ---
 
@@ -82,7 +82,7 @@ dis,16 a’ fis a
 
 # sur 3ce
 alb_Dd5dim/3=
-fis’16 dis’ a dis
+fis16 dis’ a dis
 
 # sur 5te
 alb_Dd5dim/5=
@@ -102,7 +102,7 @@ g,16 ees’ bes ees
 
 # Em sur basse G
 alb_Cg=
-g16 e' c e
+g,16 e' c e
 
 alb_Em=
 e,16 b' g b
@@ -213,7 +213,7 @@ g,16 e’ cis e
 # --- Accord Am ---
 
 alb_Am=
-a16 e’ c e
+a,16 e’ c e
 
 alb_Am/c=
 c,16 a’ e a
