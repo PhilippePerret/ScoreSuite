@@ -47,8 +47,9 @@ class ScoreViewer {
         vignette.unset()
       }
     }
-    // On affiche la dernière
-    lastFilledVignette.affiche()
+    // On affiche la dernière (seulement si elle a été envoyée — en
+    // cas de problème, il se peut qu’elle ne le soit pas)
+    lastFilledVignette && lastFilledVignette.affiche()
   }
 
 
