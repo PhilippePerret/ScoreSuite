@@ -13,7 +13,18 @@ class << self
   def check_current_folder
     analyzer = FolderAnalyzer.new(current_folder)
     unless analyzer.valid?
-      return Q.yes?("Le dossier courant n’est pas valide… Dois-je poursuivre ?".jaune)
+      puts <<~TEXT.jaune
+      Le dossier courant ne semble pas valide…
+
+      Si vous avez modifié de force un élément comme le nom du dossier,
+      le nom du fichier .mus, vous pouvez détruire le fichier :
+          
+          score_builder.yaml
+
+      … pour forcer la prise en compte de ces changements.
+      
+      TEXT
+      return Q.yes?("Dois-je poursuivre ?".jaune)
     else
       return true
     end

@@ -37,7 +37,24 @@ class BlocNotes extends Panneau {
     } else {
       this.btnPrevNote.classList.remove('invisible')
     }
-    this.setTitre()
+    this.showNoteInMenuTitres()
+    this.setTitre() // p.e. affiche le nombre de notes
+  }
+
+  static updateMenuTitres(){
+    this.menuTitres.innerHTML = ""
+    for (var inote = 0, len = this.notes.length; inote < len; ++inote){
+      const note    = this.notes[inote].trim()
+      const titre   = note.split("\n")[0]
+      const option  = DCreate('OPTION', {text: titre, value: String(inote + 1)})
+      this.menuTitres.appendChild(option)
+    }
+  }
+  static showNoteInMenuTitres(){
+    this.menuTitres.value = this.current_index
+  }
+  static get menuTitres(){
+    return this._menutitres || (this._menutitres = DGet('select#blocknotes-menu-titres'))
   }
 
   static setTitre(){
@@ -55,8 +72,9 @@ class BlocNotes extends Panneau {
     if (wdata.ok){
       this.notes = []
       wdata.notes.forEach( note => this.notes.push(decodeURIComponent(note.replace(/\+/g,' '))))      
+      this.updateMenuTitres()
       this.showNoteByIndex(1)
-      this.setTitre()
+      this.updateUI()
     } else {
       erreur(wdata.error)
     }
@@ -70,6 +88,7 @@ class BlocNotes extends Panneau {
     listen(this.btnPrevNote, 'click',  this.onClickBtnOtherNote.bind(this,-1))
     listen(this.btnNextNote, 'click',  this.onClickBtnOtherNote.bind(this,1))
 
+    listen(this.menuTitres, 'change', this.onChooseTitreNote.bind(this))
     $(this.panneau).draggable()
   }
 
@@ -93,19 +112,18 @@ class BlocNotes extends Panneau {
   // === Event Methods ===
 
 
+  // Quand on choisit un titre de note dans le menu
+  static onChooseTitreNote(){
+    this.showNoteByIndex(this.menuTitres.value)
+  }
+
   static onClickBtnOtherNote(plus, ev){
     // @note : avec la touche META, on peut déplacer une note au 
     // lieu de passer à la suivante
     const pourDeplacement = ev.metaKey == true
-    let note;
     stopEvent(ev)
     if ( pourDeplacement) {
-      // Dans tous les cas, on prend la note
-      note = this.notes.splice(this.current_index - 1, 1)
-      let new_index = this.current_index - 1 + plus
-      this.notes.splice(new_index, 0, note)
-      this.current_index = new_index + 1
-      this.save(false)
+      this.moveCurrentNote(this.current_index + plus)
     } else {      
       this.current_index += plus // 1 ou -1
       this.showNoteByIndex(this.current_index)
@@ -113,8 +131,44 @@ class BlocNotes extends Panneau {
     return false
   }
 
+  /**
+  * Méthode appelée quand on META-clique sur une flèche pour 
+  * déplacer la note vers l’index to_index.
+  * 
+  * @note 
+  *   La difficulté, pour les déplacements, est toujours la même :
+  *   le traitement est différent suivant que la note doit être 
+  *   placée après ou avant son index actuel.
+  */
+  static moveCurrentNote(to_index){
+    // On prend la note à déplacer
+    const note = this.notes[this.current_index - 1]
+    // On remplace sa valeur par null
+    this.notes[this.current_index - 1] = null
+    // L’index réel 0-start
+    const toReadIndex = to_index - 1
+    var newListe = []
+    for (var i = 0, len = this.notes.length; i < len; ++i){
+      const curn = this.notes[i]
+      if ( curn == null ) {
+        // passer la note à déplacer
+        continue
+      } else if ( i == toReadIndex ) {
+        // L’endroit où il faut mettre la note
+        if ( to_index > this.current_index ) { newListe.push(curn) }
+        newListe.push(note)
+        if ( to_index < this.current_index ) { newListe.push(curn) }
+      } else {
+        // On ajoute toujours l’élément courant
+        newListe.push(curn)
+      }
+    }
+    this.notes = newListe
+    this.current_index = Number(to_index)
+    this.save(false)
+  }
+
   static onOpen(){
-    if ( ! this.notesLoaded )
     this.notesLoaded || this.loadNotes()
   }
 
@@ -146,6 +200,7 @@ class BlocNotes extends Panneau {
 
   static onSavedNotes(wdata){
     if (wdata.ok) {
+      this.updateMenuTitres()
       if ( wdata.closeOnSave ) { 
         this.updateUI() // pour la prochaine ouverture
         this.close() 

@@ -77,7 +77,7 @@ div#panneau-blocnotes nav#nav-in-notes {
 div#panneau-blocnotes div#blocknotes-reader,
 div#panneau-blocnotes textarea#blocknotes-editor
 {
-  height: calc(660px - 2em);
+  height: calc(620px - 2em);
 }
 div#panneau-blocnotes div#blocknotes-reader {
   background-color:white;
@@ -90,4 +90,11 @@ div#panneau-blocnotes textarea#blocknotes-editor {
   resize:none;
   font-size: 20pt;
   font-family:inherit;
+}
+
+div#panneau-blocnotes div#blocknotes-menu-container {
+  margin-bottom: 12px;
+}
+div#panneau-blocnotes div#blocknotes-menu-container select {
+  max-width: 100%;
 }
