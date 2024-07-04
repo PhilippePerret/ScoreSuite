@@ -1,6 +1,7 @@
 'use strict';
 
 class UI {
+
   static prepare(){
 
     let btn;

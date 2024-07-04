@@ -235,11 +235,14 @@ def header
   oddHeaderMarkup=##f
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
+
+  % Essai d’espacement entre les systèmes si nécessaire
+  #{option_vspace_between_systems}
 }
 
 \\layout {
   \\context {
-    #{option_staves_spacing}
+    #{option_staves_vspace}
     #{option_proximity}
     #{option_no_numero_mesure}
   }
@@ -249,6 +252,8 @@ def header
   LILYPOND
 end
 #/header
+
+
 
 def code_extraction_fragment
   return ''
@@ -270,12 +275,27 @@ def footer
 end
 #/footer
 
-def option_staves_spacing
-  if options[:staves_spacing]
+# Espacement entre les systèmes
+# (pour l’espace entre les portées, cf. ci-dessous)
+def option_vspace_between_systems
+  return "" unless options[:systems_vspace]
+  <<~TEXT
+  system-system-spacing = #'(
+    (basic-distance . #{options[:systems_vspace]})
+    (minimum-distance . #{options[:systems_vspace]})
+    (padding . 1)
+    (stretchability . 10))
+  TEXT
+end
+
+# Espacement entre les portées
+# (pour l’espacement entre les systèmes, cf. ci-dessus)
+def option_staves_vspace
+  if options[:staves_vspace]
     <<-TEXT
     \\Staff
       \\override VerticalAxisGroup
-      .staff-staff-spacing.basic-distance = #{options[:staves_spacing]}
+      .staff-staff-spacing.basic-distance = #{options[:staves_vspace]}
     TEXT
   else "" end
 end
