@@ -45,7 +45,7 @@ class BlocNotes extends Panneau {
     this.menuTitres.innerHTML = ""
     for (var inote = 0, len = this.notes.length; inote < len; ++inote){
       const note    = this.notes[inote].trim()
-      const titre   = note.split("\n")[0]
+      const titre   = note.split("\n")[0].replace(/#/g,'').trim()
       const option  = DCreate('OPTION', {text: titre, value: String(inote + 1)})
       this.menuTitres.appendChild(option)
     }
@@ -102,11 +102,10 @@ class BlocNotes extends Panneau {
   static showNoteByIndex(index) {
     this.toggleMode(false)
     const note = this.notes[index - 1]
-    this.reader.innerHTML = note
+    this.reader.innerHTML = this.formateNote(note)
     this.current_index = Number(index)
     this.updateUI()
   }
-
 
 
   // === Event Methods ===
@@ -364,4 +363,26 @@ class BlocNotes extends Panneau {
   static get panneau(){
     return this._panneau || (this._panneau = DGet('#panneau-blocnotes'))
   }
+
+
+
+
+  static formateNote(note){
+    const str = []
+    note.split("\n\n").forEach(line => {
+      line = line.replace(/^(#{1,7})(.+)$/, (tout, mark, titre) => {
+        mark = mark.length
+        return `<h${mark}>${titre.trim()}</h${mark}>`
+      })
+      line = line.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      line = line.replace(/\*(.+?)\*/g, '<em>$1</em>')
+
+      str.push(`<p>${line}</p>`)
+    })
+    return str.join('')
+  }
+
+
+
+
 }
