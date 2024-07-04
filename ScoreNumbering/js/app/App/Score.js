@@ -57,7 +57,6 @@ class Score {
     // console.log("Data :", this.data)
     Score.current = this
     this.numeros = []
-    this.verticalAdjustment = 0
   }
 
   /**
@@ -72,8 +71,48 @@ class Score {
     message(`Double-cliquer à l’endroit voulu pour placer le numéro ${Score.currentNumero()}.`)
   }
 
+
   /**
-  * Appelé par le bouton pour imprimer les numéros
+  * Méthode appelée pour ajouter un numéro de mesure à data.x et
+  * data.y
+  */
+  addMesureAt(data){
+    // Rectification
+    data.y = data.y - 40
+    // Le numéro
+    const numero = Score.nextNumero()
+    var obj = DCreate("DIV", {
+      text: numero, 
+      "data-numero": numero,
+      "data-x": data.x,
+      "data-y": data.y,
+      class:"numero-mesure", 
+      style:this.mesureStyle(data)
+    })
+    UI.imager.appendChild(obj)
+    // Après avoir inscrit le numéro, on rectifie pour que son centre
+    // soit bien au clic de souris
+    this.rectifPositionMesure(obj)
+    // On doit pouvoir déplacer le numéro
+    $(obj).draggable()
+    this.numeros.push(obj) // plus tard, une instance
+  }
+
+  rectifPositionMesure(mes){
+    const rectifH = mes.offsetHeight / 2
+    const rectifW = mes.offsetWidth / 2
+    const newTop  = mes.offsetTop - rectifH
+    const newLeft = mes.offsetLeft - rectifW
+    // console.info("mes.offsetTop = %s - Rectif = %s - New top = %s", mes.offsetTop, rectifH, newTop)
+    mes.style.top   = px(newTop)
+    mes.style.left  = px(newLeft)
+    mes.dataset.x = newLeft
+    mes.dataset.y = newTop
+  }
+
+
+  /**
+  * Appelé par le bouton pour graver les numéros sur la partition
   */
   printNumbers(){
     // On prépare la donnée
@@ -82,7 +121,7 @@ class Score {
       dataNumbers.push({
           numero:   numero.dataset.numero
         , x:        numero.offsetLeft
-        , y:        numero.offsetTop + 19 - this.verticalAdjustment
+        , y:        numero.offsetTop + 19 + UI.verticalAdjustment
       })
     })
     WAA.send({class:"ScoreNumbering::Score", method:"print_numbers", data:{filename:this.file.name, numbers:dataNumbers, style:{fonte:Styler.getFontFamily(), size:Styler.getFontSize(), color:Styler.getFontColor()}}})
@@ -159,38 +198,7 @@ class Score {
     message("Tous les numéros ont été alignés sur le plus haut.")
   }
 
-  /**
-   * Méthode appelée quand l’utilisateur modifie l’ajustement 
-   * vertical des numéros (verticalAdjustment
-   * 
-   */
-  positionneScorePerVerticalAdjustment(){
-    // this.system.style.marginTop = `${this.verticalAdjustment}px`
-  }
 
-
-  /**
-  * Méthode appelée pour ajouter un numéro de mesure à data.x et
-  * data.y
-  */
-  addMesureAt(data){
-    // Rectification
-    data.y = data.y - 54
-    data.x = data.x - 6
-    // Le numéro
-    const numero = Score.nextNumero()
-    var obj = DCreate("DIV", {
-      text: numero, 
-      "data-numero": numero,
-      "data-x": data.x,
-      "data-y": data.y,
-      class:"numero-mesure", 
-      style:this.mesureStyle(data)
-    })
-    UI.imager.appendChild(obj)
-    $(obj).draggable()
-    this.numeros.push(obj) // plus tard, une instance
-  }
   // @return Le style du numéro
   mesureStyle(data){
     var styles = []

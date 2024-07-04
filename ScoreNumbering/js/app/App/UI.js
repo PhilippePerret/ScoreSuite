@@ -14,7 +14,6 @@ class UI {
     listen(this.btnPrint, "click", this.onPrint.bind(this))
     listen(this.btnNext,  "click", this.onNextSystem.bind(this))
     listen(this.btnOther, "click", this.onReqDropOther.bind(this))
-    listen(this.verticalAlignField,'change', this.onChangeVerticalAdjust.bind(this))
     const btn = DGet('#btn-align-numeros')
     listen(btn, 'click', Score.alignAllNumbers.bind(Score))
   }
@@ -44,13 +43,10 @@ class UI {
     }
   }
 
-  /* Méthode appelée quand on change l’ajustement vertical */
-  static onChangeVerticalAdjust(){
+  static get verticalAdjustment(){
     let vda = Number(this.verticalAlignField.value);
     if ( isNaN(vda) ) { vda = 0  }
-    Score.current.verticalAdjustment = vda
-    Score.current.positionneScorePerVerticalAdjustment()
-    message("L’ajustement vertical a été réglé.")
+    return vda
   }
 
   static onReqDropOther(){
