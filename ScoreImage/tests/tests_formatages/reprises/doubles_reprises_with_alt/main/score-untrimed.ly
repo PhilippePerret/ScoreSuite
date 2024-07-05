@@ -30,7 +30,7 @@
   \clef "treble"
   
   
-   c4 d e f  \repeat volta 2 {  c4 d e f  \alternative { \volta 1 { e2 d } \volta 2 { d2 c } } }  b c 
+   \repeat volta 2 { c d e f  \alternative { \volta 1 { g f e d } \volta 2 { g a b c } } }  \repeat volta 2 {  d, e fis g  \alternative { \volta 1 { a g fis e } \volta 2 { a b cis d } } }  e,1 
 }
 >>
 

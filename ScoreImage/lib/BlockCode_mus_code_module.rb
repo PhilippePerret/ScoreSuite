@@ -61,7 +61,7 @@ def traite_reprises_avec_alternatives(line)
   while true # Tant qu’il y a des reprises avec alternatives
     # <=== TODO Test plusieurs reprises avec alternatives
     break if not(line.match?(/\|1/))
-    puts "La ligne #{line.inspect} passe.".bleu
+    # puts "La ligne #{line.inspect} passe.".bleu
     # On tâtonne :
     # On cherche tous les segments de répétition pouvant avoir
     # une alternative. Un tel segment de répétition possède forcément
@@ -72,9 +72,14 @@ def traite_reprises_avec_alternatives(line)
       # Fin de la dernière alternative
       offset = line.index(REG_END_LAST_ALT, offset_end_reprise)
       seg = line[0...offset].strip
+      
       # Le bout de muscode après
-      next_seg = (line[offset+2..] || "").strip
-      puts "next_seg = #{next_seg.inspect}".bleu
+      next_seg = (line[offset..] || "").strip
+      # On supprime ses éventuels ’||’ au début (sinon, il faut les
+      # garder car c’est ’|:’ ou ’|.’)
+      next_seg = next_seg[2..] if next_seg.start_with?('||')
+      
+      # puts "next_seg = #{next_seg.inspect}".bleu
       # Noter que la dernière alternative peut avoir + d’alternatives,
       # quand on remonte tout au début. On peut avoir :
       # |: ... |1 ... :|2 ... |3 ... || <====== TODO TESTER
@@ -82,7 +87,7 @@ def traite_reprises_avec_alternatives(line)
       # Le bout de muscode avant
       previous_seg = offset > 0 ? seg[0...offset] : ""
       seg = seg[offset..-1]
-      puts "Segment avec reprise : #{seg.inspect}"
+      # puts "Segment avec reprise : #{seg.inspect}"
 
       segs = seg.split(/(\:?\|)([0-9,]+)/)
       # => [debut, barre, numéro, note alt, barre, num, notes etc.]
@@ -94,7 +99,15 @@ def traite_reprises_avec_alternatives(line)
 
       # Le dernier élément peut contenir les deux signes qui 
       # mettent fin à la dernière alternative, ’||’, ’|:’ ou ’|.’
-      segs[-1] = segs[-1][0..-3] if segs[-1].match?(/#{REG_END_LAST_ALT}$/)
+      # (NON, JE CROIS QUE ÇA N’ARRIVE PLUS)
+      if segs[-1].match?(/#{REG_END_LAST_ALT}$/)
+        two_last_chars = segs[-1][-2..-1]
+        # Il faut les remettre dans next_seg si c’est ’|:’ ou ’|.’
+        if ['|.','|:'].include?(two_last_chars)
+          next_seg = "#{two_last_chars} #{next_seg}"
+        end
+        segs[-1] = segs[-1][0..-3] 
+      end
 
       segs = segs.each_slice(3).to_a
       # puts "segs = #{segs.inspect}".bleu
@@ -113,12 +126,12 @@ def traite_reprises_avec_alternatives(line)
       seg_formated = "\\repeat volta #{nb_reprises} { #{notes_repeat} \\alternative { #{alternatives} } }"
       line = "#{previous_seg} #{seg_formated} #{next_seg}"
 
-      puts "line à la fin : #{line.inspect}".bleu
+      # puts "line à la fin : #{line.inspect}".bleu
     else
       raise "La ligne #{line} est malformatée. Elle devrait contenir une fin de répétition avec alternative : ’:|<x>’."
     end
   end #/ while
-  # raise
+  # raise 
   line  
 end
 REG_FIN_REPETITION_WITH_ALT = /\:\|([0-9]+)/.freeze
