@@ -1,0 +1,53 @@
+div#panneau-options {}
+div#panneau-options label, span.label {
+  font-family: Arial Narrow;
+}
+div.panneau fieldset.options-container {
+  display:block;
+  border:1px solid #999999;
+  border-radius: 4px;
+  margin:12px;
+  padding:0.5em;
+}
+
+fieldset > div {
+  margin-top:0.5em;
+}
+
+label + select {
+  margin-left: 1em;
+}
+input[type="checkbox"]+label {
+  margin-left: 0.3em;
+}
+div > label:nth-child(1){
+  /*  color:red;*/
+  display:inline-block;
+  width: 80px;
+}
+
+div#staves-container {
+
+}
+div#staves-container div.staff {
+  
+}
+div#staves-container div.staff input.staff-name {
+  width: 50%;
+}
+div#staves-container div.staff select.staff-cle {
+  text-align:center;
+}
+
+/* Spécialement pour les lignes qui contiennent :
+    un checkbox
+    + un label
+    + un input text (petit)
+*/
+div#panneau-options div.cb-label-intext {
+
+}
+div#panneau-options div.cb-label-intext label {
+  display:inline-block;
+  width: 255px;
+}

@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="css/app/main.css">
   <link rel="stylesheet" type="text/css" href="css/app/ui.css">
   <link rel="stylesheet" type="text/css" href="css/app/panneau.css">
+  <link rel="stylesheet" type="text/css" href="css/app/options.css">
 
 
   <!-- Scripts système -->
@@ -186,33 +187,22 @@ c d ees f g aes
 <div id="panneau-options" class="panneau">
   <h3>Options</h3>
   <section class="content">
-    <fieldset class="options-container">
-      <legend>Options diverses</legend>
-      <div>
-        <input type="checkbox" id="option_barres" CHECKED><label for="option_barres">Barres de mesures</label>
-      </div>
-      <div>
-        <input type="checkbox" id="option_keep"><label for="option_keep">Garder le fichier .ly</label>
-      </div>
-    </fieldset>
+
     
     <fieldset id="tune-container" class="options-container">
-      <legend>Tonalité</legend>
-      <select id="option_tune-note"><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>A</option><option>B</option></select>
-      <select id="option_tune-alte"><option value="">-</option><option value="d">#</option><option value="b">b</option></select>
-      <select id="option_tune-mode"><option value="">majeur</option><option value="m">mineur</option></select>
-    </fieldset>
+      <div>        
+        <label>Armure</label><select id="option_tune-note"><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>A</option><option>B</option></select>
+        <select id="option_tune-alte"><option value="">-</option><option value="d">#</option><option value="b">b</option></select>
+        <select id="option_tune-mode"><option value="">majeur</option><option value="m">mineur</option></select>
+      </div>
+      <div>        
+        <label>Métrique</label><select id="option_time-deno"><option>4</option><option>3</option><option>6</option><option>2</option><option>8</option><option>16</option></select>
+        <span>/</span>
+        <select id="option_time-divi"><option>4</option><option>8</option><option>2</option><option>16</option><option>1</option></select>
+      </div>
 
-    <fieldset id="time-container" class="options-container">
-      <legend>Métrique</legend>
-      <select id="option_time-deno"><option>4</option><option>3</option><option>6</option><option>2</option><option>8</option><option>16</option></select>
-      <span>/</span>
-      <select id="option_time-divi"><option>4</option><option>8</option><option>2</option><option>16</option><option>1</option></select>
-    </fieldset>
-
-    <fieldset id="format-container" class="options-container">
-      <legend>Format de page</legend>
-      <select id="option_format">
+      <div>
+        <label>Page</label><select id="option_format">
         <option value="lettre">lettre</option>
         <option value="a4">A4</option>
         <option value="a3">A3</option>
@@ -222,9 +212,11 @@ c d ees f g aes
         <option value="b5">B5</option>
         <option value="b4">B4</option>
       </select>
+      </div>
     </fieldset>
 
-    <fieldset id="staves-container" class="options-container">
+      
+    <fieldset id="fs-staves-container" class="options-container">
       <legend>Systèmes</legend>
       <select id="option_systeme">
         <option value="---">---</option>
@@ -241,25 +233,32 @@ c d ees f g aes
         <option value="7">7 portées</option>
         <option value="8">8 portées</option>
       </select>
-      <div id="container-systemes" class="hidden">
-        <div class="staff">
-          <input type="text" class="staff-cle staff-value" value="G">
-          <input type="text" class="staff-name staff-value" value="Flûte">
-        </div>
+      <div id="staves-container" class="hidden">
       </div>
-      <div style="margin-top:0.5em;">
+      <div style="margin-top:0.5em;" class="cb-label-intext">
         <input type="checkbox" id="cb-systems-vspace">
         <label for="cb-systems-vspace" title="Espacement vertical entre tous les systèmes. 
         La valeur par défaut est 9.">Espace-V entre systèmes</label>
         <input type="text" id="systems-vspace" value="" disabled style="width:40px;text-align:center;">
       </div>
-      <div style="margin-top:0.1em;">
+      <div style="margin-top:0.1em;" class="cb-label-intext">
         <input type="checkbox" id="cb-staves-vspace">
         <label for="cb-staves-vspace" title="Espacement vertical entre les portées. 
         La valeur par défaut est 9.">Espace-V entre portées</label>
         <input type="text" id="staves-vspace" value="" disabled style="width:40px;text-align:center;">
       </div>
     </fieldset>
+
+    <fieldset class="options-container">
+      <legend>Options diverses</legend>
+      <div>
+        <input type="checkbox" id="option_barres" CHECKED><label for="option_barres">Barres de mesures</label>
+      </div>
+      <div>
+        <input type="checkbox" id="option_keep"><label for="option_keep">Garder le fichier .ly</label>
+      </div>
+    </fieldset>
+
   </section>
   <div class="buttons right">
     <button class="btn-close">Fermer</button>

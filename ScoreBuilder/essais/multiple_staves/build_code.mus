@@ -1,4 +1,6 @@
---piano
+--staves 4
+--staves_keys F, F, F, G
+--staves_names Prima, Secund, Trio, Quatro
 --barres
 --tune Eb
 --time 3/4

@@ -65,6 +65,8 @@ function DCreate(tagName,attrs){
         if ( !Array.isArray(value) ) value = [value]
         value.forEach(obj => o.appendChild(obj))
         break;
+      case 'selected':
+        o.selected = value;
       case 'css':
       case 'class':
         o.className = value;

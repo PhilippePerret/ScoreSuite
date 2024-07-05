@@ -20,14 +20,6 @@ div.panneau section.content {
   overflow-y: auto;
 }
 
-div.panneau fieldset.options-container {
-  display:block;
-  border:1px solid #999999;
-  border-radius: 4px;
-  margin:12px;
-  padding:1em;
-}
-
 
 div.panneau#panneau-quick-aide {
   width: 680px;

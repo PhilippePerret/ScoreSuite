@@ -212,7 +212,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 
 On définit les portées multiples à l’aide de `--staves <nombre de portées>`, `--staves_keys` (pour les clés) et `--staves_names` (pour les noms).
 
-On doit les définir de bas en haut. C’est-à-dire que si on veut un violon au-dessus d’un piano, on doit définir :
+On doit les définir **de bas en haut**. C’est-à-dire que si on veut un violon au-dessus d’un piano, on doit définir :
 
 ~~~
 --staves 3

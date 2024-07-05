@@ -13,11 +13,30 @@ class Options extends Panneau {
   }
 
   static observe(){
+    // Quand on change de système, il faut peut-être construire les
+    // portées
+    listen(this.menuSystems, 'change', this.onChangeSystem.bind(this))
     // Pour gérer les espacements entre les systèmes
     listen(this.cbSVSpaceSystems,'click', this.onClickCBvSpaceSystems.bind(this))
     listen(this.vSpaceSystemsField,'focus', _ => {this.vSpaceSystemsField.select()} )
     listen(this.cbStavesVSpace,'click', this.onClickCBstavesVSpace.bind(this))
     listen(this.stavesVSpaceField,'focus', _ => {this.stavesVSpaceField.select()} )
+  }
+
+  /**
+  * Méthode appelée quand on change de système
+  */
+  static onChangeSystem(ev){
+    const value = this.menuSystems.value
+    // On masque toujours le conteneur des partitions personnalisées,
+    // il sera rouvert par #buildOptionsStavesFrom si nécessaire
+    this.stavesContainer.classList.add('hidden')
+    if ( !isNaN(value) ) {
+      const aryKeys = new Array(Number(value))
+      aryKeys[0] = 'F'
+      this.buildOptionsStavesFrom({staves:value, staves_keys:aryKeys})
+    }
+    return true
   }
 
   static onClickCBvSpaceSystems(ev){
@@ -38,14 +57,18 @@ class Options extends Panneau {
     return this._vspacesysfield || (this._vspacesysfield = DGet('input#systems-vspace'))
   }
   static get cbSVSpaceSystems(){
-    return this._cbvspacesys ||= (this._cbvspacesys = DGet('input#cb-systems-vspace'))
+    return this._cbvspacesys || (this._cbvspacesys = DGet('input#cb-systems-vspace'))
   }
 
   static get stavesVSpaceField(){
     return this._vspacestavesfield || (this._vspacestavesfield = DGet('input#staves-vspace'))
   }
   static get cbStavesVSpace(){
-    return this._cbvspacestaves ||= (this._cbvspacestaves = DGet('input#cb-staves-vspace'))
+    return this._cbvspacestaves || (this._cbvspacestaves = DGet('input#cb-staves-vspace'))
+  }
+
+  static get menuSystems(){
+    return this._menusystem || (this._menusystem = DGet('#option_systeme'))
   }
 
   static getValues(){
@@ -54,21 +77,22 @@ class Options extends Panneau {
     const format = DGet('#option_format').value
     data.push(`--page ${format}`)
     // - Système -
-    let system = DGet('#option_systeme').value
+    let system = this.menuSystems.value
     if ( system == "---"){
       // Ne rien mettre
     } else if ( isNaN(system) ) {
       data.push(`--${system}`)
     } else {
-      const contStaves = DGet('#container-systemes')
       const keys  = []
       const names = []
-      contStaves.querySelectorAll('div.staff').forEach( divstaff => {
-        const key   = divstaff.querySelector('.staff-cle').value
-        const name  = divstaff.querySelector('.staff-name').value
-        keys.push(key)
-        names.push(name)
-      })
+      this.stavesContainer
+        .querySelectorAll('div.staff')
+        .forEach( divstaff => {
+          const key   = divstaff.querySelector('.staff-cle').value
+          const name  = divstaff.querySelector('.staff-name').value
+          keys.push(key)
+          names.push(name)
+        })
       data.push(`--staves ${keys.length}`)
       data.push(`--staves_keys ${keys.join(',')}`)
       data.push(`--staves_names ${names.join(',')}`)
@@ -102,6 +126,13 @@ class Options extends Panneau {
     return data.join("\n")
   }
 
+  /**
+  * Pour placer toutes les valeurs d’option dans le formulaire
+  * 
+  * @rappel
+  *   Les valeurs d’options sont toutes les valeurs définies par
+  *   ’--<clé option>’ dans le fichier MUS.
+  */
   static setValues(values){
     console.log("-> Options.setValues avec", values)
     OPTIONS_DIVERSES.forEach( key => {
@@ -137,7 +168,14 @@ class Options extends Panneau {
 
     const system = values.system
     if ( system ) {
-      DGet('#option_systeme').value = system
+      this.menuSystems.value = system
+    }
+    if ( values.staves ) {
+      // <= Le nombre de portée est défini explicitement
+      // => Il faut mettre les portées
+      this.buildOptionsStavesFrom(values)
+    } else {
+      this.stavesContainer.classList.add('hidden')
     }
 
     // - Espacement entre les systèmes -
@@ -155,14 +193,73 @@ class Options extends Panneau {
 
   }
 
+  /**
+  * Méthode appelée par setValues pour définir les portées lorsque
+  * elles sont explicites
+  * 
+  * @param [Hash] values
+  *   values.staves_keys  : liste des clés (de bas en haut)
+  *   values.staves_names : liste des noms des portées (id)
+  */
+  static buildOptionsStavesFrom(values){
+    values.staves_keys  || ( values.staves_keys = [] )
+    values.staves_names || ( values.staves_names = [] )
+    this.menuSystems.value = String(values.staves)
+    this.stavesContainer.innerHTML = ""
+    this.stavesContainer.classList.remove('hidden')
+    for(var istaff=Number(values.staves); istaff > 0; --istaff){
+      const idx = Number(istaff) - 1
+      this.buildNewStaffLine(
+        istaff,
+        values.staves_keys[idx], 
+        values.staves_names[idx]
+      )
+    }    
+  }
+  /**
+  * Méthode qui ajoute une ligne pour une nouvelle portée
+  * 
+  * La méthode est utilisée lorsqu’on choisit un nombre de portée
+  * au lieu d’un système précis, ainsi qu’au chargement d’une parti-
+  * tion lorsque les portées sont définies précisément.
+  * 
+  */
+  static buildNewStaffLine(staffIndex, staffKey, staffName){
+    const div = DCreate('DIV',{class:'staff'})
+    const inputName = DCreate('INPUT',{value:(staffName||''), type:'text', class:'staff-name staff-value', placeholder:"Nom aff."})
+    div.appendChild(DCreate('SPAN', {text: `Staff ${staffIndex} : `, class:"staff-index label"}))
+    div.appendChild(this.buildMenuKeys(staffKey))
+    div.appendChild(inputName)
+    this.stavesContainer.appendChild(div)
+  }
+  static buildMenuKeys(selectedValue){
+    const menu = DCreate('SELECT', {class:'staff-cle'});
+    ['G', 'F', 'UT3' , 'UT4', 'UT2', 'UT1', 'F3'].forEach( cle => {
+      const sele = selectedValue == cle ? true : false;
+      menu.appendChild(DCreate('OPTION',{text: cle, selected:sele}))
+    })
+    return menu
+  }
+
+  static get stavesContainer(){
+    return this._stavescont || (this._stavescont = DGet('#staves-container'))
+  }
+
+  /**
+  * = main =
+  * 
+  * Une méthode principale qui extrait du code MUS toutes les options
+  * définies (par l’amorce ’--<key option>’)
+  */
   static extractOptionsFrom(musCode){
     // console.log("-> extractOptionsFrom avec : ", musCode)
     const notOptions = []
     const options = {}
     musCode.split("\n").forEach( line => {
       if ( line.substr(0,2) == '--' ) {
-        let line_option = line.substr(2).trim()
-        let [option, value] = line_option.split(' ')
+        let line_option = line.substr(2).trim().split(' ')
+        let option  = line_option.shift()
+        let value   = line_option.length && line_option.join(' ')
         switch(option){
         case 'piano':case 'quatuor':
           value  = String(option)
@@ -172,6 +269,13 @@ class Options extends Panneau {
           value || (value = true)
           if ( value == 'OFF' ) value = false
         }
+        if ( String(value).match(/,/)){ 
+          const ary = []
+          console.log("Option %s", option, value.split(','))
+          value.split(',').forEach( str => ary.push(str.trim()) )
+          value = ary
+        }
+
         Object.assign(options, {[option]: value})
       } else {
         notOptions.push(line)

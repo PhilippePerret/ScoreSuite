@@ -18,6 +18,7 @@ $(document).ready(e => {
 
   // Pour gagner du temps au développement
   // BlocNotes.open()
+  Options.open()
 
 })
 
