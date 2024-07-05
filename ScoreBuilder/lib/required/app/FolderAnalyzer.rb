@@ -81,27 +81,39 @@ class FolderAnalyzer
     data[:original_pdf_score]     ||= search_for_original_pdf_score
     data[:original_score_folder]  ||= File.basename(original_score_folder)
 
-    # Si le dossier de la partition originale n’existe pas (celui qui
-    # devrait contenir les pages) et qu’un fichier PDF de la 
-    # partition original existe, alors on extrait en JPEG les pages
-    # de la partition.
-    # 
-    if  not( File.exist?(original_score_folder) )
-      if data[:original_pdf_score] && File.exist?(data[:original_pdf_score])
+    if data[:original_pdf_score] && File.exist?(data[:original_pdf_score])
+
+      # Si le dossier de la partition originale n’existe pas (celui qui
+      # devrait contenir les pages) et qu’un fichier PDF de la 
+      # partition original existe, alors on extrait en JPEG les pages
+      # de la partition.
+      # 
+      # On fait toujours la liste des images des pages du score
+      # original (s’il existe)
+      if File.exist?(original_score_folder)
+        # Extraire les images du score original s’il le faut
+        if Dir["#{original_score_folder}/*"].count == 0
+          extract_from_pdf(data[:original_pdf_score])
+        end
+        data.merge!(original_score_pages: get_original_score_pages)
+      else
         extract_from_pdf(data[:original_pdf_score])
       end
+
+    else
+
+      # En cas d’inexistence ou d’indéfinition de la partition
+      # originale. Ce qui est toujours possible.
+
+      puts <<~TEXT.orange
+      La partition originale n’existe pas. Vous n’avez pas de modèle
+      pour votre construction de partition.
+      Si vous changez d’avis, il suffira de mettre le PDF de la par-
+      tition de référence dans ce dossier pour que nous la traitions.
+      TEXT
+
     end
 
-    # On fait toujours la liste des images des pages du score
-    # original
-    if File.exist?(original_score_folder)
-      # Extraire les images du score original s’il le faut
-      if Dir["#{original_score_folder}/*"].count == 0
-        extract_from_pdf(data[:original_pdf_score])
-      end
-      data.merge!(original_score_pages: get_original_score_pages)
-    end
-    
     if data[:mus_file]
 
       affixe = File.basename(data[:mus_file], File.extname(data[:mus_file]))
@@ -197,7 +209,7 @@ class FolderAnalyzer
   # 
   def extract_from_pdf(pdf_path)
     ok = true
-    msg_start = "J’extrais les pages du fichier PDF…"
+    msg_start = "J’extrais les pages du fichier PDF #{File.basename(pdf_path).inspect}…"
     msg_end   = "🍺 Pages JPEG produites avec succès…"
     do_with_message(msg_start, msg_end) do
       cmd = 'magick "%s" -density 300 "%s/page.jpg"' % [pdf_path, original_score_folder]
@@ -254,7 +266,8 @@ class FolderAnalyzer
   #   end
   # 
   def do_with_message(start_msg, end_msg, &block)
-    STDOUT.write "#{start_msg} Merci de patienter…".jaune
+    start_msg = "#{start_msg} Merci de patienter…"
+    STDOUT.write start_msg.jaune
     yield
     puts "\r#{end_msg.ljust(start_msg.length + 10)}".vert
   end

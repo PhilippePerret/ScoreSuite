@@ -90,10 +90,10 @@ class Waa {
     // return false
 
     // Nouveau traitement avec CGI.escape pour envoyer la donnée
-    console.log("Message reçu par WAA.receive:", data_message)
+    // console.log("Message reçu par WAA.receive:", data_message)
     data_message = data_message.replace(/\+/g,' ')
     data_message = decodeURIComponent(data_message)
-    console.log("Message après décodage:", data_message)
+    // console.log("Message après décodage:", data_message)
 
     try {
       try {

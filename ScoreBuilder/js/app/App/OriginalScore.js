@@ -42,9 +42,10 @@ class OriginalScore {
 
   /**
   * Quand on remonte les informations sur la partition courante, 
-  * on affiche ici les pages de la partition originale
+  * on affiche ici les pages de la partition originale (si elle
+  * existe, ce qui n’est pas toujours le cas)
   * 
-  * @param pagesRelpaths [Array<String>] Liste des chemins 
+  * @param pagesRelpaths [Array<String>|Null] Liste des chemins 
   *     relatif (dossier/fichier) aux pages du score
   *   
   */
@@ -52,7 +53,7 @@ class OriginalScore {
     let vig;
     for ( var iPage in this.vignettes ) {
       vig     = this.vignettes[iPage]
-      const relpath = pagesRelpaths[iPage]
+      const relpath = pagesRelpaths && pagesRelpaths[iPage]
       if ( relpath ) {
         vig.image = main_folder + '/' + relpath
       } else {
