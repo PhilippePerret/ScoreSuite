@@ -62,6 +62,7 @@ class Helper extends Panneau {
   }
   static updateManuelsOnline(ev){
     stopEvent(ev)
+    message("J’actualise les manuels en ligne. Merci de patienter…",{keep:true})
     WAA.send({class:"ScoreBuilder::App",method:"update_manuels_online",data:{}})
     return false
   }

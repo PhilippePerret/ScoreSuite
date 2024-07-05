@@ -21,6 +21,10 @@ class Options extends Panneau {
     listen(this.vSpaceSystemsField,'focus', _ => {this.vSpaceSystemsField.select()} )
     listen(this.cbStavesVSpace,'click', this.onClickCBstavesVSpace.bind(this))
     listen(this.stavesVSpaceField,'focus', _ => {this.stavesVSpaceField.select()} )
+  
+    // La fenêtre doit être déplaçable
+    $(this.panneau).draggable()
+
   }
 
   /**
@@ -83,8 +87,7 @@ class Options extends Panneau {
     } else if ( isNaN(system) ) {
       data.push(`--${system}`)
     } else {
-      const keys  = []
-      const names = []
+      let keys  = [], names = [];
       this.stavesContainer
         .querySelectorAll('div.staff')
         .forEach( divstaff => {
@@ -93,6 +96,8 @@ class Options extends Panneau {
           keys.push(key)
           names.push(name)
         })
+      keys  = keys.reverse()
+      names = names.reverse()
       data.push(`--staves ${keys.length}`)
       data.push(`--staves_keys ${keys.join(',')}`)
       data.push(`--staves_names ${names.join(',')}`)
@@ -134,7 +139,7 @@ class Options extends Panneau {
   *   ’--<clé option>’ dans le fichier MUS.
   */
   static setValues(values){
-    console.log("-> Options.setValues avec", values)
+    // console.log("-> Options.setValues avec", values)
     OPTIONS_DIVERSES.forEach( key => {
       let cb = DGet(`#option_${key}`)
       cb.checked = values[key]
@@ -202,18 +207,15 @@ class Options extends Panneau {
   *   values.staves_names : liste des noms des portées (id)
   */
   static buildOptionsStavesFrom(values){
-    values.staves_keys  || ( values.staves_keys = [] )
-    values.staves_names || ( values.staves_names = [] )
+    const keys  = (values.staves_keys  || []).reverse()
+    const names = (values.staves_names || []).reverse()
     this.menuSystems.value = String(values.staves)
     this.stavesContainer.innerHTML = ""
     this.stavesContainer.classList.remove('hidden')
-    for(var istaff=Number(values.staves); istaff > 0; --istaff){
-      const idx = Number(istaff) - 1
-      this.buildNewStaffLine(
-        istaff,
-        values.staves_keys[idx], 
-        values.staves_names[idx]
-      )
+    // for(var istaff=Number(values.staves); istaff > 0; --istaff){
+    for(var istaff=0,max=Number(values.staves);istaff < max;++istaff){
+      const idx = Number(istaff)
+      this.buildNewStaffLine(max-istaff,keys[idx],names[idx])
     }    
   }
   /**

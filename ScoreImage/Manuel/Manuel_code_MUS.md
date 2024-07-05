@@ -226,6 +226,34 @@ Le simple fait qu’on trouve deux fois de suite le mot « piano » indique à
 
 En fait, ci-dessus, la marque « Piano,Piano » (qui pourrait être aussi « PIANO,PIANO » indique à ImageScore qu’on a une portée de piano. Il produit alors deux portées reliées dans un système propre au piano, avec une accolade, et une portée de violon. On l’appelle une « sonate avec piano » (sonate with piano).
 
+<a name="systems-vspace"></a>
+
+#### Espacement entre les systèmes
+
+L’espace vertical entre les systèmes se définit à l’aide de l’option **`systems_vspace`**.
+
+Par exemple :
+
+~~~
+--systems_vpace 30
+~~~
+
+Pour l’espacement vertical entre les portées d’un système, cf. ci-dessous.
+
+<a name="staves-vspace"></a>
+
+#### Espacement entre les portées
+
+L’espace vertical entre les portées se définit à l’aide de l’option **`staves_vspace`**. 
+
+Par exemple :
+
+~~~
+--staves_vspace 40
+~~~
+
+Pour l’espacement vertical entre les systèmes, cf. [Espacement entre les systèmes](#systems-vspace).
+
 #### Accolades précisées
 
 ---PROJET--- (PAS ENCORE IMPLÉMENTÉ)
@@ -349,6 +377,38 @@ résultant de l'expression `c d e f`.
 
 La partie ci-dessous présente les termes propres au langage « music-score ».
 
+---
+
+### Handy code
+
+#### Répétition d’un code
+
+On peut utiliser le gabarit  :
+
+~~~
+% ... %N
+~~~
+
+… pour répéter un nombre illimité de fois un motif.
+
+Par exemple, pour répéter 8 fois la séquence **`c8 d e`**, il suffit de faire :
+
+~~~
+% c8 d e %8
+~~~
+
+Si le segment répété doit se trouver à une octave particulière, on peut enrouler le code dans un **`relative`** :
+
+~~~
+\relative c,, { % c8 d e %8 }
+~~~
+
+> Noter qu’il n’est pas possible de faire **`% c,,8 d e %8`** car chaque nouvelle répétition repartirait deux octaves plus bas, puisqu’il s’agit de répétitions strictes :
+>
+> ~~~
+> c,,8 d e c,,8 d e c,,8 d e c,,8 d e etc.
+> ~~~
+
 
 ---
 
@@ -368,7 +428,23 @@ Cette section présente les notations de l'expression pseudo-lilypond qui  diff�
 | Fin de pièce                                                 | **`|.`**  |                                                              |
 | Séparation de partie                                         | \|\|      |                                                              |
 
-TODO La gestion des reprises avec première et autres fois
+#### 1re, 2e, etc. fois dans les reprises
+
+Les premières, deuxième, etc. fois se gèrent à l’aide **`|<X>`** où `<x>` est le numéro de l’alternative : 
+
+~~~
+|:  .... |1 ... |2 ... |3,4 ... :|5 ... |6,7 || suite 
+~~~
+
+> Note 1 :
+>
+> ​	La barre « **`||`** » délimitant la dernière fois peut être aussi une autre reprise « **`|:`** » ou une barre de fin « **`|.`** ».
+>
+> Note 2 :
+>
+> ​	Il peut ne pas y avoir de barre de reprise de début.
+
+---
 
 #### Clé de l'expression
 

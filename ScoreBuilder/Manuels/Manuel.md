@@ -1,6 +1,8 @@
 # Aide Score Builder
 
-## Description
+## Introduction
+
+### Description
 
 **Score-builder** est une application web qui permet de produire très rapidement, de façon assistée, des partitions de musique avec l’aide de Lilypond.
 
@@ -8,7 +10,7 @@ Alors que **Score-writer** permet de construire la partition par mesure (sans va
 
 ***Score-builder*** a été spécialement designé pour produire les « Recueils (de partitions) sur mesure » pour les éditions Icare. Pour produire, à partir d’une partition originale, une partition propre aux éditions.
 
-## Présentation
+### Présentation
 
 ***Score-builder*** se présente comme un écran large divisé en trois tiers horizontalement :
 
@@ -16,9 +18,15 @@ Alors que **Score-writer** permet de construire la partition par mesure (sans va
 * au centre le formulaire de code,
 * à droite le résultat obtenu (images SVG.
 
+### Routine d’utilisation
 
+* Ouvrir un Terminal dans un dossier contenant les éléments d’une partition (par exemple le PDF de la partition originale, mais en fait, le dossier peut être vide).
+* Lancer la commande **`score-builder`**.
+* Si nécessaire (si le dossier est vide par exemple), la commande peut demander de construire un fichier **`.mus`**. Dans tous les cas, il ouvre l’éditeur ***Score-Builder***.
+* On écrit le code dans le champ de code, la partie centrale de l’interface utilisateur.
+* On presse **`⌘ s`** pour enregistrer le code et produire l’image de la partition, qui apparait à droite de l’interface.
 
-## Procédure de démarrage
+## Procédure pour commencer à construire une partition
 
 La première chose à faire est de récupérer **la partition originale** en ligne, par exemple sur le site de l’[IMSLP](https://imslp.org/wiki/Main_Page).
 
@@ -33,7 +41,7 @@ Si cette partition originale est en PDF, on peut ouvrir un Terminal au dossier d
 
 ## Production des images SVG
 
-En cliquant sur le bouton « Build & Save », on produit les images SVG de la partition et l’on enregistre le code MUS (avec les options) dans le fichier mus du dossier.
+En cliquant sur le bouton « Build & Save » — où en jouant **`⌘s`** dans le champ de code —, on produit les images SVG de la partition et l’on enregistre le code MUS (avec les options) dans le fichier mus du dossier.
 
 ### En cas d’erreur
 

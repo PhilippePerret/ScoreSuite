@@ -24,8 +24,6 @@ def initialize(music_score)
   @music_score = music_score
 end
 
-REG_3_VOIX = /<< (.+?) \/\/ (.+?) \/\/ (.+?) >>/.freeze
-REG_2_VOIX = /<< (.+?) \/\/ (.+?) >>/.freeze
 ##
 # @usage MusicScore::Parser.exec
 #
@@ -49,12 +47,6 @@ def parse
   # Remplacement des apostrophes courbes
   # 
   code = code.gsub('’', '\'')
-  #
-  # Remplacement des écritures multivoix (expérimental)
-  # 
-  code = code
-          .gsub(REG_3_VOIX, '<< { \1 } \\\\\\ { \2 } \\\\\\ { \3 } >>')
-          .gsub(REG_2_VOIX, '<< { \1 } \\\\\\ { \2 } >>')
 
   #
   # Les options courantes
@@ -82,7 +74,7 @@ def parse
     # Cas spécial où il faut seulement parser à partir de là
     #
     if blocode.start?
-      # TODO Vider les données récoltées jusque-là
+      # Vider les données récoltées jusque-là
       all_blocks = []
     end
 

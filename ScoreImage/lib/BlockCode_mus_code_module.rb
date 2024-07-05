@@ -1,0 +1,141 @@
+# encoding: UTF-8
+# frozen_string_literal: true
+=begin
+
+  Extension de la class MusicScore::Parser::BlockCode spécialement
+  dédiée au traitement du code de la musique dans MUS CODE, donc 
+  pas les options.
+
+=end
+class MusicScore
+class Parser
+class BlockCode
+
+REG_3_VOIX = /<< (.+?) \/\/ (.+?) \/\/ (.+?) >>/.freeze
+REG_2_VOIX = /<< (.+?) \/\/ (.+?) >>/.freeze
+
+# Pour les répétitions sous la forme ’% ... %X’
+REG_REPETITIONS = /\% (?<segment>.+?) \%(?<iterations>[0-9]+)/
+
+##
+# = main =
+# = entry =
+# 
+# On traite la ligne comme une ligne de code
+# 
+def traite_as_code_mscore(line, idx)
+  # - Remplacement des variables -
+  line = traite_definitions_in(line, idx)
+  # - Remplacement des segments multi-voix simplifiés -
+  line = replace_multi_voices(line)
+  # - Remplacement des répétitions avec % ... %X -
+  line = replace_repetition_code(line)
+  # - Traitement des reprises avec 1re, 2e, etc.-ième fois.
+  line = traite_reprises_avec_alternatives(line)
+  # - Traitement des autres barres -
+  line = translate_barres(line)
+end
+
+def replace_multi_voices(line)
+  line
+    .gsub(REG_3_VOIX, '<< { \1 } \\\\\\ { \2 } \\\\\\ { \3 } >>')
+    .gsub(REG_2_VOIX, '<< { \1 } \\\\\\ { \2 } >>')
+end
+
+def replace_repetition_code(line)
+  line.gsub(REG_REPETITIONS) do
+    segment     = $~[:segment]
+    iterations  = $~[:iterations].to_i
+    "#{segment} " * iterations
+  end
+end
+
+# On ne traite ici que les reprises avec alternative, les autres
+# barres sont traitées plus simplement dans #translate_barres
+# 
+# 
+# TODO 
+#   TESTER AVEC |1,2   (+ -> MANUEL — indiquer "par de 1-3")
+# 
+def traite_reprises_avec_alternatives(line)
+  while true # Tant qu’il y a des reprises avec alternatives
+    # <=== TODO Test plusieurs reprises avec alternatives
+    break if not(line.match?(/\|1/))
+    puts "La ligne #{line.inspect} passe.".bleu
+    # On tâtonne :
+    # On cherche tous les segments de répétition pouvant avoir
+    # une alternative. Un tel segment de répétition possède forcément
+    # un ":|<X>" pour passer à la suite
+    # On commence par prendre le bout
+    offset_end_reprise = line.index(REG_FIN_REPETITION_WITH_ALT)
+    if offset_end_reprise
+      # Fin de la dernière alternative
+      offset = line.index(REG_END_LAST_ALT, offset_end_reprise)
+      seg = line[0...offset].strip
+      # Le bout de muscode après
+      next_seg = (line[offset+2..] || "").strip
+      puts "next_seg = #{next_seg.inspect}".bleu
+      # Noter que la dernière alternative peut avoir + d’alternatives,
+      # quand on remonte tout au début. On peut avoir :
+      # |: ... |1 ... :|2 ... |3 ... || <====== TODO TESTER
+      offset = seg.rindex('|:')||0
+      # Le bout de muscode avant
+      previous_seg = offset > 0 ? seg[0...offset] : ""
+      seg = seg[offset..-1]
+      puts "Segment avec reprise : #{seg.inspect}"
+
+      segs = seg.split(/(\:?\|)([0-9,]+)/)
+      # => [debut, barre, numéro, note alt, barre, num, notes etc.]
+
+      # Le premier élément (les notes avant la première alternative)
+      notes_repeat = segs.shift
+      # Il peut commencer par le début de reprise
+      notes_repeat = notes_repeat[2..] if notes_repeat.start_with?('|:')
+
+      # Le dernier élément peut contenir les deux signes qui 
+      # mettent fin à la dernière alternative, ’||’, ’|:’ ou ’|.’
+      segs[-1] = segs[-1][0..-3] if segs[-1].match?(/#{REG_END_LAST_ALT}$/)
+
+      segs = segs.each_slice(3).to_a
+      # puts "segs = #{segs.inspect}".bleu
+      # => Groupe par 3 => [ [bar,num, note], [bar,num,note], etc.]
+      
+      # # Nombre de reprise (dépend du numéro de la dernière alternative)
+      nb_reprises = segs.count
+
+      # On crée une alternative pour chaque alternative
+      alternatives = segs.map do |truplet|
+        # puts "truplet = #{truplet.inspect}".bleu
+        "\\volta #{truplet[1]} { #{truplet[2].strip} }"
+      end.join(' ')
+
+      # Formatage final
+      seg_formated = "\\repeat volta #{nb_reprises} { #{notes_repeat} \\alternative { #{alternatives} } }"
+      line = "#{previous_seg} #{seg_formated} #{next_seg}"
+
+      puts "line à la fin : #{line.inspect}".bleu
+    else
+      raise "La ligne #{line} est malformatée. Elle devrait contenir une fin de répétition avec alternative : ’:|<x>’."
+    end
+  end #/ while
+  # raise
+  line  
+end
+REG_FIN_REPETITION_WITH_ALT = /\:\|([0-9]+)/.freeze
+REG_END_LAST_ALT = /(\|\||\|\.|\|\:)/.freeze # || ou |. ou |:
+
+def translate_barres(line)
+  # Les barres de reprise sont simplement mises en '|:', ':|:' ou ':|'
+  line = line.gsub(/:\|:/, '_DOUBLE_BARRES_REPRISE_')
+        .gsub(/\|:/, '\bar ".|:"')
+        .gsub(/:\|/, '_BARRES_REPRISE_FIN_')
+        .gsub(/\|\./, '\bar "|."')
+        .gsub(/\|\|/, '\bar "||"')
+  line = line.gsub(/_DOUBLE_BARRES_REPRISE_/, '\bar ":|.|:"')
+  line = line.gsub(/_BARRES_REPRISE_FIN_/, '\bar ":|."')
+  return line
+end
+
+end #/BlockCode
+end #/Parser
+end #/MusicScore

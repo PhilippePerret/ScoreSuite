@@ -27,7 +27,7 @@ def initialize(raw_path)
 end
 
 ##
-# Retourne le contenu du fichier
+# Retourne le contenu du fichier, tel quel.
 #
 def ms_code
   @ms_code ||= File.read(full_path).force_encoding('utf-8')

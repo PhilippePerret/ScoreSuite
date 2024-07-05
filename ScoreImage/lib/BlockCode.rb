@@ -16,6 +16,7 @@
     - une commande (--start, --stop)
 
 =end
+require_relative 'BlockCode_mus_code_module'
 class MusicScore
 class Parser
 class BlockCode
@@ -139,7 +140,8 @@ def parse
   end
 
   # On doit maintenant remplacer les variables dans chaque ligne
-  #
+  # ainsi que quelques corrections
+  # 
   lines = []
   @lines_code.each_with_index do |line, idx|
     lines << traite_as_code_mscore(line, idx)
@@ -160,11 +162,6 @@ def music_score
   @music_score ||= options[:music_score]
 end
 
-##
-# On traite la ligne comme une ligne de code
-def traite_as_code_mscore(line, idx)
-  line = traite_definitions_in(line, idx)
-end
 
 def traite_as_option(opt)
   o = opt.split(' ')

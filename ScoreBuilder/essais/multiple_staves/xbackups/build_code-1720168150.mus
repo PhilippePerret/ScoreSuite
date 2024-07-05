@@ -14,16 +14,14 @@
 
 
 
-
-
 voix=
 c4( d ees f g a) << c'2 g // c, g >>
 
 alto=
-% ees8( ees ees ees) %4 d (c bes aes g)
+ees8( ees ees ees d c bes aes g)
 
 vlc=
-\relative c { % c2( ees g ees) %4 }
+\\relative c, { % c2( ees g ees) %4 }
 
 -> partition
 voix
