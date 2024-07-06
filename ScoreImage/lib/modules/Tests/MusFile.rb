@@ -71,6 +71,10 @@ class MusFile
     @build_command ||= 'cd "%s";score-image "%s"'.freeze % [folder,filename]
   end
 
+  def open
+    `open -a Finder "#{folder}"`
+  end
+
   # === Helper Methods ===
 
   # Le message d’erreur qui sera affiché
@@ -99,12 +103,6 @@ class MusFile
 
   # === Functional Methods ===
 
-  # @param [Regexp] Expression régulière pour filtrer le nom
-  # 
-  # @return true si le fichier passe le filtre filter
-  def pass_filter?(filter)
-    relative_path.match?(filter)
-  end
 
   def move_svg
     FileUtils.mv(built_svg_path, svg_path)
@@ -137,6 +135,17 @@ class MusFile
   end
 
   # === Predicate Methods ===
+
+  def exist?
+    File.exist?(path)
+  end
+
+  # @param [Regexp] Expression régulière pour filtrer le nom
+  # 
+  # @return true si le fichier passe le filtre filter
+  def pass_filter?(filter)
+    relative_path.match?(filter)
+  end
 
   def success?
     @ok == true
@@ -186,7 +195,7 @@ class MusFile
   end
 
   def relative_path
-    @relative_path ||= "#{foldername}/#{filename}"
+    @relative_path ||= "#{main_folder_name}/#{foldername}"
   end
   alias :relpath :relative_path
 
@@ -204,6 +213,12 @@ class MusFile
   end
   def folder
     @folder ||= File.dirname(path)
+  end
+  def main_folder_name
+    @main_folder_name ||= File.basename(main_folder)
+  end
+  def main_folder
+    @main_folder ||= File.dirname(folder)
   end
 
 
