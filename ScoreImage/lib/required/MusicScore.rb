@@ -16,8 +16,18 @@ class << self
     }
   end
 
+  # = entry =
+  # = main  =
+  # 
+  # Point d’entrée de l’application, en mode normal.
+  #  
+  def run
+    init
+    MusicScore.new.proceed
+  end
+
   def show_help
-    help_pdf = File.expand_path(File.join(__dir__,'..','Manuel','Manuel.pdf'))
+    help_pdf = File.expand_path(File.join(APP_FOLDER,'Manuel','Manuel.pdf'))
     `open "#{help_pdf}"`
   end
 

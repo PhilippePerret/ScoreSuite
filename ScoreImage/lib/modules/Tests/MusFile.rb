@@ -1,0 +1,221 @@
+module ScoreImage
+class Test
+class MusFile
+
+  EXTRAIT_MESSAGE_SUCCES = 'produite avec succès'.freeze
+
+  attr_reader :path
+  attr_accessor :indice
+
+  def initialize(path)
+    @path      = path
+    @error_msg = nil
+  end
+
+  # === Test Methods ===
+
+  # = main =
+  # 
+  # Procède au test du fichier.
+  # Cela consiste à :
+  #   - le construire avec ’score-image’
+  #   - calculer le checksum du SVG résultat
+  #   - le comparer avec le checksum attendu
+  # 
+  def test
+    resultat_built = build_svg_score
+    if resultat_built.match?(EXTRAIT_MESSAGE_SUCCES)
+      @ok = compare_with_checksum # => true, false, nil
+    else
+      @error_msg = resultat_built 
+      @ok = false
+    end
+  end
+
+  # Méthode qui compare le checksum attendu avec le checksum de la
+  # nouvelle image créée
+  # 
+  # @return :
+  #   - true  si le checksum existe et qu’il est identique
+  #   - false si le checksum existe et qu’il est différent
+  #   - nil   si le checksum n’existe pas encore
+  def compare_with_checksum
+    if checksum?
+      return checksums_same?
+    else
+      save_checksum
+      display_explication_pending
+      return nil # pending
+    end
+  end
+
+  def build_svg_score
+    result = run_build_command
+    # puts "resultat = #{result.inspect}".bleu
+    if original_svg_exist?
+      nettoie_dossier
+    end
+    return result
+  end
+
+  def nettoie_dossier
+    move_svg
+    FileUtils.rm_rf(build_folder)
+  end
+
+  def run_build_command
+    `#{build_command} 2>&1`
+  end
+
+  def build_command
+    @build_command ||= 'cd "%s";score-image "%s"'.freeze % [folder,filename]
+  end
+
+  # === Helper Methods ===
+
+  # Le message d’erreur qui sera affiché
+  # 
+  def error
+    "La construction de #{relative_path} " + 
+    if not(@error_msg.nil?)
+      "a retourné le message derreur : #{@error_msg}"
+    elsif not(original_svg_exist?)
+      "n’a pas pu construire la partition SVG."
+    elsif not(checksums_same?)
+      "ne correspond pas aux attentes."
+    else
+      "n’est pas bon pour une raison inconnue."
+    end
+  end
+
+  def display_explication_pending
+    puts <<~TEXT.bleu
+    [Pending] #{relative_path}
+    Si l’image #{relative_path}/#{svg_name} ne correspond 
+    pas aux attentes, détruire le fichier CHECKSUM. Dans le cas contraire, 
+    au prochain test, le fichier #{svg_name} produit devra correspondre.
+    TEXT
+  end
+
+  # === Functional Methods ===
+
+  # @param [Regexp] Expression régulière pour filtrer le nom
+  # 
+  # @return true si le fichier passe le filtre filter
+  def pass_filter?(filter)
+    relative_path.match?(filter)
+  end
+
+  def move_svg
+    FileUtils.mv(built_svg_path, svg_path)
+  end
+
+  # === Checksum Methods ===
+
+  def checksum_compare
+    @checksum_compare ||= begin
+      if File.exist?(checksum_path)
+        IO.read(checksum_path).strip.freeze
+      else
+        :no_checksum_compare
+      end
+    end
+  end
+
+  def checksum_tested
+    @checksum_tested ||= begin
+      if File.exist?(svg_path)
+        (Digest::MD5.file(svg_path).hexdigest).freeze
+      else
+        :no_checksum_tested
+      end
+    end
+  end
+
+  def save_checksum
+    IO.write(checksum_path, checksum_tested)
+  end
+
+  # === Predicate Methods ===
+
+  def success?
+    @ok == true
+  end
+
+  def failure?
+    @ok === false
+  end
+
+  def pending?
+    @ok === nil
+  end
+
+  def original_svg_exist?
+    File.exist?(built_svg_path)
+  end
+
+  def checksums_same?
+    checksum_compare == checksum_tested
+  end
+
+  def checksum?
+    File.exist?(checksum_path)
+  end
+
+  # === Path Methods ===
+
+  # Nom de l’image créée (le ’-> partition’ dans le mus-file)
+  def image_name
+    @image_name ||= get_image_name.freeze
+  end
+
+  def checksum_path
+    @checksum_path ||= File.join(folder,'CHECKSUM')
+  end
+
+  def svg_path
+    @svg_path ||= File.join(folder,svg_name).freeze
+  end
+
+  def built_svg_path
+    @built_svg_path ||= File.join(build_folder,svg_name).freeze
+  end
+
+  def svg_name
+    @svg_name ||= "#{image_name}.svg".freeze
+  end
+
+  def relative_path
+    @relative_path ||= "#{foldername}/#{filename}"
+  end
+  alias :relpath :relative_path
+
+  def affixe
+    @affixe ||= File.basename(path, '.mus')
+  end
+  def filename
+    @filename ||= File.basename(path)
+  end
+  def build_folder
+    @build_folder ||= File.join(folder,affixe).freeze
+  end
+  def foldername
+    @foldername ||= File.basename(folder)
+  end
+  def folder
+    @folder ||= File.dirname(path)
+  end
+
+
+  private
+
+    # On récupère et renvoie le nom de l’image de la partition dans
+    # le code MUS. Il est repéré par ’->’
+    def get_image_name
+      muscode = IO.read(path).force_encoding('UTF-8')
+      muscode.match(/^\-\> (.+)$/)[1].strip
+    end
+
+end #/class MusFile
+end #/class Test
+end #/module ScoreImage

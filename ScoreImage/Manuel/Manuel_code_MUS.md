@@ -373,7 +373,7 @@ résultant de l'expression `c d e f`.
 
 ---
 
-## Langage music-score
+## LANGAGE MUSIC-SCORE (mus)
 
 La partie ci-dessous présente les termes propres au langage « music-score ».
 
@@ -442,7 +442,7 @@ Les premières, deuxième, etc. fois se gèrent à l’aide **`|<X>`** où `<x>`
 >
 > Note 2 :
 >
-> ​	Il peut ne pas y avoir de barre de reprise de début.
+> ​	Il peut ne pas y avoir de barre de reprise de début, lorsqu’on revient au début pour faire la reprise.
 
 ---
 

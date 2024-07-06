@@ -12,9 +12,22 @@ require_relative 'required'
 
 begin
   
-  MusicScore.init
-  mscore = MusicScore.new
-  mscore.proceed
+  case (commande = ARGV[0])
+  when 'test', 'tests'
+    require_relative 'lib/modules/Tests/main.rb'
+    ScoreImage::Test.run
+  when 'help'
+    puts "Je ne sais pas encore gérer l’aide.".jaune
+  when NilClass, '.'
+    # Passage normal
+    MusicScore.run
+  else
+    if File.exist?(commande)
+      MusicScore.run
+    else
+      puts "Je ne connais pas la commande #{commande.inspect}.".jaune
+    end
+  end
 
 rescue EMusicScore => e
   puts e.message.rouge
