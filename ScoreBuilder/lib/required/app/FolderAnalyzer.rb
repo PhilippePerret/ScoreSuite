@@ -100,6 +100,13 @@ class FolderAnalyzer
         extract_from_pdf(data[:original_pdf_score])
       end
 
+    elsif data[:original_pdf_score] && File.exist?(original_score_folder)
+
+      # Le fichier du score original n’existe pas, mais le dossier 
+      # pour mettre ses pages oui. C’est donc que la partition origi-
+      # nale a déjà été traitée et mise dans le backup/archive
+      # => Rien à faire et rien à signaler.
+
     else
 
       # En cas d’inexistence ou d’indéfinition de la partition

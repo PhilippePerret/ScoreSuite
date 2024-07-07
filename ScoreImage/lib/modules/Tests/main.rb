@@ -61,7 +61,7 @@ class << self
         {name: "Jouer tous les tests" , value:'run'},
         {name: "Créer un nouveau test", value:'create'},
       ]
-      precedencize(choices, 'tests') do |q|
+      precedencize(choices, './tests') do |q|
         q.question "Que faut-il faire ?"
         q.add_choice "Renoncer".orange, :stop
       end
