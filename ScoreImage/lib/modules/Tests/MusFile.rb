@@ -75,6 +75,10 @@ class MusFile
     `open -a Finder "#{folder}"`
   end
 
+  def open_in_ide
+    `subl "#{folder}"`
+  end
+
   # === Helper Methods ===
 
   # Le message d’erreur qui sera affiché

@@ -1,0 +1,23 @@
+# 
+# Pour tester le groupement par instrument à l’aide des crochets dans
+# la définition de staves_names
+# 
+--barres
+--keep
+--staves 3
+--staves_names [Piano, Piano], Violon
+--staves_keys  F, G, G
+
+violon=
+c4( d e f g1)
+
+pianoMD=
+e4( f g a b1)
+
+pianoMG=
+c’8 c c c c c c c g1
+
+-> score
+violon
+pianoMD
+pianoMG
