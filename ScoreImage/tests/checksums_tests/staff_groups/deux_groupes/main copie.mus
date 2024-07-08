@@ -1,12 +1,7 @@
---page a0
---staves 7
---staves_keys F,F,G,F,G,G,G
---staves_names Cb.,{Piano,Piano},Cor,{Cl.,Hb.,Fl.}
 --barres
 --keep
---tune C
---time 4/4
-
+--staves_names Cb., [Piano, Piano], Cor, [Cl., Hb., Fl.]
+--staves_keys  F, F, G, G, G, G, G
 
 cb=
 c1

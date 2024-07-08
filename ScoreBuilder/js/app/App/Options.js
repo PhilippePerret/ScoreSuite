@@ -98,6 +98,9 @@ class Options extends Panneau {
         })
       keys  = keys.reverse()
       names = names.reverse()
+
+      // Lire plus bas la note : NOTE GROUPED NAMES
+      names = inverseGroupeStaffNames(names)
       data.push(`--staves ${keys.length}`)
       data.push(`--staves_keys ${keys.join(',')}`)
       data.push(`--staves_names ${names.join(',')}`)
@@ -208,7 +211,11 @@ class Options extends Panneau {
   */
   static buildOptionsStavesFrom(values){
     const keys  = (values.staves_keys  || []).reverse()
-    const names = (values.staves_names || []).reverse()
+    let names = (values.staves_names || []).reverse()
+    // Lire ci-dessous la note NOTE GROUPED NAMES
+    console.log("Names dans fichier : ", names.join(', '))
+    names = this.inverseGroupeStaffNames(names)
+    console.log("Names après inversion : ", names.join(', '))
     this.menuSystems.value = String(values.staves)
     this.stavesContainer.innerHTML = ""
     this.stavesContainer.classList.remove('hidden')
@@ -234,6 +241,39 @@ class Options extends Panneau {
     div.appendChild(inputName)
     this.stavesContainer.appendChild(div)
   }
+
+  /**
+   * NOTE GROUPED NAMES
+  * À cause de la disposition et de l’écriture de bas en haut,
+  * les groupements à l’aide des {...} et des [...] sont mal
+  * répartis. Il faut les inverser :
+  #     ’{instrument’   -> ’instrument}’
+  #     ’,instrument}’  -> ’{instrument’
+  # idem avec les crochets
+  */
+  static inverseGroupeStaffNames(names){
+    const wf_names = []
+    names.forEach( name => {
+      name = this.inverseGroupedStaffName(name)
+      wf_names.push(name)
+    })
+    return wf_names
+  }
+  static inverseGroupedStaffName(name){
+    console.log("-> inverseGroupedStaffName", name)
+    let letter1, letterX, counter_letter;
+    letter1 = name.substr(0,1)
+    letterX = name.substr(name.length - 1, 1)
+    if ( ( letter1 == '{' ) || ( letter1 == '[') ) {
+      counter_letter = letter1 == '{' ? '}' : ']'
+      name = name.substr(1, name.length) + counter_letter
+    } else if ( (letterX == '}') || (letterX == ']') ) {
+      counter_letter = (letterX == '}') ? '{' : '['
+      name = counter_letter + name.substr(0, name.length - 1)
+    }
+    return name
+  }
+
   static buildMenuKeys(selectedValue){
     const menu = DCreate('SELECT', {class:'staff-cle'});
     ['G', 'F', 'UT3' , 'UT4', 'UT2', 'UT1', 'F3'].forEach( cle => {

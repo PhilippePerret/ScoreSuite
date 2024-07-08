@@ -61,7 +61,7 @@ end
 #
 def build
   unless data.music_score.options[:only_stats]
-    STDOUT.write "⚙️  Production de l'image #{image_name.inspect}".bleu
+    STDOUT.write "⚙️  Production de l'image #{relpath_image}".bleu
     puts "Dans : #{image_name}.svg".gris if verbose?
   end
 
@@ -79,7 +79,7 @@ def build
   # On compose le code Lilypond final pour le mettre dans son fichier
   #
   lilypond_code = Lilypond.compose(codes, data.options.merge(system: systeme))
-  # puts "Lilypond Code :\n#{lilypond_code}\n"
+  puts "Lilypond Code : #{'x'*50}\n#{lilypond_code}\n#{'x'*50}"
 
   #
   # On met le code final dans son fichier
@@ -106,13 +106,16 @@ def build
     unless data.options['keep']
       File.delete(lilypond_file_path)
     end
-    puts "\r🎹 L'image #{image_name}.svg a été produite avec succès.".vert
+    puts "\r🎹 L'image #{relpath_image} a été produite avec succès.".vert
   else
     raise EMusicScore.new("Impossible de produire l'image finale…")
   end
 
 end
 
+def relpath_image
+  @relpath_image ||= "#{folder_name}/#{affixe}/#{image_name}.svg".freeze
+end
 
 # Production par lily2svg de l'image non trimée
 def build_svg_files
@@ -160,6 +163,10 @@ def systeme
       'quatuor'
     elsif data.options['staves']
       data.options['staves'].to_i
+    elsif data.options['staves_names']
+      data.options['staves_names'].split(',').count
+    elsif data.options['staves_keys']
+      data.options['staves_keys'].split(',').count
     else
       'solo'
     end
@@ -226,10 +233,14 @@ def dest_folder
   @dest_folder ||= mkdir(File.join(folder, affixe))
 end
 
+def folder_name
+  @folder_name ||= File.basename(folder).freeze
+end
+
 def folder
   @folder ||= begin
     if data.options[:music_score].mus_file
-      data.options[:music_score].mus_file.folder
+      File.expand_path(data.options[:music_score].mus_file.folder)
     else
       ENV['PWD']
     end

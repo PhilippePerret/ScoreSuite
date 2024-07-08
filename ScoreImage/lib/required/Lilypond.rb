@@ -37,7 +37,48 @@ attr_reader :options
 #
 def compose(code, options)
   rationnalise_options(options)
-  header + body(code, options[:system]) + footer
+  sep = "\n% --- %\n" # délimiteur de partie
+  beautify_code(header + sep + body(code, options[:system]) + sep + footer)
+end
+
+# Méthode qui met en forme le texte du code pour qu’il soit plus
+# lisible, mieux présenter.
+def beautify_code(code)
+  ary = []
+  @indent_len = 0
+  @indent_str = ""
+  next_indent_len = nil # pour simplifier l’écriture (cf. ci-dessous)
+  code.split("\n").each do |line|
+    line = line.strip
+    next if line.empty?
+    puts "line: #{line}".bleu
+    if line.end_with?('<<') || line.end_with?('{')
+      next_indent_len = true
+    elsif line.end_with?('>>')
+      crementize_indentation(-1)
+    elsif line.end_with?('}')
+      # Il faut compter le nombre de { et de } pour être sûr que
+      # c’est vraiment un passage à la ligne (ne faudrait-il pas le
+      # faire partout, d’ailleurs ?)
+      nombre_open = line.count('{')
+      nombre_clos = line.count('}')
+      if nombre_clos > nombre_open
+        crementize_indentation(-1)
+      end
+    end
+    ary << @indent_str + line
+    if next_indent_len
+      crementize_indentation(1)
+      next_indent_len = nil
+    end
+  end
+  return ary.join("\n")
+end
+
+def crementize_indentation(adding)
+  @indent_len += adding
+  @indent_str =  "  " * @indent_len
+  puts "indent: #{@indent_len}".orange
 end
 
 def rationnalise_options(options)
@@ -54,25 +95,116 @@ def rationnalise_options(options)
   if options.key?('staves_names')
 
     # TODO Maintenant, on peut avoir des regroupements forcés, avec
-    # des accolades ({…}) et des croches ([…]). Il faut les traiter,
+    # des croches ([…]). Il faut les traiter,
     # mais comment ? Il faudrait en fait arriver à quelque chose
     # comme : [[A,B], {C,D,E}]
     options['staves_names'] = options['staves_names'].split(',').collect{|n|n.strip}.reverse
   
+    # Est-ce que ça correspond à un système avec piano ?
     if options['staves_keys'] && options['staves_keys'].count == 3 && options['staves_names'][1..2].join('').downcase == "pianopiano"
       options.merge!(system: 'sonate_with_piano')
     end
-
   end
+
+  # Depuis JUILLET 2024, on analyse mieux les noms pour tenir compte
+  # des éventuels groupements de portées
+  if options.key?('staves_names')
+
+    # Données générales
+    options.merge!(staves_data: {
+      staves: [], group_type: ""
+    })
+
+    # Étude du groupe général
+    name1 = options['staves_names'][0]
+    if name1
+      letter1 = name1[0]
+      if ['[','{'].include?(letter1)
+        # Pour que ce soit vraiment une marque de groupe principal
+        # (comprenant toutes les portées) il faut que le dernier nom
+        # se termine par le dernier signe attendu
+        expected_last_sign = letter1 == '[' ? ']' : '}'
+
+        if options['staves_names'][-1][-1] == expected_last_sign
+          letter2 = name1[1]
+          # Le dernier nom
+          options['staves_names'][-1] = options['staves_names'][-1][0..-2]
+          # La mark du groupe
+          group_mark = letter1 == '[' \
+              ? ( letter2 == '-' ? 'ChoirStaff' : 'StaffGroup') \
+              : ( letter2 == '-' ? 'GrandStaff' : 'GrandStaff')
+          options[:staves_data][:group_type] = '\\new %s '.freeze % [group_mark]
+          # Il faut corriger les noms
+          name1 = name1[1..-1].strip
+          name1 = name1[1..-1].strip if letter2 == '-'
+          options['staves_names'][0] = name1
+        end
+      end
+    end
+
+    # Étude des sous-groupes
+    # ----------------------
+    # Maintenant qu’on a retiré les "[" ou "{" qu’on pouvait trouver
+    # en tout début et en toute fin de la définition des noms, on 
+    # peut étudier chaque nom pour trouver les sous-groupes éventuels
+    # 
+    options['staves_names'].each_with_index do |sname, idx|
+      skey       = options['staves_keys'][idx] || 'G'.freeze
+      group_mark = nil
+      end_group  = false
+
+      if sname
+        letter1 = sname[0]
+        letter2 = sname[1]
+        letterx = sname[-1]
+        if ['[','{'].include?(letter1)
+          sname = sname[1..-1]
+          group_mark = 
+            if letter2 == '-' 
+              # Barres de mesure non reliées
+              sname = sname[1..-1]
+              letter1 == '[' ? "ChoirStaff" : "GrandStaff"
+            else
+              # Barres de mesure reliées
+              letter1 == '[' ? "StaffGroup" : "GrandStaff"
+            end
+        elsif [']','}'].include?(letterx)
+          # Fermeture du système courant
+          end_group = true
+          sname = sname[0..-2]
+        end
+      end
+
+      # Données pour cette portée
+      staff_data = {
+        key:              skey, 
+        name:             sname, 
+        group_mark:       group_mark, 
+        is_ending_group:  end_group
+      }
+      options[:staves_data][:staves] << staff_data
+
+    end
+  end
+
   #
   # Si les clés ou les noms des portées sont définies, il faut
-  # avoir les clés ET les noms
+  # impérativement avoir les clés ET les noms. On ajoute donc la 
+  # liste manquante.
   #
   if options.key?('staves_keys') && !options.key?('staves_names')
     options.merge!('staves_names' => [])
+    # On met toujours la valeur de ’staves’ au nombre de clés
+    options.merge!('staves' => options['staves_keys'].count)
   elsif options.key?('staves_names') && !options.key?('staves_keys')
     options.merge!('staves_keys' => [])
+    # On met toujours la valeur de ’staves’ au nombre de noms
+    options.merge!('staves' => options['staves_names'].count)
   end
+
+
+
+  #
   #
   # On ajoute les clés symboliques (donc on aura les deux versions
   # des clés dans la table)
@@ -89,7 +221,8 @@ end
 #         piano       Piano
 #         quatuor     Quatuor à corde
 #         sonate_with_piano   Type sonate pour violon, flûte, etc.
-#         Ou un nombre de portées.
+#         Ou :
+#           un nombre de portées.
 #
 def body(code, system)
   system = 'solo' if system.is_a?(Integer) && system == 1
@@ -102,7 +235,8 @@ def body(code, system)
     system_for_piano(code, params)
   when 'solo', 'quatuor'
     send("system_for_#{system}", code)
-  when Integer then system_for_x_staves(code)
+  when Integer 
+    system_for_x_staves(code)
   else
     raise EMusicScore.new("La valeur '#{system}' pour 'system' est intraitable… (inconnue)")
   end
@@ -165,18 +299,76 @@ def system_for_piano(code, **params)
 end
 #/system_for_piano
 
+# Méthode gérant les systèmes à portées multiples
+# 
+# Depuis juillet 2024, on peut regrouper les portées pour former des
+# groupes d’instruments (les bois, les cordes, etc.) ou former des
+# instrument à double portée comme la harpe ou le piano.
+# Pour gérer cela, on utilise simplement les crochets pour définir
+# staves_names avec la règle suivante :
+#       Si les noms entre les crochets sont identiques, il 
+#       s’agit d’un instrument unique (le piano, la harpe)
+#       dans le cas contraire il s’agit d’un groupe d’ins-
+#       truments (les bois, les cordes…)
+# 
+# Pour les regroupements, on trouve les expressions:
+# (cf. https://lilypond.org/doc/v2.24/Documentation/notation/displaying-staves#grouping-staves)
+#   << 
+#     \new Staff 
+#     \new Staff 
+#     ...           Trait seul pour réunir les staves
+#   >>              Barres de mesures non reliées
+#                   Valeur par défaut
+#   - ChoirStaff    Trait + crochets obliques pour réunir les portées 
+#                   Barres de mesures non reliées
+#   - StaffGroup    Trait + crochets obliques pour réunir les portées 
+#                   Barre de mesures reliées
+#   - GrandStaff    Trait + accolade pour réunir les portées
+#                   Barres de mesures reliées
+#   - PianoStaff    = GrandStaff
+#   - DrumStaff     portée à cinq lignes pour batterie
+#   - RhytmicStaff  portée à ligne unique
+#   - TabStaff      Tablature
+# 
+# Maintenant, au lieu d’avoir un ’options['staves_names']’ qui 
+# contient les noms et un options['staves_keys'] qui contient les
+# clés, on crée un ’options['staves_data']’ qui contient les données
+# analysées (@note : ’staves_data’ a été choisi pour ne pas supprimer
+# ’staves_names’ et ’staves’ — le nombre de portées — qui sont peut-
+# être utilisés ailleurs)
+# C’est fait dans la méthode #rationnalise_options de ce module.
+# 
 def system_for_x_staves(code)
+  staves_data = options[:staves_data]
   c = []
   c << "\\score {"
-  c << "  \\new StaffGroup <<"
+  c << "  #{staves_data[:group_type]}<<"
   code.each_with_index do |code_portee, idx|
-    c << staff_for(code_portee, {name:options['staves_names'][idx], key:options['staves_keys'][idx]})
+    staff_data = staves_data[:staves][idx]
+    puts "code_portee : #{code_portee.inspect}".jaune
+    puts "staff_data  : #{staff_data.inspect}".orange
+    c << "    \\new #{staff_data[:group_mark]} <<" if staff_data[:group_mark]
+    c << staff_for(code_portee, {name: staff_data[:name], key: staff_data[:key]})
+    c << "  >>" if staff_data[:is_ending_group]
   end
   c << "  >>"
   c << "}"
-
-  return c.join("\n")
+  c = c.join("\n")
+  puts "------------\nCODE LILYPOND:\n#{c}\n---------------".jaune
+  return c
 end
+# Avant Juillet 2024
+# def system_for_x_staves(code)
+#   c = []
+#   c << "\\score {"
+#   c << "  \\new StaffGroup <<"
+#   code.each_with_index do |code_portee, idx|
+#     c << staff_for(code_portee, {name:options['staves_names'][idx], key:options['staves_keys'][idx]})
+#   end
+#   c << "  >>"
+#   c << "}"
+#   return c.join("\n")
+# end
 #/system_for_x_staves
 
 def system_for_quatuor(code)
@@ -201,8 +393,8 @@ def staff_for(code, params)
   end
   staff_cle = params[:key] ? "\\clef #{CLE_TO_CLE_LILY[params[:key]]}\n" : ""
   <<~LILYPOND
-  \\new Staff #{mark_staff_name(params)}<<
-    \\new Voice #{markin_transposition}\\relative c#{relative} {
+  \\new Staff #{mark_staff_name(params)} {
+    #{markin_transposition}\\relative c#{relative} {
       #{staff_cle}
       #{option_no_time}
       #{option_no_barre}
@@ -211,9 +403,34 @@ def staff_for(code, params)
       #{option_num_mesure}
       #{code}
     }
-  >>
+  }
   LILYPOND
 end
+
+# AVANT JUILLET 2024
+# (la grande différence est l’utilisation ici d’une \new Voice alors
+#  que ça n’est pas utile)
+# def staff_for(code, params)
+#   relative = case params[:key]
+#   when 'F'    then ''
+#   when /^UT/  then "'"
+#   else "''"
+#   end
+#   staff_cle = params[:key] ? "\\clef #{CLE_TO_CLE_LILY[params[:key]]}\n" : ""
+#   <<~LILYPOND
+#   \\new Staff #{mark_staff_name(params)}<<
+#     \\new Voice #{markin_transposition}\\relative c#{relative} {
+#       #{staff_cle}
+#       #{option_no_time}
+#       #{option_no_barre}
+#       #{option_no_stem}
+#       #{option_tonalite}
+#       #{option_num_mesure}
+#       #{code}
+#     }
+#   >>
+#   LILYPOND
+# end
 
 def mark_staff_name(params)
   if params[:name]

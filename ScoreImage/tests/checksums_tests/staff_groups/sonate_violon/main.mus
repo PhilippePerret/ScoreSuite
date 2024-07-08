@@ -4,7 +4,6 @@
 # 
 --barres
 --keep
---staves 3
 --staves_names [Piano, Piano], Violon
 --staves_keys  F, G, G
 

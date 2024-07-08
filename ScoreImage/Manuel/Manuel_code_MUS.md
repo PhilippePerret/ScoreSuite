@@ -254,31 +254,83 @@ Par exemple :
 
 Pour l’espacement vertical entre les systèmes, cf. [Espacement entre les systèmes](#systems-vspace).
 
-#### Accolades précisées
+#### Groupement des portées
 
----PROJET--- (PAS ENCORE IMPLÉMENTÉ)
+Il existe plusieurs façons de relier les portées et les barres de mesure. On trouve les valeurs suivantes :
 
-On peut définir explicitement les accolades reliant les portées à l’aide du signe crochet et accolade dans `staves_names`. Par exemple :
+* Portées
+  * non reliées
+  * reliées par un trait simple (type neutre)
+  * reliées par un trait + crochet oblique (type quatuor, chœur)
+  * reliées par un trait + accolade (type piano)
+* Barres de mesure
+  * reliées entre elles
+  * non reliées entre elles
+
+Par défaut, on utilise : **portées reliées par un trait simple avec les barres de mesure non reliées**.
+
+[IMAGE]
+
+Quand on veut un **crochet oblique**, on utilise « **`[...]`** ». Par exemple :
 
 ~~~
---staves_names {Premier,Deuxième}, Troisième
+staves_names [Cb., Alto, Vl.]
+staves_keys  F, UT3, G
 ~~~
 
-… va relier la première et la deuxième portée (en commençant du bas) par une accolade.
+… produira :
 
-{{METTRE L’IMAGE ICI}}
+[IMAGE]
 
-Tandis que : 
+Quand on veut une accolade, on utilise « **`{...}`** ». Par exemple :
 
 ~~~
---staves_names Premier, [Deuxième, Troisième, Quatrième]
+staves_names {Cb. Alto., Vl.}
+staves_keys  F, UT3, G
 ~~~
 
-… va relier les trois portées supérieures à l’aide d’un crochet.
+… produira :
 
-{{METTRE L’IMAGE ICI}}
+[IMAGE]
 
-/---PROJET---
+Comme on peut le voir, par défaut, les barres de mesure sont reliées entre elles. Pour utiliser **les barres de mesure non reliées**, on ajoute un « **`-`** » après l’accolade ou le crochet.
+
+Par exemple : 
+
+~~~
+staves_names [-Cb., Alto, Vl.]
+staves_keys  F, UT3, G
+~~~
+
+… produira :
+
+[IMAGE]
+
+Tandis que :
+
+~~~
+staves_names {-Cb. Alto., Vl.}
+staves_keys  F, UT3, G
+~~~
+
+… produira la même chose que les accolades seules, puisqu’un groupement de ce type relie toujours ses barres de mesure.
+
+##### Groupes à l'intérieur d'un même système
+
+On peut utiliser de la même manière les regroupements de portées à l'intérieur même d'un groupe, avec les accolades et les crochets, en indiquant par un « moins » l’absence de barres de mesure reliées.
+
+Par exemple :
+
+~~~
+staves_names Cb. {Piano, Piano}, Vl.
+staves_keys  F, F, G, G
+~~~
+
+… produira :
+
+[IMAGE]
+
+---
 
 <a id="options_musicales"></a>
 
