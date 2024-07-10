@@ -269,51 +269,66 @@ Il existe plusieurs façons de relier les portées et les barres de mesure. On t
 
 Par défaut, on utilise : **portées reliées par un trait simple avec les barres de mesure non reliées**.
 
-[IMAGE]
+![score](./images/main-group.svg)
 
 Quand on veut un **crochet oblique**, on utilise « **`[...]`** ». Par exemple :
 
 ~~~
-staves_names [Cb., Alto, Vl.]
-staves_keys  F, UT3, G
+--staves_names [Cb., Alto, Vl.]
+--staves_keys  F, UT3, G
 ~~~
 
 … produira :
 
-[IMAGE]
+![main-group-crochets](./images/main-group-crochet.svg)
+
+
 
 Quand on veut une accolade, on utilise « **`{...}`** ». Par exemple :
 
 ~~~
-staves_names {Cb. Alto., Vl.}
-staves_keys  F, UT3, G
+--staves_names {Cb. Alto., Vl.}
+--staves_keys  F, UT3, G
 ~~~
 
 … produira :
 
-[IMAGE]
+![main-group-accolade](./images/main-group-accolade.svg)
 
 Comme on peut le voir, par défaut, les barres de mesure sont reliées entre elles. Pour utiliser **les barres de mesure non reliées**, on ajoute un « **`-`** » après l’accolade ou le crochet.
 
 Par exemple : 
 
 ~~~
-staves_names [-Cb., Alto, Vl.]
-staves_keys  F, UT3, G
+--staves_names [-Cb., Alto, Vl.]
+--staves_keys  F, UT3, G
 ~~~
 
 … produira :
 
-[IMAGE]
+![score](./images/main-group-crochet-unlinked.svg)
 
 Tandis que :
 
 ~~~
-staves_names {-Cb. Alto., Vl.}
-staves_keys  F, UT3, G
+--staves_names {-Cb. Alto., Vl.}
+--staves_keys  F, UT3, G
 ~~~
 
-… produira la même chose que les accolades seules, puisqu’un groupement de ce type relie toujours ses barres de mesure.
+… produira la même chose que les accolades seules, puisqu’**un groupement de ce type relie toujours ses barres de mesure**.
+
+Si tous les instruments du groupe portent le même nom, il est utilisé comme **nom du groupe** et les portées ne sont plus nommées individuellement.
+
+Comme dans :
+
+~~~
+--staves_names {Bois, Bois, Bois}
+--staves_keys F, G, G
+~~~
+
+… qui produira :
+
+![score](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/same-name-for-main-group.svg)
 
 ##### Groupes à l'intérieur d'un même système
 
@@ -322,13 +337,13 @@ On peut utiliser de la même manière les regroupements de portées à l'intéri
 Par exemple :
 
 ~~~
-staves_names Cb. {Piano, Piano}, Vl.
-staves_keys  F, F, G, G
+--staves_names Cb. {Piano, Piano}, Vl.
+--staves_keys  F, F, G, G
 ~~~
 
 … produira :
 
-[IMAGE]
+
 
 ---
 

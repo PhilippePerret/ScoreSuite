@@ -100,7 +100,7 @@ class Options extends Panneau {
       names = names.reverse()
 
       // Lire plus bas la note : NOTE GROUPED NAMES
-      names = inverseGroupeStaffNames(names)
+      names = this.inverseGroupeStaffNames(names)
       data.push(`--staves ${keys.length}`)
       data.push(`--staves_keys ${keys.join(',')}`)
       data.push(`--staves_names ${names.join(',')}`)
@@ -265,7 +265,7 @@ class Options extends Panneau {
     letter1 = name.substr(0,1)
     letterX = name.substr(name.length - 1, 1)
     if ( ( letter1 == '{' ) || ( letter1 == '[') ) {
-      counter_letter = letter1 == '{' ? '}' : ']'
+      counter_letter = (letter1 == '{') ? '}' : ']'
       name = name.substr(1, name.length) + counter_letter
     } else if ( (letterX == '}') || (letterX == ']') ) {
       counter_letter = (letterX == '}') ? '{' : '['

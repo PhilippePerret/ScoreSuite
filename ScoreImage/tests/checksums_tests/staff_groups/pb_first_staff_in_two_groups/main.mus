@@ -1,0 +1,22 @@
+--barres
+--keep
+# Comment traiter ce cas :
+# La Contrebasse et l’alto appartiennent à deux groupes.
+# @note: ça ne doit pouvoir arriver qu’avec le groupe général car
+# sinon on ne peut pas faire d’imbrication.
+--staves_names { { Cb., Va. }, Vl.}
+--staves_keys  F, UT3, G
+
+cb=
+c4, d e f
+
+alto=
+c4 d e f
+
+vl=
+c4 d e f
+
+-> score
+% vl %2
+% alto %2
+% cb %2

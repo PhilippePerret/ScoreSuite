@@ -4,7 +4,7 @@
 # 
 --barres
 --keep
---staves_names [Piano, Piano], Violon
+--staves_names {Piano, Piano}, Violon
 --staves_keys  F, G, G
 
 violon=
@@ -14,7 +14,7 @@ pianoMD=
 e4( f g a b1)
 
 pianoMG=
-c’8 c c c c c c c g1
+c,8 c c c c c c c g1
 
 -> score
 violon

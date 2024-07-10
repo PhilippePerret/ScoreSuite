@@ -1,0 +1,18 @@
+--barres
+--keep
+--staves_names [-Cb., Va., Vl.]
+--staves_keys  F, UT3, G
+
+cb=
+c4, d e f
+
+alto=
+c4 d e f
+
+vl=
+c4 d e f
+
+-> score
+% vl %2
+% alto %2
+% cb %2

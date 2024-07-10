@@ -79,7 +79,7 @@ def build
   # On compose le code Lilypond final pour le mettre dans son fichier
   #
   lilypond_code = Lilypond.compose(codes, data.options.merge(system: systeme))
-  puts "Lilypond Code : #{'x'*50}\n#{lilypond_code}\n#{'x'*50}"
+  # puts "Lilypond Code : #{'x'*50}\n#{lilypond_code}\n#{'x'*50}"
 
   #
   # On met le code final dans son fichier

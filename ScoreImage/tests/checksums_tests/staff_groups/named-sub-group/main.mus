@@ -1,0 +1,22 @@
+--barres
+--staves_names Cb. {Piano, Piano}, Vl.
+--staves_keys  F, F, G, G
+
+
+vl=
+% e’8 e e e %4
+
+pianoMD=
+c2 e g c
+
+pianoMG=
+c,2 e g c
+
+cb=
+c1~ c1
+
+-> named-sub-group
+vl
+pianoMD
+pianoMG
+cb

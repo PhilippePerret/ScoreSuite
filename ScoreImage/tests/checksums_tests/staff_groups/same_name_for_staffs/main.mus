@@ -1,0 +1,22 @@
+# Quand plusieurs portées groupées portent le même
+# nom, ce nom est attribué au groupe et les portées
+# n’ont pas de noms
+--barres
+
+
+--staves_names {Bois, Bois, Bois}
+--staves_keys F, G, G
+
+basson=
+c,4 e g c c g e c
+
+clarinette=
+% e8 e e e %4
+
+flute=
+c’4. g8 e’4. c8 g’4. e8 c’2
+
+-> score
+flute
+clarinette
+basson

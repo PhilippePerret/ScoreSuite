@@ -19,5 +19,5 @@ CLI.set_options_table({
 # OPTIONS = {} # conservera les options de la ligne de commande
 
 THISFOLDER = APP_FOLDER = __dir__
-Dir["#{THISFOLDER}/lib/**/*.rb"].each{|m|require(m)}
+Dir["#{THISFOLDER}/lib/required/**/*.rb"].each{|m|require(m)}
 

@@ -1,0 +1,320 @@
+#
+# Module pour gérer les groupement de portées.
+# 
+# On trouve les classes :
+# 
+# Lilypon::Group
+# 
+#     Gestion d’un groupe de portées, que ce soit le groupe principal
+#     ou un sous-groupe.
+# 
+# Lilypond::System < Lilypond::Group
+# 
+#     Gestion du "système", c’est-à-dire de l’ensemble des portée.
+#     C’est la valeur options[:system] qui sera utilisée pour sortir
+#     les marques de regroupement et autres noms de groupes ou de
+#     portée.
+# 
+#     Il hérite naturellement de la classe Lilypond::Group puisque
+#     c’est lui-même un groupe, avec une marque de début et une 
+#     marque de fin, etc.
+# 
+# Lilypond::Staff
+# 
+#     C’est une portée, en tant que portée qui peut être nommée et
+#     élément d’un groupe ou d’un système.
+# 
+# 
+class MusicScore
+class Lilypond
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#
+#                          LILYPOND::GROUP
+#
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+class Group
+
+  # [Array<<Lilypond::Staff>] Liste des portées
+  attr_reader :staves
+
+  def initialize
+    # Pour mettre toutes les portées [Lilypond::Staff]
+    @staves = []
+  end
+
+  # [String] Le nom du groupe
+  # Il n’existe que si toutes les portées qu’il contient possède
+  # le même nom (insensible à la casse)
+  def name
+    @name ||= get_group_name
+  end
+
+  # @api
+  # 
+  # @return [String] La marque pour le début du group/système
+  # 
+  # @note : peut-être redéfini explicitement dans le cas du système,
+  # lorsqu’il est d’un groupe spécial
+  def start_mark
+    @start_mark ||= begin
+      if group_character.nil? # system sans définition
+        '<<'.freeze
+      else
+        '\new %s %s<<'.freeze % [group_type, name_mark]
+      end.freeze
+    end
+  end
+
+  # @api
+  # 
+  # @return [String] La marque pour la fin du group/système
+  # (le plus souvent, c’est "{")
+  # @note : peut-être redéfini explicitement dans le cas du système,
+  # lorsqu’il est d’un groupe spécial
+  def end_mark
+    return '>>' # apparemment c’est toujours ça
+    @end_mark ||= begin
+      if group_character.nil? # system sans définition
+        '>>'
+      else
+        '>>'
+      end.freeze
+    end
+  end
+
+  # @api
+  # 
+  # Ajoute une portée au groupe (ou au système)
+  # @note : la portée est toujours ajoutée au début
+  # 
+  def add_staff(staff)
+    @staves.unshift(staff)
+  end
+
+  def staves_count
+    @staves_count ||= staves.count
+  end
+
+  # @return [String] Le type du groupe en fonction du character
+  # de groupe et de la volonté de lier les barres de portées
+  def group_type
+    case group_character
+    when '{'  # pas de barres déliées dans ce cas
+      'GrandStaff'
+    when '['
+      bars_linked? ? 'StaffGroup' : 'ChoirStaff'
+    end.freeze
+  end
+
+  # @return [String] La marque pour le nom du group s’il a un nom
+  # 
+  def name_mark
+    if name.nil?
+      ""
+    else
+      '\with { instrumentName = "%s" } '.freeze % self.name
+    end
+  end
+
+  # [String] Soit "[", soit ’{’, soit rien (système principal sans 
+  # précision de nature)
+  def group_character
+    @group_character
+  end
+  def group_character=(value)
+    @group_character = value
+  end
+
+  def bars_linked?
+    not(@bars_are_linked === false)
+  end
+  def bars_linked=(value)
+    @bars_are_linked = value
+  end
+
+  private 
+
+    # Retourne le nom du groupe s’il peut en avoir un
+    def get_group_name
+      nf  = staves[0].name
+      nft = nf.downcase.freeze
+      staves.each do |staff|
+        # <= Un nom différent
+        # => Pas de nom de groupe
+        return nil if staff.name.downcase != nft
+      end
+      return nf
+    end
+
+end #/class Group
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#
+#                          LILYPOND::SYSTEM
+#
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+class System < Group
+
+  # =========== CLASSE LILYPOND::SYSTEM =========== #
+  class << self
+
+    # @api
+    # = main =
+    # 
+    # @return [MusicScore::Lilypond::System] Le système avec tous ses
+    # groupes et ses portées.
+    # 
+    def parse(staff_names, staff_keys)
+
+      staff_names ||= ""
+      staff_keys  ||= ""
+      sys = System.new
+
+      # Les clés dispatchées (noter qu’elles peuvent ne pas être 
+      # définies — dans ce cas, elles valent G)
+      staff_keys = staff_keys.split(',').map {|k| k.strip}
+
+      current_group = nil
+
+      staff_names.split(',').each_with_index do |staff_name, idx|
+
+        # On instancie une nouvelle portée
+        staff = Staff.new
+
+        sname = staff_name.strip
+        staff.key= staff_keys[idx] || 'G'
+
+        # La portée est-elle le début ou la fin d’un groupe ?
+        if (with_acco = sname.start_with?('{')) || (with_croc = sname.start_with?('['))
+          # Marque de début => Fin d’un groupe qui n’existe pas 
+          # encore.
+
+          # On crée le groupe (en incrémentant le nombre de groupes
+          # du système — ne sert pas, pour le moment)
+          current_group = Group.new
+          sys.groups_count += 1
+
+          current_group.group_character= sname[0]
+          # Le nom de la portée
+          sname = sname[1..-1]
+          current_group.bars_linked= (sname[0] != '-')
+          sname = sname[1..-1] unless current_group.bars_linked?
+          staff.name= sname
+          staff.is_last
+          staff.group= current_group
+
+        elsif (with_acco = sname.end_with?('}')) || (with_croc = sname.end_with?(']'))
+          # Marque de fin => Début d’un groupe qui existe déjà
+          sname = sname[0..-2]
+          staff.is_first
+          staff.group= current_group # ne peut pas être nil
+          # C’est la fin du groupe
+          current_group = nil
+
+        else
+          # Ni le début ni la fin d’un groupe
+          staff.group= current_group # peut-être nil
+        end
+
+        # Dans tous les cas, on règle le nom de la portée (qui ici 
+        # est toujours épuré)
+        staff.name= sname
+        # Et on ajoute cette portée au système
+        sys.add_staff(staff)
+      
+      end
+
+      sys.check_if_system_in_special_group
+
+      return sys
+    end
+    #/ parse
+
+  end #/<< self 
+  # =========== /CLASSE LILYPOND::SYSTEM =========== #
+
+  # @return [Integer] Nombre de groupes que possède le
+  # système (je ne sais pas si ça sert à quelque chose…)
+  attr_accessor :groups_count
+
+  def initialize
+    super
+    @groups_count = 0
+  end
+
+  # Si la première et la dernière portée appartiennent au même
+  # groupe, c’est en fait le système
+  def check_if_system_in_special_group
+    return if groups_count == 0
+    return if staves_count < 2
+    return if staves[0].group.nil? || staves[-1].group.nil?
+    if staves[0].group == staves[-1].group
+      # <= La 1re et la dernière portée sont dans le même groupe
+      # =>
+      @start_mark = staves[0].group.start_mark
+      @end_mark   = staves[0].group.end_mark
+      # On sort toutes les portées du group principal
+      staves.each { |st| st.group = nil }
+    end
+  end
+
+end #/class System
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+#
+#                          LILYPOND::STAFF
+#
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+class Staff
+
+  attr_accessor :name
+  attr_accessor :key
+
+  # [Lilypond::Group] Instance du groupe auquel appartient la portée
+  # (if any)
+  attr_reader :group
+
+  def initialize
+    @group    = nil
+    @is_last  = false
+    @is_first = false
+  end
+
+  # - Predicate Methods -
+
+  def in_group?
+    not(group.nil?)  
+  end
+
+  def last_staff?
+    @is_last === true
+  end
+
+  def first_staff?
+    @is_first === true
+  end
+
+  # - Méthodes de définition des valeurs -
+
+  # Définit le groupe de la portée et l’ajoute à ce groupe
+  # 
+  # @param igroup [Lilypond::Group]
+  def group=(igroup)
+    @group = igroup
+    igroup.add_staff(self) unless igroup.nil?
+  end
+
+  def is_last
+    @is_last = true
+  end
+  def is_first
+    @is_first = true
+  end
+
+end #/class Staff
+end #/class Lilypond
+end #/class MusicScore

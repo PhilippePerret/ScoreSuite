@@ -1,0 +1,35 @@
+--barres
+--keep
+# Pour ne pas confondre un sous-groupe avec le système
+# Ci-dessous, en ne testant que le premier et le dernier caractère
+# ainsi que le nombre d’accolades et de crochets, on arrive à la 
+# conclusion que c’est un système entier entre accolade alors qu’il
+# s’agit de deux sous-groupes d’accolades.
+--staves_names {Cb., Alto, Vl.}, {Ba., Hb., Fl.}
+--staves_keys  F, UT3, G, F, G, G
+
+cb=
+c4, d e f
+
+ba=
+c4, d e f
+
+alto=
+c4 d e f
+
+hb=
+c4 d e f
+
+vl=
+c4 d e f
+
+fl=
+c4 d e f
+
+-> score
+% fl %2
+% hb %2
+% ba %2
+% vl %2
+% alto %2
+% cb %2
