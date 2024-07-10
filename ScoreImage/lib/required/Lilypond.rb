@@ -99,11 +99,11 @@ def rationnalise_options(options)
   # des éventuels groupements de portées. Trois classes ont été 
   # créées pour ça : Lilypond::Group, Lilypond::System et 
   # Lilypond::Staff
-  if options.key?('staves_names') || options.key?('staves_keys')
+  # if options.key?('staves_names') || options.key?('staves_keys')
     options.merge!(isystem: Lilypond::System.parse(options['staves_names'], options['staves_keys']))
     # Avec ce nouveau système, à partir d’ici, on n’a plus besoin 
     # que de options[:isystem], plus du tout du reste.
-  end
+  # end
 
   #
   # On ajoute les clés symboliques (donc on aura les deux versions
@@ -239,6 +239,9 @@ end
 # 
 def system_for_x_staves(code)
   isystem = options[:isystem]
+
+  # puts isystem.inspect # inspection personnalisée
+
   c = []
   c << '\score {'.freeze
   c << isystem.start_mark
@@ -247,11 +250,11 @@ def system_for_x_staves(code)
 
     # Marque de début de groupe ?
     if staff.in_group? && staff.first_staff?
-      staff.group.start_mark
+      c << staff.group.start_mark
     end
 
     # - Code de la portée
-    c << staff_for(code_portee, { name: staff.name, key: staff.key })
+    c << staff_for(code_portee, { name: staff.final_name, key: staff.key })
 
     # Marque de fin de groupe ?
     if staff.in_group? && staff.last_staff?

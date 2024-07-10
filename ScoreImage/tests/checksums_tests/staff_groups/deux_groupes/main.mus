@@ -1,13 +1,10 @@
 --page a0
---staves 7
 --staves_keys F,F,G,F,G,G,G
 --staves_names Cb.,{Piano,Piano},Cor,{Cl.,Hb.,Fl.}
 --barres
 --keep
 --tune C
 --time 4/4
-
-
 
 
 cb=
@@ -20,7 +17,7 @@ pianoMG=
 c,4 c c c
 
 cor=
-c2 c’
+c,2 c’
 
 cl=
 c4 c’ c, c’

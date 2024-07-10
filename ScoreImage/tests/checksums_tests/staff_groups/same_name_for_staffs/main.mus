@@ -17,6 +17,7 @@ flute=
 c’4. g8 e’4. c8 g’4. e8 c’2
 
 -> score
-flute
+flute c
+# Le "c" ci-dessus sert à faire une erreur tant que le problème n’est pas résolu
 clarinette
 basson

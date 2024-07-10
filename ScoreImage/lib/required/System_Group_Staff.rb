@@ -44,11 +44,29 @@ class Group
     @staves = []
   end
 
+  def inspect(indent = '')
+    <<~TEXT.split("\n").join("\n#{indent}")
+
+    LILYPOND::GROUP ID #{object_id}
+    Name: #{name.inspect}
+    start_mark: #{start_mark}
+
+    TEXT
+  end
+
   # [String] Le nom du groupe
   # Il n’existe que si toutes les portées qu’il contient possède
   # le même nom (insensible à la casse)
   def name
     @name ||= get_group_name
+  end
+
+  # @return true si le groupe est nommé
+  # Il est "nommé" si toutes ses portées portent le même nom. Dans ce
+  # cas, le groupe porte ce nom et le nom des portées n’est pas affi-
+  # ché.
+  def named?
+    not(name.nil?)
   end
 
   # @api
@@ -111,11 +129,9 @@ class Group
   # @return [String] La marque pour le nom du group s’il a un nom
   # 
   def name_mark
-    if name.nil?
-      ""
-    else
+    if named?
       '\with { instrumentName = "%s" } '.freeze % self.name
-    end
+    else "" end
   end
 
   # [String] Soit "[", soit ’{’, soit rien (système principal sans 
@@ -145,6 +161,7 @@ class Group
         # => Pas de nom de groupe
         return nil if staff.name.downcase != nft
       end
+
       return nf
     end
 
@@ -237,6 +254,9 @@ class System < Group
   end #/<< self 
   # =========== /CLASSE LILYPOND::SYSTEM =========== #
 
+
+  # ============ INSTANCE LILYPOND::SYSTEM =============== #
+
   # @return [Integer] Nombre de groupes que possède le
   # système (je ne sais pas si ça sert à quelque chose…)
   attr_accessor :groups_count
@@ -244,6 +264,31 @@ class System < Group
   def initialize
     super
     @groups_count = 0
+  end
+
+  # Pour débugger (isys.inspect)
+  # 
+  def inspect
+    <<~TEXT
+
+    LILYPOND::SYSTEM ID #{object_id}
+    -------------------------
+    Détail des portées (#{staves_count}) :
+    ------------------
+    #{staves.map { |st| st.inspect('  ') }.join("\n")}
+
+    Détail des groupes (#{groups.count}) :
+    ------------------
+    #{groups.map {|gr| gr.inspect('  ')}.join("\n")}
+    TEXT
+  end
+
+  def groups
+    @groups ||= begin
+      staves.map do |st|
+        st.group
+      end.compact.uniq
+    end
   end
 
   # Si la première et la dernière portée appartiennent au même
@@ -282,6 +327,23 @@ class Staff
     @group    = nil
     @is_last  = false
     @is_first = false
+  end
+
+  def final_name
+    if in_group? && group.named?
+      return nil
+    else
+      return self.name
+    end
+  end
+
+  def inspect(indent = '')
+    <<~TEXT.split("\n").join("\n#{indent}")
+
+    LILYPOND::STAFF ID: #{object_id}
+    Name: #{name.inspect}
+    Group: #{in_group? ? group.object_id : '- aucun - '}#{"\nDernière du groupe (depuis le haut)" if last_staff?}#{"\nPremière du groupe (depuis le haut)" if first_staff?}
+    TEXT
   end
 
   # - Predicate Methods -

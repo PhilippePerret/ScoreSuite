@@ -17,6 +17,7 @@ vl=
 c4 d e f
 
 -> score
-% vl %2
+% vl %2 c 
+# Le "c" ci-dessus sert à faire une erreur tant que le problème n’est pas résolu
 % alto %2
 % cb %2

@@ -1,10 +1,10 @@
 --barres
---staves_names Cb. {Piano, Piano}, Vl.
+--staves_names Cb., {Piano, Piano}, Vl.
 --staves_keys  F, F, G, G
 
 
 vl=
-% e’8 e e e %4
+\relative c’’ { % e8 e e e %4 }
 
 pianoMD=
 c2 e g c
