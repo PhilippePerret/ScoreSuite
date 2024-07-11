@@ -126,7 +126,7 @@ class Group
     end.freeze
   end
 
-  # @return [String] La marque pour le nom du group s’il a un nom
+  # @return [String] La marque pour le nom du groupe s’il a un nom
   # 
   def name_mark
     if named?
@@ -180,7 +180,11 @@ class System < Group
   class << self
 
     # @api
+    # 
     # = main =
+    # 
+    # Méthode principale qui parse la données ’--staves_names’ pour
+    # en tirer les groupements de portées à faire.
     # 
     # @return [MusicScore::Lilypond::System] Le système avec tous ses
     # groupes et ses portées.
@@ -208,7 +212,17 @@ class System < Group
         # La portée est-elle le début ou la fin d’un groupe ?
         if (with_acco = sname.start_with?('{')) || (with_croc = sname.start_with?('['))
           # Marque de début => Fin d’un groupe qui n’existe pas 
-          # encore.
+          # encore (car rappel : les noms sont inversés, donc la 
+          # marque ’{instrumen’, qui dans le fichier mus désigne un
+          # début de groupe, correspond en réalité à ’intrument}’, 
+          # une fin de groupe.
+
+          # Si un groupe est déjà en cours, on lève une exception, 
+          # car on n’a pas le droit d’imbriquer des groupes (pour le
+          # moment en tout cas, et même si Lilypond le permet)
+          if not(current_group.nil?)
+            raise "ERREUR [500] : Pas de groupes imbriqués."
+          end
 
           # On crée le groupe (en incrémentant le nombre de groupes
           # du système — ne sert pas, pour le moment)
@@ -302,8 +316,19 @@ class System < Group
       # =>
       @start_mark = staves[0].group.start_mark
       @end_mark   = staves[0].group.end_mark
-      # On sort toutes les portées du group principal
-      staves.each { |st| st.group = nil }
+      # On sort toutes les portées du group principal et on en 
+      # profite pour voir si toutes les portées portent le même nom
+      grp_name = staves[0].name
+      puts "grp_name: #{grp_name.inspect}"
+      staves.each do |st| 
+        st.group = nil
+        grp_name = nil if st.name != grp_name
+      end
+      puts "grp_name après: #{grp_name.inspect}"
+      unless grp_name.nil?
+        @name = grp_name
+        staves.each { |st| st.name = nil }
+      end
     end
   end
 
@@ -330,7 +355,7 @@ class Staff
   end
 
   def final_name
-    if in_group? && group.named?
+    if (in_group? && group.named?)
       return nil
     else
       return self.name

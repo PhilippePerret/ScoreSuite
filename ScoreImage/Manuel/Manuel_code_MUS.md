@@ -534,6 +534,55 @@ plus pratique d'utiliser :
 
 Cf. [les options musicales](#options_musicales).
 
+#### Instruments transpositeurs
+
+Le traitement des instruments transpositeurs est extrêmement simple avec *music-score* : il suffit d’indiquer **`\trans`** suivi de la note de transposition (telle quelle) pour produire les bonnes notes avec la bonne armure.
+
+Par exemple, pour une clarinette en La (A), il suffit d’indiquer **`\trans a`** :
+
+~~~
+-> score
+\trans a { c d e f }
+~~~
+
+Exemple avec un saxophone en Eb, un cor anglais (qui est en F), une clarinette en Sib, une flûte :
+
+~~~
+--barres
+--staves_names Sax Eb, Cor A., Cl.(Bb), Fl.
+--staves_keys  G, G
+
+fl=
+e’1
+
+cl=
+c4 d e f
+
+cor_anglais=
+c4 e g c
+
+sax=
+g’4 f e d
+
+-> score
+fl
+\trans bes { cl }
+\trans f { cor_anglais }
+\trans ees { sax }
+
+~~~
+
+… produira la partition :
+
+
+
+<center>
+<img src="./images/instruments-transpositeurs.svg" >
+<span>  qui sonnera  </span>
+<img src="./images/no-transposition.svg" >
+</center>
+
+
 
 #### Numéro de mesure
 

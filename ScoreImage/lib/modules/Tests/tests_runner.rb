@@ -24,7 +24,11 @@ class << self
     must_fail_fast = CLI.options[:fail_fast]
     tests_list(filter).each_with_index do |musfile, idx|
       musfile.indice = idx + 1
+      ###########################
+      ###    APPEL DU TEST    ###
+      ###########################
       musfile.test
+      
       point = 
         if musfile.success?
           success_tests << musfile

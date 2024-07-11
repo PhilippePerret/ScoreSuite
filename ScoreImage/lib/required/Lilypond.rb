@@ -539,20 +539,6 @@ private
     return str
   end
 
-  # Maintenant, les barres sont traitées dans 
-  # BlockCode_mus_code_module.rb
-  # def translate_barres_from_ms(str)
-  #   # Les barres de reprise sont simplement mises en '|:', ':|:' ou ':|'
-  #   str = str.gsub(/:\|:/, '_DOUBLE_BARRES_REPRISE_')
-  #         .gsub(/\|:/, '\bar ".|:"')
-  #         .gsub(/:\|/, '_BARRES_REPRISE_FIN_')
-  #         .gsub(/\|\./, '\bar "|."')
-  #         .gsub(/\|\|/, '\bar "||"')
-  #   str = str.gsub(/_DOUBLE_BARRES_REPRISE_/, '\bar ":|.|:"')
-  #   str = str.gsub(/_BARRES_REPRISE_FIN_/, '\bar ":|."')
-  #   return str
-  # end
-
   def translate_armure_from_ms(str)
     str = str.gsub(/\\(?:tune|key) ([a-g])(es|is|d|b)? /i) do
       ton   = $1.downcase.freeze

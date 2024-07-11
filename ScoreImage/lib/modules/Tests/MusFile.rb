@@ -14,21 +14,42 @@ class MusFile
 
   # === Test Methods ===
 
+  MSG_NEGATIVE_ERROR = <<~ERR
+  La construction aurait dû échouer avec le code d’erreur %{code}
+  et les éventuels textes : %{texts}.
+  Or, la construction a réussi.
+  ERR
+
   # = main =
   # 
-  # Procède au test du fichier.
+  # TEST DU FICHIER
+  # ----------------
   # Cela consiste à :
   #   - le construire avec ’score-image’
   #   - calculer le checksum du SVG résultat
   #   - le comparer avec le checksum attendu
-  # 
+  # En cas de test négatif (qui doit produire une erreur) il faut
+  # trouver le message d’erreur (code) dans le retour.
   def test
     resultat_built = build_svg_score
-    if resultat_built.match?(EXTRAIT_MESSAGE_SUCCES)
-      @ok = compare_with_checksum # => true, false, nil
+    if negative?
+      # 
+      # Test négatif
+      # 
+      @ok = has_error?(resultat_built)
+      if not(@ok)
+        @error_msg = MSG_NEGATIVE_ERROR % {code: expected_error_code, texts: (expected_error_txts||['néant']).join(',')}
+      end
     else
-      @error_msg = resultat_built 
-      @ok = false
+      #
+      # Test positif
+      # 
+      if resultat_built.match?(EXTRAIT_MESSAGE_SUCCES)
+        @ok = compare_with_checksum # => true, false, nil
+      else
+        @error_msg = resultat_built 
+        @ok = false
+      end
     end
   end
 
@@ -86,7 +107,7 @@ class MusFile
   def error
     "La construction de #{relative_path} " + 
     if not(@error_msg.nil?)
-      "a retourné le message derreur : #{@error_msg}"
+      "a retourné le message d’erreur suivant :\n#{@error_msg}"
     elsif not(original_svg_exist?)
       "n’a pas pu construire la partition SVG."
     elsif not(checksums_same?)
@@ -102,6 +123,8 @@ class MusFile
     Si l’image #{relative_path}/#{svg_name} ne correspond 
     pas aux attentes, détruire le fichier CHECKSUM. Dans le cas contraire, 
     au prochain test, le fichier #{svg_name} produit devra correspondre.
+    Vous pouvez aussi dupliquer le fichier #{svg_name} en ajoutant par 
+    exemple "bon" à son nom pour garder une trace de l’image bonne.
     TEXT
   end
 
@@ -112,7 +135,49 @@ class MusFile
     FileUtils.mv(built_svg_path, svg_path)
   end
 
+
+  # === Negative Methods === #
+
+
+  attr_reader :expected_error_code
+  attr_reader :expected_error_txts
+
+
+  # @return true si c’est un test négatif, c’est-à-dire une 
+  # construction qui doit échouer. Dans ce cas, le test contient un
+  # fichier ’FAILURE’ avec le numéro d’erreur et les éventuels textes
+  # à trouver
+  def negative?
+    File.exist?(failure_path_file)
+  end
+
+  def has_error?(err_msg)
+    read_negative_file
+    ok = err_msg.match?(/\[#{expected_error_code}\]/.freeze)
+    return false if not(ok)
+    if expected_error_txts && not(expected_error_txts.empty?)
+      expected_error_txts.each do |expected_error_txt|
+        eet = Regexp.escape(expected_error_txt)
+        return false if not(err_msg.match?(/#{eet}/.freeze))
+      end
+    end
+    return true
+  end
+
+  # Lecture du fichier FAILURE qui contient le code de l’erreur
+  # ainsi qu’éventuellement les messages à trouver séparés par des
+  # points-virgule
+  def read_negative_file
+    c = IO.read(failure_path_file).chomp.split(';')
+    @expected_error_code = c.shift.freeze
+    c = nil if c.empty?
+    @expected_error_txts = c.freeze
+  end
+
+
   # === Checksum Methods ===
+
+
 
   def checksum_compare
     @checksum_compare ||= begin
@@ -138,11 +203,16 @@ class MusFile
     IO.write(checksum_path, checksum_tested)
   end
 
+
+
   # === Predicate Methods ===
+
+
 
   def exist?
     File.exist?(path)
   end
+
 
   # @param [Regexp] Expression régulière pour filtrer le nom
   # 
@@ -175,7 +245,11 @@ class MusFile
     File.exist?(checksum_path)
   end
 
+
+
   # === Path Methods ===
+
+
 
   # Nom de l’image créée (le ’-> partition’ dans le mus-file)
   def image_name
@@ -184,6 +258,10 @@ class MusFile
 
   def checksum_path
     @checksum_path ||= File.join(folder,'CHECKSUM')
+  end
+
+  def failure_path_file
+    @failure_path_file ||= File.join(folder, 'FAILURE')
   end
 
   def svg_path

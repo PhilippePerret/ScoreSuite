@@ -1,0 +1,29 @@
+# Ce test, qui échoue, permet de vérifier qu’on ne puisse pas faire
+# de groupes imbriqués
+# 
+--barres
+
+--staves_names Cb., {Vlc., Va., {Vl2., Vl1.} }
+--staves_keys  F, F, UT3, G, G
+
+cb=
+c,,1
+
+vlc=
+c,1
+
+va=
+c1
+
+vl1=
+c1
+
+vl2=
+c1
+
+-> score
+vl1
+vl2
+va
+vlc
+cb

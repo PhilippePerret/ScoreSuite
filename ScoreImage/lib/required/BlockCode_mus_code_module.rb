@@ -34,12 +34,36 @@ def traite_as_code_mscore(line, idx)
   line = traite_reprises_avec_alternatives(line)
   # - Traitement des autres barres -
   line = translate_barres(line)
+  # - (essai) Traitement de l’instrument transpositeur -
+  line = traite_transpositions_in(line)
 end
+
+# Traitement des instruments transpositeurs
+def traite_transpositions_in(line)
+  # puts "Line avant : #{line.inspect}".jaune
+  line = line.gsub(/\\trans ([a-gs]{1,3})/) do
+    instrument_tune = $1.freeze
+    table = instrument_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
+    offset_tune = table.index(instrument_tune)
+    counter_offset = 12 - offset_tune
+    counter_note = table[counter_offset]
+    '\\tune %{note} \\transpose c %{note}' % {note: counter_note}
+  end
+  # puts "Line après : #{line.inspect}".bleu
+  return line
+end
+
+TABLE_DEMITONS_DIESES = [
+  'c', 'cis','d','dis','e','f','fis','g','gis','a','ais','b'
+]
+TABLE_DEMITONS_BEMOLS = [
+  'c', 'des','d','ees','e','f','ges','g','aes','a','bes','b'
+]
 
 def replace_multi_voices(line)
   line
-    .gsub(REG_3_VOIX, '<< { \1 } \\\\\\ { \2 } \\\\\\ { \3 } >>')
-    .gsub(REG_2_VOIX, '<< { \1 } \\\\\\ { \2 } >>')
+    .gsub(REG_3_VOIX, '<< { \1 } \\\\\\ { \2 } \\\\\\ { \3 } >>'.freeze)
+    .gsub(REG_2_VOIX, '<< { \1 } \\\\\\ { \2 } >>'.freeze)
 end
 
 def replace_repetition_code(line)

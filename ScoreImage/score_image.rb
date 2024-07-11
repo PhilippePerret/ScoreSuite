@@ -18,6 +18,8 @@ begin
     ScoreImage::Test.run
   when 'help'
     puts "Je ne sais pas encore gérer l’aide.".jaune
+  when 'manuel', 'manual'
+    MusicScore.open_manual
   when NilClass, '.'
     # Passage normal
     MusicScore.run

@@ -26,9 +26,10 @@ class << self
     MusicScore.new.proceed
   end
 
-  def show_help
-    help_pdf = File.expand_path(File.join(APP_FOLDER,'Manuel','Manuel.pdf'))
-    `open "#{help_pdf}"`
+  def open_manual
+    ext = CLI.option(:dev) ? 'md' : 'pdf'
+    pth = File.expand_path(File.join(APP_FOLDER,'Manuel','Manuel_code_MUS.%s'.freeze % ext))
+    `open "#{pth}"`
   end
 
   def verbose?
