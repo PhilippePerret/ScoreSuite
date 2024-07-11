@@ -221,7 +221,7 @@ class System < Group
           # car on n’a pas le droit d’imbriquer des groupes (pour le
           # moment en tout cas, et même si Lilypond le permet)
           if not(current_group.nil?)
-            raise "ERREUR [500] : Pas de groupes imbriqués."
+            raise ERREURS[500]
           end
 
           # On crée le groupe (en incrémentant le nombre de groupes
@@ -231,16 +231,21 @@ class System < Group
 
           current_group.group_character= sname[0]
           # Le nom de la portée
-          sname = sname[1..-1]
+          sname = sname[1..-1].strip
+          # On empêche tout de suite d’avoir des groupes imbriqués
+          if sname.match?(/^[\[\{]/)
+            raise ERREURS[500]
+          end
+
           current_group.bars_linked= (sname[0] != '-')
-          sname = sname[1..-1] unless current_group.bars_linked?
+          sname = sname[1..-1].strip unless current_group.bars_linked?
           staff.name= sname
           staff.is_last
           staff.group= current_group
 
         elsif (with_acco = sname.end_with?('}')) || (with_croc = sname.end_with?(']'))
           # Marque de fin => Début d’un groupe qui existe déjà
-          sname = sname[0..-2]
+          sname = sname[0..-2].strip
           staff.is_first
           staff.group= current_group # ne peut pas être nil
           # C’est la fin du groupe
@@ -319,12 +324,10 @@ class System < Group
       # On sort toutes les portées du group principal et on en 
       # profite pour voir si toutes les portées portent le même nom
       grp_name = staves[0].name
-      puts "grp_name: #{grp_name.inspect}"
       staves.each do |st| 
         st.group = nil
         grp_name = nil if st.name != grp_name
       end
-      puts "grp_name après: #{grp_name.inspect}"
       unless grp_name.nil?
         @name = grp_name
         staves.each { |st| st.name = nil }
