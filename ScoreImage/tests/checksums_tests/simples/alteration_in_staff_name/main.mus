@@ -1,0 +1,17 @@
+# Pour tester le fait qu’un ’b’ ou un ’#’ pas beau est 
+# remplacé par un beau bémol et un beau dièse dans le nom 
+# affiché.
+--staves_names Cl.(B_b_), M.(C_#_)
+--staves_keys  G, G
+--barre
+--keep
+
+cl=
+c4 d e f
+
+mar=
+c’4 d e f
+
+-> score
+mar 
+cl

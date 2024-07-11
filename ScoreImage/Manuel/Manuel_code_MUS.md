@@ -210,7 +210,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 
 ### Portées multiples
 
-On définit les portées multiples à l’aide de `--staves <nombre de portées>`, `--staves_keys` (pour les clés) et `--staves_names` (pour les noms).
+On définit les portées multiples à l’aide de  **`--staves_keys`** (pour les clés) et **`--staves_names`** (pour les noms — voir aussi [Nommage des portées](#nommage-staff)).
 
 On doit les définir **de bas en haut**. C’est-à-dire que si on veut un violon au-dessus d’un piano, on doit définir :
 
@@ -253,6 +253,16 @@ Par exemple :
 ~~~
 
 Pour l’espacement vertical entre les systèmes, cf. [Espacement entre les systèmes](#systems-vspace).
+
+---
+
+<a name="nommage-staff"></a>
+
+#### Nommage des portées
+
+On peut nommer les portées à l’aide de l’option **`--staves_names`** (cf. [Portées multiples](#options_portees)).
+
+On peut ajouter un vrai dièse ou un vrai bémol dans le nom en utilisant **`_b_`** pour le bémol et **`_d_`** ou **`_#_`** pour le dièse. Ils seront remplacés par de vrais signes bémols et dièse, pour un affichage parfait.
 
 #### Groupement des portées
 

@@ -357,11 +357,32 @@ class Staff
     @is_first = false
   end
 
+  # @return [String] Le nom final affiché pour la portée
+  # Voir aussi :
+  # https://lilypond.org/doc/v2.25/Documentation/notation/instrument-names.fr.html
+  # 
   def final_name
     if (in_group? && group.named?)
       return nil
     else
-      return self.name
+      return name && formated_name
+    end
+  end
+
+  REG_ALTE_IN_NAME = /^.*_([bd#])_.*$/.freeze
+  def formated_name
+    @formated_name ||= begin
+      n = self.name
+      if n && n.match?(REG_ALTE_IN_NAME)
+        n.gsub(REG_ALTE_IN_NAME) do
+          letter = $1.freeze
+          alte   = letter == 'b' ? 'flat' : 'sharp'
+          before_alte, after_alte = n.split("_#{letter}_")
+          '\markup { \concat { "%s" \normal-size-super { \teeny \%s } "%s" } }' % [before_alte, alte, after_alte]
+        end
+      else
+        '"%s"'.freeze % n
+      end
     end
   end
 

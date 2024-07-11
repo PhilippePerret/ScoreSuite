@@ -308,7 +308,7 @@ end
 
 def mark_staff_name(params)
   if params[:name]
-    '\with { instrumentName = "%s" } '.freeze % params[:name]
+    '\with { instrumentName = %s } '.freeze % params[:name]
   else 
     '' 
   end
