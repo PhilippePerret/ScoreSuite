@@ -8,8 +8,8 @@ mes2=
 fn_motif(("c", "d", "a d f"))
 
 mes3=
-fn_motif(("b", "d", "g d f"))
+fn_motif(("b", "d", "g d’ f"))
 
 -> score
-mes1 mes2
+mes1 mes2 mes3
 

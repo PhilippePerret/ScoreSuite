@@ -1,0 +1,18 @@
+--barres
+--piano
+
+mesure1=
+c'4 d e f
+c,1
+
+mesure2=
+g a b c
+g1
+
+mesure3=
+r1
+c,2 c'
+
+-> score
+mesure1 mesure2 mesure1
+mesure1 mesure2 mesure3

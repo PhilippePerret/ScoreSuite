@@ -65,7 +65,7 @@ def parse
   # Découpe du code en "paragraphes" qui définissent chacun quelque
   # chose.
   code.split("\n\n").each do |paragraphe|
-    puts "paragraphe = #{paragraphe.inspect}"
+    # puts "paragraphe = #{paragraphe.inspect}"
     blocode = BlockCode.new(paragraphe, options.merge(music_score:music_score))
     blocode.parse
     options = blocode.options
@@ -115,11 +115,13 @@ def parse
       # des blocs.
       #
       all_blocks << blocode
-      #
-      # Et on ré-initialise les définitions locales
-      # (pourquoi ?…)
-      #
-      options[:definitions_locales] = {}
+      # #
+      # # Et on ré-initialise les définitions locales
+      # # (pourquoi ?… C’était pensé, peut-être, au début, pour
+      # # utiliser un seul nom de variable et lui donner une valeur
+      # # différente à chaque utilisation.)
+      # #
+      # options[:definitions_locales] = {}
     end
 
     # puts "PARA : #{blocode.inspect}"
@@ -147,11 +149,11 @@ def evaluate_fonctions_ruby_in(str)
       send(method_name)
     else
       arguments = eval("[#{arguments}]")
-      puts "arguments: #{arguments.inspect}"
+      # puts "arguments: #{arguments.inspect}"
       send(method_name, *arguments)
     end
   end
-  puts "str après :\n#{str}\n-----------------------------"
+  # puts "str après :\n#{str}\n-----------------------------"
   return str
 end
 REG_RUBY_METHOD = /fn_(?<method_name>[a-zA-Z0-9_]+)\(\((?<arguments>.*?)\)\)/.freeze

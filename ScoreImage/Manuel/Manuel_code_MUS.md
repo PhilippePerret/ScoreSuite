@@ -355,6 +355,89 @@ Par exemple :
 
 
 
+#### Cas spécial du PIANO
+
+Le cas du piano est spécial car il possède sa propre option :
+
+~~~mus
+--piano
+~~~
+
+C’est une écriture simplifiée pour :
+
+~~~mus
+--staves_names {Piano, Piano}
+--staves_keys F, G
+~~~
+
+Mais plus encore, ça simplifie l’écriture quand il y a des variables, puisque dans la définition de la partition on n’est pas contraint de préciser les deux mains :
+
+~~~mus
+--barres
+--piano
+
+
+mesure1=
+c'4 d e f
+c,1
+
+mesure2=
+g a b c
+g1
+
+-> score
+mesure1 mesure2
+~~~
+
+On pourra cependant utiliser l’écriture normale :
+
+~~~mus
+--barres
+--piano
+
+
+mesure1=
+c'4 d e f
+c,1
+
+mesure2=
+g a b c
+g1
+
+-> score
+mesure1 mesure2
+mesure1 mesure2
+~~~
+
+… notamment dans le cas d’une utilisation d’autres variables. Par exemple :
+
+~~~mus
+--barres
+--piano
+
+mesure1=
+c'4 d e f
+c,1
+
+mesure2=
+g a b c
+g1
+
+mesure3=
+r1
+c,2 c'
+
+-> score
+mesure1 mesure2 mesure1
+mesure1 mesure2 mesure3
+~~~
+
+… qui produira :
+
+![score](./images/piano-mesures-croized.svg)
+
+> Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droit a été empruntée à la mesure 1, conformément à la définition de la partition.
+
 ---
 
 <a id="options_musicales"></a>
@@ -667,7 +750,7 @@ c, e g \up c e c \down g e c
 
 … produira :
 
-![changement_portee](Manuel/images/exemples/changement_portee.svg)
+![changement_portee](./images/exemples/changement_portee.svg)
 
 
 
@@ -713,12 +796,15 @@ Il nous suffit maintenant d’appeler la méthode `#motif` dans le code `.mus` �
 
 ~~~mus
 -> score
-fn_motif("c", "e", "g c e")
+fn_motif(("c", "e", "g c e"))
+
+# NOTER LES DOUBLES PARENTHÈTES (POUR NE PAS AVOIR DE PROBLÈME AVEC DES PARENTHÈSES DANS LES ARGUMENTS 
+# ce qui arrive souvent avec du code Lilypond)
 ~~~
 
 
 
-> Noter que contrairement à du pur ruby, il faut obligatoirement utiliser les parenthèses pour délimiter les arguments <u>**même lorsqu’il n’y en a pas**</u>.
+> Noter que contrairement à du pur ruby, il faut obligatoirement utiliser les parenthèses — mêmes les **<u>doubles parenthèses</u>** pour délimiter les arguments <u>**même lorsqu’il n’y en a pas**</u>.
 
 ---
 

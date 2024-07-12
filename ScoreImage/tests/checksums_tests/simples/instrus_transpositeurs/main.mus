@@ -2,18 +2,18 @@
 --keep
 --barres
 --staves_names Sax Eb, Cor A., Cl.(Bb), Fl.
---staves_keys  G, G
+--staves_keys  G, G, G, G
 
-fl==
+fl=
 e’1
 
-cl==
+cl=
 c4 d e f
 
-cor_anglais==
+cor_anglais=
 c4 e g c
 
-sax==
+sax=
 g’4 f e d
 
 -> score
@@ -21,9 +21,3 @@ fl
 \trans bes { cl }
 \trans f { cor_anglais }
 \trans ees { sax }
-
--> score-no-transpo
-fl
-cl
-cor_anglais
-sax

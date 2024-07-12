@@ -139,6 +139,26 @@ def parse
     end
   end
 
+  # Dans le cas d’un piano (option ’--piano’) et d’une définition
+  # unique des lignes de code ’lines_code’, on dédouble la ligne qui
+  # doit être composée de variables. Car pour le piano, on peut 
+  # faire :
+  # 
+  #   m1=
+  #   c d e f
+  #   c1
+  # 
+  #   m2
+  #   g a c d
+  #   g1
+  # 
+  #   -> score
+  #   m1 m2
+  # 
+  if options['piano'] && @lines_code.count == 1
+    @lines_code << @lines_code[0]
+  end
+
   # On doit maintenant remplacer les variables dans chaque ligne
   # ainsi que quelques corrections
   # 

@@ -112,10 +112,8 @@ class MusFile
       "La construction de #{relative_path} " + 
       if not(@error_msg.nil?)
         "a retourné le message d’erreur suivant :\n#{@error_msg}"
-      elsif not(original_svg_exist?)
-        "n’a pas pu construire la partition SVG."
       elsif not(checksums_same?)
-        "ne correspond pas aux attentes."
+        "n’est pas conforme aux attentes."
       else
         "n’est pas bon pour une raison inconnue."
       end
