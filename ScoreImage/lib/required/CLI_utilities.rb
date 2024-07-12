@@ -179,14 +179,14 @@ def help?
   cli?('help') || cli?('-h') || cli?('--help') || cli?('--aide') || cli?('aide')
 end
 
-alias :console_puts :puts
-def puts(msg)
-  if debug?
-    CONFIG.refdebug.puts(msg)
-  else
-    send(:console_puts, msg)
-  end
-end
+# alias :console_puts :puts
+# def puts(msg)
+#   if debug?
+#     CONFIG.refdebug.puts(msg)
+#   else
+#     Kernel.send(:console_puts, msg)
+#   end
+# end
 
 def less(texte)
   exec "echo \"#{texte.gsub(/\"/,'\\"')}\" | less -r"

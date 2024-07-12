@@ -2,6 +2,7 @@
 
 LIB_FOLDER = File.dirname(__dir__)
 APP_FOLDER = File.dirname(LIB_FOLDER)
+SCORE_SUITE_FOLDER = File.dirname(APP_FOLDER)
 TMP_FOLDER = mkdir(File.join(APP_FOLDER,'tmp'))
 
 #

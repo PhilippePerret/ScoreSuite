@@ -97,9 +97,21 @@ def produce_svg
 
   remove_all_svg
 
-  cmd = 'cd "%s";score-image %s -v 2>&1'.freeze % [File.dirname(mus_file),File.basename(mus_file)]
-  # puts "Command : #{cmd.inspect}"
-  resultat = `#{cmd}`
+  # Essai en passant directement par ruby
+  # cmd = 'cd "%s" && score-image %s -v 2>&1'.freeze % [File.dirname(mus_file),File.basename(mus_file)]
+  # puts "Je joue la command : #{cmd.inspect}".jaune
+  # resultat = `#{cmd}`
+  score_image_path = File.expand_path(File.join(SCORE_SUITE_FOLDER, 'ScoreImage','score_image.rb'))
+  args = nil
+  Dir.chdir(File.dirname(mus_file)) do
+    args = ARGV.dup
+    ARGV.clear
+    ARGV.push(File.basename(mus_file))
+    load score_image_path
+  end
+
+  ARGV.clear
+  args.each { |arg| ARGV.push(arg) }
   
   # On attend que les images ait été produites et rognées
   Timeout.timeout(40) do

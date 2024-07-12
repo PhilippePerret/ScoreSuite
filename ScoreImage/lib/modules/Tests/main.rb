@@ -50,7 +50,7 @@ class << self
 
 
   def tests_folder
-    @tests_folder ||= File.join(APP_FOLDER,'tests','checksums_tests')
+    @tests_folder ||= File.join(MusicScore::APP_FOLDER,'tests','checksums_tests')
   end
 
   private
