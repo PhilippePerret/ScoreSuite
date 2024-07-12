@@ -54,7 +54,8 @@ def beautify_code(code)
     # puts "line: #{line}".bleu
     if line.end_with?('<<') || line.end_with?('{')
       next_indent_len = true
-    elsif line.end_with?('>>')
+    # elsif line.end_with?('>>') # Problème avec double voix
+    elsif line == '>>'
       crementize_indentation(-1)
     elsif line.end_with?('}')
       # Il faut compter le nombre de { et de } pour être sûr que

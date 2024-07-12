@@ -681,6 +681,47 @@ On terminera toutes les marques précédentes avec `\0ve`.
 
 ---
 
+<a name="ruby"></a>
+
+### Fonctions ruby (mode expert)
+
+En mode expert, on peut produire du code de toute pièce avec des fonctions ruby. On peut penser par exemple au premier prélude de Bach dans le premier clavier tempéré. Presque d'un bout à l'autre on retrouve le même motif qu'il serait laborieux de répéter. Il se présente dans la première mesure de cette manière, écrit de toutes notes :
+
+~~~
+-> score
+r8 g'16 c e g, c e r8 g'16 c e g, c e
+<< r16 e8.~ e4 // c2 >> << r16 e8.~ e4 // c2 >>
+~~~
+
+Voilà la méthode qu’il est possible de créer dans un fichier qu’on appellera par exemple **`module_image.rb`** (peu importe son nom, c’est son extension qui fait qu’il sera chargé par ScoreImage.
+
+~~~ruby
+module ScoreImage # ce nom est impératif
+
+  def motif(basse, contrebasse, notes_sup)
+    ns = notes_sup.split(' ')
+    <<~TEXT
+    % #{ns[0]}'16 #{ns[1]} #{ns[2]} #{ns[0]}, #{ns[1]} #{ns[2]} %2
+    % << r16 #{contrebasse}8.~ #{contrebasse}4 // #{basse}2 >> %2
+    TEXT
+  end
+
+end
+~~~
+
+Il nous suffit maintenant d’appeler la méthode `#motif` dans le code `.mus` à l’aide du préfix **`fn_`** (« fn » comme « fonction »).
+
+~~~mus
+-> score
+fn_motif("c", "e", "g c e")
+~~~
+
+
+
+> Noter que contrairement à du pur ruby, il faut obligatoirement utiliser les parenthèses pour délimiter les arguments <u>**même lorsqu’il n’y en a pas**</u>.
+
+---
+
 <a id="syntaxe_lilypond"></a>
 
 ## Langage LilyPond (aide mémoire)

@@ -40,6 +40,10 @@ def parse
   #
   code = code.gsub(/^#(.*)$/,'')
   #
+  # Évaluation des fonctions ruby
+  # 
+  code = evaluate_fonctions_ruby_in(code)
+  #
   # Réduction des retours chariot
   # 
   code = code.gsub(/\n\n\n+/, "\n\n").strip
@@ -61,6 +65,7 @@ def parse
   # Découpe du code en "paragraphes" qui définissent chacun quelque
   # chose.
   code.split("\n\n").each do |paragraphe|
+    puts "paragraphe = #{paragraphe.inspect}"
     blocode = BlockCode.new(paragraphe, options.merge(music_score:music_score))
     blocode.parse
     options = blocode.options
@@ -124,6 +129,32 @@ def parse
   @all_blocks = all_blocks
 end
 #/parse
+
+
+# On recherche les fonctions (méthodes) ruby dans le code +str+
+# pour les remplacer par leur valeur retournée.
+# 
+# @rappel
+#   Une méthode <method> définie dans un module ruby doit être
+#   appelée dans le code par ’fn_<method>(...)’.
+# 
+def evaluate_fonctions_ruby_in(str)
+  return str unless str.match?('fn_')
+  str = str.gsub(REG_RUBY_METHOD) do
+    method_name = $~[:method_name].to_sym
+    arguments   = $~[:arguments]
+    if arguments == ''
+      send(method_name)
+    else
+      arguments = eval("[#{arguments}]")
+      puts "arguments: #{arguments.inspect}"
+      send(method_name, *arguments)
+    end
+  end
+  puts "str après :\n#{str}\n-----------------------------"
+  return str
+end
+REG_RUBY_METHOD = /fn_(?<method_name>[a-zA-Z0-9_]+)\(\((?<arguments>.*?)\)\)/.freeze
 
 # Le code MUS initial
 # @note

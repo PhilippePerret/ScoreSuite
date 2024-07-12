@@ -30,7 +30,8 @@ class Vignette {
     this.select()
     this.owner.currentVignette = this
     // On retire toujours le texte d’explication
-    DGet('.explication-section',this.owner.container).remove()
+    const dexpli = DGet('.explication-section',this.owner.container)
+    dexpli && dexpli.remove()
   }
 
   build(){

@@ -197,11 +197,16 @@ class System < Group
 
       # Les clés dispatchées (noter qu’elles peuvent ne pas être 
       # définies — dans ce cas, elles valent G)
-      staff_keys = staff_keys.split(',').map {|k| k.strip}
+      staff_keys  = staff_keys.split(',').map {|k| k.strip}
+      staff_names = staff_names.split(',')
+
+      if staff_keys.count != staff_names.count
+        raise ERREUR[200] % [staff_names.count, staff_keys.count]
+      end
 
       current_group = nil
 
-      staff_names.split(',').each_with_index do |staff_name, idx|
+      staff_names.each_with_index do |staff_name, idx|
 
         # On instancie une nouvelle portée
         staff = Staff.new
@@ -221,7 +226,7 @@ class System < Group
           # car on n’a pas le droit d’imbriquer des groupes (pour le
           # moment en tout cas, et même si Lilypond le permet)
           if not(current_group.nil?)
-            raise ERREURS[500]
+            raise ERREUR[500]
           end
 
           # On crée le groupe (en incrémentant le nombre de groupes
@@ -234,7 +239,7 @@ class System < Group
           sname = sname[1..-1].strip
           # On empêche tout de suite d’avoir des groupes imbriqués
           if sname.match?(/^[\[\{]/)
-            raise ERREURS[500]
+            raise ERREUR[500]
           end
 
           current_group.bars_linked= (sname[0] != '-')
@@ -263,6 +268,9 @@ class System < Group
         sys.add_staff(staff)
       
       end
+
+      # Tous les groupes doivent avoir été fermés
+      raise ERREUR[501] if not(current_group.nil?)
 
       sys.check_if_system_in_special_group
 
@@ -369,22 +377,26 @@ class Staff
     end
   end
 
-  REG_ALTE_IN_NAME = /^.*_([bd#])_.*$/.freeze
   def formated_name
     @formated_name ||= begin
       n = self.name
       if n && n.match?(REG_ALTE_IN_NAME)
         n.gsub(REG_ALTE_IN_NAME) do
           letter = $1.freeze
-          alte   = letter == 'b' ? 'flat' : 'sharp'
+          with_bemol = letter == 'b'
+          alte   = with_bemol ? 'flat' : 'sharp'
+          vspace = with_bemol ? "0.2" : "0.3"
+          fsize  = with_bemol ? 'small' : 'teeny'
           before_alte, after_alte = n.split("_#{letter}_")
-          '\markup { \concat { "%s" \normal-size-super { \teeny \%s } "%s" } }' % [before_alte, alte, after_alte]
+          '\markup { \concat { \column { "%s" } \column { \vspace #-%s { \%s \%s } } \column { "%s" } } }'.freeze % [before_alte, vspace, fsize, alte, after_alte]
         end
       else
         '"%s"'.freeze % n
       end
     end
   end
+
+  REG_ALTE_IN_NAME = /^.*_([bd#])_.*$/.freeze
 
   def inspect(indent = '')
     <<~TEXT.split("\n").join("\n#{indent}")

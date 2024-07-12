@@ -68,7 +68,7 @@ def build
   # 
   # Chaque ligne de code doit être traduite en pur Lilypond
   #
-  codes = data.lines_code.collect do |line_code|
+  codes = data.lines_code.map do |line_code|
     # puts "Je dois traduire : #{line_code.inspect}"
     Lilypond.translate_from_music_score(line_code)
   end
@@ -93,8 +93,7 @@ def build
   end
 
   #
-  # Production par lily2svg de l'image non trimée (ou DES images)
-  # non trimées
+  # Production par lily2svg de ou des images non trimées
   #
   build_svg_files
 
@@ -132,7 +131,7 @@ end
 
 # Rabbotement des images produites pour la partition
 def trim_all_files
-  exit 101 if svg_untrimed_files.count == 0
+  raise EMusicScore.new('Aucun fichier image n’a été produit…') if svg_untrimed_files.count == 0
   svg_untrimed_files.each do |svg_untrimed_file|
     if trim_file(svg_untrimed_file) === false
       raise EMusicScore.new("Impossible de trimer le fichier #{svg_untrimed_file.inspect}…")

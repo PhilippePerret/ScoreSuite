@@ -15,8 +15,9 @@ class MusFile
   # === Test Methods ===
 
   MSG_NEGATIVE_ERROR = <<~ERR
-  La construction aurait dû échouer avec le code d’erreur %{code}
-  et les éventuels textes : %{texts}.
+  La construction de : %{relpath} 
+  aurait dû échouer avec le code d’erreur : %{code} et les 
+  éventuels textes : %{texts}.
   Or, la construction a réussi.
   ERR
 
@@ -38,7 +39,7 @@ class MusFile
       # 
       @ok = has_error?(resultat_built)
       if not(@ok)
-        @error_msg = MSG_NEGATIVE_ERROR % {code: expected_error_code, texts: (expected_error_txts||['néant']).join(',')}
+        @error_msg = MSG_NEGATIVE_ERROR % {relpath:relative_path, code: expected_error_code, texts: (expected_error_txts||['néant']).join(',')}
       end
     else
       #
@@ -105,15 +106,19 @@ class MusFile
   # Le message d’erreur qui sera affiché
   # 
   def error
-    "La construction de #{relative_path} " + 
-    if not(@error_msg.nil?)
-      "a retourné le message d’erreur suivant :\n#{@error_msg}"
-    elsif not(original_svg_exist?)
-      "n’a pas pu construire la partition SVG."
-    elsif not(checksums_same?)
-      "ne correspond pas aux attentes."
+    if negative? && @error_msg
+      @error_msg
     else
-      "n’est pas bon pour une raison inconnue."
+      "La construction de #{relative_path} " + 
+      if not(@error_msg.nil?)
+        "a retourné le message d’erreur suivant :\n#{@error_msg}"
+      elsif not(original_svg_exist?)
+        "n’a pas pu construire la partition SVG."
+      elsif not(checksums_same?)
+        "ne correspond pas aux attentes."
+      else
+        "n’est pas bon pour une raison inconnue."
+      end
     end
   end
 

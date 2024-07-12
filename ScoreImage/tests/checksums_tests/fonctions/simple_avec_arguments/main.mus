@@ -1,0 +1,15 @@
+--barres
+--piano
+
+mes1=
+fn_motif(("c", "e", "g c e"))
+
+mes2=
+fn_motif(("c", "d", "a d f"))
+
+mes3=
+fn_motif(("b", "d", "g d f"))
+
+-> score
+mes1 mes2
+

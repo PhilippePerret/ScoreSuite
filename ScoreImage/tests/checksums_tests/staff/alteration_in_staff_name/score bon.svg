@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    version="1.2"
-   width="42.711113mm"
+   width="42.964043mm"
    height="28.684393mm"
-   viewBox="0 0 24.304976 16.323002"
+   viewBox="0 0 24.448907 16.323002"
    id="svg172"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@
 tspan { white-space: pre; }
 ]]></style>
   <g
-     transform="translate(6.4959766,5.779)"
+     transform="translate(6.6399078,5.779)"
      id="g6">
     <line
        stroke-linejoin="round"
@@ -30,7 +30,7 @@ tspan { white-space: pre; }
        id="line4" />
   </g>
   <g
-     transform="translate(6.4959766,4.779)"
+     transform="translate(6.6399078,4.779)"
      id="g10">
     <line
        stroke-linejoin="round"
@@ -44,7 +44,7 @@ tspan { white-space: pre; }
        id="line8" />
   </g>
   <g
-     transform="translate(6.4959766,3.779)"
+     transform="translate(6.6399078,3.779)"
      id="g14">
     <line
        stroke-linejoin="round"
@@ -58,7 +58,7 @@ tspan { white-space: pre; }
        id="line12" />
   </g>
   <g
-     transform="translate(6.4959766,2.779)"
+     transform="translate(6.6399078,2.779)"
      id="g18">
     <line
        stroke-linejoin="round"
@@ -72,7 +72,7 @@ tspan { white-space: pre; }
        id="line16" />
   </g>
   <g
-     transform="translate(6.4959766,1.779)"
+     transform="translate(6.6399078,1.779)"
      id="g22">
     <line
        stroke-linejoin="round"
@@ -86,7 +86,7 @@ tspan { white-space: pre; }
        id="line20" />
   </g>
   <g
-     transform="translate(6.4959766,14.779)"
+     transform="translate(6.6399078,14.779)"
      id="g26">
     <line
        stroke-linejoin="round"
@@ -100,7 +100,7 @@ tspan { white-space: pre; }
        id="line24" />
   </g>
   <g
-     transform="translate(6.4959766,13.779)"
+     transform="translate(6.6399078,13.779)"
      id="g30">
     <line
        stroke-linejoin="round"
@@ -114,7 +114,7 @@ tspan { white-space: pre; }
        id="line28" />
   </g>
   <g
-     transform="translate(6.4959766,12.779)"
+     transform="translate(6.6399078,12.779)"
      id="g34">
     <line
        stroke-linejoin="round"
@@ -128,7 +128,7 @@ tspan { white-space: pre; }
        id="line32" />
   </g>
   <g
-     transform="translate(6.4959766,11.779)"
+     transform="translate(6.6399078,11.779)"
      id="g38">
     <line
        stroke-linejoin="round"
@@ -142,7 +142,7 @@ tspan { white-space: pre; }
        id="line36" />
   </g>
   <g
-     transform="translate(6.4959766,10.779)"
+     transform="translate(6.6399078,10.779)"
      id="g42">
     <line
        stroke-linejoin="round"
@@ -156,7 +156,7 @@ tspan { white-space: pre; }
        id="line40" />
   </g>
   <g
-     transform="translate(6.4959766,15.779)"
+     transform="translate(6.6399078,15.779)"
      id="g46">
     <rect
        x="5.4738998"
@@ -168,7 +168,7 @@ tspan { white-space: pre; }
        id="rect44" />
   </g>
   <g
-     transform="translate(-0.03652344,4.5741)"
+     transform="translate(0.10740781,4.3075)"
      id="g52">
     <text
        font-family="serif"
@@ -179,7 +179,7 @@ tspan { white-space: pre; }
          id="tspan48">M.(C</tspan></text>
   </g>
   <g
-     transform="translate(4.6411766,3.5741)"
+     transform="translate(4.7851078,3.4075)"
      id="g56">
     <path
        transform="scale(0.0028,-0.0028)"
@@ -188,7 +188,7 @@ tspan { white-space: pre; }
        id="path54" />
   </g>
   <g
-     transform="translate(5.4189766,4.5741)"
+     transform="translate(5.5629078,4.3075)"
      id="g62">
     <text
        font-family="serif"
@@ -199,7 +199,7 @@ tspan { white-space: pre; }
          id="tspan58">)</tspan></text>
   </g>
   <g
-     transform="translate(-0.06892344,13.6744)"
+     transform="translate(-0.07949219,13.3528)"
      id="g68">
     <text
        font-family="serif"
@@ -210,16 +210,16 @@ tspan { white-space: pre; }
          id="tspan64">Cl.(B</tspan></text>
   </g>
   <g
-     transform="translate(4.8532766,12.6744)"
+     transform="translate(4.8502078,12.7528)"
      id="g72">
     <path
-       transform="scale(0.0028,-0.0028)"
-       d="m 33,35 -2,-60 v -11 c 0,-21 2,-43 5,-64 42,38 87,81 87,138 0,32 -13,63 -41,63 C 51,101 34,69 33,35 Z M 32,446 23,109 c 25,26 59,40 95,40 50,0 82,-51 82,-105 0,-77 -80,-117 -137,-169 -18,-17 -26,-48 -52,-48 -16,0 -28,15 -28,32 l -15,587 c 10,6 21,8 32,8 11,0 22,-2 32,-8 z"
+       transform="scale(0.0036,-0.0036)"
+       d="m 29,39 -2,-64 v -11 c 0,-22 2,-43 5,-65 44,38 91,80 91,138 0,33 -13,66 -42,66 C 50,103 30,72 29,39 Z m -57,415 c 9,5 18,8 28,8 10,0 19,-3 28,-8 L 21,111 c 25,23 58,36 92,36 51,0 87,-49 87,-103 0,-79 -84,-117 -144,-169 -16,-14 -25,-41 -47,-41 -14,0 -25,13 -25,27 z"
        fill="currentColor"
        id="path70" />
   </g>
   <g
-     transform="translate(5.4189766,13.6744)"
+     transform="translate(5.5629078,13.3528)"
      id="g78">
     <text
        font-family="serif"
@@ -230,7 +230,7 @@ tspan { white-space: pre; }
          id="tspan74">)</tspan></text>
   </g>
   <g
-     transform="translate(6.4359766,8.279)"
+     transform="translate(6.5799078,8.279)"
      id="g82">
     <rect
        x="0"
@@ -243,9 +243,9 @@ tspan { white-space: pre; }
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:23:23:24"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:23:23:24"
      id="a88"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(28.5622,15.6601)"
        id="g86">
@@ -257,7 +257,7 @@ tspan { white-space: pre; }
     </g>
   </a>
   <g
-     transform="translate(7.2959766,4.779)"
+     transform="translate(7.4399078,4.779)"
      id="g92">
     <path
        transform="scale(0.004,-0.004)"
@@ -267,9 +267,9 @@ tspan { white-space: pre; }
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:31:23:24"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:31:23:24"
      id="a98"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(28.5622,28.1601)"
        id="g96">
@@ -281,7 +281,7 @@ tspan { white-space: pre; }
     </g>
   </a>
   <g
-     transform="translate(7.2959766,13.779)"
+     transform="translate(7.4399078,13.779)"
      id="g102">
     <path
        transform="scale(0.004,-0.004)"
@@ -290,7 +290,7 @@ tspan { white-space: pre; }
        id="path100" />
   </g>
   <g
-     transform="translate(12.360977,3.779)"
+     transform="translate(12.504908,3.779)"
      id="g106">
     <rect
        x="-0.064999998"
@@ -302,7 +302,7 @@ tspan { white-space: pre; }
        id="rect104" />
   </g>
   <g
-     transform="translate(13.535177,12.779)"
+     transform="translate(13.679108,12.779)"
      id="g110">
     <rect
        x="-0.064999998"
@@ -315,9 +315,9 @@ tspan { white-space: pre; }
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:23:27:28"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:23:27:28"
      id="a116"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(31.5645,15.1601)"
        id="g114">
@@ -330,9 +330,9 @@ tspan { white-space: pre; }
   </a>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:31:26:27"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:31:26:27"
      id="a122"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(31.5645,27.6601)"
        id="g120">
@@ -344,7 +344,7 @@ tspan { white-space: pre; }
     </g>
   </a>
   <g
-     transform="translate(15.363277,3.779)"
+     transform="translate(15.507208,3.779)"
      id="g126">
     <rect
        x="-0.064999998"
@@ -356,7 +356,7 @@ tspan { white-space: pre; }
        id="rect124" />
   </g>
   <g
-     transform="translate(16.537477,12.779)"
+     transform="translate(16.681408,12.779)"
      id="g130">
     <rect
        x="-0.064999998"
@@ -369,9 +369,9 @@ tspan { white-space: pre; }
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:23:29:30"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:23:29:30"
      id="a136"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(34.5667,14.6601)"
        id="g134">
@@ -384,9 +384,9 @@ tspan { white-space: pre; }
   </a>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:31:28:29"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:31:28:29"
      id="a142"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(34.5667,27.1601)"
        id="g140">
@@ -398,7 +398,7 @@ tspan { white-space: pre; }
     </g>
   </a>
   <g
-     transform="translate(18.365477,3.779)"
+     transform="translate(18.509408,3.779)"
      id="g146">
     <rect
        x="-0.064999998"
@@ -410,7 +410,7 @@ tspan { white-space: pre; }
        id="rect144" />
   </g>
   <g
-     transform="translate(19.539677,12.779)"
+     transform="translate(19.683608,12.779)"
      id="g150">
     <rect
        x="-0.064999998"
@@ -423,9 +423,9 @@ tspan { white-space: pre; }
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:23:31:32"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:23:31:32"
      id="a156"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(37.569,14.1601)"
        id="g154">
@@ -438,9 +438,9 @@ tspan { white-space: pre; }
   </a>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/simples/alteration_in_staff_name/main/score-untrimed.ly:31:30:31"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff/alteration_in_staff_name/main/score-untrimed.ly:31:30:31"
      id="a162"
-     transform="translate(-16.266223,-12.3811)">
+     transform="translate(-16.122292,-12.3811)">
     <g
        transform="translate(37.569,26.6601)"
        id="g160">
@@ -452,7 +452,7 @@ tspan { white-space: pre; }
     </g>
   </a>
   <g
-     transform="translate(21.367777,3.779)"
+     transform="translate(21.511708,3.779)"
      id="g166">
     <rect
        x="-0.064999998"
@@ -464,7 +464,7 @@ tspan { white-space: pre; }
        id="rect164" />
   </g>
   <g
-     transform="translate(22.541977,12.779)"
+     transform="translate(22.685908,12.779)"
      id="g170">
     <rect
        x="-0.064999998"

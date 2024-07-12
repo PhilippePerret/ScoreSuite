@@ -104,7 +104,7 @@ def produce_svg
   # On attend que les images ait été produites et rognées
   Timeout.timeout(40) do
     until nombre_current_svg > 0
-      sleep 0.5
+      sleep 1
     end
   end
 

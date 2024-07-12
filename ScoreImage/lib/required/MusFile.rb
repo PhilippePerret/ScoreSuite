@@ -23,7 +23,16 @@ attr_reader :full_path
 #
 def initialize(raw_path)
   @raw_path = raw_path
-  parse_path  
+  parse_path
+  require_ruby_modules
+end
+
+# Charge les fichier ruby s’ils existent et étend la classe lilypond
+def require_ruby_modules
+  Dir["#{folder}/**/*.rb"].each { |m| require(m) }
+  if defined?(ScoreImage)
+    MusicScore::Parser.include(ScoreImage)
+  end
 end
 
 ##
