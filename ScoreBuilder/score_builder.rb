@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
 require 'bundler/setup'
-# Bundler.require(:default)
 Bundler.require
 Bundler.setup
 
@@ -31,7 +30,7 @@ begin
     ScoreBuilder::App.current_folder = curdir
     
     # On regarde si le dossier courant est bon
-    # ScoreBuilder::App.check_current_folder || raise("Abandon.".bleu)
+    ScoreBuilder::App.check_current_folder || raise("Abandon.".bleu)
     
     params = ScoreBuilder::App.goto_params
     Dir.chdir(curdir) do

@@ -11,7 +11,7 @@ module ScoreBuilder
   #
   # Dossier dans lequel on a ouvert le Terminal
   # 
-  CURRENT_FOLDER = File.expand_path('.')
+  CURRENT_FOLDER = ENV['CURRENT_FOLDER']||ENV['CUR_DIR']||File.expand_path('.')
 
 
   YAML_OPTIONS = {symbolize_names:true, permitted_classes: [Date, Time, Symbol]}
