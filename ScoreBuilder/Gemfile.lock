@@ -7,6 +7,8 @@ GEM
     json (2.7.2)
     pastel (0.8.0)
       tty-color (~> 0.5)
+    precedences (1.7.1)
+      clir (>= 0.16)
     pretty_inspect (1.4.0)
     rexml (3.3.1)
       strscan
@@ -16,6 +18,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     strscan (3.1.0)
+    terminal-notifier (2.0.0)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-prompt (0.23.1)
@@ -37,8 +40,10 @@ PLATFORMS
 DEPENDENCIES
   bundler (= 2.1.4)
   clir
+  precedences
   pretty_inspect
   selenium-webdriver
+  terminal-notifier
   uri
   yaml
 

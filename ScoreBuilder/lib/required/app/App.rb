@@ -1,4 +1,3 @@
-require 'yaml'
 module ScoreBuilder
 class App
 class << self
@@ -68,12 +67,14 @@ class << self
 
   # @api
   def save_notes(wdata)
+    puts "Enregistrement des notes…".jaune
     begin
       notes = wdata.delete('notes')
       if notes.empty?
         File.delete(notes_path) if File.exist?(notes_path)
       else
         IO.write(notes_path, notes.map{|n|CGI.unescape(n)}.to_yaml)
+        puts "Notes enregistrées.".vert
       end
       wdata.merge!(ok: true)
     rescue Exception => e
@@ -114,6 +115,9 @@ class << self
     },
   ].freeze
 
+  # Pour actualiser les manuels en ligne (ce sont les manuels qui 
+  # sont affichés dans l’application)
+  # 
   def update_manuels_online(wdata)
     ok        = true
     msgs_err  = []

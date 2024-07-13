@@ -2,12 +2,16 @@
 # encoding: UTF-8
 # frozen_string_literal: true
 require 'bundler/setup'
-Bundler.require(:default)
+Bundler.require
 
 
 begin
   
   require_relative 'required'
+
+  puts "J’entre dans Score-Image"
+  exit 12
+  
   commande = ARGV[0]
   # puts "[ScoreImage] commande: #{commande.inspect}"
   # puts "[ScoreImage] Dossier courant: #{File.expand_path('.')}"

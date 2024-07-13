@@ -74,16 +74,78 @@ class << self
       command = [env, command]
     end
 
-    theproc = Proc.new do
-      stdout, stderr, status = Open3.capture3(*command)
-      if status.success?
-        puts "#{app.name} s’est exécutée avec succès."
-        puts "Sortie normale :\n#{stdout}"
-      else
-        puts "#{app.name} a échoué."
-        puts "Erreur en sortie :\n#{stderr}"
+    # theproc = Proc.new do
+    #   stdout, stderr, status = Open3.capture3(*command)
+    #   if status.success?
+    #     puts "#{app.name} s’est exécutée avec succès."
+    #     puts "Sortie normale :\n#{stdout}"
+    #   else
+    #     puts "#{app.name} a échoué."
+    #     puts "Erreur en sortie :\n#{stderr}"
+    #   end
+    # end
+
+    # Pour faire l’essai
+    script = <<~RUBY
+    10.times do |itime|
+      puts "Répétition \#{itime}"
+      sleep 1
+    end
+    RUBY
+
+
+    theproc = Proc.new do 
+      Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
+        stdin.close
+        pid = wait_thr.pid
+
+
+        # Lit les sorties standard du processus de manière asynchrone
+        Thread.new do
+          stdout.each_line do |line|
+            puts "Sortie standard : #{line}"
+          end
+        end
+
+        # Lit les sorties d'erreur du processus de manière asynchrone
+        Thread.new do
+          stderr.each_line do |line|
+            puts "Sortie d'erreur : #{line}"
+          end
+        end
+
+        exit_status = wait_thr.value
+        puts "Statut de sortie : #{exit_status}"
       end
     end
+
+
+    # theproc = Proc.new do 
+    #   Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
+    #     pid = wait_thr.pid
+
+    #     # stdin.close
+
+    #     # Lit les sorties standard du processus de manière asynchrone
+    #     Thread.new do
+    #       stdout.each_line do |line|
+    #         puts "Sortie standard : #{line}"
+    #       end
+    #     end
+
+    #     # Lit les sorties d'erreur du processus de manière asynchrone
+    #     Thread.new do
+    #       stderr.each_line do |line|
+    #         puts "Sortie d'erreur : #{line}"
+    #       end
+    #     end
+
+    #     exit_status = wait_thr.value
+    #     puts "Statut de sortie : #{exit_status}"
+    #   end
+    # end
+
+
 
     if params[:with_bundler]
       proceed_with_bundler(theproc)
@@ -93,6 +155,10 @@ class << self
 
   end #/#launch
 
+
+def all_eof(files)
+  files.find { |f| !f.eof }.nil?
+end
 
   def proceed_with_bundler(theproc)
     Bundler.with_unbundled_env do

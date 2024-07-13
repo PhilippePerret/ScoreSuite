@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby -U
+# encoding: UTF-8
+
+require_relative '../../lib/launcher'
+Launcher.launch(:score_builder, nil, with_bundler: false)

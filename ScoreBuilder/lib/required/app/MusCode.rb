@@ -97,38 +97,12 @@ def produce_svg
 
   remove_all_svg
 
-  # S’INSPIRER DU CODE CI-DESSOUS POUR APPELER LES DIFFÉRENTES
-  # APPLICATION EN RÉCUPÉRANT LES MESSAGES D’ERREUR ET 
-
-  # Essai en passant directement par ruby
-  # cmd = 'cd "%s" && score-image %s -v 2>&1'.freeze % [File.dirname(mus_file),File.basename(mus_file)]
-  # puts "Je joue la command : #{cmd.inspect}".jaune
-  # resultat = `#{cmd}`
-  args = ARGV.dup
-  # command = ['ruby', PATH_TO_SCORE_IMAGE, *args]
-  # # ScoreSuiteLauncher.launch(PATH_TO_SCORE_IMAGE, args)
-  require 'open3'
-  # command = ['score-image', *args]
-
-  # command = ['bundle', 'exec', 'ruby', PATH_TO_SCORE_IMAGE, *args]
-  ARGV.clear
-  ARGV.push(File.basename(mus_file))
-  command = ['ruby', PATH_TO_SCORE_IMAGE, *ARGV]
-
-  # Capture de la sortie standard et des erreurs
-  stdout, stderr, status = Open3.capture3(*command)
-  if status.success?
-    puts "ScoreImage s’est exécutée avec succès."
-    puts "Sortie normale :\n#{stdout}"
-  else
-    puts "ScoreImage execution failed."
-    puts "Erreur en sortie dans produce_svg :\n#{stderr}"
-  end
-
-
-  ARGV.clear
-  args.each { |arg| ARGV.push(arg) }
+  puts "Je lance :score_image".jaune
   
+  Launcher.launch(:score_image, File.basename(mus_file), in: File.dirname(mus_file))
+
+  puts "Je reviens du lancement de :score_image".jaune
+
   # On attend que les images ait été produites et rognées
   Timeout.timeout(40) do
     until nombre_current_svg > 0
