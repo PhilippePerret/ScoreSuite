@@ -1,9 +1,0 @@
----
-:folder: "/Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/essais/multiple_staves"
-:mus_file: build_code.mus
-:original_pdf_score:
-:original_score_folder: original_score
-:original_score_pages:
-:svg_folder: "/Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/essais/multiple_staves/build_code"
-:svg_images:
-- partition.svg

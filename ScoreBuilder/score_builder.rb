@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
+require 'bundler/setup'
+# Bundler.require(:default)
+Bundler.require
+Bundler.setup
+
 
 require_relative 'lib/required'
 
@@ -20,12 +25,14 @@ begin
     curdir = ARGV.select do |arg|
       File.exist?(arg) && File.directory?(arg)
     end.first 
-    curdir = curdir ? File.expand_path(curdir) : CURRENT_FOLDER
+    curdir = curdir ? File.expand_path(curdir) : ScoreBuilder::CURRENT_FOLDER
     
     # puts "Dossier courant : #{curdir}"
     ScoreBuilder::App.current_folder = curdir
+    
     # On regarde si le dossier courant est bon
-    ScoreBuilder::App.check_current_folder || raise("Abandon.".bleu)
+    # ScoreBuilder::App.check_current_folder || raise("Abandon.".bleu)
+    
     params = ScoreBuilder::App.goto_params
     Dir.chdir(curdir) do
       WAA.goto( File.join(__dir__,'main.html'), **params)

@@ -7,15 +7,6 @@ GEM
     json (2.7.2)
     pastel (0.8.0)
       tty-color (~> 0.5)
-    pretty_inspect (1.4.0)
-    rexml (3.3.1)
-      strscan
-    rubyzip (2.3.2)
-    selenium-webdriver (4.9.0)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
-      websocket (~> 1.0)
-    strscan (3.1.0)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-prompt (0.23.1)
@@ -26,21 +17,13 @@ GEM
       tty-screen (~> 0.8)
       wisper (~> 2.0)
     tty-screen (0.8.2)
-    uri (0.13.0)
-    websocket (1.2.11)
     wisper (2.0.1)
-    yaml (0.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (= 2.1.4)
   clir
-  pretty_inspect
-  selenium-webdriver
-  uri
-  yaml
 
 RUBY VERSION
    ruby 2.7.3p183

@@ -48,7 +48,7 @@ end
 def parse_path
   fpath = 
     if raw_path.start_with?('./')
-      File.expand_path(File.join(ENV['PWD'], raw_path))
+      File.expand_path(File.join(current_folder, raw_path))
     else
       raw_path
     end
@@ -65,6 +65,10 @@ def parse_path
 
   @full_path = fpath
 end
+
+# def current_folder
+#   @current_folder ||= ENV['PWD']
+# end
 
 def fname
   @fname ||= File.basename(full_path)

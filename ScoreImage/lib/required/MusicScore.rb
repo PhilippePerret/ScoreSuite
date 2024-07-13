@@ -21,9 +21,9 @@ class << self
   # 
   # Point d’entrée de l’application, en mode normal.
   #  
-  def run
+  def run(params = nil)
     init
-    MusicScore.new.proceed
+    MusicScore.new.proceed(params)
   end
 
   def open_manual
@@ -118,10 +118,9 @@ def set_params(params = nil)
   if params.nil?
     parse_command_line
   else
-    @options    = params.options
-    raise "@options = #{@options.inspect}"
-    @expression = params.expression
-    @mus_file   = MusFile.new(params.path)
+    @options    = params[:options]||{}
+    @mus_file   = MusFile.new(params[:path])
+    @expression = @mus_file.ms_code
   end 
 end
 

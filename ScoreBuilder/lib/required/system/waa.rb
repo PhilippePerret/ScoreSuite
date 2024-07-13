@@ -20,7 +20,7 @@
     }
 
 =end
-require 'selenium-webdriver'
+# require 'selenium-webdriver'
 
 class InterruptionSilencieuse < StandardError; end
 
