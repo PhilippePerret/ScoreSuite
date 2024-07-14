@@ -100,11 +100,7 @@ def rationnalise_options(options)
   # des éventuels groupements de portées. Trois classes ont été 
   # créées pour ça : Lilypond::Group, Lilypond::System et 
   # Lilypond::Staff
-  # if options.key?('staves_names') || options.key?('staves_keys')
-    options.merge!(isystem: Lilypond::System.parse(options['staves_names'], options['staves_keys']))
-    # Avec ce nouveau système, à partir d’ici, on n’a plus besoin 
-    # que de options[:isystem], plus du tout du reste.
-  # end
+  options.merge!(isystem: Lilypond::System.parse(options['staves_names'], options['staves_keys']))
 
   #
   # On ajoute les clés symboliques (donc on aura les deux versions

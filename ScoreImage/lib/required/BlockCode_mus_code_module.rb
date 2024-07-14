@@ -32,6 +32,8 @@ def traite_as_code_mscore(line, idx)
   line = replace_repetition_code(line)
   # - Traitement des reprises avec 1re, 2e, etc.-ième fois.
   line = traite_reprises_avec_alternatives(line)
+  # - Traitement des ornements avec altérations -
+  line = traite_ornements_with_alterations(line)
   # - Traitement des autres barres -
   line = translate_barres(line)
   # - (essai) Traitement de l’instrument transpositeur -
@@ -74,12 +76,67 @@ def replace_repetition_code(line)
   end
 end
 
+
+def traite_ornements_with_alterations(line)
+  line = line.gsub(REG_ORNEMENTS_WITH_ALTE) do
+    ornement = $~[:ornement].freeze
+    alte_sup = $~[:alte_sup].freeze
+
+    if alte_sup
+      alte_sup =
+        case alte_sup
+        when '#' then '\sharp'
+        when 'b' then '\flat'
+        when 'n' then '\natural'
+        end
+      alte_sup = '^\markup { \hspace #0.5 \center-column { \teeny %s } }' % alte_sup
+    end
+
+    "\\#{ornement}#{alte_sup}"
+  end
+  line.gsub(REG_ORNEMENTS_WITH_DBLE_ALTE) do
+    note      = $~[:note].freeze
+    ornement  = $~[:ornement].freeze
+    alte_sup  = $~[:alte_sup].freeze
+    alte_inf  = $~[:alte_inf].freeze
+
+    if alte_sup
+      alte_sup =
+        case alte_sup
+        when '#' then '\sharp'
+        when 'b' then '\flat'
+        when 'n' then '\natural'
+        end
+      alte_sup = '^\markup { \hspace #0.5 \center-column { \teeny %s } }' % alte_sup
+    end
+
+    if alte_inf
+      amorce_alte_inf = '\once \override TextScript #\'script-priority = #-100 '
+      alte_inf =
+        case alte_inf
+        when '#' then '\sharp'
+        when 'b' then '\flat'
+        when 'n' then '\natural'
+        end
+      alte_inf = '^\markup { \hspace #0.5 \center-column { \teeny %s } }' % alte_inf
+    else
+      amorce_alte_inf = ''
+    end
+    
+    "#{amorce_alte_inf}#{note}\\#{ornement}#{alte_inf}#{alte_sup}"
+
+  end
+end
+ORNEMENTS = /(?<ornement>turn|prall|mordent)/.freeze
+REG_ORNEMENTS_WITH_ALTE = /\\#{ORNEMENTS}(?<alte_sup>[#bn])/.freeze
+REG_ORNEMENTS_WITH_DBLE_ALTE = /(?<note>[a-z0-9,'’]+)\\#{ORNEMENTS}(?<alte_sup>[#bn])?\/(?<alte_inf>[#bn])/.freeze
+
 # On ne traite ici que les reprises avec alternative, les autres
 # barres sont traitées plus simplement dans #translate_barres
 # 
 # 
 # TODO 
-#   TESTER AVEC |1,2   (+ -> MANUEL — indiquer "par de 1-3")
+#   TESTER AVEC |1,2   (+ -> MANUEL — indiquer "pas de 1-3")
 # 
 def traite_reprises_avec_alternatives(line)
   while true # Tant qu’il y a des reprises avec alternatives

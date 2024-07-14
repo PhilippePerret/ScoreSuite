@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby -U
 
 require_relative '../../lib/launcher'
-Launcher.launch(:score_image, ARGV)
+ScoreSuiteLauncher.launch(:score_image)

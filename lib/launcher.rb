@@ -25,34 +25,35 @@
 # 
 # 
 # 
-# require 'open3'
-module Launcher
+module ScoreSuiteLauncher
 class << self
   
-  # ATTENTION : Ne pas se méprendre sur le nom : dans tous les cas,
-  # l’application +app_id+ sera appelée avec et par bundle. Ici, 
-  # le "without_bundler" veut juste dire que l’application qui 
-  # appelle cette méthode n’est pas sous bundler, elle.
-  def launch_without_bundler(app_id, args = nil, params = nil)
-    params ||= {}
-    params.merge!(with_bundler: false)
-    launch(app_id, args, params)
-  end
 
-  def launch(app_id, args = nil, params = nil)
+  def launch(app_id, args_ini = nil, params = nil)
+
+    # Même si ce n’est pas recommandé, ça peut être ARGV qui a été
+    # envoyé, il faut en faire une vraie liste, sinon on aura un
+    # problème plus bas.
+    args = args_ini.dup || []
+
+    # puts "args: #{args.inspect}::#{args.class}"
+    # puts "ARGV: #{ARGV.inspect}::#{ARGV.class}"
+    # 
 
     # Paramètres par défaut
     params ||= {}
     params.key?(:with_bundler) || params.merge!(with_bundler: true)
 
-    # Arguments par défaut
-    args ||= []
+    # Arguments
+    args = [args] unless args.is_a?(Array)
     ARGV.each { |arg| args << arg }
+    args = args.uniq
 
     # Instance de l’application
     app = App.new(app_id)
 
     command = APP_COMMAND % [app.folder, app.script]
+    # command = "#{command} #{args.join(' ')}".strip
     command = [command, *args].join(' ')
 
     env = {}
@@ -132,4 +133,4 @@ end #/class App
 
   APP_COMMAND = 'cd %s && bundle exec ruby %s'.freeze
 
-end #/ module Launcher
+end #/ module ScoreSuiteLauncher

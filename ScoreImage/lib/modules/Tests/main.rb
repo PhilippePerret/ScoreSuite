@@ -3,8 +3,6 @@
 # 
 # On appelle la méthode d’entrée #run avec ’score-image tests’
 # 
-require 'clir'
-require 'precedences'
 
 SHORT_OPTION_TO_LONG = {
   'f' => :fail_fast,
@@ -19,6 +17,7 @@ class << self
   # 
   # Méthode d’entrée de l’application (’score-image tests’)
   def run(subcommand = nil)
+    puts "Je joue les tests…".jaune
     clear;clear
     case (subcommand ||= CLI.components[0])
     when :stop

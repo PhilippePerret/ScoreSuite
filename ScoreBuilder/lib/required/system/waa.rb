@@ -38,7 +38,7 @@ class Waa
   # Pour provoquer une action côté client
   # 
   def send(data)
-    puts "WAA.send: Data envoyée :" + data.pretty_inspect if verbose?
+    # puts "WAA.send: Data envoyée :" + data.pretty_inspect if verbose?
     if not(data.is_a?(String))
       # On procède à des correction
       # 

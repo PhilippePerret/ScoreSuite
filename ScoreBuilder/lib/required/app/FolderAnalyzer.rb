@@ -31,12 +31,8 @@ class FolderAnalyzer
   # 
   def valid?
     # Analyse du dossier
-    data = analyze
-
-
-
+    @data = analyze
     mus_file_path = data[:mus_file] && File.join(data[:folder],data[:mus_file])
-    
 
     @error =
       if mus_file_path.nil?

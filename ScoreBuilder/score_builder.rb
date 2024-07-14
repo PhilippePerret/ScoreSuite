@@ -24,7 +24,7 @@ begin
     ScoreBuilder::App.check_current_folder || raise(ScoreBuilder::AbandonException.new)
     
     params = ScoreBuilder::App.goto_params
-    Dir.chdir(curdir) do
+    Dir.chdir(ScoreBuilder::CURRENT_FOLDER) do
       WAA.goto( File.join(__dir__,'main.html'), **params)
       @waa_is_running = true
       WAA.run

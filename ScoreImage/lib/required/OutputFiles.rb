@@ -97,6 +97,11 @@ def build
   #
   build_svg_files
 
+  if not(@resultat_travail_lilypond.empty?)
+    puts "@resultat_travail_lilypond:\n#{@resultat_travail_lilypond}"
+    sleep 10
+  end
+
   #
   # Rabottement de toutes les images produites pour ce score
   #
@@ -124,6 +129,7 @@ def build_svg_files
   # opts << '-dclip-systems' # seulement un extrait de la partition (mais ça ne fonctionne pas encore)
   opts = opts.join(' ')
   res = `cd "#{dest_folder}" && #{cmd} #{opts} "#{lilypond_file_name}" 2>&1`
+  @resultat_travail_lilypond = res
   if res.force_encoding('utf-8').match?('erreur fatale')
     raise EMusicScore.new(res)
   end

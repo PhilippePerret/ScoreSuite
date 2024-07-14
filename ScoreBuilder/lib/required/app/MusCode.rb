@@ -97,20 +97,7 @@ def produce_svg
 
   remove_all_svg
 
-  puts "Je lance :score_image".jaune
-  sleep 2
-  
-  Launcher.launch(:score_image, File.basename(mus_file), in: File.dirname(mus_file))
-
-  puts "Je reviens du lancement de :score_image".jaune
-  sleep 2
-
-  # On attend que les images ait été produites et rognées
-  Timeout.timeout(40) do
-    until nombre_current_svg > 0
-      sleep 1
-    end
-  end
+  ScoreSuiteLauncher.launch(:score_image, File.basename(mus_file), in: File.dirname(mus_file))
 
 rescue Timeout::Error => e
   return false # Aucune image produite

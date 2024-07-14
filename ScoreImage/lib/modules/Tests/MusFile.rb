@@ -32,6 +32,9 @@ class MusFile
   # En cas de test négatif (qui doit produire une erreur) il faut
   # trouver le message d’erreur (code) dans le retour.
   def test
+    if CLI.option(:d) && File.exist?(checksum_path)
+      File.delete(checksum_path)
+    end
     resultat_built = build_svg_score
     if negative?
       # 
@@ -90,7 +93,7 @@ class MusFile
   end
 
   def build_command
-    @build_command ||= 'cd "%s";score-image "%s"'.freeze % [folder,filename]
+    @build_command ||= 'cd "%s" && score-image "%s"'.freeze % [folder,File.join(folder,filename)]
   end
 
   def open
@@ -128,6 +131,8 @@ class MusFile
     au prochain test, le fichier #{svg_name} produit devra correspondre.
     Vous pouvez aussi dupliquer le fichier #{svg_name} en ajoutant par 
     exemple "bon" à son nom pour garder une trace de l’image bonne.
+    (note : pour forcer la destruction du CHECKSUM à chaque — pendant la
+    phase de mise au point du test — ajouter l’option ’-d’ comme ’delete’)
     TEXT
   end
 
@@ -313,7 +318,9 @@ class MusFile
     # le code MUS. Il est repéré par ’->’
     def get_image_name
       muscode = IO.read(path).force_encoding('UTF-8')
-      muscode.match(/^\-\> (.+)$/)[1].strip
+      iname = muscode.match(/^\-\> (.+)$/)
+      raise "Il faut définir le nom de l’image (’-> <image-name>’) dans le code." if iname.nil?
+      iname[1].strip
     end
 
 end #/class MusFile

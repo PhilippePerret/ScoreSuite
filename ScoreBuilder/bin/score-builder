@@ -2,4 +2,4 @@
 # encoding: UTF-8
 
 require_relative '../../lib/launcher'
-Launcher.launch(:score_builder, nil, with_bundler: false)
+ScoreSuiteLauncher.launch(:score_builder, nil)

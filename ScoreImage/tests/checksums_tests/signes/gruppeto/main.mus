@@ -1,0 +1,50 @@
+--barres
+--piano
+--keep
+
+simples=
+c1\turn <c e g>\turn c_\turn <c e g>_\turn
+\relative c { % c1 %4 }
+
+# Ci-dessous, la première ligne correspond à ce qui sera utilisé pour
+# le code Lilypond tandis que la deuxième ligne (main gauche) est
+# la version résumée.
+
+altg=
+a’1\turn^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
+c,1\turn#
+
+altgb=
+a’1\turn^\markup { \hspace #0.5 \center-column { \teeny \flat } }
+c,1\turnb
+
+altgn=
+a’1\turn^\markup { \hspace #0.5 \center-column { \teeny \natural } }
+c,1\turnn
+
+altp=
+a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
+c,1\prall#
+
+altpb=
+a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \flat } }
+c,1\prallb
+
+altpn=
+a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \natural } }
+c,1\pralln
+
+altrmd=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
+c,1\mordent/#
+
+altrmb=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \flat } }
+c,1\mordent/b
+
+altrmn=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \natural } }
+c,1\mordent/n
+
+-> score
+simples altg altgb altgn altp altpb altpn altrmd altrmb altrmn

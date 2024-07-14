@@ -694,15 +694,28 @@ On les notes  `3{note<duree> note note}`
 
 #### Signes d’interprétation/ornement
 
-| Objet | Code          | Description       |
-| ----- | ------------- | ----------------- |
-|       | c\mordent     | Mordant inférieur |
-|       | c\prall       | Mordant supérieur |
-|       | c\turn        | Gruppeto          |
-|       | c\reverseturn | Gruppeto inversé  |
-|       | c\fermata     | Point d’orgue     |
+| Objet | Code           | Description                                                  |
+| ----- | -------------- | ------------------------------------------------------------ |
+|       | c\mordent      | Mordant inférieur (au-dessus de la note)                     |
+|       | c_\mordent     | Mordant inférieur sous la note                               |
+|       | c\mordentb     | Mordant inférieur avec note bémolisée (au-dessus de la note)<br />Le bémol est le « b » après « mordent » |
+|       | c\mordent#     | Mordant inférieur avec note diésée (au-dessus de la note)<br />Le dièse est le « # » après « mordent » |
+|       | c\mordentn     | Mordant inférieur avec note bécarisée (au-dessus de la note)<br />Le bécarre est le « n » après « mordent » (« n » pour « natural ») |
+|       | c\prall        | Mordant supérieur (au-dessus)                                |
+|       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\prallb`, `c\prall#`, `c\pralln` et pour la note en dessous : `c\prall/b` `c\prall/#` et `c\prall/n`.<br />Pour le moment, on ne peut pas altérer les deux notes, mais plus tard, on pourra faire :<br />`c\prall#/#` |
+|       | c\prall#       | Mordant supérieur diésé                                      |
+|       | c_\prall       | Mordant supérieur (sous la note)                             |
+|       | c\turn         | Gruppeto (sur la note)                                       |
+|       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\turnb`, `c\turn#`, `c\turnn`. |
+|       | c_\turn        | Gruppeto (sous la note)                                      |
+|       | c\reverseturn  | Gruppeto inversé                                             |
+|       | c_\reverseturn | Gruppeto inversé (sous la note)                              |
+|       | c\fermata      | Point d’orgue                                                |
+|       | c_\fermata     | Point d’orgue en dessous                                     |
 
 Pour d’autres ornements, voir [https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations](https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations).
+
+Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation/notation/expressive-marks-attached-to-notes).
 
 #### Trilles
 
