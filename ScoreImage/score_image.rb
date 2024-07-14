@@ -10,7 +10,6 @@ begin
   require_relative 'required'
 
   puts "J’entre dans Score-Image"
-  exit 12
   
   commande = ARGV[0]
   # puts "[ScoreImage] commande: #{commande.inspect}"

@@ -25,7 +25,7 @@
 # 
 # 
 # 
-require 'open3'
+# require 'open3'
 module Launcher
 class << self
   
@@ -47,12 +47,15 @@ class << self
 
     # Arguments par défaut
     args ||= []
+    ARGV.each { |arg| args << arg }
 
     # Instance de l’application
     app = App.new(app_id)
 
     command = APP_COMMAND % [app.folder, app.script]
     command = [command, *args].join(' ')
+
+    env = {}
 
     # - Dossier courant -
     # S’il n’est pa défini, on le met toujours en variable d’environ-
@@ -67,108 +70,28 @@ class << self
     # méthode (ce launcher).
     unless ENV['CUR_DIR']
       cur_dir = params[:in] || File.expand_path('.')
-      env = {
+      env.merge!(
         'CUR_DIR'         => cur_dir,
-        'CURRENT_FOLDER'  => cur_dir
-      }
-      command = [env, command]
+        'CURRENT_FOLDER'  => cur_dir,
+        'SCORE_SUITE_INTERACTIVITY' => 'null'
+      )
     end
 
-    # theproc = Proc.new do
-    #   stdout, stderr, status = Open3.capture3(*command)
-    #   if status.success?
-    #     puts "#{app.name} s’est exécutée avec succès."
-    #     puts "Sortie normale :\n#{stdout}"
-    #   else
-    #     puts "#{app.name} a échoué."
-    #     puts "Erreur en sortie :\n#{stderr}"
-    #   end
-    # end
-
-    # Pour faire l’essai
-    script = <<~RUBY
-    10.times do |itime|
-      puts "Répétition \#{itime}"
-      sleep 1
-    end
-    RUBY
+    # Rediriger les sorties du sous-processus vers la
+    # sortie standard du processus courant. C’est-à-dire qu’un puts
+    # dans le sous-processus s’écrira dans le processus principal
+    options = {
+      out: STDOUT,
+      err: STDERR,
+    }
 
 
-    theproc = Proc.new do 
-      Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
-        stdin.close
-        pid = wait_thr.pid
+    # puts "Je lance la commande : #{command}."
+    Process.spawn(env, command, options)
+    # puts "J’attends la fin"
+    Process.wait
 
-
-        # Lit les sorties standard du processus de manière asynchrone
-        Thread.new do
-          stdout.each_line do |line|
-            puts "Sortie standard : #{line}"
-          end
-        end
-
-        # Lit les sorties d'erreur du processus de manière asynchrone
-        Thread.new do
-          stderr.each_line do |line|
-            puts "Sortie d'erreur : #{line}"
-          end
-        end
-
-        exit_status = wait_thr.value
-        puts "Statut de sortie : #{exit_status}"
-      end
-    end
-
-
-    # theproc = Proc.new do 
-    #   Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
-    #     pid = wait_thr.pid
-
-    #     # stdin.close
-
-    #     # Lit les sorties standard du processus de manière asynchrone
-    #     Thread.new do
-    #       stdout.each_line do |line|
-    #         puts "Sortie standard : #{line}"
-    #       end
-    #     end
-
-    #     # Lit les sorties d'erreur du processus de manière asynchrone
-    #     Thread.new do
-    #       stderr.each_line do |line|
-    #         puts "Sortie d'erreur : #{line}"
-    #       end
-    #     end
-
-    #     exit_status = wait_thr.value
-    #     puts "Statut de sortie : #{exit_status}"
-    #   end
-    # end
-
-
-
-    if params[:with_bundler]
-      proceed_with_bundler(theproc)
-    else
-      proceed_without_bundler(theproc)
-    end
-
-  end #/#launch
-
-
-def all_eof(files)
-  files.find { |f| !f.eof }.nil?
-end
-
-  def proceed_with_bundler(theproc)
-    Bundler.with_unbundled_env do
-      theproc.call
-    end
-  end
-
-  def proceed_without_bundler(theproc)
-    theproc.call
-  end
+  end # /#launch
 
 end # << self
 

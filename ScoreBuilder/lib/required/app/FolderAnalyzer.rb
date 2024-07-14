@@ -1,17 +1,20 @@
 #
-# Classe qui permet d’analyse le dossier dans lequel la commande
-# a été jouée.
+# Classe qui permet d’analyser le dossier courant de l’application
+# (qui peut être déterminé de différentes manières)
 # 
 # Au mieux, on cherche un fichier score_builder.yaml
 # 
 # Si un fichier PDF a été trouvé, on suppose que c’est la partition
-# originale. On propose d’en extraire les pages
+# originale. On propose d’en extraire les pages (mais seulement en
+# mode interactif ScoreBuilder.interactive_mode?)
 # 
 # 
 module ScoreBuilder
 class FolderAnalyzer
 
   attr_reader :path
+  attr_reader :error
+  attr_reader :data # données de l’analyse
 
   # Instanciation avec le dossier courant (dans lequel a été jouée
   # la commande, ou transmis en argument)
@@ -22,24 +25,26 @@ class FolderAnalyzer
   # @return true si le dossier dans lequel est joué la commande est
   # valide, c’est-à-dire s’il :
   # - contient un fichier .mus
+  # - produit les svg d’après le code (avec ScoreImage)
+  # Optionnel :
   # - définit une partition originale
-  # - produit les svg d’après le code
   # 
   def valid?
     # Analyse du dossier
     data = analyze
 
+
+
     mus_file_path = data[:mus_file] && File.join(data[:folder],data[:mus_file])
     
-    err_msg =
+
+    @error =
       if mus_file_path.nil?
         "Fichier .mus indéfini."
       elsif not(File.exist?(mus_file_path))
         "Fichier .mus inexistant."
       elsif File.extname(mus_file_path) != '.mus'
         "Fichier .mus avec mauvaise extension."
-      elsif data[:original_score_folder].nil?
-        "Dossier de la partition originale inexistant."
       elsif data[:svg_images].nil?
         "Images SVG non définies."        
       elsif data[:svg_images].empty?
@@ -47,37 +52,43 @@ class FolderAnalyzer
       else
         nil
       end
-
-    puts err_msg.rouge unless err_msg.nil?
       
-    return err_msg.nil?
+    return error.nil?
+  end
+
+  def original_score?
+    data[:original_score_pages] && !data[:original_score_pages].empty?
   end
 
   # = main =
-  # = entry =
-  # @api
   # 
-  # Pour demander l’analyse du dossier courant
+  # Pour procéder à l’analyse du dossier courant
   # 
   # @return [Hash] Table de tous les éléments récoltés
   # 
   def analyze
-    data =
-      if File.exist?(data_file_path)
-        YAML.safe_load(IO.read(data_file_path),**YAML_OPTIONS)
-      else
-        {
-          folder:                 path,
-          mus_file:               search_for_mus_file,
-          original_pdf_score:     search_for_original_pdf_score,
-          original_score_folder:  nil,
-          original_score_pages:   nil,
-          svg_folder:             nil,
-          svg_images:             nil,
-        }
-      end
+    
+    if File.exist?(data_file_path)
+      # 
+      # Quand un fichier de données existe déjà
+      # 
+      data = YAML.safe_load(IO.read(data_file_path),**YAML_OPTIONS)
+      data[:mus_file] ||= search_for_mus_file
+    else
+      #
+      # Fichier de données ScoreBuilder inexistant (par exemple
+      # lors du premier lancement de ScoreBuilder dans le dossier)
+      data = {
+        folder:                 path,
+        mus_file:               search_for_mus_file,
+        original_pdf_score:     search_for_original_pdf_score,
+        original_score_folder:  nil,
+        original_score_pages:   nil,
+        svg_folder:             nil,
+        svg_images:             nil,
+      }
+    end
 
-    data[:mus_file]               ||= search_for_mus_file
     data[:original_pdf_score]     ||= search_for_original_pdf_score
     data[:original_score_folder]  ||= File.basename(original_score_folder)
 
@@ -110,14 +121,8 @@ class FolderAnalyzer
     else
 
       # En cas d’inexistence ou d’indéfinition de la partition
-      # originale. Ce qui est toujours possible.
-
-      puts <<~TEXT.orange
-      La partition originale n’existe pas. Vous n’avez pas de modèle
-      pour votre construction de partition.
-      Si vous changez d’avis, il suffira de mettre le PDF de la par-
-      tition de référence dans ce dossier pour que nous la traitions.
-      TEXT
+      # originale. Ce qui est toujours possible et ne pose aucun 
+      # problème. Mais on exposera quand même la chose.
 
     end
 
@@ -161,12 +166,13 @@ class FolderAnalyzer
     if candidats.count == 1
       return File.basename(candidats[0])
     elsif candidats.count == 0
-      if Q.yes?("Aucun fichier .mus n’a été trouvé… Dois-je l’initier ?".jaune)
-        IO.write(File.join(path,'build_code.mus'), FIRST_CODE)
-        return 'build_code.mus'
-      else
-        return nil
+      if ScoreBuilder.interactive_mode?
+        if Q.yes?("Aucun fichier .mus n’a été trouvé… Dois-je l’initier ?".jaune)
+          IO.write(File.join(path,'build_code.mus'), FIRST_CODE)
+          return 'build_code.mus'
+        end
       end
+      return nil
     else
       # S’il existe plusieurs candidats, on cherche celui qui 
       # pourrait avoir un dossier de même nom, contenant les fichiers

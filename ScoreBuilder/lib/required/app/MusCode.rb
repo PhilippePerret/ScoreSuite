@@ -98,10 +98,12 @@ def produce_svg
   remove_all_svg
 
   puts "Je lance :score_image".jaune
+  sleep 2
   
   Launcher.launch(:score_image, File.basename(mus_file), in: File.dirname(mus_file))
 
   puts "Je reviens du lancement de :score_image".jaune
+  sleep 2
 
   # On attend que les images ait été produites et rognées
   Timeout.timeout(40) do

@@ -17,20 +17,11 @@ begin
     # = Lancement de l’application =
     # 
     clear
-    
-    # On prend le dossier courant ou le dossier spécifié en
-    # argument de la ligne de commande.
-    # 
-    curdir = ARGV.select do |arg|
-      File.exist?(arg) && File.directory?(arg)
-    end.first 
-    curdir = curdir ? File.expand_path(curdir) : ScoreBuilder::CURRENT_FOLDER
-    
-    # puts "Dossier courant : #{curdir}"
-    ScoreBuilder::App.current_folder = curdir
-    
+    CLI.set_options_table(i: :interactive)
+    CLI.init
+        
     # On regarde si le dossier courant est bon
-    ScoreBuilder::App.check_current_folder || raise("Abandon.".bleu)
+    ScoreBuilder::App.check_current_folder || raise(ScoreBuilder::AbandonException.new)
     
     params = ScoreBuilder::App.goto_params
     Dir.chdir(curdir) do
@@ -39,8 +30,11 @@ begin
       WAA.run
     end
   end
+rescue ScoreBuilder::AbandonException
+  puts "Abandon.".bleu
 rescue Exception => e
-  puts e.message + "\n" + e.backtrace.join("\n")
+  puts e.message.rouge
+  puts e.backtrace.join("\n").rouge if verbose?
 ensure
   WAA.driver.quit if @waa_is_running
 end

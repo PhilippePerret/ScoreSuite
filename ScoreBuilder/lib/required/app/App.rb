@@ -6,6 +6,25 @@ class << self
   # en premier argument.
   attr_accessor :current_folder
 
+  # Méthode qui cherche le dossier courant. Il peut être défini
+  # soit en premier argument de la commande ’score-builder’, soit en 
+  # variable d’argument ’CUR_DIR’ ou ’CURRENT_FOLDER’, soit en
+  # tant que dossier courant (dans cet ordre de préférence)
+  def set_current_folder
+    self.current_folder =
+        get_folder_in_prompt \
+        || ENV['CUR_DIR']  \
+        || ENV['CURRENT_FOLDER'] \
+        || File.expand_path(ENV['PWD'])
+  end
+
+  def get_folder_in_prompt
+    ARGV.each do |arg|
+      return arg if File.exist?(arg) && File.directory?(arg)
+    end
+    return nil
+  end
+
   # Méthode qui s’assure, avant d’ouvrir la page, que le dossier
   # dans lequel l’application a été ouverte (ou en paramètre) est
   # un dossier correct.
@@ -13,18 +32,33 @@ class << self
     analyzer = FolderAnalyzer.new(current_folder)
     unless analyzer.valid?
       puts <<~TEXT.jaune
-      Le dossier courant ne semble pas valide…
+      Le dossier courant(*) n’est pas un dossier ScoreBuilder valide :
+      ERREUR : #{analyzer.error.rouge}
+      #{"(*) #{current_folder}".gris}#{''.jaune_}
 
-      Si vous avez modifié de force un élément comme le nom du dossier,
-      le nom du fichier .mus, vous pouvez détruire le fichier :
-          
-          score_builder.yaml
-
-      … pour forcer la prise en compte de ces changements.
+      Si vous avez modifié de force un élément comme le nom du
+      dossier ou le nom du fichier .mus, vous pouvez détruire le 
+      fichier : score_builder.yaml pour forcer la prise en compte 
+      de ces changements.
       
       TEXT
+      return false if not(ScoreBuilder.interactive_mode?)
       return Q.yes?("Dois-je poursuivre ?".jaune)
     else
+      #
+      # Dossier valide
+      # 
+
+      # - En cas d’absence de la partition originale (ou ses pages) -
+      if not(analyzer.original_score?)
+        puts <<~TEXT.orange
+        Il n’y a pas de partition originale. Vous allez donc travailler
+        sans modèle pour établir votre partition.
+        Si vous changez d’avis, il suffira de mettre le PDF de la par-
+        tition de référence dans ce dossier pour que nous la traitions.
+        TEXT
+      end
+
       return true
     end
   end
