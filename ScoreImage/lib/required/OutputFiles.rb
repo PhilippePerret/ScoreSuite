@@ -98,9 +98,11 @@ def build
   build_svg_files
 
   allright = not(@resultat_travail_lilypond.match?('error'))
-  puts "allright: #{allright.inspect}".bleu
+  # puts "allright: #{allright.inspect}".bleu
 
   if not(@resultat_travail_lilypond.empty?)
+    # @note : Ça servira notamment à ScoreBuilder pour récupérer le
+    # message d’erreur.
     puts "@resultat_travail_lilypond:\n#{@resultat_travail_lilypond}"
   end
 
