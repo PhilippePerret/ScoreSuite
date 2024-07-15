@@ -186,6 +186,12 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 
 > Pour désactiver une option après l'avoir activée, il faut utiliser :
 > `--<option> OFF`
+>
+> Par exemple :
+>
+> **`--barres OFF`**
+>
+> … pour ne plus afficher les barres de mesure pour les images suivantes.
 
 | <span style="display:inline-block;width:180px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:240px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -202,9 +208,27 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Ouvrir le fichier image après production                     | **`--open`**                                                 | Ouvre tout de suite le fichier dans Affinity Designer, ce qui permet de le « simplifier ». |
 | Conserver le fichier LilyPond (`.ly`)                        | **`--keep`**                                                 | Cela permet de tester du code ou de voir où se situe un problème compliqué. |
 | Détail des erreurs                                           | **`--verbose`**                                              | Permet de donner les messages d’erreur dans leur intégralité et notamment avec leur backtrace. |
-| Portées multiples (cf. ci-dessous)                           | **`--staves <nombre>`**<br />**`--staves_keys G,A,…`**<br />**`--staves_names 1re,2e…`** | Permet de produire des portées empilées avec les clés et les noms voulus. |
+| Portées multiples (cf. ci-dessous)                           | **`--staves_keys G,A,…`**<br />**`--staves_names 1re,2e…`**  | Permet de produire des portées empilées avec les clés et les noms voulus. |
 | Nommage de la portée                                         | **`--staves_names <nom>`**                                   | Permet, notamment pour le piano, de préciser qu’il faut indiquer le nom (simplement en indiquant `--staves_names Piano`) |
+| Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
 |                                                              |                                                              |                                                              |
+
+---
+
+### Numérotation des pages
+
+On règle la numérotation des pages avec l’option **`page_numbers`**
+
+~~~
+--page_numbers OFF 							# pas de numérotation
+--page_numbers arabic 					# chiffres arabes (défaut)
+--page_numbers roman-lower			# Romains minuscules
+--page_numbers roman-upper			# Romains majuscules
+--page_numbers roman-ij-lower		# Romains minuscules avec ligatures
+--page_numbers roman-ij-upper		# Romains majuscules avec ligatures
+~~~
+
+
 
 <a id="options_portees"></a>
 

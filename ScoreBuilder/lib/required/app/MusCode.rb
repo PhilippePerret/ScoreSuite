@@ -59,7 +59,9 @@ class << self
   # Retourne la liste des images SVG produites (soit une seule,
   # soit plusieurs si la partition est longue)
   def current_score_svgs
-    Dir["#{svg_folder}/*.svg"].map { |pth| File.basename(pth) }
+    Dir["#{svg_folder}/*.svg"].map do |pth| 
+      File.basename(pth)
+    end.sort
   end
 
   # @prop Chemin d’accès au dossier contenant les SVG

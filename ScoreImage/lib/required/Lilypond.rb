@@ -324,6 +324,9 @@ def header
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
 
+  % Numérotation des pages
+  #{option_page_numbers}
+
   % Essai d’espacement entre les systèmes si nécessaire
   #{option_vspace_between_systems}
 }
@@ -362,6 +365,21 @@ def footer
   LILYPOND
 end
 #/footer
+
+def option_page_numbers
+  if options[:page_numbers] === false
+    <<~TEXT.strip
+    print-page-number = ##f
+    TEXT
+  elsif options[:page_numbers]
+    <<~TEXT.strip
+    print-page-number = ##t
+    page-number-type = #'#{options[:page_numbers]}
+    TEXT
+  else
+    ""
+  end
+end
 
 # Espacement entre les systèmes
 # (pour l’espace entre les portées, cf. ci-dessous)

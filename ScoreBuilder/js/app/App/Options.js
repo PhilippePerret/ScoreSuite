@@ -1,6 +1,12 @@
 'use strict';
 
-const OPTIONS_DIVERSES =  ['barres', 'keep']
+const OPTIONS_DIVERSES =  ['barres', 'keep', 'page_numbers', 'mesure_numbers']
+const DATA_OPTIONS = {
+    barres:         {name: "Barres de mesure", default: true}
+  , keep:           {name: "Garder le fichier .ly", default: false}
+  , page_numbers:   {name: "Afficher les numéros de page", default: true, when_true: 'arabic', when_false: 'OFF'}
+  , mesure_numbers: {name: "Afficher les numéros de mesure", default: true}
+}
 
 class Options extends Panneau {
 
@@ -8,8 +14,23 @@ class Options extends Panneau {
 
     this.close()
     this.watch()
+    this.buildCbsOptions()
     this.observe()
 
+  }
+
+  static buildCbsOptions(){
+    const container = DGet('fieldset#options-diverses div.container')
+    OPTIONS_DIVERSES.forEach( koption => {
+      const doption = DATA_OPTIONS[koption]
+      const div = DCreate('DIV')
+      const ido = `option_${koption}`
+      const cb  = DCreate('INPUT',{type:'checkbox', id:ido, checked: doption.default})
+      div.appendChild(cb)
+      const lab = DCreate('LABEL',{for: ido, text: doption.name})
+      div.appendChild(lab)
+      container.appendChild(div)
+    })
   }
 
   static observe(){
@@ -107,7 +128,17 @@ class Options extends Panneau {
     }
     // - Diverses Options -
     OPTIONS_DIVERSES.forEach( key => {
-      DGet(`#option_${key}`).checked && data.push(`--${key}`)
+      const doption = DATA_OPTIONS[key]
+      const checked = DGet(`#option_${key}`).checked
+      let value = `--${key}`
+      if ( !checked && doption.when_false) {
+        value = `${value} ${doption.when_false}`
+      } else if ( checked && doption.when_true ) {
+        value = `${value} ${doption.when_true}`
+      } else if ( !checked ) {
+        value = null
+      }
+      value && data.push(value)
     })
     // - Espacement entre les systèmes -
     if ( this.cbSVSpaceSystems.checked ) {
