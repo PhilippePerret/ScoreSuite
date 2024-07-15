@@ -56,12 +56,17 @@ class << self
     WAA.send(class:"MusCode", method: "onSavedAndEvaluated", data: waa_data)
   end
 
+  def get_and_sort_svg_in(dossier)
+    return [] if not(File.exist?(dossier))
+    Dir["#{dossier}/*.svg"].map do |pth| 
+      File.basename(pth)
+    end.sort
+  end
+
   # Retourne la liste des images SVG produites (soit une seule,
   # soit plusieurs si la partition est longue)
   def current_score_svgs
-    Dir["#{svg_folder}/*.svg"].map do |pth| 
-      File.basename(pth)
-    end.sort
+    get_and_sort_svg_in(svg_folder)
   end
 
   # @prop Chemin d’accès au dossier contenant les SVG
@@ -162,7 +167,7 @@ end
 # Récupération de toutes les images SVG
 # (pour affichage)
 def get_all_svg_images
-  Dir["#{svg_folder}/*.svg"].map{|pth|File.basename(pth)}
+  ScoreBuilder::MusCode.get_and_sort_svg_in(svg_folder)
 end
 
 def nombre_current_svg

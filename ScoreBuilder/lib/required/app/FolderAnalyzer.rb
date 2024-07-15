@@ -206,14 +206,15 @@ class FolderAnalyzer
   # Retourne la liste des pages du score original
   # 
   def get_original_score_pages
-    Dir["#{original_score_folder}/*.jpg"].map { |pth| File.join('original_score',File.basename(pth)) }
+    Dir["#{original_score_folder}/*.jpg"].map do |pth| 
+      File.join('original_score',File.basename(pth))
+    end.sort
   end
 
   # Retourne la liste des images SVG de la partition
   # 
   def get_svg_images_from(dossier)
-    return [] if not(File.exist?(dossier))
-    Dir["#{dossier}/*.svg"].map { |pth| File.basename(pth) }  
+    ScoreBuilder::MusCode.get_and_sort_svg_in(dossier)
   end
 
   # Extraire des images JPEG du score original
