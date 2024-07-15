@@ -35,7 +35,7 @@ class MusCode {
    * Notamment, la méthode remonte les images produites
    */
   static onSavedAndEvaluated(wdata){
-    console.log("Retour Waa :", wdata)
+    // console.log("Retour Waa :", wdata)
     if (wdata.ok) {
       UI.setBuildingOff()
       ScoreViewer.setVignettes(wdata)

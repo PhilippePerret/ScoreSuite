@@ -12,6 +12,10 @@ const DATA_OPTIONS = {
 const OPTIONS_DIVERSES = Object.keys(DATA_OPTIONS)
 console.log("OPTIONS_DIVERSES:", OPTIONS_DIVERSES)
 
+const CBS = {}
+const CBS_WITH_DEPENDENCES = {}
+
+
 class Options extends Panneau {
 
   static prepare(){
@@ -23,6 +27,7 @@ class Options extends Panneau {
 
   }
 
+
   static buildCbsOptions(){
     const container = DGet('fieldset#options-diverses div.container')
     OPTIONS_DIVERSES.forEach( koption => {
@@ -30,11 +35,36 @@ class Options extends Panneau {
       const div = DCreate('DIV')
       const ido = `option_${koption}`
       const cb  = DCreate('INPUT',{type:'checkbox', id:ido, checked: doption.default})
+      Object.assign(CBS, {[koption]: cb})
       div.appendChild(cb)
       const lab = DCreate('LABEL',{for: ido, text: doption.name})
       div.appendChild(lab)
       container.appendChild(div)
+      if ( doption.depends_on ) {
+        // L’option dépend d’une autre. C’est-à-dire que si l’autre
+        // n’est pas checkée, alors celle-ci n’est pas accessible
+        if ( undefined == CBS_WITH_DEPENDENCES[doption.depends_on]){
+          Object.assign(CBS_WITH_DEPENDENCES, { [doption.depends_on]: {
+              obj: CBS[doption.depends_on]
+            , dependences: []
+          }})
+        }
+        CBS_WITH_DEPENDENCES[doption.depends_on].dependences.push(cb)
+      }
     })
+    // Toutes les CB avec dépendences doivent générer cette dépendences
+    Object.keys(CBS_WITH_DEPENDENCES).forEach( cb_id => {
+      const data_cb = CBS_WITH_DEPENDENCES[cb_id]
+      const cb_obj  = data_cb.obj
+      listen(cb_obj,'click',this.onClickCbDependence.bind(this, cb_obj, data_cb.dependences))
+    })
+  }
+
+  static onClickCbDependence(cb, dependences, ev){
+    dependences.forEach( dependence => {
+      dependence.disabled = !cb.checked
+    })
+    return true
   }
 
   static observe(){
