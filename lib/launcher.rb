@@ -25,10 +25,16 @@
 # 
 # 
 # 
+require 'tempfile'
 module ScoreSuiteLauncher
 class << self
   
 
+  # @param params [Hash]
+  #     :return_output    
+  #           Si true, les sorties standards sont retournées dans une
+  #           table contenant :out et :err
+  # 
   def launch(app_id, args_ini = nil, params = nil)
 
     # Même si ce n’est pas recommandé, ça peut être ARGV qui a été
@@ -42,7 +48,6 @@ class << self
 
     # Paramètres par défaut
     params ||= {}
-    params.key?(:with_bundler) || params.merge!(with_bundler: true)
 
     # Arguments
     args = [args] unless args.is_a?(Array)
@@ -78,19 +83,58 @@ class << self
       )
     end
 
-    # Rediriger les sorties du sous-processus vers la
+    # = Redirection des flux =
+    # 
+    # Par défaut on redirige les sorties du sous-processus vers la
     # sortie standard du processus courant. C’est-à-dire qu’un puts
-    # dans le sous-processus s’écrira dans le processus principal
+    # dans le sous-processus s’écrira dans le processus principal, 
+    # donc dans la fenêtre courante. Mais les paramètres envoyés à 
+    # la méthode permettent de récupérer les flux ailleurs.
+    if params[:return_output]
+      stdout_file = Tempfile.new('stdout')
+      stderr_file = Tempfile.new('stderr')
+      params.merge!(
+        out: stdout_file.path,
+        err: stderr_file.path
+        )
+    end
+
     options = {
-      out: STDOUT,
-      err: STDERR,
+      out: params[:out] || STDOUT,
+      err: params[:err] || STDERR,
     }
 
+    begin
 
-    # puts "Je lance la commande : #{command}."
-    Process.spawn(env, command, options)
-    # puts "J’attends la fin"
-    Process.wait
+      # puts "Je lance la commande : #{command}."
+      Process.spawn(env, command, options)
+      # puts "J’attends la fin"
+      Process.wait
+
+      # S’il faut retourner le résultat
+      if params[:return_output]
+        # Lire les sorties capturées
+        stdout_file.rewind
+        stderr_file.rewind
+        stdout_content = stdout_file.read
+        stderr_content = stderr_file.read
+      end
+    
+    ensure
+
+      if params[:return_output]
+        # Fermer et détruire les fichiers temporaires
+        stdout_file.close
+        stdout_file.unlink
+        stderr_file.close
+        stderr_file.unlink        
+      end
+    
+    end
+
+    if params[:return_output]
+      return {err: stderr_content, out: stdout_content}
+    end
 
   end # /#launch
 

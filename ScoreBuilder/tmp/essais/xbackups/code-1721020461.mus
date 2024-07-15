@@ -18,10 +18,6 @@
 
 
 
-
-
-
-
 # Pour générer une erreur sûre
 -> score
-<< { c' d e } \\ { a, b c } >>
+<< { c' d e } \\ { a, b c >>

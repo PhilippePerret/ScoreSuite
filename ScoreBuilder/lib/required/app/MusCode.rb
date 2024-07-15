@@ -16,6 +16,12 @@ class << self
     WAA.send(class: "UI", method:"onCleanedUpBackup", data:wd)
   end
 
+  # = main =
+  # @api
+  # 
+  # Méthode principale, appelée côté client pour fabriquer le code
+  # final et fabriquer les images qui seront ensuite renvoyées
+  # 
   def save_and_evaluate(waa_data)
     # puts "waa_data reçu pour save = #{waa_data}"
     muscode = MusCode.new(waa_data['mus_file'])
@@ -35,12 +41,12 @@ class << self
       muscode.save(code)
 
       # Production des images SVG
-      muscode.produce_svg
+      report = muscode.produce_svg
+      waa_data.merge!(report)
 
       # Retour du résultat
       waa_data.merge!(
-        ok:         true, 
-        ope:        "Code enregistré et évalué.",
+        ope:        "Enregistrement et évaluation du code MUS.",
         folder:     main_folder,
         affixe:     mus_file_affixe,
         svg_images: current_score_svgs,
@@ -93,16 +99,26 @@ end
 # 
 # Produit le ou les images SVG à partir du code mus
 # 
+# @return [Hash] Un rapport d’erreur contenant notamment :ok et
+# :error pour indiquer si tout s’est bien passé.
+# 
 def produce_svg
-
   remove_all_svg
 
-  ScoreSuiteLauncher.launch(:score_image, File.basename(mus_file), in: File.dirname(mus_file))
+  outputs = ScoreSuiteLauncher.launch(
+    :score_image, File.basename(mus_file), {
+      in: File.dirname(mus_file),
+      return_output: true
+    })
 
-rescue Timeout::Error => e
-  return false # Aucune image produite
-else
-  return true
+  allright = outputs[:err].empty? && not(outputs[:out].match?('error')) 
+  report = {
+    ok:     allright,
+    error:  allright||"+err:#{outputs[:err]}\n+ out:#{outputs[:out]}"
+  }
+
+  # puts "\n\nOUPUTS:\n#{outputs}"
+  return report
 end
 
 

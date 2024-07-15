@@ -17,6 +17,10 @@ class UI {
     btn = DGet('button#btn-bloc-note')
     listen(btn, 'click', BlocNotes.open.bind(BlocNotes))
 
+    // Pour pouvoir masque le bouton "on air" en cas de souci (mais
+    // ça ne devrait pas arriver)
+    listen(this.onAirLight,'click', _ => {this.onAirLight.classList.add('hidden')})
+
   }
 
   static setNameBackupButton(nombreBackup){
@@ -68,5 +72,39 @@ class UI {
         button.title = '      ' + button.title
       }
     })
+  }
+
+
+  /**
+  * Méthode appelée quand on sauve et qu’on évalue le code
+  * pour fabriquer les images. Un "On air" s’allume dans 
+  * l’interface et l’on attend le retour de l’application.
+  */
+  static setBuildingOn(){
+    // Au cas où
+    this.unsetAirLightProblem()
+    if ( undefined == this.buildingOnCount ) this.buildingOnCount = 0;
+    ++ this.buildingOnCount
+    if ( ! this.buildingOn ) {
+      this.onAirLight.classList.add('on')
+      this.onAirLight.classList.remove('hidden')
+    }
+  }
+  static setBuildingOff(){
+    -- this.buildingOnCount
+    if ( this.buildingOnCount <= 0 ) {
+      this.onAirLight.classList.remove('on')
+      this.onAirLight.classList.add('hidden')
+    }
+  }
+  static setAirLightProblem(){
+    -- this.buildingOnCount
+    this.onAirLight.classList.add('error')
+  }
+  static unsetAirLightProblem(){
+    this.onAirLight.classList.remove('error')
+  }
+  static get onAirLight(){
+    return this._onairlight || ( this._onairlight = DGet('div#on-air-light'))
   }
 }

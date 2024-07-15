@@ -62,7 +62,7 @@ end
 def build
   unless data.music_score.options[:only_stats]
     STDOUT.write "⚙️  Production de l'image #{relpath_image}".bleu
-    puts "Dans : #{image_name}.svg".gris if verbose?
+    verbose? && puts("Dans : #{image_name}.svg".gris)
   end
 
   # 
@@ -97,19 +97,19 @@ def build
   #
   build_svg_files
 
+  allright = not(@resultat_travail_lilypond.match?('error'))
+  puts "allright: #{allright.inspect}".bleu
+
   if not(@resultat_travail_lilypond.empty?)
     puts "@resultat_travail_lilypond:\n#{@resultat_travail_lilypond}"
-    sleep 10
   end
 
   #
   # Rabottement de toutes les images produites pour ce score
   #
-  if trim_all_files
+  if allright && trim_all_files
     # puts "data.options['transpose'] : #{data.options['transpose']}"
-    unless data.options['keep']
-      File.delete(lilypond_file_path)
-    end
+    File.delete(lilypond_file_path) unless data.options['keep']
     puts "\r🎹 L'image #{relpath_image} a été produite avec succès.".vert
   else
     raise EMusicScore.new("Impossible de produire l'image finale…")
@@ -130,9 +130,6 @@ def build_svg_files
   opts = opts.join(' ')
   res = `cd "#{dest_folder}" && #{cmd} #{opts} "#{lilypond_file_name}" 2>&1`
   @resultat_travail_lilypond = res
-  if res.force_encoding('utf-8').match?('erreur fatale')
-    raise EMusicScore.new(res)
-  end
 end
 
 # Rabbotement des images produites pour la partition

@@ -9,6 +9,24 @@ header span#image-name {
   color:#68ff53;
 }
 
+header div#on-air-light {
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  padding: 5px 18px;
+  color: white;
+  font-variant: small-caps;
+  font-size: 15pt;
+  font-family: Arial;
+  font-weight:bold;
+}
+header div#on-air-light.on {
+  background-color: #00b800;
+}
+header div#on-air-light.error {
+  background-color: red;
+}
+
 footer#main {
   width:80%;
 }
@@ -149,4 +167,8 @@ div.container-current-page {
 div.container-current-page  img.current-page {
   max-width: 100%;
   width: 100%;
+}
+
+div.panneau.error-panel {
+  background-color: #FF9999;
 }

@@ -133,11 +133,13 @@ class FolderAnalyzer
       data.merge!(svg_images: get_svg_images_from(svg_folder))
 
       if not(File.exist?(svg_folder)) || data[:svg_images].empty?
-        mIn   = "Production des images SVG."
-        mOut  = "🍺 Images SVG produites avec succès"
-        do_with_message(mIn, mOut) do
+        mIn   = "Production des images SVG.".freeze
+        mOut  = "🍺 Images SVG produites avec succès".freeze
+        mErr  = "🧨 Problème à la production des images".freeze
+        do_with_message(mIn, mOut, mErr) do
           muscode = MusCode.new(File.join(path, data[:mus_file]))
-          muscode.produce_svg
+          report = muscode.produce_svg
+          raise report[:error] unless report[:ok]
         end
         data.merge!(svg_images: get_svg_images_from(svg_folder))
       end
@@ -274,11 +276,17 @@ class FolderAnalyzer
   #     sleep 4
   #   end
   # 
-  def do_with_message(start_msg, end_msg, &block)
+  def do_with_message(start_msg, end_msg, err_msg = nil, &block)
     start_msg = "#{start_msg} Merci de patienter…"
     STDOUT.write start_msg.jaune
-    yield
-    puts "\r#{end_msg.ljust(start_msg.length + 10)}".vert
+    begin
+      yield
+    rescue Exception => e
+      puts "\r#{(err_msg||'ERREUR').ljust(start_msg.length + 10)}".rouge
+      puts e.message.rouge
+    else
+      puts "\r#{end_msg.ljust(start_msg.length + 10)}".vert
+    end
   end
 
 FIRST_CODE = <<~MUS

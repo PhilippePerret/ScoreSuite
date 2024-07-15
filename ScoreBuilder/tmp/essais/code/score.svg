@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    version="1.2"
-   width="429.41956mm"
-   height="30.44169mm"
-   viewBox="0 0 244.36342 17.322999"
-   id="svg832"
+   width="31.11614mm"
+   height="14.058393mm"
+   viewBox="0 0 17.706801 7.9999998"
+   id="svg94"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs836" />
+     id="defs98" />
   <style
      type="text/css"
      id="style2"><![CDATA[
 tspan { white-space: pre; }
 ]]></style>
   <g
-     transform="translate(1.212,6.779)"
+     transform="translate(0,6.3333001)"
      id="g6">
-    <rect
-       x="236.4108"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect4" />
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="17.656799"
+       y2="0"
+       id="line4" />
   </g>
   <g
-     transform="translate(1.212,6.779)"
+     transform="translate(0,5.3333001)"
      id="g10">
-    <rect
-       x="122.3102"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect8" />
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="17.656799"
+       y2="0"
+       id="line8" />
   </g>
   <g
-     transform="translate(1.212,6.779)"
+     transform="translate(0,4.3333001)"
      id="g14">
-    <rect
-       x="8.2095003"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect12" />
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="17.656799"
+       y2="0"
+       id="line12" />
   </g>
   <g
-     transform="translate(1.212,5.779)"
+     transform="translate(0,3.3333001)"
      id="g18">
     <line
        stroke-linejoin="round"
@@ -61,12 +67,12 @@ tspan { white-space: pre; }
        stroke="currentColor"
        x1="0.050000001"
        y1="0"
-       x2="243.10139"
+       x2="17.656799"
        y2="0"
        id="line16" />
   </g>
   <g
-     transform="translate(1.212,4.779)"
+     transform="translate(0,2.3333001)"
      id="g22">
     <line
        stroke-linejoin="round"
@@ -75,2257 +81,193 @@ tspan { white-space: pre; }
        stroke="currentColor"
        x1="0.050000001"
        y1="0"
-       x2="243.10139"
+       x2="17.656799"
        y2="0"
        id="line20" />
   </g>
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:9:10"
+     id="a28"
+     transform="translate(-22.7622,-12.3811)">
+    <g
+       transform="translate(31.4622,16.2144)"
+       id="g26">
+      <path
+         transform="scale(0.004,-0.004)"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+         fill="currentColor"
+         id="path24" />
+    </g>
+  </a>
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:23:24"
+     id="a34"
+     transform="translate(-22.7622,-12.3811)">
+    <g
+       transform="translate(31.4622,17.2144)"
+       id="g32">
+      <path
+         transform="scale(0.004,-0.004)"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+         fill="currentColor"
+         id="path30" />
+    </g>
+  </a>
   <g
-     transform="translate(1.212,3.779)"
-     id="g26">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line24" />
-  </g>
-  <g
-     transform="translate(1.212,2.779)"
-     id="g30">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line28" />
-  </g>
-  <g
-     transform="translate(1.212,1.779)"
-     id="g34">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line32" />
-  </g>
-  <g
-     transform="translate(244.1734)"
+     transform="translate(0.8,5.3333001)"
      id="g38">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect36" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g42">
-    <rect
-       x="195.6606"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect40" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g46">
-    <rect
-       x="187.5105"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect44" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g50">
-    <rect
-       x="179.3605"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect48" />
-  </g>
-  <g
-     transform="translate(1.212,16.779)"
-     id="g54">
-    <rect
-       x="179.3605"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect52" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g58">
-    <rect
-       x="171.2104"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect56" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g62">
-    <rect
-       x="163.06039"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect60" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g66">
-    <rect
-       x="81.559898"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect64" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g70">
-    <rect
-       x="73.409897"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect68" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g74">
-    <rect
-       x="65.259804"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect72" />
-  </g>
-  <g
-     transform="translate(1.212,16.779)"
-     id="g78">
-    <rect
-       x="65.259804"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect76" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g82">
-    <rect
-       x="57.109798"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect80" />
-  </g>
-  <g
-     transform="translate(1.212,15.779)"
-     id="g86">
-    <rect
-       x="48.959702"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
-       fill="currentColor"
-       id="rect84" />
-  </g>
-  <g
-     transform="translate(1.212,14.779)"
-     id="g90">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line88" />
-  </g>
-  <g
-     transform="translate(1.212,13.779)"
-     id="g94">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line92" />
-  </g>
-  <g
-     transform="translate(1.212,12.779)"
-     id="g98">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line96" />
-  </g>
-  <g
-     transform="translate(1.212,11.779)"
-     id="g102">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line100" />
-  </g>
-  <g
-     transform="translate(1.212,10.779)"
-     id="g106">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="243.10139"
-       y2="0"
-       id="line104" />
-  </g>
-  <g
-     transform="translate(244.1734,12.779)"
-     id="g110">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect108" />
-  </g>
-  <g
-     transform="translate(244.1734,3.779)"
-     id="g114">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect112" />
-  </g>
-  <g
-     transform="translate(236.0233)"
-     id="g118">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect116" />
-  </g>
-  <g
-     transform="translate(236.0233,12.779)"
-     id="g122">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect120" />
-  </g>
-  <g
-     transform="translate(236.0233,3.779)"
-     id="g126">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect124" />
-  </g>
-  <g
-     transform="translate(227.8733)"
-     id="g130">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect128" />
-  </g>
-  <g
-     transform="translate(227.8733,12.779)"
-     id="g134">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect132" />
-  </g>
-  <g
-     transform="translate(227.8733,3.779)"
-     id="g138">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect136" />
-  </g>
-  <g
-     transform="translate(219.7232)"
-     id="g142">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect140" />
-  </g>
-  <g
-     transform="translate(219.7232,12.779)"
-     id="g146">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect144" />
-  </g>
-  <g
-     transform="translate(219.7232,3.779)"
-     id="g150">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect148" />
-  </g>
-  <g
-     transform="translate(211.5732)"
-     id="g154">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect152" />
-  </g>
-  <g
-     transform="translate(211.5732,12.779)"
-     id="g158">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect156" />
-  </g>
-  <g
-     transform="translate(211.5732,3.779)"
-     id="g162">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect160" />
-  </g>
-  <g
-     transform="translate(203.4231)"
-     id="g166">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect164" />
-  </g>
-  <g
-     transform="translate(203.4231,12.779)"
-     id="g170">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect168" />
-  </g>
-  <g
-     transform="translate(203.4231,3.779)"
-     id="g174">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect172" />
-  </g>
-  <g
-     transform="translate(195.2731)"
-     id="g178">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect176" />
-  </g>
-  <g
-     transform="translate(195.2731,12.779)"
-     id="g182">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect180" />
-  </g>
-  <g
-     transform="translate(195.2731,3.779)"
-     id="g186">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect184" />
-  </g>
-  <g
-     transform="translate(187.123)"
-     id="g190">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect188" />
-  </g>
-  <g
-     transform="translate(187.123,12.779)"
-     id="g194">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect192" />
-  </g>
-  <g
-     transform="translate(187.123,3.779)"
-     id="g198">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect196" />
-  </g>
-  <g
-     transform="translate(178.973)"
-     id="g202">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect200" />
-  </g>
-  <g
-     transform="translate(178.973,12.779)"
-     id="g206">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect204" />
-  </g>
-  <g
-     transform="translate(178.973,3.779)"
-     id="g210">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect208" />
-  </g>
-  <g
-     transform="translate(170.8229)"
-     id="g214">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect212" />
-  </g>
-  <g
-     transform="translate(170.8229,12.779)"
-     id="g218">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect216" />
-  </g>
-  <g
-     transform="translate(170.8229,3.779)"
-     id="g222">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect220" />
-  </g>
-  <g
-     transform="translate(162.6729)"
-     id="g226">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect224" />
-  </g>
-  <g
-     transform="translate(162.6729,12.779)"
-     id="g230">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect228" />
-  </g>
-  <g
-     transform="translate(162.6729,3.779)"
-     id="g234">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect232" />
-  </g>
-  <g
-     transform="translate(154.5228)"
-     id="g238">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect236" />
-  </g>
-  <g
-     transform="translate(154.5228,12.779)"
-     id="g242">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect240" />
-  </g>
-  <g
-     transform="translate(154.5228,3.779)"
-     id="g246">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect244" />
-  </g>
-  <g
-     transform="translate(15.972,3.779)"
-     id="g250">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect248" />
-  </g>
-  <g
-     transform="translate(146.3728)"
-     id="g254">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect252" />
-  </g>
-  <g
-     transform="translate(146.3728,12.779)"
-     id="g258">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect256" />
-  </g>
-  <g
-     transform="translate(146.3728,3.779)"
-     id="g262">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect260" />
-  </g>
-  <g
-     transform="translate(15.972,12.779)"
-     id="g266">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect264" />
-  </g>
-  <g
-     transform="translate(138.2228)"
-     id="g270">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect268" />
-  </g>
-  <g
-     transform="translate(138.2228,12.779)"
-     id="g274">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect272" />
-  </g>
-  <g
-     transform="translate(138.2228,3.779)"
-     id="g278">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect276" />
-  </g>
-  <g
-     transform="translate(130.0727)"
-     id="g282">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect280" />
-  </g>
-  <g
-     transform="translate(130.0727,12.779)"
-     id="g286">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect284" />
-  </g>
-  <g
-     transform="translate(130.0727,3.779)"
-     id="g290">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect288" />
-  </g>
-  <g
-     transform="translate(121.9227)"
-     id="g294">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect292" />
-  </g>
-  <g
-     transform="translate(121.9227,12.779)"
-     id="g298">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect296" />
-  </g>
-  <g
-     transform="translate(121.9227,3.779)"
-     id="g302">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect300" />
-  </g>
-  <g
-     transform="translate(113.7726)"
-     id="g306">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect304" />
-  </g>
-  <g
-     transform="translate(113.7726,12.779)"
-     id="g310">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect308" />
-  </g>
-  <g
-     transform="translate(113.7726,3.779)"
-     id="g314">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect312" />
-  </g>
-  <g
-     transform="translate(105.6226)"
-     id="g318">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect316" />
-  </g>
-  <g
-     transform="translate(15.972)"
-     id="g322">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect320" />
-  </g>
-  <g
-     transform="translate(105.6226,12.779)"
-     id="g326">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect324" />
-  </g>
-  <g
-     transform="translate(105.6226,3.779)"
-     id="g330">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect328" />
-  </g>
-  <g
-     transform="translate(97.4725)"
-     id="g334">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect332" />
-  </g>
-  <g
-     transform="translate(97.4725,12.779)"
-     id="g338">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect336" />
-  </g>
-  <g
-     transform="translate(97.4725,3.779)"
-     id="g342">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect340" />
-  </g>
-  <g
-     transform="translate(89.3225)"
-     id="g346">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect344" />
-  </g>
-  <g
-     transform="translate(89.3225,12.779)"
-     id="g350">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect348" />
-  </g>
-  <g
-     transform="translate(89.3225,3.779)"
-     id="g354">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect352" />
-  </g>
-  <g
-     transform="translate(81.1724)"
-     id="g358">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect356" />
-  </g>
-  <g
-     transform="translate(24.1221,3.779)"
-     id="g362">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect360" />
-  </g>
-  <g
-     transform="translate(81.1724,12.779)"
-     id="g366">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect364" />
-  </g>
-  <g
-     transform="translate(81.1724,3.779)"
-     id="g370">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect368" />
-  </g>
-  <g
-     transform="translate(73.0224)"
-     id="g374">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect372" />
-  </g>
-  <g
-     transform="translate(24.1221,12.779)"
-     id="g378">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect376" />
-  </g>
-  <g
-     transform="translate(73.0224,12.779)"
-     id="g382">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect380" />
-  </g>
-  <g
-     transform="translate(73.0224,3.779)"
-     id="g386">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect384" />
-  </g>
-  <g
-     transform="translate(64.8723)"
-     id="g390">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect388" />
-  </g>
-  <g
-     transform="translate(64.8723,12.779)"
-     id="g394">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect392" />
-  </g>
-  <g
-     transform="translate(64.8723,3.779)"
-     id="g398">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect396" />
-  </g>
-  <g
-     transform="translate(56.7223)"
-     id="g402">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect400" />
-  </g>
-  <g
-     transform="translate(56.7223,12.779)"
-     id="g406">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect404" />
-  </g>
-  <g
-     transform="translate(56.7223,3.779)"
-     id="g410">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect408" />
-  </g>
-  <g
-     transform="translate(48.5722)"
-     id="g414">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect412" />
-  </g>
-  <g
-     transform="translate(48.5722,12.779)"
-     id="g418">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect416" />
-  </g>
-  <g
-     transform="translate(48.5722,3.779)"
-     id="g422">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect420" />
-  </g>
-  <g
-     transform="translate(40.4222)"
-     id="g426">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect424" />
-  </g>
-  <g
-     transform="translate(40.4222,12.779)"
-     id="g430">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect428" />
-  </g>
-  <g
-     transform="translate(24.1221)"
-     id="g434">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect432" />
-  </g>
-  <g
-     transform="translate(40.4222,3.779)"
-     id="g438">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect436" />
-  </g>
-  <g
-     transform="translate(32.2721)"
-     id="g442">
-    <rect
-       x="0"
-       y="5.829"
-       width="0.19"
-       height="4.9499998"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect440" />
-  </g>
-  <g
-     transform="translate(32.2721,12.779)"
-     id="g446">
-    <rect
-       x="0"
-       y="-2.05"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect444" />
-  </g>
-  <g
-     transform="translate(32.2721,3.779)"
-     id="g450">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4.0500002"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect448" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:13:14"
-     id="a456"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(55.9123,17.6601)"
-       id="g454">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path452" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:13:14"
-     id="a462"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(55.9123,27.1601)"
-       id="g460">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path458" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:15:16"
-     id="a468"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(64.0624,17.1601)"
-       id="g466">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path464" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:15:16"
-     id="a474"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(64.0624,27.6601)"
-       id="g472">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path470" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:17:18"
-     id="a480"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(72.2124,16.6601)"
-       id="g478">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path476" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:17:18"
-     id="a486"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(72.2124,28.1601)"
-       id="g484">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path482" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:19:20"
-     id="a492"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(80.3625,16.1601)"
-       id="g490">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path488" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:19:20"
-     id="a498"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(80.3625,28.6601)"
-       id="g496">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path494" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:21:22"
-     id="a504"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(88.5125,15.6601)"
-       id="g502">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path500" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:21:22"
-     id="a510"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(88.5125,29.1601)"
-       id="g508">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path506" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:23:24"
-     id="a516"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(96.6626,16.1601)"
-       id="g514">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path512" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:23:24"
-     id="a522"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(96.6626,28.6601)"
-       id="g520">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path518" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:11:12"
-     id="a528"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(47.7623,26.6601)"
-       id="g526">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path524" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:25:26"
-     id="a534"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(104.8126,16.6601)"
-       id="g532">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path530" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:25:26"
-     id="a540"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(104.8126,28.1601)"
-       id="g538">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path536" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:11:12"
-     id="a546"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(47.7623,18.1601)"
-       id="g544">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path542" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:27:28"
-     id="a552"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(112.9627,17.1601)"
-       id="g550">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path548" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:27:28"
-     id="a558"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(112.9627,27.6601)"
-       id="g556">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path554" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:29:30"
-     id="a564"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(121.1127,17.6601)"
-       id="g562">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path560" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:29:30"
-     id="a570"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(121.1127,27.1601)"
-       id="g568">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path566" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:31:32"
-     id="a576"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(129.2628,18.1601)"
-       id="g574">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path572" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:31:32"
-     id="a582"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(129.2628,26.6601)"
-       id="g580">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path578" />
-    </g>
-  </a>
-  <g
-     transform="translate(0.852,8.279)"
-     id="g586">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m -81,-366 c 0,255 -132,363 -132,366 0,18 132,96 132,366 0,261 -108,489 -108,780 0,189 45,366 177,501 15,15 39,-9 24,-24 -99,-99 -129,-225 -129,-360 0,-255 102,-480 102,-765 0,-186 -45,-363 -174,-498 129,-135 174,-312 174,-498 0,-285 -102,-510 -102,-765 0,-135 30,-261 129,-360 15,-15 -9,-39 -24,-24 -132,135 -177,312 -177,501 0,291 108,519 108,780 z"
-       fill="currentColor"
-       id="path584" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:33:34"
-     id="a592"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(137.4128,18.6601)"
-       id="g590">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path588" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:33:34"
-     id="a598"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(137.4128,26.1601)"
-       id="g596">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path594" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:35:36"
-     id="a604"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(145.5629,19.1601)"
-       id="g602">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path600" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:35:36"
-     id="a610"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(145.5629,25.6601)"
-       id="g608">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path606" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:37:38"
-     id="a616"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(153.7129,18.6601)"
-       id="g614">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path612" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:37:38"
-     id="a622"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(153.7129,26.1601)"
-       id="g620">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path618" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:39:40"
-     id="a628"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(161.863,18.1601)"
-       id="g626">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path624" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:39:40"
-     id="a634"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(161.863,26.6601)"
-       id="g632">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path630" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:41:42"
-     id="a640"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(170.013,17.6601)"
-       id="g638">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path636" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:9:10"
-     id="a646"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(39.6122,26.1601)"
-       id="g644">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path642" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:41:42"
-     id="a652"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(170.013,27.1601)"
-       id="g650">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path648" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:43:44"
-     id="a658"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(178.163,17.1601)"
-       id="g656">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path654" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:9:10"
-     id="a664"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(39.6122,18.6601)"
-       id="g662">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path660" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:43:44"
-     id="a670"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(178.163,27.6601)"
-       id="g668">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path666" />
-    </g>
-  </a>
-  <g
-     transform="translate(1.152,8.279)"
-     id="g674">
-    <rect
-       x="0"
-       y="-6.5500002"
-       width="0.16"
-       height="13.1"
-       ry="0.050000001"
-       fill="currentColor"
-       id="rect672" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:63:64"
-     id="a680"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(259.6635,25.6601)"
-       id="g678">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path676" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:45:46"
-     id="a686"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(186.3131,16.6601)"
-       id="g684">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path682" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:45:46"
-     id="a692"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(186.3131,28.1601)"
-       id="g690">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path688" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:47:48"
-     id="a698"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(194.4631,16.1601)"
-       id="g696">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path694" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:47:48"
-     id="a704"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(194.4631,28.6601)"
-       id="g702">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path700" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:63:64"
-     id="a710"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(259.6635,19.1601)"
-       id="g708">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path706" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:49:50"
-     id="a716"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(202.6132,15.6601)"
-       id="g714">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path712" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:49:50"
-     id="a722"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(202.6132,29.1601)"
-       id="g720">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path718" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:51:52"
-     id="a728"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(210.7632,16.1601)"
-       id="g726">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path724" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:51:52"
-     id="a734"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(210.7632,28.6601)"
-       id="g732">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path730" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:53:54"
-     id="a740"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(218.9133,16.6601)"
-       id="g738">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path736" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:53:54"
-     id="a746"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(218.9133,28.1601)"
-       id="g744">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path742" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:55:56"
-     id="a752"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(227.0633,17.1601)"
-       id="g750">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path748" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:55:56"
-     id="a758"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(227.0633,27.6601)"
-       id="g756">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path754" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:29:6:7"
-     id="a764"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(27.7622,25.1601)"
-       id="g762">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 250,262 c 116,0 176,-106 176,-163 0,-40 -30,-72 -67,-72 -31,0 -75,25 -75,75 0,38 27,77 72,77 4,0 9,0 14,-1 -28,37 -72,59 -120,59 C 144,237 137,164 137,51 V 0 -51 c 0,-113 7,-187 113,-187 80,0 139,70 158,151 2,7 7,10 12,10 6,0 13,-4 13,-12 0,-22 -50,-174 -183,-174 C 191,-263 0,-244 0,0 0,62 18,262 250,262 Z"
-         fill="currentColor"
-         id="path760" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:30:6:7"
-     id="a766"
-     transform="translate(-21.5502,-12.3811)" />
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:57:58"
-     id="a772"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(235.2134,17.6601)"
-       id="g770">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path768" />
-    </g>
-  </a>
-  <g
-     transform="translate(2.012,11.779)"
-     id="g776">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
-       fill="currentColor"
-       id="path774" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:57:58"
-     id="a782"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(235.2134,27.1601)"
-       id="g780">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path778" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:6:7"
-     id="a788"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(31.4622,25.6601)"
-       id="g786">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path784" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:6:7"
-     id="a794"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(27.7622,16.1601)"
-       id="g792">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 250,262 c 116,0 176,-106 176,-163 0,-40 -30,-72 -67,-72 -31,0 -75,25 -75,75 0,38 27,77 72,77 4,0 9,0 14,-1 -28,37 -72,59 -120,59 C 144,237 137,164 137,51 V 0 -51 c 0,-113 7,-187 113,-187 80,0 139,70 158,151 2,7 7,10 12,10 6,0 13,-4 13,-12 0,-22 -50,-174 -183,-174 C 191,-263 0,-244 0,0 0,62 18,262 250,262 Z"
-         fill="currentColor"
-         id="path790" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:59:60"
-     id="a800"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(243.3634,18.1601)"
-       id="g798">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path796" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:22:6:7"
-     id="a802"
-     transform="translate(-21.5502,-12.3811)" />
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:59:60"
-     id="a808"
-     transform="translate(-21.5502,-12.3811)">
-    <g
-       transform="translate(243.3634,26.6601)"
-       id="g806">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path804" />
-    </g>
-  </a>
-  <g
-     transform="translate(2.012,4.779)"
-     id="g812">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
-       id="path810" />
+       id="path36" />
   </g>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:6:7"
-     id="a818"
-     transform="translate(-21.5502,-12.3811)">
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:20:4:5"
+     id="a40"
+     transform="translate(-22.7622,-12.3811)" />
+  <g
+     transform="translate(5,4.3333001)"
+     id="g44">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 250,262 c 116,0 176,-106 176,-163 0,-40 -30,-72 -67,-72 -31,0 -75,25 -75,75 0,38 27,77 72,77 4,0 9,0 14,-1 -28,37 -72,59 -120,59 C 144,237 137,164 137,51 V 0 -51 c 0,-113 7,-187 113,-187 80,0 139,70 158,151 2,7 7,10 12,10 6,0 13,-4 13,-12 0,-22 -50,-174 -183,-174 C 191,-263 0,-244 0,0 0,62 18,262 250,262 Z"
+       fill="currentColor"
+       id="path42" />
+  </g>
+  <g
+     transform="translate(9.9392,4.3333001)"
+     id="g48">
+    <rect
+       x="-0.064999998"
+       y="-3.6666999"
+       width="0.13"
+       height="2.9806001"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect46" />
+  </g>
+  <g
+     transform="translate(8.765,4.3333001)"
+     id="g52">
+    <rect
+       x="-0.064999998"
+       y="0.68610001"
+       width="0.13"
+       height="2.9806001"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect50" />
+  </g>
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:12:13"
+     id="a58"
+     transform="translate(-22.7622,-12.3811)">
     <g
-       transform="translate(31.4622,19.1601)"
-       id="g816">
+       transform="translate(34.4645,15.7144)"
+       id="g56">
       <path
          transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
          fill="currentColor"
-         id="path814" />
+         id="path54" />
     </g>
   </a>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:23:61:62"
-     id="a824"
-     transform="translate(-21.5502,-12.3811)">
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:26:27"
+     id="a64"
+     transform="translate(-22.7622,-12.3811)">
     <g
-       transform="translate(251.5135,18.6601)"
-       id="g822">
+       transform="translate(34.4645,16.7144)"
+       id="g62">
       <path
          transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
          fill="currentColor"
-         id="path820" />
+         id="path60" />
+    </g>
+  </a>
+  <g
+     transform="translate(12.9415,4.3333001)"
+     id="g68">
+    <rect
+       x="-0.064999998"
+       y="-4"
+       width="0.13"
+       height="2.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect66" />
+  </g>
+  <g
+     transform="translate(11.7673,4.3333001)"
+     id="g72">
+    <rect
+       x="-0.064999998"
+       y="0.18610001"
+       width="0.13"
+       height="3.1472001"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect70" />
+  </g>
+  <a
+     style="color:inherit"
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:14:15"
+     id="a78"
+     transform="translate(-22.7622,-12.3811)">
+    <g
+       transform="translate(37.4667,15.2144)"
+       id="g76">
+      <path
+         transform="scale(0.004,-0.004)"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+         fill="currentColor"
+         id="path74" />
     </g>
   </a>
   <a
      style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:31:61:62"
-     id="a830"
-     transform="translate(-21.5502,-12.3811)">
+     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreBuilder/tmp/essais/code/score-untrimed.ly:21:28:29"
+     id="a84"
+     transform="translate(-22.7622,-12.3811)">
     <g
-       transform="translate(251.5135,26.1601)"
-       id="g828">
+       transform="translate(37.4667,16.2144)"
+       id="g82">
       <path
          transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
          fill="currentColor"
-         id="path826" />
+         id="path80" />
     </g>
   </a>
+  <g
+     transform="translate(15.9437,4.3333001)"
+     id="g88">
+    <rect
+       x="-0.064999998"
+       y="-4.3333001"
+       width="0.13"
+       height="2.6472001"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect86" />
+  </g>
+  <g
+     transform="translate(14.7695,4.3333001)"
+     id="g92">
+    <rect
+       x="-0.064999998"
+       y="-0.31389999"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect90" />
+  </g>
 </svg>

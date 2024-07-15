@@ -23,6 +23,7 @@ class MusCode {
   static saveAndEvaluateCode(){
     // => [String] Options les unes au-dessous des autres
     //    (à mettre au-dessus du code)
+    UI.setBuildingOn()
     WAA.send({
       class: "ScoreBuilder::MusCode", method: "save_and_evaluate",
       data: {code: this.getMusCode(), mus_file: this.mus_file_path}
@@ -33,15 +34,38 @@ class MusCode {
    * 
    * Notamment, la méthode remonte les images produites
    */
-  static onSavedAndEvaluated(waaData){
-    // console.log("Retour Waa :", waaData)
-    if (waaData.ok) {
-      ScoreViewer.setVignettes(waaData)
-      UI.setNameBackupButton(waaData.nb_backups)
+  static onSavedAndEvaluated(wdata){
+    // console.log("Retour Waa :", wdata)
+    if (wdata.ok) {
+      UI.setBuildingOff()
+      ScoreViewer.setVignettes(wdata)
+      UI.setNameBackupButton(wdata.nb_backups)
     } else {
-      erreur(`Un problème est survenu : ${waaData.error}. Consulter le retour.`)
-      console.error(waaData)
+      // = Problème =
+      UI.setAirLightProblem()
+      // erreur(`Un problème est survenu : ${wdata.error}. Consulter le retour.`)
+      // console.error(wdata)
+      this.displayLilypondError(wdata.error)
     }
+  }
+
+  /**
+  * Méthode qui permet d’afficher l’erreur générée par Lilypond au
+  * moment de la tentative de fabrication de l’image
+  */
+  static displayLilypondError(err){
+    const offset = err.indexOf('@resultat_travail_lilypond') + '@resultat_travail_lilypond'.length
+    err = err.substr(offset + 1).trim()
+    const sty = 'width:1400px;left:calc(50% - 1400px/2);height:500px;overflow-y:auto;'
+    const div = DCreate('DIV', {class:'error-panel panneau',style:sty})
+    div.innerHTML = `
+    <h3 style="color:red;cursor:pointer;">ERREUR DE CODE (FABRICATION)</h3>
+    <pre><code>${err}</code></pre>
+    <div style="margin-top:2em;font-style:italic;">Cliquer sur mon titre pour fermer cette fenêtre</div>
+    `
+    document.body.appendChild(div)
+    div.classList.remove('hidden')
+    listen(DGet('h3',div),'click', _ => {div.remove()})
   }
 
   static getMusCode(){

@@ -13,23 +13,12 @@
   }
 }
 % --- %
-\new PianoStaff <<
-  \new Staff = "haute" {
-    % enforce creation of all contexts at this point of time
+<<
+  \relative c' {
+    \time 4/4
     \clef "treble"
-    \relative c' {
-      \time 4/4
-      \key c \major
-      c1 d e f g a b c b a g f e d c d e f g a b c b a g f e d c
-    }
-  }
-  \new Staff = "basse" {
-    \clef bass
-    \relative c {
-      \time 4/4
-      \key c \major
-      c1 b a g f e d c d e f g a b c b a g f e d c d e f g a b c
-    }
+    \key c \major
+    << { c' d e } \\ { a, b c } >>
   }
 >>
 % --- %
