@@ -336,6 +336,8 @@ def header
     #{option_staves_vspace}
     #{option_proximity}
     #{option_no_numero_mesure}
+    \\Score
+    #{option_numeros_mesures_5_en_5}
   }
   #{code_extraction_fragment}
 }
@@ -344,7 +346,21 @@ def header
 end
 #/header
 
+def option_numeros_mesures_5_en_5
+  if options[:number_per_5]
+    <<~TEXT
+    \\override BarNumber.break-visibility = #end-of-line-invisible
+    #{option_numeros_mesures_sous_portee}
+    barNumberVisibility = #(every-nth-bar-number-visible 5)
+    TEXT
+  end
+end
 
+def option_numeros_mesures_sous_portee
+  if options[:measure_number_under_staff]
+    "\\override BarNumber.direction = #DOWN"
+  end
+end
 
 def code_extraction_fragment
   return ''

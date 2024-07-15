@@ -1,12 +1,16 @@
 'use strict';
 
-const OPTIONS_DIVERSES =  ['barres', 'keep', 'page_numbers', 'mesure_numbers']
+// const OPTIONS_DIVERSES =  ['barres', 'keep', 'page_numbers', 'mesure_numbers','number_per_5','measure_number_under_staff']
 const DATA_OPTIONS = {
     barres:         {name: "Barres de mesure", default: true}
   , keep:           {name: "Garder le fichier .ly", default: false}
   , page_numbers:   {name: "Afficher les numéros de page", default: true, when_true: 'arabic', when_false: 'OFF'}
-  , mesure_numbers: {name: "Afficher les numéros de mesure", default: true}
+  , mesure_numbers: {name: "Afficher les numéros de mesure", default: true, when_false: 'OFF'}
+  , number_per_5:   {name: "Numéroter de 5 en 5", default: false, depends_on: 'mesure_numbers'}
+  , measure_number_under_staff: {name:"Numéro de mesure sous la portée", depends_on: 'mesure_numbers', default: false}
 }
+const OPTIONS_DIVERSES = Object.keys(DATA_OPTIONS)
+console.log("OPTIONS_DIVERSES:", OPTIONS_DIVERSES)
 
 class Options extends Panneau {
 

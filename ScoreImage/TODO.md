@@ -1,12 +1,17 @@
 # Score-image Todo List
 
+* Ajouter l’option "séparateur de systèmes" et l’implémenter
+
+### TESTS À FAIRE
+
+* pas de numérotation de mesure
+* numérotation tous les 5
+* numérotation en dessous de la portée
 * test sur marque d’octave
   - simple note
   - simple note en dessous
   - accord
   - accord en dessous
-
-* Ajouter l’option "séparateur de systèmes" et l’implémenter
 
 ### Retour Lilypond
 
