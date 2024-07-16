@@ -112,7 +112,7 @@ class FolderAnalyzer
       # Le fichier du score original n’existe pas, mais le dossier 
       # pour mettre ses pages oui. C’est donc que la partition origi-
       # nale a déjà été traitée et mise dans le backup/archive
-      # => Rien à faire et rien à signaler.
+      # => On relève les pages JPG de la partition
 
     else
 
@@ -120,6 +120,12 @@ class FolderAnalyzer
       # originale. Ce qui est toujours possible et ne pose aucun 
       # problème. Mais on exposera quand même la chose.
 
+    end
+
+    if File.exist?(original_score_folder)
+      unless data[:original_score_pages]
+        data.merge!(original_score_pages: get_original_score_pages)
+      end
     end
 
     if data[:mus_file]
@@ -296,7 +302,7 @@ FIRST_CODE = <<~MUS
 --tune Eb
 --time 3/4
 
--> partition
+-> score
 c8 d ees f g ees :||
 c2.
 
