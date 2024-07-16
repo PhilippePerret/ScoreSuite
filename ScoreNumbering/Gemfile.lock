@@ -1,0 +1,51 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cgi (0.4.1)
+    clir (0.24.2)
+      json
+      tty-prompt
+    erb (4.0.4)
+      cgi (>= 0.3.3)
+    json (2.7.2)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    pretty_inspect (1.4.0)
+    rexml (3.3.2)
+      strscan
+    rubyzip (2.3.2)
+    selenium-webdriver (4.9.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
+    strscan (3.1.0)
+    tty-color (0.6.0)
+    tty-cursor (0.7.1)
+    tty-prompt (0.23.1)
+      pastel (~> 0.8)
+      tty-reader (~> 0.8)
+    tty-reader (0.9.0)
+      tty-cursor (~> 0.7)
+      tty-screen (~> 0.8)
+      wisper (~> 2.0)
+    tty-screen (0.8.2)
+    websocket (1.2.11)
+    wisper (2.0.1)
+    yaml (0.3.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (= 2.1.4)
+  clir
+  erb
+  pretty_inspect
+  selenium-webdriver
+  yaml
+
+RUBY VERSION
+   ruby 2.7.3p183
+
+BUNDLED WITH
+   2.1.4

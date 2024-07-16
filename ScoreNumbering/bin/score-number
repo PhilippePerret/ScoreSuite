@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby -U
+
+
+bin_folder = __dir__
+app_folder = File.dirname(bin_folder)
+
+# Dossier courant (dans lequel est lancé la commande)
+current_dir = File.expand_path('.')
+
+env =
+  unless ENV['CUR_DIR']
+    {
+      'CUR_DIR' =>        current_dir,
+      'CURRENT_FOLDER' => current_dir
+    }
+  else
+    {}
+  end
+
+command = 'cd "%s" && bundle exec ruby %s %s'.freeze % [app_folder, 'score_numbering.rb', ARGV.join(' ')]
+
+options = {
+  out: STDOUT,
+  err: STDERR,
+}
+
+Process.spawn(env, command, options)
+Process.wait
+
+

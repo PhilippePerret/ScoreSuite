@@ -105,7 +105,8 @@ class Waa
     state = 1
     iloop = 20 # pour des essais
     wait.until do
-      check_clsv_message
+      res = check_clsv_message
+      break if res == :fin
       # 
       # Pour des essais
       # 
@@ -132,10 +133,10 @@ class Waa
       msg = driver.execute_script('return WAA.get_message()')
     rescue Selenium::WebDriver::Error::InvalidSessionIdError => e
       # Erreur qui survient lorsqu'on quitte le browser
-      raise InterruptionSilencieuse.new
+      return :fin
     rescue Exception => e
       # Par exemple quand on recharge la page client
-      puts "ERREUR BLOQUÉE : #{e.message}".orange
+      puts "ERREUR BLOQUÉE : #{e.message}".orange if verbose?
       return 
     end
     if msg

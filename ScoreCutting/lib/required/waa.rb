@@ -62,12 +62,16 @@ class Waa
   #
   def initialize(browser = :firefox)
     @browser = browser
+    @isrunning = false
   end
 
   def goto(file)
     driver.navigate.to 'file://'+file
   end
 
+  def running?
+    @isrunning === true
+  end
   # 
   # La boucle d'attente jusqu'à la fin
   # (pour le moment, rien n'indique la fin)
@@ -75,6 +79,7 @@ class Waa
   def run
     state = 1
     iloop = 20 # pour des essais
+    @isrunning = true
     wait.until do
       check_clsv_message
       # 
@@ -84,10 +89,11 @@ class Waa
         iloop -= 1
         break if iloop < 0
       end
-
       # Marque la fin du programme
       state == 0
     end
+  rescue InterruptionSilencieuse
+    # Silence…
   rescue Exception => e
     puts e.inspect
     puts e.backtrace.join("\n")
@@ -106,7 +112,7 @@ class Waa
       raise InterruptionSilencieuse.new
     rescue Exception => e
       # Par exemple quand on recharge la page client
-      puts "ERREUR BLOQUÉE : #{e.message}".orange
+      puts "ERREUR BLOQUÉE : #{e.message}".orange if verbose?
       return 
     end
     if msg

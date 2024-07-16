@@ -1,6 +1,5 @@
 --barres
 --piano
---keep
 
 simples=
 c1\turn <c e g>\turn c_\turn <c e g>_\turn
@@ -22,29 +21,5 @@ altgn=
 a’1\turn^\markup { \hspace #0.5 \center-column { \teeny \natural } }
 c,1\turnn
 
-altp=
-a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
-c,1\prall#
-
-altpb=
-a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \flat } }
-c,1\prallb
-
-altpn=
-a’1\prall^\markup { \hspace #0.5 \center-column { \teeny \natural } }
-c,1\pralln
-
-altrmd=
-\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
-c,1\mordent/#
-
-altrmb=
-\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \flat } }
-c,1\mordent/b
-
-altrmn=
-\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \natural } }
-c,1\mordent/n
-
 -> score
-simples altg altgb altgn altp altpb altpn altrmd altrmb altrmn
+simples altg altgb altgn

@@ -1,0 +1,18 @@
+--barres
+--piano
+--keep
+
+altrmd=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \sharp } }
+c,1\mordent/#
+
+altrmb=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \flat } }
+c,1\mordent/b
+
+altrmn=
+\once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \natural } }
+c,1\mordent/n
+
+-> score
+altrmd altrmb altrmn

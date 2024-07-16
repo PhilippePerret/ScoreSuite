@@ -36,6 +36,9 @@ rescue Exception => e
   puts e.message.rouge
   puts e.backtrace.join("\n").rouge if verbose?
 ensure
-  WAA.driver.quit if @waa_is_running
+  begin
+    WAA.driver.quit if defined?(WAA) && @waa_is_running
+  rescue Selenium::WebDriver::Error::InvalidSessionIdError => e
+  end
 end
 
