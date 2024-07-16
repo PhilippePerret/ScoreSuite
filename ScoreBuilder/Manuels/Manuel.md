@@ -67,3 +67,15 @@ Pour enregistrer le bloc-notes et fermer la fenêtre en même temps, il suffit d
 ### Déplacement des notes
 
 On peut déplacer les notes avec les boutons ⌘ + ◀️ et ⌘ + ▶️ qui permettent de choisir les autres notes.
+
+---
+
+<a name="outils"></a>
+
+## Outils
+
+Le bouton « Outils » permet d’afficher le panneau des outils.
+
+Ces outils permettent notamment de :
+
+* initier le module ruby qui permet de produire des partitions ou des portions de partitions de façon programmatique lorsque c’est possible (particulièrement utile avec du Bach où un système se répète souvent d’un bout à l’autre des pièces — voir les préludes).

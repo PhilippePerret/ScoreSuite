@@ -66,10 +66,18 @@ class FolderAnalyzer
     
     if File.exist?(data_file_path)
       # 
-      # Quand un fichier de données existe déjà
+      # Quand un fichier de données existe déjà (c’est le fichier
+      # score_builder.yaml qu’on trouve à la racine du dossier)
       # 
       data = YAML.safe_load(IO.read(data_file_path),**YAML_OPTIONS)
       data[:mus_file] ||= search_for_mus_file
+      # Si les images de la partition originale n’existent plus, 
+      # on va les rechercher.
+      premiere_image = File.join(data[:original_score_folder],data[:original_score_pages][0])
+      unless File.exist?(premiere_image)
+        puts "La première image #{premiere_image.inspect} est introuvable.".orange
+        data.delete(:original_score_pages)
+      end
     else
       #
       # Fichier de données ScoreBuilder inexistant (par exemple
@@ -252,7 +260,11 @@ class FolderAnalyzer
     end #/do with message
     if ok
       puts "🍺 Partition originale déplacée vers le fichier des backups.".vert
-      puts "Pensez à numéroter les mesures à l’aide de ’score-numbering’.".jaune
+      puts <<~TEXT.jaune
+      Penser à numéroter les mesures à l’aide de Score Numbering en 
+      ouvrant un Terminal dans le dossier ./#{File.basename(original_score_folder)} et
+      en jouant la commande ’score-number’.
+      TEXT
     else
       puts "Un problème est survenu, je ne trouve aucune page…".rouge
     end      
