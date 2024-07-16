@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <g transform="matrix(1,0,0,1,-3.94486,-14.1751)">
+        <g id="line4" transform="matrix(0.822564,0,0,1,3.96894,1.157)">
+            <g>
+                <path d="M0.249,34.172L43.598,34.172" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:0.5px;"/>
+            </g>
+        </g>
+        <g id="line6" transform="matrix(0.822564,0,0,1,3.96894,1.157)">
+            <g>
+                <path d="M0.249,29.191L43.598,29.191" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:0.5px;"/>
+            </g>
+        </g>
+        <g id="line8" transform="matrix(0.822564,0,0,1,3.96894,1.157)">
+            <g>
+                <path d="M0.249,24.209L43.598,24.209" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:0.5px;"/>
+            </g>
+        </g>
+        <g id="line10" transform="matrix(0.822564,0,0,1,3.96894,1.157)">
+            <g>
+                <path d="M0.249,19.228L43.598,19.228" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:0.5px;"/>
+            </g>
+        </g>
+        <g transform="matrix(0.822564,0,0,1,3.96894,1.157)">
+            <g>
+                <g id="line12">
+                    <path d="M0.249,14.247L43.598,14.247" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:0.5px;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(3.49152,0,0,4.38702,4.61558,34.3285)">
+            <g>
+                <g transform="matrix(5.785,0,0,5.785,7.3643,0)">
+                </g>
+                <text x="0px" y="0px" style="font-family:'BodoniSvtyTwoITCTT-Book', 'Bodoni 72';font-size:5.785px;">b4.</text>
+            </g>
+        </g>
+    </g>
+</svg>
