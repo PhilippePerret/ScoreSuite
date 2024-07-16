@@ -19,4 +19,6 @@ module ScoreNumbering
     ['CURRENT_FOLDER' , ENV['CUR_DIR']]
   ]
 
+  CURRENT_FOLDER = ENV['CUR_DIR']||File.expand_path('.').freeze
+
 end #/module ScoreNumbering

@@ -230,7 +230,7 @@ class FolderAnalyzer
     msg_start = "J’extrais les pages du fichier PDF #{File.basename(pdf_path).inspect}…"
     msg_end   = "🍺 Pages JPEG produites avec succès…"
     do_with_message(msg_start, msg_end) do
-      cmd = 'magick "%s" -density 300 "%s/page.jpg"' % [pdf_path, original_score_folder]
+      cmd = 'magick -density 300 "%s" "%s/page.jpg"' % [pdf_path, original_score_folder]
       result = `#{cmd} 2>&1`
       # Si l’extraction a pu se faire avec succès, on déplace le
       # fichier PDF de la partition originale vers le dossier backup
