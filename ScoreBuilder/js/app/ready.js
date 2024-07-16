@@ -6,6 +6,7 @@ $(document).ready(e => {
 
   UI.prepare()
   Options.prepare()
+  Outils.prepare()
   BlocNotes.prepare()
   Helper.prepare()
   MusCode.prepare()

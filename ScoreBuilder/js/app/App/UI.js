@@ -15,7 +15,10 @@ class UI {
     listen(this.btnBackup,'click', this.onClickBackup.bind(this))
 
     btn = DGet('button#btn-bloc-note')
-    listen(btn, 'click', BlocNotes.open.bind(BlocNotes))
+    listen(btn, 'click', BlocNotes.toggle.bind(BlocNotes))
+
+    btn = DGet('button#btn-outils')
+    listen(btn, 'click', Outils.toggle.bind(Outils))
 
     // Pour pouvoir masque le bouton "on air" en cas de souci (mais
     // ça ne devrait pas arriver)

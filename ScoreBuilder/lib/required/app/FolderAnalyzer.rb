@@ -160,11 +160,12 @@ class FolderAnalyzer
 
       # puts "data = #{data}"
 
-      # On enregistre les données dans un fichier YAML
-      IO.write(data_file_path, data.to_yaml)
-
     end # /s’il y a un file .mus
 
+
+    # On enregistre les données dans un fichier YAML
+    data.merge!(updated_at: Time.now)
+    IO.write(data_file_path, data.to_yaml)
 
 
     return data

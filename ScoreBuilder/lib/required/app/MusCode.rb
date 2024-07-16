@@ -63,6 +63,32 @@ class << self
     end.sort
   end
 
+  # Instancier le module ruby (sauf s’il existe déjà)
+  def init_ruby_module(wdata)
+    if File.exist?(ruby_module_path)
+      wdata.merge!(ok:false, error: "Un module ruby ’mus_functions.rb’ existe déjà.")
+    else
+      IO.write(ruby_module_path, CODE_RUBY_MODULE_DEFAULT)
+      wdata.merge!(ok: true)
+    end
+    WAA.send(class:"Outils", method: "onRubyModuleInitied", data:wdata)
+  end
+
+  # Ouvrir le module ruby (s’il existe)
+  def open_ruby_module(wdata)
+    if File.exist?(ruby_module_path)
+      `subl "#{File.dirname(ruby_module_path)}"`
+      wdata.merge!(ok: true)
+    else
+      wdata.merge!(ok: false, error: "Le module ruby (#{File.basename(ruby_module_path)}) est introuvable.")
+    end
+    WAA.send(class:"Outils", method: "onRubyModuleOpened", data:wdata)
+  end
+
+  def ruby_module_path 
+    @ruby_module_path ||= File.join(main_folder,"mus_functions.rb").freeze
+  end
+
   # Retourne la liste des images SVG produites (soit une seule,
   # soit plusieurs si la partition est longue)
   def current_score_svgs
@@ -191,6 +217,17 @@ def folder
   @folder ||= File.dirname(mus_file).freeze
 end
 
+CODE_RUBY_MODULE_DEFAULT = <<~RUBY
+module ScoreImage
+
+  # Utiliser ’fn_draw_notes((...))’ dans le code mus
+  def draw_notes(notes)
+    \# ... traitement ...
+    return notes.map { |n| "\#{n}8" }.join(' ')
+  end
+
+end #/ module ScoreImage
+RUBY
 
 end #/class MusCode
 end #/module ScoreBuilder

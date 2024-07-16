@@ -148,6 +148,24 @@ c d ees f g aes
 </div>
 
 
+<!-- 
+
+  LE PANNEAU DES OUTILS
+
+ -->
+<div id="panneau-outils" class="panneau hidden">
+  <h3>Panneau des outils</h3>
+  <section class="content">
+    <div class="tool">
+      <button id="init-module-ruby">Initier le module ruby</button>
+      <expli>Le “module ruby” est un module qui permet de construire du code MUS de façon programmatique. Il est composé de méthode &lt;method&gt; qu’il suffit d’appeler depuis le code par <code>fn_method((...))</code></expli>
+    </div>
+    <div class="tool">
+      <button id="btn-open-ruby-module">Ouvrir le module ruby</button>
+      <expli>Ce bouton permet d’ouvrir le module ruby dans l’EDI par défaut.</expli>
+    </div>
+  </section>
+</div>
 
 
 <!-- 
@@ -266,6 +284,7 @@ c d ees f g aes
 
 
 <footer id="main">
+  <button id="btn-outils" class="fleft">Outils</button>
   <button id="btn-bloc-note" class="fleft">Bloc-notes</button>
   <menu-container class="fleft">    
     <menu id="helper" data-method="openManuel">
@@ -301,6 +320,7 @@ c d ees f g aes
 <script type="text/javascript" src="js/app/App/OriginalScore.js" defer></script>
 <script type="text/javascript" src="js/app/App/Snippet.js" defer></script>
 <script type="text/javascript" src="js/app/App/Options.js" defer></script>
+<script type="text/javascript" src="js/app/App/Outils.js" defer></script>
 <script type="text/javascript" src="js/app/App/BlocNotes.js" defer></script>
 <script type="text/javascript" src="js/app/App/Helper.js" defer></script>
 <script type="text/javascript" src="js/test/Test.js" defer></script>

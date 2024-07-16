@@ -172,3 +172,9 @@ div.container-current-page  img.current-page {
 div.panneau.error-panel {
   background-color: #FF9999;
 }
+
+expli {
+  display:block;
+  font-size:0.85em;
+  color: #777777;
+}

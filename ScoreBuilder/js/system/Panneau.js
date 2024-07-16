@@ -13,9 +13,10 @@
 class Panneau {
 
   static watch(){
-    listen(this.btnClose,'click', this.onClickCloseButton.bind(this))    
+    if ( this.btnClose ) {
+      listen(this.btnClose,'click', this.onClickCloseButton.bind(this))    
+    }
   }
-
 
   static onClickCloseButton(ev){
     stopEvent(ev)
@@ -23,6 +24,13 @@ class Panneau {
     return false
   }
 
+  static toggle(){
+    if (this.isOpened) {
+      this.close()
+    } else {
+      this.open()
+    }
+  }
 
   static open(){
     this.panneau.classList.remove('hidden')
@@ -35,5 +43,7 @@ class Panneau {
     this.panneau.classList.add('hidden')
   }
 
-
+  static get isOpened(){
+    return !this.panneau.classList.contains('hidden')
+  }
 }
