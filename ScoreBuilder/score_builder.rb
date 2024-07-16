@@ -8,7 +8,6 @@ Bundler.setup
 require_relative 'lib/required'
 
 begin
-  @waa_is_running = false
   if help?
     require File.join(MOD_FOLDER,'help')
     ScoreBuilder::CommandLine.show_help
@@ -26,19 +25,19 @@ begin
     params = ScoreBuilder::App.goto_params
     Dir.chdir(ScoreBuilder::CURRENT_FOLDER) do
       WAA.goto( File.join(__dir__,'main.html'), **params)
-      @waa_is_running = true
       WAA.run
     end
   end
 rescue ScoreBuilder::AbandonException
-  puts "Abandon.".bleu
+  # Fin silencieuse
 rescue Exception => e
   puts e.message.rouge
   puts e.backtrace.join("\n").rouge if verbose?
 ensure
   begin
-    WAA.driver.quit if defined?(WAA) && @waa_is_running
+    WAA.driver.quit if defined?(WAA) && WAA.running?
   rescue Selenium::WebDriver::Error::InvalidSessionIdError => e
   end
+  puts "Bye bye.".bleu
 end
 
