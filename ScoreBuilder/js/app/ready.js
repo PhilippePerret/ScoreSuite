@@ -15,7 +15,7 @@ $(document).ready(e => {
 
   App.loadCurrent()
   
-  console.log("Je suis fin prête.")
+  // console.log("Je suis fin prête.")
 
   // Pour gagner du temps au développement
   // BlocNotes.open()

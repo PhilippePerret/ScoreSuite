@@ -210,6 +210,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Détail des erreurs                                           | **`--verbose`**                                              | Permet de donner les messages d’erreur dans leur intégralité et notamment avec leur backtrace. |
 | Portées multiples (cf. ci-dessous)                           | **`--staves_keys G,A,…`**<br />**`--staves_names 1re,2e…`**  | Permet de produire des portées empilées avec les clés et les noms voulus. |
 | Nommage de la portée                                         | **`--staves_names <nom>`**                                   | Permet, notamment pour le piano, de préciser qu’il faut indiquer le nom (simplement en indiquant `--staves_names Piano`) |
+| Taille de la portée                                          | **`--staff_size <x>`**                                       | Définit la taille de la portée (et de tous ses éléments). La valeur par défaut est **20**. |
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
 |                                                              |                                                              |                                                              |
 
@@ -279,6 +280,16 @@ Par exemple :
 Pour l’espacement vertical entre les systèmes, cf. [Espacement entre les systèmes](#systems-vspace).
 
 ---
+
+#### Taille des portées
+
+La taille des portées se règle à l’aide de l’option **`--staff_size`** suivie de la valeur à lui donner. La valeur par défaut est 20.
+
+~~~
+--staff_size 22.5
+~~~
+
+
 
 <a name="nommage-staff"></a>
 

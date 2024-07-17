@@ -23,10 +23,31 @@ class Options extends Panneau {
     this.close()
     this.watch()
     this.buildCbsOptions()
+    this.buildSystemCountMenus()
+    this.buildStaffSizeMenu()
     this.observe()
 
   }
 
+  static buildSystemCountMenus(){
+    let i, opt;
+    document.querySelectorAll('select.system-count').forEach(menu =>{
+      opt = DCreate('OPTION', {value:'', text:'-'})
+      menu.appendChild(opt)
+      for(i = 1; i < 20; ++i){
+        opt = DCreate('OPTION', {value:String(i), text:String(i)})
+        menu.appendChild(opt)
+      }
+    })
+  }
+  static buildStaffSizeMenu(){
+    let i, tit, opt;
+    for(i = 10; i < 40; ++i){
+      tit = i != 20 ? String(i) : "20 (défaut)"
+      opt = DCreate('OPTION', {value:String(i), text:String(i)})
+      this.menuStaffSize.appendChild(opt)
+    }
+  }
 
   static buildCbsOptions(){
     const container = DGet('fieldset#options-diverses div.container')
@@ -77,6 +98,13 @@ class Options extends Panneau {
     listen(this.cbStavesVSpace,'click', this.onClickCBstavesVSpace.bind(this))
     listen(this.stavesVSpaceField,'focus', _ => {this.stavesVSpaceField.select()} )
   
+    // Pour générer une alerte quand on choisit un nombre de systèmes
+    // différent pour la première page (ça n’est pas encore possible)
+    listen(this.menuSystemCountFirstPage,'change', _ => {
+      erreur("Il n’est pas encore possible d’attribuer un nombre de systèmes différent à la 1<sup>re</sup> page.")
+      this.menuSystemCountFirstPage.value = this.menuSystemCount.value
+    })
+
     // La fenêtre doit être déplaçable
     $(this.panneau).draggable()
 
@@ -126,8 +154,18 @@ class Options extends Panneau {
     return this._cbvspacestaves || (this._cbvspacestaves = DGet('input#cb-staves-vspace'))
   }
 
+  static get menuSystemCountFirstPage(){
+    return this._menusyscountpage1 || (this._menusyscountpage1 = DGet('select#system-count-first-page'))
+  }
+  static get menuSystemCount(){
+    return this._menusyscount || (this._menusyscount = DGet('select#system-count-per-page'))
+  }
+
   static get menuSystems(){
     return this._menusystem || (this._menusystem = DGet('#option_systeme'))
+  }
+  static get menuStaffSize(){
+    return this._menustaffsize || (this._menustaffsize = DGet('select#staff_size'))
   }
 
   static getValues(){
@@ -159,6 +197,20 @@ class Options extends Panneau {
       data.push(`--staves ${keys.length}`)
       data.push(`--staves_keys ${keys.join(',')}`)
       data.push(`--staves_names ${names.join(',')}`)
+    }
+    // - Nombre de systèmes par page -
+    const sysCountP1 = this.menuSystemCountFirstPage.value
+    if ( sysCountP1 != '-' ) {
+      data.push(`--system_count_first_page ${sysCountP1}`)
+    }
+    const systemCount = this.menuSystemCount.value
+    if ( systemCount != '-'){
+      data.push(`--system_count ${systemCount}`)
+    }
+    // - Taille de portée -
+    const staffSize = Number(this.menuStaffSize.value)
+    if ( staffSize != 20 ) {
+      data.push(`--staff_size ${staffSize}`)
     }
     // - Diverses Options -
     OPTIONS_DIVERSES.forEach( key => {
@@ -250,6 +302,11 @@ class Options extends Panneau {
     } else {
       this.stavesContainer.classList.add('hidden')
     }
+    // - Nombre de systèmes par page -
+    const systemCount = values.system_count || '-'
+    const sysCountP1  = values.system_count_first_page || '-'
+    this.menuSystemCount.value          = systemCount
+    this.menuSystemCountFirstPage.value = sysCountP1
 
     // - Espacement entre les systèmes -
     const vSpaceIsDefined = values.systems_vspace
@@ -263,7 +320,10 @@ class Options extends Panneau {
     if ( stavesVSpaceIsDefined ) {
       this.stavesVSpaceField.value = values.staves_vspace
     }
-
+    // - Taille de portée -
+    if ( values.staff_size ) {
+      this.menuStaffSize.value = values.staff_size
+    }
   }
 
   /**

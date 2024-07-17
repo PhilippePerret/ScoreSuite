@@ -222,7 +222,7 @@ c d ees f g aes
 
       <div>
         <label>Page</label><select id="option_format">
-        <option value="lettre">lettre</option>
+        <option value="letter">letter</option>
         <option value="a4">A4</option>
         <option value="a3">A3</option>
         <option value="a0">A0</option>
@@ -231,6 +231,10 @@ c d ees f g aes
         <option value="b5">B5</option>
         <option value="b4">B4</option>
       </select>
+      </div>
+      <div>
+        <label>Taille de portée</label>
+        <select id="staff_size"></select>
       </div>
     </fieldset>
 
@@ -253,6 +257,20 @@ c d ees f g aes
         <option value="8">8 portées</option>
       </select>
       <div id="staves-container" class="hidden">
+      </div>
+      <div>
+        <div class="label-select">
+          <label>Systèmes max par page</label>
+          <span class="select">
+            <select id="system-count-per-page" class="system-count"></select>            
+          </span>
+        </div>
+        <div class="label-select">
+          <label>Sauf première page : </label>
+          <span class="select">
+            <select id="system-count-first-page" class="system-count"></select>
+          </span>
+        </div>
       </div>
       <div style="margin-top:0.5em;" class="cb-label-intext">
         <input type="checkbox" id="cb-systems-vspace">
@@ -282,6 +300,14 @@ c d ees f g aes
 </div>
 <!-- /panneau des options -->
 
+
+
+
+<!-- 
+
+  PIED DE PAGE
+
+ -->
 
 <footer id="main">
   <button id="btn-outils" class="fleft">Outils</button>

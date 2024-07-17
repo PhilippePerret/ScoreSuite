@@ -311,11 +311,13 @@ def mark_staff_name(params)
   end
 end
 
+
 def header
   <<-LILYPOND
 \\version "#{LILYPOND_VERSION}"
 
 #(set-default-paper-size #{option_page_format})
+#{option_global_staff_size}
 
 \\paper{
   indent=0\\mm
@@ -329,6 +331,9 @@ def header
 
   % Essai d’espacement entre les systèmes si nécessaire
   #{option_vspace_between_systems}
+
+  % Nombre de systèmes par page
+  #{options_system_count_per_page}
 }
 
 \\layout {
@@ -346,6 +351,13 @@ def header
 end
 #/header
 
+def options_system_count_per_page
+  if ( n = options[:system_count]||options[:system_count_per_page] )
+    # "system-count = ##{n}" # ne fonctionne pas : met tout dans ce nombre sur une seule page
+    "max-systems-per-page = ##{n}"
+  end  
+end
+
 def option_numeros_mesures_5_en_5
   if options[:number_per_5]
     <<~TEXT
@@ -353,6 +365,12 @@ def option_numeros_mesures_5_en_5
     #{option_numeros_mesures_sous_portee}
     barNumberVisibility = #(every-nth-bar-number-visible 5)
     TEXT
+  end
+end
+
+def option_global_staff_size
+  if data[:staff_size]
+    "\#(option_global_staff_size #{data[:staff_size]})"
   end
 end
 
