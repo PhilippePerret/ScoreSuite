@@ -853,12 +853,14 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 
 #### Altérations
 
-| <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span>                           | <span style="display:inline-block;width:300px;">Description</span> |
-| ------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
-| `#` | **`is`** | Par exemple `fis` pour fa dièse |
-| `b`| **`es`** | Par exemple `ees` pour mi bémol |
-| `x` | **`isis`** | Par exemple `gisis` pour sol double-dièses |
-| `bb`| **`eses`** | Par exemple `aeses` pour la double bémols |
+| <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
+| ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| `#`                                                          | **`is`**                                                    | Par exemple `fis` pour fa dièse                              |
+| `b`                                                          | **`es`**                                                    | Par exemple `ees` pour mi bémol                              |
+| `x`                                                          | **`isis`**                                                  | Par exemple `gisis` pour sol double-dièses                   |
+| `bb`                                                         | **`eses`**                                                  | Par exemple `aeses` pour la double bémols                    |
+|                                                              | **`!`**                                                     | Altération de prudence. Par exemple `a!` pour forcer la marque du bécarre lorsque le La a été diésé dans la mesure précédente. |
+|                                                              | **`?`**                                                     | Altération entre parenthèse. Par exemple **`a?`** pour mettre un bécarre avant le La entre parenthèses pour bien indiquer qu’il est bécarre. |
 
 
 #### Accords
