@@ -209,32 +209,43 @@ c d ees f g aes
 
     
     <fieldset id="tune-container" class="options-container">
-      <div>        
-        <label>Armure</label><select id="option_tune-note"><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>A</option><option>B</option></select>
-        <select id="option_tune-alte"><option value="">-</option><option value="d">#</option><option value="b">b</option></select>
-        <select id="option_tune-mode"><option value="">majeur</option><option value="m">mineur</option></select>
+      <div class="label-select-small">
+        <label>Armure</label>
+        <span class="select">
+          <select id="option_tune-note"><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>A</option><option>B</option></select>
+          <select id="option_tune-alte"><option value="">-</option><option value="d">#</option><option value="b">b</option></select>
+          <select id="option_tune-mode"><option value="">majeur</option><option value="m">mineur</option></select>
+        </span>
       </div>
-      <div>        
-        <label>Métrique</label><select id="option_time-deno"><option>4</option><option>3</option><option>6</option><option>2</option><option>8</option><option>16</option></select>
-        <span>/</span>
-        <select id="option_time-divi"><option>4</option><option>8</option><option>2</option><option>16</option><option>1</option></select>
+      <div class="label-select-small">
+        <label>Métrique</label>
+        <span class="select">
+          <select id="option_time-deno"><option>4</option><option>3</option><option>6</option><option>2</option><option>8</option><option>16</option></select>
+          <span>/</span>
+          <select id="option_time-divi"><option>4</option><option>8</option><option>2</option><option>16</option><option>1</option></select>
+        </span>
       </div>
 
-      <div>
-        <label>Page</label><select id="option_format">
-        <option value="letter">letter</option>
-        <option value="a4">A4</option>
-        <option value="a3">A3</option>
-        <option value="a0">A0</option>
-        <option value="a5">A5</option>
-        <option value="b3">B3</option>
-        <option value="b5">B5</option>
-        <option value="b4">B4</option>
-      </select>
+      <div class="label-select">
+        <label>Format de page</label>
+        <span class="select">          
+          <select id="option_format">
+          <option value="letter">letter</option>
+          <option value="a4">A4</option>
+          <option value="a3">A3</option>
+          <option value="a0">A0</option>
+          <option value="a5">A5</option>
+          <option value="b3">B3</option>
+          <option value="b5">B5</option>
+          <option value="b4">B4</option>
+        </select>
+        </span>
       </div>
-      <div>
+      <div class="label-select">
         <label>Taille de portée</label>
-        <select id="staff_size"></select>
+        <span class="select">
+          <select id="staff_size"></select>
+        </span>
       </div>
     </fieldset>
 

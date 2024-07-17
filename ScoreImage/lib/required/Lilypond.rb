@@ -370,7 +370,7 @@ end
 
 def option_global_staff_size
   if options[:staff_size]
-    "\#(option_global_staff_size #{options[:staff_size]})"
+    "#(option_global_staff_size #{options[:staff_size]})"
   end
 end
 

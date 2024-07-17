@@ -51,12 +51,36 @@ div#panneau-options div.cb-label-intext label {
   display:inline-block;
   width: 255px;
 }
-div#panneau-options div.label-select label {
+
+div#panneau-options div.label-select label,
+div#panneau-options div.label-select-medium label,
+div#panneau-options div.label-select-small label 
+{
   display:inline-block;
+}
+div#panneau-options div.label-select span.select,
+div#panneau-options div.label-select-medium span.select,
+div#panneau-options div.label-select-small span.select
+{
+  display:inline-block;
+  text-align: right;
+}
+
+div#panneau-options div.label-select label {
   width: 220px;
 }
 div#panneau-options div.label-select span.select {
-  display:inline-block;
   width: 112px;
-  text-align: right;
+}
+div#panneau-options div.label-select-medium label {
+  width: 180px;
+}
+div#panneau-options div.label-select-medium span.select {
+  width: 152px;
+}
+div#panneau-options div.label-select-small label {
+  width: 130px;
+}
+div#panneau-options div.label-select-small span.select {
+  width: 202px;
 }
