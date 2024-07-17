@@ -136,20 +136,26 @@ end
 # :error pour indiquer si tout s’est bien passé.
 # 
 def produce_svg
+  puts "j’efface les existantes".jaune
   remove_all_svg
 
+  puts "Je charge score-image"
   outputs = ScoreSuiteLauncher.launch(
     :score_image, File.basename(mus_file), {
       in: File.dirname(mus_file),
       return_output: true
     })
 
-  allright = outputs[:err].empty? && not(outputs[:out].match?('error')) 
+  puts "Le retour est : #{outputs}"
+  allright = outputs[:err].empty? \
+    && not(outputs[:out].match?('error')) \
+    && outputs[:out].match?(/(success|succès)/)
   report = {
     ok:     allright,
     error:  allright||"+err:#{outputs[:err]}\n+ out:#{outputs[:out]}"
   }
 
+  puts "Je retourne report: #{report}"
   # puts "\n\nOUPUTS:\n#{outputs}"
   return report
 end

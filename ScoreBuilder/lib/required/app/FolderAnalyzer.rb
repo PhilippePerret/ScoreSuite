@@ -73,7 +73,7 @@ class FolderAnalyzer
       data[:mus_file] ||= search_for_mus_file
       # Si les images de la partition originale n’existent plus, 
       # on va les rechercher.
-      premiere_image = File.join(data[:original_score_folder],data[:original_score_pages][0])
+      premiere_image = File.join(path,data[:original_score_pages][0])
       unless File.exist?(premiere_image)
         puts "La première image #{premiere_image.inspect} est introuvable.".orange
         data.delete(:original_score_pages)
