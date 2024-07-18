@@ -75,7 +75,11 @@ class FolderAnalyzer
       # on va les rechercher.
       premiere_image = File.join(path,data[:original_score_pages][0])
       unless File.exist?(premiere_image)
-        puts "La première image #{premiere_image.inspect} est introuvable.".orange
+        puts <<~TEXT.orange
+        La première image définie(*) est introuvable. Je vais les
+        chercher dans le dossier où elles peuvent se trouver.
+        (*) #{File.basename(premiere_image)}
+        TEXT
         data.delete(:original_score_pages)
       end
     else
