@@ -224,28 +224,46 @@ end
 # @param  {Number} line_idx  Index de la ligne, pour savoir quelle ligne
 #                       utiliser dans la définition.
 def traite_definitions_in(str, line_idx)
+
+  definitions = {}
+  definitions.merge!(options[:definitions_locales])
+  definitions.merge!(options[:definitions_globales])
+
   # puts "Je dois remplacer les définitions :\n\t#{DEFINITIONS.inspect}\net\n\t#{DEFINITIONS_GLOBALES.inspect}\ndans:\n\t#{str.inspect}"
   str = " #{str} "
 
   # Dans un premier temps, il faut remplacer les séquences de 
   # mesures sous la forme [img][index départ]<->[index fin] par les
-  # mesures concernées
+  # mesures concernées.
+  # [NOTE 001]
+  # Depuis Juil 2024, on met mettre un numéro plus grand que le 
+  # dernier numéro déjà créé (par exemple pour mettre le tout dernier
+  # numéro de la partition)
+  #  
   if str.match?('<->')
     # puts "AVANT traitement séquence :\n#{str.freeze}"
     str = str.gsub(REG_SEQUENCE_IMAGES){
       prefix = $1.freeze
       index_start = $2.to_i.freeze
       index_stop  = $3.to_i.freeze
-      (index_start..index_stop).collect do |index|
-        "#{prefix}#{index}"
-      end.join(' ')
+      (index_start..index_stop).map do |index|
+        # On pourrait mettre un ’break’ pour sortir dès qu’on trouve
+        # une mesure indéfini (voir [NOTE 001] ci-dessus) mais on 
+        # laisse la possibilité, par exemple, d’avoir les mesures de
+        # 1 à 10 définies, puis un trou de 10 à 13 et les 14 et 
+        # suivantes définies. Le seul problème serait d’avoir une
+        # partition momentanéement fausse.
+        varname = "#{prefix}#{index}"
+        if definitions[varname]
+          varname
+        else
+          nil # variable pas encore définie
+        end
+      end.compact.join(' ')
     }
     # puts "\n\nAPRÈS traitement séquence :\n#{str}"
   end
 
-  definitions = {}
-  definitions.merge!(options[:definitions_locales])
-  definitions.merge!(options[:definitions_globales])
 
   # puts "Définitions à traiter : #{definitions.inspect}"
 

@@ -369,8 +369,8 @@ def option_numeros_mesures_5_en_5
 end
 
 def option_global_staff_size
-  if options[:staff_size]
-    "#(option_global_staff_size #{options[:staff_size]})"
+  if options[:staff_size] && options[:staff_size].to_i > 0
+    "#(set_global_staff_size #{options[:staff_size]})"
   end
 end
 

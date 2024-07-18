@@ -42,6 +42,8 @@ class Options extends Panneau {
   }
   static buildStaffSizeMenu(){
     let i, tit, opt;
+    opt = DCreate('OPTION', {value:'', text:'-'})
+    this.menuStaffSize.appendChild(opt)
     for(i = 10; i < 40; ++i){
       tit = i != 20 ? String(i) : "20 (défaut)"
       opt = DCreate('OPTION', {value:String(i), text:String(i)})
@@ -209,7 +211,7 @@ class Options extends Panneau {
     }
     // - Taille de portée -
     const staffSize = Number(this.menuStaffSize.value)
-    if ( staffSize != 20 ) {
+    if ( staffSize != 20 && staffSize != '-') {
       data.push(`--staff_size ${staffSize}`)
     }
     // - Diverses Options -
