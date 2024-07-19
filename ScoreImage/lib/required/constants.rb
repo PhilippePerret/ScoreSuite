@@ -24,4 +24,7 @@ class MusicScore
     ERREUR.merge!( k => "ERREUR [#{k}] #{m}")
   end
 
+
+  CUR_DIR = ENV['CUR_DIR']||ENV['CURRENT_FOLDER']||ENV['PWD']
+
 end #/class MusicScore

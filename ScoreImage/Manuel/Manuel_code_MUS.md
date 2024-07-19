@@ -8,7 +8,31 @@
 
 ## Introduction
 
-Le langage `music-score` est un langage de programmation qui permet de produire très facilement des images de partitions simples (simple portée ou portée piano — pour le moment) en utilisant dans son moteur le langage [LiliPond](http://www.lilypond.org).
+### Note pour produire des images pour ce manuel
+
+Pour produire facilement des images pour ce manuel :
+
+* ouvrir un Terminal au dossier des images du manuel,
+
+* jouer la commande :
+
+  ~~~
+  score-i[TAB] << CODE
+  # ici le code mus
+  # dont :
+  
+  -> nom-a-donner-a-image
+  # code mus
+  CODE
+  ~~~
+
+* récupérer l’image dans le dossier `scores` du dossier images du manuel,
+
+* la glisser à l’endroit voulu dans ce manuel.
+
+### Le langage music-score (mus)
+
+Le langage `music-score` (maintenant la commande **`score-image`** ) est un langage de programmation qui permet de produire très facilement des images de partitions simples (simple portée ou portée piano — pour le moment) en utilisant dans son moteur le langage [LiliPond](http://www.lilypond.org).
 
 Une page en `music-score` peut ressembler à :
 
@@ -314,7 +338,7 @@ Il existe plusieurs façons de relier les portées et les barres de mesure. On t
 
 Par défaut, on utilise : **portées reliées par un trait simple avec les barres de mesure non reliées**.
 
-![score](./images/main-group.svg)
+<img src="./images/main-group.svg" alt="score" style="zoom:120%;" />
 
 Quand on veut un **crochet oblique**, on utilise « **`[...]`** ». Par exemple :
 
@@ -325,7 +349,7 @@ Quand on veut un **crochet oblique**, on utilise « **`[...]`** ». Par exempl
 
 … produira :
 
-![main-group-crochets](./images/main-group-crochet.svg)
+<img src="./images/main-group-crochet.svg" alt="main-group-crochets" style="zoom:120%;" />
 
 
 
@@ -338,7 +362,7 @@ Quand on veut une accolade, on utilise « **`{...}`** ». Par exemple :
 
 … produira :
 
-![main-group-accolade](./images/main-group-accolade.svg)
+<img src="./images/main-group-accolade.svg" alt="main-group-accolade" style="zoom:120%;" />
 
 Comme on peut le voir, par défaut, les barres de mesure sont reliées entre elles. Pour utiliser **les barres de mesure non reliées**, on ajoute un « **`-`** » après l’accolade ou le crochet.
 
@@ -351,7 +375,7 @@ Par exemple :
 
 … produira :
 
-![score](./images/main-group-crochet-unlinked.svg)
+<img src="./images/main-group-crochet-unlinked.svg" alt="score" style="zoom:120%;" />
 
 Tandis que :
 
@@ -373,7 +397,7 @@ Comme dans :
 
 … qui produira :
 
-![score](/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/same-name-for-main-group.svg)
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/same-name-for-main-group.svg" alt="score" style="zoom:120%;" />
 
 ##### Groupes à l'intérieur d'un même système
 
@@ -469,7 +493,7 @@ mesure1 mesure2 mesure3
 
 … qui produira :
 
-![score](./images/piano-mesures-croized.svg)
+<img src="./images/piano-mesures-croized.svg" alt="score" style="zoom:120%;" />
 
 > Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droit a été empruntée à la mesure 1, conformément à la définition de la partition.
 
@@ -800,6 +824,19 @@ c, e g \up c e c \down g e c
 
 ![changement_portee](./images/exemples/changement_portee.svg)
 
+On peut indiquer explicitement le lien entre deux notes qui changent de portée (par un trait) en ajoutant l’indication **`\showStaffSwitch`**
+
+~~~
+--piano
+
+r1 r1
+c e g \showStaffSwitch \up c e c \showStaffSwitch \down g e c4 r r2
+~~~
+
+Produira :
+
+![change-staff-with-trait](./images/change-staff-with-trait.svg)
+
 
 
 #### Marques d’octave
@@ -932,6 +969,8 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 \slurUp    \slurDown    \slurNeutral		Lignes de liaison
 \stemUp    \stemDown    \stemNeutral		Hampes de notes
 ~~~
+
+
 
 ---
 

@@ -246,7 +246,7 @@ def folder
     if data.options[:music_score].mus_file
       File.expand_path(data.options[:music_score].mus_file.folder)
     else
-      ENV['PWD']
+      ENV['CUR_DIR']||ENV['CURRENT_FOLDER']||ENV['PWD']
     end
   end
 end

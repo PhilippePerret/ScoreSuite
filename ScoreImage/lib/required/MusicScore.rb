@@ -21,9 +21,29 @@ class << self
   # 
   # Point d’entrée de l’application, en mode normal.
   #  
+  # @param params [Hash]
+  #   :input_code     Le code tel qu’il est envoyé en heredoc
+  #   :path           Le chemin d’accès à un fichier de code
+  #   :can_open       Si true, on demande s’il faut ouvrir le dossier
+  #                   de l’image finale. (inauguré pour l’utilise de
+  #                   la commande avec un heredoc, donc ne fonctionne
+  #                   qu’avec le heredoc pour le moment)
   def run(params = nil)
     init
-    MusicScore.new.proceed(params)
+    mscore = MusicScore.new
+    mscore.proceed(params)
+    if params[:can_open]
+      if Q.yes?("Dois-je ouvrir le dossier de l’image produite ?".jaune)
+        # mscore.open
+        if mscore.mus_file
+          puts "mscore.mus_file: #{mscore.mus_file}"
+        else
+          puts "Le music score n’a pas de mus_file, j’ouvre le dossier courant".jaune
+          sleep 2
+          `open -a Finder "#{CUR_DIR}/scores"`
+        end
+      end
+    end
   end
 
   def open_manual
@@ -117,6 +137,9 @@ def set_params(params = nil)
   #
   if params.nil?
     parse_command_line
+  elsif params.key?(:input_code)
+    parse_command_line # défini @expression, mais sera écrasé
+    @expression = params[:input_code]
   else
     @options    = params[:options]||{}
     @mus_file   = MusFile.new(params[:path])
