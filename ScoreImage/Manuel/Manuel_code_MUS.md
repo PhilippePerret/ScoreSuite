@@ -917,6 +917,7 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 |                                                              | **`< notes >duree`**                                        | Bien noter que la durée est à l'extérieur de l'accord. Noter aussi que c'est la hauteur de la première note qui détermine la hauteur de référence pour la note suivante |
 | Exemple                                                      | **<c e g c>2.**                                             | <img src="images/exemples/accord.svg" style=" width:100px;" /> |
+| Arpège                                                       | **`<c e g>\arpeggio`**                                      | Il suffit d’ajouter la marque `\arpegio` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /> |
 | Snippet :                                                    | **`<`**                                                     |                                                              |
 
 #### Liaisons

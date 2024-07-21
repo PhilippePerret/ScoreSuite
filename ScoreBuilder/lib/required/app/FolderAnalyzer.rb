@@ -91,7 +91,7 @@ class FolderAnalyzer
         mus_file:               search_for_mus_file,
         original_pdf_score:     search_for_original_pdf_score,
         original_score_folder:  nil,
-        original_score_pages:   nil,
+        original_score_pages:   [],
         svg_folder:             nil,
         svg_images:             nil,
       }
@@ -99,45 +99,24 @@ class FolderAnalyzer
 
     data[:original_pdf_score]     ||= search_for_original_pdf_score
     data[:original_score_folder]  ||= File.basename(original_score_folder)
+    data[:original_score_pages]   ||= []
 
-    if data[:original_pdf_score] && File.exist?(data[:original_pdf_score])
+    original_score_existe = data[:original_pdf_score] && File.exist?(data[:original_pdf_score])
+    dossier_scores_jpeg_existe = File.exist?(original_score_folder)
+    pas_de_dossier_scores_jpeg = not(dossier_scores_jpeg_existe)
+    pas_de_scores_jpeg = dossier_scores_jpeg_existe && Dir["#{original_score_folder}/*"].count == 0
 
-      # Si le dossier de la partition originale n’existe pas (celui qui
-      # devrait contenir les pages) et qu’un fichier PDF de la 
-      # partition original existe, alors on extrait en JPEG les pages
-      # de la partition.
-      # 
-      # On fait toujours la liste des images des pages du score
-      # original (s’il existe)
-      if File.exist?(original_score_folder)
-        # Extraire les images du score original s’il le faut
-        if Dir["#{original_score_folder}/*"].count == 0
-          extract_from_pdf(data[:original_pdf_score])
-        end
-        data.merge!(original_score_pages: get_original_score_pages)
-      else
-        extract_from_pdf(data[:original_pdf_score])
-      end
-
-    elsif data[:original_pdf_score] && File.exist?(original_score_folder)
-
-      # Le fichier du score original n’existe pas, mais le dossier 
-      # pour mettre ses pages oui. C’est donc que la partition origi-
-      # nale a déjà été traitée et mise dans le backup/archive
-      # => On relève les pages JPG de la partition
-
-    else
-
-      # En cas d’inexistence ou d’indéfinition de la partition
-      # originale. Ce qui est toujours possible et ne pose aucun 
-      # problème. Mais on exposera quand même la chose.
-
+    # Normalement, après l’extraction des pages JPEG, la score PDF 
+    # original est mis dans le dossier backup. On considère donc que
+    # si le score original est encore trouvé dans le dossier, et qu’il
+    # n’y a plus de scores JPEG, c’est qu’il faut procéder à nouveau
+    # à l’extraction.
+    if original_score_existe && pas_de_scores_jpeg
+      extract_from_pdf(data[:original_pdf_score])
     end
 
-    if File.exist?(original_score_folder)
-      unless data[:original_score_pages]
-        data.merge!(original_score_pages: get_original_score_pages)
-      end
+    if dossier_scores_jpeg_existe && data[:original_score_pages].empty?
+      data.merge!(original_score_pages: get_original_score_pages)
     end
 
     if data[:mus_file]
@@ -237,34 +216,51 @@ class FolderAnalyzer
   end
 
   # Extraire des images JPEG du score original
-  # 
+  # (en s’assurant qu’elles ne dépassent pas une certaine taille)
   def extract_from_pdf(pdf_path)
     ok = true
-    msg_start = "J’extrais les pages du fichier PDF #{File.basename(pdf_path).inspect}…"
-    msg_end   = "🍺 Pages JPEG produites avec succès…"
-    do_with_message(msg_start, msg_end) do
-      cmd = 'magick -density 300 "%s" "%s/page.jpg"' % [pdf_path, original_score_folder]
-      result = `#{cmd} 2>&1`
-      # Si l’extraction a pu se faire avec succès, on déplace le
-      # fichier PDF de la partition originale vers le dossier backup
-      ok = Dir["#{original_score_folder}/*.jpg"].count > 0
-      if ok
-        # Déplacement du score original
-        dst_path = File.join(backups_folder, File.basename(pdf_path))
-        FileUtils.mv(pdf_path, dst_path)
-        # Renommage des fichiers (car il commence à 0)
-        Dir["#{original_score_folder}/page-*.jpg"].sort_by do |pth|
-          File.basename(pth)
-        end.reverse.each do |pth|
-          dossier = File.dirname(pth)
-          fname   = File.basename(pth)
-          fname = fname.sub(/([0-9]+)/) { ($1.to_i + 1).to_s }
-          FileUtils.mv(pth, File.join(dossier,fname))
-        end
-      end
-    end #/do with message
+    puts "J’extrais les pages du fichier PDF #{File.basename(pdf_path).inspect}…".jaune
+    # Avant de redimensionner si + de 3000px de large
+    cmd = 'magick -density 300 "%s" "%s/page.jpg"' % [pdf_path, original_score_folder]
+    # cmd = 'magick -density 300 "%s" -resize \'1500x3000>\' "%s/page.jpg"' % [pdf_path, original_score_folder]
+    result = `#{cmd} 2>&1`
+    puts "magick result: #{result}".rouge unless result.empty?
+    # Si l’extraction a pu se faire avec succès, on déplace le
+    # fichier PDF de la partition originale vers le dossier backup
+    ok = Dir["#{original_score_folder}/*.jpg"].count > 0
     if ok
-      puts "🍺 Partition originale déplacée vers le fichier des backups.".vert
+      # Déplacement du score original
+      dst_path = File.join(backups_folder, File.basename(pdf_path))
+      FileUtils.mv(pdf_path, dst_path)
+      if File.exist?(dst_path)
+        puts "\n🍺 Partition originale déplacée vers le fichier des backups.".vert
+      end
+      # Redimensionner les images si elles sont trop grandes
+      cmd = 'magick "%{path}" -resize \'1500x3000>\' "%{path}"'.freeze
+      Dir["#{original_score_folder}/page*.jpg"].each do |pth|
+        cmdf = cmd % {path: pth}
+        res = `#{cmdf} 2>&1`
+        puts "res: #{res}".rouge unless res.empty?          
+      end
+      puts "🍺 Images redimensionnées à la bonne taille.".vert
+      # Renommage des fichiers (car il commence à 0)
+      @has_been_renumbered = false
+      Dir["#{original_score_folder}/page-*.jpg"].sort_by do |pth|
+        File.basename(pth)
+      end.reverse.each do |pth|
+        dossier = File.dirname(pth)
+        fname   = File.basename(pth)
+        fname = fname.sub(/([0-9]+)/) { ($1.to_i + 1).to_s }
+        dst   = File.join(dossier,fname)
+        FileUtils.mv(pth, dst)
+        @has_been_renumbered = true
+      end
+      if @has_been_renumbered
+        puts "🍺 Images renumérotées à partir de 1.".vert
+      end
+    end
+    if ok
+      puts "🍺 Pages JPEG produites avec succès…".vert
       puts <<~TEXT.jaune
       Penser à numéroter les mesures à l’aide de Score Numbering en 
       ouvrant un Terminal dans le dossier ./#{File.basename(original_score_folder)} et
