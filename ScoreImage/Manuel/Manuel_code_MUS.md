@@ -849,6 +849,22 @@ On terminera toutes les marques précédentes avec `\0ve`.
 
 ---
 
+<a name="arpege-par-arp"></a>
+
+#### Arpèges
+
+On peut simplifier la marque `\arpeggio` par la marque **`\arp`**.
+
+~~~
+<c e g c>2\arpeggio <c e g c>2\arp
+~~~
+
+… produira :
+
+<img src="./images/arpege-par-arp.svg" alt="arpege-par-arp" style="zoom:120%;" />
+
+---
+
 <a name="ruby"></a>
 
 ### Fonctions ruby (mode expert)
@@ -917,7 +933,8 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 |                                                              | **`< notes >duree`**                                        | Bien noter que la durée est à l'extérieur de l'accord. Noter aussi que c'est la hauteur de la première note qui détermine la hauteur de référence pour la note suivante |
 | Exemple                                                      | **<c e g c>2.**                                             | <img src="images/exemples/accord.svg" style=" width:100px;" /> |
-| Arpège                                                       | **`<c e g>\arpeggio`**                                      | Il suffit d’ajouter la marque `\arpegio` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /> |
+| Arpège                                                       | **`<c e g>\arpeggio`**                                      | Il suffit d’ajouter la marque `\arpegio` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /><br /><img src="./images/arpege-par-arp" alt="arpege" style="zoom:120%;" /> |
+|                                                              |                                                             |                                                              |
 | Snippet :                                                    | **`<`**                                                     |                                                              |
 
 #### Liaisons

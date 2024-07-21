@@ -38,6 +38,20 @@ def traite_as_code_mscore(line, idx)
   line = translate_barres(line)
   # - (essai) Traitement de l’instrument transpositeur -
   line = traite_transpositions_in(line)
+  # - Traite de remplacement divers -
+  line = traite_divers_remplacements_in(line)
+end
+
+# Traitement de divers remplacements pour réduire
+REG_SIMPLE = '\%s '.freeze
+def traite_divers_remplacements_in(line)
+  line = " #{line} "
+  [
+    ['arp', 'arpeggio']
+  ].each do |search, remp|
+    line = line.gsub(REG_SIMPLE % search, REG_SIMPLE % remp)
+  end
+  return line[1...-1]
 end
 
 # Traitement des instruments transpositeurs
