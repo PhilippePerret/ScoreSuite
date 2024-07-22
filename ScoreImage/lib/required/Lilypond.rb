@@ -338,12 +338,12 @@ def header
 
 \\layout {
   \\context {
+    % On utilise context pour utiliser des context
     #{option_staves_vspace}
-    #{option_proximity}
-    #{option_no_numero_mesure}
-    \\Score
-    #{option_numeros_mesures_5_en_5}
   }
+  #{option_no_numero_mesure}
+  #{option_proximity}
+  #{option_numeros_mesures_5_en_5}
   #{code_extraction_fragment}
 }
 
@@ -351,20 +351,34 @@ def header
 end
 #/header
 
+
+def option_proximity
+  if options[:proximity]
+    '\override Score.SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze % options[:proximity]
+  else "" end
+end
+
 def options_system_count_per_page
   if ( n = options[:system_count]||options[:system_count_per_page] )
     # "system-count = ##{n}" # ne fonctionne pas : met tout dans ce nombre sur une seule page
-    "max-systems-per-page = ##{n}"
+    # avant :  "\\Score\nmax-systems-per-page = ##{n}"
+    '\override Score.MaxSystemsPerPage = ##%s'.freeze % n
   end  
 end
 
 def option_numeros_mesures_5_en_5
   if options[:number_per_5]
     <<~TEXT
-    \\override BarNumber.break-visibility = #end-of-line-invisible
+    \\override Score.BarNumber.break-visibility = #end-of-line-invisible
     #{option_numeros_mesures_sous_portee}
-    barNumberVisibility = #(every-nth-bar-number-visible 5)
+    \\override Score.barNumberVisibility = #(every-nth-bar-number-visible 5)
     TEXT
+  end
+end
+
+def option_numeros_mesures_sous_portee
+  if options[:measure_number_under_staff]
+    '\override Score.BarNumber.direction = #DOWN'.freeze
   end
 end
 
@@ -374,11 +388,6 @@ def option_global_staff_size
   end
 end
 
-def option_numeros_mesures_sous_portee
-  if options[:measure_number_under_staff]
-    "\\override BarNumber.direction = #DOWN"
-  end
-end
 
 def code_extraction_fragment
   return ''
@@ -434,20 +443,13 @@ def option_staves_vspace
   if options[:staves_vspace]
     <<-TEXT
     \\Staff
-      \\override VerticalAxisGroup
+    \\override VerticalAxisGroup
       .staff-staff-spacing.basic-distance = #{options[:staves_vspace]}
     TEXT
   else "" end
 end
 
-def option_proximity
-  if options[:proximity]
-    <<-TEXT
-    \\score
-      \\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/#{options[:proximity]})
-    TEXT
-  else "" end
-end
+
 
 def option_page_format
   options[:page] ||= '"a0" \'landscape'

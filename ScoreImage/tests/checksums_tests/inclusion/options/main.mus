@@ -1,0 +1,5 @@
+INCLUDE des_options.mu
+
+-> score
+c d e f g a b c
+e d c b a g f e

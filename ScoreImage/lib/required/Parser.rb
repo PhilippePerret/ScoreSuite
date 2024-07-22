@@ -167,20 +167,46 @@ def ini_code
     music_score.expression.gsub(INCLUDE_CODE) do
       # - Traitement des fichiers inclus -
       include_path_ini = $~[:include_path].strip.freeze
-      include_path_ini = "#{include_path_ini}.mus" unless include_path_ini.end_with?('.mus')
-      include_path = include_path_ini.dup
-      unless include_path.start_with?('/')
-        include_path = File.absolute_path(music_score.mus_file.folder,include_path)
-      end
-      if not(File.exist?(include_path)) || File.directory?(include_path)
-        include_path = File.join(APP_FOLDER,'libmus',include_path_ini)
-      end
-      File.exist?(include_path) || raise("Le fichier à inclure (INCLUDE #{include_path_ini}) est introuvable (#{include_path})")
+      include_path = first_candidate_for(include_path_ini)
+      File.exist?(include_path) || raise("Le fichier à inclure (INCLUDE #{include_path_ini}) est introuvable dans aucun endroit.")
       # puts "include_path : #{include_path.inspect}".bleu
       # sleep 10
       IO.read(include_path)
     end.gsub(/\r?\n/, "\n").strip
   end
+end
+
+# @return [Array<String>] la liste de tous les candidats possibles,
+# quand un path relatif (ou non) est fourni, pour spécifier le 
+# fichier à inclure dans le code MUS
+# Dans l’ordre de précédence, on présente :
+#   - le fichier tel quel
+#   - idem avec .mus ajouté si nécessaire
+#   - le fichier comme relatif au dossier de l’image courante
+#   - idem avec .mus ajouté si nécessaire
+#   - le fichier dans le dossier libmus de l’application
+#   - item avec .mus ajouté si nécessaire
+#   - le fichier comme chemin relatif du dossier courant (CUR_DIR)
+# 
+def first_candidate_for(provided_relpath)
+  provided_with_mus = provided_relpath.end_with?('.mus') ? nil : "#{provided_relpath}.mus"
+  candidates = []
+  candidates << provided_relpath
+  candidates << provided_with_mus if provided_with_mus
+  in_score_folder = File.expand_path(File.join(music_score.mus_file.folder, provided_relpath))
+  candidates << in_score_folder
+  candidates << "#{in_score_folder}.mus" if provided_with_mus
+  [
+    File.join(APP_FOLDER,'libmus'), ENV['CUR_DIR'], ENV['PWD']
+  ].each do |dossier|
+    candidates << File.join(dossier,provided_relpath)
+    candidates << File.join(dossier,provided_with_mus) if provided_with_mus
+  end
+  # On retourne le premier candidat trouvé
+  candidates.each do |pth|
+    return pth if File.exist?(pth)
+  end
+  return nil # introuvable
 end
 
 INCLUDE_CODE = /^INCLUDE(?<include_path>.+)$/.freeze

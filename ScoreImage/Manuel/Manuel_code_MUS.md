@@ -34,12 +34,11 @@ Pour produire facilement des images pour ce manuel :
 
 Le langage `music-score` (maintenant la commande **`score-image`** ) est un langage de programmation qui permet de produire très facilement des images de partitions simples (simple portée ou portée piano — pour le moment) en utilisant dans son moteur le langage [LiliPond](http://www.lilypond.org).
 
-Une page en `music-score` peut ressembler à :
+Une page en `music-score` (langage **mus**) peut ressembler à :
 
 
 ~~~music-score
 # Dans ma-musique.mus
---open
 --barres
 --time
 --piano
@@ -49,16 +48,16 @@ a'8 b cis d cis4 cis
 <a, cis e>1
 
 mes13==
-a'8 b cis d cis4 cis
-<a, cis e>1
+b'8 cis d cis b4 a
+<b, d fis>1
 
 mes14==
-a'8 b cis d cis4 cis
-<a, cis e>1
+cis8 d cis b a4 g 
+<cis, e gis>1
 
 mes15==
-a'8 b cis d cis4 cis
-<a, cis e>1
+d8 e fis g fis4 fis
+<d, fis a>1
 
 -> partition-12a15
 --mesure 12
@@ -68,17 +67,43 @@ mes12<->15
 
 ~~~
 
-
+<img src="./images/partition-12a15.svg" alt="partition-12a15" style="zoom:120%;" />
 
 #### Production de l'image
 
-Pour produire l’image issue de ce code, il suffit de la « construire » (`build`) dans Sublime Text avec `Cmd B` (`Cmd Maj B` la première fois pour choisir le langage (si c’est vraiment nécessaire car normalement la commande doit repérer qu’il s’agit d’un fichier « music-score » à son extension `.mus`.
+Pour produire l’image issue de ce code, on a utilisé la commande **`score-image`** en ligne de commande avec un *heredoc*. Comme ceci :
 
-Ce code, traité par le script `music-score.rb`, va produire l’image suivante :
+~~~
+score-image << MUS
+--barres
+--time
+--piano
 
+mes12==
+a'8 b cis d cis4 cis
+<a, cis e>1
 
+mes13==
+b'8 cis d cis b4 a
+<b, d fis>1
 
-<img src="images/exemples/partition-12a15.svg" />
+mes14==
+cis8 d cis b a4 g 
+<cis, e gis>1
+
+mes15==
+d8 e fis g fis4 fis
+<d, fis a>1
+
+-> partition-12a15
+--mesure 12
+--proximity 7
+mes12<->15
+mes12<->15
+MUS
+~~~
+
+> Noter que pour taper **`score-image`** il suffit de taper `score-i` puis tabulation. C’est valable pour toutes les applications de la suite Score.
 
 
 
@@ -108,21 +133,12 @@ Ce code, traité par le script `music-score.rb`, va produire l’image suivante 
 # Définition de la mesure 12
 # La première ligne contient la main droite
 # La seconde ligne définit la main gauche
-mes12==
+mes12=
 a'8 b cis d cis4 cis
 <a, cis e>1
 
-mes13==
-a'8 b cis d cis4 cis
-<a, cis e>1
-
-mes14==
-a'8 b cis d cis4 cis
-<a, cis e>1
-
-mes15==
-a'8 b cis d cis4 cis
-<a, cis e>1
+mes13=
+etc.
 
 # Définition des images (systèmes)
 # --------------------------------

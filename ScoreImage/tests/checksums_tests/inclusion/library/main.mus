@@ -1,0 +1,4 @@
+INCLUDE piano/Alberti
+
+-> score
+\cle F alb_C alb_G/3
