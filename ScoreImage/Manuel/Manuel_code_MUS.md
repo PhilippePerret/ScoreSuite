@@ -187,7 +187,7 @@ INCLUDE path/to/musFile
 
 Le chemin `path/to/musFile` peut être relatif au fichier maitre ou relatif au dossier `libmus` de l’application **ScoreImage** qui définit des librairies standards.
 
-La première librairie à avoir été créée est la librairie `piano/Alberti.mus` qui définit toutes les basses d’Alberti dans des variables.
+La première librairie à avoir été créée est la librairie **`piano/Alberti.mus`** qui définit toutes les basses d’Alberti dans des variables.
 
 Un fichier inclus peut définir n’importe quoi, pourvu que ce soit du code `.mus` à commencer par :
 
@@ -798,11 +798,14 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:300px;">Code</span> | <span style="display:inline-block;width:200px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | <img src="images/exemples/trille.svg" style="  width:120px;" /> | **`\tr(c') `**                                              | Noter la note trillée entre parenthèses.                     |
+| <img src="./images/trille_au_dessous.svg" alt="trille_au_dessous" style="width:120px;" /> | **`\_tr(c1')`**                                             | Pour forcer la trille en dessous                             |
+| <img src="./images/trille_au_dessus.svg" alt="trille_au_dessus" style="width:120px;" /> | **`<< d'2 // \^tr(a) >>`**                                  | Pour forcer la trille au-dessus. Bien sûr, c’est juste pour forcer la trille à s’afficher par défaut en dessous (et donc voir l’effet du circonflexe) que l’exemple ci-contre a été donné. Il n’est pas utilisable dans la réalité, puisqu’on penserait que c’est le Ré qui est trillé. |
 | <img src="images/trille-lied.svg" style="  width:140px;" />  | **`\tr(aes8.) ( g32 aes)`**                                 | Noter la parenthèse qui commence la liaison sur la note triée qui est “détachée” de la trille. Sinon la trille serait mal interprétée |
 | <img src="images/exemples/trille_note_precise.svg" style="  width:120px;" /> | **`\tr(cis' dis) `**                                        | Pour triller avec une autre note que la note naturelle.      |
-| <img src="images/exemples/trille_longue.svg" style="  width:300px;" /> | **`\tr(c'1)- c a\-tr`**                                     | Noter le “tr-” pour commencer et le “-tr” pour finir         |
-| <img src="images/exemples/trille_notes_fins.svg" style="  width:300px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Note quand même la logique générale. |
-| <img src="images/exemples/trille_non_naturelle_et_notes_fins.svg" style="  width:300px;" /> | **`\tr(cis'1 dis)- (b16 cis)\-tr d1`**                      | On ajoute une note trillée avec une note étrangère           |
+| <img src="images/exemples/trille_longue.svg" style="  width:100%;" /> | **`\tr(c'1)- c a\-tr`**                                     | Noter le “tr-” pour commencer et le “-tr” pour finir         |
+| <img src="./images/trille_longue_en_dessous.svg" style="width:100%;" /> | **`\_tr(c'1)- c a\-tr`**                                    | La même chose en forçant la trille en dessous.               |
+| <img src="images/exemples/trille_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Note quand même la logique générale. |
+| <img src="images/exemples/trille_non_naturelle_et_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1 dis)- (b16 cis)\-tr d1`**                      | On ajoute une note trillée avec une note étrangère           |
 
 
 

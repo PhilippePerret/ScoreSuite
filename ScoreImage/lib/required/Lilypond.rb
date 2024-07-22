@@ -340,10 +340,9 @@ def header
   \\context {
     % On utilise context pour utiliser des context
     #{option_staves_vspace}
+    #{option_no_numero_mesure}
+    #{layout_context_score}
   }
-  #{option_no_numero_mesure}
-  #{option_proximity}
-  #{option_numeros_mesures_5_en_5}
   #{code_extraction_fragment}
 }
 
@@ -351,35 +350,43 @@ def header
 end
 #/header
 
+def layout_context_score
+  if options[:proximity] || options[:number_per_5]
+    <<~CODE.gsub('\\','\\\\')
+    \\Score
+      #{option_numeros_mesures_5_en_5}    
+      #{option_proximity}
+    CODE
+  end
+end
 
 def option_proximity
   if options[:proximity]
-    '\override Score.SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze % options[:proximity]
+    '\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze % options[:proximity]
   else "" end
-end
-
-def options_system_count_per_page
-  if ( n = options[:system_count]||options[:system_count_per_page] )
-    # "system-count = ##{n}" # ne fonctionne pas : met tout dans ce nombre sur une seule page
-    # avant :  "\\Score\nmax-systems-per-page = ##{n}"
-    '\override Score.MaxSystemsPerPage = ##%s'.freeze % n
-  end  
 end
 
 def option_numeros_mesures_5_en_5
   if options[:number_per_5]
     <<~TEXT
-    \\override Score.BarNumber.break-visibility = #end-of-line-invisible
+    \\override BarNumber.break-visibility = #end-of-line-invisible
     #{option_numeros_mesures_sous_portee}
-    \\override Score.barNumberVisibility = #(every-nth-bar-number-visible 5)
+    barNumberVisibility = #(every-nth-bar-number-visible 5)
     TEXT
   end
 end
 
 def option_numeros_mesures_sous_portee
   if options[:measure_number_under_staff]
-    '\override Score.BarNumber.direction = #DOWN'.freeze
+    '\override BarNumber.direction = #DOWN'.freeze
   end
+end
+
+def options_system_count_per_page
+  if ( n = options[:system_count]||options[:system_count_per_page] )
+    # "system-count = ##{n}" # ne fonctionne pas : met tout dans ce nombre sur une seule page
+    'max-systems-per-page = #%s'.freeze % n.to_s
+  end  
 end
 
 def option_global_staff_size
@@ -666,18 +673,20 @@ private
       # puts "SEQ = #{seq.join('')}"
       seq.join('')
     }
-    str = str.gsub(/\\tr\((.*?)\) /){
-      n = $1.freeze.split(' ')
+    str = str.gsub(/\\(?<position>[\^_])?tr\((?<sujet>.*?)\) /){
+      # n = $1.freeze.split(' ')
+      n   = $~[:sujet].freeze.split(' ')
+      pos = ($~[:position]||'').freeze
       if n.count == 1
-        n.first + ' \trill ' # ne pas oublier l'espace
+        n.first + ' ' + pos + '\trill ' # ne pas oublier l'espace
       else
         # On a donné la note avec laquelle il faut triller
         '\pitchedTrill ' + n[0] + '\startTrillSpan ' + n[1] + '\stopTrillSpan ' # ne pas oublier l'
       end
     }
-    str.gsub(/\\tr\((.*?)\)\-/, '\1 \startTrillSpan')
+    str.gsub(/\\([\^_])?tr\((.*?)\)\-/, '\2 \1\startTrillSpan')
       .gsub(/\\\-tr/, '\stopTrillSpan')
-      .gsub(/\\tr\((.*?)\)/, '\1 \trill')
+      .gsub(/\\([\^_])?tr\((.*?)\)/, '\2 \1\trill')
   end
 
 

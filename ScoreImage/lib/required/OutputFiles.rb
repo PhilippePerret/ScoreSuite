@@ -110,13 +110,16 @@ def build
   # Rabottement de toutes les images produites pour ce score
   #
   if allright && trim_all_files
-    # puts "data.options['transpose'] : #{data.options['transpose']}"
-    File.delete(lilypond_file_path) unless data.options['keep']
+    delete_untrimed_files unless data.options['keep']
     puts "\r🎹 L'image #{relpath_image} a été produite avec succès.".vert
   else
     raise EMusicScore.new("Impossible de produire l'image finale…")
   end
 
+end
+
+def delete_untrimed_files
+  Dir["#{dest_folder}/*-untrimed.ly"].each{|p|File.delete(p)}
 end
 
 def relpath_image
