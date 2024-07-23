@@ -4,12 +4,11 @@
    width="93.695984mm"
    height="60.326317mm"
    viewBox="0 0 53.318176 34.329003"
-   id="svg456"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg402"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs460" />
+     id="defs406" />
   <style
      type="text/css"
      id="style2"><![CDATA[
@@ -487,105 +486,81 @@ tspan { white-space: pre; }
        points="0.04,0.2 0.04,-0.2 7.6026,-0.2 7.6026,0.2 "
        id="polygon144" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:39:40"
-     id="a152"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(28.5622,14.6601)"
-       id="g150">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path148" />
-    </g>
-  </a>
+  <g
+     transform="translate(12.254877,2.279)"
+     id="g150">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path148" />
+  </g>
   <g
      transform="translate(7.2548766,4.779)"
-     id="g156">
+     id="g154">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
-       id="path154" />
+       id="path152" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:33:25:26"
-     id="a162"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(28.5622,28.1601)"
-       id="g160">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path158" />
-    </g>
-  </a>
+  <g
+     transform="translate(12.254877,15.779)"
+     id="g158">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path156" />
+  </g>
   <g
      transform="translate(7.2548766,13.779)"
+     id="g162">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       fill="currentColor"
+       id="path160" />
+  </g>
+  <g
+     transform="translate(12.254877,22.279)"
      id="g166">
     <path
        transform="scale(0.004,-0.004)"
-       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
        fill="currentColor"
        id="path164" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:40:25:26"
-     id="a172"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(28.5622,34.6601)"
-       id="g170">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path168" />
-    </g>
-  </a>
   <g
      transform="translate(7.2548766,20.779)"
-     id="g176">
+     id="g170">
     <path
        transform="scale(0.004,-0.004)"
        d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
        fill="currentColor"
-       id="path174" />
+       id="path168" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:48:23:24"
-     id="a182"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(28.5622,41.6601)"
-       id="g180">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path178" />
-    </g>
-  </a>
+  <g
+     transform="translate(12.254877,29.279)"
+     id="g174">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path172" />
+  </g>
   <g
      transform="translate(7.2548766,31.279)"
-     id="g186">
+     id="g178">
     <path
        transform="scale(0.004,-0.004)"
        d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
        fill="currentColor"
-       id="path184" />
+       id="path176" />
   </g>
   <g
      transform="translate(12.319877,3.779)"
-     id="g190">
+     id="g182">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -593,11 +568,11 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect188" />
+       id="rect180" />
   </g>
   <g
      transform="translate(13.567277,12.779)"
-     id="g194">
+     id="g186">
     <rect
        x="-0.064999998"
        y="-0.5"
@@ -605,11 +580,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect192" />
+       id="rect184" />
   </g>
   <g
      transform="translate(13.567277,21.779)"
-     id="g198">
+     id="g190">
     <rect
        x="-0.064999998"
        y="-3"
@@ -617,26 +592,20 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect196" />
+       id="rect188" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:42:43"
-     id="a204"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(31.0664,14.6601)"
-       id="g202">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path200" />
-    </g>
-  </a>
+  <g
+     transform="translate(14.759077,2.279)"
+     id="g194">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path192" />
+  </g>
   <g
      transform="translate(14.824077,3.779)"
-     id="g208">
+     id="g198">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -644,11 +613,11 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect206" />
+       id="rect196" />
   </g>
   <g
      transform="translate(22.271777,5.589)"
-     id="g212">
+     id="g202">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -656,25 +625,52 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.6026,-0.2 7.6026,0.2 "
-       id="polygon210" />
+       id="polygon200" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:44:45"
-     id="a218"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(33.5706,14.6601)"
-       id="g216">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path214" />
-    </g>
-  </a>
+  <g
+     transform="translate(17.263277,2.279)"
+     id="g206">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path204" />
+  </g>
   <g
      transform="translate(17.328277,3.779)"
+     id="g210">
+    <rect
+       x="-0.064999998"
+       y="-1.3139"
+       width="0.13"
+       height="3.1238999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect208" />
+  </g>
+  <g
+     transform="translate(12.254877,5.589)"
+     id="g214">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 7.6026,-0.2 7.6026,0.2 "
+       id="polygon212" />
+  </g>
+  <g
+     transform="translate(19.767477,2.279)"
+     id="g218">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path216" />
+  </g>
+  <g
+     transform="translate(19.832477,3.779)"
      id="g222">
     <rect
        x="-0.064999998"
@@ -686,110 +682,47 @@ tspan { white-space: pre; }
        id="rect220" />
   </g>
   <g
-     transform="translate(12.254877,5.589)"
+     transform="translate(12.254877,32.279)"
      id="g226">
-    <polygon
+    <path
+       stroke-width="0.08"
        stroke-linejoin="round"
        stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
        stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.6026,-0.2 7.6026,0.2 "
-       id="polygon224" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:46:47"
-     id="a232"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(36.0748,14.6601)"
-       id="g230">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path228" />
-    </g>
-  </a>
-  <g
-     transform="translate(19.832477,3.779)"
-     id="g236">
-    <rect
-       x="-0.064999998"
-       y="-1.3139"
-       width="0.13"
-       height="3.1238999"
-       ry="0.039999999"
        fill="currentColor"
-       id="rect234" />
+       d="m 1.181,-3.75 c 1.5386,-1.0013 19.1377,-1.0013 20.6764,0 v 0 C 20.3187,-4.6313 2.7196,-4.6313 1.181,-3.75 Z"
+       id="path224" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:48:25:26"
-     id="a242"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(28.5622,44.6601)"
-       id="g240">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 1.181,-3.75 c 1.5386,-1.0013 19.1377,-1.0013 20.6764,0 v 0 C 20.3187,-4.6313 2.7196,-4.6313 1.181,-3.75 Z"
-         id="path238" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:48:49"
-     id="a248"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(38.5791,14.6601)"
-       id="g246">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path244" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:33:28:29"
-     id="a254"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(38.5791,27.1601)"
-       id="g252">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path250" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:40:29:30"
-     id="a260"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(38.5791,33.6601)"
-       id="g258">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path256" />
-    </g>
-  </a>
+  <g
+     transform="translate(22.271777,2.279)"
+     id="g230">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path228" />
+  </g>
+  <g
+     transform="translate(22.271777,14.779)"
+     id="g234">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path232" />
+  </g>
+  <g
+     transform="translate(22.271777,21.279)"
+     id="g238">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path236" />
+  </g>
   <g
      transform="translate(22.336777,3.779)"
-     id="g264">
+     id="g242">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -797,11 +730,11 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect262" />
+       id="rect240" />
   </g>
   <g
      transform="translate(23.584077,12.779)"
-     id="g268">
+     id="g246">
     <rect
        x="-0.064999998"
        y="-1.5"
@@ -809,11 +742,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect266" />
+       id="rect244" />
   </g>
   <g
      transform="translate(22.336777,21.779)"
-     id="g272">
+     id="g250">
     <rect
        x="-0.064999998"
        y="-0.241"
@@ -821,26 +754,20 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect270" />
+       id="rect248" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:51:52"
-     id="a278"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(41.0833,14.6601)"
-       id="g276">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path274" />
-    </g>
-  </a>
+  <g
+     transform="translate(24.775977,2.279)"
+     id="g254">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path252" />
+  </g>
   <g
      transform="translate(24.840977,3.779)"
-     id="g282">
+     id="g258">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -848,26 +775,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect280" />
+       id="rect256" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:53:54"
-     id="a288"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(43.5875,14.6601)"
-       id="g286">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path284" />
-    </g>
-  </a>
+  <g
+     transform="translate(27.280177,2.279)"
+     id="g262">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path260" />
+  </g>
   <g
      transform="translate(27.345177,3.779)"
-     id="g292">
+     id="g266">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -875,26 +796,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect290" />
+       id="rect264" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:55:56"
-     id="a298"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(46.0917,14.6601)"
-       id="g296">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path294" />
-    </g>
-  </a>
+  <g
+     transform="translate(29.784377,2.279)"
+     id="g270">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path268" />
+  </g>
   <g
      transform="translate(29.849377,3.779)"
-     id="g302">
+     id="g274">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -902,26 +817,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect300" />
+       id="rect272" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:57:58"
-     id="a308"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(49.6386,14.6601)"
-       id="g306">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path304" />
-    </g>
-  </a>
+  <g
+     transform="translate(33.331277,2.279)"
+     id="g278">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path276" />
+  </g>
   <g
      transform="translate(6.3948766,18.029)"
-     id="g312">
+     id="g282">
     <rect
        x="0"
        y="-16.299999"
@@ -929,76 +838,58 @@ tspan { white-space: pre; }
        height="32.599998"
        ry="0.050000001"
        fill="currentColor"
-       id="rect310" />
+       id="rect280" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:33:30:31"
-     id="a318"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(49.6386,26.1601)"
-       id="g316">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path314" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:40:31:32"
-     id="a324"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(49.6386,32.6601)"
-       id="g322">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path320" />
-    </g>
-  </a>
+  <g
+     transform="translate(33.331277,13.779)"
+     id="g286">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path284" />
+  </g>
+  <g
+     transform="translate(33.331277,20.279)"
+     id="g290">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path288" />
+  </g>
   <g
      transform="translate(1.8754766,33.0262)"
-     id="g330">
+     id="g296">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text328"><tspan
-         id="tspan326">Cb.</tspan></text>
+       id="text294"><tspan
+         id="tspan292">Cb.</tspan></text>
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:48:27:28"
-     id="a336"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(49.6386,41.6601)"
-       id="g334">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path332" />
-    </g>
-  </a>
+  <g
+     transform="translate(33.331277,29.279)"
+     id="g300">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path298" />
+  </g>
   <g
      transform="translate(6.0948766,17.279)"
-     id="g340">
+     id="g304">
     <path
        transform="scale(0.004,-0.004)"
        d="m -81,-366 c 0,255 -132,363 -132,366 0,18 132,96 132,366 0,261 -108,489 -108,780 0,189 45,366 177,501 15,15 39,-9 24,-24 -99,-99 -129,-225 -129,-360 0,-255 102,-480 102,-765 0,-186 -45,-363 -174,-498 129,-135 174,-312 174,-498 0,-285 -102,-510 -102,-765 0,-135 30,-261 129,-360 15,-15 -9,-39 -24,-24 -132,135 -177,312 -177,501 0,291 108,519 108,780 z"
        fill="currentColor"
-       id="path338" />
+       id="path302" />
   </g>
   <g
      transform="translate(33.396277,3.779)"
-     id="g344">
+     id="g308">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -1006,11 +897,11 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect342" />
+       id="rect306" />
   </g>
   <g
      transform="translate(34.643577,12.779)"
-     id="g348">
+     id="g312">
     <rect
        x="-0.064999998"
        y="-2.5"
@@ -1018,11 +909,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect346" />
+       id="rect310" />
   </g>
   <g
      transform="translate(33.396277,21.779)"
-     id="g352">
+     id="g316">
     <rect
        x="-0.064999998"
        y="-1.2410001"
@@ -1030,36 +921,122 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect350" />
+       id="rect314" />
   </g>
   <g
      transform="translate(-0.03652344,18.0278)"
-     id="g358">
+     id="g322">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text356"><tspan
-         id="tspan354">Piano</tspan></text>
+       id="text320"><tspan
+         id="tspan318">Piano</tspan></text>
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:60:61"
-     id="a364"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(52.1428,14.6601)"
-       id="g362">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path360" />
-    </g>
-  </a>
+  <g
+     transform="translate(35.835477,2.279)"
+     id="g326">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path324" />
+  </g>
   <g
      transform="translate(35.900477,3.779)"
+     id="g330">
+    <rect
+       x="-0.064999998"
+       y="-1.3139"
+       width="0.13"
+       height="3.1238999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect328" />
+  </g>
+  <g
+     transform="translate(38.339677,2.279)"
+     id="g334">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path332" />
+  </g>
+  <g
+     transform="translate(38.404677,3.779)"
+     id="g338">
+    <rect
+       x="-0.064999998"
+       y="-1.3139"
+       width="0.13"
+       height="3.1238999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect336" />
+  </g>
+  <g
+     transform="translate(2.2168766,4.5262)"
+     id="g344">
+    <text
+       font-family="serif"
+       font-size="2.2px"
+       text-anchor="start"
+       fill="currentColor"
+       id="text342"><tspan
+         id="tspan340">Vl.</tspan></text>
+  </g>
+  <g
+     transform="translate(40.843877,2.279)"
+     id="g348">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path346" />
+  </g>
+  <g
+     transform="translate(40.908877,3.779)"
+     id="g352">
+    <rect
+       x="-0.064999998"
+       y="-1.3139"
+       width="0.13"
+       height="3.1238999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect350" />
+  </g>
+  <g
+     transform="translate(43.348077,2.279)"
+     id="g356">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path354" />
+  </g>
+  <g
+     transform="translate(43.348077,12.279)"
+     id="g360">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path358" />
+  </g>
+  <g
+     transform="translate(43.348077,18.779)"
+     id="g364">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path362" />
+  </g>
+  <g
+     transform="translate(43.413077,3.779)"
      id="g368">
     <rect
        x="-0.064999998"
@@ -1070,131 +1047,9 @@ tspan { white-space: pre; }
        fill="currentColor"
        id="rect366" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:62:63"
-     id="a374"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(54.647,14.6601)"
-       id="g372">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path370" />
-    </g>
-  </a>
-  <g
-     transform="translate(38.404677,3.779)"
-     id="g378">
-    <rect
-       x="-0.064999998"
-       y="-1.3139"
-       width="0.13"
-       height="3.1238999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect376" />
-  </g>
-  <g
-     transform="translate(2.2168766,4.5262)"
-     id="g384">
-    <text
-       font-family="serif"
-       font-size="2.2px"
-       text-anchor="start"
-       fill="currentColor"
-       id="text382"><tspan
-         id="tspan380">Vl.</tspan></text>
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:64:65"
-     id="a390"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(57.1512,14.6601)"
-       id="g388">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path386" />
-    </g>
-  </a>
-  <g
-     transform="translate(40.908877,3.779)"
-     id="g394">
-    <rect
-       x="-0.064999998"
-       y="-1.3139"
-       width="0.13"
-       height="3.1238999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect392" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:66:67"
-     id="a400"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(59.6554,14.6601)"
-       id="g398">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path396" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:33:32:33"
-     id="a406"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(59.6554,24.6601)"
-       id="g404">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path402" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:40:33:34"
-     id="a412"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(59.6554,31.1601)"
-       id="g410">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path408" />
-    </g>
-  </a>
-  <g
-     transform="translate(43.413077,3.779)"
-     id="g416">
-    <rect
-       x="-0.064999998"
-       y="-1.3139"
-       width="0.13"
-       height="3.1238999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect414" />
-  </g>
   <g
      transform="translate(43.413077,12.779)"
-     id="g420">
+     id="g372">
     <rect
        x="-0.064999998"
        y="-0.241"
@@ -1202,11 +1057,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect418" />
+       id="rect370" />
   </g>
   <g
      transform="translate(43.413077,21.779)"
-     id="g424">
+     id="g376">
     <rect
        x="-0.064999998"
        y="-2.7409999"
@@ -1214,26 +1069,20 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect422" />
+       id="rect374" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:69:70"
-     id="a430"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(62.1596,14.6601)"
-       id="g428">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path426" />
-    </g>
-  </a>
+  <g
+     transform="translate(45.852277,2.279)"
+     id="g380">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path378" />
+  </g>
   <g
      transform="translate(45.917277,3.779)"
-     id="g434">
+     id="g384">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -1241,26 +1090,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect432" />
+       id="rect382" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:71:72"
-     id="a440"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(64.6638,14.6601)"
-       id="g438">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path436" />
-    </g>
-  </a>
+  <g
+     transform="translate(48.356477,2.279)"
+     id="g388">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path386" />
+  </g>
   <g
      transform="translate(48.421477,3.779)"
-     id="g444">
+     id="g392">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -1268,26 +1111,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect442" />
+       id="rect390" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/named-sub-group/main/named-sub-group-untrimed.ly:25:73:74"
-     id="a450"
-     transform="translate(-16.307323,-12.3811)">
-    <g
-       transform="translate(67.168,14.6601)"
-       id="g448">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path446" />
-    </g>
-  </a>
+  <g
+     transform="translate(50.860677,2.279)"
+     id="g396">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path394" />
+  </g>
   <g
      transform="translate(50.925677,3.779)"
-     id="g454">
+     id="g400">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -1295,6 +1132,6 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect452" />
+       id="rect398" />
   </g>
 </svg>

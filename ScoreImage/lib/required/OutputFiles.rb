@@ -131,6 +131,8 @@ def build_svg_files
   # cmd  = '/Applications/LilyPond.app/Contents/Resources/bin/lilypond'
   cmd  = "lilypond"
   opts = ['--loglevel=ERROR', '-dbackend=svg']
+  # Pour ne pas ajouter les liens de "pointer-cliquer"
+  opts << '-dno-point-and-click'.freeze
   # opts << '-dclip-systems' # seulement un extrait de la partition (mais ça ne fonctionne pas encore)
   opts = opts.join(' ')
   res = `cd "#{dest_folder}" && #{cmd} #{opts} "#{lilypond_file_name}" 2>&1`

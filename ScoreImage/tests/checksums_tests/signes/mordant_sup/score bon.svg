@@ -4,12 +4,11 @@
    width="64.141769mm"
    height="14.979217mm"
    viewBox="0 0 36.5002 8.5240007"
-   id="svg132"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg108"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs136" />
+     id="defs112" />
   <style
      type="text/css"
      id="style2"><![CDATA[
@@ -181,193 +180,121 @@ tspan { white-space: pre; }
        fill="currentColor"
        id="rect52" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:4:5"
-     id="a60"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(28.5622,19.1601)"
-       id="g58">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path56" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:6:7"
-     id="a66"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(29.5432,13.4101)"
-       id="g64">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
-         fill="currentColor"
-         id="path62" />
-    </g>
-  </a>
+  <g
+     transform="translate(5.8,6.779)"
+     id="g58">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path56" />
+  </g>
+  <g
+     transform="translate(6.781,1.029)"
+     id="g62">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
+       fill="currentColor"
+       id="path60" />
+  </g>
   <g
      transform="translate(0.8,4.779)"
-     id="g70">
+     id="g66">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
+       id="path64" />
+  </g>
+  <g
+     transform="translate(13.9501,6.779)"
+     id="g70">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
        id="path68" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:14:15"
-     id="a76"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(36.7123,19.1601)"
-       id="g74">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path72" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:16:17"
-     id="a82"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(36.7123,18.1601)"
-       id="g80">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path78" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:18:19"
-     id="a88"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(36.7123,17.1601)"
-       id="g86">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path84" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:20:21"
-     id="a94"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(37.6933,13.4101)"
-       id="g92">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
-         fill="currentColor"
-         id="path90" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:27:28"
-     id="a100"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(44.8623,19.1601)"
-       id="g98">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path96" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:28:29"
-     id="a106"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(45.8433,20.4051)"
-       id="g104">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
-         fill="currentColor"
-         id="path102" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:37:38"
-     id="a112"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(53.0123,19.1601)"
-       id="g110">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path108" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:39:40"
-     id="a118"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(53.0123,18.1601)"
-       id="g116">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path114" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:41:42"
-     id="a124"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(53.0123,17.1601)"
-       id="g122">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path120" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/signes/mordant_sup/main/score-untrimed.ly:22:43:44"
-     id="a130"
-     transform="translate(-22.7622,-12.3811)">
-    <g
-       transform="translate(53.9933,20.4051)"
-       id="g128">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
-         fill="currentColor"
-         id="path126" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.9501,5.779)"
+     id="g74">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path72" />
+  </g>
+  <g
+     transform="translate(13.9501,4.779)"
+     id="g78">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path76" />
+  </g>
+  <g
+     transform="translate(14.9311,1.029)"
+     id="g82">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
+       fill="currentColor"
+       id="path80" />
+  </g>
+  <g
+     transform="translate(22.1001,6.779)"
+     id="g86">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path84" />
+  </g>
+  <g
+     transform="translate(23.0811,8.024)"
+     id="g90">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
+       fill="currentColor"
+       id="path88" />
+  </g>
+  <g
+     transform="translate(30.2501,6.779)"
+     id="g94">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path92" />
+  </g>
+  <g
+     transform="translate(30.2501,5.779)"
+     id="g98">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path96" />
+  </g>
+  <g
+     transform="translate(30.2501,4.779)"
+     id="g102">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path100" />
+  </g>
+  <g
+     transform="translate(31.2311,8.024)"
+     id="g106">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 215,46 c 4,6 9,9 16,9 11,0 20,-9 20,-20 0,-4 -1,-8 -3,-11 L 225,-11 192,11 Z M 25,1 17,-11 -17,11 53,116 c 4,6 10,9 17,9 6,0 11,-2 15,-7 l 99,-119 8,12 33,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 z m -256,-56 c -11,0 -20,9 -20,20 0,6 0,6 96,151 4,6 10,9 17,9 6,0 11,-2 15,-7 l 98,-119 8,12 34,-22 -70,-105 c -4,-6 -10,-9 -17,-9 -6,0 -11,2 -15,7 L -184,1 c -37,-56 -36,-56 -47,-56 z"
+       fill="currentColor"
+       id="path104" />
+  </g>
 </svg>

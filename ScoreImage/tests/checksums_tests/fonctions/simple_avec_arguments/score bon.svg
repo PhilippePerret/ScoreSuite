@@ -4,12 +4,11 @@
    width="225.92856mm"
    height="30.530483mm"
    viewBox="0 0 128.5658 17.373529"
-   id="svg968"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg824"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs972" />
+     id="defs828" />
   <style
      type="text/css"
      id="style2"><![CDATA[
@@ -503,72 +502,54 @@ tspan { white-space: pre; }
        fill="currentColor"
        id="rect156" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:37:38"
-     id="a164"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(28.5622,16.4311)"
-       id="g162">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path160" />
-    </g>
-  </a>
+  <g
+     transform="translate(7.088,4.0499987)"
+     id="g162">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path160" />
+  </g>
   <g
      transform="translate(2.088,5.0499987)"
-     id="g168">
+     id="g166">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
-       id="path166" />
+       id="path164" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:26:27"
-     id="a174"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(28.5622,21.1711)"
-       id="g172">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path170" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:57:58"
-     id="a180"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(28.5622,24.6711)"
-       id="g178">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path176" />
-    </g>
-  </a>
+  <g
+     transform="translate(7.088,8.7899987)"
+     id="g170">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path168" />
+  </g>
+  <g
+     transform="translate(7.088,12.289999)"
+     id="g174">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path172" />
+  </g>
   <g
      transform="translate(2.088,14.289999)"
-     id="g184">
+     id="g178">
     <path
        transform="scale(0.004,-0.004)"
        d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
        fill="currentColor"
-       id="path182" />
+       id="path176" />
   </g>
   <g
      transform="translate(7.153,15.289999)"
-     id="g188">
+     id="g182">
     <rect
        x="-0.064999998"
        y="-2.7409999"
@@ -576,11 +557,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect186" />
+       id="rect180" />
   </g>
   <g
      transform="translate(118.359,6.7399987)"
-     id="g192">
+     id="g186">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -588,11 +569,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon190" />
+       id="polygon184" />
   </g>
   <g
      transform="translate(118.359,7.5499987)"
-     id="g196">
+     id="g190">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -600,35 +581,29 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon194" />
+       id="polygon188" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:30:31"
-     id="a202"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(30.9622,23.6711)"
-       id="g200">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path198" />
-    </g>
-  </a>
+  <g
+     transform="translate(9.488,11.289999)"
+     id="g194">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path192" />
+  </g>
   <g
      transform="translate(12.0054,10.789999)"
-     id="g206">
+     id="g198">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
        fill="currentColor"
-       id="path204" />
+       id="path196" />
   </g>
   <g
      transform="translate(10.7272,15.289999)"
-     id="g210">
+     id="g202">
     <rect
        x="-0.064999998"
        y="-7"
@@ -636,35 +611,29 @@ tspan { white-space: pre; }
        height="2.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect208" />
+       id="rect200" />
   </g>
   <g
      transform="translate(10.7922,8.3299987)"
-     id="g214">
+     id="g206">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
        fill="currentColor"
-       id="path212" />
+       id="path204" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:40:41"
-     id="a220"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(32.7622,17.4311)"
-       id="g218">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path216" />
-    </g>
-  </a>
+  <g
+     transform="translate(11.288,5.0499987)"
+     id="g210">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path208" />
+  </g>
   <g
      transform="translate(12.5272,4.0499987)"
-     id="g224">
+     id="g214">
     <rect
        x="-0.064999998"
        y="-3.0183001"
@@ -672,11 +641,11 @@ tspan { white-space: pre; }
        height="3.8320999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect222" />
+       id="rect212" />
   </g>
   <g
      transform="translate(112.8506,7.2399987)"
-     id="g228">
+     id="g218">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -684,11 +653,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.2 2.8442,-0.8 "
-       id="polygon226" />
+       id="polygon216" />
   </g>
   <g
      transform="translate(112.8506,8.0499987)"
-     id="g232">
+     id="g222">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -696,26 +665,20 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.2 2.8442,-0.8 "
-       id="polygon230" />
+       id="polygon220" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:44:45"
-     id="a238"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(35.5164,15.9311)"
-       id="g236">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path234" />
-    </g>
-  </a>
+  <g
+     transform="translate(14.0422,3.5499987)"
+     id="g226">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path224" />
+  </g>
   <g
      transform="translate(15.2814,4.0499987)"
-     id="g242">
+     id="g230">
     <rect
        x="-0.064999998"
        y="-3.7916999"
@@ -723,59 +686,41 @@ tspan { white-space: pre; }
        height="3.1056001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect240" />
+       id="rect228" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:173:174"
-     id="a248"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(132.5248,27.6711)"
-       id="g246">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
-         id="path244" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:46:47"
-     id="a254"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(38.1103,14.9311)"
-       id="g252">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path250" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:35:36"
-     id="a260"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(38.1103,23.6711)"
-       id="g258">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path256" />
-    </g>
-  </a>
+  <g
+     transform="translate(111.0506,15.289999)"
+     id="g234">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
+       id="path232" />
+  </g>
+  <g
+     transform="translate(16.6361,2.5499987)"
+     id="g238">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path236" />
+  </g>
+  <g
+     transform="translate(16.6361,11.289999)"
+     id="g242">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path240" />
+  </g>
   <g
      transform="translate(16.7011,4.0499987)"
-     id="g264">
+     id="g246">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -783,11 +728,11 @@ tspan { white-space: pre; }
        height="4.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect262" />
+       id="rect244" />
   </g>
   <g
      transform="translate(17.8753,15.289999)"
-     id="g268">
+     id="g250">
     <rect
        x="-0.064999998"
        y="-6.5"
@@ -795,11 +740,11 @@ tspan { white-space: pre; }
        height="2.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect266" />
+       id="rect248" />
   </g>
   <g
      transform="translate(98.3837,6.7399987)"
-     id="g272">
+     id="g254">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -807,11 +752,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon270" />
+       id="polygon252" />
   </g>
   <g
      transform="translate(98.3837,7.5499987)"
-     id="g276">
+     id="g258">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -819,26 +764,20 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon274" />
+       id="polygon256" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:48:49"
-     id="a282"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(40.3645,17.4311)"
-       id="g280">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path278" />
-    </g>
-  </a>
+  <g
+     transform="translate(18.8903,5.0499987)"
+     id="g262">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path260" />
+  </g>
   <g
      transform="translate(18.9553,4.0499987)"
-     id="g286">
+     id="g266">
     <rect
        x="-0.064999998"
        y="1.1861"
@@ -846,26 +785,20 @@ tspan { white-space: pre; }
        height="2.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect284" />
+       id="rect264" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:51:52"
-     id="a292"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(43.1187,15.9311)"
-       id="g290">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path288" />
-    </g>
-  </a>
+  <g
+     transform="translate(21.6445,3.5499987)"
+     id="g270">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path268" />
+  </g>
   <g
      transform="translate(21.7095,4.0499987)"
-     id="g296">
+     id="g274">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -873,11 +806,11 @@ tspan { white-space: pre; }
        height="3.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect294" />
+       id="rect272" />
   </g>
   <g
      transform="translate(92.8753,7.2399987)"
-     id="g300">
+     id="g278">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -885,11 +818,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.2 2.8442,-0.8 "
-       id="polygon298" />
+       id="polygon276" />
   </g>
   <g
      transform="translate(92.8753,8.0499987)"
-     id="g304">
+     id="g282">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -897,26 +830,20 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.2 2.8442,-0.8 "
-       id="polygon302" />
+       id="polygon280" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:53:54"
-     id="a310"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(45.8729,14.9311)"
-       id="g308">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path306" />
-    </g>
-  </a>
+  <g
+     transform="translate(24.3987,2.5499987)"
+     id="g286">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path284" />
+  </g>
   <g
      transform="translate(24.4637,4.0499987)"
-     id="g314">
+     id="g290">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -924,74 +851,50 @@ tspan { white-space: pre; }
        height="4.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect312" />
+       id="rect288" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:161:162"
-     id="a320"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(112.5495,27.6711)"
-       id="g318">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
-         id="path316" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:55:56"
-     id="a326"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(48.3772,16.4311)"
-       id="g324">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path322" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:38:39"
-     id="a332"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(48.3772,21.1711)"
-       id="g330">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path328" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:60:61"
-     id="a338"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(48.3772,24.6711)"
-       id="g336">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path334" />
-    </g>
-  </a>
+  <g
+     transform="translate(91.0753,15.289999)"
+     id="g294">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
+       id="path292" />
+  </g>
+  <g
+     transform="translate(26.903,4.0499987)"
+     id="g298">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path296" />
+  </g>
+  <g
+     transform="translate(26.903,8.7899987)"
+     id="g302">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path300" />
+  </g>
+  <g
+     transform="translate(26.903,12.289999)"
+     id="g306">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path304" />
+  </g>
   <g
      transform="translate(26.968,15.289999)"
-     id="g342">
+     id="g310">
     <rect
        x="-0.064999998"
        y="-2.7409999"
@@ -999,11 +902,11 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect340" />
+       id="rect308" />
   </g>
   <g
      transform="translate(77.3956,6.0499987)"
-     id="g346">
+     id="g314">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1011,11 +914,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon344" />
+       id="polygon312" />
   </g>
   <g
      transform="translate(77.3956,6.8599987)"
-     id="g350">
+     id="g318">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1023,35 +926,29 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon348" />
+       id="polygon316" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:42:43"
-     id="a356"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(50.7772,23.6711)"
-       id="g354">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path352" />
-    </g>
-  </a>
+  <g
+     transform="translate(29.303,11.289999)"
+     id="g322">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path320" />
+  </g>
   <g
      transform="translate(31.8204,10.789999)"
-     id="g360">
+     id="g326">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
        fill="currentColor"
-       id="path358" />
+       id="path324" />
   </g>
   <g
      transform="translate(30.5422,15.289999)"
-     id="g364">
+     id="g330">
     <rect
        x="-0.064999998"
        y="-7"
@@ -1059,35 +956,29 @@ tspan { white-space: pre; }
        height="2.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect362" />
+       id="rect328" />
   </g>
   <g
      transform="translate(30.6072,8.3299987)"
-     id="g368">
+     id="g334">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
        fill="currentColor"
-       id="path366" />
+       id="path332" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:58:59"
-     id="a374"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(52.5772,17.4311)"
-       id="g372">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path370" />
-    </g>
-  </a>
+  <g
+     transform="translate(31.103,5.0499987)"
+     id="g338">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path336" />
+  </g>
   <g
      transform="translate(32.3422,4.0499987)"
-     id="g378">
+     id="g342">
     <rect
        x="-0.064999998"
        y="-3.0183001"
@@ -1095,11 +986,11 @@ tspan { white-space: pre; }
        height="3.8320999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect376" />
+       id="rect340" />
   </g>
   <g
      transform="translate(71.8872,7.0499987)"
-     id="g382">
+     id="g346">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1107,11 +998,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon380" />
+       id="polygon344" />
   </g>
   <g
      transform="translate(71.8872,7.8599987)"
-     id="g386">
+     id="g350">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1119,26 +1010,20 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon384" />
+       id="polygon348" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:63:64"
-     id="a392"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(55.3314,15.9311)"
-       id="g390">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path388" />
-    </g>
-  </a>
+  <g
+     transform="translate(33.8572,3.5499987)"
+     id="g354">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path352" />
+  </g>
   <g
      transform="translate(35.0964,4.0499987)"
-     id="g396">
+     id="g358">
     <rect
        x="-0.064999998"
        y="-3.7916999"
@@ -1146,58 +1031,163 @@ tspan { white-space: pre; }
        height="3.1056001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect394" />
+       id="rect356" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:109:110"
-     id="a402"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(91.5614,27.6711)"
-       id="g400">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
-         id="path398" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:65:66"
-     id="a408"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(57.9253,14.9311)"
-       id="g406">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path404" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:47:48"
-     id="a414"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(57.9253,23.6711)"
-       id="g412">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path410" />
-    </g>
-  </a>
+  <g
+     transform="translate(70.0872,15.289999)"
+     id="g362">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
+       id="path360" />
+  </g>
+  <g
+     transform="translate(36.4511,2.5499987)"
+     id="g366">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path364" />
+  </g>
+  <g
+     transform="translate(36.4511,11.289999)"
+     id="g370">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path368" />
+  </g>
   <g
      transform="translate(36.5161,4.0499987)"
+     id="g374">
+    <rect
+       x="-0.064999998"
+       y="-1.3139"
+       width="0.13"
+       height="4.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect372" />
+  </g>
+  <g
+     transform="translate(37.6903,15.289999)"
+     id="g378">
+    <rect
+       x="-0.064999998"
+       y="-6.5"
+       width="0.13"
+       height="2.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect376" />
+  </g>
+  <g
+     transform="translate(57.4203,6.0499987)"
+     id="g382">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
+       id="polygon380" />
+  </g>
+  <g
+     transform="translate(57.4203,6.8599987)"
+     id="g386">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
+       id="polygon384" />
+  </g>
+  <g
+     transform="translate(38.7053,5.0499987)"
+     id="g390">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path388" />
+  </g>
+  <g
+     transform="translate(38.7703,4.0499987)"
+     id="g394">
+    <rect
+       x="-0.064999998"
+       y="1.1861"
+       width="0.13"
+       height="2.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect392" />
+  </g>
+  <g
+     transform="translate(41.4595,3.5499987)"
+     id="g398">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path396" />
+  </g>
+  <g
+     transform="translate(41.5245,4.0499987)"
+     id="g402">
+    <rect
+       x="-0.064999998"
+       y="-0.31389999"
+       width="0.13"
+       height="3.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect400" />
+  </g>
+  <g
+     transform="translate(51.9119,7.0499987)"
+     id="g406">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
+       id="polygon404" />
+  </g>
+  <g
+     transform="translate(51.9119,7.8599987)"
+     id="g410">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
+       id="polygon408" />
+  </g>
+  <g
+     transform="translate(44.2137,2.5499987)"
+     id="g414">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path412" />
+  </g>
+  <g
+     transform="translate(44.2787,4.0499987)"
      id="g418">
     <rect
        x="-0.064999998"
@@ -1209,19 +1199,19 @@ tspan { white-space: pre; }
        id="rect416" />
   </g>
   <g
-     transform="translate(37.6903,15.289999)"
+     transform="translate(50.1119,15.289999)"
      id="g422">
-    <rect
-       x="-0.064999998"
-       y="-6.5"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
        fill="currentColor"
-       id="rect420" />
+       d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
+       id="path420" />
   </g>
   <g
-     transform="translate(57.4203,6.0499987)"
+     transform="translate(36.4511,6.7399987)"
      id="g426">
     <polygon
        stroke-linejoin="round"
@@ -1233,7 +1223,7 @@ tspan { white-space: pre; }
        id="polygon424" />
   </g>
   <g
-     transform="translate(57.4203,6.8599987)"
+     transform="translate(36.4511,7.5499987)"
      id="g430">
     <polygon
        stroke-linejoin="round"
@@ -1244,131 +1234,122 @@ tspan { white-space: pre; }
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
        id="polygon428" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:67:68"
-     id="a436"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(60.1795,17.4311)"
-       id="g434">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path432" />
-    </g>
-  </a>
   <g
-     transform="translate(38.7703,4.0499987)"
-     id="g440">
-    <rect
-       x="-0.064999998"
-       y="1.1861"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
+     transform="translate(47.7119,4.0499987)"
+     id="g434">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
        fill="currentColor"
-       id="rect438" />
+       id="path432" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:70:71"
-     id="a446"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(62.9337,15.9311)"
-       id="g444">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path442" />
-    </g>
-  </a>
   <g
-     transform="translate(41.5245,4.0499987)"
+     transform="translate(47.7119,8.7899987)"
+     id="g438">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path436" />
+  </g>
+  <g
+     transform="translate(47.7119,12.289999)"
+     id="g442">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path440" />
+  </g>
+  <g
+     transform="translate(32.2772,1.0499987)"
+     id="g446">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
+       id="polygon444" />
+  </g>
+  <g
+     transform="translate(32.2772,1.8599987)"
      id="g450">
-    <rect
-       x="-0.064999998"
-       y="-0.31389999"
-       width="0.13"
-       height="3.8139"
-       ry="0.039999999"
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
        fill="currentColor"
-       id="rect448" />
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
+       id="polygon448" />
   </g>
   <g
-     transform="translate(51.9119,7.0499987)"
+     transform="translate(47.7769,15.289999)"
      id="g454">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon452" />
-  </g>
-  <g
-     transform="translate(51.9119,7.8599987)"
-     id="g458">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon456" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:72:73"
-     id="a464"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(65.6879,14.9311)"
-       id="g462">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path460" />
-    </g>
-  </a>
-  <g
-     transform="translate(44.2787,4.0499987)"
-     id="g468">
     <rect
        x="-0.064999998"
-       y="-1.3139"
+       y="-2.7409999"
        width="0.13"
-       height="4.8139"
+       height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect466" />
+       id="rect452" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:97:98"
-     id="a474"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(71.5861,27.6711)"
-       id="g472">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-4 c 0.877,-0.8206 3.9641,-0.8206 4.841,0 v 0 c -0.8769,-0.7006 -3.964,-0.7006 -4.841,0 z"
-         id="path470" />
-    </g>
-  </a>
   <g
-     transform="translate(36.4511,6.7399987)"
+     transform="translate(29.303,15.289999)"
+     id="g458">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 2.2674,-5 c 0.9248,-0.8409 4.408,-0.8409 5.3328,0 v 0 C 6.6754,-5.7209 3.1922,-5.7209 2.2674,-5 Z"
+       id="path456" />
+  </g>
+  <g
+     transform="translate(50.1119,11.789999)"
+     id="g462">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path460" />
+  </g>
+  <g
+     transform="translate(52.6293,11.789999)"
+     id="g466">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
+       fill="currentColor"
+       id="path464" />
+  </g>
+  <g
+     transform="translate(51.3511,15.289999)"
+     id="g470">
+    <rect
+       x="-0.064999998"
+       y="-6.5"
+       width="0.13"
+       height="2.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect468" />
+  </g>
+  <g
+     transform="translate(51.4161,8.8299987)"
+     id="g474">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path472" />
+  </g>
+  <g
+     transform="translate(16.6361,6.7399987)"
      id="g478">
     <polygon
        stroke-linejoin="round"
@@ -1380,7 +1361,7 @@ tspan { white-space: pre; }
        id="polygon476" />
   </g>
   <g
-     transform="translate(36.4511,7.5499987)"
+     transform="translate(16.6361,7.5499987)"
      id="g482">
     <polygon
        stroke-linejoin="round"
@@ -1391,192 +1372,18 @@ tspan { white-space: pre; }
        points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
        id="polygon480" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:109:110"
-     id="a488"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(69.1861,16.4311)"
-       id="g486">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path484" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:90:91"
-     id="a494"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(69.1861,21.1711)"
-       id="g492">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path490" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:121:122"
-     id="a500"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(69.1861,24.6711)"
-       id="g498">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path496" />
-    </g>
-  </a>
   <g
-     transform="translate(32.2772,1.0499987)"
-     id="g504">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon502" />
-  </g>
-  <g
-     transform="translate(32.2772,1.8599987)"
-     id="g508">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon506" />
-  </g>
-  <g
-     transform="translate(47.7769,15.289999)"
-     id="g512">
-    <rect
-       x="-0.064999998"
-       y="-2.7409999"
-       width="0.13"
-       height="3.2409999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect510" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:45:46"
-     id="a518"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(50.7772,27.6711)"
-       id="g516">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-5 c 0.9248,-0.8409 4.408,-0.8409 5.3328,0 v 0 C 6.6754,-5.7209 3.1922,-5.7209 2.2674,-5 Z"
-         id="path514" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:94:95"
-     id="a524"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(71.5861,24.1711)"
-       id="g522">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path520" />
-    </g>
-  </a>
-  <g
-     transform="translate(52.6293,11.789999)"
-     id="g528">
+     transform="translate(51.9119,4.5499987)"
+     id="g486">
     <path
        transform="scale(0.004,-0.004)"
-       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
-       id="path526" />
+       id="path484" />
   </g>
-  <g
-     transform="translate(51.3511,15.289999)"
-     id="g532">
-    <rect
-       x="-0.064999998"
-       y="-6.5"
-       width="0.13"
-       height="2.8139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect530" />
-  </g>
-  <g
-     transform="translate(51.4161,8.8299987)"
-     id="g536">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
-       fill="currentColor"
-       id="path534" />
-  </g>
-  <g
-     transform="translate(16.6361,6.7399987)"
-     id="g540">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon538" />
-  </g>
-  <g
-     transform="translate(16.6361,7.5499987)"
-     id="g544">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-0.2 7.8526,0.2 "
-       id="polygon542" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:112:113"
-     id="a550"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(73.3861,16.9311)"
-       id="g548">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path546" />
-    </g>
-  </a>
   <g
      transform="translate(51.9769,4.0499987)"
-     id="g554">
+     id="g490">
     <rect
        x="-0.064999998"
        y="0.68610001"
@@ -1584,26 +1391,20 @@ tspan { white-space: pre; }
        height="3.1056001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect552" />
+       id="rect488" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:116:117"
-     id="a560"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(76.1403,15.4311)"
-       id="g558">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path556" />
-    </g>
-  </a>
+  <g
+     transform="translate(54.6661,3.0499987)"
+     id="g494">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path492" />
+  </g>
   <g
      transform="translate(54.7311,4.0499987)"
-     id="g564">
+     id="g498">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -1611,11 +1412,11 @@ tspan { white-space: pre; }
        height="3.8320999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect562" />
+       id="rect496" />
   </g>
   <g
      transform="translate(12.4622,1.0499987)"
-     id="g568">
+     id="g502">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1623,11 +1424,11 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon566" />
+       id="polygon500" />
   </g>
   <g
      transform="translate(12.4622,1.8599987)"
-     id="g572">
+     id="g506">
     <polygon
        stroke-linejoin="round"
        stroke-linecap="round"
@@ -1635,41 +1436,29 @@ tspan { white-space: pre; }
        fill="currentColor"
        stroke="currentColor"
        points="0.04,0.2 0.04,-0.2 2.8442,-1.01 2.8442,-0.61 "
-       id="polygon570" />
+       id="polygon504" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:118:119"
-     id="a578"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(78.8945,14.4311)"
-       id="g576">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path574" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:99:100"
-     id="a584"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(78.8945,24.1711)"
-       id="g582">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path580" />
-    </g>
-  </a>
+  <g
+     transform="translate(57.4203,2.0499987)"
+     id="g510">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path508" />
+  </g>
+  <g
+     transform="translate(57.4203,11.789999)"
+     id="g514">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path512" />
+  </g>
   <g
      transform="translate(57.4853,4.0499987)"
-     id="g588">
+     id="g518">
     <rect
        x="-0.064999998"
        y="-1.8139"
@@ -1677,11 +1466,11 @@ tspan { white-space: pre; }
        height="4.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect586" />
+       id="rect516" />
   </g>
   <g
      transform="translate(58.6595,15.289999)"
-     id="g592">
+     id="g522">
     <rect
        x="-0.064999998"
        y="-6"
@@ -1689,44 +1478,32 @@ tspan { white-space: pre; }
        height="2.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect590" />
+       id="rect520" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:33:34"
-     id="a598"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(30.9622,27.6711)"
-       id="g596">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 2.2674,-5 c 0.9248,-0.8409 4.408,-0.8409 5.3328,0 v 0 C 6.6754,-5.7209 3.1922,-5.7209 2.2674,-5 Z"
-         id="path594" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:120:121"
-     id="a604"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(81.1487,16.9311)"
-       id="g602">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path600" />
-    </g>
-  </a>
+  <g
+     transform="translate(9.488,15.289999)"
+     id="g526">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 2.2674,-5 c 0.9248,-0.8409 4.408,-0.8409 5.3328,0 v 0 C 6.6754,-5.7209 3.1922,-5.7209 2.2674,-5 Z"
+       id="path524" />
+  </g>
+  <g
+     transform="translate(59.6745,4.5499987)"
+     id="g530">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path528" />
+  </g>
   <g
      transform="translate(59.7395,4.0499987)"
-     id="g608">
+     id="g534">
     <rect
        x="-0.064999998"
        y="0.68610001"
@@ -1734,26 +1511,20 @@ tspan { white-space: pre; }
        height="2.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect606" />
+       id="rect532" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:123:124"
-     id="a614"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(83.903,15.4311)"
-       id="g612">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path610" />
-    </g>
-  </a>
+  <g
+     transform="translate(62.4288,3.0499987)"
+     id="g538">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path536" />
+  </g>
   <g
      transform="translate(62.4938,4.0499987)"
-     id="g618">
+     id="g542">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -1761,26 +1532,20 @@ tspan { white-space: pre; }
        height="3.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect616" />
+       id="rect540" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:125:126"
-     id="a624"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(86.6572,14.4311)"
-       id="g622">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path620" />
-    </g>
-  </a>
+  <g
+     transform="translate(65.183,2.0499987)"
+     id="g546">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path544" />
+  </g>
   <g
      transform="translate(65.248,4.0499987)"
-     id="g628">
+     id="g550">
     <rect
        x="-0.064999998"
        y="-1.8139"
@@ -1788,56 +1553,38 @@ tspan { white-space: pre; }
        height="4.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect626" />
+       id="rect548" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:127:128"
-     id="a634"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(89.1614,16.4311)"
-       id="g632">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path630" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:102:103"
-     id="a640"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(89.1614,21.1711)"
-       id="g638">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path636" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:124:125"
-     id="a646"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(89.1614,24.6711)"
-       id="g644">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path642" />
-    </g>
-  </a>
+  <g
+     transform="translate(67.6872,4.0499987)"
+     id="g554">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path552" />
+  </g>
+  <g
+     transform="translate(67.6872,8.7899987)"
+     id="g558">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path556" />
+  </g>
+  <g
+     transform="translate(67.6872,12.289999)"
+     id="g562">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path560" />
+  </g>
   <g
      transform="translate(67.7522,15.289999)"
-     id="g650">
+     id="g566">
     <rect
        x="-0.064999998"
        y="-2.7409999"
@@ -1845,35 +1592,29 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect648" />
+       id="rect564" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:106:107"
-     id="a656"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(91.5614,24.1711)"
-       id="g654">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path652" />
-    </g>
-  </a>
+  <g
+     transform="translate(70.0872,11.789999)"
+     id="g570">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path568" />
+  </g>
   <g
      transform="translate(72.6046,11.789999)"
-     id="g660">
+     id="g574">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
        fill="currentColor"
-       id="path658" />
+       id="path572" />
   </g>
   <g
      transform="translate(71.3264,15.289999)"
-     id="g664">
+     id="g578">
     <rect
        x="-0.064999998"
        y="-6.5"
@@ -1881,35 +1622,29 @@ tspan { white-space: pre; }
        height="2.8139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect662" />
+       id="rect576" />
   </g>
   <g
      transform="translate(71.3914,8.8299987)"
-     id="g668">
+     id="g582">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
        fill="currentColor"
-       id="path666" />
+       id="path580" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:130:131"
-     id="a674"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(93.3614,16.9311)"
-       id="g672">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path670" />
-    </g>
-  </a>
+  <g
+     transform="translate(71.8872,4.5499987)"
+     id="g586">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path584" />
+  </g>
   <g
      transform="translate(71.9522,4.0499987)"
-     id="g678">
+     id="g590">
     <rect
        x="-0.064999998"
        y="0.68610001"
@@ -1917,26 +1652,20 @@ tspan { white-space: pre; }
        height="3.1056001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect676" />
+       id="rect588" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:135:136"
-     id="a684"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(96.1156,15.4311)"
-       id="g682">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path680" />
-    </g>
-  </a>
+  <g
+     transform="translate(74.6414,3.0499987)"
+     id="g594">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path592" />
+  </g>
   <g
      transform="translate(74.7064,4.0499987)"
-     id="g688">
+     id="g598">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -1944,41 +1673,29 @@ tspan { white-space: pre; }
        height="3.8320999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect686" />
+       id="rect596" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:137:138"
-     id="a694"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(98.8698,14.4311)"
-       id="g692">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path690" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:111:112"
-     id="a700"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(98.8698,24.1711)"
-       id="g698">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path696" />
-    </g>
-  </a>
+  <g
+     transform="translate(77.3956,2.0499987)"
+     id="g602">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path600" />
+  </g>
+  <g
+     transform="translate(77.3956,11.789999)"
+     id="g606">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path604" />
+  </g>
   <g
      transform="translate(77.4606,4.0499987)"
-     id="g704">
+     id="g610">
     <rect
        x="-0.064999998"
        y="-1.8139"
@@ -1986,11 +1703,11 @@ tspan { white-space: pre; }
        height="4.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect702" />
+       id="rect608" />
   </g>
   <g
      transform="translate(78.6348,15.289999)"
-     id="g708">
+     id="g614">
     <rect
        x="-0.064999998"
        y="-6"
@@ -1998,26 +1715,20 @@ tspan { white-space: pre; }
        height="2.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect706" />
+       id="rect612" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:139:140"
-     id="a714"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(101.124,16.9311)"
-       id="g712">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path710" />
-    </g>
-  </a>
+  <g
+     transform="translate(79.6498,4.5499987)"
+     id="g618">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path616" />
+  </g>
   <g
      transform="translate(79.7148,4.0499987)"
-     id="g718">
+     id="g622">
     <rect
        x="-0.064999998"
        y="0.68610001"
@@ -2025,26 +1736,20 @@ tspan { white-space: pre; }
        height="2.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect716" />
+       id="rect620" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:142:143"
-     id="a724"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(103.8782,15.4311)"
-       id="g722">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path720" />
-    </g>
-  </a>
+  <g
+     transform="translate(82.404,3.0499987)"
+     id="g626">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path624" />
+  </g>
   <g
      transform="translate(82.469,4.0499987)"
-     id="g728">
+     id="g630">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -2052,26 +1757,20 @@ tspan { white-space: pre; }
        height="3.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect726" />
+       id="rect628" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:144:145"
-     id="a734"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(106.6324,14.4311)"
-       id="g732">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path730" />
-    </g>
-  </a>
+  <g
+     transform="translate(85.1582,2.0499987)"
+     id="g634">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path632" />
+  </g>
   <g
      transform="translate(85.2232,4.0499987)"
-     id="g738">
+     id="g638">
     <rect
        x="-0.064999998"
        y="-1.8139"
@@ -2079,56 +1778,38 @@ tspan { white-space: pre; }
        height="4.6238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect736" />
+       id="rect636" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:181:182"
-     id="a744"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(110.1495,16.4311)"
-       id="g742">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path740" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:154:155"
-     id="a750"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(110.1495,21.6711)"
-       id="g748">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path746" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:185:186"
-     id="a756"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(110.1495,25.1711)"
-       id="g754">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path752" />
-    </g>
-  </a>
+  <g
+     transform="translate(88.6753,4.0499987)"
+     id="g642">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path640" />
+  </g>
+  <g
+     transform="translate(88.6753,9.2899987)"
+     id="g646">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path644" />
+  </g>
+  <g
+     transform="translate(88.6753,12.789999)"
+     id="g650">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path648" />
+  </g>
   <g
      transform="translate(1.228,9.6699987)"
-     id="g760">
+     id="g654">
     <rect
        x="0"
        y="-7.6700001"
@@ -2136,11 +1817,11 @@ tspan { white-space: pre; }
        height="15.34"
        ry="0.050000001"
        fill="currentColor"
-       id="rect758" />
+       id="rect652" />
   </g>
   <g
      transform="translate(88.7403,15.289999)"
-     id="g764">
+     id="g658">
     <rect
        x="-0.064999998"
        y="-2.2409999"
@@ -2148,540 +1829,426 @@ tspan { white-space: pre; }
        height="3.2409999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect762" />
+       id="rect656" />
   </g>
   <g
      transform="translate(0.928,9.6699987)"
-     id="g768">
+     id="g662">
     <path
        transform="scale(0.004,-0.004)"
        d="m -84,-428 c 0,296 -148,424 -148,428 0,20 148,116 148,428 0,304 -124,576 -124,916 0,216 52,416 196,576 16,16 40,-4 24,-20 -108,-120 -144,-268 -144,-424 0,-300 116,-564 116,-900 0,-212 -48,-416 -188,-576 140,-160 188,-364 188,-576 0,-336 -116,-600 -116,-900 0,-156 36,-304 144,-424 16,-16 -8,-36 -24,-20 -144,160 -196,360 -196,576 0,340 124,612 124,916 z"
        fill="currentColor"
-       id="path766" />
+       id="path660" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:158:159"
-     id="a774"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(112.5495,24.1711)"
-       id="g772">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path770" />
-    </g>
-  </a>
+  <g
+     transform="translate(91.0753,11.789999)"
+     id="g666">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path664" />
+  </g>
   <g
      transform="translate(93.5927,11.789999)"
-     id="g778">
+     id="g670">
     <path
        transform="scale(0.004,-0.004)"
        d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
        fill="currentColor"
-       id="path776" />
+       id="path668" />
   </g>
   <g
      transform="translate(92.3145,15.289999)"
-     id="g782">
+     id="g674">
     <rect
        x="-0.064999998"
        y="-6.5"
        width="0.13"
        height="2.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect672" />
+  </g>
+  <g
+     transform="translate(92.3795,8.8299987)"
+     id="g678">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path676" />
+  </g>
+  <g
+     transform="translate(92.8753,5.0499987)"
+     id="g682">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path680" />
+  </g>
+  <g
+     transform="translate(92.9403,4.0499987)"
+     id="g686">
+    <rect
+       x="-0.064999998"
+       y="1.1861"
+       width="0.13"
+       height="2.7914"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect684" />
+  </g>
+  <g
+     transform="translate(95.6295,3.0499987)"
+     id="g690">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path688" />
+  </g>
+  <g
+     transform="translate(95.6945,4.0499987)"
+     id="g694">
+    <rect
+       x="-0.064999998"
+       y="-0.81389999"
+       width="0.13"
+       height="3.8364"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect692" />
+  </g>
+  <g
+     transform="translate(98.3837,2.0499987)"
+     id="g698">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path696" />
+  </g>
+  <g
+     transform="translate(98.3837,11.789999)"
+     id="g702">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path700" />
+  </g>
+  <g
+     transform="translate(98.4487,4.0499987)"
+     id="g706">
+    <rect
+       x="-0.064999998"
+       y="-1.8139"
+       width="0.13"
+       height="5.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect704" />
+  </g>
+  <g
+     transform="translate(99.6229,15.289999)"
+     id="g710">
+    <rect
+       x="-0.064999998"
+       y="-6"
+       width="0.13"
+       height="2.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect708" />
+  </g>
+  <g
+     transform="translate(100.6379,5.0499987)"
+     id="g714">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path712" />
+  </g>
+  <g
+     transform="translate(100.7029,4.0499987)"
+     id="g718">
+    <rect
+       x="-0.064999998"
+       y="1.1861"
+       width="0.13"
+       height="2.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect716" />
+  </g>
+  <g
+     transform="translate(103.3922,3.0499987)"
+     id="g722">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path720" />
+  </g>
+  <g
+     transform="translate(103.4572,4.0499987)"
+     id="g726">
+    <rect
+       x="-0.064999998"
+       y="-0.81389999"
+       width="0.13"
+       height="4.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect724" />
+  </g>
+  <g
+     transform="translate(106.1464,2.0499987)"
+     id="g730">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path728" />
+  </g>
+  <g
+     transform="translate(106.2114,4.0499987)"
+     id="g734">
+    <rect
+       x="-0.064999998"
+       y="-1.8139"
+       width="0.13"
+       height="5.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect732" />
+  </g>
+  <g
+     transform="translate(108.6506,4.0499987)"
+     id="g738">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path736" />
+  </g>
+  <g
+     transform="translate(108.6506,9.2899987)"
+     id="g742">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
+       fill="currentColor"
+       id="path740" />
+  </g>
+  <g
+     transform="translate(108.6506,12.789999)"
+     id="g746">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path744" />
+  </g>
+  <g
+     transform="translate(108.7156,15.289999)"
+     id="g750">
+    <rect
+       x="-0.064999998"
+       y="-2.2409999"
+       width="0.13"
+       height="3.2409999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect748" />
+  </g>
+  <g
+     transform="translate(126.1866,4.0499987)"
+     id="g754">
+    <rect
+       x="-0.064999998"
+       y="-1.8139"
+       width="0.13"
+       height="5.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect752" />
+  </g>
+  <g
+     transform="translate(111.0506,11.789999)"
+     id="g758">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path756" />
+  </g>
+  <g
+     transform="translate(113.568,11.789999)"
+     id="g762">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
+       fill="currentColor"
+       id="path760" />
+  </g>
+  <g
+     transform="translate(112.2898,15.289999)"
+     id="g766">
+    <rect
+       x="-0.064999998"
+       y="-6.5"
+       width="0.13"
+       height="2.8139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect764" />
+  </g>
+  <g
+     transform="translate(112.3548,8.8299987)"
+     id="g770">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path768" />
+  </g>
+  <g
+     transform="translate(126.1216,2.0499987)"
+     id="g774">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path772" />
+  </g>
+  <g
+     transform="translate(112.8506,5.0499987)"
+     id="g778">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path776" />
+  </g>
+  <g
+     transform="translate(112.9156,4.0499987)"
+     id="g782">
+    <rect
+       x="-0.064999998"
+       y="1.1861"
+       width="0.13"
+       height="2.7914"
        ry="0.039999999"
        fill="currentColor"
        id="rect780" />
   </g>
   <g
-     transform="translate(92.3795,8.8299987)"
+     transform="translate(115.6048,3.0499987)"
      id="g786">
     <path
        transform="scale(0.004,-0.004)"
-       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
        id="path784" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:184:185"
-     id="a792"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(114.3495,17.4311)"
-       id="g790">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path788" />
-    </g>
-  </a>
   <g
-     transform="translate(92.9403,4.0499987)"
-     id="g796">
-    <rect
-       x="-0.064999998"
-       y="1.1861"
-       width="0.13"
-       height="2.7914"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect794" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:188:189"
-     id="a802"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(117.1037,15.4311)"
-       id="g800">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path798" />
-    </g>
-  </a>
-  <g
-     transform="translate(95.6945,4.0499987)"
-     id="g806">
+     transform="translate(115.6698,4.0499987)"
+     id="g790">
     <rect
        x="-0.064999998"
        y="-0.81389999"
        width="0.13"
        height="3.8364"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect788" />
+  </g>
+  <g
+     transform="translate(118.359,2.0499987)"
+     id="g794">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path792" />
+  </g>
+  <g
+     transform="translate(118.359,11.789999)"
+     id="g798">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path796" />
+  </g>
+  <g
+     transform="translate(118.424,4.0499987)"
+     id="g802">
+    <rect
+       x="-0.064999998"
+       y="-1.8139"
+       width="0.13"
+       height="5.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect800" />
+  </g>
+  <g
+     transform="translate(119.5982,15.289999)"
+     id="g806">
+    <rect
+       x="-0.064999998"
+       y="-6"
+       width="0.13"
+       height="2.3139"
        ry="0.039999999"
        fill="currentColor"
        id="rect804" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:191:192"
-     id="a812"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(119.8579,14.4311)"
-       id="g810">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path808" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:163:164"
-     id="a818"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(119.8579,24.1711)"
-       id="g816">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path814" />
-    </g>
-  </a>
   <g
-     transform="translate(98.4487,4.0499987)"
+     transform="translate(120.6132,5.0499987)"
+     id="g810">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path808" />
+  </g>
+  <g
+     transform="translate(120.6782,4.0499987)"
+     id="g814">
+    <rect
+       x="-0.064999998"
+       y="1.1861"
+       width="0.13"
+       height="2.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect812" />
+  </g>
+  <g
+     transform="translate(123.3674,3.0499987)"
+     id="g818">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path816" />
+  </g>
+  <g
+     transform="translate(123.4324,4.0499987)"
      id="g822">
     <rect
        x="-0.064999998"
-       y="-1.8139"
+       y="-0.81389999"
        width="0.13"
-       height="5.3139"
+       height="4.3139"
        ry="0.039999999"
        fill="currentColor"
        id="rect820" />
-  </g>
-  <g
-     transform="translate(99.6229,15.289999)"
-     id="g826">
-    <rect
-       x="-0.064999998"
-       y="-6"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect824" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:193:194"
-     id="a832"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(122.1121,17.4311)"
-       id="g830">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path828" />
-    </g>
-  </a>
-  <g
-     transform="translate(100.7029,4.0499987)"
-     id="g836">
-    <rect
-       x="-0.064999998"
-       y="1.1861"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect834" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:196:197"
-     id="a842"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(124.8664,15.4311)"
-       id="g840">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path838" />
-    </g>
-  </a>
-  <g
-     transform="translate(103.4572,4.0499987)"
-     id="g846">
-    <rect
-       x="-0.064999998"
-       y="-0.81389999"
-       width="0.13"
-       height="4.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect844" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:199:200"
-     id="a852"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(127.6206,14.4311)"
-       id="g850">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path848" />
-    </g>
-  </a>
-  <g
-     transform="translate(106.2114,4.0499987)"
-     id="g856">
-    <rect
-       x="-0.064999998"
-       y="-1.8139"
-       width="0.13"
-       height="5.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect854" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:201:202"
-     id="a862"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(130.1248,16.4311)"
-       id="g860">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 70,205 c 79,0 46,-98 91,-98 16,0 54,48 61,63 6,12 23,12 28,0 L 127,-250 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 L 189,76 C 155,64 120,54 84,54 37,54 -3,88 -3,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path858" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:166:167"
-     id="a868"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(130.1248,21.6711)"
-       id="g866">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 125,205 c 79,0 45,-98 90,-98 15,0 50,49 57,63 6,12 23,12 28,0 L 121,-500 c -8,-7 -17,-10 -27,-10 -10,0 -20,3 -28,10 l 101,327 c -34,-12 -70,-23 -106,-23 -47,0 -87,34 -87,79 0,40 32,72 72,72 79,0 46,-98 91,-98 16,0 55,51 60,68 L 243,76 C 209,64 175,54 139,54 92,54 52,88 52,133 c 0,40 33,72 73,72 z"
-         fill="currentColor"
-         id="path864" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:188:189"
-     id="a874"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(130.1248,25.1711)"
-       id="g872">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
-         fill="currentColor"
-         id="path870" />
-    </g>
-  </a>
-  <g
-     transform="translate(108.7156,15.289999)"
-     id="g878">
-    <rect
-       x="-0.064999998"
-       y="-2.2409999"
-       width="0.13"
-       height="3.2409999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect876" />
-  </g>
-  <g
-     transform="translate(126.1866,4.0499987)"
-     id="g882">
-    <rect
-       x="-0.064999998"
-       y="-1.8139"
-       width="0.13"
-       height="5.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect880" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:170:171"
-     id="a888"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(132.5248,24.1711)"
-       id="g886">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path884" />
-    </g>
-  </a>
-  <g
-     transform="translate(113.568,11.789999)"
-     id="g892">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
-       fill="currentColor"
-       id="path890" />
-  </g>
-  <g
-     transform="translate(112.2898,15.289999)"
-     id="g896">
-    <rect
-       x="-0.064999998"
-       y="-6.5"
-       width="0.13"
-       height="2.8139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect894" />
-  </g>
-  <g
-     transform="translate(112.3548,8.8299987)"
-     id="g900">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
-       fill="currentColor"
-       id="path898" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:220:221"
-     id="a906"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(147.5958,14.4311)"
-       id="g904">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path902" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:204:205"
-     id="a912"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(134.3248,17.4311)"
-       id="g910">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path908" />
-    </g>
-  </a>
-  <g
-     transform="translate(112.9156,4.0499987)"
-     id="g916">
-    <rect
-       x="-0.064999998"
-       y="1.1861"
-       width="0.13"
-       height="2.7914"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect914" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:209:210"
-     id="a922"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(137.079,15.4311)"
-       id="g920">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path918" />
-    </g>
-  </a>
-  <g
-     transform="translate(115.6698,4.0499987)"
-     id="g926">
-    <rect
-       x="-0.064999998"
-       y="-0.81389999"
-       width="0.13"
-       height="3.8364"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect924" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:212:213"
-     id="a932"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(139.8332,14.4311)"
-       id="g930">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path928" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:29:175:176"
-     id="a938"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(139.8332,24.1711)"
-       id="g936">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path934" />
-    </g>
-  </a>
-  <g
-     transform="translate(118.424,4.0499987)"
-     id="g942">
-    <rect
-       x="-0.064999998"
-       y="-1.8139"
-       width="0.13"
-       height="5.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect940" />
-  </g>
-  <g
-     transform="translate(119.5982,15.289999)"
-     id="g946">
-    <rect
-       x="-0.064999998"
-       y="-6"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect944" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:214:215"
-     id="a952"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(142.0874,17.4311)"
-       id="g950">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path948" />
-    </g>
-  </a>
-  <g
-     transform="translate(120.6782,4.0499987)"
-     id="g956">
-    <rect
-       x="-0.064999998"
-       y="1.1861"
-       width="0.13"
-       height="2.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect954" />
-  </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/fonctions/simple_avec_arguments/main/score-untrimed.ly:22:217:218"
-     id="a962"
-     transform="translate(-21.4742,-12.381101)">
-    <g
-       transform="translate(144.8416,15.4311)"
-       id="g960">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path958" />
-    </g>
-  </a>
-  <g
-     transform="translate(123.4324,4.0499987)"
-     id="g966">
-    <rect
-       x="-0.064999998"
-       y="-0.81389999"
-       width="0.13"
-       height="4.3139"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect964" />
   </g>
 </svg>

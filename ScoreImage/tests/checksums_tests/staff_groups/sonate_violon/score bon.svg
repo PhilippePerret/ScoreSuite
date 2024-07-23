@@ -4,12 +4,11 @@
    width="74.637169mm"
    height="42.821686mm"
    viewBox="0 0 42.472661 24.367902"
-   id="svg330"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg288"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs334" />
+     id="defs292" />
   <style
      type="text/css"
      id="style2"><![CDATA[
@@ -357,81 +356,63 @@ tspan { white-space: pre; }
        points="0.04,0.2 0.04,-0.2 7.6026,-0.2 7.6026,0.2 "
        id="polygon104" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:23:24"
-     id="a112"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(28.5622,19.1601)"
-       id="g110">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path108" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.228064,6.779)"
+     id="g110">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path108" />
+  </g>
   <g
      transform="translate(8.2280641,4.779)"
-     id="g116">
+     id="g114">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
-       id="path114" />
+       id="path112" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:25:26"
-     id="a122"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(28.5622,27.205)"
-       id="g120">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path118" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.228064,14.8239)"
+     id="g118">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path116" />
+  </g>
   <g
      transform="translate(8.2280641,13.8239)"
+     id="g122">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       fill="currentColor"
+       id="path120" />
+  </g>
+  <g
+     transform="translate(13.228064,22.3239)"
      id="g126">
     <path
        transform="scale(0.004,-0.004)"
-       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
        id="path124" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:25:26"
-     id="a132"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(28.5622,34.705)"
-       id="g130">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path128" />
-    </g>
-  </a>
   <g
      transform="translate(8.2280641,20.8239)"
-     id="g136">
+     id="g130">
     <path
        transform="scale(0.004,-0.004)"
        d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
        fill="currentColor"
-       id="path134" />
+       id="path128" />
   </g>
   <g
      transform="translate(14.467264,3.779)"
-     id="g140">
+     id="g134">
     <rect
        x="-0.064999998"
        y="-0.5"
@@ -439,11 +420,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect138" />
+       id="rect132" />
   </g>
   <g
      transform="translate(14.467264,12.8239)"
-     id="g144">
+     id="g138">
     <rect
        x="-0.064999998"
        y="-1.5"
@@ -451,11 +432,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect142" />
+       id="rect136" />
   </g>
   <g
      transform="translate(14.467264,21.8239)"
-     id="g148">
+     id="g142">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -463,44 +444,32 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect146" />
+       id="rect140" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:27:28"
-     id="a154"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(28.5622,25.205)"
-       id="g152">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 1.6042,0.805 c 2.1261,-4.6492 18.666,-6.18 21.6092,-2 v 0 c -2.9322,-4.0605 -19.472,-2.5297 -21.6092,2 z"
-         id="path150" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:29:30"
-     id="a160"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(31.0664,34.705)"
-       id="g158">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path156" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.228064,12.8239)"
+     id="g146">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 1.6042,0.805 c 2.1261,-4.6492 18.666,-6.18 21.6092,-2 v 0 c -2.9322,-4.0605 -19.472,-2.5297 -21.6092,2 z"
+       id="path144" />
+  </g>
+  <g
+     transform="translate(15.732264,22.3239)"
+     id="g150">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path148" />
+  </g>
   <g
      transform="translate(16.971464,21.8239)"
-     id="g164">
+     id="g154">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -508,74 +477,50 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect162" />
+       id="rect152" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:25:26"
-     id="a170"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(28.5622,16.1601)"
-       id="g168">
-      <path
-         stroke-width="0.08"
-         stroke-linejoin="round"
-         stroke-linecap="round"
-         stroke="currentColor"
-         fill="currentColor"
-         d="m 0.6875,4.045 c 2.7238,1.5625 20.2054,0.134 22.6394,-1.85 v 0 C 20.8831,4.0594 3.4016,5.4879 0.6875,4.045 Z"
-         id="path166" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:27:28"
-     id="a176"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(33.5706,18.6601)"
-       id="g174">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path172" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:29:30"
-     id="a182"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(33.5706,26.705)"
-       id="g180">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path178" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:31:32"
-     id="a188"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(33.5706,34.705)"
-       id="g186">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path184" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.228064,3.779)"
+     id="g158">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="m 0.6875,4.045 c 2.7238,1.5625 20.2054,0.134 22.6394,-1.85 v 0 C 20.8831,4.0594 3.4016,5.4879 0.6875,4.045 Z"
+       id="path156" />
+  </g>
+  <g
+     transform="translate(18.236464,6.279)"
+     id="g162">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path160" />
+  </g>
+  <g
+     transform="translate(18.236464,14.3239)"
+     id="g166">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path164" />
+  </g>
+  <g
+     transform="translate(18.236464,22.3239)"
+     id="g170">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path168" />
+  </g>
   <g
      transform="translate(19.475664,3.779)"
-     id="g192">
+     id="g174">
     <rect
        x="-0.064999998"
        y="-1"
@@ -583,11 +528,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect190" />
+       id="rect172" />
   </g>
   <g
      transform="translate(19.475664,12.8239)"
-     id="g196">
+     id="g178">
     <rect
        x="-0.064999998"
        y="-2"
@@ -595,11 +540,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect194" />
+       id="rect176" />
   </g>
   <g
      transform="translate(19.475664,21.8239)"
-     id="g200">
+     id="g182">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -607,26 +552,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect198" />
+       id="rect180" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:33:34"
-     id="a206"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(36.0748,34.705)"
-       id="g204">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path202" />
-    </g>
-  </a>
+  <g
+     transform="translate(20.740664,22.3239)"
+     id="g186">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path184" />
+  </g>
   <g
      transform="translate(21.979964,21.8239)"
-     id="g210">
+     id="g190">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -634,56 +573,38 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect208" />
+       id="rect188" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:29:30"
-     id="a216"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(38.5791,18.1601)"
-       id="g214">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path212" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:31:32"
-     id="a222"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(38.5791,26.205)"
-       id="g220">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path218" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:35:36"
-     id="a228"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(38.5791,34.705)"
-       id="g226">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path224" />
-    </g>
-  </a>
+  <g
+     transform="translate(23.244964,5.779)"
+     id="g194">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path192" />
+  </g>
+  <g
+     transform="translate(23.244964,13.8239)"
+     id="g198">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path196" />
+  </g>
+  <g
+     transform="translate(23.244964,22.3239)"
+     id="g202">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path200" />
+  </g>
   <g
      transform="translate(24.484164,3.779)"
-     id="g232">
+     id="g206">
     <rect
        x="-0.064999998"
        y="-1.5"
@@ -691,11 +612,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect230" />
+       id="rect204" />
   </g>
   <g
      transform="translate(24.484164,12.8239)"
-     id="g236">
+     id="g210">
     <rect
        x="-0.064999998"
        y="-2.5"
@@ -703,11 +624,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect234" />
+       id="rect208" />
   </g>
   <g
      transform="translate(24.484164,21.8239)"
-     id="g240">
+     id="g214">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -715,26 +636,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect238" />
+       id="rect212" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:37:38"
-     id="a246"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(41.0833,34.705)"
-       id="g244">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path242" />
-    </g>
-  </a>
+  <g
+     transform="translate(25.749164,22.3239)"
+     id="g218">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path216" />
+  </g>
   <g
      transform="translate(26.988364,21.8239)"
-     id="g250">
+     id="g222">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -742,56 +657,38 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect248" />
+       id="rect220" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:31:32"
-     id="a256"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(43.5875,17.6601)"
-       id="g254">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path252" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:33:34"
-     id="a262"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(43.5875,25.705)"
-       id="g260">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path258" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:39:40"
-     id="a268"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(43.5875,34.705)"
-       id="g266">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path264" />
-    </g>
-  </a>
+  <g
+     transform="translate(28.253364,5.279)"
+     id="g226">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path224" />
+  </g>
+  <g
+     transform="translate(28.253364,13.3239)"
+     id="g230">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path228" />
+  </g>
+  <g
+     transform="translate(28.253364,22.3239)"
+     id="g234">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path232" />
+  </g>
   <g
      transform="translate(29.492564,3.779)"
-     id="g272">
+     id="g238">
     <rect
        x="-0.064999998"
        y="-2"
@@ -799,11 +696,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect270" />
+       id="rect236" />
   </g>
   <g
      transform="translate(29.492564,12.8239)"
-     id="g276">
+     id="g242">
     <rect
        x="-0.064999998"
        y="-3"
@@ -811,11 +708,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect274" />
+       id="rect240" />
   </g>
   <g
      transform="translate(29.492564,21.8239)"
-     id="g280">
+     id="g246">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -823,26 +720,20 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect278" />
+       id="rect244" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:41:42"
-     id="a286"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(46.0917,34.705)"
-       id="g284">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path282" />
-    </g>
-  </a>
+  <g
+     transform="translate(30.757564,22.3239)"
+     id="g250">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path248" />
+  </g>
   <g
      transform="translate(31.996764,21.8239)"
-     id="g290">
+     id="g254">
     <rect
        x="-0.064999998"
        y="-2.8099999"
@@ -850,37 +741,31 @@ tspan { white-space: pre; }
        height="3.1238999"
        ry="0.039999999"
        fill="currentColor"
-       id="rect288" />
+       id="rect252" />
   </g>
   <g
      transform="translate(-0.01933594,4.5262)"
-     id="g296">
+     id="g260">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text294"><tspan
-         id="tspan292">Violon</tspan></text>
+       id="text258"><tspan
+         id="tspan256">Violon</tspan></text>
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:25:33:34"
-     id="a302"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(50.8548,17.1601)"
-       id="g300">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path298" />
-    </g>
-  </a>
+  <g
+     transform="translate(35.520664,4.779)"
+     id="g264">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path262" />
+  </g>
   <g
      transform="translate(7.3680641,12.8014)"
-     id="g306">
+     id="g268">
     <rect
        x="0"
        y="-11.0724"
@@ -888,56 +773,44 @@ tspan { white-space: pre; }
        height="22.144899"
        ry="0.050000001"
        fill="currentColor"
-       id="rect304" />
+       id="rect266" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:33:35:36"
-     id="a312"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(50.8548,25.205)"
-       id="g310">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path308" />
-    </g>
-  </a>
+  <g
+     transform="translate(35.520664,12.8239)"
+     id="g272">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path270" />
+  </g>
   <g
      transform="translate(7.0680641,17.3239)"
-     id="g316">
+     id="g276">
     <path
        transform="scale(0.004,-0.004)"
        d="m -81,-366 c 0,255 -132,363 -132,366 0,18 132,96 132,366 0,261 -108,489 -108,780 0,189 45,366 177,501 15,15 39,-9 24,-24 -99,-99 -129,-225 -129,-360 0,-255 102,-480 102,-765 0,-186 -45,-363 -174,-498 129,-135 174,-312 174,-498 0,-285 -102,-510 -102,-765 0,-135 30,-261 129,-360 15,-15 -9,-39 -24,-24 -132,135 -177,312 -177,501 0,291 108,519 108,780 z"
        fill="currentColor"
-       id="path314" />
+       id="path274" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/sonate_violon/main/score-untrimed.ly:40:43:44"
-     id="a322"
-     transform="translate(-15.334136,-12.3811)">
-    <g
-       transform="translate(50.8548,36.205)"
-       id="g320">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-         fill="currentColor"
-         id="path318" />
-    </g>
-  </a>
+  <g
+     transform="translate(35.520664,23.8239)"
+     id="g280">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path278" />
+  </g>
   <g
      transform="translate(0.93666406,18.0726)"
-     id="g328">
+     id="g286">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text326"><tspan
-         id="tspan324">Piano</tspan></text>
+       id="text284"><tspan
+         id="tspan282">Piano</tspan></text>
   </g>
 </svg>

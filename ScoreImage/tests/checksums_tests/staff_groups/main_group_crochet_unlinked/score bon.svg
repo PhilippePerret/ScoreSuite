@@ -4,12 +4,11 @@
    width="62.766167mm"
    height="44.609665mm"
    viewBox="0 0 35.717407 25.385361"
-   id="svg382"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg334"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs386" />
+     id="defs338" />
   <style
      type="text/css"
      id="style2"><![CDATA[
@@ -363,81 +362,63 @@ tspan { white-space: pre; }
        fill="currentColor"
        id="rect108" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:23:24"
-     id="a116"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(28.5622,19.1601)"
-       id="g114">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path112" />
-    </g>
-  </a>
+  <g
+     transform="translate(10.437508,6.779)"
+     id="g114">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path112" />
+  </g>
   <g
      transform="translate(5.4375078,4.779)"
-     id="g120">
+     id="g118">
     <path
        transform="scale(0.004,-0.004)"
        d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
        fill="currentColor"
-       id="path118" />
+       id="path116" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:23:24"
-     id="a126"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(28.5622,25.1601)"
-       id="g124">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path122" />
-    </g>
-  </a>
+  <g
+     transform="translate(10.437508,12.779)"
+     id="g122">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path120" />
+  </g>
   <g
      transform="translate(5.4375078,12.779)"
-     id="g130">
+     id="g126">
     <path
        transform="scale(0.004,-0.004)"
        d="m 318,0 c 0,-44 12,-73 45,-73 29,0 57,31 88,31 123,0 229,-89 229,-208 0,-169 -93,-250 -265,-250 -83,0 -152,61 -152,142 0,42 34,77 76,77 42,0 76,-35 76,-77 0,-39 -49,-37 -49,-76 0,-23 24,-38 49,-38 116,0 140,90 140,222 0,106 -12,180 -104,180 -72,0 -119,-71 -119,-149 0,-9 -7,-14 -14,-14 -7,0 -13,5 -13,14 0,76 -31,147 -84,200 v -471 c 0,-6 -4,-10 -10,-10 h -21 c -6,0 -10,4 -10,10 v 980 c 0,6 4,10 10,10 h 21 c 6,0 10,-4 10,-10 V 19 c 53,53 84,124 84,200 0,9 6,14 13,14 7,0 14,-5 14,-14 0,-78 47,-149 119,-149 92,0 104,74 104,180 0,132 -24,222 -140,222 -25,0 -49,-15 -49,-38 0,-39 49,-37 49,-76 0,-42 -34,-77 -76,-77 -42,0 -76,35 -76,77 0,81 69,142 152,142 172,0 265,-81 265,-250 C 680,131 574,42 451,42 420,42 392,73 363,73 330,73 318,44 318,0 Z M 129,-500 H 10 c -6,0 -10,4 -10,10 v 980 c 0,6 4,10 10,10 h 119 c 6,0 10,-4 10,-10 v -980 c 0,-6 -4,-10 -10,-10 z"
        fill="currentColor"
+       id="path124" />
+  </g>
+  <g
+     transform="translate(10.437508,22.279)"
+     id="g130">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
        id="path128" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:23:24"
-     id="a136"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(28.5622,34.6601)"
-       id="g134">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path132" />
-    </g>
-  </a>
   <g
      transform="translate(5.4375078,20.779)"
-     id="g140">
+     id="g134">
     <path
        transform="scale(0.004,-0.004)"
        d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
        fill="currentColor"
-       id="path138" />
+       id="path132" />
   </g>
   <g
      transform="translate(11.676708,3.779)"
-     id="g144">
+     id="g138">
     <rect
        x="-0.064999998"
        y="-0.5"
@@ -445,11 +426,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect142" />
+       id="rect136" />
   </g>
   <g
      transform="translate(10.502508,12.779)"
-     id="g148">
+     id="g142">
     <rect
        x="-0.064999998"
        y="0.18610001"
@@ -457,11 +438,11 @@ tspan { white-space: pre; }
        height="3.1472001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect146" />
+       id="rect140" />
   </g>
   <g
      transform="translate(11.676708,21.779)"
-     id="g152">
+     id="g146">
     <rect
        x="-0.064999998"
        y="-3"
@@ -469,56 +450,38 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect150" />
+       id="rect144" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:26:27"
-     id="a158"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(31.5705,18.6601)"
-       id="g156">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path154" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:26:27"
-     id="a164"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(31.5705,24.6601)"
-       id="g162">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path160" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:27:28"
-     id="a170"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(31.5705,34.1601)"
-       id="g168">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path166" />
-    </g>
-  </a>
+  <g
+     transform="translate(13.445808,6.279)"
+     id="g150">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path148" />
+  </g>
+  <g
+     transform="translate(13.445808,12.279)"
+     id="g154">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path152" />
+  </g>
+  <g
+     transform="translate(13.445808,21.779)"
+     id="g158">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path156" />
+  </g>
   <g
      transform="translate(14.685108,3.779)"
-     id="g174">
+     id="g162">
     <rect
        x="-0.064999998"
        y="-1"
@@ -526,11 +489,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect172" />
+       id="rect160" />
   </g>
   <g
      transform="translate(13.510808,12.779)"
-     id="g178">
+     id="g166">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -538,11 +501,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect176" />
+       id="rect164" />
   </g>
   <g
      transform="translate(13.510808,21.779)"
-     id="g182">
+     id="g170">
     <rect
        x="-0.064999998"
        y="0.18610001"
@@ -550,56 +513,38 @@ tspan { white-space: pre; }
        height="3.1472001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect180" />
+       id="rect168" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:28:29"
-     id="a188"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(34.5728,18.1601)"
-       id="g186">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path184" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:28:29"
-     id="a194"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(34.5728,24.1601)"
-       id="g192">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path190" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:29:30"
-     id="a200"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(34.5728,33.6601)"
-       id="g198">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path196" />
-    </g>
-  </a>
+  <g
+     transform="translate(16.448108,5.779)"
+     id="g174">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path172" />
+  </g>
+  <g
+     transform="translate(16.448108,11.779)"
+     id="g178">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path176" />
+  </g>
+  <g
+     transform="translate(16.448108,21.279)"
+     id="g182">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path180" />
+  </g>
   <g
      transform="translate(17.687308,3.779)"
-     id="g204">
+     id="g186">
     <rect
        x="-0.064999998"
        y="-1.5"
@@ -607,11 +552,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect202" />
+       id="rect184" />
   </g>
   <g
      transform="translate(16.513108,12.779)"
-     id="g208">
+     id="g190">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -619,11 +564,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect206" />
+       id="rect188" />
   </g>
   <g
      transform="translate(16.513108,21.779)"
-     id="g212">
+     id="g194">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -631,56 +576,38 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect210" />
+       id="rect192" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:30:31"
-     id="a218"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(37.5751,17.6601)"
-       id="g216">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path214" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:30:31"
-     id="a224"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(37.5751,23.6601)"
-       id="g222">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path220" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:31:32"
-     id="a230"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(37.5751,33.1601)"
-       id="g228">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path226" />
-    </g>
-  </a>
+  <g
+     transform="translate(19.450408,5.279)"
+     id="g198">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path196" />
+  </g>
+  <g
+     transform="translate(19.450408,11.279)"
+     id="g202">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path200" />
+  </g>
+  <g
+     transform="translate(19.450408,20.779)"
+     id="g206">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path204" />
+  </g>
   <g
      transform="translate(20.689608,3.779)"
-     id="g234">
+     id="g210">
     <rect
        x="-0.064999998"
        y="-2"
@@ -688,11 +615,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect232" />
+       id="rect208" />
   </g>
   <g
      transform="translate(19.515408,12.779)"
-     id="g238">
+     id="g214">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -700,11 +627,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect236" />
+       id="rect212" />
   </g>
   <g
      transform="translate(19.515408,21.779)"
-     id="g242">
+     id="g218">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -712,67 +639,49 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect240" />
+       id="rect216" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:49:50"
-     id="a248"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(41.704,19.1601)"
-       id="g246">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path244" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:49:50"
-     id="a254"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(41.704,25.1601)"
-       id="g252">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path250" />
-    </g>
-  </a>
+  <g
+     transform="translate(23.579308,6.779)"
+     id="g222">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path220" />
+  </g>
+  <g
+     transform="translate(23.579308,12.779)"
+     id="g226">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path224" />
+  </g>
   <g
      transform="translate(-0.07949219,22.5262)"
-     id="g260">
+     id="g232">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text258"><tspan
-         id="tspan256">Cb.</tspan></text>
+       id="text230"><tspan
+         id="tspan228">Cb.</tspan></text>
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:50:51"
-     id="a266"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(41.704,34.6601)"
-       id="g264">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path262" />
-    </g>
-  </a>
+  <g
+     transform="translate(23.579308,22.279)"
+     id="g236">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path234" />
+  </g>
   <g
      transform="translate(24.818508,3.779)"
-     id="g270">
+     id="g240">
     <rect
        x="-0.064999998"
        y="-0.5"
@@ -780,11 +689,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect268" />
+       id="rect238" />
   </g>
   <g
      transform="translate(23.644308,12.779)"
-     id="g274">
+     id="g244">
     <rect
        x="-0.064999998"
        y="0.18610001"
@@ -792,11 +701,11 @@ tspan { white-space: pre; }
        height="3.1472001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect272" />
+       id="rect242" />
   </g>
   <g
      transform="translate(24.818508,21.779)"
-     id="g278">
+     id="g248">
     <rect
        x="-0.064999998"
        y="-3"
@@ -804,56 +713,38 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect276" />
+       id="rect246" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:52:53"
-     id="a284"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(44.7123,18.6601)"
-       id="g282">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path280" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:52:53"
-     id="a290"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(44.7123,24.6601)"
-       id="g288">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path286" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:54:55"
-     id="a296"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(44.7123,34.1601)"
-       id="g294">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path292" />
-    </g>
-  </a>
+  <g
+     transform="translate(26.587608,6.279)"
+     id="g252">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path250" />
+  </g>
+  <g
+     transform="translate(26.587608,12.279)"
+     id="g256">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path254" />
+  </g>
+  <g
+     transform="translate(26.587608,21.779)"
+     id="g260">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path258" />
+  </g>
   <g
      transform="translate(27.826808,3.779)"
-     id="g300">
+     id="g264">
     <rect
        x="-0.064999998"
        y="-1"
@@ -861,11 +752,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect298" />
+       id="rect262" />
   </g>
   <g
      transform="translate(26.652608,12.779)"
-     id="g304">
+     id="g268">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -873,11 +764,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect302" />
+       id="rect266" />
   </g>
   <g
      transform="translate(26.652608,21.779)"
-     id="g308">
+     id="g272">
     <rect
        x="-0.064999998"
        y="0.18610001"
@@ -885,56 +776,38 @@ tspan { white-space: pre; }
        height="3.1472001"
        ry="0.039999999"
        fill="currentColor"
-       id="rect306" />
+       id="rect270" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:54:55"
-     id="a314"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(47.7146,18.1601)"
-       id="g312">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path310" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:54:55"
-     id="a320"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(47.7146,24.1601)"
-       id="g318">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path316" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:56:57"
-     id="a326"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(47.7146,33.6601)"
-       id="g324">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path322" />
-    </g>
-  </a>
+  <g
+     transform="translate(29.589908,5.779)"
+     id="g276">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path274" />
+  </g>
+  <g
+     transform="translate(29.589908,11.779)"
+     id="g280">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path278" />
+  </g>
+  <g
+     transform="translate(29.589908,21.279)"
+     id="g284">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path282" />
+  </g>
   <g
      transform="translate(30.829108,3.779)"
-     id="g330">
+     id="g288">
     <rect
        x="-0.064999998"
        y="-1.5"
@@ -942,11 +815,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect328" />
+       id="rect286" />
   </g>
   <g
      transform="translate(29.654908,12.779)"
-     id="g334">
+     id="g292">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -954,11 +827,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect332" />
+       id="rect290" />
   </g>
   <g
      transform="translate(29.654908,21.779)"
-     id="g338">
+     id="g296">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -966,56 +839,38 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect336" />
+       id="rect294" />
   </g>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:22:56:57"
-     id="a344"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(50.7168,17.6601)"
-       id="g342">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path340" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:29:56:57"
-     id="a350"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(50.7168,23.6601)"
-       id="g348">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path346" />
-    </g>
-  </a>
-  <a
-     style="color:inherit"
-     xlink:href="textedit:///Users/philippeperret/Programmes/ScoreSuite/ScoreImage/tests/checksums_tests/staff_groups/main_group_crochet_unlinked/main/score-untrimed.ly:36:58:59"
-     id="a356"
-     transform="translate(-18.124692,-12.3811)">
-    <g
-       transform="translate(50.7168,33.1601)"
-       id="g354">
-      <path
-         transform="scale(0.004,-0.004)"
-         d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-         fill="currentColor"
-         id="path352" />
-    </g>
-  </a>
+  <g
+     transform="translate(32.592108,5.279)"
+     id="g300">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path298" />
+  </g>
+  <g
+     transform="translate(32.592108,11.279)"
+     id="g304">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path302" />
+  </g>
+  <g
+     transform="translate(32.592108,20.779)"
+     id="g308">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path306" />
+  </g>
   <g
      transform="translate(33.831308,3.779)"
-     id="g360">
+     id="g312">
     <rect
        x="-0.064999998"
        y="-2"
@@ -1023,11 +878,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect358" />
+       id="rect310" />
   </g>
   <g
      transform="translate(32.657108,12.779)"
-     id="g364">
+     id="g316">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -1035,11 +890,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect362" />
+       id="rect314" />
   </g>
   <g
      transform="translate(32.657108,21.779)"
-     id="g368">
+     id="g320">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -1047,28 +902,28 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect366" />
+       id="rect318" />
   </g>
   <g
      transform="translate(0.15950781,13.4907)"
-     id="g374">
+     id="g326">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text372"><tspan
-         id="tspan370">Va.</tspan></text>
+       id="text324"><tspan
+         id="tspan322">Va.</tspan></text>
   </g>
   <g
      transform="translate(0.26190781,4.5262)"
-     id="g380">
+     id="g332">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text378"><tspan
-         id="tspan376">Vl.</tspan></text>
+       id="text330"><tspan
+         id="tspan328">Vl.</tspan></text>
   </g>
 </svg>
