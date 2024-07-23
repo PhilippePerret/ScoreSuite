@@ -40,7 +40,6 @@ class Statistiques
 
   def initialize(music_score, lines)
     @music_score = music_score
-    # puts "music score : #{music_score.inspect}"
     @lines = lines
   end
 
@@ -48,45 +47,36 @@ class Statistiques
 
   def tempo_noire
     @tempo_noire ||= begin
-      if tempo
-        if tempo.end_with?('T')
-          tempo[0...-1]
-        else
-          tempo
-        end
+      if tempo.end_with?('T')
+        tempo[0...-1]
+      else
+        tempo
       end
     end
   end
 
   def duree_noire
     @duree_noire ||= begin
-      if tempo
-        durn = 60.0 / tempo_noire.to_i
-        durn = (2.0 / 3) * duree_noire if is_ternaire
-        durn
-      end
+      durn = 60.0 / tempo_noire.to_i
+      durn = (2.0 / 3) * duree_noire if is_ternaire
+      durn
     end
   end
 
   def is_ternaire
     @is_ternaire ||= begin
-      if tempo
-        tempo.end_with?('T')
-      end
+      tempo.end_with?('T')
     end
   end
+
 
   def produce
     # puts "à partir de #{lines}"
     mfile = music_score.mus_file
 
-    # Le tempo est-il défini ? Sinon, le demander
-    @tempo = music_score.options[:tempo] || begin
-      puts "Je ferai des statistiques sans durée exacte, car le tempo n'est pas défini.".jaune
-      puts "Pour le définir, ajouter l'option -t/--tempo=<val>".jaune
-      puts "<val> est le tempo à la noire.".jaune
-      puts "Ajouter 'T' collé au tempo pour une métrique ternaire.\nPar exemple -t=60T".jaune
-    end
+    # Le tempo est-il défini ? Sinon interrompre le programme
+    # pour le demander
+    tempo || return
     # puts "Tempo : #{tempo.inspect}"
 
     # 
@@ -95,13 +85,13 @@ class Statistiques
     #   2 : par durée
     #   3 : au format CSV
     # 
-    fpath_not = File.join(mfile.folder, "#{mfile.affixe}-stats-per-note.txt")
+    fpath_not = File.join(folder, "#{mfile.affixe}-stats-per-note.txt")
     File.delete(fpath_not) if File.exist?(fpath_not)
-    fpath_dur = File.join(mfile.folder, "#{mfile.affixe}-stats-per-duree.txt")
+    fpath_dur = File.join(folder, "#{mfile.affixe}-stats-per-duree.txt")
     File.delete(fpath_dur) if File.exist?(fpath_dur)
-    fpath_cpt = File.join(mfile.folder, "#{mfile.affixe}-stats-per-count.txt")
+    fpath_cpt = File.join(folder, "#{mfile.affixe}-stats-per-count.txt")
     File.delete(fpath_cpt) if File.exist?(fpath_cpt)
-    fpath_csv = File.join(mfile.folder, "#{mfile.affixe}-stats.csv")
+    fpath_csv = File.join(folder, "#{mfile.affixe}-stats.csv")
     File.delete(fpath_csv) if File.exist?(fpath_csv)
 
     sep = ' ' * 4
@@ -124,19 +114,15 @@ class Statistiques
     total_duree = table_structured.sum(&:duration)
 
     # 
-    # Si le tempo est défini, on indique la durée en secondes
+    # On indique la durée en secondes
     # 
-    if @tempo
+    # puts "duree_noire: #{duree_noire.inspect}"
+    SttNoteStat.duree_noire = duree_noire
 
-      # puts "duree_noire: #{duree_noire.inspect}"
-      SttNoteStat.duree_noire = duree_noire
-
-      total_duree = total_duree * duree_noire
-      mns = total_duree.to_i / 60
-      scs = total_duree.to_i % 60
-      total_duree = "#{mns} mns #{scs}s"
-      
-    end
+    total_duree = total_duree * duree_noire
+    mns = total_duree.to_i / 60
+    scs = total_duree.to_i % 60
+    total_duree = "#{mns} mns #{scs}s"
 
     #
     # Tableau classé par durée
@@ -183,6 +169,29 @@ class Statistiques
     end
   end
 
+  def tempo
+    @tempo ||= begin
+      music_score.options[:tempo] || CLI.options[:tempo] || begin
+        puts <<~TEXT.orange
+        Pour effectuer les statistiques, j’ai besoin de connaitre le tempo
+        (moyen) de la pièce.
+        Il peut être défini dans le fichier .mus lui-même, à l’aide de
+        l’option ’--tempo <valeur>’ ou en ligne de commande à l’aide du
+        code ’-t/--tempo=<valeur>’.
+
+        <valeur> est le tempo à la noire (par exemple, avec 60, une noire
+        aura une durée d’une seconde).
+
+        Pour les RYTHMES TERNAIRE, ajouter 'T' au tempo.
+        Par exemple ’-t=60T’ ou ’--tempo=60T’ ou ’--tempo 60T’ dans le 
+        fichier .mus signifiera un tempo de 60 à la noire pointée (quand
+        on est en 6/8 par exemple).
+        TEXT
+        # exit 12
+      end
+    end
+  end
+
   ##
   #
   def table_structured
@@ -204,11 +213,11 @@ class Statistiques
       duree_courante      = duree_noire
       duree_courante_str  = '4'
       purified.each do |line|
-        # puts "line: #{line.inspect}"
+        puts "line: #{line.inspect}"
         line.split(' ').select do |note|
           note.match?(/^[a-grs]/)
         end.each do |note|
-          # puts "Traitement de note: #{note.inspect}"
+          puts "Traitement de note: #{note.inspect}"
 
           #
           # Est-ce une note liée ?
@@ -294,6 +303,7 @@ class Statistiques
   def purified
     @purified ||= begin
       lines.map do |line|
+        puts "Ligne initiale: #{line.inspect}".jaune
         line = first_purify_line(line)
         line = duree_in_xiolet(line)
         # puts "line après duree_in_xiolet : #{line}"
@@ -303,7 +313,7 @@ class Statistiques
         if line.match?('4D31')
           raise "PROBLÈME DE 4D31 dans #{line}"
         end
-        # puts "line après duree_in_accords : #{line}"
+        puts "line après duree_in_accords : #{line}".bleu
         line
       end
     end
@@ -315,13 +325,15 @@ class Statistiques
     line = line.strip
     line = line.gsub(/[\',\"\-\(\)\!\?]/,'')
     line = line.gsub(/(<<|>>| { )/,'')
-    line = line.gsub(/\\(stemUp|stemDown|stemNeutral|down|up|fermata)/,'')
+    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|down|up|fermata)/,'')
     line = line.gsub(/  +/,' ').strip
   end
 
   def purify_line(line)
     line = line.strip
     line = line.gsub(/(fixed|relative) [a-g]/,'')
+    line = line.gsub(/tune [a-g]/,'')
+    line = line.gsub(/transpose #{REG_NOTE} #{REG_NOTE}/,'')
     line = line.gsub(/\-[.]/,'')
     line = line.gsub(/[\{\}\'\",\(\)\-]/,'')
     line = line.gsub(/\\/,'')
@@ -419,6 +431,12 @@ class Statistiques
     when 128  then 1.0 / 32
     end
   end
+
+  def folder
+    @folder ||= ensure_folder(File.join(music_score.mus_file.folder,'stats'))
+  end
+
+  REG_NOTE = /[a-g]([,']+)?(isis|eses|is|es)?/.freeze
 
 end #/class Statistiques
 end #/class MusicScore

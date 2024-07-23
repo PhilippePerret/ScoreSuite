@@ -18,3 +18,13 @@ def to_sym
 end
 
 end
+
+module Kernel
+
+  def ensure_folder(folder)
+    return folder if File.exist?(folder)
+    FileUtils.mkdir(folder)
+    return folder
+  end
+
+end

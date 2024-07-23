@@ -103,6 +103,7 @@ def proceed(params = nil)
 
   self.class.options.merge!(options)
 
+
   # Débug
   debug_self_attributes if verbose?
 
@@ -112,11 +113,8 @@ def proceed(params = nil)
   parse_expression
 
   if verbose?
-    puts "CODE FINAL: \n#{parser.all_blocks.collect{|bc|bc.lines_code.inspect}.join("\n")}"
+    puts "CODE FINAL: \n#{parser.all_blocks.map{|bc|bc.lines_code.inspect}.join("\n")}"
   end
-
-  # puts "parser = #{parser.inspect}"
-  # return if options['only-stats']
 
 
   #

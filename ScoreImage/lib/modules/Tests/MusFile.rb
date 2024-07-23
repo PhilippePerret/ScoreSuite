@@ -92,8 +92,12 @@ class MusFile
     `#{build_command} 2>&1`
   end
 
+  # Commande
+  # 
+  # @notes
+  #   
   def build_command
-    @build_command ||= 'cd "%s" && score-image "%s"'.freeze % [folder,File.join(folder,filename)]
+    @build_command ||= 'cd "%s" && score-image --stats "%s"'.freeze % [folder,File.join(folder,filename)]
   end
 
   def open

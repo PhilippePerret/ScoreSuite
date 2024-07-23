@@ -37,7 +37,7 @@ attr_reader :options
 #
 def compose(code, options)
   rationnalise_options(options)
-  sep = "\n% --- %\n" # délimiteur de partie
+  sep = "\n% --- %\n".freeze # délimiteur de partie
   beautify_code(header + sep + body(code, options[:system]) + sep + footer)
 end
 

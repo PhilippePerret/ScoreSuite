@@ -74,7 +74,7 @@ mes12<->15
 Pour produire l’image issue de ce code, on a utilisé la commande **`score-image`** en ligne de commande avec un *heredoc*. Comme ceci :
 
 ~~~
-score-image << MUS
+> score-image << MUS
 --barres
 --time
 --piano
@@ -206,7 +206,13 @@ Le programme permet aussi de faire des statistiques sur les notes. Il suffit :
 * d’ajouter l’option `-s`/`--stats` à la ligne de commande,
 * de definir l’option `-t`/`--tempo=<val>[T]` pour calculer les durées réelles.
 
-Le tempo doit se mettre toujours en valeur de noire. Si le tempo est écrit dans une autre valeur (blanche, croche…), alors faire la transposition (diviser par deux si c’est en croche, multiplier par deux si c’est en blanche).
+Le tempo peut s’ajouter aussi directement dans le fichier **`.mus`** avec l’option : 
+
+~~~
+--tempo 60T
+~~~
+
+Le tempo doit toujours se mettre en valeur de noire (même si le tempo n’est pas à la noire). Si le tempo est écrit dans une autre valeur (blanche, croche…), alors faire la transposition (diviser par deux si c’est en croche, multiplier par deux si c’est en blanche).
 
 On ajoute “**T**” au tempo lorsque c’est un rythtme ternaire (on met alors en tempo la valeur de la noire pointée).
 
@@ -252,6 +258,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Nommage de la portée                                         | **`--staves_names <nom>`**                                   | Permet, notamment pour le piano, de préciser qu’il faut indiquer le nom (simplement en indiquant `--staves_names Piano`) |
 | Taille de la portée                                          | **`--staff_size <x>`**                                       | Définit la taille de la portée (et de tous ses éléments). La valeur par défaut est **20**. |
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
+| Tempo pour statistques                                       | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
 |                                                              |                                                              |                                                              |
 
 ---

@@ -1,8 +1,8 @@
 # Test permettant de tester les instruments transpositeurs.
---keep
 --barres
---staves_names Sax Eb, Cor A., Cl.(Bb), Fl.
+--staves_names Sax E_b_, Cor A., Cl.(B_b_), Fl.
 --staves_keys  G, G, G, G
+--tempo 60
 
 fl=
 e’1

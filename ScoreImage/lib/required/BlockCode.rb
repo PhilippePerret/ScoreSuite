@@ -159,6 +159,10 @@ def parse
     @lines_code << @lines_code[0]
   end
 
+  if options['tempo']
+    music_score.options.merge!(tempo: options['tempo'])
+  end
+
   # On doit maintenant remplacer les variables dans chaque ligne
   # ainsi que quelques corrections
   # 
@@ -171,7 +175,7 @@ def parse
   # notes, les expressions Lilypond.
   @lines_code = lines
 
-  if music_score.options[:stats] && @lines_code.any?
+  if (music_score.options[:stats]||CLI.options[:stats]) && @lines_code.any?
     require_relative 'Statistiques'
     MusicScore::Statistiques.new(music_score, @lines_code).produce
   end
