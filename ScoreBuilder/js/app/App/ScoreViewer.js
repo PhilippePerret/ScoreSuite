@@ -47,9 +47,20 @@ class ScoreViewer {
         vignette.unset()
       }
     }
-    // On affiche la dernière (seulement si elle a été envoyée — en
-    // cas de problème, il se peut qu’elle ne le soit pas)
-    lastFilledVignette && lastFilledVignette.affiche()
+    /**
+    * Affichage de la vignette courante
+    * Soit la dernière si c’est un premier chargement et qu’il 
+    * existe une dernière vignette, soit la vignette courante, c’est-
+    * à-dire la vignette affichée au moment du rechargement.
+    * 
+    */
+    if ( this.currentVignette ) {
+      this.currentVignette.affiche()
+    } else if ( lastFilledVignette ) {
+      lastFilledVignette.affiche()
+    } else {
+      // Sinon on ne fait rien
+    }
   }
 
 
