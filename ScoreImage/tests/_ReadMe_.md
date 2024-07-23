@@ -56,3 +56,13 @@ Quel que soit le test :
 * en cas de succès (donc d’erreur…)
   * modifier le code de l’application jusqu’à ce qu’il produise l’erreur attendue,
   * poursuivre avec la procédure ci-dessus.
+
+## Statistiques
+
+En plus de l’image produite, les tests s’assurent aussi que les statistiques sur les musiques (nombre de notes employées et durées totales) soient valides. 
+
+Les résultats sont placés dans le dossier `stats` de chaque test. Le fichier **`GOOD-STATS.csv`** contient les informations attendues, qui ont été validées (et *doivent être* validées) manuellement pour chaque test.
+
+La première fois qu’on lance le test, le fichier `stats/GOOD-STATS.csv` est produit et il faut vérifier s’il correspond à la réalité de la partition, en tenant compte de tous les cas possibles.
+
+Contrairement aux images, lancer les tests avec l’option **`-d`** ne va pas détruire ce fichier, car cela détruirait toutes les vérifications qui ont été faites.

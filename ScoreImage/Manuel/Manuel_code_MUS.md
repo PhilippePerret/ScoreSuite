@@ -1358,3 +1358,26 @@ contexts:
 
 ~~~
 
+---
+
+### Tests
+
+***Score-Image*** est testée par des comparaisons entre les images attendues et les images produites, pour être sûr d’un résultat optimum. Cf. le dossier `tests/checksums_tests` qui contient tous les fichiers.
+
+Pour lancer tous les tests :
+
+~~~
+score-image tests _
+~~~
+
+Pour filtrer les tests à jouer :
+
+~~~
+score-image tests /<filtre régulier>/
+~~~
+
+
+
+En plus de l’image produite, les tests s’assurent aussi que toutes les statistiques soient correctes, ce qui permet un tour d’horizon parfait.
+
+Pour de plus amples informations, lire le fichier `tests/_ReadMe_.md`

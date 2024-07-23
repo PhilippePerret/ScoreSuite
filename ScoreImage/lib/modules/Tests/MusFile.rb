@@ -38,7 +38,10 @@ class MusFile
   def test
     if CLI.option(:d)
       File.exist?(checksum_path) && File.delete(checksum_path)
-      File.exist?(stats_compare_path) && File.delete(stats_compare_path)
+      # NON
+      # File.exist?(stats_compare_path) && File.delete(stats_compare_path)
+      # <= ça détruirait toutes les vérifications faites, qui sont
+      # assez fastidieuses
     end
     resultat_built = build_svg_score
     if negative?
