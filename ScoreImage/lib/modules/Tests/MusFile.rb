@@ -29,11 +29,16 @@ class MusFile
   #   - le construire avec ’score-image’
   #   - calculer le checksum du SVG résultat
   #   - le comparer avec le checksum attendu
+  #   - produire les statistiques et les comparer avec les
+  #     statistiques validées
+  # 
   # En cas de test négatif (qui doit produire une erreur) il faut
   # trouver le message d’erreur (code) dans le retour.
+  # 
   def test
-    if CLI.option(:d) && File.exist?(checksum_path)
-      File.delete(checksum_path)
+    if CLI.option(:d)
+      File.exist?(checksum_path) && File.delete(checksum_path)
+      File.exist?(stats_compare_path) && File.delete(stats_compare_path)
     end
     resultat_built = build_svg_score
     if negative?
@@ -50,6 +55,13 @@ class MusFile
       # 
       if resultat_built.match?(EXTRAIT_MESSAGE_SUCCES)
         @ok = compare_with_checksum # => true, false, nil
+        if @ok === true
+          @ok = statistiques_ok? # => true, false, nil
+          if @ok === nil
+            display_explication_pending_stats
+            stats_file_to_good_file # on produit GOOD-STATS.csv
+          end
+        end
       else
         @error_msg = resultat_built 
         @ok = false
@@ -97,7 +109,7 @@ class MusFile
   # @notes
   #   
   def build_command
-    @build_command ||= 'cd "%s" && score-image --stats "%s"'.freeze % [folder,File.join(folder,filename)]
+    @build_command ||= 'cd "%s" && score-image --stats --tempo=60 "%s"'.freeze % [folder,File.join(folder,filename)]
   end
 
   def open
@@ -116,11 +128,18 @@ class MusFile
     if negative? && @error_msg
       @error_msg
     else
-      "La construction de #{relative_path} " + 
+      "La construction de ’#{relative_path}’ " + 
       if not(@error_msg.nil?)
         "a retourné le message d’erreur suivant :\n#{@error_msg}"
       elsif not(checksums_same?)
         "n’est pas conforme aux attentes."
+      elsif not(statistics_same?)
+        <<~TEXT.strip
+        produit la bonne image mais 
+        pas les STATISTIQUES attendues.
+        Comparer les fichiers ’GOOD-STATS.csv’ et ’main-stats.csv’ 
+        du dossier ’stats’
+        TEXT
       else
         "n’est pas bon pour une raison inconnue."
       end
@@ -129,6 +148,7 @@ class MusFile
 
   def display_explication_pending
     puts <<~TEXT.bleu
+
     [Pending] #{relative_path}
     Si l’image #{relative_path}/#{svg_name} ne correspond 
     pas aux attentes, détruire le fichier CHECKSUM. Dans le cas contraire, 
@@ -138,6 +158,19 @@ class MusFile
     (note : pour forcer la destruction du CHECKSUM à chaque — pendant la
     phase de mise au point du test — ajouter l’option ’-d’ comme ’delete’)
     TEXT
+  end
+
+  def display_explication_pending_stats
+    puts <<~TEXT.bleu
+
+    [Pending] #{relative_path}
+    Si les statistiques pour l’image #{relative_path}/#{svg_name} ne 
+    sont pas valides :
+      1. détruire le fichier : #{relative_path}/stats/GOOD-STATS.csv
+      2. corriger le code de Score-Image pour que ça soit bon
+      3. relancer le test pour vérifier.
+    TEXT
+    
   end
 
   # === Functional Methods ===
@@ -190,7 +223,6 @@ class MusFile
   # === Checksum Methods ===
 
 
-
   def checksum_compare
     @checksum_compare ||= begin
       if File.exist?(checksum_path)
@@ -215,6 +247,61 @@ class MusFile
     IO.write(checksum_path, checksum_tested)
   end
 
+
+
+  # === Statistiques Methods === #
+
+  # = main =
+  # 
+  # Méthode principale qui checke les statistiques
+  # 
+  # @return
+  #   true    Les statistiques correspondent
+  #   false   Les statistiques ne correspondent pas
+  #   nil     Les statistiques n’ont pas encore de références
+  def statistiques_ok?
+    return nil if not(File.exist?(stats_compare_path))
+    return statistics_same?
+  end
+
+  def statistics_same?
+    :TRUE == @statistiques_are_the_same ||= true_or_false(stats_compare == stats_tested)
+  end
+
+  def stats_compare
+    @stats_compare ||= begin
+      if File.exist?(stats_compare_path)
+        IO.read(stats_compare_path).strip.freeze
+      else
+        :no_stats_compare
+      end
+    end
+  end
+
+  def stats_tested
+    @stats_tested ||= begin
+      if File.exist?(stats_tested_path)
+        IO.read(stats_tested_path).strip.freeze
+      else
+        :no_stats_tested
+      end
+    end
+  end
+
+  # La première fois, quand ’GOOD-STATS.csv’ n’existe pas, on prend
+  # ’main-stats.csv’ pour le construire (en disant de le détruire si
+  # les statistiques ne correspondent pas)
+  def stats_file_to_good_file
+    FileUtils.move(stats_tested_path, stats_compare_path)
+  end
+
+  def stats_compare_path
+    @stats_compare_path ||= File.join(folder,'stats','GOOD-STATS.csv')
+  end
+
+  def stats_tested_path
+    @stats_tested_path ||= File.join(folder,'stats','main-stats.csv')
+  end
 
 
   # === Predicate Methods ===
@@ -256,7 +343,6 @@ class MusFile
   def checksum?
     File.exist?(checksum_path)
   end
-
 
 
   # === Path Methods ===

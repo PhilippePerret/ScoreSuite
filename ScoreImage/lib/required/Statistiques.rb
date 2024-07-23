@@ -213,11 +213,11 @@ class Statistiques
       duree_courante      = duree_noire
       duree_courante_str  = '4'
       purified.each do |line|
-        puts "line: #{line.inspect}"
+        # puts "line: #{line.inspect}"
         line.split(' ').select do |note|
           note.match?(/^[a-grs]/)
         end.each do |note|
-          puts "Traitement de note: #{note.inspect}"
+          # puts "Traitement de note: #{note.inspect}"
 
           #
           # Est-ce une note liée ?
@@ -303,7 +303,11 @@ class Statistiques
   def purified
     @purified ||= begin
       lines.map do |line|
-        puts "Ligne initiale: #{line.inspect}".jaune
+
+        # Débug
+        # puts "Ligne initiale: #{line.inspect}".jaune
+        # /Débug
+        
         line = first_purify_line(line)
         line = duree_in_xiolet(line)
         # puts "line après duree_in_xiolet : #{line}"
@@ -313,7 +317,11 @@ class Statistiques
         if line.match?('4D31')
           raise "PROBLÈME DE 4D31 dans #{line}"
         end
-        puts "line après duree_in_accords : #{line}".bleu
+        
+        # Débug
+        # puts "line après épuration : #{line}".bleu
+        # /Débug
+        
         line
       end
     end
