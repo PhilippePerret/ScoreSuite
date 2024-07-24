@@ -212,12 +212,21 @@ class Statistiques
       stats = {}
       duree_courante      = duree_noire
       duree_courante_str  = '4'
+
+      # # Débug
+      # puts "Lines: #{lines}"
+      # puts "Le texte purifié : #{purified.inspect}".bleu
+      # # /Débug
+
       purified.each do |line|
         # puts "line: #{line.inspect}"
         line.split(' ').select do |note|
           note.match?(/^[a-grs]/)
         end.each do |note|
+
+          # # Débug
           # puts "Traitement de note: #{note.inspect}"
+          # # /Débug
 
           # Est-ce vraiment une note ?
           # On peut le savoir en testant les deux premières lettres :
@@ -229,7 +238,7 @@ class Statistiques
           #   - les éventuelles indications d’octaves ont déjà été
           #     retirées.
           # 
-          if note.length > 1 && note[1].match?(/[^ei0-9]/)
+          if note.length > 1 && note[1].match?(/[a-z]/) && note[1].match?(/[^ei]/)
             puts "#{note.inspect} ne semble pas être note valide… (je la passe)".rouge
             next
           end
@@ -317,6 +326,7 @@ class Statistiques
   # affaire à un triolet ou autre.
   def purified
     @purified ||= begin
+      duree_courante = 4
       lines.map do |line|
 
         # Débug
@@ -327,8 +337,8 @@ class Statistiques
         line = duree_in_xiolet(line)
         # puts "line après duree_in_xiolet : #{line}"
         line = purify_line(line)
-        # puts "line après purify_line : #{line}"
-        line = duree_in_accords(line)
+        # puts "line après purify_line : #{line}".jaune
+        line = duree_in_accords(line, duree_courante)
         if line.match?('4D31')
           raise "PROBLÈME DE 4D31 dans #{line}"
         end
@@ -348,27 +358,32 @@ class Statistiques
     line = line.strip
     line = line.gsub(/[\',\"\-\(\)\!\?]/,'')
     line = line.gsub(/(<<|>>| { )/,'')
-    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata|bar)/,'')
+    line = line.gsub(/\\(alternative|repeat|slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata|bar)/,'')
     line = line.gsub(/  +/,' ').strip
   end
 
   def purify_line(line)
     line = line.strip
+    line = line.gsub(/volta [0-9]+/,'')
     line = line.gsub(/(fixed|relative) [a-g]/,'')
     line = line.gsub(/tune [a-g]/,'')
     line = line.gsub(/transpose #{REG_NOTE} #{REG_NOTE}/,'')
     line = line.gsub(/\-[.]/,'')
-    line = line.gsub(/[\{\}\'\",\(\)\-]/,'')
+    line = line.gsub(/[\{\}\'\",\(\)\-_\^]/,'')
     line = line.gsub(/\\/,'')
     line = line.gsub(/  +/,' ')
     line.strip
   end
 
   # Prends '<a c e>8..' et remplace par 'a8.. c8.. e8..'
-  def duree_in_accords(line)
+  def duree_in_accords(line, duree_courante = nil)
     return line unless line.match?('<')
     # puts "line = #{line.inspect}"
-    duree_courante = 4
+
+    # On doit trouver la première durée
+    duree_courante = line.match(/([0-9]+)/)[1]
+    # puts "Durée courante trouvée : #{duree_courante.inspect}".bleu
+    duree_courante ||= 4
     # On corrige les problèmes d'accords collés
     line.gsub(/>([0-8]+\.*)?</) do
       '>' + $1.to_s + ' <'
@@ -411,12 +426,15 @@ class Statistiques
     # puts "line pour xiolet: #{line}"
     line.gsub(/([0-9]+)\{(.*?)\}/) do |tout|
       diviseur  = $1.freeze
-      motif     = $2.freeze
-      if motif.match?(/<(.*?)>/)
-        # <= Il y a des accords dans ce xiolet
-        # => Il faut le traiter
-        motif = duree_in_accords(motif)
-      end
+      motif_ini = $2.freeze
+      motif =
+        if motif_ini.match?(/<(.*?)>/)
+          # <= Il y a des accords dans ce xiolet
+          # => Il faut le traiter
+          duree_in_accords(motif_ini)
+        else
+          motif_ini.dup
+        end
       notes     = motif.split(' ')
       # La durée à appliquer aux notes doit être sur la première 
       # note
@@ -427,6 +445,13 @@ class Statistiques
       if duree_courante == ''
         raise "Il faut impérativement indiquer la sous-durée de la première note dans les x-iolets. La donnée '#{diviseur}{#{notes.first}' est incomplète."
       end
+      # Maintenant qu’on a la durée courante, il faut retraiter le
+      # motif initial si c’est un accord
+      if motif_ini.match?(/<(.*?)>/)
+        # TODO: LE CALCUL CI-DESSOUS N’EST VALIDE QUE POUR DES TRIOLETS…
+        motif = duree_in_accords(motif_ini, (duree_courante.to_i * 2))
+      end
+
       notes.map do |n|
         note, duree, liaison = n.match(/^([a-grs](?:isis|eses|is|es)?)([0-9]+\.*)?(\~)?/).to_a[1..3]
         duree ||= duree_courante

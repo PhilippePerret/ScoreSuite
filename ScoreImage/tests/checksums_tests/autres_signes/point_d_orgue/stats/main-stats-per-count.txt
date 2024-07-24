@@ -1,0 +1,4 @@
+Nombre total de notes : 8
+c         4    16.0s
+e         2    8.0s
+g         2    8.0s

@@ -1,7 +1,6 @@
-Nombre total de notes : 8
-c         2    2.0s
-d         2    2.0s
-b         1    1.0s
-e         1    1.0s
+Nombre total de notes : 10
+c         3    5.0s
+d         3    5.0s
+e         2    3.0s
+b         1    2.0s
 f         1    1.0s
-r         1    1.0s

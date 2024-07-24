@@ -1,0 +1,10 @@
+Nombre total de notes : 25
+e         5    8.0s
+g         4    4.0s
+d         4    4.0s
+a         3    3.0s
+b         2    2.0s
+f         2    2.0s
+fis       2    2.0s
+c         2    2.0s
+cis       1    1.0s
