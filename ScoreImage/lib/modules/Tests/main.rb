@@ -17,7 +17,8 @@ class << self
   # 
   # Méthode d’entrée de l’application (’score-image tests’)
   def run(subcommand = nil)
-    puts "Je joue les tests…".jaune
+    # puts "Je joue les tests…".jaune
+
     clear;clear
     case (subcommand ||= CLI.components[0])
     when :stop
@@ -25,7 +26,7 @@ class << self
     when '_', 'run'
       run_tests
     when /^\/(.+)\/$/
-      run_tests(eval(subcommand).freeze)
+      run_tests({filter: eval(subcommand).freeze, folder: CLI.options[:dir]})
     when 'create'
       require_relative 'test_create'
       create_test
@@ -42,9 +43,9 @@ class << self
     end
   end
 
-  def run_tests(filter = nil)
+  def run_tests(params = nil)
     require_relative 'tests_runner'
-    run_tests_proceed(filter)
+    run_tests_proceed(params)
   end
 
 

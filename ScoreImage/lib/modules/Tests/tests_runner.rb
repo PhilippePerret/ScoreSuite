@@ -17,12 +17,12 @@ class << self
   # Pour les résultats
   attr_reader :success_tests, :failures_tests, :pendings_tests
 
-  def run_tests_proceed(filter)
+  def run_tests_proceed(params)
     clear;clear
     reset
     display_table_options
     must_fail_fast = CLI.options[:fail_fast]
-    tests_list(filter).each_with_index do |musfile, idx|
+    tests_list(params).each_with_index do |musfile, idx|
       musfile.indice = idx + 1
       ###########################
       ###    APPEL DU TEST    ###
@@ -85,8 +85,13 @@ class << self
 
   # @return [Array<String>] La liste des fichiers tests filtrée
   # 
-  def tests_list(filter)
-    all_mus = Dir["#{tests_folder}/**/*.mus"].map{|pth|MusFile.new(pth)}
+  def tests_list(params)
+    params ||= {}
+    filter    = params[:filter]
+    in_folder = params[:folder]
+    base_folder = tests_folder
+    base_folder = File.join(base_folder, in_folder) if in_folder
+    all_mus = Dir["#{base_folder}/**/*.mus"].map{|pth|MusFile.new(pth)}
     return all_mus if filter.nil?
     # S’il y a un filtre
     all_mus.select do |musfile|
@@ -99,7 +104,11 @@ class << self
     Options :
       -v    Mode verbeux (affiche notamment la liste des images
             conformes)
+      
       -ff   Mode "fail-fast". S’arrête à la première erreur.
+      
+      -dir=<path>
+            Pour réduire au dossier de test dans checksum_tests/  
 
     TEXT
   end
