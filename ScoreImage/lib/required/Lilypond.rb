@@ -174,7 +174,6 @@ def system_for_piano(code, **params)
       \\clef "treble"
       #{markin_transposition}\\relative c' {
         #{option_no_time}
-        #{option_no_barre}
         #{option_no_stem}
         #{option_tonalite}
         #{option_num_mesure}
@@ -185,7 +184,6 @@ def system_for_piano(code, **params)
       \\clef bass
       #{markin_transposition}\\relative c {
         #{option_no_time}
-        #{option_no_barre}
         #{option_no_stem}
         #{option_tonalite}
         #{code[1]}
@@ -293,7 +291,6 @@ def staff_for(code, params)
     #{markin_transposition}\\relative c#{relative} {
       #{staff_cle}
       #{option_no_time}
-      #{option_no_barre}
       #{option_no_stem}
       #{option_tonalite}
       #{option_num_mesure}
@@ -351,13 +348,20 @@ end
 #/header
 
 def layout_context_score
-  if options[:proximity] || options[:number_per_5]
+  if options[:proximity] || options[:number_per_5] || not(options[:barres])
     <<~CODE.gsub('\\','\\\\')
     \\Score
+      #{option_no_barre}
       #{option_numeros_mesures_5_en_5}    
       #{option_proximity}
     CODE
   end
+end
+
+def option_no_barre
+  if not(options[:barres])
+    '\\override BarLine.break-visibility = #all-invisible'
+  else "" end
 end
 
 def option_proximity
@@ -490,9 +494,6 @@ def option_no_time
   else '\\time ' + options[:time]
   end
   # options[:time] ? '' : '\\omit Staff.TimeSignature'
-end
-def option_no_barre
-  options[:barres] ? '' : '\\override Score.BarLine.break-visibility = #all-invisible'
 end
 def option_no_stem
   options[:no_stem] ? '\\override Voice.Stem.transparent = ##t' : ''

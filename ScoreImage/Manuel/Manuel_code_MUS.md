@@ -206,9 +206,9 @@ mesure1
 
 
 
-#### Après la production de l'image
+#### Rognage automatique de l'image
 
-Après la production du code, l’image est automatiquement rognée par inskape.
+Après la production du code, l’image est automatiquement rognée par inskape pour ne laisser aucun air autour.
 
 ---
 

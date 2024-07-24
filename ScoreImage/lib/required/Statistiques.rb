@@ -219,6 +219,21 @@ class Statistiques
         end.each do |note|
           # puts "Traitement de note: #{note.inspect}"
 
+          # Est-ce vraiment une note ?
+          # On peut le savoir en testant les deux premières lettres :
+          # - la première ne peut qu’être dans l’espace a-g
+          # - la deuxième, si c’est une lettre, ne peut qu’être que
+          #   "e" (du "es"), "i" (du "is") ou un chiffre de durée
+          # 
+          # @notes
+          #   - les éventuelles indications d’octaves ont déjà été
+          #     retirées.
+          # 
+          if note.length > 1 && note[1].match?(/[^ei0-9]/)
+            puts "#{note.inspect} ne semble pas être note valide… (je la passe)".rouge
+            next
+          end
+
           #
           # Est-ce une note liée ?
           # 
@@ -328,12 +343,12 @@ class Statistiques
   end
 
   # Première méthode de purification qui retire des caractères
-  # qui ne servent à rien pour ces statistiques
+  #  et mots qui ne servent à rien pour ces statistiques
   def first_purify_line(line)
     line = line.strip
     line = line.gsub(/[\',\"\-\(\)\!\?]/,'')
     line = line.gsub(/(<<|>>| { )/,'')
-    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata)/,'')
+    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata|bar)/,'')
     line = line.gsub(/  +/,' ').strip
   end
 
