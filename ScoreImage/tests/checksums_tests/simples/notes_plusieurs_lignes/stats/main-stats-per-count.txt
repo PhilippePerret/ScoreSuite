@@ -1,0 +1,8 @@
+Nombre total de notes : 12
+b         2    2.0s
+c         2    2.0s
+d         2    2.0s
+e         2    2.0s
+f         2    2.0s
+a         1    1.0s
+g         1    1.0s

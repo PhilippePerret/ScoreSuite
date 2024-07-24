@@ -727,7 +727,7 @@ private
   #  Phaut => \change Staff = "up"
   #  Pbas => \change Staff = "down"
   def translate_staff_change_from_ms(str)
-    str = str.gsub(/(Phaut|\\up)/, '\change Staff = "haute"').gsub(/(Pbas|\\down)/, '\change Staff = "basse"')
+    str = str.gsub(/(Phaut|\\up)\b/, '\change Staff = "haute"').gsub(/(Pbas|\\down)\b/, '\change Staff = "basse"')
   end
 
 end #/<< self

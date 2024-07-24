@@ -9,6 +9,14 @@ class String
     str.gsub(/([^ \n])  /,'\1     ')
   end
 
+  def nil_if_empty
+    if self.strip == ''.freeze
+      nil
+    else
+      self
+    end
+  end
+
   # Le texte en bleu gras pour le terminal
   def bleu_gras
     "\033[1;96m#{self}\033[0m"

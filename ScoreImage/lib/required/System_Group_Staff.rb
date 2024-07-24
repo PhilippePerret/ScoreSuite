@@ -200,8 +200,22 @@ class System < Group
       staff_keys  = staff_keys.split(',').map {|k| k.strip}
       staff_names = staff_names.split(',')
 
+      nb_names = staff_names.count
+      nb_keys  = staff_keys.count
+
       if staff_keys.count != staff_names.count
-        raise ERREUR[200] % [staff_names.count, staff_keys.count]
+        # Nombre de noms de portées et de nombre de clés différents
+        if nb_names > 0 && nb_keys > 0
+          # Si les noms de portées sont définis, mais pas en nombre
+          # suffisant, c’est vraiment une erreur (sinon, il s’agit
+          # simplement du fait de la définition de clé sans noms de
+          # portées particulières)
+          raise ERREUR[200] % [staff_names.count, staff_keys.count]
+        elsif nb_names == 0
+          staff_names = Array.new(nb_keys, '')
+        elsif nb_keys == 0
+          staff_keys  = Array.new(nb_names, 'G')
+        end
       end
 
       current_group = nil
@@ -212,7 +226,7 @@ class System < Group
         staff = Staff.new
 
         sname = staff_name.strip
-        staff.key= staff_keys[idx] || 'G'
+        staff.key= staff_keys[idx]
 
         # La portée est-elle le début ou la fin d’un groupe ?
         if (with_acco = sname.start_with?('{')) || (with_croc = sname.start_with?('['))
@@ -263,7 +277,7 @@ class System < Group
 
         # Dans tous les cas, on règle le nom de la portée (qui ici 
         # est toujours épuré)
-        staff.name= sname
+        staff.name= sname.nil_if_empty
         # Et on ajoute cette portée au système
         sys.add_staff(staff)
       

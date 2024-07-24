@@ -333,7 +333,7 @@ class Statistiques
     line = line.strip
     line = line.gsub(/[\',\"\-\(\)\!\?]/,'')
     line = line.gsub(/(<<|>>| { )/,'')
-    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|down|up|fermata)/,'')
+    line = line.gsub(/\\(slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata)/,'')
     line = line.gsub(/  +/,' ').strip
   end
 

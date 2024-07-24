@@ -1,0 +1,6 @@
+# Ce test s’assure qu’une ligne vide est bien ajoutée avant la
+# définition d’une image.
+m1=
+c d e f
+-> nom_image
+m1

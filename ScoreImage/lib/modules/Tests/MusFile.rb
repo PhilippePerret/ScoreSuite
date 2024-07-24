@@ -91,7 +91,6 @@ class MusFile
 
   def build_svg_score
     result = run_build_command
-    # puts "resultat = #{result.inspect}".bleu
     if original_svg_exist?
       nettoie_dossier
     end
@@ -104,7 +103,20 @@ class MusFile
   end
 
   def run_build_command
-    `#{build_command} 2>&1`
+    # `#{build_command} 2>&1` # avant
+    require 'open3'
+    out, err, pid = Open3.capture3(build_command)
+    # puts "out: #{out.inspect}"
+    # puts "err: #{err.inspect}"
+    if pid.success? && out.match?('produite avec succès')
+      return out
+    elsif pid.success? && err.empty?
+      # La commande n’a pas échoué, mais l’image n’a pas été produite
+      # et pourtant aucun message d’erreur n’a été renvoyé
+      return "Une erreur inconnue a été rencontrée."
+    else
+      return err
+    end
   end
 
   # Commande

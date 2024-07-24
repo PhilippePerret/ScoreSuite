@@ -105,12 +105,15 @@ def parse
     # <= La première ligne termine par '=' ou '=='
     # => C'est une définition
     #
+    # Mars 2024 On ne fait plus la distinction entre définition
+    # globale et locale, elles sont toute globales
+    @is_global_definition = true
     line1 = lines.shift
     if line1.end_with?('==')
-      @is_global_definition = true
+      # @is_global_definition = true
       @definition_name = line1[0..-3]
     else
-      @is_global_definition = false
+      # @is_global_definition = false
       @definition_name = line1[0..-2]
     end
   end
@@ -159,6 +162,19 @@ def parse
     @lines_code << @lines_code[0]
   end
 
+  # Cas particulier : plusieurs lignes de notes mais pas de mode
+  # multi-pistes défini (par --staves_keys et --staves_names)
+  if @image_name && lines_code.count > 1
+    if options[:staves_keys]
+      # Tout est bien défini au niveau des portées multiples
+    else
+      # Aucune système à portées multiples n’est défini, il faut le
+      # faire (en mettant toutes les clés à Sol)
+      xkeys = Array.new(lines_code.count, 'G').join(',')
+      options.merge!('staves_keys' => xkeys)
+    end
+  end
+
   if options['tempo']
     music_score.options.merge!(tempo: options['tempo'])
   end
@@ -175,6 +191,7 @@ def parse
   # notes, les expressions Lilypond.
   @lines_code = lines
 
+  # Calcul des statistiques
   if (music_score.options[:stats]||CLI.options[:stats]) && @lines_code.any?
     require_relative 'Statistiques'
     MusicScore::Statistiques.new(music_score, @lines_code).produce
@@ -213,7 +230,7 @@ def traite_as_option(opt)
     end
   end
 
-  options.merge!(opt => val)
+  options.merge!({opt => val, opt.to_sym => val})
 end
 #/traite_option
 

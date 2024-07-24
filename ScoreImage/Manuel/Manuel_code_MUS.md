@@ -155,6 +155,55 @@ mes12<->15
 
 ~~~
 
+#### Code par paragraphe
+
+Il est important de comprendre que ce code fonctionne **par paragraphe**, ce qui signifie que les éléments sont considérés comme « entier » lorsqu’ils ne sont séparés par aucune ligne vierge. 
+
+Cela permet entre autres choses d’avoir des partitions multipistes. Par exemple, un trio sera indiqué par :
+
+~~~
+-> trio
+a b c d
+a2.   a'
+d8 d d d d d
+~~~
+
+… qui produira :
+
+<img src="./images/trio-sans-staves-keys.svg" alt="trio" style="zoom:120%;" />
+
+Cela comporte quelques inconvénients :
+
+Parmi les inconvénients, il faut faire attention à bien séparer les définitions. Par exemple :
+
+~~~
+mesure1=
+a b c d
+mesure2=
+e f g f
+~~~
+
+… ne produira pas les deux variables `mesure1` et `mesure2`, mais seulement la variable `mesure1` avec une erreur de `mesure2` inconnue.
+
+Seule tolérance, pour la définition des noms d’image, reconnaissable à **`->`** en début de ligne :
+
+~~~
+mesure1=
+a b c d
+-> image_tolerable
+mesure1
+~~~
+
+Le code ci-dessus sera considéré comme :
+
+~~~
+mesure1=
+a b c d
+
+-> image_tolerable
+mesure1
+~~~
+
 
 
 #### Après la production de l'image

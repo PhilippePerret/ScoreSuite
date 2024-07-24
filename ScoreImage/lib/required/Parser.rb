@@ -44,6 +44,11 @@ def parse
   # 
   code = evaluate_fonctions_ruby_in(code)
   #
+  # Protection contre une absence de ligne vide avant la 
+  # définition des noms d’image
+  # 
+  code = code.gsub(/^\-\>/, "\n->")
+  #
   # Réduction des retours chariot
   # 
   code = code.gsub(/\n\n\n+/, "\n\n").strip
@@ -64,7 +69,7 @@ def parse
 
   # Découpe du code en "paragraphes" qui définissent chacun quelque
   # chose.
-  code.split("\n\n").each do |paragraphe|
+  code.split("\n\n".freeze).each do |paragraphe|
     # puts "paragraphe = #{paragraphe.inspect}"
     blocode = BlockCode.new(paragraphe, options.merge(music_score:music_score))
     blocode.parse
