@@ -356,12 +356,17 @@ class Statistiques
 
   def parse_line(line, add_notes = true)
 
+    puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
+
     # Pour pouvoir utiliser les espaces comment délimiteurs partout
     line = " #{line} "
 
     # On retire toutes les expressions lilypond qui peuvent comporter
     # des notes, à commencer par les \relative <note>
     line = epure_lily_expressions_with_notes_in(line)
+
+    # Traitement des répétitions
+    line = traitement_des_repetitions(line) 
 
     # On "sort" toutes les notes de leurs accords
     line = decompose_chords_in(line)
@@ -370,7 +375,7 @@ class Statistiques
     # ===     RÉCUPÉRATION DES NOTES      === #
     # ======================================= #
     notes_scaned = line.scan(REG_NOTE_DUREE)
-    # puts "Scan complet: #{notes_scaned.to_a}"
+    puts "Scan complet: #{notes_scaned.to_a}"
     notes_scaned.map do |data_note| 
       inote = StatNote.new(data_note)
       StatNote.add(inote) if add_notes
@@ -378,6 +383,84 @@ class Statistiques
     end
 
   end
+
+  # Traite les répétitions dans la ligne, car elles sont traitées en tant que
+  # telles
+  # 
+  # Une répétition peut avoir ces formes connues :
+  # 
+  #   - un ’\bar ".|:"’ à la fin d’une partie à reprendre
+  #   - un ’\bar ".|:" ... \bar ":|."’ autour des notes à reprendre
+  #   - un ’\repeat unfold 3 { ... }, répétition (avec traitement particulier des octaves)
+  #   - un ’\\repeat volta 2 { ... }, répétition sans alternative
+  #   - un ’\\repeat volta 2 { c4 d e f  \\alternative { \\volta 1 { e2 d } \\volta 2 { d2 c } } }’, répétition avec alternative
+  #   - autre ?
+  def traitement_des_repetitions(line)
+    line = line.gsub(/(?:\\bar "\.\|\:")?(?<contenu>.*?)(?:\\bar "\:\|\.")/) do
+      contenu = $~[:contenu].strip.freeze
+      " #{contenu} #{contenu}"
+    end
+
+    while line.match?(REG_START_REPEAT_MARK)
+
+      line.match(REG_START_REPEAT_MARK)
+      nombre_fois = $~[:fois].to_i
+      # puts "nombre_fois: #{nombre_fois.inspect}"
+
+      pre_offset = line.index(REG_START_REPEAT_MARK)
+      offset = pre_offset + 15
+      # puts "offset: #{offset}".bleu
+
+      if (post_offset = line.index(/\\alternative/.freeze, offset) )
+
+        contenu_repeat = line[offset...post_offset]
+
+      else
+
+        # On cherche la parenthèse de fin
+        # Pour ce faire, on parcourt la ligne à partir d’offset 
+        # jusqu’à trouver ce "}", en sachant qu’on pourra rencontrer
+        # des "{" qui devront être refermés
+        nombre_parentheses_ouvertes = 0
+        len = 0
+        # On cherche la parenthèse ouverte
+        until nombre_parentheses_ouvertes == 1
+          lettre = line[offset + len]
+          if lettre == '{'
+            nombre_parentheses_ouvertes += 1
+          elsif lettre.nil?
+            break
+          end
+          len += 1
+        end
+        contenu_repeat = []
+        until nombre_parentheses_ouvertes == 0
+          lettre = line[offset + len]
+          if lettre == '{'
+            nombre_parentheses_ouvertes += 1
+          elsif lettre == '}'
+            nombre_parentheses_ouvertes -= 1
+          else
+            contenu_repeat << lettre
+          end
+          len += 1
+        end
+        contenu_repeat  = contenu_repeat.join('')
+        post_offset     = offset + len
+      end
+    
+      # puts "post_offset: #{post_offset.inspect}".bleu
+  
+      # On remplace pour ne plus avoir \repeat
+      line = line[0..pre_offset] + (" #{contenu_repeat}" * nombre_fois) + line[post_offset..-1]
+      # puts "Line restant: #{line}"
+    
+    end
+
+    return line
+  end
+
+  REG_START_REPEAT_MARK = /\\repeat (?:volta|unfold) (?<fois>[0-9]+)/.freeze
 
   # Retire les ’\relative <note><octave>’ et autre \transpose
   # 
@@ -422,9 +505,9 @@ class Statistiques
       chord_notes.map { |n| n.as_note }.join(' ')
     end
 
-    # # Débug
-    # puts "Line APRÈS décomposition accords: #{line.inspect}"
-    # # /Débug
+    # Débug
+    puts "Line APRÈS décomposition accords: #{line.inspect}"
+    # /Débug
 
     return line
   end
@@ -504,7 +587,7 @@ class Statistiques
 
   REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)/.freeze
 
-  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^$]/
+  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^_$]/
 
   REG_MAYBE_CHORD = /<[a-g]/.freeze
 

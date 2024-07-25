@@ -1,0 +1,4 @@
+Nombre total de notes : 31
+c  17  19.0 s
+e  10   7.0 s
+g  4    2.0 s

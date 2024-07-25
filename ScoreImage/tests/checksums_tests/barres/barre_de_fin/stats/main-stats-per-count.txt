@@ -1,2 +1,2 @@
 Nombre total de notes : 1
-a         1    4.0s
+a  1  4.0 s

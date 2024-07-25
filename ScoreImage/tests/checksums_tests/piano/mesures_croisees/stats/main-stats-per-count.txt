@@ -1,8 +1,8 @@
 Nombre total de notes : 16
-c         6    11.0s
-d         2    2.0s
-e         2    2.0s
-f         2    2.0s
-g         2    5.0s
-a         1    1.0s
-b         1    1.0s
+c  6  11.0 s
+d  2   2.0 s
+e  2   2.0 s
+f  2   2.0 s
+g  2   5.0 s
+a  1   1.0 s
+b  1   1.0 s

@@ -1,9 +1,9 @@
-Durée totale : 0 mns 36s
-c         8     9.0s
-d         12    9.0s
-r         12    4.5s
-e         6     4.5s
-b         2     4.0s
-f         8     2.0s
-g         8     2.0s
-a         4     1.0s
+Durée totale : 36.0 s
+d  12  9.0 s
+c  8   9.0 s
+r  12  4.5 s
+e  6   4.5 s
+b  2   4.0 s
+f  8   2.0 s
+g  8   2.0 s
+a  4   1.0 s

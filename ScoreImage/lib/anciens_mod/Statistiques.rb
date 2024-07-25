@@ -326,22 +326,6 @@ class Statistiques
     end
   end
 
-  ##
-  # @retourne la version purifiée des lignes. C'est une liste
-  # de strings qui ne contiennent plus que leur nom (a-g) et leur
-  # durée — la durée est parfois exprimée par 'xDx' lorsqu'on à
-  # affaire à un triolet ou autre.
-  def purified_lines
-    @purified_lines ||= begin
-      lines.each do |line|
-        # Débug
-        puts "Ligne à analyser: #{line.inspect}".jaune
-        # /Débug
-        parse_line(line)
-      end
-    end
-  end
-
 
   # Nouvelle façon de filtrer
   def parse_line(line)

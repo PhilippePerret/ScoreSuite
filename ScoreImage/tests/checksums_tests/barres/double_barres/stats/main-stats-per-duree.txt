@@ -1,2 +1,2 @@
-Durée totale : 0 mns 8s
-a         2    8.0s
+Durée totale : 8.0 s
+a  2  8.0 s

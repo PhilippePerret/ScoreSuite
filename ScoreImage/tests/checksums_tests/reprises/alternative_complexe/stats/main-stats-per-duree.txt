@@ -1,6 +1,6 @@
-Durée totale : 0 mns 20s
-c         4    6.0s
-d         4    6.0s
-e         3    4.0s
-b         1    2.0s
-f         2    2.0s
+Durée totale : 20.0 s
+c  4  6.0 s
+d  4  6.0 s
+e  3  4.0 s
+f  2  2.0 s
+b  1  2.0 s

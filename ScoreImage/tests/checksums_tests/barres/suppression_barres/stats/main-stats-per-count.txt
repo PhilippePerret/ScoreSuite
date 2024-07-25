@@ -1,5 +1,5 @@
 Nombre total de notes : 4
-a         1    4.0s
-b         1    4.0s
-c         1    4.0s
-d         1    4.0s
+a  1  4.0 s
+b  1  4.0 s
+c  1  4.0 s
+d  1  4.0 s

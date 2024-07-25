@@ -1,0 +1,3 @@
+Nombre total de notes : 6
+a  3  12.0 s
+c  3  12.0 s
