@@ -1,75 +1,227 @@
 # encoding: UTF-8
-
+# 
+# Fonctionnement en recherchant les notes (et les accords, les triolets, etc.)
+# Il faut connaitre la forme ultime d’une note.
+# C’est d’abord, obligatoirement, une lettre qui ne peut être que
+# précédée par un ’<’ dans les accords.
+# Par facilité, on pourrait d’abord traiter les accords, les rempla-
+# cer par leurs notes isolées :
+#   <c e g> => c e g
+# mais surtout :
+#   <c e g>4. => c4. e4. g4.
+# 
+# 
+# Ce n’est pas forcément une espace ou la fin à la fin d’un note,
+# on peut aussi trouver :
+#   a\fermata  b_\prall c^\markup
+# Donc ’\’, ’_’ et ’^’ sont aussi des délimiteurs de notes.
+# 
 class MusicScore
 
-  SttNoteStat = Struct.new(:note, :count, :duration) do
-    SEP = ' ' * 4
-  class << self
-    attr_accessor :count_len, :duree_len, :duree_noire
-  end
-  def f_duree_secondes
-    @f_duree_secondes ||= begin
-      if duree_secondes
-        duree_secondes.to_s + 's'
-      end
-    end
-  end
-  def duree_secondes
-    @duree_secondes ||= begin
-      if self.class.duree_noire
-        (duration * self.class.duree_noire).round(2)
-      end
-    end
-  end
-  def txt_line
-    @txt_line ||= begin
-      "#{note.ljust(6)}#{SEP}#{count.to_s.ljust(self.class.count_len)}#{SEP}#{(f_duree_secondes||duration).to_s.ljust(self.class.duree_len)}\n"
-    end
-  end
-  def csv_line
-    @csv_line ||= begin
-      "#{note};#{count};#{duree_secondes}\n"
-    end
-  end
-end
+SEP = (' ' * 2).freeze
 
 class Statistiques
+
+  class StatNote
+    class << self
+
+      attr_reader :notes_groups
+
+      # Pour les max dans l’affichage
+      attr_accessor :note_max_len, :count_max_len, :duree_max_len
+
+      # Initialisation, au départ du calcul des statistiques
+      def init
+        @notes = []
+        @current_duration = '4'
+        @notes_groups = {}
+        self.count_max_len = 0
+        self.duree_max_len = 0
+        self.note_max_len  = 0
+      end
+
+      # Ajoute l’instance +inote+ à la liste des notes de la classe
+      def add(inote)
+        @notes << inote
+        # Définition de la durée ou récupération de la nouvelle durée
+        check_note_duration(inote)
+        # Ajoute aussi la note à son groupe de notes. 
+        # @note : il faut le faire après le check de la durée, car
+        # le groupe en a besoin.
+        add_to_group_note(inote)
+      end
+
+      def add_to_group_note(inote)
+        unless @notes_groups.key?(inote.note_abs)
+          @notes_groups.merge!(inote.note_abs => StatGroupNote.new(inote.note_abs))
+        end
+        @notes_groups[inote.note_abs].add(inote)
+      end
+
+      # Lors de l’ajout de la note à la liste, on lui affecte la
+      # dernière durée rencontrée si elle n’en a pas, ou on récupère
+      # sa durée pour la mettre en durée courante si elle est définie
+      def check_note_duration(inote)
+        if inote.duration
+          @current_duration = inote.duration.dup
+        else
+          inote.duration=(@current_duration)
+        end
+      end
+
+    end #/<< self
+
+
+    attr_reader :data
+
+    # @param data_note [Array]
+    #   Liste contenant [<nom note>, <alteration>, <durée>, <points>, <tilde>]
+    # 
+    def initialize(data_note)
+      @data = data_note
+    end
+
+    # Par exemple "bes", "a" ou "cisis"
+    def note_abs
+      @note_abs ||= "#{note_name}#{alteration}".freeze
+    end
+
+    # = Helper Methods =
+
+    # Pour les accords
+    def as_note
+      @as_note ||= "#{note_abs}#{duration}#{'~' if linked?}"
+    end
+
+    # = Fixed Data Methods =
+
+    def duration=(v)      ; @duration = v     end
+
+    def is_linked(v = true)
+      data[4] = v ? '~' : nil
+      @islinked = v
+    end
+
+
+    # = Volatile Data =
+
+    def linked?     ; @islinked    ||= data[4] == '~' end
+    
+    # @return [Float] La durée musicale "absolue", c’est-à-dire 
+    # exprimée en noires. Par exemple, une noire vaut 1, une ronde
+    # vaut 4, une ronde pointée vaut 6 (4 + 4/2), une ronde pointée 
+    # vaut 7 (4 + 4/2 + (4/2)/2), etc.
+    def abs_duration
+      @abs_duration ||= begin
+        dur, prol = duration.match(/([0-9]+)(\.*)?/)[1..2]
+        dur = 4.0 / dur.to_i
+        c = dur.dup
+        prol.length.times { dur += (c = c / 2) }
+        dur
+      end
+    end
+
+    # # = Fixed Data = #
+
+    def note_name   ; @note_name   ||= data[0].freeze end
+    def octave      ; @octave      ||= data[1].freeze end
+    def alteration  ; @alteration  ||= data[2].freeze end
+    def duration    ; @duration    ||= data[3].freeze end
+  end
+
+
+
+  # Instance pour chaque note : c, cis, cisis, d, des, deses, etc.
+  class StatGroupNote
+
+    attr_reader :note
+    def initialize(note_abs)
+      @note   = note_abs
+      @notes  = []
+    end
+
+    # = Helper Methods =
+
+    # Pour afficher le résultat sous forme de ligne de texte
+    def text_line
+      @text_line ||= begin
+        "#{note.ljust(StatNote.note_max_len)}#{SEP}#{count.to_s.ljust(StatNote.count_max_len)}#{SEP}#{"#{duree_secondes} s".to_s.rjust(StatNote.duree_max_len + 2)}\n".freeze
+      end
+    end
+
+    # Pour afficher le résultat sous forme de ligne CSV
+    def csv_line
+      "#{note};#{count};#{duree_secondes}\n"
+    end
+
+
+
+    # = Functional Methods =
+
+    def add(inote)
+      @notes << inote
+    end
+
+
+    # = Calc Methods =
+
+    # Le nombre d’emploi de cette note, donc par exemple le nombre 
+    # de ’cisis’ ou de ’bes’
+    # La méthode doit tenir compte du fait que certaines notes sont
+    # liées à d’autres.
+    def count
+      @count ||= begin
+        @notes.reject { |n| n.linked? }.count.freeze
+      end
+    end
+    # La durée d’emploi de cette note, exprimée en secondes
+    def duree_secondes
+      @duree_secondes ||= (duration * Statistiques.duree_noire).round(2)
+    end
+    # La durée musicale d’emploi de cette note, exprimées en noires
+    def duration
+      @duration ||= begin
+        @notes.sum(&:abs_duration)
+      end
+    end
+
+  end
+
 
   attr_reader :music_score
   attr_reader :lines
 
   def initialize(music_score, lines)
-    @music_score = music_score
-    @lines = lines
+    @music_score  = music_score
+    @lines        = lines
   end
 
   attr_reader :tempo
 
-  def tempo_noire
-    @tempo_noire ||= begin
+  def self.tempo_noire ; @@tempo_noire end
+  def self.is_ternaire ; @@is_ternaire end
+  def self.duree_noire ; @@duree_noire end
+  def self.calc_duree_noire(tempo)
+    @@tempo_noire = 
       if tempo.end_with?('T')
         tempo[0...-1]
       else
         tempo
       end
-    end
-  end
-
-  def duree_noire
-    @duree_noire ||= begin
+    @@is_ternaire = tempo.end_with?('T')
+    @@duree_noire = begin
       durn = 60.0 / tempo_noire.to_i
       durn = (2.0 / 3) * duree_noire if is_ternaire
       durn
     end
   end
 
-  def is_ternaire
-    @is_ternaire ||= begin
-      tempo.end_with?('T')
-    end
-  end
 
 
+  # = main =
+  # 
+  # PRODUIRE LES STATISTIQUES
+  # 
   def produce
     # puts "à partir de #{lines}"
     mfile = music_score.mus_file
@@ -77,13 +229,20 @@ class Statistiques
     # Le tempo est-il défini ? Sinon interrompre le programme
     # pour le demander
     tempo || return
+    self.class.calc_duree_noire(tempo)
     # puts "Tempo : #{tempo.inspect}"
 
+    StatNote.init
+
+    # On parse et analyse chaque ligne de code
+    lines.each { |line| parse_line(line) }
+
     # 
-    # 3 fichiers
+    # 4 fichiers
     #   1 : par ordre des notes
     #   2 : par durée
-    #   3 : au format CSV
+    #   3 : par nombre d’itérations de note
+    #   4 : le tout au format CSV
     # 
     fpath_not = File.join(folder, "#{mfile.affixe}-stats-per-note.txt")
     File.delete(fpath_not) if File.exist?(fpath_not)
@@ -94,42 +253,45 @@ class Statistiques
     fpath_csv = File.join(folder, "#{mfile.affixe}-stats.csv")
     File.delete(fpath_csv) if File.exist?(fpath_csv)
 
-    sep = ' ' * 4
 
-    # 
-    # Déterminer les longueurs maximales
-    # 
-    max_lengths = {count: 0, duree: 0}
-    table_structured.each do |dnote|
-      count_len = dnote[:count].to_s.length
-      duree_len = dnote[:duration].to_s.length
-      max_lengths[:count] = count_len if count_len > max_lengths[:count]
-      max_lengths[:duree] = duree_len if duree_len > max_lengths[:duree]
+    # Déterminer les longueurs maximales pour les nombres de notes
+    # et les durées.
+    # (simplement pour avoir des tableaux plus beaux)
+    StatNote.notes_groups.each do |note, notes_group|
+      if StatNote.note_max_len < notes_group.note.length
+        StatNote.note_max_len = notes_group.note.length.freeze
+      end
+      if StatNote.count_max_len < notes_group.count.to_s.length
+        StatNote.count_max_len = notes_group.count.to_s.length.freeze
+      end
+      if StatNote.duree_max_len < notes_group.duree_secondes.to_s.length
+        StatNote.duree_max_len = notes_group.duree_secondes.to_s.length.freeze
+      end
     end
 
-    SttNoteStat.count_len = max_lengths[:count]
-    SttNoteStat.duree_len = max_lengths[:duree]
 
-    total_notes = table_structured.sum(&:count)
-    total_duree = table_structured.sum(&:duration)
+    StatNote.notes_groups.each do |note, notes_group|
+      puts "- #{notes_group.text_line}"
+    end
 
-    # 
-    # On indique la durée en secondes
-    # 
-    # puts "duree_noire: #{duree_noire.inspect}"
-    SttNoteStat.duree_noire = duree_noire
+    ary_groups_notes = StatNote.notes_groups.values
 
-    total_duree = total_duree * duree_noire
+    total_notes = ary_groups_notes.sum(&:count)
+    total_duree = ary_groups_notes.sum(&:duree_secondes)
+    puts "total_duree brute: #{total_duree}"
+
     mns = total_duree.to_i / 60
-    scs = total_duree.to_i % 60
-    total_duree = "#{mns} mns #{scs}s"
+    scs = total_duree - mns * 60
+    total_duree = []
+    total_duree << "#{mns} mn" if mns > 0
+    total_duree << "#{scs} s"
+    total_duree = total_duree.join(' ')
 
-    #
     # Tableau classé par durée
     # + Tableau classé par nombre
     #
-    tableau_per_duree = table_structured.sort_by{|dn| -dn.duration}
-    tableau_per_count = table_structured.sort_by{|dn| -dn.count   }
+    tableau_per_duree = ary_groups_notes.sort_by{|dn| -dn.duration}
+    tableau_per_count = ary_groups_notes.sort_by{|dn| -dn.count   }
 
     begin
 
@@ -143,17 +305,17 @@ class Statistiques
       rf_cpt.write "Nombre total de notes : #{total_notes}\n"
       rf_dur.write "Durée totale : #{total_duree}\n"
 
-      table_structured.each do |snote|
-        rf_not.write snote.txt_line
+      ary_groups_notes.each do |snote|
+        rf_not.write snote.text_line
         rf_csv.write snote.csv_line
       end
 
       tableau_per_duree.each do |snote|
-        rf_dur.write snote.txt_line
+        rf_dur.write snote.text_line
       end
 
       tableau_per_count.each do |snote|
-        rf_cpt.write snote.txt_line
+        rf_cpt.write snote.text_line
       end
 
     rescue Exception => e
@@ -192,214 +354,81 @@ class Statistiques
     end
   end
 
-  ##
-  #
-  def table_structured
-    @table_structured ||= begin
-      tableau_stats.values.sort_by{|dn| dn[:note]}.map do |dnote|
-        SttNoteStat.new(dnote[:note], dnote[:count], dnote[:duration])
-      end
+  def parse_line(line, add_notes = true)
+
+    # Pour pouvoir utiliser les espaces comment délimiteurs partout
+    line = " #{line} "
+
+    # On retire toutes les expressions lilypond qui peuvent comporter
+    # des notes, à commencer par les \relative <note>
+    line = epure_lily_expressions_with_notes_in(line)
+
+    # On "sort" toutes les notes de leurs accords
+    line = decompose_chords_in(line)
+
+    # ======================================= #
+    # ===     RÉCUPÉRATION DES NOTES      === #
+    # ======================================= #
+    notes_scaned = line.scan(REG_NOTE_DUREE)
+    # puts "Scan complet: #{notes_scaned.to_a}"
+    notes_scaned.map do |data_note| 
+      inote = StatNote.new(data_note)
+      StatNote.add(inote) if add_notes
+      inote
     end
+
   end
 
-  ##
-  # @return le tableau qui contient les statistiques
-  # C'est un tableau avec en clé les notes et en valeur une table
-  # défissant le nombre (:count) et la durée totale (:duration) de
-  # chaque note
-  def tableau_stats
-    @tableau_stats ||= begin
-      stats = {}
-      duree_courante      = duree_noire
-      duree_courante_str  = '4'
-
-      # # Débug
-      # puts "Lines: #{lines}"
-      # puts "Le texte purifié : #{purified.inspect}".bleu
-      # # /Débug
-
-      purified.each do |line|
-        # puts "line: #{line.inspect}"
-        line.split(' ').select do |note|
-          note.match?(/^[a-grs]/)
-        end.each do |note|
-
-          # # Débug
-          # puts "Traitement de note: #{note.inspect}"
-          # # /Débug
-
-          # Est-ce vraiment une note ?
-          # On peut le savoir en testant les deux premières lettres :
-          # - la première ne peut qu’être dans l’espace a-g
-          # - la deuxième, si c’est une lettre, ne peut qu’être que
-          #   "e" (du "es"), "i" (du "is") ou un chiffre de durée
-          # 
-          # @notes
-          #   - les éventuelles indications d’octaves ont déjà été
-          #     retirées.
-          # 
-          if note.length > 1 && note[1].match?(/[a-z]/) && note[1].match?(/[^ei]/)
-            puts "#{note.inspect} ne semble pas être note valide… (je la passe)".rouge
-            next
-          end
-
-          #
-          # Est-ce une note liée ?
-          # 
-          # Dans ce cas, il y a un tilde, mais avec le traitement des
-          # accords et des x-olets, le tilde peut se trouver à dif-
-          # férents endroits. On teste donc sa présence dans la chai-
-          # ne et on le retire.
-          #
-          has_liaison = note.match?('~')
-          if has_liaison
-            # puts "#{note} possède une liaison"
-            note = note.gsub(/\~/,'')
-          end
-
-          #
-          # On la décompose
-          # 
-          tout, tune, alter, duree_init, points = note.match(/^([a-grs])(isis|is|eses|es)?([0-9D]+)?(\.+)?/).to_a
-          if tune.nil?
-            raise "Problème avec : #{note.inspect} (tune = nil)"
-          end
-          
-          
-
-          # puts "duree = #{duree.inspect}"
-
-          # La durée calculée ou reprise
-          duree = nil
-          if duree_init.nil?
-
-            duree       = duree_courante
-            duree_init  = duree_courante_str 
-
-          else
-            
-            duree = 
-              if duree_init.match?('D')
-                valeur_ref, diviseur = duree_init.split('D')
-                duree_of(valeur_ref) / diviseur.to_i
-              else
-                duree_of(duree_init)
-              end
-          
-            # On la met en durée courante
-            duree_courante_str  = duree_init.dup
-            duree_courante      = duree.dup
-          
-          end
-
-          # puts "tune: #{tune.inspect}"
-          # puts "duree: #{duree.inspect}"
-          # puts "points: #{points.inspect}"
-          tune = "#{tune}#{alter}" if alter
-          stats.key?(tune) || stats.merge!(tune => {note:tune, count:0, duration:0, plain_notes:[] })
-          stats[tune][:count] += 1 unless has_liaison
-          if points
-            nombre_points = points.length
-            duree += (duree / 2) * nombre_points
-          end
-          # puts "POUR:« #{tune}#{duree_init}#{points} » : duree_init: #{duree_init.inspect} / duree: #{duree.inspect}"
-          stats[tune][:duration] += duree
-          stats[tune][:plain_notes] << "#{tune}#{duree_init}#{points}"
-        end
-      end
-
-      # On arrondit à 2 décimales toutes les durées
-      stats.each do |n, dn|
-        stats[n].merge!(duration: dn[:duration].round(2))
-      end
-
-      # puts "\n\n+++ stats:\n#{stats}\n\n"
-
-      stats
-    end
-  end
-
-  ##
-  # @retourne la version purifiée des lignes. C'est une liste
-  # de strings qui ne contiennent plus que leur nom (a-g) et leur
-  # durée — la durée est parfois exprimée par 'xDx' lorsqu'on à
-  # affaire à un triolet ou autre.
-  def purified
-    @purified ||= begin
-      duree_courante = 4
-      lines.map do |line|
-
-        # Débug
-        # puts "Ligne initiale: #{line.inspect}".jaune
-        # /Débug
-        
-        line = first_purify_line(line)
-        line = duree_in_xiolet(line)
-        # puts "line après duree_in_xiolet : #{line}"
-        line = purify_line(line)
-        # puts "line après purify_line : #{line}".jaune
-        line = duree_in_accords(line, duree_courante)
-        if line.match?('4D31')
-          raise "PROBLÈME DE 4D31 dans #{line}"
-        end
-        
-        # Débug
-        # puts "line après épuration : #{line}".bleu
-        # /Débug
-        
-        line
-      end
-    end
-  end
-
-  # Première méthode de purification qui retire des caractères
-  #  et mots qui ne servent à rien pour ces statistiques
-  def first_purify_line(line)
-    line = line.strip
-    line = line.gsub(/[\',\"\-\(\)\!\?]/,'')
-    line = line.gsub(/(<<|>>| { )/,'')
-    line = line.gsub(/\\(alternative|repeat|slurUp|slurDown|stemUp|stemDown|stemNeutral|downprall|downmordent|down|upprall|upmordent|up|fermata|bar)/,'')
-    line = line.gsub(/  +/,' ').strip
-  end
-
-  def purify_line(line)
-    line = line.strip
-    line = line.gsub(/volta [0-9]+/,'')
+  # Retire les ’\relative <note><octave>’ et autre \transpose
+  # 
+  # @note
+  #   Remarquer l’astuce ici : on n’a pas besoin de retirer toute
+  #   la note, avec ses octaves et ses altérations puisque le simple
+  #   retrait de la note (a-g) empêchera d’y voir une note, dans la
+  #   nouvelle façon de procéder
+  def epure_lily_expressions_with_notes_in(line)
     line = line.gsub(/(fixed|relative) [a-g]/,'')
     line = line.gsub(/tune [a-g]/,'')
     line = line.gsub(/transpose #{REG_NOTE} #{REG_NOTE}/,'')
-    line = line.gsub(/\-[.]/,'')
-    line = line.gsub(/[\{\}\'\",\(\)\-_\^]/,'')
-    line = line.gsub(/\\/,'')
-    line = line.gsub(/  +/,' ')
-    line.strip
+    return line
   end
 
-  # Prends '<a c e>8..' et remplace par 'a8.. c8.. e8..'
-  def duree_in_accords(line, duree_courante = nil)
-    return line unless line.match?('<')
-    # puts "line = #{line.inspect}"
+  # Méthode qui transforme "<c e g>4." en "<c4. e4. g4.>" dans 
+  # la ligne de code mus +line+
+  def decompose_chords_in(line)
 
-    # On doit trouver la première durée
-    duree_courante = line.match(/([0-9]+)/)[1]
-    # puts "Durée courante trouvée : #{duree_courante.inspect}".bleu
-    duree_courante ||= 4
-    # On corrige les problèmes d'accords collés
-    line.gsub(/>([0-8]+\.*)?</) do
-      '>' + $1.to_s + ' <'
-    end.gsub(/<(.*?)>([0-8]+\.*)?( |$)/) do
-      notes = $1.freeze
-      duree = $2.freeze
-      if duree.nil?
-        duree = duree_courante
-      else
-        duree_courante = duree.dup
+    return line unless line.match?(REG_MAYBE_CHORD)
+
+    # Débug
+    # puts "Line avant décomposition accords: #{line.inspect}"
+    # /Débug
+
+    line = line.gsub(REG_CHORD) do
+      chord_exp = $~[:chord_exp]
+      duration  = $~[:duration]
+      is_linked = $~[:linked] == '~'
+      chord_notes = parse_line(chord_exp, false)
+      # Le false ci-dessus permet de ne pas ajouter les notes au
+      # cours du parsing. Elles seront ajoutées à l’analyse de la
+      # ligne qui contient cet accord. Ici, on ne fait que remplacer
+      # les accords par les notes.
+      if is_linked
+        chord_notes.each { |n| n.is_linked }
       end
-      # puts "notes: #{notes.inspect}"
-      # puts "duree: #{duree.inspect}"
-      notes.split(' ').map{|n| "#{n}#{duree}"}.join(' ') + $3
+      if duration
+        chord_notes.each { |n| n.duration = duration }
+      end
+      # On reconstitue une portion de ligne
+      chord_notes.map { |n| n.as_note }.join(' ')
     end
+
+    # # Débug
+    # puts "Line APRÈS décomposition accords: #{line.inspect}"
+    # # /Débug
+
+    return line
   end
+
 
   ##
   # Traite les formules comme 3{n16 n n}
@@ -466,25 +495,20 @@ class Statistiques
     end
   end
 
-  # +x+ est transformé en noires
-  def duree_of(x)
-    case x.to_i
-    when 1    then 4.0
-    when 2    then 2.0
-    when 4    then 1.0
-    when 8    then 1.0 / 2
-    when 16   then 1.0 / 4
-    when 32   then 1.0 / 8
-    when 64   then 1.0 / 16
-    when 128  then 1.0 / 32
-    end
-  end
-
   def folder
     @folder ||= ensure_folder(File.join(music_score.mus_file.folder,'stats'))
   end
 
-  REG_NOTE = /[a-g]([,']+)?(isis|eses|is|es)?/.freeze
+  REG_NOTE = /\b[a-g]([,'’]+)?(isis|eses|is|es)?\b/.freeze
+  REG_NOTE_CAPT = /(?<note>[a-grs])(?<octave>[,']+)?(?<alter>isis|eses|is|es)?/.freeze
+
+  REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)/.freeze
+
+  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^$]/
+
+  REG_MAYBE_CHORD = /<[a-g]/.freeze
+
+  REG_CHORD = /\<(?<chord_exp>.+?)\>(?<duration>[0-9]+\.*)?(?<linked>\~)?/.freeze
 
 end #/class Statistiques
 end #/class MusicScore
