@@ -86,9 +86,22 @@ def replace_repetition_code(line)
   line.gsub(REG_REPETITIONS) do
     segment     = $~[:segment]
     iterations  = $~[:iterations].to_i
-    "#{segment} " * iterations
+    # Traitement d’une marque d’octave sur la première note : la
+    # supprimer pour les répétitions
+    notes_maybe = segment.strip.split(' ')
+    first_note  = notes_maybe.shift # note : on l’enlève vraiment
+    segments = 
+      if first_note.match?(REG_MARK_OCTAVE)
+        first_note_n  = first_note.gsub(REG_MARK_OCTAVE, '')
+        segmentN      = "#{first_note_n} #{notes_maybe.join(' ')}"
+        [segment] + Array.new(iterations - 1, segmentN)
+      else
+        Array.new(iterations, segment)
+      end
+    segments.join(' ')
   end
 end
+REG_MARK_OCTAVE = /(['’,]+)/.freeze
 
 
 def traite_ornements_with_alterations(line)
