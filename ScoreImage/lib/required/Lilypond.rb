@@ -507,8 +507,8 @@ def option_tonalite
     note, nature = options[:key].split('')
   end
   alter  = case nature
-  when '#' then 'is'
-  when 'b' then 'es'
+  when '#', 'd'   then 'is'
+  when 'b'        then 'es'
   when 'es', 'is' then nature
   else ''
   end
