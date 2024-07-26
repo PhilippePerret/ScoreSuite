@@ -92,7 +92,10 @@ def replace_repetition_code(line)
     octave    = $~[:octave]
     duration  = $~[:duration]
     fois      = $~[:fois].to_i
-    Array.new(fois, "#{note}#{alter}#{octave}#{duration}").join(' ')
+
+    premiere_note = "#{note}#{alter}#{octave}#{duration}"
+    autres_notes  = "#{note}#{alter}"
+    ([premiere_note] + Array.new(fois - 1, autres_notes)).join(' ')
   end
 
   # Répétitions à l’aide du signe ’% ... %X’
