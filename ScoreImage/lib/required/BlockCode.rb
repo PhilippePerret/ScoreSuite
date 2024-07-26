@@ -192,7 +192,10 @@ def parse
   @lines_code = lines
 
   # Calcul des statistiques
-  if (music_score.options[:stats]||CLI.options[:stats]) && @lines_code.any?
+  # puts "music_score.options: #{music_score.options}"
+  # puts "options: #{options}"
+  # exit 12
+  if (options[:stats]||music_score.options[:stats]||CLI.options[:stats]) && @lines_code.any?
     require_relative 'Statistiques'
     MusicScore::Statistiques.new(music_score, @lines_code).produce
   end

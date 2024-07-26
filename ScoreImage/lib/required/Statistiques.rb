@@ -375,7 +375,7 @@ class Statistiques
     # ===     RÉCUPÉRATION DES NOTES      === #
     # ======================================= #
     notes_scaned = line.scan(REG_NOTE_DUREE)
-    puts "Scan complet: #{notes_scaned.to_a}"
+    verbose? && puts("Scan complet: #{notes_scaned.to_a}")
     notes_scaned.map do |data_note| 
       inote = StatNote.new(data_note)
       StatNote.add(inote) if add_notes
@@ -482,9 +482,7 @@ class Statistiques
 
     return line unless line.match?(REG_MAYBE_CHORD)
 
-    # Débug
-    # puts "Line avant décomposition accords: #{line.inspect}"
-    # /Débug
+    verbose? && puts("Line avant décomposition accords: #{line.inspect}")
 
     line = line.gsub(REG_CHORD) do
       chord_exp = $~[:chord_exp]
@@ -505,9 +503,7 @@ class Statistiques
       chord_notes.map { |n| n.as_note }.join(' ')
     end
 
-    # Débug
-    puts "Line APRÈS décomposition accords: #{line.inspect}"
-    # /Débug
+    verbose? && puts("Line APRÈS décomposition accords: #{line.inspect}")
 
     return line
   end
@@ -587,7 +583,7 @@ class Statistiques
 
   REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)/.freeze
 
-  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^_$]/
+  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^_\)\($]/
 
   REG_MAYBE_CHORD = /<[a-g]/.freeze
 

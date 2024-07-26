@@ -6,6 +6,8 @@
 --keep
 --staves_names {Piano, Piano}, Violon
 --staves_keys  F, G, G
+--stats
+--tempo 60
 
 violon=
 c4( d e f g1)
