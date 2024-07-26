@@ -688,7 +688,23 @@ La partie ci-dessous présente les termes propres au langage « music-score ».
 
 ### Handy code
 
-#### Répétition d’un code
+#### Répétition d’une note avec `<note>*N`
+
+De la même manière qu’on peut faire `r8*4` en pur Lilypond, on peut répéter n’importe quelle note avec durée à l’aide de l’astérisque. Par exemple :
+
+~~~
+cis16.*3
+~~~
+
+… produira le code
+
+~~~
+cis16. cis16. cis16.
+~~~
+
+> Noter que pour éviter toute confusion, cette possibilité se limite strictement à des notes avec ou sans altérations et pouvant définir leur durée. Tout autre groupe — par exemple présentant le doigté ou l’articulation — sera ignoré. Il faut alors utiliser d’autres moyens de répétitions (cf. ci-dessous).
+
+#### Répétition d’un code avec `% ... %N`
 
 On peut utiliser le gabarit  :
 

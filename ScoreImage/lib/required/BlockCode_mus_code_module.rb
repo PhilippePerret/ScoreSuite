@@ -83,7 +83,20 @@ def replace_multi_voices(line)
 end
 
 def replace_repetition_code(line)
-  line.gsub(REG_REPETITIONS) do
+
+  # Répétitions à l’aide de ’*X’ (comme pour les silence dans 
+  # Lilypond mais appliqué à tout code "compact")
+  line = line.gsub(REG_REPETITION_ASTERISK) do
+    note      = $~[:note]
+    alter     = $~[:alter]
+    octave    = $~[:octave]
+    duration  = $~[:duration]
+    fois      = $~[:fois].to_i
+    Array.new(fois, "#{note}#{alter}#{octave}#{duration}").join(' ')
+  end
+
+  # Répétitions à l’aide du signe ’% ... %X’
+  line = line.gsub(REG_REPETITIONS) do
     segment     = $~[:segment]
     iterations  = $~[:iterations].to_i
     # Traitement d’une marque d’octave sur la première note : la
@@ -100,9 +113,12 @@ def replace_repetition_code(line)
       end
     segments.join(' ')
   end
+
+  return line
 end
 REG_MARK_OCTAVE = /(['’,]+)/.freeze
 
+REG_REPETITION_ASTERISK = /\b#{Statistiques::REG_NOTE_CAPT}(?:#{Statistiques::REG_DUREE_CAPT})?\*(?<fois>[0-9]+)/.freeze
 
 def traite_ornements_with_alterations(line)
   line = line.gsub(REG_ORNEMENTS_WITH_ALTE) do
