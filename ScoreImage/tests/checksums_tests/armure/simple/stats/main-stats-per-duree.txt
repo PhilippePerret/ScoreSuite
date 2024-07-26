@@ -1,0 +1,3 @@
+Durée totale : 2.0 s
+c    1  1.0 s
+ees  1  1.0 s

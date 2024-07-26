@@ -173,6 +173,8 @@ d8 d d d d d
 
 <img src="./images/trio-sans-staves-keys.svg" alt="trio" style="zoom:120%;" />
 
+> Tous les exemples de code donnés dans ce manuel font l’objet d’un test « checksum ». Pour lancer tous ces tests, il suffit de jouer en ligne de commande : **`score-image tests -dir=manuel`**.
+
 Cela comporte quelques inconvénients :
 
 Parmi les inconvénients, il faut faire attention à bien séparer les définitions. Par exemple :
@@ -235,7 +237,7 @@ Dans les fichiers `.mus`, on peut inclure d’autres fichiers `.mus` à l’aide
 INCLUDE path/to/musFile
 ~~~
 
-Le chemin `path/to/musFile` peut être relatif au fichier maitre ou relatif au dossier `libmus` de l’application **ScoreImage** qui définit des librairies standards.
+Le chemin `path/to/musFile` peut être relatif au fichier maitre ou relatif au dossier `libmus` de l’application ***Score-Image*** qui définit des librairies standards.
 
 La première librairie à avoir été créée est la librairie **`piano/Alberti.mus`** qui définit toutes les basses d’Alberti dans des variables.
 
@@ -291,24 +293,25 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 
 
 
-> Pour désactiver une option après l'avoir activée, il faut utiliser :
+> Pour désactiver une option (après l'avoir activée ou pas), il faut utiliser :
 > `--<option> OFF`
 >
 > Par exemple :
 >
 > **`--barres OFF`**
 >
-> … pour ne plus afficher les barres de mesure pour les images suivantes.
+> … pour ne plus afficher les barres de mesure pour toutes les images suivantes dans le fichier mus.
 
-| <span style="display:inline-block;width:180px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:240px;">Notes</span> |
+| <span style="display:inline-block;width:300px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:120px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Affichage des barres de mesure                               | **`--barres`**                                               |                                                              |
-| Afficher la métrique                                         | **`--time`**<br />**`--time OFF`**<br />**`--time 3/4`**     |                                                              |
+| Suppression de la gravure des barres                         | **`--barres OFF`**                                           |                                                              |
+| Ré-affichage des barres de mesure                            | **`--barres`**                                               | S’emploie forcément après un `--barres OFF`, puisque par défaut les barres sont toujours gravées. |
+| Afficher (ou non) la métrique                                | **`--time`**<br />**`--time OFF`**<br />**`--time 3/4`**     |                                                              |
 | Ne traiter que les images inexistantes                       | **`--only_new`**                                             | Dans le cas contraire, toutes les images seront toujours traitées, qu’elles existent ou non, ce qui peut être très consommateur en énergie. |
 | Ne pas afficher les hampes des notes                         | **`--no_stem`**                                              |                                                              |
 | Transposition du fragment                                    | **`--transpose <from> <to>`**                                | Par exemple, `--transpose bes c'` va transposer le fragment, qui est en SI bémol, en do, en prenant les notes les plus proches. |
 | Taille de la page                                            | **`--page <format>`**                                        | Par défaut, la partition s’affiche sur une page a0 en format paysage, ce qui permet d’avoir une très longue portée.<br />`<format>` peut avoir des valeurs comme `a4`, `b2` etc. |
-| Espace vertical entre les portées                            | **`--staves_vspace <distance>`**                             | Pour avoir l’’espace normal, mettre 9. Au-delà (11, 12 etc.) on obtient un écart plus grand que la normale.<br />“Staves vspaces” signifie (espace vertical entre les portées) |
+| Espace vertical entre les portées                            | **`--staves_vspace <x>`**                                    | Pour avoir l’’espace normal, mettre 9. Au-delà (11, 12 etc.) on obtient un écart plus grand que la normale.<br />“Staves vspaces” signifie (espace vertical entre les portées) |
 | Espace vertical entre les systèmes                           | **`--systems_vspace`**                                       |                                                              |
 | Commencer la relève après cette balise                       | **`--start`**                                                | Permet de se concentrer sur un certain nombre d’images seulement. <br />Tip : désactiver l’option `--only_new` pour refaire toujours les images, même si elles existent déjà. |
 | Mettre fin à la relève-traitement des images                 | **`--stop`**                                                 | Après cette marque, `music-score` interrompra son traitement. |
