@@ -53,7 +53,7 @@ class Statistiques
 
       def add_to_group_note(inote)
         unless @notes_groups.key?(inote.note_abs)
-          @notes_groups.merge!(inote.note_abs => StatGroupNote.new(inote.note_abs))
+          @notes_groups.merge!(inote.note_abs => StatGroupNote.new(inote.note_abs, inote.formated_note))
         end
         @notes_groups[inote.note_abs].add(inote)
       end
@@ -99,11 +99,29 @@ class Statistiques
       @note_abs ||= "#{note_name}#{alteration}".freeze
     end
 
+
     # = Helper Methods =
+
+    # Nom pour les fichiers (c# plutôt que cis)
+    def formated_note
+      @formated_note ||= "#{note_name}#{f_alteration}".freeze
+    end
 
     # Pour les accords
     def as_note
       @as_note ||= "#{note_abs}#{duration}#{'~' if linked?}"
+    end
+
+    def f_alteration
+      @f_alteration ||= begin
+        case alteration
+        when 'is'   then '#'
+        when 'isis' then 'x'
+        when 'es'   then 'b'
+        when 'eses' then 'bb'
+        else ''
+        end
+      end
     end
 
     # = Fixed Data Methods =
@@ -149,10 +167,11 @@ class Statistiques
   # Instance pour chaque note : c, cis, cisis, d, des, deses, etc.
   class StatGroupNote
 
-    attr_reader :note
-    def initialize(note_abs)
-      @note   = note_abs
-      @notes  = []
+    attr_reader :note, :note_formated
+    def initialize(note_abs, note_formated)
+      @note           = note_abs
+      @note_formated  = note_formated
+      @notes          = []
     end
 
     # = Helper Methods =
@@ -160,15 +179,14 @@ class Statistiques
     # Pour afficher le résultat sous forme de ligne de texte
     def text_line
       @text_line ||= begin
-        "#{note.ljust(StatNote.note_max_len)}#{SEP}#{count.to_s.ljust(StatNote.count_max_len)}#{SEP}#{"#{duree_secondes} s".to_s.rjust(StatNote.duree_max_len + 2)}\n".freeze
+        "#{note_formated.ljust(StatNote.note_max_len)}#{SEP}#{count.to_s.ljust(StatNote.count_max_len)}#{SEP}#{"#{duree_secondes} s".to_s.rjust(StatNote.duree_max_len + 2)}\n".freeze
       end
     end
 
     # Pour afficher le résultat sous forme de ligne CSV
     def csv_line
-      "#{note};#{count};#{duree_secondes}\n"
+      "#{note_formated};#{count};#{duree_secondes}\n"
     end
-
 
 
     # = Functional Methods =
