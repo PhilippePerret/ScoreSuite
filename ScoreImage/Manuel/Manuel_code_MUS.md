@@ -270,6 +270,16 @@ Ces options produisent un dossier **`stats`**  contentant 4 fichiers avec toutes
 
 > Note : cette option peut s’utiliser aussi avec l’application `score-extract` (**ScoreExtraction**) avec les mêmes options.
 
+### Remarques sur les statistiques
+
+Les statistiques relèvent donc la fréquence d’utilisation de chaque note de la partition, ainsi que leur durée d’utilisation. Elles sortent le nombre de notes utilisées ainsi que la durée totale de chaque note mise bout-à-bout.
+
+Certains partis-pris ont été adoptés :
+
+* toutes **les répétitions** sont prises en compte (à l’avenir, si c’est nécessaire, on pourra imaginer une option qui permette de ne pas les prendre en compte)
+* pour **les ornements**, on ne compte que la note elle-même (sauf pour les « grace notes » — cf. ci-dessous). En effet, comment considérer une trille par exemple ? Elle devrait comporter deux notes (les deux notes utilisées pour triller) et un certain nombre d’itérations indéfinissable de façon stricte avec des durées tout aussi indéfinissables. On pourrait se retrouver aussi avec des statistiques faussées qui amplifieraient l’utilisation d’une note simplement parce qu’elle est produite par la trille (on pourrait objecter que cette note n’est pas « amplifiée » puisqu’elle est, de fait, jouée dans la musique…).
+* on fait une exception pour **les *grace notes*** (les ***petites notes***), donc, c’est-à-dire les notes explicitement écrites, avec une durée définie, qui sont prises en compte. Conformément à la tradition de jeu, pour l’appogiature « barrée » (petites notes barrées), on définit sa durée au quart de la note qui la suit, en retirant cette durée à la note suivante.
+
 ---
 
 <a id="options"></a>
@@ -308,6 +318,7 @@ Toutes ces options peuvent être utilisées au début du code ou à n’importe 
 | Nommage de la portée                                         | **`--staves_names <nom>`**                                   | Permet, notamment pour le piano, de préciser qu’il faut indiquer le nom (simplement en indiquant `--staves_names Piano`) |
 | Taille de la portée                                          | **`--staff_size <x>`**                                       | Définit la taille de la portée (et de tous ses éléments). La valeur par défaut est **20**. |
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
+| Statistiques                                                 | **`--stats`**                                                | Produit toujours les statistiques en même temps que la partition, dans un dossier `stats`. |
 | Tempo pour statistques                                       | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
 |                                                              |                                                              |                                                              |
 

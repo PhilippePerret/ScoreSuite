@@ -1,6 +1,6 @@
-Nombre total de notes : 14
-c  4  6.0 s
-d  4  6.0 s
-e  3  4.0 s
-f  2  2.0 s
+Nombre total de notes : 18
+c  5  7.0 s
+d  5  7.0 s
+e  4  5.0 s
+f  3  3.0 s
 b  1  2.0 s

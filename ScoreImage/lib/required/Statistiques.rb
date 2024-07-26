@@ -67,6 +67,9 @@ class Statistiques
         else
           inote.duration=(@current_duration)
         end
+        if @notes[-2] && @notes[-2].sub_duration_to_next?
+          inote.duration_sub= @notes[-2].abs_duration
+        end
       end
 
     end #/<< self
@@ -74,11 +77,21 @@ class Statistiques
 
     attr_reader :data
 
+    # Valeur absolue, en secondes, qu’il faut retirer à la note (par
+    # exemple quand elle est précédée d’une "grace note")
+    attr_accessor :duration_sub
+
+    # Instantiation d’une nouvelle note
+    # -------------
+    # 
     # @param data_note [Array]
     #   Liste contenant [<nom note>, <alteration>, <durée>, <points>, <tilde>]
     # 
     def initialize(data_note)
-      @data = data_note
+      @data         = data_note
+      # Par défaut, on ne doit retirer aucune durée à la note. Mais
+      # ça peut arriver avec les petites notes (graces notes)
+      @duration_sub = 0
     end
 
     # Par exemple "bes", "a" ou "cisis"
@@ -98,14 +111,16 @@ class Statistiques
     def duration=(v)      ; @duration = v     end
 
     def is_linked(v = true)
-      data[4] = v ? '~' : nil
+      data[5]   = v ? '~' : nil
       @islinked = v
     end
 
 
     # = Volatile Data =
 
-    def linked?     ; @islinked    ||= data[4] == '~' end
+    def sub_duration_to_next?; data[4] == 'STN' end
+
+    def linked?     ; @islinked    ||= data[5] == '~' end
     
     # @return [Float] La durée musicale "absolue", c’est-à-dire 
     # exprimée en noires. Par exemple, une noire vaut 1, une ronde
@@ -117,15 +132,15 @@ class Statistiques
         dur = 4.0 / dur.to_i
         c = dur.dup
         prol.length.times { dur += (c = c / 2) }
-        dur
+        dur - duration_sub
       end
     end
 
     # # = Fixed Data = #
 
     def note_name   ; @note_name   ||= data[0].freeze end
-    def octave      ; @octave      ||= data[1].freeze end
-    def alteration  ; @alteration  ||= data[2].freeze end
+    def alteration  ; @alteration  ||= data[1].freeze end
+    def octave      ; @octave      ||= data[2].freeze end
     def duration    ; @duration    ||= data[3].freeze end
   end
 
@@ -371,9 +386,13 @@ class Statistiques
     # On "sort" toutes les notes de leurs accords
     line = decompose_chords_in(line)
 
+    # Traitement spécial des appogiatures
+    line = traitement_des_appoggiatura_in(line)
+
     # ======================================= #
     # ===     RÉCUPÉRATION DES NOTES      === #
     # ======================================= #
+    verbose? && puts("Line avant scan complet: #{line.inspect}".bleu)
     notes_scaned = line.scan(REG_NOTE_DUREE)
     verbose? && puts("Scan complet: #{notes_scaned.to_a}")
     notes_scaned.map do |data_note| 
@@ -383,6 +402,29 @@ class Statistiques
     end
 
   end
+
+
+  # Traite les appogiatures (pour pouvoir réduire leur durée et
+  # la soustraire à la note suivante)
+  # 
+  def traitement_des_appoggiatura_in(line)
+    return line unless line.match?(/\\gr\(/.freeze)
+
+    line = line.gsub(REG_GRACE_NOTE) do
+      note        = $~[:note]
+      alter       = $~[:alter]
+      duration    = $~[:duration]
+      is_slashed  = $~[:slash] == '/'
+      is_linked   = $~[:link] == '-'
+      if is_slashed
+        duration = "#{(duration||4).to_i * 2}STN"
+      end
+      "#{note}#{alter}#{duration}"
+    end
+
+    return line  
+  end
+
 
   # Traite les répétitions dans la ligne, car elles sont traitées en tant que
   # telles
@@ -579,11 +621,22 @@ class Statistiques
   end
 
   REG_NOTE = /\b[a-g]([,'’]+)?(isis|eses|is|es)?\b/.freeze
-  REG_NOTE_CAPT = /(?<note>[a-grs])(?<octave>[,']+)?(?<alter>isis|eses|is|es)?/.freeze
+  REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?(?<octave>[,']+)?/.freeze
 
-  REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)/.freeze
+  REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)(?<sub_to_next>STN)?/.freeze
 
-  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^_\)\($]/
+  # Expression régulière complète pour repérer une note et
+  # sa durée
+  # 
+  # @notes
+  #   - le "\" à la fin se trouve par exemple avant un ’\fermata’
+  #   - le ")" à la fin se trouve à la fin d’une liaison
+  #   - le "(" à la fin se trouve au début d’une liaison
+  #   - le "/" à la fin se trouve dans les accaciatura
+  # 
+  REG_NOTE_DUREE = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<linked>\~)?[ \\\^_\)\(\/$]/
+
+  REG_GRACE_NOTE = /\\gr\(#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<slash>\/)?(?<link>\-)?\)/.freeze
 
   REG_MAYBE_CHORD = /<[a-g]/.freeze
 

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   width="17.131557mm"
+   height="12.861671mm"
+   viewBox="0 0 9.7487999 7.3190007"
+   id="svg60"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs64" />
+  <style
+     type="text/css"
+     id="style2"><![CDATA[
+tspan { white-space: pre; }
+]]></style>
+  <g
+     transform="translate(0,5.779)"
+     id="g6">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="9.6988001"
+       y2="0"
+       id="line4" />
+  </g>
+  <g
+     transform="translate(0,4.779)"
+     id="g10">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="9.6988001"
+       y2="0"
+       id="line8" />
+  </g>
+  <g
+     transform="translate(0,3.779)"
+     id="g14">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="9.6988001"
+       y2="0"
+       id="line12" />
+  </g>
+  <g
+     transform="translate(0,2.779)"
+     id="g18">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="9.6988001"
+       y2="0"
+       id="line16" />
+  </g>
+  <g
+     transform="translate(0,1.779)"
+     id="g22">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="9.6988001"
+       y2="0"
+       id="line20" />
+  </g>
+  <g
+     transform="translate(4.808,4.279)"
+     id="g26">
+    <path
+       transform="scale(0.0028,-0.0028)"
+       d="M 208,139 C 277,139 325,99 325,40 325,-51 218,-139 116,-139 47,-139 0,-99 0,-40 0,51 106,139 208,139 Z"
+       fill="currentColor"
+       id="path24" />
+  </g>
+  <g
+     transform="translate(0.8,4.779)"
+     id="g30">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       fill="currentColor"
+       id="path28" />
+  </g>
+  <g
+     transform="translate(5.6609,3.779)"
+     id="g34">
+    <rect
+       x="-0.064999998"
+       y="-2.3"
+       width="0.13"
+       height="2.6856"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect32" />
+  </g>
+  <g
+     transform="translate(5.7259,1.519)"
+     id="g38">
+    <path
+       transform="scale(0.0028,-0.0028)"
+       d="m -169,-516 357,290 c 30,26 71,-23 39,-48 l -357,-290 c -30,-26 -71,23 -39,48 z"
+       fill="currentColor"
+       id="path36" />
+  </g>
+  <g
+     transform="translate(5.7259,1.519)"
+     id="g42">
+    <path
+       transform="scale(0.0028,-0.0028)"
+       d="m 115,-723 c 0,12 43,85 43,193 0,101 -90,205 -158,280 H -21 V 0 H 0 c 0,-196 207,-334 207,-530 0,-71 -15,-140 -41,-206 -5,-10 -14,-13 -23,-13 -14,0 -28,10 -28,26 z"
+       fill="currentColor"
+       id="path40" />
+  </g>
+  <g
+     transform="translate(3.765,4.279)"
+     id="g46">
+    <path
+       transform="scale(0.0025,-0.0025)"
+       d="m 0,112 c 0,13 8,25 20,30 l 34,13 v 148 c 0,13 10,24 23,24 13,0 24,-11 24,-24 V 174 l 73,29 v 148 c 0,13 11,24 24,24 13,0 23,-11 23,-24 V 222 l 10,4 c 4,2 8,2 12,2 17,0 32,-14 32,-32 v -46 c 0,-13 -8,-24 -20,-29 L 221,107 V -41 l 10,4 c 4,2 8,3 12,3 17,0 32,-14 32,-32 v -46 c 0,-13 -8,-25 -20,-30 l -34,-13 v -148 c 0,-13 -10,-24 -23,-24 -13,0 -24,11 -24,24 v 129 l -73,-29 v -148 c 0,-13 -11,-24 -24,-24 -13,0 -23,11 -23,24 v 129 l -10,-4 c -4,-2 -8,-2 -12,-2 -17,0 -32,14 -32,32 v 46 c 0,13 8,24 20,29 l 34,14 V 41 L 44,37 C 40,35 36,34 32,34 15,34 0,48 0,66 Z M 174,89 101,59 V -89 l 73,30 z"
+       fill="currentColor"
+       id="path44" />
+  </g>
+  <g
+     transform="translate(6.7466,3.779)"
+     id="g50">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path48" />
+  </g>
+  <g
+     transform="translate(6.8116,3.779)"
+     id="g54">
+    <rect
+       x="-0.064999998"
+       y="0.18610001"
+       width="0.13"
+       height="3.1472001"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect52" />
+  </g>
+  <g
+     transform="translate(4.808,3.779)"
+     id="g58">
+    <path
+       stroke-width="0.08"
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke="currentColor"
+       fill="currentColor"
+       d="M 0.4874,1.394 C 1.1292,1.9061 2.0945,1.8165 2.6311,1.195 v 0 C 2.0834,1.697 1.1181,1.7866 0.4874,1.394 Z"
+       id="path56" />
+  </g>
+</svg>
