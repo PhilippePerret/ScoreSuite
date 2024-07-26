@@ -710,11 +710,49 @@ Si le segment répété doit se trouver à une octave particulière, on peut enr
 \relative c,, { % c8 d e %8 }
 ~~~
 
-> Noter qu’il n’est pas possible de faire **`% c,,8 d e %8`** car chaque nouvelle répétition repartirait deux octaves plus bas, puisqu’il s’agit de répétitions strictes :
->
-> ~~~
-> c,,8 d e c,,8 d e c,,8 d e c,,8 d e etc.
-> ~~~
+Mais on peut le faire plus simplement avec :
+
+~~~
+\cle F % c,,8 d e %4
+~~~
+
+… car l’octave de départ sera supprimée pour donner le code :
+
+~~~
+\cle F c,,8 d e c d e c d e c d e
+~~~
+
+… qui produira :
+
+<img src="./images/repetition-same-octave.svg" alt="repetition-same-octave" style="zoom:120%;" />
+
+Il est important, néanmoins, de surveiller l’octave à la fin de la chaine, car si on fait :
+
+~~~
+\cle F % c,,8 e g %3
+~~~
+
+… on produira le code :
+
+~~~
+\cle F c,,8 e g c e g c e g
+~~~
+
+… qui verra monter sans redescendre l’arpège de Do majeur, car le deuxième Do repartira à l’octave du Sol précédent, etc. :
+
+<img src="./images/montee-octaves.svg" alt="montee-octaves" style="zoom:120%;" />
+
+Dans ce cas, on peut préférer utiliser avec plus de sécurité le code normal de Lilypond :
+
+~~~
+\cle F \repeat unfold 3 { c,,8 e g }
+~~~
+
+… qui produira : 
+
+<img src="./images/repeat-unfold.svg" alt="repeat-unfold" style="zoom:120%;" />
+
+
 
 
 ---
