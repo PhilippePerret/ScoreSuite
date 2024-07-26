@@ -1,4 +1,4 @@
-# Manuel du langage `music-score`
+# Manuel du<br> langage `music-score`<br>(`.mus`)
 
 
 
@@ -250,14 +250,15 @@ Pour la gestion des variables, voir [Gestion dynamique des variables](#dynamic-v
 
 ## Statistiques
 
-Le programme permet aussi de faire des statistiques sur les notes. Il suffit :
+Le programme permet aussi de faire des **statistiques sur les notes** (nombre et durée). Il suffit :
 
-* d’ajouter l’option `-s`/`--stats` à la ligne de commande,
-* de definir l’option `-t`/`--tempo=<val>[T]` pour calculer les durées réelles.
+* d’ajouter l’option `-s`/`--stats` à la ligne de commande (ou de mettre l’option `--stats` dans le fichier mus,
+* de definir l’option `-t`/`--tempo=<val>[T]` en ligne de commande ou dans le code mus, pour calculer les durées réelles.
 
-Le tempo peut s’ajouter aussi directement dans le fichier **`.mus`** avec l’option : 
+L’option  et le tempo peut s’ajouter aussi directement dans le fichier **`.mus`** avec l’option : 
 
 ~~~
+--stats
 --tempo 60T
 ~~~
 
@@ -265,7 +266,7 @@ Le tempo doit toujours se mettre en valeur de noire (même si le tempo n’est p
 
 On ajoute “**T**” au tempo lorsque c’est un rythtme ternaire (on met alors en tempo la valeur de la noire pointée).
 
-Ces options produisent 4 fichiers avec toutes les notes classées 1) par ordre alphabétiques, 2) pour nombre, 3) par durée, 4) en fichier CSV pour travail avec excel.
+Ces options produisent un dossier **`stats`**  contentant 4 fichiers avec toutes les notes classées 1) par ordre alphabétiques, 2) pour nombre, 3) par durée, 4) en fichier CSV pour travail avec excel.
 
 > Note : cette option peut s’utiliser aussi avec l’application `score-extract` (**ScoreExtraction**) avec les mêmes options.
 

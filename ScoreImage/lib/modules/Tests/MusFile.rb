@@ -110,6 +110,8 @@ class MusFile
     # puts "err: #{err.inspect}"
     if pid.success? && out.match?('produite avec succès')
       return out
+    elsif pid.success? && out.match?(/ERREUR \[[0-9]+\]/)
+      return out
     elsif pid.success? && err.empty?
       # La commande n’a pas échoué, mais l’image n’a pas été produite
       # et pourtant aucun message d’erreur n’a été renvoyé

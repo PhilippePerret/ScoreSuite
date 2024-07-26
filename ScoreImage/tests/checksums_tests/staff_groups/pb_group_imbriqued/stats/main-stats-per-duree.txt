@@ -1,0 +1,2 @@
+Durée totale : 20.0 s
+c  5  20.0 s

@@ -1,4 +1,5 @@
-# Problème de 4 clés et 3 portées
+# Problème de 4 clés et 3 portées. Mais ça ne pose plus de problème
+# maintenant, on "remplit" les vides
 --staves_names Bois, Bois, Bois
 --staves_keys F, G, G, G
 --barres

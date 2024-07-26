@@ -24,22 +24,28 @@ class << self
     when :stop
       return
     when '_', 'run'
-      run_tests
+      run_tests(folder: CLI.options[:dir])
     when /^\/(.+)\/$/
       run_tests({filter: eval(subcommand).freeze, folder: CLI.options[:dir]})
     when 'create'
       require_relative 'test_create'
       create_test
     else
-      puts <<~TEXT
-      Pour lancer directement les tests : 
-          #{'score-image tests _'.jaune}
-      Pour filtrer les tests par expression régulière :
-          #{'score-image tests /<expression>/'.jaune}
-
-          
-      TEXT
-      run(choose_what_to_do)
+      if CLI.options[:dir]
+        run_tests(folder: CLI.options[:dir])
+      else
+        puts <<~TEXT
+        Pour lancer directement les tests : 
+            #{'score-image tests _'.jaune}
+        Pour filtrer les tests par expression régulière :
+            #{'score-image tests /<expression>/'.jaune}
+        Pour jouer tous les tests d’un dossier
+            #{'score-image tests -dir=relpath/to/dir'.jaune}
+        Pour jouer les tests d’un dossier en les filtrant
+            #{'score-image tests /<expression>/ -dir=relpath/to/dir'.jaune}
+        TEXT
+        run(choose_what_to_do)
+      end
     end
   end
 
