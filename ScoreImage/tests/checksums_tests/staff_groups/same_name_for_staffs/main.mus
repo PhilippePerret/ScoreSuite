@@ -3,7 +3,6 @@
 # n’ont pas de noms
 --staves_names {Bois, Bois, Bois}
 --staves_keys F, G, G
---barres
 
 basson=
 c,4 e g c c g e c

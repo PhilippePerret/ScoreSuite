@@ -1,4 +1,2 @@
---barres
-
 -> score
 \repeat volta 3 { c d e f }

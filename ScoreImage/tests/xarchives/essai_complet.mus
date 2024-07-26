@@ -37,7 +37,6 @@ var \transpose c f { var }
 # Production d'une portée piano avec des barres
 -> portee_piano_simple
 --piano
---barres
 c2 e4 g | b4.
 c8 g' e g c, g' e g | d2
 

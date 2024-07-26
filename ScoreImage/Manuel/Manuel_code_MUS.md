@@ -30,7 +30,7 @@ Pour produire facilement des images pour ce manuel :
 
 * la glisser à l’endroit voulu dans ce manuel.
 
-### Le langage music-score (mus)
+### Le langage music-score (`mus`)
 
 Le langage `music-score` (maintenant la commande **`score-image`** ) est un langage de programmation qui permet de produire très facilement des images de partitions simples (simple portée ou portée piano — pour le moment) en utilisant dans son moteur le langage [LiliPond](http://www.lilypond.org).
 
@@ -103,7 +103,7 @@ mes12<->15
 MUS
 ~~~
 
-> Noter que pour taper **`score-image`** il suffit de taper `score-i` puis tabulation. C’est valable pour toutes les applications de la suite Score.
+> Noter que pour taper **`score-image`** il suffit de taper `score-i` puis la touche tabulation. C’est valable pour toutes les applications de la suite Score (*Score-Builder*, *Score-Numbering*, etc.).
 
 
 
@@ -162,6 +162,7 @@ Il est important de comprendre que ce code fonctionne **par paragraphe**, ce qui
 Cela permet entre autres choses d’avoir des partitions multipistes. Par exemple, un trio sera indiqué par :
 
 ~~~
+# trio
 -> trio
 a b c d
 a2.   a'

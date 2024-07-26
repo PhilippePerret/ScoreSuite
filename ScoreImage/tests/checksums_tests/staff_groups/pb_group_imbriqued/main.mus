@@ -1,8 +1,6 @@
 # Ce test, qui échoue, permet de vérifier qu’on ne puisse pas faire
 # de groupes imbriqués
 # 
---barres
-
 --staves_names Cb., {Vlc., Va., {Vl2., Vl1.} }
 --staves_keys  F, F, UT3, G, G
 

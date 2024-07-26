@@ -1,6 +1,5 @@
 # Alternative complexe avec une répétition avant
 --keep
---barres
 
 -> partition
 c4 d e f |: c4 d e f |1 e2 d :|2 d2 c || b c

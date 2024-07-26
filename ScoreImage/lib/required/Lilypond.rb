@@ -348,7 +348,7 @@ end
 #/header
 
 def layout_context_score
-  if options[:proximity] || options[:number_per_5] || not(options[:barres])
+  if options[:proximity] || options[:number_per_5] || (options[:barres] === false)
     <<~CODE.gsub('\\','\\\\')
     \\Score
       #{option_no_barre}
@@ -359,7 +359,7 @@ def layout_context_score
 end
 
 def option_no_barre
-  if not(options[:barres])
+  if options[:barres] === false
     '\\override BarLine.break-visibility = #all-invisible'
   else "" end
 end

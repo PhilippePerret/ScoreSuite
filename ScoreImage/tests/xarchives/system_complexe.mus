@@ -2,7 +2,6 @@
 --staves 3
 --staves_names Main gauche, Milieu, Main droite
 --staves_keys F, UT3, G
---barres
 --time 4/4
 
 -> trois_portees

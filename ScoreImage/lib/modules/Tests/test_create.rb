@@ -111,7 +111,6 @@ class MusFile
     IO.write(path, SAMPLE_MUS_CODE)
   end
 SAMPLE_MUS_CODE = <<~MUS
---barres
 --keep
 
 -> score

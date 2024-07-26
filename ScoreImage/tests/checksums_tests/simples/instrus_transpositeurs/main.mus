@@ -1,5 +1,4 @@
 # Test permettant de tester les instruments transpositeurs.
---barres
 --staves_names Sax E_b_, Cor A., Cl.(B_b_), Fl.
 --staves_keys  G, G, G, G
 --tempo 60

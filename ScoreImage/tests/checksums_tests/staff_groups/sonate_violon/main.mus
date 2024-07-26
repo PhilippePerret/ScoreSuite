@@ -2,7 +2,6 @@
 # Pour tester le groupement par instrument à l’aide des crochets dans
 # la définition de staves_names
 # 
---barres
 --keep
 --staves_names {Piano, Piano}, Violon
 --staves_keys  F, G, G

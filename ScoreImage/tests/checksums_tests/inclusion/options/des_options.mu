@@ -1,3 +1,2 @@
 --piano
---barres
 --time 4/4
