@@ -387,7 +387,7 @@ def option_numeros_mesures_sous_portee
 end
 
 def options_system_count_per_page
-  if ( n = options[:system_count]||options[:system_count_per_page] )
+  if ( n = (options[:system_count]||options[:system_count_per_page]) )
     # "system-count = ##{n}" # ne fonctionne pas : met tout dans ce nombre sur une seule page
     'max-systems-per-page = #%s'.freeze % n.to_s
   end  
