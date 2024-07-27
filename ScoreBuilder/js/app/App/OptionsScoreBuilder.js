@@ -25,6 +25,7 @@ class OptionsScoreBuilder extends Panneau {
   * 
   */
   static applyOptions(keys){
+    // console.log("OPTIONS_SBUILDER:", OPTIONS_SBUILDER)
     if ( undefined === keys ) { keys = Object.keys(OPTIONS_SBUILDER) }
     else if ( 'string' == typeof keys ) { keys = [keys] }
     keys.forEach(key => this['apply_'+key](OPTIONS_SBUILDER[key]) )
