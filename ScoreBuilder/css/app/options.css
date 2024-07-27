@@ -1,3 +1,11 @@
+/*
+
+  PANNEAU OPTIONS PARTITION
+
+  (pour le panneau des options de Score-Builder
+   voir plus bas)
+
+*/
 div#panneau-options {}
 div#panneau-options label, span.label {
   font-family: Arial Narrow;
@@ -83,4 +91,37 @@ div#panneau-options div.label-select-small label {
 }
 div#panneau-options div.label-select-small span.select {
   width: 202px;
+}
+
+
+
+/*
+
+  PANNEAU OPTIONS SCORE-BUILDER
+
+*/
+div#panosb {
+
+}
+div#panosb ul#screens-position {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  width: 360px;
+}
+
+div#panosb ul#screens-position li.screen {
+  display:inline-block;
+  float:left;
+  border: 1px solid;
+  width:  30%;
+  height: 120px;
+  text-align: center;
+  vertical-align: middle;
+  background-color:#EEEEFF;
+}
+
+li#screen_mus-code.screen {
+  background-color: #333333 !important;
+  color: #EEEEEE;
 }

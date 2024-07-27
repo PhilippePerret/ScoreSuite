@@ -16,6 +16,10 @@ class App {
     OriginalScore.setPages(wData.folder, wData.original_score_pages)
     ScoreViewer.setVignettes(wData)
     UI.setNameBackupButton(wData.nombre_backups)
+    if ( wData.config_sbuilder ) {
+      OPTIONS_SBUILDER = wData.config_sbuilder
+      OptionsScoreBuilder.applyOptions()
+    }
   }
 
   /**

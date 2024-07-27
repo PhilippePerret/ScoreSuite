@@ -1,3 +1,8 @@
 ---
-# Dimensions à donner à la fenêtre
-window_size: [3400,1440]
+ScreensOrder:
+- original-score
+- viewer
+- mus-code
+window_size:
+- 3400
+- 1440

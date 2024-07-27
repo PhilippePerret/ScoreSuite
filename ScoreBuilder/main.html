@@ -81,10 +81,10 @@
  -->
 <section id="section-mus-code">
   <title>MUS Code</title>
-<textarea id="mus-code" placeholder="Code .mus à évaluer">
--> partition
-c d ees f g aes
-</textarea>
+  <textarea id="mus-code" placeholder="Code .mus à évaluer">
+  -> partition
+  c d ees f g aes
+  </textarea>
 </section>
 
 
@@ -200,11 +200,36 @@ c d ees f g aes
 
 <!-- 
 
-  LE PANNEAU DES OPTIONS
+  LE PANNEAU DES OPTIONS SCORE BUILDER
+
+ -->
+<div id="panosb" class="panneau">
+  <h3>Options Score-Builder</h3>
+  <section class="content">
+    <fieldset id="screen-position-container" class="options-container">
+      <label>Position des écrans</label>
+      <ul id="screens-position">
+        <li id="screen_original-score" class="screen"><br />Parti&shy;tion origi&shy;nale</li>
+        <li id="screen_mus-code" class="screen"><br />> code</li>
+        <li id="screen_viewer" class="screen"><br />Parti&shy;tion cons&shy;truite</li>
+      </ul>
+    </fieldset>
+  </section>
+
+  <div class="buttons right">
+    <button class="btn-close">Fermer</button>
+  </div>
+
+</div>
+
+
+<!-- 
+
+  LE PANNEAU DES OPTIONS POUR LA PARTITION
 
  -->
 <div id="panneau-options" class="panneau">
-  <h3>Options</h3>
+  <h3>Options Partition</h3>
   <section class="content">
 
     
@@ -340,7 +365,8 @@ c d ees f g aes
       <menu-title>Manuels…</menu-title>
     </menu>
   </menu-container>
-  <button id="btn-options" onclick="Options.open()">Options…</button>
+  <button id="btn-options" onclick="Options.open()">Options Partition…</button>
+  <button id="btn-options" onclick="OptionsScoreBuilder.open()">Options…</button>
   <button id="btn-backup" title="Cliquer sur ce bouton pour nettoyer le dossier des backups (n’en garder que 5)">Nettoyer les backups</button>
   <button id="btn-build" title="Construire la partition"><span class="content">Build & Save</span></button>
 </footer>
@@ -357,6 +383,7 @@ c d ees f g aes
 <script type="text/javascript" src="js/app/App/OriginalScore.js" defer></script>
 <script type="text/javascript" src="js/app/App/Snippet.js" defer></script>
 <script type="text/javascript" src="js/app/App/Options.js" defer></script>
+<script type="text/javascript" src="js/app/App/OptionsScoreBuilder.js" defer></script>
 <script type="text/javascript" src="js/app/App/Outils.js" defer></script>
 <script type="text/javascript" src="js/app/App/BlocNotes.js" defer></script>
 <script type="text/javascript" src="js/app/App/Helper.js" defer></script>

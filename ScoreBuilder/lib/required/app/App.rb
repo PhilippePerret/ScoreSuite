@@ -76,9 +76,20 @@ class << self
     folder_data.merge!(
       mus_code: CGI.escape(IO.read(musfile)),
       affixe: File.basename(musfile, File.extname(musfile)),
-      nombre_backups: MusCode.new(musfile).get_nombre_backups
+      nombre_backups: MusCode.new(musfile).get_nombre_backups,
+      config_sbuilder: get_config_sbuilder
     )
     WAA.send(class:"App", method:"onLoad", data: folder_data)
+  end
+
+  def get_config_sbuilder
+    if File.exist?(config_path)
+      YAML.safe_load(IO.read(config_path),**YAML_OPTIONS)
+    else nil end
+  end
+
+  def save_config_sbuilder(wdata)
+    IO.write(config_path, wdata['options'].to_yaml)
   end
 
   # @api

@@ -10,7 +10,7 @@ const DATA_OPTIONS = {
   , measure_number_under_staff: {name:"Numéro de mesure sous la portée", depends_on: 'mesure_numbers', default: false}
 }
 const OPTIONS_DIVERSES = Object.keys(DATA_OPTIONS)
-console.log("OPTIONS_DIVERSES:", OPTIONS_DIVERSES)
+// console.log("OPTIONS_DIVERSES:", OPTIONS_DIVERSES)
 
 const CBS = {}
 const CBS_WITH_DEPENDENCES = {}

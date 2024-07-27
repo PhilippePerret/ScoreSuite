@@ -6,6 +6,7 @@ $(document).ready(e => {
 
   UI.prepare()
   Options.prepare()
+  OptionsScoreBuilder.prepare()
   Outils.prepare()
   BlocNotes.prepare()
   Helper.prepare()
@@ -20,7 +21,7 @@ $(document).ready(e => {
   // Pour gagner du temps au développement
   // BlocNotes.open()
   // Pour ouvrir tout de suite le panneau des options
-  // Options.open()
+  // OptionsScoreBuilder.open()
 
 })
 
