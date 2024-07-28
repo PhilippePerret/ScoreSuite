@@ -32,7 +32,7 @@ class Options extends Panneau {
   static buildSystemCountMenus(){
     let i, opt;
     document.querySelectorAll('select.system-count').forEach(menu =>{
-      opt = DCreate('OPTION', {value:'', text:'-'})
+      opt = DCreate('OPTION', {value:'-', text:'-'})
       menu.appendChild(opt)
       for(i = 1; i < 20; ++i){
         opt = DCreate('OPTION', {value:String(i), text:String(i)})
@@ -42,7 +42,7 @@ class Options extends Panneau {
   }
   static buildStaffSizeMenu(){
     let i, tit, opt;
-    opt = DCreate('OPTION', {value:'', text:'-'})
+    opt = DCreate('OPTION', {value:'-', text:'-'})
     this.menuStaffSize.appendChild(opt)
     for(i = 10; i < 40; ++i){
       tit = i != 20 ? String(i) : "20 (défaut)"
@@ -102,14 +102,29 @@ class Options extends Panneau {
   
     // Pour générer une alerte quand on choisit un nombre de systèmes
     // différent pour la première page (ça n’est pas encore possible)
-    listen(this.menuSystemCountFirstPage,'change', _ => {
-      erreur("Il n’est pas encore possible d’attribuer un nombre de systèmes différent à la 1<sup>re</sup> page.")
-      this.menuSystemCountFirstPage.value = this.menuSystemCount.value
-    })
+    listen(this.menuSystemCountFirstPage,'change', this.onChangeNombreSystems.bind(this, true))
+    listen(this.menuSystemCount,'change', this.onChangeNombreSystems.bind(this, false))
 
     // La fenêtre doit être déplaçable
     $(this.panneau).draggable()
 
+  }
+
+  /* Méthode appelée quand on définit le nombre de systèmes
+     (pour le moment, on ne peut pas mettre un nombre de systèmes
+      différent pour la première page => on synchronise les deux 
+      valeurs) 
+    @param m1rePage [Boolean] Est à true quand la méthode est appelée
+                    par le menu du nombre pour la première page
+  */
+  static onChangeNombreSystems(ev, m1rePage){
+    if ( m1rePage ) {
+      this.menuSystemCount.value = this.menuSystemCountFirstPage.value
+    } else {
+      this.menuSystemCountFirstPage.value = this.menuSystemCount.value
+    }
+    message("Il n’est pas encore possible d’attribuer un nombre de systèmes différent à la 1<sup>re</sup> page.")
+    return stopEvent(ev)
   }
 
   /**
