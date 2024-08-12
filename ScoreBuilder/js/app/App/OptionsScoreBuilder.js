@@ -1,12 +1,7 @@
 'use strict';
 
-let OPTIONS_SBUILDER  = {
-    ScreensOrder: ['original-score','mus-code','viewer']
-  , window_size:  [3400,1440]
-}
 
-
-const LEFTS             = [0,33,66.6]
+const LEFTS = [0,33,66.6]
 
 class OptionsScoreBuilder extends Panneau {
 
@@ -18,6 +13,14 @@ class OptionsScoreBuilder extends Panneau {
 
   }
 
+  static get OPTIONS(){
+    return this._options || (this._options = {
+        ScreensOrder: ['original-score','mus-code','viewer']
+      , window_size:  [3400,1440]
+    })
+  }
+  static set OPTIONS(v){ this._options = v}
+
   /**
   * = main =
   * 
@@ -25,10 +28,9 @@ class OptionsScoreBuilder extends Panneau {
   * 
   */
   static applyOptions(keys){
-    // console.log("OPTIONS_SBUILDER:", OPTIONS_SBUILDER)
-    if ( undefined === keys ) { keys = Object.keys(OPTIONS_SBUILDER) }
+    if ( undefined === keys ) { keys = Object.keys(this.OPTIONS) }
     else if ( 'string' == typeof keys ) { keys = [keys] }
-    keys.forEach(key => this['apply_'+key](OPTIONS_SBUILDER[key]) )
+    keys.forEach(key => this['apply_'+key](this.OPTIONS[key]) )
   }
 
   // === Sous-méthode d’application des options ===
@@ -56,7 +58,7 @@ class OptionsScoreBuilder extends Panneau {
     WAA.send({
       class:  'ScoreBuilder::App',
       method: 'save_config_sbuilder',
-      data:   {options: OPTIONS_SBUILDER}
+      data:   {options: this.OPTIONS}
     })
   }
 
@@ -75,7 +77,7 @@ class OptionsScoreBuilder extends Panneau {
 
 
   /**
-  * Récupérer les données et les places dans OPTIONS_SBUILDER
+  * Récupérer les données et les places dans this.OPTIONS
   */
   static getValues(){
 
@@ -90,7 +92,7 @@ class OptionsScoreBuilder extends Panneau {
   */
   static setValues(values){
     // console.log("-> Options.setValues avec", values)
-    Object.values(OPTIONS_SBUILDER).forEach( odata => {
+    Object.values(this.OPTIONS).forEach( odata => {
 
     })
 
@@ -103,7 +105,7 @@ class OptionsScoreBuilder extends Panneau {
     document.querySelectorAll('ul#screens-position li.screen').forEach(li =>{
       screensOrder.push(li.id.split('_')[1])
     })
-    OPTIONS_SBUILDER.ScreensOrder = screensOrder
+    this.OPTIONS.ScreensOrder = screensOrder
     this.applyOptions('ScreensOrder');
     this.save()
   }

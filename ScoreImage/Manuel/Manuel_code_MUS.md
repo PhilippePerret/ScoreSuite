@@ -1042,15 +1042,31 @@ Il nous suffit maintenant d’appeler la méthode `#motif` dans le code `.mus` �
 
 ~~~mus
 -> score
-fn_motif(("c", "e", "g c e"))
+fn_motif("c", "e", "g c e")
+~~~
 
-# NOTER LES DOUBLES PARENTHÈTES (POUR NE PAS AVOIR DE PROBLÈME AVEC DES PARENTHÈSES DANS LES ARGUMENTS 
-# ce qui arrive souvent avec du code Lilypond)
+> Noter que contrairement à du pur ruby, il faut obligatoirement utiliser les parenthèses pour délimiter les arguments <u>**même lorsqu’il n’y en a pas**</u>.
+
+#### Constantes notes
+
+On peut utiliser les constantes au lieu de guillemets pour simplifier l’écriture :
+
+~~~
+-> score
+fn_motif(c, e, g)
 ~~~
 
 
 
-> Noter que contrairement à du pur ruby, il faut obligatoirement utiliser les parenthèses — mêmes les **<u>doubles parenthèses</u>** pour délimiter les arguments <u>**même lorsqu’il n’y en a pas**</u>.
+#### Parenthèses dans les arguments
+
+Si les arguments contiennent des parenthèses, pour éviter toute confusion, on utilise des double-parenthèses pour délimiter les arguments de la fonction :
+
+~~~
+fn_motif(( "a( b c d)" ))
+~~~
+
+
 
 ---
 

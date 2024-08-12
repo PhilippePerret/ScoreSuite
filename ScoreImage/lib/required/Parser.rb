@@ -147,21 +147,33 @@ end
 # 
 def evaluate_fonctions_ruby_in(str)
   return str unless str.match?('fn_')
+
+  str = str.gsub(REG_RUBY_METHOD_DBL) do
+    traite_regexp_with_fonctions_arguments($~)
+  end
+
   str = str.gsub(REG_RUBY_METHOD) do
-    method_name = $~[:method_name].to_sym
-    arguments   = $~[:arguments]
-    if arguments == ''
-      send(method_name)
-    else
-      arguments = eval("[#{arguments}]")
-      # puts "arguments: #{arguments.inspect}"
-      send(method_name, *arguments)
-    end
+    traite_regexp_with_fonctions_arguments($~)
   end
   # puts "str après :\n#{str}\n-----------------------------"
   return str
 end
-REG_RUBY_METHOD = /fn_(?<method_name>[a-zA-Z0-9_]+)\(\((?<arguments>.*?)\)\)/.freeze
+REG_RUBY_METHOD = /fn_(?<method_name>[a-zA-Z0-9_]+)\((?<arguments>.*?)\)/.freeze
+REG_RUBY_METHOD_DBL = /fn_(?<method_name>[a-zA-Z0-9_]+)\(\((?<arguments>.*?)\)\)/.freeze
+
+def traite_regexp_with_fonctions_arguments(hreg)
+  method_name = hreg[:method_name].to_sym
+  arguments   = hreg[:arguments]
+  if arguments == ''
+    send(method_name)
+  else
+    arguments = eval("[#{arguments}]")
+    # puts "arguments: #{arguments.inspect}"
+    send(method_name, *arguments)
+  end
+end
+
+
 
 # Le code MUS initial
 # @note
@@ -215,6 +227,44 @@ def first_candidate_for(provided_relpath)
 end
 
 INCLUDE_CODE = /^INCLUDE(?<include_path>.+)$/.freeze
+
+
+  def c; "c" end
+  def d; "d" end
+  def e; "e" end
+  def f; "f" end
+  def g; "g" end
+  def a; "a" end
+  def b; "b" end
+  def ces; "ces" end
+  def des; "des" end
+  def ees; "ees" end
+  def fes; "fes" end
+  def ges; "ges" end
+  def aes; "aes" end
+  def bes; "bes" end
+  def ceses; "ceses" end
+  def deses; "deses" end
+  def eeses; "eeses" end
+  def feses; "feses" end
+  def geses; "geses" end
+  def aeses; "aeses" end
+  def beses; "beses" end
+  def cis; "cis" end
+  def dis; "dis" end
+  def eis; "eis" end
+  def fis; "fis" end
+  def gis; "gis" end
+  def ais; "ais" end
+  def bis; "bis" end
+  def cisis; "cisis" end
+  def disis; "disis" end
+  def eisis; "eisis" end
+  def fisis; "fisis" end
+  def gisis; "gisis" end
+  def aisis; "aisis" end
+  def bisis; "bisis" end
+
 
 end #/Parser
 end #/MusicScore

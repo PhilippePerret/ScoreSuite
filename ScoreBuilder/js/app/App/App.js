@@ -17,7 +17,7 @@ class App {
     ScoreViewer.setVignettes(wData)
     UI.setNameBackupButton(wData.nombre_backups)
     if ( wData.config_sbuilder ) {
-      OPTIONS_SBUILDER = wData.config_sbuilder
+      OptionsScoreBuilder.OPTIONS = wData.config_sbuilder
       OptionsScoreBuilder.applyOptions()
     }
   }
