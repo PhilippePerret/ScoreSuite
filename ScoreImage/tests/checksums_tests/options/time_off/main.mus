@@ -1,0 +1,9 @@
+# L’option ’--time OFF’ permet de supprimer la marque de la
+# métrique
+
+--time 4/4
+
+--time OFF
+
+-> score
+c2 d e f 

@@ -1,0 +1,7 @@
+# Pour tester que l’option barres off fonctionne, c’est-à-dire 
+# enlève l’affichage des barres, même lorsqu’elles sont forcées.
+
+--barres OFF
+
+-> score
+a b c d || e f g a

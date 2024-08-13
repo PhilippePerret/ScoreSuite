@@ -1,0 +1,6 @@
+# Pour supprimer les hampes des notes avec l’option ’no_stem’
+
+--no_stem
+
+-> score
+c d e f

@@ -288,7 +288,7 @@ Certains partis-pris ont été adoptés :
 
 ## Options principales
 
-Toutes ces options peuvent être utilisées au début du code ou à n’importe quel endroit du fichier pour être modifiées à la volée. Par exemple, si on veut que les premières images soient produites avec des barres de mesures, on ajoutera en haut du fichier l’option `--barres` et si à partir d’une image on n’en veut plus, on pourra poser `--barres OFF` et remettre plus loin `--barres` pour spécifier qu’il faut à nouveau utiliser des barres de mesure.
+Toutes les options dont nous allons parler peuvent être utilisées au début du code ou à n’importe quel endroit du fichier pour être modifiées à la volée. Par exemple, si on veut que les premières images soient produites sans barres de mesures, on ajoutera en haut du fichier l’option **`--barres OFF`** et si à partir d’une image on en veut, on pourra poser `--barres` et remettre plus loin `--barres OFF` pour spécifier qu’il faut à nouveau ne plus utiliser les barres de mesure.
 
 
 

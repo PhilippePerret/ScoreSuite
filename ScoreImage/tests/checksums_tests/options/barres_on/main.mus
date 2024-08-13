@@ -1,0 +1,12 @@
+# Pour tester qu’on peut redemander l’affichage des barres avec
+# l’option ’--barres’ seule
+
+--barres OFF
+
+# -> score_sans_barres
+a1 b c d
+
+--barres
+
+-> score_avec_barres
+e1 f g a

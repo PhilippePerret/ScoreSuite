@@ -1,0 +1,7 @@
+# L’option ’--time <metrique>’ permet d’ajouter la marque de la
+# métrique
+
+--time 3/4
+
+-> score
+c2 d e f 

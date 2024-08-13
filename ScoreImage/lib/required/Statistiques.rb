@@ -103,8 +103,22 @@ class Statistiques
     # = Helper Methods =
 
     # Nom pour les fichiers (c# plutôt que cis)
+    # 
+    # @note
+    #   Maintenant, tient compte de la transposition
+    # 
     def formated_note
-      @formated_note ||= "#{note_name}#{f_alteration}".freeze
+      @formated_note ||= "#{note_name_transposed}#{f_alteration}".freeze
+    end
+
+    def note_name_transposed
+      @note_name_transposed ||= begin
+        if Statistiques.transposition?
+          Statistiques.transpose("#{note_name}#{f_alteration}")
+        else
+          note_name
+        end
+      end
     end
 
     # Pour les accords
@@ -219,18 +233,24 @@ class Statistiques
     end
 
   end
+  # /class StatGroupNote
 
 
   attr_reader :music_score
   attr_reader :lines
-
-  def initialize(music_score, lines)
-    @music_score  = music_score
-    @lines        = lines
-  end
-
+  attr_reader :main_options
   attr_reader :tempo
 
+  def initialize(music_score, lines, **main_options)
+    @music_score  = music_score
+    @lines        = lines
+    @main_options = main_options
+    # Indiquer s’il y a une transposition
+    self.class.transposition = main_options[:transpose]
+  end
+
+
+  # class Statistique (Classe)
   class << self
     attr_reader :tempo_noire, :is_ternaire, :duree_noire
 
@@ -251,7 +271,23 @@ class Statistiques
         durn
       end
     end
+
+    attr_accessor :transpositor
+
+    def transposition?
+      :TRUE == @hastransposition || true_or_false(not(self.transpositor.nil?))
+    end
+
+    def transposition=(value)
+      self.transpositor = Transposition.new(value)
+    end
+
+    def transpose(note)
+      self.transpositor.transpose(note)
+    end
+
   end #/ class << self
+
 
 
   # = main =
@@ -367,6 +403,8 @@ class Statistiques
     end
   end
 
+
+
   def tempo
     @tempo ||= begin
       music_score.options[:tempo] || CLI.options[:tempo] || begin
@@ -416,14 +454,15 @@ class Statistiques
     verbose? && puts("Line avant scan complet: #{line.inspect}".bleu)
     notes_scaned = line.scan(REG_NOTE_DUREE)
     verbose? && puts("Scan complet: #{notes_scaned.to_a}")
-    notes_scaned.map do |data_note| 
+    notes_scaned.map do |data_note|
+      # puts "data_note = #{data_note}".bleu
+      # exit 12
       inote = StatNote.new(data_note)
       StatNote.add(inote) if add_notes
       inote
     end
 
   end
-
 
   # Traite les appogiatures (pour pouvoir réduire leur durée et
   # la soustraire à la note suivante)

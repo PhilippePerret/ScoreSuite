@@ -1,0 +1,5 @@
+Nombre total de notes : 4
+e  1  4.0 s
+f  1  4.0 s
+g  1  4.0 s
+a  1  4.0 s

@@ -197,7 +197,7 @@ def parse
   # exit 12
   if (options[:stats]||music_score.options[:stats]||CLI.options[:stats]) && @lines_code.any?
     require_relative 'Statistiques'
-    MusicScore::Statistiques.new(music_score, @lines_code).produce
+    MusicScore::Statistiques.new(music_score, @lines_code, **options).produce
   end
 
 end
