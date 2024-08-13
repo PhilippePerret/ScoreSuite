@@ -1,0 +1,9 @@
+# Ce fichier teste le calcul des statistiques (durées) pour un
+# fichier en ternaire.
+
+--time 6/8
+--tempo 60T
+
+-> score
+c8 d e 
+# d e f g4. f8 e d c4.

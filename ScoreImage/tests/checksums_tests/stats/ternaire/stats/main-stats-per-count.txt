@@ -1,0 +1,4 @@
+Nombre total de notes : 3
+c  1  0.33 s
+d  1  0.33 s
+e  1  0.33 s

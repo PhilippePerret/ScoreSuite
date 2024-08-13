@@ -231,24 +231,27 @@ class Statistiques
 
   attr_reader :tempo
 
-  def self.tempo_noire ; @@tempo_noire end
-  def self.is_ternaire ; @@is_ternaire end
-  def self.duree_noire ; @@duree_noire end
-  def self.calc_duree_noire(tempo)
-    @@tempo_noire = 
-      if tempo.end_with?('T')
-        tempo[0...-1]
-      else
-        tempo
-      end
-    @@is_ternaire = tempo.end_with?('T')
-    @@duree_noire = begin
-      durn = 60.0 / tempo_noire.to_i
-      durn = (2.0 / 3) * duree_noire if is_ternaire
-      durn
-    end
-  end
+  class << self
+    attr_reader :tempo_noire, :is_ternaire, :duree_noire
 
+    def tempo_noire ; @tempo_noire end
+    def is_ternaire ; @is_ternaire end
+    def duree_noire ; @duree_noire end
+    def calc_duree_noire(tempo)
+      @tempo_noire = 
+        if tempo.end_with?('T')
+          tempo[0...-1]
+        else
+          tempo
+        end
+      @is_ternaire = tempo.end_with?('T')
+      @duree_noire = begin
+        durn = 60.0 / tempo_noire.to_i
+        durn = (2.0 / 3) * durn if is_ternaire
+        durn
+      end
+    end
+  end #/ class << self
 
 
   # = main =
