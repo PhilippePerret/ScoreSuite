@@ -275,11 +275,13 @@ class Statistiques
     attr_accessor :transpositor
 
     def transposition?
-      :TRUE == @hastransposition || true_or_false(not(self.transpositor.nil?))
+      :TRUE == @hastransposition
     end
 
     def transposition=(value)
+      return if value.nil?
       self.transpositor = Transposition.new(value)
+      @hastransposition = :TRUE
     end
 
     def transpose(note)
