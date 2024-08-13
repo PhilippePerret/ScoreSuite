@@ -1,0 +1,8 @@
+# Dans ce test, trois images seront crées, qui porteront des noms
+# automatiques puisqu’aucun nom n’a été fourni
+
+a b c d
+
+c d e f
+
+d e fis g

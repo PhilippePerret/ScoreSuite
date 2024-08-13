@@ -422,12 +422,17 @@ class MusFile
   private
 
     # On récupère et renvoie le nom de l’image de la partition dans
-    # le code MUS. Il est repéré par ’->’
+    # le code MUS. Il est repéré par ’->’ (ou pas…)
     def get_image_name
       muscode = IO.read(path).force_encoding('UTF-8')
       iname = muscode.match(/^\-\> (.+)$/)
-      raise "Il faut définir le nom de l’image (’-> <image-name>’) dans le code." if iname.nil?
-      iname[1].strip
+      if iname.nil?
+        # Quand le nom de l’image n’est pas définie dans le fichier, 
+        # on le construit
+        "#{affixe}/#{affixe}-score-001"
+      else
+        iname[1].strip
+      end
     end
 
 end #/class MusFile

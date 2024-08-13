@@ -151,7 +151,6 @@ etc.
 # Indique de la mesure 12 à la mesure 15, à la
 # main gauche et à la main droite
 mes12<->15
-mes12<->15
 
 ~~~
 
@@ -219,11 +218,11 @@ Après la production du code, l’image est automatiquement rognée par inskape 
 
 Par défaut (car il est possible de le déterminer explicitement), le nom des images et le dossier de leur destination sont définis par le nom du fichier `.mus` contenant le code music-score.
 
-Soit le nom de fichier `partition.mus` contenant le code « music-score ».
+Soit le nom de fichier **`partition.mus`** contenant le code *music-score*.
 
-Un dossier `partition` sera créé au même niveau que ce fichier, et contiendra les images produites.
+Un dossier **`partition`** sera créé au même niveau que ce fichier, et contiendra les images produites. Chaque ligne contenant du code *mus* produira une image.
 
-Les images porteront le nom `partition-1.svg` `partition-2.svg`… `partition-N.svg` et seront placées dans le dossier `partition` ci-dessus.
+Les images porteront le nom **`partition-1.svg`**, **`partition-2.svg`**… **`partition-N.svg`** et seront placées dans le dossier `partition` ci-dessus.
 
 ---
 
