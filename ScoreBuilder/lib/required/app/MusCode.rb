@@ -89,6 +89,15 @@ class << self
     @ruby_module_path ||= File.join(main_folder,"mus_functions.rb").freeze
   end
 
+
+  def produce_midi_file(wdata)
+    muscode = MusCode.new(wdata['mus_file'])
+    err = muscode.produce_midi_file
+    wdata.merge!(ok: err.nil?, error: err)
+    WAA.send(class:"Outils",method:"onMidiFileProduced", data:wdata)
+  end
+
+
   # Retourne la liste des images SVG produites (soit une seule,
   # soit plusieurs si la partition est longue)
   def current_score_svgs
@@ -156,6 +165,15 @@ def produce_svg
   return report
 end
 
+# @return NIL en cas de succès ou l’erreur rencontrée
+def produce_midi_file
+  nfile = File.basename(mus_file)
+  cmd = 'cd "%s" && score-image --midi "%s"'.freeze % [folder, nfile]
+  res = `#{cmd}`
+  allright = res.match?(/(success|succès)/)
+
+  return allright ? nil : res
+end
 
 # === Functional Methods ===
 

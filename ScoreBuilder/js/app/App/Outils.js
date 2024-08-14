@@ -15,14 +15,32 @@ class Outils extends Panneau {
 
   static observe(){
 
-    listen(this.bntInitRubyModule,'click', this.onClickInitRubyModule.bind(this))
-    listen(this.btnOpenRubyModule,'click', this.onClickOpenRubyModule.bind(this))
-  
+    listen(this.bntInitRubyModule ,'click', this.onClickInitRubyModule.bind(this))
+    listen(this.btnOpenRubyModule ,'click', this.onClickOpenRubyModule.bind(this))
+    listen(this.btnMidiFile       ,'click', this.onClickProduceMidiFile.bind(this))
     // La fenêtre doit être déplaçable
     $(this.panneau).draggable()
 
   }
 
+  /**
+  * Méthode appelée quand on clique sur le bouton "Produire le 
+  * fichier MIDI"
+  * 
+  */
+  static onClickProduceMidiFile(ev){
+    const data = {mus_file: MusCode.mus_file_path}
+    WAA.send({class:"ScoreBuilder::MusCode", method:"produce_midi_file", data:data})
+    return stopEvent(ev)
+  }
+  // Retour de la précédente
+  static onMidiFileProduced(wdata){
+    if ( wdata.ok ) {
+      message("Le fichier MIDI a été produit avec succès.")
+    } else {
+      erreur(wdata.error)
+    }
+  }
 
   /**
   * Méthode appelée quand on clique sur le bouton "Initier le module
@@ -60,6 +78,9 @@ class Outils extends Panneau {
 
   // === Tous les boutons ===
 
+  static get btnMidiFile(){
+    return this._btnmidifile || (this._btnmidifile = DGet('button#produce-midi-file', this.panneau))
+  }
   static get bntInitRubyModule(){
     return this._btninitmodruby || (this._btninitmodruby = DGet('button#init-module-ruby', this.panneau))
   }

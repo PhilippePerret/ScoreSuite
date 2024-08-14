@@ -34,12 +34,55 @@ attr_reader :options
 # @param options  [Hash]  Les options
 #     Note :  la méthode options.to_sym permet d'avoir les clés en
 #             String et en Symbol, peu importe.
+# 
+#   :midi     Quand on met ’--midi’ en options dans le code mus. On
+#             doit alors produire le fichier normal SVG et le fichier
+#             MIDI. Noter qu’il faut deux fichiers pour ça, car il 
+#             faut un fichier lilypond particulier pour les articula-
+#             tion en MIDI.
+#             Noter que cette option est différente de l’option 
+#             ’-midi’ en ligne de commande, qui demande de ne sortir
+#             que le fichier MIDI.
 #
 def compose(code, options)
   rationnalise_options(options)
   sep = "\n% --- %\n".freeze # délimiteur de partie
-  beautify_code(header + sep + body(code, options[:system]) + sep + footer)
+  beautify_code(header + sep + bloc_score(code,options) + sep + footer)
 end
+
+def bloc_score(code, options)
+  c = []
+  c << '\score {'.freeze
+  if midi?
+    # Pas de bloc layout, mais la marque pour les articulations
+    c << '\articulate <<'
+  else
+    c << bloc_layout
+  end
+  c << body(code, options[:system])
+  if midi?
+    c << '>> % /fin articulate'
+    c << bloc_midi
+  end
+  c << '} %/fin de score'
+
+  return c.join("\n")
+end
+
+def midi?
+  :TRUE == @outputmidifile
+end
+def set_midi(value = true)
+  @outputmidifile = value ? :TRUE : :FALSE
+end
+def midi_file_required?
+  :TRUE == @midifileisrequired
+end
+def only_midi_file?
+  :TRUE == @onlymidifileoutput ||= true_or_false(CLI.option(:midi))
+end
+
+
 
 # Méthode qui met en forme le texte du code pour qu’il soit plus
 # lisible, mieux présenter.
@@ -107,6 +150,11 @@ def rationnalise_options(options)
   # des clés dans la table)
   #
   @options = options.to_sym
+
+  # Pour indiquer que le fichier MIDI est requis, si les options
+  # du code mus contiennent ’--midi’
+  @midifileisrequired = options[:midi] == true
+
 end
 
 ##
@@ -137,6 +185,26 @@ def body(code, system)
   else
     raise EMusicScore.new("La valeur '#{system}' pour 'system' est intraitable… (inconnue)")
   end
+end
+
+def bloc_midi
+  <<~LILYPOND
+  \\midi {
+    #{mark_tempo_midi}
+  }
+  LILYPOND
+end
+def mark_tempo_midi
+  return "" unless tempo?
+  note_base   = '4' # pour le moment
+  tempo_base  = tempo
+  '\tempo %s = %s'.freeze % [note_base, tempo_base]
+end
+def tempo?
+  not(tempo.nil?)
+end
+def tempo
+  @tempo ||= (options[:tempo]||CLI.option(:tempo)).freeze
 end
 
 def system_for_solo(code)
@@ -238,7 +306,6 @@ def system_for_x_staves(code)
   # puts isystem.inspect # inspection personnalisée
 
   c = []
-  c << '\score {'.freeze
   c << isystem.start_mark
   code.each_with_index do |code_portee, idx|
     staff = isystem.staves[idx] # => Lilypond::Staff
@@ -258,7 +325,6 @@ def system_for_x_staves(code)
 
   end
   c << isystem.end_mark
-  c << '}'.freeze
   c = c.join("\n")
   # puts "------------\nCODE LILYPOND:\n#{c}\n---------------".jaune
   return c
@@ -267,14 +333,12 @@ end
 
 def system_for_quatuor(code)
   <<-LILYPOND
-\\score {
   \\new StaffGroup <<
     #{staff_for(code[0], {name:'Violon 1'})}
     #{staff_for(code[1], {name:'Violon 2'})}
     #{staff_for(code[2], {name:'Alto',  key: 'alto'})}
     #{staff_for(code[3], {name:'Cello', key: 'bass'})}
   >>
-}
   LILYPOND
 end
 #/system_for_quatuor
@@ -316,6 +380,8 @@ def header
 #(set-default-paper-size #{option_page_format})
 #{option_global_staff_size}
 
+#{'\include "articulate.ly"' if midi?}
+
 \\paper{
   indent=0\\mm
   oddFooterMarkup=##f
@@ -333,19 +399,30 @@ def header
   #{options_system_count_per_page}
 }
 
-\\layout {
-  \\context {
-    % On utilise context pour utiliser des context
-    #{option_staves_vspace}
-    #{option_no_numero_mesure}
-    #{layout_context_score}
-  }
-  #{code_extraction_fragment}
-}
-
   LILYPOND
 end
 #/header
+
+
+# Le ’layout’ dans :
+#   \score {
+#     \layout {
+#     }
+#     ... musique
+#   }
+def bloc_layout
+  <<~CODE.gsub('\\','\\\\')
+  \\layout {
+    \\context {
+      % On utilise context pour utiliser des context
+      #{option_staves_vspace}
+      #{option_no_numero_mesure}
+      #{layout_context_score}
+    }
+    #{code_extraction_fragment}
+  }
+  CODE
+end
 
 def layout_context_score
   if options[:proximity] || options[:number_per_5] || (options[:barres] === false)

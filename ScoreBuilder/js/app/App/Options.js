@@ -8,7 +8,9 @@ const DATA_OPTIONS = {
   , mesure_numbers: {name: "Afficher les numéros de mesure", default: true, when_false: 'OFF'}
   , number_per_5:   {name: "Numéroter de 5 en 5", default: false, depends_on: 'mesure_numbers'}
   , measure_number_under_staff: {name:"Numéro de mesure sous la portée", depends_on: 'mesure_numbers', default: false}
+  , midi:           {name: "Produire le fichier MIDI", default: false}
 }
+
 const OPTIONS_DIVERSES = Object.keys(DATA_OPTIONS)
 // console.log("OPTIONS_DIVERSES:", OPTIONS_DIVERSES)
 

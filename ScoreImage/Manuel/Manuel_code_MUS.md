@@ -264,9 +264,7 @@ L’option  et le tempo peut s’ajouter aussi directement dans le fichier **`.m
 --tempo 60T
 ~~~
 
-Le tempo doit toujours se mettre en valeur de noire (même si le tempo n’est pas à la noire). Si le tempo est écrit dans une autre valeur (blanche, croche…), alors faire la transposition (diviser par deux si c’est en croche, multiplier par deux si c’est en blanche).
-
-On ajoute “**T**” au tempo lorsque c’est un rythtme ternaire (on met alors en tempo la valeur de la noire pointée).
+Pour le tempo, voir [ici](#tempo).
 
 Ces options produisent un dossier **`stats`**  contentant 4 fichiers avec toutes les notes classées 1) par ordre alphabétiques, 2) pour nombre, 3) par durée, 4) en fichier CSV pour travail avec excel.
 
@@ -281,6 +279,28 @@ Certains partis-pris ont été adoptés :
 * toutes **les répétitions** sont prises en compte (à l’avenir, si c’est nécessaire, on pourra imaginer une option qui permette de ne pas les prendre en compte)
 * pour **les ornements**, on ne compte que la note elle-même (sauf pour les « grace notes » — cf. ci-dessous). En effet, comment considérer une trille par exemple ? Elle devrait comporter deux notes (les deux notes utilisées pour triller) et un certain nombre d’itérations indéfinissable de façon stricte avec des durées tout aussi indéfinissables. On pourrait se retrouver aussi avec des statistiques faussées qui amplifieraient l’utilisation d’une note simplement parce qu’elle est produite par la trille (on pourrait objecter que cette note n’est pas « amplifiée » puisqu’elle est, de fait, jouée dans la musique…).
 * on fait une exception pour **les *grace notes*** (les ***petites notes***), donc, c’est-à-dire les notes explicitement écrites, avec une durée définie, qui sont prises en compte. Conformément à la tradition de jeu, pour l’appogiature « barrée » (petites notes barrées), on définit sa durée au quart de la note qui la suit, en retirant cette durée à la note suivante.
+
+<a name="tempo"></a>
+
+### Le Tempo
+
+Le tempo (qui sert aussi pour jouer le fichier MIDI) doit toujours se mettre **en valeur de noire** (même si le tempo n’est pas à la noire). Si le tempo est écrit dans une autre valeur (blanche, croche…), alors faire la transposition (diviser par deux si c’est en croche, multiplier par deux si c’est en blanche).
+
+On ajoute “**T**” au tempo lorsque c’est un rythtme ternaire (on met alors en tempo la valeur de la **noire pointée**).
+
+Par exemple, pour une 6/8 où la noire pointée (le temps) devra être joué à 100, on indiquera :
+
+~~~
+--tempo 100T
+~~~
+
+Pour une mesure à 3/8 où les temps (donc la croche) doit être jouée à 100, on indiquera :
+
+~~~
+--tempo 33T
+~~~
+
+Puisqu’une noire pointée, ici durera trois fois plus de temps qu’une croche.
 
 ---
 
@@ -312,6 +332,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Taille de la page                                            | **`--page <format>`**                                        | Par défaut, la partition s’affiche sur une page a0 en format paysage, ce qui permet d’avoir une très longue portée.<br />`<format>` peut avoir des valeurs comme `a4`, `b2` etc. |
 | Espace vertical entre les portées                            | **`--staves_vspace <x>`**                                    | Pour avoir l’’espace normal, mettre 9. Au-delà (11, 12 etc.) on obtient un écart plus grand que la normale.<br />“Staves vspaces” signifie (espace vertical entre les portées) |
 | Espace vertical entre les systèmes                           | **`--systems_vspace`**                                       |                                                              |
+| Produire le fichier MIDI                                     | **`--midi`**                                                 | Régler la valeur de tempo ci-dessous pour avoir le tempo.    |
 | Commencer la relève après cette balise                       | **`--start`**                                                | Permet de se concentrer sur un certain nombre d’images seulement. <br />Tip : désactiver l’option `--only_new` pour refaire toujours les images, même si elles existent déjà. |
 | Mettre fin à la relève-traitement des images                 | **`--stop`**                                                 | Après cette marque, `music-score` interrompra son traitement. |
 | Ouvrir le fichier image après production                     | **`--open`**                                                 | Ouvre tout de suite le fichier dans Affinity Designer, ce qui permet de le « simplifier ». |
@@ -322,7 +343,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Taille de la portée                                          | **`--staff_size <x>`**                                       | Définit la taille de la portée (et de tous ses éléments). La valeur par défaut est **20**. |
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
 | Statistiques                                                 | **`--stats`**                                                | Produit toujours les statistiques en même temps que la partition, dans un dossier `stats`. |
-| Tempo pour statistques                                       | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
+| Tempo pour statistques et le fichier MIDI                    | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques et le fichier MIDI. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
 |                                                              |                                                              |                                                              |
 
 ---
@@ -583,6 +604,39 @@ mesure1 mesure2 mesure3
 <img src="./images/piano-mesures-croized.svg" alt="score" style="zoom:120%;" />
 
 > Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droit a été empruntée à la mesure 1, conformément à la définition de la partition.
+
+
+
+### Fichier de sortie MIDI
+
+Grâce à l’option **`--midi`** dans le code mus on peut produire un fichier MIDI à écouter (dans VLC par exemple).
+
+Cette option marche de paire avec l’option **`--tempo`** qui détermine le tempo de l’écoute.
+
+Par exemple : 
+
+~~~mus
+# ./score.mus
+
+--midi
+--tempo 120
+
+c d e f
+~~~
+
+… produira un fichier `./score/score.midi` qu’on pourra écouter dans VLC et qui jouera les notes au rythme de 120 à la noire.
+
+À voir aussi : [le tempo](#tempo).
+
+**Pour produire le fichier MIDI seul** l’option `--midi` dans le code MUS ne suffit pas. Il faut l’utiliser dans la ligne de commande. Par exemple :
+
+~~~
+score-image moncode.mus -midi
+~~~
+
+> Bien noter que la commande ci-dessus ne produira QUE le fichier midi (à partir du code du fichier « moncode.mus »).
+
+
 
 ---
 
@@ -1508,6 +1562,18 @@ Pour filtrer les tests à jouer :
 
 ~~~
 score-image tests /<filtre régulier>/
+~~~
+
+Pour ne lancer que les tests d’un dossier :
+
+~~~
+score-image tests _ -dir=dossier
+~~~
+
+Et en les filtrant :
+
+~~~
+score-image /ceuxla/ -dir=mon/dossier
 ~~~
 
 
