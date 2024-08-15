@@ -210,7 +210,7 @@ mesure1
 
 #### Rognage automatique de l'image
 
-Après la production du code, l’image est automatiquement rognée par inskape pour ne laisser aucun air autour.
+Après la production du code, l’image est automatiquement rognée par **Inskape** pour ne laisser aucun air autour.
 
 ---
 
@@ -946,7 +946,7 @@ On les notes  `3{note<duree> note note}`
 
 
 
-#### Signes d’interprétation/ornement
+#### Ornements et signes d’interprétation
 
 | Objet | Code           | Description                                                  |
 | ----- | -------------- | ------------------------------------------------------------ |
@@ -958,6 +958,7 @@ On les notes  `3{note<duree> note note}`
 |       | c\prall        | Mordant supérieur (au-dessus)                                |
 |       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\prallb`, `c\prall#`, `c\pralln` et pour la note en dessous : `c\prall/b` `c\prall/#` et `c\prall/n`.<br />Pour le moment, on ne peut pas altérer les deux notes, mais plus tard, on pourra faire :<br />`c\prall#/#` |
 |       | c\prall#       | Mordant supérieur diésé                                      |
+|       | c\pralln       | Mordant supérieur bécarisé                                   |
 |       | c_\prall       | Mordant supérieur (sous la note)                             |
 |       | c\turn         | Gruppeto (sur la note)                                       |
 |       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\turnb`, `c\turn#`, `c\turnn`. |
@@ -1159,9 +1160,15 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | exemple                                                      | **`a'( b c d)`**                                            | <img src="images/exemples/liaison-de-jeu.svg" style=" width:150px;" /> |
 | forcer en dessous                                            | **`a'_( b c d)`**                                           |                                                              |
 | forcer au-dessus                                             | **`a'^( b c d)`**                                           |                                                              |
+| Forcer en haut                                               | **`\slurUp`**                                               | Pour revenir au comportement par défaut : **`\slurNeutral`** |
+| Forcer en bas                                                | **`\slurDown`**                                             | Pour revenir au comportement par défaut : **`\slurNeutral`** |
 | **Liaison de durée**                                         | **`note~ note`**                                            |                                                              |
 | Exemple simple                                               | **`c1~ c2`**                                                | <img src="images/exemples/liaison-de-duree.svg" style=" width:150px;" /> |
 | Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  | <img src="images/exemples/liaison-accords.svg" style=" width:200px;" /> |
+| Forcer la liaison en haut                                    | **`\tieUp`**                                                | ![tie_down](images/tie_up.svg)                               |
+| Forcer la liaison en bas                                     | **`\tieDown`**                                              | ![tie_down](images/tie_down.svg)                             |
+| Pour revenir au comportement par défaut : **`\tieNeutral`**  | **`\tieNeutral`**                                           | ![tie_down](images/tie_neutral.svg)<br />Dans l’exemple ci-dessus, le `\tieNeutral` est inséré entre les deux notes. |
+|                                                              |                                                             |                                                              |
 
 
 

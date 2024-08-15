@@ -192,6 +192,24 @@ class Options extends Panneau {
     // - Format papier - (p.e. a4 ou lettre)
     const format = DGet('#option_format').value
     data.push(`--page ${format}`)
+    // - Tempo -
+    const tempo_note = DGet('#option_tempo-note').value
+    if ( tempo_note != '-') {
+      const tempo_duree = Number(DGet('#option_tempo-duree').value);
+      const tempo = (function(tnote, tduree){
+        switch(tempo_note){
+        case '4' : return String(tduree);
+        case '4.': return `${tduree}T`;
+        case '8' : return `${tduree * 2}`;
+        case '8.': return `${tduree * 2}T`;
+        case '2' : return `${Math.round(tduree / 2)}`;
+        case '2.': return `${Math.round(tduree / 2)}T`;
+        }
+      })(tempo_note, tempo_duree)
+      data.push(`--tempo_note ${tempo_note}`)
+      data.push(`--tempo_duree ${tempo_duree}`)
+      data.push(`--tempo ${tempo}`)
+    }
     // - Système -
     let system = this.menuSystems.value
     if ( system == "---"){
@@ -310,6 +328,13 @@ class Options extends Panneau {
     const format = values.page || 'a0'
     DGet('#option_format').value = format
 
+    // - Tempo -
+    const tempo_note  = values.tempo_note   || '-'
+    const tempo_duree = values.tempo_duree  || '120'
+    DGet('#option_tempo-note').value  = tempo_note
+    DGet('#option_tempo-duree').value = tempo_duree  
+
+    // - System -
     const system = values.system
     if ( system ) {
       this.menuSystems.value = system

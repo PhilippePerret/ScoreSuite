@@ -10,6 +10,12 @@ div.panneau {
   padding:2em;
 }
 
+/* Pour des rangées séparées */
+div.panneau div.separed {
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
 div.panneau h2, div.panneau h3 {
   margin-top: 0;
   font-variant: all-small-caps;

@@ -196,15 +196,19 @@ def bloc_midi
 end
 def mark_tempo_midi
   return "" unless tempo?
-  note_base   = '4' # pour le moment
-  tempo_base  = tempo
+  note_base, tempo_base =
+    if tempo.end_with?('T')
+      ['4.', tempo[0..-2]]
+    else
+      ['4', tempo]
+    end
   '\tempo %s = %s'.freeze % [note_base, tempo_base]
 end
 def tempo?
   not(tempo.nil?)
 end
 def tempo
-  @tempo ||= (options[:tempo]||CLI.option(:tempo)).freeze
+  @tempo ||= (options[:tempo]||CLI.option(:tempo)).to_s.freeze
 end
 
 def system_for_solo(code)

@@ -157,17 +157,17 @@
   <h3>Panneau des outils</h3>
   <section class="content">
 
-    <div class="tool">
+    <div class="tool separed">
       <button id="produce-midi-file">Produire le fichier MIDI</button>
       <expli>Le fichier .midi produit pourra être écouté par exemple avec VLC (“Ouvrir avec…”).</expli>
     </div>
 
-    <div class="tool">
+    <div class="tool separed">
       <button id="init-module-ruby">Initier le module ruby</button>
       <expli>Le “module ruby” est un module qui permet de construire du code MUS de façon programmatique. Il est composé de méthode &lt;method&gt; qu’il suffit d’appeler depuis le code par <code>fn_method((...))</code></expli>
     </div>
     
-    <div class="tool">
+    <div class="tool separed">
       <button id="btn-open-ruby-module">Ouvrir le module ruby</button>
       <expli>Ce bouton permet d’ouvrir le module ruby dans l’EDI par défaut.</expli>
     </div>
@@ -246,6 +246,7 @@
 
     
     <fieldset id="tune-container" class="options-container">
+      
       <div class="label-select-small">
         <label>Armure</label>
         <span class="select">
@@ -254,12 +255,30 @@
           <select id="option_tune-mode"><option value="">majeur</option><option value="m">mineur</option></select>
         </span>
       </div>
+
       <div class="label-select-small">
         <label>Métrique</label>
         <span class="select">
           <select id="option_time-deno"><option>4</option><option>3</option><option>6</option><option>2</option><option>8</option><option>12</option><option>16</option></select>
           <span>/</span>
           <select id="option_time-divi"><option>4</option><option>8</option><option>2</option><option>16</option><option>12</option><option>1</option></select>
+        </span>
+      </div>
+
+      <div class="label-select-small">
+        <label>Tempo <span class="small"><span class="small">(MIDI/Stats)</span></span></label>
+        <span style="display:block;">
+          <select id="option_tempo-note" style="display:inline;">
+            <option value="-">Aucun</option>
+            <option value="4">Noire</option>
+            <option value="4.">Noire pointée</option>
+            <option value="8">Croche</option>
+            <option value="2">Blanche</option>
+            <option value="2.">Blanche pointée</option>
+            <option value="8.">Croche pointée</option>
+          </select>
+          <span> = </span>
+          <input id="option_tempo-duree" type="text" value="120" style="width:60px;" />
         </span>
       </div>
 
