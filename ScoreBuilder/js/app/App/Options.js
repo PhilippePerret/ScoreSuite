@@ -285,6 +285,9 @@ class Options extends Panneau {
     let timeDivi = DGet('#option_time-divi').value
     data.push(`--time ${timeDeno}/${timeDivi}`)
 
+    // - On indique que c’est une partition Score-builder -
+    data.push('--builder')
+
     return data.join("\n")
   }
 

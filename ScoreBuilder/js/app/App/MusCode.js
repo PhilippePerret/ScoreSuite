@@ -79,6 +79,21 @@ class MusCode {
     let [codeNotes, options] = decoupe
     Options.setValues(options)
     this.field.value = codeNotes
+    // Si c’est une toute nouvelle partition, ouvrir la fenêtre
+    // des options
+    if ( this.isNewInBuilder(options) ) {
+      Options.open()
+      message("Réglez les options pour la partition.")
+    }
+  }
+
+  /**
+  * @return true si c’eest la première ouverture dans builder
+  * 
+  * On le sait car il n’y a pas l’option ’builder’
+  */
+  static isNewInBuilder(options){
+    return options.builder
   }
 
 
