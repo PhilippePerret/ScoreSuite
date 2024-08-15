@@ -1007,7 +1007,23 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | Exemple                                                      | `\gr(ais'16/-) b4`                                          | <img src="images/exemples/acciaccatura.svg" style=" width:90px;" /> |
 | **Quand plusieurs notes**                                    | **`\grace note[ note note note]`**<br />                    |                                                              |
 
+#### Notes « mergées »
 
+« Merger » des notes signifie utiliser une seule tête pour deux notes. Ce merge permet de transformer :
+
+<img src="images/note_merge_off.svg" alt="note_merge_off" style="zoom:120%;" />
+
+… en :
+
+
+
+<img src="images/note_merge_on.svg" alt="note_merge_on" style="zoom:120%;" />
+
+On obtient ce merge en ajouant **`\mergeNotes`** avant les notes. Ce merge sera effectif jusqu’à la prochaine parenthèse de délimitation de groupe de note (donc c’est variable en fonction de la façon d’écrire la musique avec LilyPond).
+
+> Ce **`\mergeNotes`** provoque dans le moteur l’écriture de **`\mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn`**. On pourra préférer utiliser ces deux marques, ou seulement l’une d’entre elles, dans le détail, pour un résultat différent attendu.
+
+<a name="change-staff"></a>
 
 #### Changement de portée
 

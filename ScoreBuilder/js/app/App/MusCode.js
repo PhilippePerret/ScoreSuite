@@ -93,7 +93,7 @@ class MusCode {
   * On le sait car il n’y a pas l’option ’builder’
   */
   static isNewInBuilder(options){
-    return options.builder
+    return !options.builder
   }
 
 
