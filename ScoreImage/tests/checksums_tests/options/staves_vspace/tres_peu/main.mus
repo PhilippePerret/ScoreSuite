@@ -1,0 +1,11 @@
+# Pour vérifier l’écartement entre les portées
+# Attention : pas entre les systèmes, mais bien entre les portées
+# d’un même système
+
+--piano
+--staves_vspace 0
+
+
+-> score
+c1 \break d
+c’1 d

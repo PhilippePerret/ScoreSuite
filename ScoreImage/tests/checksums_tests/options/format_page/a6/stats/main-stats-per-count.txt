@@ -1,0 +1,5 @@
+Nombre total de notes : 64
+c  16  32.0 s
+d  16  32.0 s
+e  16  32.0 s
+f  16  32.0 s

@@ -66,3 +66,7 @@ Les résultats sont placés dans le dossier `stats` de chaque test. Le fichier *
 La première fois qu’on lance le test, le fichier `stats/GOOD-STATS.csv` est produit et il faut vérifier s’il correspond à la réalité de la partition, en tenant compte de tous les cas possibles.
 
 Contrairement aux images, lancer les tests avec l’option **`-d`** ne va pas détruire ce fichier, car cela détruirait toutes les vérifications qui ont été faites.
+
+## Todo
+
+* Pouvoir étendre le test à un test particulier pour les cas particuliers. Par exemple, le test du fichier MIDI doit s’assurer qu’un fichier MIDI conforme a bien été produit.

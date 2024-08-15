@@ -1,0 +1,6 @@
+# Pour tester les formats de page
+
+--page b5
+
+-> score_b5
+% c2 d e f %16

@@ -7,11 +7,6 @@
 
 (pour contrôler, mais vraiment pour jouer)
 
-
-### Fichier MIDI 
-
-* pouvoir définir le tempo en ligne de commande (c’est déjà le cas, donc le prendre en compte)
-
 ### TESTS À FAIRE
 
 * pas de numérotation de mesure
