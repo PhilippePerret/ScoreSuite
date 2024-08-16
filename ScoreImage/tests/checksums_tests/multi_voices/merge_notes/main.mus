@@ -1,0 +1,6 @@
+# Pour tester l’efficacité de \mergeNotes
+
+--time 9/8
+
+-> score
+\mergeNotes << aes'8 c, ees d f bes bes, f' aes // s4. d, bes >>

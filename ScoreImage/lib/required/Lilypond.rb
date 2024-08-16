@@ -216,7 +216,6 @@ def system_for_solo(code)
   <<
   #{markin_transposition}\\relative c' {
     #{option_no_time}
-    #{option_no_barre}
     #{option_no_stem}
     \\clef "treble"
     #{option_tonalite}
@@ -420,7 +419,6 @@ def bloc_layout
     \\context {
       % On utilise context pour utiliser des context
       #{option_staves_vspace}
-      #{option_no_numero_mesure}
       #{layout_context_score}
     }
     #{code_extraction_fragment}
@@ -428,44 +426,43 @@ def bloc_layout
   CODE
 end
 
+# ==== LAYOUT/CONTEXT/ SCORE ===
+
 def layout_context_score
-  if options[:proximity] || options[:number_per_5] || (options[:barres] === false)
-    <<~CODE.gsub('\\','\\\\')
-    \\Score
-      #{option_no_barre}
-      #{option_numeros_mesures_5_en_5}    
-      #{option_proximity}
-    CODE
-  end
-end
-
-def option_no_barre
+  lines = []
   if options[:barres] === false
-    '\\override BarLine.break-visibility = #all-invisible'
-  else "" end
-end
+    lines << '\override BarLine.break-visibility = #all-invisible'
+  end
 
-def option_proximity
+
+  # - Proximité des notes -
   if options[:proximity]
-    '\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze % options[:proximity]
-  else "" end
-end
+    lines << (OVERRIDE_PROXIMITY % options[:proximity])
+  end
 
-def option_numeros_mesures_5_en_5
-  if options[:number_per_5]
-    <<~TEXT
-    \\override BarNumber.break-visibility = #end-of-line-invisible
-    #{option_numeros_mesures_sous_portee}
-    barNumberVisibility = #(every-nth-bar-number-visible 5)
-    TEXT
+  # - Numéro de mesure -
+  # Absence du numéro de mesure
+  if options[:mesures] === false || options[:mesure] === false
+    lines << '\omit BarNumber'
+  elsif options[:number_per_5]
+    dir = options[:measure_number_under_staff] ? 'DOWN' : 'UP'
+    OVERRIDE_NUMBER_BAR_PER % [dir, 5]
+  end
+
+  # S’il faut écrire le contexte \Score
+  if lines.empty?
+    return ""
+  else
+    '\\Score' + "\n" + lines.join("\n")
   end
 end
 
-def option_numeros_mesures_sous_portee
-  if options[:measure_number_under_staff]
-    '\override BarNumber.direction = #DOWN'.freeze
-  end
-end
+OVERRIDE_PROXIMITY = '\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze
+OVERRIDE_NUMBER_BAR_PER = <<~'TEXT'.freeze
+\override BarNumber.break-visibility = #end-of-line-invisible
+\override BarNumber.direction = #%s
+barNumberVisibility = #(every-nth-bar-number-visible %s)
+TEXT
 
 def options_system_count_per_page
   if ( n = (options[:system_count]||options[:system_count_per_page]) )
@@ -541,25 +538,14 @@ def option_staves_vspace
   else "" end
 end
 
-
-
 def option_page_format
   options[:page] ||= '"a0" \'landscape'
   options[:page] = "\"#{options[:page]}\"" unless options[:page].start_with?('"')
   return options[:page].downcase
 end
-def option_no_numero_mesure
-  if options[:mesure] === false
-    '\\remove "Bar_number_engraver"'
-  end
-end
+
 def option_num_mesure
-  if options[:mesure] === false
-    # '\\omit BarNumber'
-    ''
-  else
-    options[:mesure] ? premier_numero_mesure : ""
-  end
+  options[:mesure] ? premier_numero_mesure : ""
 end
 def premier_numero_mesure
   <<-TXT

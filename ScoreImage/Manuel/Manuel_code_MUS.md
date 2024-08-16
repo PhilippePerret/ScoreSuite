@@ -421,6 +421,40 @@ La taille des portées se règle à l’aide de l’option **`--staff_size`** su
 --staff_size 22.5
 ~~~
 
+<a name="measure-number"></a>
+
+#### Numérotation des mesures
+
+Par défaut, LilyPond et donc *ScoreImage* numérote les mesures, au début de chaque système.
+
+Pour supprimer toute numération, utiliser l’option :
+
+~~~
+--mesure OFF
+~~~
+
+Pour partir d’une autre mesure que 1, utiliser :
+
+~~~
+-> mon_image
+--mesure 12
+c d e f
+~~~
+
+La numérotation pour le code ci-dessus commencera à partir de la mesure 12.
+
+Pour que les numéros se fassent **de 5 en 5** ajouter :
+
+~~~
+--number_per_5
+~~~
+
+Par défaut, les numéros de mesure se mettent au-dessus de la portée. Pour les mettre en dessous, utiliser l’option :
+
+~~~
+--measure_number_under_staff
+~~~
+
 
 
 <a name="nommage-staff"></a>
@@ -644,10 +678,10 @@ score-image moncode.mus -midi
 
 ### Options musicales
 
-| <span style="display:inline-block;width:340px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:140px;">Option</span> | <span style="white-space:nowrap;display:inline-block;width:50%; ">Notes</span> |
+| <span style="display:inline-block;width:240px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:160px;">Option</span> | <span style="white-space:nowrap;display:inline-block;width:50%; ">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Définir la tonalité (armure du morceau)                      | **`--tune`** ou **`--key`** suivi de `A-G#b`                 | La lettre doit obligatoirement être en majuscule. Contrairement à Lilypond, qui permet d’indiquer les tonalités mineures (pour le chiffrage des chorus par exemple), ici, on met vraiment l’armure de la portée. |
-| Définir le premier numéro de mesure                          | **`--mesure [0-9]+`**                                        | C’est le numéro de mesure de la toute première mesure écrite (même si elle n’est pas complète, contrairement à la tradition idiote en musique). |
+| Numérotation des mesures                                     |                                                              | Cf. [Numérotation des mesures](#measure-number)              |
 | Espacement horizontal entre les notes                        | **`--proximity XXX`**                                        | `XXX` peut avoir une valeur de 1 à 50.<br />Cf. les [exemples de proximités ci-dessous](#exemple_proximity) |
 
 

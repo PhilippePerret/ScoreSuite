@@ -1,0 +1,7 @@
+# Test de l’option --system_vspace pour déterminer l’écartement
+# entre les systèmes
+# ce fichier donne l’écartement par défaut.
+--mesure OFF
+
+-> score
+c1 \break d \break e

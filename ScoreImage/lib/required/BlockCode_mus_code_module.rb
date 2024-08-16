@@ -47,7 +47,8 @@ REG_SIMPLE = '\%s '.freeze
 def traite_divers_remplacements_in(line)
   line = " #{line} "
   [
-    ['arp', 'arpeggio']
+    ['arp', 'arpeggio'],
+    ['mergeNotes', 'mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn']
   ].each do |search, remp|
     line = line.gsub(REG_SIMPLE % search, REG_SIMPLE % remp)
   end

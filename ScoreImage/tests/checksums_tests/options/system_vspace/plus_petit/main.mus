@@ -1,0 +1,8 @@
+# Test de l’option --system_vspace pour déterminer l’écartement
+# entre les systèmes
+# ce fichier donne l’écartement plus petit.
+--mesure OFF
+--systems_vspace 1
+
+-> score
+c1 \break d \break e
