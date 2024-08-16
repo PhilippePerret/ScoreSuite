@@ -446,7 +446,7 @@ def layout_context_score
     lines << '\omit BarNumber'
   elsif options[:number_per_5]
     dir = options[:measure_number_under_staff] ? 'DOWN' : 'UP'
-    OVERRIDE_NUMBER_BAR_PER % [dir, 5]
+    lines << OVERRIDE_NUMBER_BAR_PER % [dir, 5]
   end
 
   # S’il faut écrire le contexte \Score
