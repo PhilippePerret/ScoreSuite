@@ -430,7 +430,9 @@ class MusFile
   end
 
   def built_svg_path
-    @built_svg_path ||= File.join(build_folder,svg_name).freeze
+    @built_svg_path ||= begin
+      File.join(build_folder,svg_name).freeze
+    end
   end
 
   def svg_name
@@ -471,13 +473,33 @@ class MusFile
     # le code MUS. Il est repéré par ’->’ (ou pas…)
     def get_image_name
       muscode = IO.read(path).force_encoding('UTF-8')
-      iname = muscode.match(/^\-\> (.+)$/)
-      if iname.nil?
-        # Quand le nom de l’image n’est pas définie dans le fichier, 
-        # on le construit
-        "#{affixe}/#{affixe}-score-001"
+      if muscode.count("->") > 1
+        inames = muscode.scan(/^\-\> (.+)$/).to_a.map {|n|n[0]}
+        # => ["nom image 1", "nom image 2", etc.]
+        # Sauf indication contraire, on prend toujours la première
+        # L’indication contraire, c’est l’utilisation de commandes
+        # comme START/STOP
+        take_next_name  = false
+        named_found     = nil
+        muscode.split("\n").each do |line|
+          if line == 'START'.freeze
+            take_next_name = true
+          elsif take_next_name && line.start_with?('->')
+            named_found = line[3..-1].strip
+            break
+          end
+        end
+        named_found ||= inames[0]
+        return named_found
       else
-        iname[1].strip
+        iname = muscode.match(/^\-\> (.+)$/)
+        if iname.nil?
+          # Quand le nom de l’image n’est pas définie dans le fichier, 
+          # on le construit
+          "#{affixe}/#{affixe}-score-001"
+        else
+          iname[1].strip
+        end
       end
     end
 
