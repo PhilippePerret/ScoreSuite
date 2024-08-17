@@ -36,21 +36,30 @@ class MusFile
   # trouver le message d’erreur (code) dans le retour.
   # 
   def test
+    # Avec l’option ’-d’, on force la destruction de tous les
+    # fichiers CHECKSUM des tests filtrés (pour réinitialiser leur
+    # test, en quelque sorte)
     if CLI.option(:d)
       File.exist?(checksum_path) && File.delete(checksum_path)
-      # NON
+      # PAS CI-DESSOUS
       # File.exist?(stats_compare_path) && File.delete(stats_compare_path)
-      # <= ça détruirait toutes les vérifications faites, qui sont
-      # assez fastidieuses
+      # <= ça détruirait toutes les vérifications faites, qui peuvent
+      # être assez fastidieuses
+      # => Les détruire à la main si nécessaire
     end
     resultat_built = build_svg_score
     if negative?
       # 
       # Test négatif
       # 
-      @ok = has_error?(resultat_built)
+      @ok = has_error?(resultat_built) || not(extra_tests_ok?)
       if not(@ok)
-        @error_msg = MSG_NEGATIVE_ERROR % {relpath:relative_path, code: expected_error_code, texts: (expected_error_txts||['néant']).join(',')}
+        err_msgs = []
+        err_msgs += expected_error_txts if expected_error_txts
+        err_msgs +=  extra_tests.errors if not( extra_tests.errors.empty?)
+        err_msgs = ['néant'] if err_msgs.empty?
+        err_msgs = err_msgs.join(',')
+        @error_msg = MSG_NEGATIVE_ERROR % {relpath:relative_path, code: expected_error_code, texts: err_msgs}
       end
     else
       #
@@ -59,10 +68,19 @@ class MusFile
       if resultat_built.match?(EXTRAIT_MESSAGE_SUCCES)
         @ok = compare_with_checksum # => true, false, nil
         if @ok === true
-          @ok = statistiques_ok? # => true, false, nil
-          if @ok === nil
-            display_explication_pending_stats
-            stats_file_to_good_file # on produit GOOD-STATS.csv
+          # @ok et @error_msg peuvent être modifiés par des tests
+          # particulier sur les productions
+          @ok = extra_tests_ok?
+          if @ok === false
+            # = Extra-tests =
+            @error_msg = extra_tests.errors.join("\n")
+          else
+            # = Statistiques =
+            @ok = statistiques_ok? # => true, false, nil
+            if @ok === nil
+              display_explication_pending_stats
+              stats_file_to_good_file # on produit GOOD-STATS.csv
+            end
           end
         end
       else
@@ -92,13 +110,13 @@ class MusFile
   def build_svg_score
     result = run_build_command
     if original_svg_exist?
-      nettoie_dossier
+      move_svg
+      nettoie_dossier if only_one_svg?
     end
     return result
   end
 
   def nettoie_dossier
-    move_svg
     FileUtils.rm_rf(build_folder)
   end
 
@@ -115,7 +133,7 @@ class MusFile
     elsif pid.success? && err.empty?
       # La commande n’a pas échoué, mais l’image n’a pas été produite
       # et pourtant aucun message d’erreur n’a été renvoyé
-      return "Une erreur inconnue a été rencontrée."
+      return "Une erreur inconnue (sans message d’erreur) a été rencontrée.\nÀ titre indicatif, out a retourné : #{out.inspect}"
     else
       return err
     end
@@ -190,6 +208,23 @@ class MusFile
     
   end
 
+
+  # === Extra Tests Methods ===
+  # 
+  # (les extra tests sont des tests particuliers qui peuvent être
+  #  créés pour des tests particuliers)
+  # 
+
+  # @return true si les extra tests réussissent ou s’ils n’existent
+  # pas
+  def extra_tests_ok?
+    extra_tests.ok?
+  end
+
+  def extra_tests
+    @extra_tests ||= ExtraTests.new(self)
+  end
+
   # === Functional Methods ===
 
 
@@ -251,20 +286,19 @@ class MusFile
   end
 
   def checksum_tested
-    @checksum_tested ||= begin
-      if File.exist?(svg_path)
-        (Digest::MD5.file(svg_path).hexdigest).freeze
-      else
-        :no_checksum_tested
-      end
-    end
+    @checksum_tested ||= checksum_of(svg_path) || :no_checksum_tested
   end
 
   def save_checksum
     IO.write(checksum_path, checksum_tested)
   end
 
-
+  # @return le checksum du fichier +pth+
+  def checksum_of(pth)
+    if File.exist?(pth)
+      (Digest::MD5.file(pth).hexdigest).freeze
+    else nil end
+  end
 
   # === Statistiques Methods === #
 
@@ -351,6 +385,18 @@ class MusFile
 
   def original_svg_exist?
     File.exist?(built_svg_path)
+  end
+
+  # @return true si le fichier mus ne produit qu’une seule image
+  # (les tests sont différents dans le cas contraire)
+  def only_one_svg?
+    :TRUE == @onlyonesvg ||= (Dir["#{build_folder}/*.svg"].count == 1 ? :TRUE : :FALSE)
+  end
+
+  # @return true si plusieurs images SVG ont été produite par le
+  # fichier mus
+  def plusieurs_svg?
+    :TRUE == @plusieurssvg ||= (only_one_svg? ? :FALSE : :TRUE)
   end
 
   def checksums_same?

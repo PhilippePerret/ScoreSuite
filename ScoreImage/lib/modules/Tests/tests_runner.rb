@@ -4,6 +4,7 @@
 # 
 require 'digest'
 require_relative 'MusFile'
+require_relative 'ExtraTests'
 class TestErreur < StandardError; end
 
 
