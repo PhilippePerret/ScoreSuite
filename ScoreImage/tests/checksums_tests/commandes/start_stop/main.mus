@@ -1,0 +1,15 @@
+# Pour tester l’effet de --start et --stop
+
+
+-> image_passee
+c d e f
+
+START
+
+-> score
+c2 d e f
+
+STOP
+
+-> autre_image_passee
+c1 d e f

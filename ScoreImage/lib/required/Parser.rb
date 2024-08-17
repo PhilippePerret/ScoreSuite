@@ -85,6 +85,7 @@ def parse
     #
     if blocode.start?
       # Vider les données récoltées jusque-là
+      verbose? && puts("START détecté (suppression des blocs avant)")
       all_blocks = []
     end
 
@@ -92,6 +93,7 @@ def parse
     # Cas spécial où il faut s'arrêter de parser là
     #
     if blocode.stop?
+      verbose? && puts("STOP détecté (fin de la relève)")
       break
     end
 

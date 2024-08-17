@@ -208,9 +208,30 @@ mesure1
 
 
 
-#### Rognage automatique de l'image
+### Rognage automatique de l'image
 
 Après la production du code, l’image est automatiquement rognée par **Inskape** pour ne laisser aucun air autour.
+
+---
+
+### Images produites
+
+Un unique fichier `.mus` peut définir une ou plusieurs images. Par exemple, un fichier contenant le code suivant :
+
+~~~
+# in durees.mus
+
+-> image1
+c d e f
+
+-> image2
+c2 d e f
+
+-> image3
+c1 d e f
+~~~
+
+… produira 3 images contenant leur code respectif, `durees/image1.svg`, `durees/image2.svg` et `durees/image3.svg`.
 
 ---
 
@@ -321,7 +342,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 >
 > … pour ne plus afficher les barres de mesure pour toutes les images suivantes dans le fichier mus.
 
-| <span style="display:inline-block;width:300px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:120px;">Notes</span> |
+| <span style="display:inline-block;width:200px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:120px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Suppression de la gravure des barres                         | **`--barres OFF`**                                           |                                                              |
 | Ré-affichage des barres de mesure                            | **`--barres`**                                               | S’emploie forcément après un `--barres OFF`, puisque par défaut les barres sont toujours gravées. |
@@ -333,8 +354,6 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Espace vertical entre les portées                            | **`--staves_vspace <x>`**                                    | Pour avoir l’’espace normal, mettre 9. Au-delà (11, 12 etc.) on obtient un écart plus grand que la normale.<br />“Staves vspaces” signifie (espace vertical entre les portées) |
 | Espace vertical entre les systèmes                           | **`--systems_vspace`**                                       |                                                              |
 | Produire le fichier MIDI                                     | **`--midi`**                                                 | Régler la valeur de tempo ci-dessous pour avoir le tempo.    |
-| Commencer la relève après cette balise                       | **`--start`**                                                | Permet de se concentrer sur un certain nombre d’images seulement. <br />Tip : désactiver l’option `--only_new` pour refaire toujours les images, même si elles existent déjà. |
-| Mettre fin à la relève-traitement des images                 | **`--stop`**                                                 | Après cette marque, `music-score` interrompra son traitement. |
 | Ouvrir le fichier image après production                     | **`--open`**                                                 | Ouvre tout de suite le fichier dans Affinity Designer, ce qui permet de le « simplifier ». |
 | Conserver le fichier LilyPond (`.ly`)                        | **`--keep`**                                                 | Cela permet de tester du code ou de voir où se situe un problème compliqué. |
 | Détail des erreurs                                           | **`--verbose`**                                              | Permet de donner les messages d’erreur dans leur intégralité et notamment avec leur backtrace. |
@@ -347,6 +366,8 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 |                                                              |                                                              |                                                              |
 
 ---
+
+## Détail des options
 
 ### Numérotation des pages
 
@@ -743,6 +764,48 @@ importante avec les options :
 On les désactive pour la suite en ajoutant OFF comme pour toutes
 les options.
 --hspace OFF
+
+---
+
+## Commandes
+
+Le code `MUS` répond à quelques commandes permettant de jouer sur la compilation.
+
+Ces commandes sont reconnaissables au fait qu’elles sont toujours en capitales.
+
+### Commande de déclenchement de la compilation (START/STOP)
+
+Lorsqu’un fichier est volumineux et contient de nombreuses images, on peut vouloir se concentrer parfois seulement sur quelques unes d’entre elles, sans avoir à les produire toutes à chaque fois, ou sans avoir à détruire celles qu’on veut revenir quand on utilise l’[option `only_new`](#option-only_new).
+
+On utilise alors la commande **`START`** pour indiquer le début du travail et la commande **`STOP`** pour indiquer où le fichier.
+
+Par exemple, le fichier :
+
+~~~
+# in durees.mus
+
+-> image1
+c8 d e f
+
+START
+
+var=
+c4 d e f
+
+-> image2
+var
+
+STOP
+
+-> image3
+c2 d e f
+~~~
+
+… ne produira que l'image « `durees/image2.svg` » .
+
+> Noter que la commande se trouve sur une lignes « isolée », conformément au principe des paragraphes.
+>
+> Noter qu’il faut inclure la définition des variables dans le bloc « START ... STOP ». Dans le cas contraire, une erreur de variable inconnue sera produite.
 
 
 

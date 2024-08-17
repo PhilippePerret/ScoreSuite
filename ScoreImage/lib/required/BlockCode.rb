@@ -12,8 +12,8 @@
     - plusieurs options seules
     - la définition d'une image ('->', mais pas forcément au début)
     - une définition de variable (la première ligne est forcément
-      terminée par un '=' ou un '==')
-    - une commande (--start, --stop)
+      terminée par un '=')
+    - une commande (START, STOP)
 
 =end
 require_relative 'BlockCode_mus_code_module'
@@ -73,11 +73,11 @@ def only_options?
 end
 
 def start?
-  options[:start]
+  @muststartgravure
 end
 
 def stop?
-  options[:stop]
+  @muststopgravure
 end
 
 ##
@@ -134,6 +134,8 @@ def parse
       # Définition d'une option
       #
       traite_as_option(line[2..-1])
+    elsif line.split(' ')[0].match?(/^[A-Z]{3,}$/)
+      traite_as_commande(line)
     else
       #
       # Définition d'une ligne de code music-score
@@ -236,6 +238,20 @@ def traite_as_option(opt)
   options.merge!({opt => val, opt.to_sym => val})
 end
 #/traite_option
+
+def traite_as_commande(line)
+  commande, params = line.split(' ')  
+  case commande
+  when 'START'.freeze
+    @muststartgravure = true
+  when 'STOP'.freeze
+    @muststopgravure = true
+  else
+    raise "Je ne connais pas la commande #{line.inspect}"
+  end
+end
+#/ traite_as_commande
+
 
 
 # 
