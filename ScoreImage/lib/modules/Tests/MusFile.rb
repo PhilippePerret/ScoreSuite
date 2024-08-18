@@ -111,13 +111,16 @@ class MusFile
     result = run_build_command
     if original_svg_exist?
       move_svg
-      nettoie_dossier if only_one_svg?
+      nettoie_dossier
     end
     return result
   end
 
+  # On supprime le dossier ’main’, mais seulement s’il est vide
   def nettoie_dossier
-    FileUtils.rm_rf(build_folder)
+    if Dir["#{build_folder}/*"].count == 0
+      FileUtils.rm_rf(build_folder)
+    end
   end
 
   def run_build_command
