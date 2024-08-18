@@ -1,0 +1,4 @@
+# Pour tester le raccourci ’\tieWait’
+
+-> score
+\tieWait c~ e~ g~ <c, e g>

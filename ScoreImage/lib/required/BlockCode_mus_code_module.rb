@@ -28,6 +28,8 @@ def traite_as_code_mscore(line, idx)
   line = traite_definitions_in(line, idx)
   # - Remplacement des segments multi-voix simplifiés -
   line = replace_multi_voices(line)
+  # - Remplacement des arpèges vers accords -
+  line = traite_arpege_to_chord_in(line)
   # - Remplacement des répétitions avec % ... %X -
   line = replace_repetition_code(line)
   # - Traitement des reprises avec 1re, 2e, etc.-ième fois.
@@ -54,6 +56,20 @@ def traite_divers_remplacements_in(line)
   end
   return line[1...-1]
 end
+
+def traite_arpege_to_chord_in(line)
+  return line if not(line.match?('tieWait'))
+  line = line.gsub(REG_ARP2CHORD) do
+    sens_tie   = DOWN_OR_UP[$~[:tie]]
+    sens_stem  = DOWN_OR_UP[$~[:stem]]
+    sens_tie   = sens_tie ? " \\tie#{sens_tie}" : ""
+    sens_stem  = sens_stem ? " \\stem#{sens_stem}" : ""
+    '\set tieWaitForNote = ##t%s%s'.freeze % [sens_tie, sens_stem]
+  end
+  return line
+end
+DOWN_OR_UP = {nil => nil, 'D' => 'Down', 'U' => 'Up' }
+REG_ARP2CHORD = /\\tieWait(?:(?<tie>[UD])(?<stem>[UD]))?/
 
 # Traitement des instruments transpositeurs
 def traite_transpositions_in(line)

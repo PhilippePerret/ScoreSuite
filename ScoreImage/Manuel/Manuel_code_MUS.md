@@ -1120,6 +1120,72 @@ On obtient ce merge en ajouant **`\mergeNotes`** avant les notes. Ce merge sera 
 
 > Ce **`\mergeNotes`** provoque dans le moteur l’écriture de **`\mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn`**. On pourra préférer utiliser ces deux marques, ou seulement l’une d’entre elles, dans le détail, pour un résultat différent attendu.
 
+---
+
+#### Arpège vers accord tenu
+
+<a name="arpege-to-chord"></a>
+
+**VERSION SIMPLIFIÉE**
+
+Pour obtenir l'image :
+
+<img src="images/arpege-to-chord-simple-step_3.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
+
+… utiliser le code simplifié suivant :
+
+~~~
+\tieWait \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
+~~~
+
+On peut le simplifier encore en précisant par deux lettres suivant `\tieWait` la direction des liaisons (tie) et des hampes (stem) si elles sont fixes comme ici. La première lettre concernera les liaisons, la deuxième concernera les hampes. « D » signifie « down » (bas) et « U » signifie « up » (vers le haut).
+
+Donc on peut encore simplifier le code ci-dessus par :
+
+~~~
+\tieWaitDU aes’8~ c~ f~ <aes, c f aes>4
+~~~
+
+> Les liaisons ne semblent pas obéir à tous les coups.
+
+**DESCRIPTION**
+
+Sauf erreur de notre part, il est extrêmement difficile, avec LilyPond, d’obtenir l’image suivante :
+
+<img src="images/arpege-to-chord-wanted.svg" alt="arpege-to-chord-wanted" style="width:250px;" />
+
+Le mieux que nous puissions réussir :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/arpege-to-chord.svg" alt="arpege-to-chord" style="width:250px;" />
+
+> Notez ci-dessous la note Fa qui possède sa hampe doublée.
+
+Pour obtenir ce code, nous devons utiliser le code très couteux suivant :
+
+~~~
+\mergeNotes << { \stemUp aes’8 c f } \\ { \set tieWaitForNote = ##t << { \stemDown aes,4.~ } { s8 \tieDown \stemDown c4~ } { s4 \tieDown \stemDown f8~ } { s4. \stemUp <aes, c f aes>4 } >> } >>
+~~~
+
+Il utilise notamment la propriété **`tieWaitForNote`** qui permet de lier des notes à un accord de façon simple. 
+
+Si l’**on ne tient pas à donner explicitement la durée exacte de chaque note**, on peut simplement utiliser :
+
+~~~
+\set tieWaitForNote = ##t \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
+~~~
+
+… qui produira :
+
+<img src="images/arpege-to-chord-simple-step_3.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
+
+> Voir en annexe les [étapes pour obtenir ce code](#annexe-arpege-to-chord) pour bien le comprendre.
+
+
+
+
+
+---
+
 <a name="change-staff"></a>
 
 #### Changement de portée
@@ -1665,6 +1731,57 @@ contexts:
           pop: true
 
 ~~~
+
+<a name="annexe-arpege-to-chord"></a>
+
+#### Étapes pour « arpège vers accord tenu »
+
+L'image suivante :
+
+<img src="images/arpege-to-chord-simple-step_3.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
+
+… est obtenue à partir du code :
+
+~~~
+\set tieWaitForNote = ##t \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
+~~~
+
+> Voir la [version simplifiée](#arpege-to-chord).
+
+Pour obtenir ce code, nous avons procédé ainsi. Nous sommes partis de :
+
+~~~
+\set tieWaitForNote = ##t aes’8~ c~ f~ <aes, c f aes>4
+~~~
+
+… qui a produit :
+
+<img src="images/arpege-to-chord-simple-step_1.svg" alt="arpege-to-chord-simple-step_1" style="width:250px;" />
+
+Pour avoir les liaisons dans le bon sens avec `\tieDown`, nous avons fait :
+
+~~~
+\set tieWaitForNote = ##t aes’8~ \tieDown c~ f~ <aes, c f aes>4
+~~~
+
+… qui a produit :
+
+<img src="images/arpege-to-chord-simple-step_2.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
+
+
+
+Et enfin nous avons mis les hampes dans le bon sens avec `\stemUp` :
+
+~~~
+\set tieWaitForNote = ##t \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
+~~~
+
+… qui a produit :
+
+<img src="images/arpege-to-chord-simple-step_3.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
+
+
+
 
 ---
 
