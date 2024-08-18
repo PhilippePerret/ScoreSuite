@@ -1,0 +1,7 @@
+# Pour tester l’affichage du numéro de page
+
+--page b6
+--page_numbers roman-upper
+
+-> score
+% c1 d e f %32

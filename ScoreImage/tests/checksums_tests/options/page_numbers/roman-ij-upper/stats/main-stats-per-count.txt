@@ -1,0 +1,5 @@
+Nombre total de notes : 128
+c  32  128.0 s
+d  32  128.0 s
+e  32  128.0 s
+f  32  128.0 s

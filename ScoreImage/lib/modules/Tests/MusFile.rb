@@ -7,6 +7,9 @@ class MusFile
   attr_reader :path
   attr_accessor :indice
 
+  # Pour les "extra-tests"
+  attr_writer :ok
+
   def initialize(path)
     @path      = path
     @error_msg = nil
@@ -439,7 +442,23 @@ class MusFile
   end
 
   def svg_name
-    @svg_name ||= "#{image_name}.svg".freeze
+    @svg_name ||= define_real_svg_name
+  end
+
+  # L’image peut avoir pour nom ’<nom image>.svg’ ou 
+  # ’<nom image>-1.svg’ suivant le nombre de pages produites.
+  def define_real_svg_name
+    n = "#{image_name}.svg".freeze
+    return n if File.exist?(File.join(build_folder, n))
+    if File.exist?(File.join(build_folder, svg_name_as_page_1))
+      return svg_name_as_page_1
+    else
+      return n
+    end
+  end
+
+  def svg_name_as_page_1
+    @svg_name_as_page_1 ||= "#{image_name}-1.svg".freeze
   end
 
   def relative_path
