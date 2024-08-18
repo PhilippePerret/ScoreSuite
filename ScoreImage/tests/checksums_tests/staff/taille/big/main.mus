@@ -1,0 +1,7 @@
+# pour tester l’option ’--staff_size’ qui permet de régler la 
+# taille de la portée et de tous ses éléments
+
+--staff_size 80
+
+-> score
+|: c2( d <e g>4 r f2\fermata) r^\markup { "Pour stopper" } a-. b_5 c :|

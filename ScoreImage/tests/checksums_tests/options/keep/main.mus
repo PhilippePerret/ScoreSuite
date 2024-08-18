@@ -1,0 +1,7 @@
+# Pour tester l’option ’--keep’ qui permet de conserver le fichier
+# .ly produit.
+
+--keep
+
+-> score
+c1

@@ -473,7 +473,7 @@ end
 
 def option_global_staff_size
   if options[:staff_size] && options[:staff_size].to_i > 0
-    "#(set_global_staff_size #{options[:staff_size]})"
+    "#(set-global-staff-size #{options[:staff_size]})"
   end
 end
 
