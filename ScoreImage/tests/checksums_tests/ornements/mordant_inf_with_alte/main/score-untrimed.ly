@@ -17,7 +17,7 @@
       % On utilise context pour utiliser des context
     }
   }
-  \new PianoStaff <<
+  \new PianoStaff \with { \consists Merge_rests_engraver } <<
     \new Staff = "haute" {
       % enforce creation of all contexts at this point of time
       \clef "treble"

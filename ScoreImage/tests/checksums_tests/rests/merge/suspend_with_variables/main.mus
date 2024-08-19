@@ -1,0 +1,11 @@
+# Test de la suspension provisoire de la fusion des silences
+
+b1=
+<< \stemDown g’ r // \stemUp c r >>
+
+b2=
+<< \stemDown g’ r // \stemUp e’ r >>
+
+-> score
+b1 \not_merge_rests b2 \merge_rests b2
+

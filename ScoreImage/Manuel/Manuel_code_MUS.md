@@ -301,6 +301,12 @@ Certains partis-pris ont été adoptés :
 * pour **les ornements**, on ne compte que la note elle-même (sauf pour les « grace notes » — cf. ci-dessous). En effet, comment considérer une trille par exemple ? Elle devrait comporter deux notes (les deux notes utilisées pour triller) et un certain nombre d’itérations indéfinissable de façon stricte avec des durées tout aussi indéfinissables. On pourrait se retrouver aussi avec des statistiques faussées qui amplifieraient l’utilisation d’une note simplement parce qu’elle est produite par la trille (on pourrait objecter que cette note n’est pas « amplifiée » puisqu’elle est, de fait, jouée dans la musique…).
 * on fait une exception pour **les *grace notes*** (les ***petites notes***), donc, c’est-à-dire les notes explicitement écrites, avec une durée définie, qui sont prises en compte. Conformément à la tradition de jeu, pour l’appogiature « barrée » (petites notes barrées), on définit sa durée au quart de la note qui la suit, en retirant cette durée à la note suivante.
 
+**Certaines erreurs découlent de l’écriture** même et, pour le moment, ne peuvent pas être évitées. C’est le cas dans l’utilisation d’un arpège (ou similaire) conduisant à un accord, comme dans la partition suivante :
+
+<img src="images/stats_erreur_normale.svg" alt="stats_erreur_normale" style="width:180px;" />
+
+Dans cette partition, on comptera 2 Sol (celui en noire pointée et en croche lié à l’accord), 2 Do (celui en noire et celui en croche lié à l’accord).
+
 <a name="tempo"></a>
 
 ### Le Tempo
@@ -363,6 +369,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
 | Statistiques                                                 | **`--stats`**                                                | Produit toujours les statistiques en même temps que la partition, dans un dossier `stats`. |
 | Tempo pour statistques et le fichier MIDI                    | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques et le fichier MIDI. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
+| Arrêt de la fusion des silences                              | **`--merge_rests OFF`**                                      | Cf. [Fusion des silences](#merge-rests).                     |
 |                                                              |                                                              |                                                              |
 
 ---
@@ -661,6 +668,71 @@ mesure1 mesure2 mesure3
 > Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droit a été empruntée à la mesure 1, conformément à la définition de la partition.
 
 
+
+<a name="merge-rests"></a>
+
+### Fusion (merge) des silences
+
+Par défaut, *ScoreImage* fusionne les silences (ce que ne fait pas LilyPond). Cela signifie qu’au lieu de graver :
+
+<img src="images/rests_not_merged.svg" alt="rests_not_merged" style="zoom:120%;" />
+
+… *ScoreImage* gravera :
+
+<img src="images/rest_merged.svg" alt="rest_merged" style="zoom:120%;" />
+
+On peut désactiver ce comportement par défaut en utilisant l’option **`--merge_rests OFF`** (note : « merge » signifie « fusionner » et « rest » signifie « repos », « silence » en musique).
+
+~~~
+--merge_rests OFF
+
+-> score
+<< \stemDown g' r g r // \stemUp c r e r >>
+
+# => Les silences seront conservés comme ci-dessus
+~~~
+
+
+
+#### Arrêt ponctuel de la fusion des silences
+
+Si l’on conserve le comportement par défaut, on peut néanmoins désactiver localement la fusion des silences grâce à la marque **`\not_merge_rests`** (et la faire reprendre à l’aide de **`\merge_rests`**) :
+
+~~~
+<< { \stemDown g’ r } \\ { \stemUp c r } >> \not_merge_rests << { \stemDown g r } \\ { \stemUp e’ r } >> \merge_rests << { \stemDown g, r } \\ { \stemUp c r } >>
+~~~
+
+<img src="images/rests_merging_suspend.svg" alt="rests_merging_suspend" style="zoom:120%;" />
+
+Il peut être plus simple et plus lisible de fonctionner avec variable. Par exemple, pour produire le code ci-dessus (à quelques variations près, ajoutées pour bien montrer le traitement différent de la même variable) :
+
+~~~
+b1=
+<< \stemDown g’ r // \stemUp c r >>
+
+b2=
+<< \stemDown g’ r // \stemUp e’ r >>
+
+-> score
+b1 \not_merge_rests b2 \merge_rests b2
+~~~
+
+Ce code produira :
+
+<img src="images/rests_merge_suspend_with_vars.svg" alt="rests_merge_suspend_with_vars" style="zoom:120%;" />
+
+Notez plusieurs choses importantes ici :
+
+* La marque `\not_merge_rests` s’applique à un « contexte », c’est-à-dire à un bout de code musical bien défini. On ne peut pas l’insérer par exemple de cette manière :
+
+  ~~~
+  << \stemDown g' r g \not_merge_rests r // \stemUp c r e r >>
+  # => NE PRODUIRA PAS LE RÉSULTAT OBTENU
+  ~~~
+
+  L’utilisation des variables, comme indiqué ci-dessus, permet de gérer ce problème, puisqu’une variable est forcément « isolée » dans le code LilyPond produit.
+
+* La marque `\not_merge_rests` est *définitive*. C’est-à-dire que tant que le *ScoreImage* ne rencontre pas de `\merge_rests`, les silences ne seront plus fusionnés.
 
 ### Fichier de sortie MIDI
 
@@ -1138,19 +1210,66 @@ Pour obtenir l'image :
 \tieWait \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
 ~~~
 
-On peut le simplifier encore en précisant par deux lettres suivant `\tieWait` la direction des liaisons (tie) et des hampes (stem) si elles sont fixes comme ici. La première lettre concernera les liaisons, la deuxième concernera les hampes. « D » signifie « down » (bas) et « U » signifie « up » (vers le haut).
+On peut le simplifier encore en précisant par une capitale « U » ou « D » à la fin de `\tieWait` la direction des liaisons (tie) et par voie de conséquence des hampes (stem) si elles sont fixes comme ici. Cette lettre concernera la position des liaisons, la position des hampes étant à l’inverse. « D » signifie « down » (bas) et « U » signifie « up » (vers le haut).
 
 Donc on peut encore simplifier le code ci-dessus par :
 
 ~~~
-\tieWaitDU aes’8~ c~ f~ <aes, c f aes>4
+\tieWaitD aes’8~ c~ f~ <aes, c f aes>4
 ~~~
 
-> Les liaisons ne semblent pas obéir à tous les coups.
+> Note : Les liaisons ne semblent malheureusement pas obéir à tous les coups.
 
-**DESCRIPTION**
+**VERSION AVEC DURÉE DE NOTES**
 
-Sauf erreur de notre part, il est extrêmement difficile, avec LilyPond, d’obtenir l’image suivante :
+On peut également obtenir une version avec les notes « doublées » avec leur durée, ainsi :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/arp2chord-note-durees.svg" alt="arp2chord-note-durees" style="width:230px;" />
+
+Ci-dessus, comment comment le Sol et le Do indiquent *explicitement* leur durée contrairement à l’exemple ci-dessus qui le suggérait seulement.
+
+L’ordre de construction de cette cellule est importante, on la détaille ci-dessous pour arriver jusqu’au code voulu.
+
+D’abord, il nous faut les croches liées à l’accord, c’est ce que nous avons vu plus haut. Nous allons utiliser `\tieWait` mais en ajoutant un « D » pour indiquer que les liaisons (« tie ») doivent être en bas (sinon, à cause de la position haute des notes, elles seraient au-dessus). On obtiendra donc :
+
+~~~
+--time 6/8
+
+\tieWaitD g'8~ c~ d <g, c e>4 r8
+~~~
+
+On obtient dans un premier temps : <img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/arp2chord_duree_implicite.svg" alt="arp2chord_duree_implicite" style="width:180px;" />
+
+On ajoute ***à la suite de ce code*** les notes avec leur durée explicite en considérant des voix simultanées :
+
+~~~
+--time 6/8
+
+<< { \tieWaitD g'8~ c~ d <g, c e>4 r8 } \\ { g4. s } \\ { s8 c4 s4. } >> 
+~~~
+
+Ce code produira : <img src="images/arp2chord_duree_explicite_step1.svg" alt="arp2chord_duree_explicite_step1" style="width:180px;" />
+
+Il faut donc corriger les erreurs :
+
+* mettre la hampe (stem) de Do dans le bon sens,
+* « merger » les notes pour ne pas doubler les têtes.
+
+On arrive donc au code :
+
+~~~
+--time 6/8
+
+<< { \tieWaitD g'8~ c~ d <g, c e>4 r8 } \\ { \mergeNotes g4. s } \\ { \mergeNotes \stemDown s8 c4 s4. } >> 
+~~~
+
+… qui produit le code suivant :
+
+<img src="images/arp2chord_duree_explicite.svg" alt="arp2chord_duree_explicite" style="width:230px;" />
+
+**DESCRIPTION D’UN PROBLÈME**
+
+Sauf erreur de notre part, il est extrêmement difficile, avec LilyPond, d’obtenir l’image suivante, qui ressemble à la précédente, mais se différencie au niveau de la dernière note de l’arpège, le Fa en croche lié à l’accord :
 
 <img src="images/arpege-to-chord-wanted.svg" alt="arpege-to-chord-wanted" style="width:250px;" />
 
@@ -1172,6 +1291,10 @@ Si l’**on ne tient pas à donner explicitement la durée exacte de chaque note
 
 ~~~
 \set tieWaitForNote = ##t \stemUp aes’8~ \tieDown c~ f~ <aes, c f aes>4
+
+# Et donc la version réduite :
+
+\tieWaitD aes’8~ c~ f~ <aes, c f aes>4
 ~~~
 
 … qui produira :

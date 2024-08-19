@@ -1,0 +1,8 @@
+# Test de la suspension provisoire de la fusion des silences
+
+--keep
+# --merge_rests OFF
+
+-> score
+<< { \stemDown g’ r } \\ { \stemUp c r } >> \not_merge_rests << { \stemDown g r } \\ { \stemUp e’ r } >> \merge_rests << { \stemDown g, r } \\ { \stemUp c r } >>
+

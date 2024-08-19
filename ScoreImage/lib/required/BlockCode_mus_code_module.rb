@@ -30,6 +30,8 @@ def traite_as_code_mscore(line, idx)
   line = replace_multi_voices(line)
   # - Remplacement des arpèges vers accords -
   line = traite_arpege_to_chord_in(line)
+  # - Remplacement des suspensions de fusion de silences -
+  line = traite_suspend_rests_merging_in(line)
   # - Remplacement des répétitions avec % ... %X -
   line = replace_repetition_code(line)
   # - Traitement des reprises avec 1re, 2e, etc.-ième fois.
@@ -60,16 +62,36 @@ end
 def traite_arpege_to_chord_in(line)
   return line if not(line.match?('tieWait'))
   line = line.gsub(REG_ARP2CHORD) do
-    sens_tie   = DOWN_OR_UP[$~[:tie]]
-    sens_stem  = DOWN_OR_UP[$~[:stem]]
+    sens_tie  = $~[:tie]
+    sens_stem = $~[:stem]
+    if sens_tie && sens_stem.nil?
+      sens_stem = sens_tie == 'D' ? 'U' : 'D'
+    end
+    sens_tie   = DOWN_OR_UP[sens_tie]
+    sens_stem  = DOWN_OR_UP[sens_stem]
     sens_tie   = sens_tie ? " \\tie#{sens_tie}" : ""
     sens_stem  = sens_stem ? " \\stem#{sens_stem}" : ""
+    puts "sens_tie: #{sens_tie} / sens_stem: #{sens_stem}".bleu
     '\set tieWaitForNote = ##t%s%s'.freeze % [sens_tie, sens_stem]
   end
   return line
 end
 DOWN_OR_UP = {nil => nil, 'D' => 'Down', 'U' => 'Up' }
-REG_ARP2CHORD = /\\tieWait(?:(?<tie>[UD])(?<stem>[UD]))?/
+REG_ARP2CHORD = /\\tieWait(?:(?<tie>[UD])(?<stem>[UD])?)?/
+
+
+# Traitement de la suspension de la fusion des silences (qui est
+# enclenchée par défaut avec score-image)
+def traite_suspend_rests_merging_in(line)
+  return line unless line.match?(/not_merge_rest/)
+  line = line.gsub(REG_SUSPEND_REST_MERGE) do
+    valeur = $~[:not].nil? ? 'f' : 't'
+    '\set Merge_rests_engraver.suspendRestMerging = ##%s'.freeze % [valeur]
+  end
+  return line
+end
+REG_SUSPEND_REST_MERGE = /\\(?<not>not_)?merge_rests?/.freeze
+
 
 # Traitement des instruments transpositeurs
 def traite_transpositions_in(line)

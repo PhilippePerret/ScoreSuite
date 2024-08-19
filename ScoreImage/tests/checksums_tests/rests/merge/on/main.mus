@@ -1,0 +1,4 @@
+# Test de la fusion des silences (par défaut)
+
+-> score
+<< \stemDown g' r g r // \stemUp c r e r >>

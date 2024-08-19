@@ -19,7 +19,8 @@
   }
   <<
     \new GrandStaff <<
-      \new Staff \with { instrumentName = "Fl." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Fl." }  {
         \relative c'' {
           \clef treble
           \time 4/4
@@ -27,7 +28,8 @@
           \relative c' { c8 e g c g e c e }
         }
       }
-      \new Staff \with { instrumentName = "Hb." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Hb." }  {
         \relative c'' {
           \clef treble
           \time 4/4
@@ -35,7 +37,8 @@
           \relative c' { e4. e8 e4. e8 }
         }
       }
-      \new Staff \with { instrumentName = "Cl." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Cl." }  {
         \relative c'' {
           \clef treble
           \time 4/4
@@ -44,7 +47,8 @@
         }
       }
     >>
-    \new Staff \with { instrumentName = "Cor" }  {
+    \new Staff \with { \consists Merge_rests_engraver
+    instrumentName = "Cor" }  {
       \relative c {
         \clef bass
         \time 4/4
@@ -53,7 +57,7 @@
       }
     }
     \new GrandStaff \with { instrumentName = "Piano" } <<
-      \new Staff  {
+      \new Staff \with { \consists Merge_rests_engraver }  {
         \relative c'' {
           \clef treble
           \time 4/4
@@ -61,7 +65,7 @@
           \relative c' { c8 e g c g e c e }
         }
       }
-      \new Staff  {
+      \new Staff \with { \consists Merge_rests_engraver }  {
         \relative c {
           \clef bass
           \time 4/4
@@ -70,7 +74,8 @@
         }
       }
     >>
-    \new Staff \with { instrumentName = "Cb." }  {
+    \new Staff \with { \consists Merge_rests_engraver
+    instrumentName = "Cb." }  {
       \relative c {
         \clef bass
         \time 4/4

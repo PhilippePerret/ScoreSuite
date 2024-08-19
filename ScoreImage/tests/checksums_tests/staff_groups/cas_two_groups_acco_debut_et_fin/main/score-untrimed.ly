@@ -19,21 +19,24 @@
   }
   <<
     \new GrandStaff <<
-      \new Staff \with { instrumentName = "Fl." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Fl." }  {
         \relative c'' {
           \clef treble
           \omit Staff.TimeSignature
           \relative c' { c4 d e f } \relative c' { c4 d e f }
         }
       }
-      \new Staff \with { instrumentName = "Hb." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Hb." }  {
         \relative c'' {
           \clef treble
           \omit Staff.TimeSignature
           \relative c' { c4 d e f } \relative c' { c4 d e f }
         }
       }
-      \new Staff \with { instrumentName = "Ba." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Ba." }  {
         \relative c {
           \clef bass
           \omit Staff.TimeSignature
@@ -42,21 +45,24 @@
       }
     >>
     \new GrandStaff <<
-      \new Staff \with { instrumentName = "Vl." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Vl." }  {
         \relative c'' {
           \clef treble
           \omit Staff.TimeSignature
           \relative c' { c4 d e f } \relative c' { c4 d e f }
         }
       }
-      \new Staff \with { instrumentName = "Alto" }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Alto" }  {
         \relative c' {
           \clef alto
           \omit Staff.TimeSignature
           \relative c' { c4 d e f } \relative c' { c4 d e f }
         }
       }
-      \new Staff \with { instrumentName = "Cb." }  {
+      \new Staff \with { \consists Merge_rests_engraver
+      instrumentName = "Cb." }  {
         \relative c {
           \clef bass
           \omit Staff.TimeSignature

@@ -18,14 +18,16 @@
     }
   }
   <<
-    \new Staff \with { instrumentName = \markup { \concat { \column { "M.(C" } \column { \vspace #-0.3 { \teeny \sharp } } \column { ")" } } } }  {
+    \new Staff \with { \consists Merge_rests_engraver
+    instrumentName = \markup { \concat { \column { "M.(C" } \column { \vspace #-0.3 { \teeny \sharp } } \column { ")" } } } }  {
       \relative c'' {
         \clef treble
         \omit Staff.TimeSignature
         \relative c' { c'4 d e f }
       }
     }
-    \new Staff \with { instrumentName = \markup { \concat { \column { "Cl.(B" } \column { \vspace #-0.2 { \small \flat } } \column { ")" } } } }  {
+    \new Staff \with { \consists Merge_rests_engraver
+    instrumentName = \markup { \concat { \column { "Cl.(B" } \column { \vspace #-0.2 { \small \flat } } \column { ")" } } } }  {
       \relative c'' {
         \clef treble
         \omit Staff.TimeSignature

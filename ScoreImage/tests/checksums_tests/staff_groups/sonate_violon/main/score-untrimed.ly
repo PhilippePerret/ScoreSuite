@@ -18,7 +18,8 @@
     }
   }
   <<
-    \new Staff \with { instrumentName = "Violon" }  {
+    \new Staff \with { \consists Merge_rests_engraver
+    instrumentName = "Violon" }  {
       \relative c'' {
         \clef treble
         \omit Staff.TimeSignature
@@ -26,14 +27,14 @@
       }
     }
     \new GrandStaff \with { instrumentName = "Piano" } <<
-      \new Staff  {
+      \new Staff \with { \consists Merge_rests_engraver }  {
         \relative c'' {
           \clef treble
           \omit Staff.TimeSignature
           \relative c' { e4( f g a b1) }
         }
       }
-      \new Staff  {
+      \new Staff \with { \consists Merge_rests_engraver }  {
         \relative c {
           \clef bass
           \omit Staff.TimeSignature

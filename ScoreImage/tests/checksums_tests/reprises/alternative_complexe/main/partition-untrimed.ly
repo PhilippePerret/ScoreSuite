@@ -17,7 +17,7 @@
       % On utilise context pour utiliser des context
     }
   }
-  <<
+  \new Staff \with { \consists Merge_rests_engraver } <<
     \relative c' {
       \omit Staff.TimeSignature
       \clef "treble"

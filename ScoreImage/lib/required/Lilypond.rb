@@ -179,7 +179,8 @@ def body(code, system)
     params = {name: (options[:staves_names]||[''])[0].downcase == 'piano' }
     system_for_piano(code, params)
   when 'solo', 'quatuor'
-    send("system_for_#{system}", code)
+    params = options.dup
+    send("system_for_#{system}", code, params)
   when Integer 
     system_for_x_staves(code)
   else
@@ -211,9 +212,9 @@ def tempo
   @tempo ||= (options[:tempo]||CLI.option(:tempo)).to_s.freeze
 end
 
-def system_for_solo(code)
+def system_for_solo(code, params)
   <<~LILYPOND
-  <<
+  \\new Staff #{mark_with_staff(params)}<<
   #{markin_transposition}\\relative c' {
     #{option_no_time}
     #{option_no_stem}
@@ -239,7 +240,7 @@ end
 def system_for_piano(code, **params)
   params.merge!(name: 'PIANO') if params[:name]
   <<~LILYPOND
-  \\new PianoStaff #{mark_staff_name(params)}<<
+  \\new PianoStaff #{mark_with_staff(params)}<<
     \\new Staff = "haute" {
       % enforce creation of all contexts at this point of time
       \\clef "treble"
@@ -303,7 +304,7 @@ end
 # Voir la méthode Lilypond::System::parse qui analyse la définition
 # de ’staves_names’ (et ’staves_keys’)
 # 
-def system_for_x_staves(code)
+def system_for_x_staves(code, **params)
   isystem = options[:isystem]
 
   # puts isystem.inspect # inspection personnalisée
@@ -334,7 +335,7 @@ def system_for_x_staves(code)
 end
 
 
-def system_for_quatuor(code)
+def system_for_quatuor(code, **params)
   <<-LILYPOND
   \\new StaffGroup <<
     #{staff_for(code[0], {name:'Violon 1'})}
@@ -354,7 +355,7 @@ def staff_for(code, params)
   end
   staff_cle = params[:key] ? "\\clef #{CLE_TO_CLE_LILY[params[:key]]}\n" : ""
   <<~LILYPOND
-  \\new Staff #{mark_staff_name(params)} {
+  \\new Staff #{mark_with_staff(params)} {
     #{markin_transposition}\\relative c#{relative} {
       #{staff_cle}
       #{option_no_time}
@@ -367,11 +368,21 @@ def staff_for(code, params)
   LILYPOND
 end
 
-def mark_staff_name(params)
+def mark_with_staff(params)
+  withs = []
+  unless params[:merge_rests] === false
+    # Pour le moment, par défaut, on merge les silences
+    withs << '\consists Merge_rests_engraver'
+  end
   if params[:name]
-    '\with { instrumentName = %s } '.freeze % params[:name]
-  else 
-    '' 
+    withs << ('instrumentName = %s'.freeze % params[:name] )
+  end
+
+  # On "compile" tous les with(s)
+  if withs.empty?
+    ''
+  else
+    '\with { %s } '.freeze % withs.join("\n")
   end
 end
 

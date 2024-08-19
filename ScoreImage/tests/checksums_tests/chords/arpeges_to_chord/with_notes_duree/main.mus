@@ -1,0 +1,7 @@
+# Test pour les arpèges qui menent à un accord, avec la durée
+# des notes qui "attendent" marquées avec leur vraie durée
+
+--time 6/8
+
+-> score
+<< { \tieWaitD g’8~ c~ d <g, c e>4 r8 } \\ { \mergeNotes g4. s4 r8 } \\ { \mergeNotes \stemDown s8 c4 } >>

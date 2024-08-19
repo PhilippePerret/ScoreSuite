@@ -1,0 +1,6 @@
+# Test de la fusion des silences annulée
+
+--merge_rests OFF
+
+-> score
+<< \stemDown g' r g r // \stemUp c r e r >>
