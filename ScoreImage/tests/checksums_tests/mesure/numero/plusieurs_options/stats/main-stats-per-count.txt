@@ -1,0 +1,2 @@
+Nombre total de notes : 48
+c  48  96.0 s

@@ -452,12 +452,32 @@ def layout_context_score
   end
 
   # - Numéro de mesure -
+  
+
   # Absence du numéro de mesure
   if options[:mesures] === false || options[:mesure] === false
     lines << '\omit BarNumber'
-  elsif options[:number_per_5]
-    dir = options[:measure_number_under_staff] ? 'DOWN' : 'UP'
-    lines << OVERRIDE_NUMBER_BAR_PER % [dir, 5]
+  else 
+    # Compatibilité descendante
+    options.merge!(number_per: 5) if options[:number_per_5]
+    # Cas première mesure numérotée
+    if options[:first_measure] && not(options[:mesure])
+      lines << NUMBER_BAR_ALL
+    end
+    if options[:measure_number_under_staff]
+      lines << (OVERRIDE_BARNUM_DIR % 'DOWN')
+    end
+    if options[:mesure]
+      lines << (FIRST_MEASURE_NUMBER % options[:mesure])
+    end
+    # Visibilité des numéros
+    if options[:number_per]
+      lines << NUMBER_BAR_PER % options[:number_per]
+      lines << (OVERRIDE_BARNUM_VISIBILITY % ['f','t','t'])
+    elsif options[:first_measure]
+      cours = options[:number_per] ? 't' : 'f'
+      lines << (OVERRIDE_BARNUM_VISIBILITY % ['f', cours, 't'])
+    end
   end
 
   # S’il faut écrire le contexte \Score
@@ -468,12 +488,34 @@ def layout_context_score
   end
 end
 
-OVERRIDE_PROXIMITY = '\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)'.freeze
-OVERRIDE_NUMBER_BAR_PER = <<~'TEXT'.freeze
-\override BarNumber.break-visibility = #end-of-line-invisible
-\override BarNumber.direction = #%s
+# - Proximité des signes -
+OVERRIDE_PROXIMITY = <<~'TEXT'.strip.freeze
+\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)
+TEXT
+
+# - Numéro de mesure -
+NUMBER_BAR_PER = <<~'TEXT'.strip.freeze
 barNumberVisibility = #(every-nth-bar-number-visible %s)
 TEXT
+NUMBER_BAR_ALL = <<~'TEXT'.strip.freeze
+barNumberVisibility = #all-bar-numbers-visible
+TEXT
+OVERRIDE_BARNUM_DIR = <<~'TEXT'.strip.freeze
+\override BarNumber.direction = #%s
+TEXT
+
+FIRST_MEASURE_NUMBER = <<~'TEXT'.strip.freeze
+currentBarNumber = #%s
+TEXT
+
+# Ordre des booleans : fin de ligne, cours de ligne, début de ligne
+# Valeur "t" ou "f"
+OVERRIDE_BARNUM_VISIBILITY = <<~'TEXT'.strip.freeze
+\override BarNumber.break-visibility = ##(#%s #%s #%s)
+TEXT
+# OVERRIDE_BARNUM_INVISIBLE = <<~'TEXT'.strip.freeze
+# \override BarNumber.break-visibility = #end-of-line-invisible
+# TEXT
 
 def options_system_count_per_page
   if ( n = (options[:system_count]||options[:system_count_per_page]) )
@@ -559,12 +601,14 @@ def option_num_mesure
   options[:mesure] ? premier_numero_mesure : ""
 end
 def premier_numero_mesure
-  <<-TXT
-\\set Score.barNumberVisibility = #all-bar-numbers-visible
-\\set Score.currentBarNumber = ##{options[:mesure]}
-\\bar "" % pour qu'il s'affiche
+  <<-'TXT'.freeze
+\bar "" % pour que le premier numéro de mesure s'affiche
   TXT
 end
+# Il y avait ça, avant, ci-dessus
+# \\set Score.currentBarNumber = ##{options[:mesure]}
+# J’ai essayé de le mettre dans le \layout Score
+
 def option_no_time
   case options[:time]
   when true then ''

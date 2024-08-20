@@ -368,7 +368,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Taille de la portée                                          | **`--staff_size <x>`**                                       | Définit la taille de la portée (et de tous ses éléments). La valeur par défaut est **20**. |
 | Affichage des numéros de page                                | **`--page_numbers <v>`**                                     | `<v>` peut-être `OFF` (pas de numéro de page), `arabic` (chiffres arabes, `roman-ij-lower` (romain minuscules avec ligature), `roman-ij-upper` (romain majuscule avec ligature), `roman-lower` (romain minuscule sans ligature), `roman-upper` (romain majuscule sans ligature) |
 | Statistiques                                                 | **`--stats`**                                                | Produit toujours les statistiques en même temps que la partition, dans un dossier `stats`. |
-| Tempo pour statistques et le fichier MIDI                    | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques et le fichier MIDI. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
+| Tempo pour les statistisques et le fichier MIDI              | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques et le fichier MIDI. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
 | Arrêt de la fusion des silences                              | **`--merge_rests OFF`**                                      | Cf. [Fusion des silences](#merge-rests).                     |
 |                                                              |                                                              |                                                              |
 
@@ -385,8 +385,10 @@ On règle la numérotation des pages avec l’option **`page_numbers`**
 --page_numbers arabic 					# chiffres arabes (défaut)
 --page_numbers roman-lower			# Romains minuscules
 --page_numbers roman-upper			# Romains majuscules
---page_numbers roman-ij-lower		# Romains minuscules avec ligatures
---page_numbers roman-ij-upper		# Romains majuscules avec ligatures
+--page_numbers roman-ij-lower		# Romains minuscules avec ligatures (*)
+--page_numbers roman-ij-upper		# Romains majuscules avec ligatures (*)
+
+(*) Semble ne pas fonctionner, peut-être faut-il une police spéciale.
 ~~~
 
 
@@ -461,6 +463,12 @@ Pour supprimer toute numération, utiliser l’option :
 --mesure OFF
 ~~~
 
+Pour forcer la numérotation de la première mesure, utiliser :
+
+~~~
+--first_measure
+~~~
+
 Pour partir d’une autre mesure que 1, utiliser :
 
 ~~~
@@ -476,6 +484,15 @@ Pour que les numéros se fassent **de 5 en 5** ajouter :
 ~~~
 --number_per_5
 ~~~
+
+Ou par un autre numéro, quelconque :
+
+~~~
+--number_per 12
+# => numérotation des mesures de 12 en 12
+~~~
+
+
 
 Par défaut, les numéros de mesure se mettent au-dessus de la portée. Pour les mettre en dessous, utiliser l’option :
 

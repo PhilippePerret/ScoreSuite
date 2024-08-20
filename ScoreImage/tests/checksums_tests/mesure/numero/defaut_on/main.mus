@@ -1,0 +1,7 @@
+# Test qui s’assure que le numéro des mesures s’affiche. Par défaut,
+# il s’affiche à chaque nouvelle portée, au-dessus
+
+--page b6
+
+-> score
+% c2 %48

@@ -1,0 +1,8 @@
+# Test qui s’assure que le numéro des mesures s’affiche. Par défaut,
+# il s’affiche à chaque nouvelle portée, au-dessus
+
+--page b6
+--measure_number_under_staff
+
+-> score
+% c2 %48

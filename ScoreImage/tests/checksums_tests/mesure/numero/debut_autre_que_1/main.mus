@@ -1,0 +1,7 @@
+# Test qui s’assure que le premier numéro puisse être autre que 1
+
+--page b6
+
+-> score
+--mesure 12
+% c2 %48

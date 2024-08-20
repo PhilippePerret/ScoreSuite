@@ -1,0 +1,17 @@
+# Test qui s’assure qu’on peut appliquer plusieurs options aux
+# numéros de mesure. Ici :
+# - elles sont numérotées par 4
+# - le numéro se trouve sous la portée
+# - la première mesure est numérotée
+# - on commence à la mesure 14
+
+# --keep
+--page b6
+
+# Options numéros de mesures
+--measure_number_under_staff
+--number_per 4
+
+-> score
+--mesure 14
+% c2 %48

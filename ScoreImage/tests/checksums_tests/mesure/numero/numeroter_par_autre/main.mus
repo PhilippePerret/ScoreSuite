@@ -1,0 +1,9 @@
+# Test qui s’assure qu’on peut procéder à une autre numérotation que
+# en début de portée, mais par un rang régulier
+
+--page b6
+
+--number_per 3
+
+-> score
+% c2 %48

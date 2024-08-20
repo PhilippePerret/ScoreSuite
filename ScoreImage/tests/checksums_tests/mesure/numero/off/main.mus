@@ -1,0 +1,8 @@
+# Test qui s’assure que le numéro des mesures ne s’affiche pas
+
+--page b6
+
+--mesure OFF
+
+-> score
+% c2 %48

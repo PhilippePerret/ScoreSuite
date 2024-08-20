@@ -1,0 +1,9 @@
+# Test qui s’assure qu’on puisse demander l’affichage du premier
+# numéro de mesure.
+
+--page b6
+
+--first_measure
+
+-> score
+% c2 %48
