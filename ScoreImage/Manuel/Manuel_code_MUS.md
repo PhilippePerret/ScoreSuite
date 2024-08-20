@@ -469,6 +469,8 @@ Pour forcer la numérotation de la première mesure, utiliser :
 --first_measure
 ~~~
 
+> Noter que c’est nécessaire seulement si la première mesure est la 1. Dans le cas contraire, on numérote toujours la première.
+
 Pour partir d’une autre mesure que 1, utiliser :
 
 ~~~
