@@ -1,0 +1,5 @@
+# On peut faire un changement de tonalité en cours de morceau SANS
+# AJOUTER DE DOUBLES BARRES en écrivant en pur LiLypond le changement
+
+-> score
+c4 d e f g1 \key ees c4 d ees f g1

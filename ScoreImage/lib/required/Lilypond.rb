@@ -583,10 +583,10 @@ end
 # (pour l’espacement entre les systèmes, cf. ci-dessus)
 def option_staves_vspace
   if options[:staves_vspace]
-    <<-TEXT
-    \\Staff
-    \\override VerticalAxisGroup
-      .staff-staff-spacing.basic-distance = #{options[:staves_vspace]}
+    <<~'TEXT' % [options[:staves_vspace]]
+    \Staff
+    \override VerticalAxisGroup
+      .staff-staff-spacing.basic-distance = %s
     TEXT
   else "" end
 end
@@ -601,8 +601,8 @@ def option_num_mesure
   options[:mesure] ? premier_numero_mesure : ""
 end
 def premier_numero_mesure
-  <<-'TXT'.freeze
-\bar "" % pour que le premier numéro de mesure s'affiche
+  <<~'TXT'.freeze
+  \bar "" % pour que le premier numéro de mesure s'affiche
   TXT
 end
 # Il y avait ça, avant, ci-dessus
@@ -620,22 +620,14 @@ end
 def option_no_stem
   options[:no_stem] ? '\\override Voice.Stem.transparent = ##t' : ''
 end
+
+# @return le texte pour indiquer la tonalité
 def option_tonalite
-  return '' if not options[:key]
-  tune = options[:key]
-  if tune.length == 2
-    note, nature = options[:key].split('')
-  else
-    note, nature = options[:key].split('')
-  end
-  alter  = case nature
-  when '#', 'd'   then 'is'
-  when 'b'        then 'es'
-  when 'es', 'is' then nature
-  else ''
-  end
-  "\\key #{note.downcase}#{alter} \\major"
+  if options[:key]
+    formate_tune(options[:key])
+  else '' end
 end
+
 def option_espacements
   subdiv = 
   if options[:biggest_hspace]
@@ -650,13 +642,13 @@ def option_espacements
     nil
   end
   return '' if subdiv.nil?
-  <<-LPOND
-\\layout {
- \\context {
-   \\score
-   \\override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/#{subdiv})
- }
-}
+  <<~'LPOND' % [subdiv]
+  \layout {
+  \context {
+    \score
+    \override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/%s)
+  }
+  }
 
   LPOND
 end
@@ -682,18 +674,25 @@ def translate_from_music_score(str)
 
   # str = translate_barres_from_ms(str)
 
-  str = translate_armure_from_ms(str)
+  str = " #{str.strip} "
+  str = translate_armure_from_mus(str)
 
+  str = " #{str.strip} "
   str = translate_keys_from_ms(str)
 
+  str = " #{str.strip} "
   str = translate_percents_from_ms(str)
 
+  str = " #{str.strip} "
   str = translate_nuplets_from_ms(str)
 
+  str = " #{str.strip} "
   str = translate_trilles_from_ms(str)
 
+  str = " #{str.strip} "
   str = translate_graces_notes_from_ms(str)
 
+  str = " #{str.strip} "
   str = translate_staff_change_from_ms(str)
 
   # On échappe toutes les balances
@@ -720,19 +719,36 @@ private
     return str
   end
 
-  def translate_armure_from_ms(str)
-    str = str.gsub(/\\(?:tune|key) ([a-g])(es|is|d|b)? /i) do
-      ton   = $1.downcase.freeze
-      alte  = ($2||'').freeze
-      alte = case alte
-      when 'b' then 'es'
-      when 'd' then 'is'
-      else alte
-      end
-      "\\key #{ton}#{alte} \\major "
+  def translate_armure_from_mus(str)
+    return str unless str.match?(/(tune|key)/)
+    # puts "str avant : #{str.inspect}".jaune
+    str = str.gsub(/\\(?<mark>tune|key) (?<key>#{REG_TUNE}) /i) do
+      k = $~[:key].freeze
+      barres = ($~[:mark] == 'key' && k.match?(REG_PUR_TUNE)) ? ' ' : ' \bar "||" '
+      barres + formate_tune(k) + ' '
     end
+    # puts "str après : #{str.inspect}".bleu
     return str
   end
+
+  # @reçoit la marque de la tonalité (en options ou au cours du code
+  # en cas de changement de tonalité) et 
+  # @return la marque ’\key ...’ à écrire dans le code lilypond
+  def formate_tune(str)
+    vals = str.strip.match(REG_TUNE)
+    alte = case vals[:alte]
+      when 'b', 'es'      then 'es'
+      when 'd', 'is', '#' then 'is'
+      else '' end
+    mode = case vals[:mode]
+      when 'm', '-' then 'minor'
+      else 'major' end
+    return '\key %s%s \%s'.freeze % [vals[:note].downcase, alte, mode]
+  end
+  REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b)?(?<mode>[m\-])?/i.freeze
+  # Pour savoir si c’est une définition "pure" de la tonalité qui,
+  # dans ce cas, n’ajoute pas de double barre avant
+  REG_PUR_TUNE = /^[a-g](es|is)?$/.freeze
 
   def translate_keys_from_ms(str)
     # Les clés, qui peuvent être précisées par '\cle F' et '\cle G'

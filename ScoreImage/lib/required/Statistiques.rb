@@ -348,7 +348,9 @@ class Statistiques
       puts "- #{notes_group.text_line}"
     end
 
-    ary_groups_notes = StatNote.notes_groups.values
+    ary_groups_notes = StatNote.notes_groups.values#.sort_by {}
+    puts "ary_groups_notes: #{ary_groups_notes}"
+    exit 12
 
     total_notes = ary_groups_notes.sum(&:count)
     total_duree = ary_groups_notes.sum(&:duree_secondes)

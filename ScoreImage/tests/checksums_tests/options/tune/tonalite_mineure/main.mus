@@ -1,0 +1,7 @@
+# Par défaut, on est toujours en C
+# --keep
+
+--tune Cm
+
+-> score
+c d ees f g1

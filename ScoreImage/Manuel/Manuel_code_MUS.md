@@ -337,7 +337,9 @@ Puisqu’une noire pointée, ici durera trois fois plus de temps qu’une croche
 
 Toutes les options dont nous allons parler peuvent être utilisées au début du code ou à n’importe quel endroit du fichier pour être modifiées à la volée. Par exemple, si on veut que les premières images soient produites sans barres de mesures, on ajoutera en haut du fichier l’option **`--barres OFF`** et si à partir d’une image on en veut, on pourra poser `--barres` et remettre plus loin `--barres OFF` pour spécifier qu’il faut à nouveau ne plus utiliser les barres de mesure.
 
+---
 
+### Résumé des options
 
 > Pour désactiver une option (après l'avoir activée ou pas), il faut utiliser :
 > `--<option> OFF`
@@ -350,6 +352,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 
 | <span style="display:inline-block;width:200px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:240px;">Option</span> | <span style="display:inline-block;width:120px;">Notes</span> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Tonalité de la pièce                                         | **`--key <tune>`**<br />**`--tune <tune>`**                  | Se définit par le nom de la note (a-z) en majuscule ou minuscule, l’altération et le mode. Cf. [Tonalité de la pièce](#tune) |
 | Suppression de la gravure des barres                         | **`--barres OFF`**                                           |                                                              |
 | Ré-affichage des barres de mesure                            | **`--barres`**                                               | S’emploie forcément après un `--barres OFF`, puisque par défaut les barres sont toujours gravées. |
 | Afficher (ou non) la métrique                                | **`--time`**<br />**`--time OFF`**<br />**`--time 3/4`**     |                                                              |
@@ -375,6 +378,33 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 ---
 
 ## Détail des options
+
+<a name="tune"></a>
+
+### Tonalité de la pièce
+
+L’option **`--tune`** ou **`--key`** permet de définir l’armure ou la tonalité de la pièce.
+
+La forme canonique est :
+
+~~~
+<note><altération><mode>
+
+où :
+
+	<note> 	est une lettre de a à g (ou A à G)
+	<altération> est 'es' ou 'b' pour bémol, 'is' ou '#' ou 'd' pour dièse
+	<mode> est 'm' ou '-' pour le mineur (rien pour le majeur
+~~~
+
+Voilà différentes formes valides de définitions :
+
+* `--tune a` = tonalité de La majeur
+* `--key Gm` = tonalité de Sol mineur
+* `--tune bes-` = tonalité de Si bémol mineur
+* `--tune c-` = tonalité de Do mineur
+
+---
 
 ### Numérotation des pages
 
@@ -684,7 +714,7 @@ mesure1 mesure2 mesure3
 
 <img src="./images/piano-mesures-croized.svg" alt="score" style="zoom:120%;" />
 
-> Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droit a été empruntée à la mesure 1, conformément à la définition de la partition.
+> Noter ci-dessus que c’est seulement la main gauche de la mesure 3 qui a été utilisé, alors que la main droite a été empruntée à la mesure 1, conformément à la définition de la partition.
 
 
 
@@ -786,21 +816,11 @@ score-image moncode.mus -midi
 
 ---
 
-<a id="options_musicales"></a>
+<a name="proximity"></a>
 
-### Options musicales
+### Espacement entre les notes
 
-| <span style="display:inline-block;width:240px;">Effet recherché</span> | <span style="white-space:nowrap;display:inline-block;width:160px;">Option</span> | <span style="white-space:nowrap;display:inline-block;width:50%; ">Notes</span> |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Définir la tonalité (armure du morceau)                      | **`--tune`** ou **`--key`** suivi de `A-G#b`                 | La lettre doit obligatoirement être en majuscule. Contrairement à Lilypond, qui permet d’indiquer les tonalités mineures (pour le chiffrage des chorus par exemple), ici, on met vraiment l’armure de la portée. |
-| Numérotation des mesures                                     |                                                              | Cf. [Numérotation des mesures](#measure-number)              |
-| Espacement horizontal entre les notes                        | **`--proximity XXX`**                                        | `XXX` peut avoir une valeur de 1 à 50.<br />Cf. les [exemples de proximités ci-dessous](#exemple_proximity) |
-
-
-
-<a id="exemple_proximity"></a>
-
-#### Exemples de proximités de notes (rendu)
+On peut jouer sur la proximité entre les notes à l’aide de l’option **`--proximity`** suivie de la valeur d’éloignement (ou de rapprochement, c’est selon).
 
 | <span style="display:inline-block;width: 150px">Valeur de `proximity`</span> | Rendu                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -811,12 +831,6 @@ score-image moncode.mus -midi
 | **`--proximity 20`**                                         | <img src="images/exemples/proximity-prox20.svg" style=" width:650px;" /> |
 | **`--proximity 50`**                                         | <img src="images/exemples/proximity-prox50.svg" style=" width:800px;" /> |
 |                                                              |                                                              |
-
-
-
-Espacement horizontal automatique entre les notes--proximity xxx
-
-(pour un espacement ponctuel, cf. la suite)
 
 Note : c'est une option "ponctuelle", qui est abandonnée dès la
 première utilisation.
@@ -1065,9 +1079,41 @@ plus pratique d'utiliser :
 | <img src="images/exemples/cle-ut-4e.svg" style="  width:150px;" />                 |      **`\cle UT4`**        |      Clé d'UT 4<sup>e</sup> ligne                                                          |
 | <img src="images/exemples/cle-ut-5e.svg" style="  width:150px;" />                 |      **`\cle UT5`**        |      Clé d'UT 5<sup>e</sup> ligne                                                          |
 
-#### Tonalité de l’expression (armure)
+#### Tonalité de l’expression (armure et changement)
 
-Cf. [les options musicales](#options_musicales).
+Pour la définition de l’armure, voir [Tonalité de la pièce](#tune).
+
+On marque un changement de tonalité au cours de la pièce simplement avec la marque `\tune` ou `\key`.
+
+Pour ne pas ajouter la double barre, on écrit l’expression en « pur » LilyPond, c’est-à-dire avec la marque `\key` (pas `tune` cette fois), la note en minuscule et l’altération par `es` (bémol) ou `is` (dièse). On peut indiquer si c’est une tonalité mineure par `\minor` ou utiliser l’armure du relatif majeur.
+
+Ainsi :
+
+~~~
+c d e f \tune Ebm ges f ees d ees2
+~~~
+
+…produira :
+
+<img src="images/change_tune.svg" alt="change_tune" style="zoom:120%;" />
+
+Tandis que :
+
+~~~
+c d e f \key ees\minor ges f ees d ees2
+
+# ou 
+
+c d e f \key ges ges f ees d ees2
+~~~
+
+> Noter que le `\minor` est « collé » à la note.
+
+… produiront tous les deux :
+
+<img src="images/change_tune_sans_dblbarres.svg" alt="change_tune_sans_dblbarres" style="zoom:120%;" />
+
+---
 
 #### Instruments transpositeurs
 
@@ -1117,12 +1163,7 @@ fl
 <img src="./images/no-transposition.svg" >
 </center>
 
-
-
-#### Numéro de mesure
-
-Cf. [les options musicales](#options_musicales).
-
+---
 
 #### Triolet, quintolet et septolet
 
