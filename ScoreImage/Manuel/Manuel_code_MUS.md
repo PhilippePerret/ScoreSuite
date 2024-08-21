@@ -857,26 +857,6 @@ notes
 | <img src="images/score_prox2.svg" alt="score_prox2" style="zoom:120%;" /> | <em>score_prox2.svg</em> |
 | <img src="images/score_prox50.svg" alt="score_prox2" style="zoom:120%;" /> | <em>score_prox50.svg</em> |
 
-
-
-
-
-
-
-
-Espacement entre les notes--<..>hspace
-
-Parfois, on peut avoir besoin d'augmenter l'espacement entre les
-notes individuelles. On peut le faire, de façon de plus en plus
-importante avec les options :
---mini_hspace
---hspace
---big_hspace
---biggest_hspace
-On les désactive pour la suite en ajoutant OFF comme pour toutes
-les options.
---hspace OFF
-
 ---
 
 ## Commandes
@@ -942,7 +922,7 @@ résultant de l'expression `c d e f`.
 
 ---
 
-## LANGAGE MUSIC-SCORE (mus)
+## LANGAGE MUSIC-SCORE (*mus*)
 
 La partie ci-dessous présente les termes propres au langage « music-score ».
 

@@ -6,9 +6,6 @@
   oddHeaderMarkup=##f
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
-  % Numérotation des pages
-  % Essai d’espacement entre les systèmes si nécessaire
-  % Nombre de systèmes par page
 }
 % --- %
 \score {

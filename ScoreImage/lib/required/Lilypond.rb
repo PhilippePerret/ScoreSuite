@@ -446,8 +446,9 @@ def layout_context_score
     lines << (OVERRIDE_PROXIMITY % options[:proximity])
   end
 
+
   # - Numéro de mesure -
-  
+
   # Absence du numéro de mesure
   if options[:mesures] === false || options[:mesure] === false
     lines << '\omit BarNumber'
@@ -482,9 +483,9 @@ def layout_context_score
   end
 end
 
-
-OVERRIDE_SHORTEST_DURATION = <<~'TEXT'.strip.freeze
-\override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/%s)
+# - Proximité des signes -
+OVERRIDE_PROXIMITY = <<~'TEXT'.strip.freeze
+\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)
 TEXT
 
 # - Numéro de mesure -
