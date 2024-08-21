@@ -403,13 +403,8 @@ def header
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
 
-  % Numérotation des pages
   #{option_page_numbers}
-
-  % Essai d’espacement entre les systèmes si nécessaire
   #{option_vspace_between_systems}
-
-  % Nombre de systèmes par page
   #{options_system_count_per_page}
 }
 
@@ -453,7 +448,6 @@ def layout_context_score
 
   # - Numéro de mesure -
   
-
   # Absence du numéro de mesure
   if options[:mesures] === false || options[:mesure] === false
     lines << '\omit BarNumber'
@@ -488,9 +482,9 @@ def layout_context_score
   end
 end
 
-# - Proximité des signes -
-OVERRIDE_PROXIMITY = <<~'TEXT'.strip.freeze
-\override SpacingSpanner.common-shortest-duration = #(ly:make-moment 1/%s)
+
+OVERRIDE_SHORTEST_DURATION = <<~'TEXT'.strip.freeze
+\override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/%s)
 TEXT
 
 # - Numéro de mesure -
@@ -543,9 +537,7 @@ def code_extraction_fragment
 end
 
 def footer
-  <<-LILYPOND
-
-#{option_espacements}
+  <<~LILYPOND
 
   LILYPOND
 end
@@ -627,32 +619,6 @@ def option_tonalite
     formate_tune(options[:key])
   else '' end
 end
-
-def option_espacements
-  subdiv = 
-  if options[:biggest_hspace]
-    256
-  elsif options[:big_hspace]
-    128
-  elsif options[:hspace]
-    64
-  elsif options[:mini_hspace]
-    32
-  else
-    nil
-  end
-  return '' if subdiv.nil?
-  <<~'LPOND' % [subdiv]
-  \layout {
-  \context {
-    \score
-    \override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/%s)
-  }
-  }
-
-  LPOND
-end
-
 
 ##
 # Méthodes quand on doit transposer le fragment

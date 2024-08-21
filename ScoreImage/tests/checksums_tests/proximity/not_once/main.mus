@@ -1,0 +1,11 @@
+# Test de l’application seulement une fois de la proximité
+
+--page b6
+
+--proximity 1
+
+-> score
+% f e d c %12
+
+-> autre_score
+% f e d c %12

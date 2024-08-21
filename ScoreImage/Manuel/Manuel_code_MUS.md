@@ -832,30 +832,37 @@ On peut jouer sur la proximité entre les notes à l’aide de l’option **`--p
 | **`--proximity 50`**                                         | <img src="images/exemples/proximity-prox50.svg" style=" width:800px;" /> |
 |                                                              |                                                              |
 
-Note : c'est une option "ponctuelle", qui est abandonnée dès la
-première utilisation.
-
-Grâce à l'option --proximity, qui peut avoir les valeurs :
-1 Le plus proche
-4 Proche de la valeur naturelle, à voir
-10Un peu éloigné
-50Le plus éloigné
-… on peut jouer sur le traitement de l'espacement entre les notes.
-C'est très utile lorsque l'on veut par exemple mettre quatre mesu-
-res sur la même ligne mais qu'elles passent à la ligne.
+Cette option s’applique à toutes les images suivantes dans le fichier MUS, mais peut être changée en cours de processus. Par exemple, le code :
 
 ~~~
--> partition-tres-serree
---page a3
---proximity 10
-mesures1<->4
-# => Entrainera un resserrement maximal entre les portées
+--proximity 2
+
+notes=
+g' f e d c1
+
+-> score_prox2
+notes
+
+--proximity 50
+
+-> score_prox50
+notes
+
 ~~~
 
-Pour produire plusieurs images avec des espacements différents
-(pour choisir le meilleur par rapport à l'affichage), on utilise
-la formule : --proximity 1-10
-Cela produira toutes les proximités de 1 à 10
+… produira les images :
+
+| | | 
+| ------------------------------------------------------------ | ------------------------ |
+| <img src="images/score_prox2.svg" alt="score_prox2" style="zoom:120%;" /> | <em>score_prox2.svg</em> |
+| <img src="images/score_prox50.svg" alt="score_prox2" style="zoom:120%;" /> | <em>score_prox50.svg</em> |
+
+
+
+
+
+
+
 
 Espacement entre les notes--<..>hspace
 

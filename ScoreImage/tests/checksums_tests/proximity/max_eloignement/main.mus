@@ -1,0 +1,8 @@
+# Test de la proximité réduite
+
+--page b6
+
+--proximity 50
+
+-> score
+% c d e f %12

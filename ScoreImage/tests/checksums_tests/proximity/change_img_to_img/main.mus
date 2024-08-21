@@ -1,0 +1,16 @@
+# Test de la modification de la proximité d’une image à l’autre
+
+--page b6
+
+notes=
+f’4 e d c b1
+
+--proximity 1
+
+-> score_prox_1
+notes
+
+--proximity 30
+
+-> score_prox_30
+notes
