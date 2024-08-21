@@ -18,7 +18,7 @@ class MusFile
   # === Test Methods ===
 
   MSG_NEGATIVE_ERROR = <<~ERR
-  La construction de : %{relpath} 
+  La construction de : %{relative_path} 
   aurait dû échouer avec le code d’erreur : %{code} et les 
   éventuels textes : %{texts}.
   Or, la construction a réussi.
@@ -462,9 +462,11 @@ class MusFile
   end
 
   def relative_path
-    @relative_path ||= "#{main_folder_name}/#{foldername}"
+    @relative_path ||= begin
+      folder.sub(/#{ScoreImage::Test.tests_folder}\//,'').freeze
+      # "#{main_folder_name}/#{foldername}"
+    end
   end
-  alias :relpath :relative_path
 
   def affixe
     @affixe ||= File.basename(path, '.mus')

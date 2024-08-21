@@ -62,13 +62,13 @@ class << self
     if verbose?
 
       success_tests.each_with_index do |musfile, idx|
-        puts "[#{idx + 1}] #{musfile.relpath} est conforme aux attentes.".vert
+        puts "[#{idx + 1}] #{musfile.relative_path} est conforme aux attentes.".vert
       end
     
       if pendings_tests.count > 0
         puts "\nPendings\n#{'-'*8}".orange
         pendings_tests.each_with_index do |musfile,idx|
-          puts "[#{idx + 1}] Pending #{musfile.relpath}".orange
+          puts "[#{idx + 1}] Pending #{musfile.relative_path}".orange
         end
       end
 

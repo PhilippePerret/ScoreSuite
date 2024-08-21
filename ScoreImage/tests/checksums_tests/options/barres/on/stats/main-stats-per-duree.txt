@@ -1,5 +1,5 @@
 Durée totale : 16.0 s
+a  1  4.0 s
 e  1  4.0 s
 f  1  4.0 s
 g  1  4.0 s
-a  1  4.0 s

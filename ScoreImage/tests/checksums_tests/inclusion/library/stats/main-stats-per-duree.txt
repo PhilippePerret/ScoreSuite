@@ -1,6 +1,6 @@
 Durée totale : 2.0 s
 g  4   1.0 s
-c  1  0.25 s
-e  1  0.25 s
 b  1  0.25 s
+c  1  0.25 s
 d  1  0.25 s
+e  1  0.25 s
