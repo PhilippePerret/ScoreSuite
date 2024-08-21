@@ -1,4 +1,7 @@
 # On peut faire un changement de tonalité en cours de morceau
 
+--stats
+--tempo 60
+
 -> score
 c4 d e f g1 \tune Eb c4 d ees f g1 
