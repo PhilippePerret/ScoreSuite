@@ -1,0 +1,4 @@
+# Pour test du code ’% ... %N’ qui répète un segment musical.
+
+-> score
+% c %4

@@ -1,0 +1,6 @@
+# Test de l’utilisation de l’étoile (astérisque) pour répéter une
+# note avec octave seulement sur première
+
+
+-> score
+\cle F cis,16*4

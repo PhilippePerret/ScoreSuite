@@ -1,0 +1,6 @@
+# Pour test du code ’% ... %N’ qui répète un segment musical.
+
+--time 6/8
+
+-> score
+% c4. %4

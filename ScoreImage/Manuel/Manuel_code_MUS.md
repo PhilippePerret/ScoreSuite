@@ -946,6 +946,22 @@ cis16. cis16. cis16.
 
 > Noter que pour éviter toute confusion, cette possibilité se limite strictement à des notes avec ou sans altérations et pouvant définir leur durée. Tout autre groupe — par exemple présentant le doigté ou l’articulation — sera ignoré. Il faut alors utiliser d’autres moyens de répétitions (cf. ci-dessous).
 
+Si une octave est appliquée à la note répétée, elle ne sera appliquée qu’au premier item.
+
+Ainsi, le code :
+
+~~~
+cis'16*4
+~~~
+
+… produira :
+
+~~~
+cis'16. cis16. cis16. cis16.
+~~~
+
+
+
 #### Répétition d’un code avec `% ... %N`
 
 On peut utiliser le gabarit  :
