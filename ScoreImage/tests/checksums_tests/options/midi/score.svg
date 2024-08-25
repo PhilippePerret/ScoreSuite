@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   width="89.178886mm"
+   height="12.868701mm"
+   viewBox="0 0 50.747699 7.3230009"
+   id="svg164"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs168" />
+  <style
+     type="text/css"
+     id="style2"><![CDATA[
+tspan { white-space: pre; }
+]]></style>
+  <g
+     transform="translate(0,6.779)"
+     id="g6">
+    <rect
+       x="44.355499"
+       y="-0.1"
+       width="2.066"
+       height="0.2"
+       ry="0.1"
+       fill="currentColor"
+       id="rect4" />
+  </g>
+  <g
+     transform="translate(0,6.779)"
+     id="g10">
+    <rect
+       x="8.1421003"
+       y="-0.1"
+       width="1.9563"
+       height="0.2"
+       ry="0.1"
+       fill="currentColor"
+       id="rect8" />
+  </g>
+  <g
+     transform="translate(0,5.779)"
+     id="g14">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="50.697701"
+       y2="0"
+       id="line12" />
+  </g>
+  <g
+     transform="translate(0,4.779)"
+     id="g18">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="50.697701"
+       y2="0"
+       id="line16" />
+  </g>
+  <g
+     transform="translate(0,3.779)"
+     id="g22">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="50.697701"
+       y2="0"
+       id="line20" />
+  </g>
+  <g
+     transform="translate(0,2.779)"
+     id="g26">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="50.697701"
+       y2="0"
+       id="line24" />
+  </g>
+  <g
+     transform="translate(0,1.779)"
+     id="g30">
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="50.697701"
+       y2="0"
+       id="line28" />
+  </g>
+  <g
+     transform="translate(50.5577,3.779)"
+     id="g34">
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect32" />
+  </g>
+  <g
+     transform="translate(42.6099,3.779)"
+     id="g38">
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect36" />
+  </g>
+  <g
+     transform="translate(28.9766,3.779)"
+     id="g42">
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect40" />
+  </g>
+  <g
+     transform="translate(21.0115,3.779)"
+     id="g46">
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect44" />
+  </g>
+  <g
+     transform="translate(8.4682,6.779)"
+     id="g50">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path48" />
+  </g>
+  <g
+     transform="translate(0.8,4.779)"
+     id="g54">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 266,-635 h -6 c -108,0 -195,88 -195,197 0,58 53,103 112,103 54,0 95,-47 95,-103 0,-52 -43,-95 -95,-95 -11,0 -21,2 -31,6 26,-39 68,-65 117,-65 h 4 z m 195,432 c 68,24 113,90 113,164 0,90 -66,179 -173,190 19,-89 48,-242 60,-354 z M 74,28 c 0,-145 141,-247 264,-247 1,0 47,0 82,6 -7,64 -29,203 -63,364 -79,-8 -124,-61 -124,-119 0,-44 25,-91 81,-123 5,-5 7,-10 7,-15 0,-11 -10,-22 -22,-22 -15,0 -126,62 -126,187 0,88 58,174 160,197 -14,58 -29,117 -46,175 C 180,310 74,188 74,28 Z m 176,525 c -29,96 -52,170 -52,346 0,115 55,224 149,292 6,5 14,5 20,0 68,-80 133,-245 133,-358 0,-143 -86,-255 -180,-364 21,-68 39,-138 56,-207 2,0 7,1 13,1 155,0 256,-128 256,-261 0,-113 -74,-212 -180,-246 3,-35 5,-70 5,-105 0,-19 -1,-39 -2,-58 -7,-119 -88,-225 -202,-228 l 1,43 c 93,2 153,92 159,191 1,18 2,37 2,55 0,31 -1,61 -4,92 -5,-1 -44,-8 -89,-8 C 142,-262 2,-82 2,112 2,289 133,418 250,553 Z m 178,363 c 0,34 1,66 -20,129 -99,-48 -162,-149 -162,-259 0,-52 12,-115 36,-194 80,97 146,198 146,324 z"
+       fill="currentColor"
+       id="path52" />
+  </g>
+  <g
+     transform="translate(5.0512,3.779)"
+     id="g58">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 170,259 c -51,0 -53,-43 -53,-100 v -18 -18 c 0,-57 2,-100 53,-100 57,0 61,51 61,118 0,67 -4,118 -61,118 z m -53,7 c 15,10 33,16 53,16 101,0 170,-46 170,-141 C 340,46 271,0 170,0 58,0 0,124 0,250 c 0,128 72,250 190,250 70,0 136,-39 136,-103 0,-36 -29,-66 -65,-66 -36,0 -66,30 -66,66 0,24 40,25 40,49 0,20 -23,31 -45,31 -66,0 -75,-65 -75,-139 0,-24 2,-48 2,-72 z"
+       fill="currentColor"
+       id="path56" />
+  </g>
+  <g
+     transform="translate(5,5.779)"
+     id="g62">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 261,287 c 25,30 44,64 44,103 0,54 -55,87 -114,87 -46,0 -73,-36 -73,-71 0,-21 10,-42 31,-54 z m 31,-18 C 315,256 372,215 372,144 372,71 306,0 183,0 89,0 0,54 0,140 c 0,50 36,87 72,123 -37,28 -55,66 -55,103 0,68 60,134 174,134 80,0 157,-39 157,-110 0,-46 -25,-86 -56,-121 z M 103,244 C 72,214 44,183 44,140 44,71 110,23 183,23 c 54,0 86,42 86,83 0,24 -10,48 -35,62 z"
+       fill="currentColor"
+       id="path60" />
+  </g>
+  <g
+     transform="translate(9.7074,3.779)"
+     id="g66">
+    <rect
+       x="-0.064999998"
+       y="-0.5"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect64" />
+  </g>
+  <g
+     transform="translate(12.1724,6.279)"
+     id="g70">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path68" />
+  </g>
+  <g
+     transform="translate(13.4116,3.779)"
+     id="g74">
+    <rect
+       x="-0.064999998"
+       y="-1"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect72" />
+  </g>
+  <g
+     transform="translate(13.4766,2.819)"
+     id="g78">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path76" />
+  </g>
+  <g
+     transform="translate(14.7398,5.779)"
+     id="g82">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path80" />
+  </g>
+  <g
+     transform="translate(15.979,3.779)"
+     id="g86">
+    <rect
+       x="-0.064999998"
+       y="-1.5"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect84" />
+  </g>
+  <g
+     transform="translate(18.444,5.279)"
+     id="g90">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path88" />
+  </g>
+  <g
+     transform="translate(19.6832,3.779)"
+     id="g94">
+    <rect
+       x="-0.064999998"
+       y="-2"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect92" />
+  </g>
+  <g
+     transform="translate(19.7482,1.819)"
+     id="g98">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path96" />
+  </g>
+  <g
+     transform="translate(23.1015,4.779)"
+     id="g102">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path100" />
+  </g>
+  <g
+     transform="translate(24.9288,4.279)"
+     id="g106">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
+       fill="currentColor"
+       id="path104" />
+  </g>
+  <g
+     transform="translate(24.4138,3.779)"
+     id="g110">
+    <rect
+       x="-0.064999998"
+       y="-2.5"
+       width="0.13"
+       height="3.2409999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect108" />
+  </g>
+  <g
+     transform="translate(30.0666,4.779)"
+     id="g114">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path112" />
+  </g>
+  <g
+     transform="translate(31.3058,3.779)"
+     id="g118">
+    <rect
+       x="-0.064999998"
+       y="-2.5"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect116" />
+  </g>
+  <g
+     transform="translate(33.7708,5.279)"
+     id="g122">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path120" />
+  </g>
+  <g
+     transform="translate(35.01,3.779)"
+     id="g126">
+    <rect
+       x="-0.064999998"
+       y="-2"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect124" />
+  </g>
+  <g
+     transform="translate(35.075,1.819)"
+     id="g130">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path128" />
+  </g>
+  <g
+     transform="translate(36.3382,5.779)"
+     id="g134">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path132" />
+  </g>
+  <g
+     transform="translate(37.5774,3.779)"
+     id="g138">
+    <rect
+       x="-0.064999998"
+       y="-1.5"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect136" />
+  </g>
+  <g
+     transform="translate(40.0424,6.279)"
+     id="g142">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path140" />
+  </g>
+  <g
+     transform="translate(41.2816,3.779)"
+     id="g146">
+    <rect
+       x="-0.064999998"
+       y="-1"
+       width="0.13"
+       height="3.3139"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect144" />
+  </g>
+  <g
+     transform="translate(41.3466,2.819)"
+     id="g150">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 V -250 H -16 V 0 Z m 0,0 c 0,-197 207,-336 207,-533 0,-71 -15,-141 -41,-207 -5,-8 -13,-12 -20,-12 -13,0 -26,11 -23,27 26,61 42,126 42,192 0,103 -94,208 -165,283 z"
+       fill="currentColor"
+       id="path148" />
+  </g>
+  <g
+     transform="translate(44.6999,6.779)"
+     id="g154">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 314,65 c 0,23 -19,41 -42,41 C 233,106 68,-4 41,-37 34,-45 31,-55 31,-65 c 0,-23 19,-41 42,-41 39,0 203,110 230,143 7,8 11,18 11,28 z m -52,71 c 41,0 82,-14 82,-71 0,-26 -16,-112 -74,-151 -25,-17 -87,-50 -187,-50 -41,0 -83,14 -83,71 0,26 16,112 74,151 25,17 88,50 188,50 z"
+       fill="currentColor"
+       id="path152" />
+  </g>
+  <g
+     transform="translate(46.5272,6.279)"
+     id="g158">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="M 0,0 C 0,31 25,56 56,56 87,56 112,31 112,0 112,-31 87,-56 56,-56 25,-56 0,-31 0,0 Z"
+       fill="currentColor"
+       id="path156" />
+  </g>
+  <g
+     transform="translate(46.0122,3.779)"
+     id="g162">
+    <rect
+       x="-0.064999998"
+       y="-0.5"
+       width="0.13"
+       height="3.2409999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect160" />
+  </g>
+</svg>

@@ -818,7 +818,7 @@ score-image moncode.mus -midi
 
 <a name="proximity"></a>
 
-### Espacement entre les notes
+### Espacement entre les notes (`proximity`)
 
 On peut jouer sur la proximité entre les notes à l’aide de l’option **`--proximity`** suivie de la valeur d’éloignement (ou de rapprochement, c’est selon).
 

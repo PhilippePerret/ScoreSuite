@@ -1,0 +1,8 @@
+# Test de la production du fichier MIDI
+
+--midi
+--tempo 120T
+--time 6/8
+
+-> score
+c4 d8 e4 f8 g2. g4 f8 e4 d8 c2.

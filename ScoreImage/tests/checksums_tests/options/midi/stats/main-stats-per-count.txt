@@ -1,0 +1,6 @@
+Nombre total de notes : 10
+c  2  1.33 s
+d  2  0.33 s
+e  2  0.67 s
+f  2  0.33 s
+g  2  1.33 s
