@@ -71,7 +71,7 @@ def traite_arpege_to_chord_in(line)
     sens_stem  = DOWN_OR_UP[sens_stem]
     sens_tie   = sens_tie ? " \\tie#{sens_tie}" : ""
     sens_stem  = sens_stem ? " \\stem#{sens_stem}" : ""
-    puts "sens_tie: #{sens_tie} / sens_stem: #{sens_stem}".bleu
+    # puts "sens_tie: #{sens_tie} / sens_stem: #{sens_stem}".bleu
     '\set tieWaitForNote = ##t%s%s'.freeze % [sens_tie, sens_stem]
   end
   return line
