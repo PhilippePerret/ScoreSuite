@@ -1,0 +1,6 @@
+# Définition de la tonalité avec l’option ’--tune’
+
+--tune F#
+
+-> score
+fis gis ais b cis1

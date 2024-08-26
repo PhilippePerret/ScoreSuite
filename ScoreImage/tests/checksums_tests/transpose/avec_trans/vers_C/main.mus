@@ -1,0 +1,13 @@
+# Test de l’utilisation de ’trans <note>’ pour transposer un fragment
+# 
+# @noter particulièrement les statistiques, qui tiennent compte de
+#        la transposition.
+
+# --tune Eb
+--tune Fd
+
+seg=
+ees f g aes bes
+
+-> score
+\trans ees { seg }

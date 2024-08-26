@@ -1,0 +1,13 @@
+# Pour tester les clés
+
+segment1=
+\cle G c b a g \cle UT3 f e d c \cle F b a g f
+
+segment2=
+\cle G1 c d e f
+
+segment3=
+\cle UT1 c d e \cle UT2 c d e \cle UT4 c d e \cle UT5 c d e
+
+-> score
+segment1<->3

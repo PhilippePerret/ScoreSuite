@@ -1031,11 +1031,11 @@ Dans ce cas, on peut préférer utiliser avec plus de sécurité le code normal 
 
 ---
 
-### Notation LilyPond simplifiée
+## Notation LilyPond simplifiée
 
 Cette section présente les notations de l'expression pseudo-lilypond qui  diffèrent du langage original (toujours pour simplifier).
 
-#### Barres de reprise
+#### Les Barres
 
 
 | <span style="display:inline-block;width:200px;">Objet</span> | Code      | <span style="display:inline-block;width:300px;">Description</span> |
@@ -1072,15 +1072,15 @@ plus pratique d'utiliser :
 
 | <span style="display:inline-block;width:200px;">Objet</span> | Code         | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ------------ | ------------------------------------------------------------ |
-| <img src="images/exemples/cle-de-sol-2e.svg" style="  width:150px;" />                 |      **`\cle G`**        |      Clé de SOL 2<sup>e</sup> ligne                                                          |
-| <img src="images/exemples/cle-de-fa-4e.svg" style="  width:150px;" /> | **`\cle F`** | Clé de FA 4<sup>e</sup> ligne                                    |
-| <img src="images/exemples/cle-de-sol-1ere.svg" style="  width:150px;" />                 |      **`\cle G1`**        |      Clé de SOL 1<sup>ère</sup> ligne                                                          |
-| <img src="images/exemples/cle-de-fa-3e.svg" style="  width:150px;" />                 |      **`\cle F3`**        |      Clé de FA 3<sup>e</sup> ligne                                                          |
-| <img src="images/exemples/cle-ut-1ere.svg" style="  width:150px;" />                 |      **`\cle UT1`**        |      Clé d'UT 1<sup>ère</sup> ligne                                                          |
-| <img src="images/exemples/cle-ut-2e.svg" style="  width:150px;" />                 |      **`\cle UT2`**        |      Clé d'UT 2<sup>e</sup> ligne                                                          |
-| <img src="images/exemples/cle-ut-3e.svg" style="  width:150px;" />                 |      **`\cle UT3`**        |      Clé d'UT 3<sup>e</sup> ligne                                                          |
-| <img src="images/exemples/cle-ut-4e.svg" style="  width:150px;" />                 |      **`\cle UT4`**        |      Clé d'UT 4<sup>e</sup> ligne                                                          |
-| <img src="images/exemples/cle-ut-5e.svg" style="  width:150px;" />                 |      **`\cle UT5`**        |      Clé d'UT 5<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-de-sol-2e.svg" style="  width:100px;" />                |      **`\cle G`**        |      Clé de SOL 2<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-de-fa-4e.svg" style="  width:100px;" /> | **`\cle F`** | Clé de FA 4<sup>e</sup> ligne                                    |
+| <img src="images/exemples/cle-de-sol-1ere.svg" style="  width:100px;" />            |      **`\cle G1`**        |      Clé de SOL 1<sup>ère</sup> ligne                                                          |
+| <img src="images/exemples/cle-de-fa-3e.svg" style="  width:100px;" />            |      **`\cle F3`**        |      Clé de FA 3<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-ut-1ere.svg" style="  width:100px;" />            |      **`\cle UT1`**        |      Clé d'UT 1<sup>ère</sup> ligne                                                          |
+| <img src="images/exemples/cle-ut-2e.svg" style="  width:100px;" />            |      **`\cle UT2`**        |      Clé d'UT 2<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-ut-3e.svg" style="  width:100px;" />            |      **`\cle UT3`**        |      Clé d'UT 3<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-ut-4e.svg" style="  width:100px;" />            |      **`\cle UT4`**        |      Clé d'UT 4<sup>e</sup> ligne                                                          |
+| <img src="images/exemples/cle-ut-5e.svg" style="  width:100px;" />            |      **`\cle UT5`**        |      Clé d'UT 5<sup>e</sup> ligne                                                          |
 
 #### Tonalité de l’expression (armure et changement)
 

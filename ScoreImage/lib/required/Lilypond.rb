@@ -712,7 +712,7 @@ private
       else 'major' end
     return '\key %s%s \%s'.freeze % [vals[:note].downcase, alte, mode]
   end
-  REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b)?(?<mode>[m\-])?/i.freeze
+  REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b|#)?(?<mode>[m\-])?/i.freeze
   # Pour savoir si c’est une définition "pure" de la tonalité qui,
   # dans ce cas, n’ajoute pas de double barre avant
   REG_PUR_TUNE = /^[a-g](es|is)?$/.freeze

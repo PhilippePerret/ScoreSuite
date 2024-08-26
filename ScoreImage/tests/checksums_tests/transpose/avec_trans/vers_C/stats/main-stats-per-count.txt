@@ -1,0 +1,6 @@
+Nombre total de notes : 5
+ab   1  1.0 s
+bb   1  1.0 s
+eb   1  1.0 s
+f    1  1.0 s
+g    1  1.0 s

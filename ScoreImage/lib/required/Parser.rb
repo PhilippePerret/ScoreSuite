@@ -231,6 +231,7 @@ end
 INCLUDE_CODE = /^INCLUDE(?<include_path>.+)$/.freeze
 
 
+# Pour écrire ’c’ plutôt que ’"c"’ dans les fonctions
   def c; "c" end
   def d; "d" end
   def e; "e" end

@@ -102,9 +102,9 @@ def traite_transpositions_in(line)
     offset_tune = table.index(instrument_tune)
     counter_offset = 12 - offset_tune
     counter_note = table[counter_offset]
-    '\\tune %{note} \\transpose c %{note}' % {note: counter_note}
+    '\\key %{armure} \\transpose c %{note}' % {note: counter_note, armure: "c"}
   end
-  # puts "Line après : #{line.inspect}".bleu
+  puts "Line après : #{line.inspect}".bleu
   return line
 end
 
