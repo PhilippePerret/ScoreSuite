@@ -260,8 +260,10 @@ def traite_as_option(opt)
   when 'page' then val = "\"#{val}\""
   when 'tune', 'key'
     opt = 'key'
-    options.merge!(formated_key: self.class.formate_tune(val))
-    val = self.class.formate_tune(val, :only_note)
+    unless val === false
+      options.merge!(formated_key: self.class.formate_tune(val))
+      val = self.class.formate_tune(val, :only_note)
+    end
   when 'proximity'
     if val && val.match?('-')
       # C'est un rang de proximités, il faut produire une 

@@ -1,0 +1,9 @@
+# Test de l’écriture de l’armure quand on est en Do majeur au
+# départ.
+# AVEC tune (ici), l’armure est changée
+
+--tune c
+--transpose c bes
+
+-> score
+c d e f g a b c

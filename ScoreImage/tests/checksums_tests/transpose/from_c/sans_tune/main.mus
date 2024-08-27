@@ -1,0 +1,8 @@
+# Test de l’écriture de l’armure quand on est en Do majeur au
+# départ.
+# SANS tune (ici), l’armure n’est pas ajoutée
+
+--transpose c bes
+
+-> score
+c d e f g a b c
