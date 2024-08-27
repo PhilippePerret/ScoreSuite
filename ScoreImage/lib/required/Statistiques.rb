@@ -344,15 +344,15 @@ class Statistiques
     end
 
 
-    StatNote.notes_groups.each do |note, notes_group|
-      puts "- #{notes_group.text_line}"
-    end
+    # StatNote.notes_groups.each do |note, notes_group|
+    #   puts "- #{notes_group.text_line}"
+    # end
 
     ary_groups_notes = StatNote.notes_groups.values.sort_by { |n| n.note }
 
     total_notes = ary_groups_notes.sum(&:count)
     total_duree = ary_groups_notes.sum(&:duree_secondes)
-    puts "total_duree brute: #{total_duree}"
+    # puts "total_duree brute: #{total_duree}"
 
     mns = total_duree.to_i / 60
     scs = total_duree - mns * 60
@@ -432,7 +432,7 @@ class Statistiques
 
   def parse_line(line, add_notes = true)
 
-    puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
+    # puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
 
     # Pour pouvoir utiliser les espaces comment délimiteurs partout
     line = " #{line} "
@@ -576,6 +576,7 @@ class Statistiques
   def epure_lily_expressions_with_notes_in(line)
     line = line.gsub(/(fixed|relative) [a-g]/,'')
     line = line.gsub(/tune [a-g]/,'')
+    line = line.gsub(/key #{REG_NOTE}/,'')
     line = line.gsub(/transpose #{REG_NOTE} #{REG_NOTE}/,'')
     return line
   end

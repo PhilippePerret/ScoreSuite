@@ -1,7 +1,6 @@
-Nombre total de notes : 16
+Nombre total de notes : 15
 ab   3  3.0 s
 bb   3  3.0 s
 eb   3  3.0 s
 f    3  3.0 s
 g    3  3.0 s
-c    1  1.0 s

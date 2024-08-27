@@ -1,7 +1,6 @@
-Durée totale : 16.0 s
+Durée totale : 15.0 s
 ab   3  3.0 s
 bb   3  3.0 s
 eb   3  3.0 s
 f    3  3.0 s
 g    3  3.0 s
-c    1  1.0 s

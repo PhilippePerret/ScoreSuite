@@ -3,8 +3,6 @@
 # @noter particulièrement les statistiques, qui tiennent compte de
 #        la transposition.
 
---keep
-
 --tune Eb
 # --tune Bb
 # --tune Fd
