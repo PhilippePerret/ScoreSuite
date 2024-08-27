@@ -1,0 +1,9 @@
+# Test de la marque ’3{...}’ pour indiquer des triolets
+
+--tune E
+
+cel=
+3{gis8 cis e}
+
+-> score
+% cel %4
