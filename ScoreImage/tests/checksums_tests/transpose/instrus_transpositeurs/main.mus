@@ -1,22 +1,21 @@
 # Test permettant de tester les instruments transpositeurs.
 --staves_names Sax E_b_, Cor A., Cl.(B_b_), Fl.
 --staves_keys  G, G, G, G
---tempo 60
 
 fl=
-e’1
+c’4 d e f g1
 
 cl=
-c4 d e f
+c4 d e f g1
 
 cor_anglais=
-c4 e g c
+c4 d e f g1
 
 sax=
-g’4 f e d
+c4 d e f g1
 
 -> score
 fl
 \trans bes { cl }
-\trans f { cor_anglais }
+\trans a { cor_anglais }
 \trans ees { sax }

@@ -1,0 +1,6 @@
+# En vrai, ce test sert à faire des tests unitaires sur les
+# méthode utiles pour la transposition
+# Cf. extra_tests.rb
+
+-> score
+c1

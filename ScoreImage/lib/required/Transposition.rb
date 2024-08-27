@@ -6,9 +6,69 @@
 class MusicScore
 class Transposition
 
+# ==== CONSTANTES ==== #
+
+ALTERATIONS_TONALITES = {
+  'c'   => { d: 0, b: 0},
+  'cis' => { d: 7, b: 0}, 'des' => { d: 0, b: 5},
+  'd'   => { d: 2, b: 0},
+  'ees' => { d: 0, b: 3},
+  'e'   => { d: 4, b: 0},
+  'f'   => { d: 0, b: 1},
+  'fis' => { d: 6, b: 0}, 'ges' => { d: 0, b: 6},
+  'g'   => { d: 1, b: 0},
+  'aes' => { d: 0, b: 4},
+  'a'   => { d: 3, b: 0},
+  'bes' => { d: 0, b: 2},
+  'b'   => { d: 5, b: 0}, 'ces' => { d: 0, b: 7},
+}
+ALTERATIONS_TO_TUNE = {}
+ALTERATIONS_TO_TUNE.merge!( 0 => 'c' )
+ALTERATIONS_TONALITES.each do |tune, dtune|
+  if dtune[:d] > 0
+    ALTERATIONS_TO_TUNE.merge!( dtune[:d] => tune )
+  elsif dtune[:b] > 0
+    ALTERATIONS_TO_TUNE.merge!( -dtune[:b] => tune )
+  end
+end
+
 # === CLASSE ===
 class << self
   attr_accessor :current
+
+
+  # Par exemple, si inst_tune = bes (Si bémol) et que la tonalité
+  # d’arrivée est d (Ré majeur), il faut utiliser la tonalité e (Mi
+  # majeur)
+  def transposed_tune(inst_tune, piece_tune)
+    data_from = ALTERATIONS_TONALITES[inst_tune] || begin
+      raise "Impossible d’obtenir les altérations de la tonalité #{inst_tune.inspect}."
+    end
+    data_to   = ALTERATIONS_TONALITES[piece_tune] || begin
+      raise "Impossible d’obtenir les altérations de la tonalité #{piece_tune.inspect}."
+    end
+
+    # - Tonalité de départ vers Do majeur -
+    from_dieses = - data_from[:d]
+    from_bemols = data_from[:b]
+
+    # p.e. Sib vaudra 2 et A vaudra -3
+    inst_tune = from_dieses + from_bemols
+
+    to_dieses   = data_to[:d]
+    to_bemols   = - data_to[:b]
+    # p.e. A vaudra 3 et Sib vaudra -2
+    piece_tune   = to_dieses + to_bemols
+
+    # p.e. :
+    #   Sib pour un instrument en Sib vaudra 2 - 2 = 0 (Do)
+    #   D   pour un instrument en Sib vaudra 2 + 2 = 4 (Mi majeur)
+    #   C   pour un instrument en A   vaudra -3 + 0 = -3 (Mi bémol)
+    trans_tune = inst_tune + piece_tune
+
+    return ALTERATIONS_TO_TUNE[trans_tune]
+  end
+
 end #/class << self
 
 

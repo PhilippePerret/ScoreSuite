@@ -110,7 +110,7 @@ def traite_transpositions_in(line)
     # transposition. Par exemple, si c’est un instrument en Eb, 
     # lorsque la tonalité est Eb, la "tune note" est c. C’est en
     # quelque sort l’inverse de la counter_note
-    main_tune = options[:key]||options[:tune]||"c"
+    main_tune = options[:key]||"c"
     # puts "main_tune = #{main_tune.inspect}".bleu
     main_table = main_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
     offset_main_tune = main_table.index(main_tune)
