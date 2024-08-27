@@ -28,6 +28,39 @@ REG_SEQUENCE_IMAGES = /\b([a-zA-Z]+)([0-9]+?)<\->([0-9]+?)\b/
 # # Expression régulière pour la définition d’une variable
 REG_DEFINITION = /^[a-zA-Z0-9_\/\-]+\=\=?$/.freeze
 
+REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b|#)?(?<mode>[m\-])?/i.freeze
+
+# ============ CLASSE ===============
+
+class << self
+
+    # @reçoit la marque de la tonalité (en options ou au cours du code
+  # en cas de changement de tonalité) et 
+  # @return la marque ’\key ...’ à écrire dans le code lilypond
+  def formate_tune(str, format = :with_key)
+    vals = str.strip.match(REG_TUNE)
+    # --------- #
+    note = vals[:note].downcase
+    alte = case vals[:alte]
+      when 'b', 'es'      then 'es'
+      when 'd', 'is', '#' then 'is'
+      else '' end
+    mode = case vals[:mode]
+      when 'm', '-' then 'minor'
+      else 'major' end
+
+    case format
+    when :with_key
+      '\key %s%s \%s'.freeze % [note, alte, mode]
+    when :only_note
+      "#{note}#{alte}"
+    end
+  end
+
+end #/class << self
+
+# ============ INSTANCE ===============
+
 attr_reader :raw_code
 attr_reader :options
 attr_reader :lines_code
@@ -225,7 +258,10 @@ def traite_as_option(opt)
   # une table.
   case opt
   when 'page' then val = "\"#{val}\""
-  when 'tune' then opt = 'key'
+  when 'tune', 'key'
+    opt = 'key'
+    options.merge!(formated_key: self.class.formate_tune(val))
+    val = self.class.formate_tune(val, :only_note)
   when 'proximity'
     if val && val.match?('-')
       # C'est un rang de proximités, il faut produire une 

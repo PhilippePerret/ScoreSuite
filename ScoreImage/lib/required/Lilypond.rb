@@ -19,6 +19,11 @@ CLE_TO_CLE_LILY = {
   'UT3' => 'alto', 'UT4' => 'tenor', 'UT5' => 'baritone'
 }
 
+# Pour savoir si c’est une définition "pure" de la tonalité qui,
+# dans ce cas, n’ajoute pas de double barre avant
+REG_PUR_TUNE_IN = /[a-g](es|is)?/.freeze
+REG_PUR_TUNE = /^#{REG_PUR_TUNE_IN}$/.freeze
+
 class << self
 
 attr_reader :options
@@ -85,7 +90,7 @@ end
 
 
 # Méthode qui met en forme le texte du code pour qu’il soit plus
-# lisible, mieux présenter.
+# lisible, mieux présenté.
 def beautify_code(code)
   ary = []
   @indent_len = 0
@@ -116,7 +121,18 @@ def beautify_code(code)
       next_indent_len = nil
     end
   end
-  return ary.join("\n")
+  final_txt = ary.join("\n")
+
+  # - Quelques ultimes nettoyages -
+  # 
+  # Pour le moment, on ne doit que supprimer les doubles \key à la
+  # suite qui posent un problème silencieux lorsqu’il y a des 
+  # instruments transpositeurs.
+  final_txt = ultime_nettoyage(final_txt)
+
+  # - On retourne le texte finalisé -
+  return final_txt
+  
 rescue Exception => e
   puts <<~TEXT.rouge
 
@@ -130,6 +146,21 @@ rescue Exception => e
   TEXT
   raise "Problème de formatage"
 end
+
+def ultime_nettoyage(str)
+  str = str.gsub(REG_DOUBLE_KEYS) do
+    $~[:deuxieme] # on retire le premier
+  end
+
+  return str
+end
+
+REG_KEY_LL = /\\key #{REG_PUR_TUNE_IN} \\(major|minor)/.freeze
+# Pour détecter les doubles définitions d’armure introduite pour les
+# instruments transpositeur (je n’ai pas trouvé le moyen de les
+# retirer autrement qu’en les remplaçant ci-dessus)
+REG_DOUBLE_KEYS = /(?<premier>#{REG_KEY_LL})([\t\n ]+)(?<deuxieme>#{REG_KEY_LL})/
+
 
 def crementize_indentation(adding)
   @indent_len += adding
@@ -617,7 +648,7 @@ end
 # @return le texte pour indiquer la tonalité
 def option_tonalite
   if options[:key]
-    formate_tune(options[:key])
+    options[:formated_key]
   else '' end
 end
 
@@ -689,7 +720,7 @@ private
   def translate_armure_from_mus(str)
     return str unless str.match?(/(tune|key)/)
     # puts "str avant : #{str.inspect}".jaune
-    str = str.gsub(/\\(?<mark>tune|key) (?<key>#{REG_TUNE}) /i) do
+    str = str.gsub(/\\(?<mark>tune|key) (?<key>#{Parser::BlockCode::REG_TUNE}) /i) do
       k = $~[:key].freeze
       barres = ($~[:mark] == 'key' && k.match?(REG_PUR_TUNE)) ? ' ' : ' \bar "||" '
       barres + formate_tune(k) + ' '
@@ -698,24 +729,9 @@ private
     return str
   end
 
-  # @reçoit la marque de la tonalité (en options ou au cours du code
-  # en cas de changement de tonalité) et 
-  # @return la marque ’\key ...’ à écrire dans le code lilypond
   def formate_tune(str)
-    vals = str.strip.match(REG_TUNE)
-    alte = case vals[:alte]
-      when 'b', 'es'      then 'es'
-      when 'd', 'is', '#' then 'is'
-      else '' end
-    mode = case vals[:mode]
-      when 'm', '-' then 'minor'
-      else 'major' end
-    return '\key %s%s \%s'.freeze % [vals[:note].downcase, alte, mode]
+    Parser::BlockCode.formate_tune(str)
   end
-  REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b|#)?(?<mode>[m\-])?/i.freeze
-  # Pour savoir si c’est une définition "pure" de la tonalité qui,
-  # dans ce cas, n’ajoute pas de double barre avant
-  REG_PUR_TUNE = /^[a-g](es|is)?$/.freeze
 
   def translate_keys_from_ms(str)
     # Les clés, qui peuvent être précisées par '\cle F' et '\cle G'

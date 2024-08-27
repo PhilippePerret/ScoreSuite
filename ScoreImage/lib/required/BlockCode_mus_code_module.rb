@@ -97,14 +97,29 @@ REG_SUSPEND_REST_MERGE = /\\(?<not>not_)?merge_rests?/.freeze
 def traite_transpositions_in(line)
   # puts "Line avant : #{line.inspect}".jaune
   line = line.gsub(/\\trans ([a-gs]{1,3})/) do
+    
+    # puts "[traite_transpositions_in] options = #{options}".jaune
+    # exit 12
+
     instrument_tune = $1.freeze
     table = instrument_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
     offset_tune = table.index(instrument_tune)
     counter_offset = 12 - offset_tune
     counter_note = table[counter_offset]
-    '\\key %{armure} \\transpose c %{note}' % {note: counter_note, armure: "c"}
+    # - La "tune note", c’est-à-dire l’armure correspondant à la
+    # transposition. Par exemple, si c’est un instrument en Eb, 
+    # lorsque la tonalité est Eb, la "tune note" est c. C’est en
+    # quelque sort l’inverse de la counter_note
+    main_tune = options[:key]||options[:tune]||"c"
+    # puts "main_tune = #{main_tune.inspect}".bleu
+    main_table = main_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
+    offset_main_tune = main_table.index(main_tune)
+    # puts "\noffset_main_tune = #{offset_main_tune}"
+    key_note = table[offset_tune - offset_main_tune]
+    # puts "key_note: #{key_note.inspect}"
+    '\\key %{armure} \\transpose c %{note}' % {note: counter_note, armure: key_note}
   end
-  puts "Line après : #{line.inspect}".bleu
+  # puts "Line après : #{line.inspect}".bleu
   return line
 end
 

@@ -3,11 +3,18 @@
 # @noter particulièrement les statistiques, qui tiennent compte de
 #        la transposition.
 
-# --tune Eb
---tune Fd
+--keep
+
+--tune Eb
+# --tune Bb
+# --tune Fd
+
+--staves_keys G, G, G
 
 seg=
 ees f g aes bes
 
 -> score
+seg
+seg
 \trans ees { seg }
