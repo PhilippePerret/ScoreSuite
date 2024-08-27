@@ -1,6 +1,7 @@
 # Test permettant de tester les instruments transpositeurs.
 --staves_names Sax E_b_, Cor A., Cl.(B_b_), Fl.
 --staves_keys  G, G, G, G
+# --keep
 
 fl=
 c’4 d e f g1

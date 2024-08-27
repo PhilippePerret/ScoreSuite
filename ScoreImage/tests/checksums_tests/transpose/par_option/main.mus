@@ -1,5 +1,6 @@
 # Pour transposer toute la partition avec l’option ’--transpose’
 
+--tune c
 --transpose c d
 
 -> score

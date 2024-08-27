@@ -101,34 +101,82 @@ def traite_transpositions_in(line)
     # puts "[traite_transpositions_in] options = #{options}".jaune
     # exit 12
 
-    instrument_tune = $1.freeze
-    table = instrument_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
-    offset_tune = table.index(instrument_tune)
-    counter_offset = 12 - offset_tune
-    counter_note = table[counter_offset]
+    inst_tune = $1.freeze
+    puts "\ninst_tune = #{inst_tune}".bleu
+    # table = inst_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
+    # offset_tune = table.index(inst_tune)
+    # counter_offset = 12 - offset_tune
+    # counter_note = table[counter_offset]
+
+    lettre1 = inst_tune[0]
+    diff_degres = 2 - DEGRES.index(lettre1)
+    # => 2 pour A, -2 pour E, etc.
+    diff_degres = (7 - diff_degres) % 7
+    puts "diff_degres = #{diff_degres.inspect}".bleu
+    inst_tons = TABLE_DEMITONS_DIESES.index(inst_tune)||TABLE_DEMITONS_BEMOLS.index(inst_tune)
+    # diff_tons = 12 - inst_tons
+    diff_tons = inst_tons
+    # P.e. 3 pour ’a’ qui est à 9
+    puts "diff_tons = #{diff_tons}".bleu
+
+    counter_note = NOTE_WITH_ALT_FROM_C[diff_degres][diff_tons] || begin
+      raise <<~ERR
+
+      Impossible de trouver la contrenote pour l’instrument 
+      tranpositeur #{inst_tune}.
+      Valeurs calculées
+      -----------------
+      diff_degres = #{diff_degres.inspect}
+      diff_tons   = #{diff_tons.inspect}
+      ERR
+    end 
+
+
     # - La "tune note", c’est-à-dire l’armure correspondant à la
     # transposition. Par exemple, si c’est un instrument en Eb, 
     # lorsque la tonalité est Eb, la "tune note" est c. C’est en
     # quelque sort l’inverse de la counter_note
-    main_tune = options[:key]||"c"
-    # puts "main_tune = #{main_tune.inspect}".bleu
-    main_table = main_tune.match?(/.es/) ? TABLE_DEMITONS_BEMOLS : TABLE_DEMITONS_DIESES
-    offset_main_tune = main_table.index(main_tune)
-    # puts "\noffset_main_tune = #{offset_main_tune}"
-    key_note = table[offset_tune - offset_main_tune]
-    # puts "key_note: #{key_note.inspect}"
-    '\\key %{armure} \\transpose c %{note}' % {note: counter_note, armure: key_note}
+    piece_tune = options[:key]||"c"
+    trans_tune = MusicScore::Transposition.transposed_tune(
+      inst_tune, piece_tune)
+    # puts "trans_tune: #{trans_tune.inspect}"
+    '\\key %{armure} \\transpose %{note} c\''.freeze % {note: counter_note, armure: trans_tune}
   end
   # puts "Line après : #{line.inspect}".bleu
   return line
 end
 
+DEGRES = "abcdefg".freeze
+
+# Table qui permet de trouver la note de transposition exacte.
+# Par exemple, entre C et A, il y a 3 demi-tons, et donc on pourrait
+# obtenir Ré# aussi bien que Eb. Mais puisqu’il y a 2 degré entre
+# C et A, on sait qu’il faut choisir Mi bémol et non pas Ré#
+NOTE_WITH_ALT_FROM_C = {
+  # En clé, la différence de degré par rapport à Do
+  # En valeur, en clé, le nombre de demi-tons, en valeur la
+  # note en découlant
+  0 => {0 => 'c', 1 => 'cis'},
+  # Ré
+  1 => {1 => 'des', 2 => 'd', 3 => 'dis' },
+  # Mi
+  2 => {3 => 'ees', 4 => 'e', 5 => 'eis'},
+  # Fa
+  3 => {4 => 'fes', 5 => 'f', 6 => 'fis'},
+  # Sol
+  4 => {6 => 'ges', 7 => 'g', 8 => 'gis'},
+  # La
+  5 => {8 => 'aes', 9 => 'a', 10 => 'ais'},
+  # Si
+  6 => {10 => 'bes', 11 => 'b', 12 => 'bis'}
+}
+
 TABLE_DEMITONS_DIESES = [
   'c', 'cis','d','dis','e','f','fis','g','gis','a','ais','b'
-]
+].freeze
 TABLE_DEMITONS_BEMOLS = [
   'c', 'des','d','ees','e','f','ges','g','aes','a','bes','b'
-]
+].freeze
 
 def replace_multi_voices(line)
   line

@@ -358,7 +358,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Afficher (ou non) la métrique                                | **`--time`**<br />**`--time OFF`**<br />**`--time 3/4`**     |                                                              |
 | Ne traiter que les images inexistantes                       | **`--only_new`**                                             | Dans le cas contraire, toutes les images seront toujours traitées, qu’elles existent ou non, ce qui peut être très consommateur en énergie. |
 | Ne pas afficher les hampes des notes                         | **`--no_stem`**                                              |                                                              |
-| Transposition du fragment                                    | **`--transpose <from> <to>`**                                | Par exemple, `--transpose bes c'` va transposer le fragment, qui est en SI bémol, en do, en prenant les notes les plus proches. |
+| Transposition du fragment                                    | **`--transpose <from> <to>`**                                | Par exemple, `--transpose bes c'` va transposer le fragment, qui est en SI bémol, en Do, en prenant les notes les plus proches. Cf. [Transposition](#transposition) |
 | Taille de la page                                            | **`--page <format>`**                                        | Par défaut, la partition s’affiche sur une page A0 en format paysage, ce qui permet d’avoir une très longue portée.<br />`<format>` peut avoir des valeurs comme `a4`, `b2` etc. |
 | Espace vertical entre les portées                            | **`--staves_vspace <x>`**                                    | Pour avoir l’’espace normal, mettre 9. Au-delà (11, 12 etc.) on obtient un écart plus grand que la normale.<br />“Staves vspaces” signifie (espace vertical entre les portées) |
 | Espace vertical entre les systèmes                           | **`--systems_vspace`**                                       |                                                              |
@@ -1115,6 +1115,71 @@ c d e f \key ges ges f ees d ees2
 … produiront tous les deux :
 
 <img src="images/change_tune_sans_dblbarres.svg" alt="change_tune_sans_dblbarres" style="zoom:120%;" />
+
+---
+
+<a name="transposition"></a>
+
+#### Transposition
+
+On peut transposer tout un fragment à l’aide de l’option **`--transpose`** en indiquant la note/tonalité de référence (aka la note de départ) puis la note/tonalité d’arrivée.
+
+Par exemple :
+
+~~~
+--transpose c d
+
+-> score
+c d e f g a b c
+~~~
+
+… transposera le fragment de Do majeur vers Ré majeur :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/transpose_sans_tune.svg" alt="transpose_sans_tune" style="zoom:120%;" />
+
+Tandis que : 
+
+~~~
+--transpose d c
+
+-> score
+d e fis g a b cis d
+~~~
+
+… transposera ce fragment en Ré majeur de Ré majeur vers Do majeur :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/transpose_d_vers_c.svg" alt="transpose_d_vers_c" style="zoom:120%;" />
+
+**NB**: Si vous voulez que l’armure tienne compte de la transposition quand la tonalité est Do majeur, il faut écrire explicitement cette tonalité à l’aide de l’option **`--tune c`**.
+
+Ainsi, le code :
+
+~~~
+--transpose c d
+
+-> score
+c d e f g a b c
+~~~
+
+… produira :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/transpose_sans_tune.svg" alt="transpose_sans_tune" style="zoom:120%;" />
+
+Tandis que le code :
+
+~~~
+--tune c
+--transpose c d
+
+-> score
+c d e f g a b c
+~~~
+
+… produira lui :
+
+<img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/transpose_avec_tune.svg" alt="transpose_avec_tune" style="zoom:120%;" />
+
+> Si la tonalité de départ est auteur de Do majeur, elle sera indiquée donc elle sera traitée de la même manière.
 
 ---
 
