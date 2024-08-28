@@ -74,6 +74,7 @@ class Statistiques
 
     end #/<< self
 
+    # ==================== INSTANCE ==================== #
 
     attr_reader :data
 
@@ -161,7 +162,22 @@ class Statistiques
     def abs_duration
       @abs_duration ||= begin
         dur, prol = duration.match(/([0-9]+)(\.*)?/)[1..2]
-        dur = 4.0 / dur.to_i
+        # - Cas spéciaux des n-olets -
+        is_n_olet = dur.length > 1 && not([16,32,64,128].include?(dur.to_i))
+        if is_n_olet
+          diviseur  = dur[-1].to_i
+          ref_dur   = 4.0 / dur[0...-1].to_i
+          multiplicateur = 
+            case diviseur
+            when 3 then 2 # => triolet
+            when 2 then 3 # => duolet
+            else 1/2 # => n-olet (pour le moment)
+            end
+          dur = ((ref_dur.to_f * multiplicateur) / diviseur).round(2)
+        else
+          # Cas courant (hors n-olets)
+          dur = 4.0 / dur.to_i
+        end
         c = dur.dup
         prol.length.times { dur += (c = c / 2) }
         dur - duration_sub
@@ -447,6 +463,10 @@ class Statistiques
     # On "sort" toutes les notes de leurs accords
     line = decompose_chords_in(line)
 
+    # On épure certaines marques qui pourraient gêner ensuite
+    # (typiquement, les triolets, duolet, etc. en ’3{...}’)
+    line = epure_expressions_speciales_in(line)
+
     # Traitement spécial des appogiatures
     line = traitement_des_appoggiatura_in(line)
 
@@ -465,6 +485,28 @@ class Statistiques
     end
 
   end
+
+  # Traitement d’expressions spéciales qui peuvent poser problème
+  # 
+  # La méthode a été initiée pour l’expression ’3{gis8 cis e} qui
+  # ne prenait en compte que le cis et le e, pas les gis8
+  # 
+  def epure_expressions_speciales_in(line)
+    line = line.gsub(REG_NOLET) do
+      diviseur = $~[:diviseur].to_i.freeze # 2, 3, 4, 5, 7, 9
+      notes    = $~[:notes].freeze
+      notes = notes.split(' ')
+      notes[0].match(/^#{REG_NOTE_WITH_DUREE_AND_REST}$/)
+      duree = $~[:duration].freeze
+      duree = "#{duree}#{diviseur}"
+      notes[0] = "#{$~[:note]}#{$~[:alter]}#{duree}"
+      notes = notes.join(' ')
+      " #{notes} "
+    end
+
+    return line
+  end
+  REG_NOLET = /(?<diviseur>[234579])\{(?<notes>.*?)\}/.freeze
 
   # Traite les appogiatures (pour pouvoir réduire leur durée et
   # la soustraire à la note suivante)
@@ -683,8 +725,23 @@ class Statistiques
     @folder ||= ensure_folder(File.join(music_score.mus_file.folder,'stats'))
   end
 
-  REG_NOTE = /\b[a-g]([,'’]+)?(isis|eses|is|es)?\b/.freeze
-  REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?(?<octave>[,']+)?/.freeze
+  REG_SIMPLE_NOTE = /[a-g](isis|eses|is|es)?/.freeze
+  REG_NOTE = /\b#{REG_SIMPLE_NOTE}\b/.freeze
+
+  REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?(?<octave>[,']*)/.freeze
+  # REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?(?<octave>[,']+)?/.freeze
+
+  # Pour capturer :
+  #   $~[:note], 
+  #   $~[:alter], 
+  #   $~[:octave],
+  #   $~[:duration]
+  #   $~[:reste]
+  # 
+  # Le mieux est d’isoler la note (par exemple en splitant avec des
+  # espaces) et d’ajouter ’^’ et ’$’ autour de l’expression :
+  #   notes.split(' ').first.match(/^#{REG_NOTE_WITH_DUREE_AND_REST}$/)
+  REG_NOTE_WITH_DUREE_AND_REST = /#{REG_NOTE_CAPT}(?<duration>[0-9]+\.*)?(?<reste>.*?)/.freeze
 
   REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)(?<sub_to_next>STN)?/.freeze
 

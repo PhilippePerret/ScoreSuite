@@ -1,3 +1,4 @@
-Nombre total de notes : 8
-c#   4  2.0 s
-g#   4  2.0 s
+Nombre total de notes : 12
+c#   4  1.32 s
+e    4  1.32 s
+g#   4  1.32 s

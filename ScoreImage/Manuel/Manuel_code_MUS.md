@@ -1239,7 +1239,14 @@ On les notes  `3{note<duree> note note}`
 
 | <span style="display:inline-block;width:200px;">Objet</span> | Code                           | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
-| <img src="images/exemples/triolets.svg" style="  width:200px;" /> | **`3{note<duree> note note}`** | TODO : il faudra traiter les quintuplet et autres sextolets de la même façon. |
+| <img src="images/exemples/triolets.svg" style="  width:200px;" /> | **`3{note<duree> note note}`** | TODO : il faudra traiter les duolets, quintuplets et autres sextolets de la même façon. |
+
+Pour s’assurer que le rythme soit bon (et que les statistiques soient bien calculées), ne pas oublier de mettre la durée sur la note ou le groupe de notes suivant cette marque. Par exemple :
+
+~~~
+3{c8 d e} f8
+# => pour que le Fa suivant soit bien compté en croche simple.
+~~~
 
 
 

@@ -1,3 +1,4 @@
-Durée totale : 4.0 s
-c#   4  2.0 s
-g#   4  2.0 s
+Durée totale : 3.96 s
+c#   4  1.32 s
+e    4  1.32 s
+g#   4  1.32 s

@@ -1,0 +1,6 @@
+# Test pour la prise en compte des triolets dans les
+# statistiques, aussi bien au niveau des notes que de leur 
+# durée
+
+-> score
+\cle F 3{c4 d e} 3{c,,8-. d e}
