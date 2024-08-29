@@ -1,0 +1,34 @@
+# Pour tester les doubles altérations dans un gruppeto
+
+--keep
+
+
+turns=
+fis’\turn#/# fis,\turn#/b fis’\turnb/b fis,\turnb/# fis’\turnn/n fis,\turnb/n fis’\turnn/b fis,\turn#/n fis’\turnn/# fis,\turn/n fis’\turn/# fis,\turn/b 
+
+downturns=
+fis’_\turn#/# fis,_\turn#/b fis’_\turnb/b fis,_\turnb/# fis’_\turnn/n fis,_\turnb/n fis’_\turnn/b fis,_\turn#/n fis’_\turnn/# fis,_\turn/n fis’_\turn/# fis,_\turn/b 
+
+revturns=
+fis’\reverseturn#/# fis,\reverseturn#/b fis’\reverseturnb/b fis,\reverseturnb/# fis’\reverseturnn/n fis,\reverseturnb/n fis’\reverseturnn/b fis,\reverseturn#/n fis’\reverseturnn/# fis,\reverseturn/n fis’\reverseturn/# fis,\reverseturn/b 
+
+downrevturns=
+fis’_\reverseturn#/# fis,_\reverseturn#/b fis’_\reverseturnb/b fis,_\reverseturnb/# fis’_\reverseturnn/n fis,_\reverseturnb/n fis’_\reverseturnn/b fis,_\reverseturn#/n fis’_\reverseturnn/# fis,_\reverseturn/n fis’_\reverseturn/# fis,_\reverseturn/b 
+
+haydnturns=
+fis’\haydnturn#/# fis,\haydnturn#/b fis’\haydnturnb/b fis,\haydnturnb/# fis’\haydnturnn/n fis,\haydnturnb/n fis’\haydnturnn/b fis,\haydnturn#/n fis’\haydnturnn/# fis,\haydnturn/n fis’\haydnturn/# fis,\haydnturn/b 
+
+downhaydnturns=
+fis’_\haydnturn#/# fis,_\haydnturn#/b fis’_\haydnturnb/b fis,_\haydnturnb/# fis’_\haydnturnn/n fis,_\haydnturnb/n fis’_\haydnturnn/b fis,_\haydnturn#/n fis’_\haydnturnn/# fis,_\haydnturn/n fis’_\haydnturn/# fis,_\haydnturn/b 
+
+slashturns=
+fis’\slashturn#/# fis,\slashturn#/b fis’\slashturnb/b fis,\slashturnb/# fis’\slashturnn/n fis,\slashturnb/n fis’\slashturnn/b fis,\slashturn#/n fis’\slashturnn/# fis,\slashturn/n fis’\slashturn/# fis,\slashturn/b 
+
+downslashturns=
+fis’_\slashturn#/# fis,_\slashturn#/b fis’_\slashturnb/b fis,_\slashturnb/# fis’_\slashturnn/n fis,_\slashturnb/n fis’_\slashturnn/b fis,_\slashturn#/n fis’_\slashturnn/# fis,_\slashturn/n fis’_\slashturn/# fis,_\slashturn/b 
+
+
+-> score
+turns downturns revturns downrevturns haydnturns downhaydnturns slashturns downslashturns
+
+

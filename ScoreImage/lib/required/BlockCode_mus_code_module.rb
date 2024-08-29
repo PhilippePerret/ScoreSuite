@@ -7,6 +7,8 @@
   pas les options.
 
 =end
+require_relative 'regexp_lilypond'
+
 class MusicScore
 class Parser
 class BlockCode
@@ -221,11 +223,20 @@ def replace_repetition_code(line)
 
   return line
 end
-REG_MARK_OCTAVE = /(['’,]+)/.freeze
 
-REG_REPETITION_ASTERISK = /\b#{Statistiques::REG_NOTE_CAPT}(?:#{Statistiques::REG_DUREE_CAPT})?\*(?<fois>[0-9]+)/.freeze
-
+# Pour les \musicglyphs de LilyPond, voir
+# https://lilypond.org/doc/v2.24/Documentation/notation/the-emmentaler-font
 def traite_ornements_with_alterations(line)
+
+  # puts "/nline = #{line.inspect}".jaune
+
+
+  # - Traitement des doubles altération (au-dessus/en dessous)
+  # 
+  line = traite_ornements_with_dbl_alterations(line)
+
+  # puts "\nline après double: #{line.inspect}".bleu
+
   line = line.gsub(REG_ORNEMENTS_WITH_ALTE) do
     ornement = $~[:ornement].freeze
     alte_sup = $~[:alte_sup].freeze
@@ -242,42 +253,136 @@ def traite_ornements_with_alterations(line)
 
     "\\#{ornement}#{alte_sup}"
   end
-  line.gsub(REG_ORNEMENTS_WITH_DBLE_ALTE) do
+
+  return line
+end
+#/traite_ornements_with_alterations
+
+
+def traite_ornements_with_dbl_alterations(line)
+  line = line.gsub(REG_ORNEMENTS_WITH_DBLE_ALTE) do
     note      = $~[:note].freeze
+    alter     = $~[:alter].freeze
+    octave    = $~[:octave].freeze
     ornement  = $~[:ornement].freeze
+    position  = ($~[:position]||'^').freeze
     alte_sup  = $~[:alte_sup].freeze
     alte_inf  = $~[:alte_inf].freeze
 
-    if alte_sup
-      alte_sup =
-        case alte_sup
-        when '#' then '\sharp'
-        when 'b' then '\flat'
-        when 'n' then '\natural'
-        end
-      alte_sup = '^\markup { \hspace #0.5 \center-column { \teeny %s } }' % alte_sup
+    hspace_sup = alte_inf == '#' ? '0.7' : '0.8'
+    hspace_inf = alte_inf == '#' ? '0.5' : '0.6'
+
+    alte_sup =
+      case alte_sup
+      when '#' then '\sharp'
+      when 'b' then '\flat'
+      when 'n' then '\natural'
+      end
+    alte_sup = alte_sup ? " \\teeny #{alte_sup}" : ''
+
+    alte_inf =
+      case alte_inf
+      when '#' then '\sharp'
+      when 'b' then '\flat'
+      when 'n' then '\natural'
+      end
+    alte_inf = alte_inf ? " \\teeny #{alte_inf}" : ''
+
+
+    posup = position == '^'
+
+    ornementation = '%{pos}\markup %{bskip} %{halign} \center-column {%{alte_sup} \musicglyph "scripts.turn"%{alte_inf} }'.freeze % {
+      pos: position, # au-dessus ou au-dessous,
+      bskip: '\override #\'(baseline-skip . 2)'.freeze,
+      halign: '\halign #-%s'.freeze % [posup ? hspace_sup : hspace_inf],
+      alte_sup: alte_sup,
+      alte_inf: alte_inf,
+    }
+
+    '%{note}%{ornementation}'.freeze % {
+      note: "#{note}#{alter}#{octave}",
+      ornementation: ornementation,
+    }
+
+  end #/gsub
+
+  return line
+end
+
+def OLD_traite_ornements_with_dbl_alterations(line)
+  raise "Je ne dois plus utiliser ça"
+  # Ici, il faut capturer la note, car on doit placer quelque chose
+  # avant.
+  line = line.gsub(REG_ORNEMENTS_WITH_DBLE_ALTE) do
+
+    note      = $~[:note].freeze
+    alter     = $~[:alter].freeze
+    octave    = $~[:octave].freeze
+    ornement  = $~[:ornement].freeze
+    position  = ($~[:position]||'^').freeze
+    alte_sup  = $~[:alte_sup].freeze
+    alte_inf  = $~[:alte_inf].freeze
+
+    alte_sup =
+      case alte_sup
+      when '#' then '\sharp'
+      when 'b' then '\flat'
+      when 'n' then '\natural'
+      end
+
+    alte_inf =
+      case alte_inf
+      when '#' then '\sharp'
+      when 'b' then '\flat'
+      when 'n' then '\natural'
+      else nil
+      end
+
+    overrides = ''
+
+    if ['turn','reverseturn','slashturn'].include?(ornement)
+      if position == '^' && alte_inf != '\flat'
+        # Le dièse/bécarre est trop séparé (ou le signe est trop haut)
+        overrides = '\once \override TextScript.script-priority = #-300 '.freeze
+      elsif position == '_' && alte_sup != '\sharp'
+        # Même chose que ci-dessus, mais avec le bémol quand le 
+        # l’ornement est placé en dessous
+        overrides = '\once \override TextScript.script-priority = #-300 '.freeze
+      end
+
+      puts "\noverrides = #{overrides.inspect}".bleu
     end
 
-    if alte_inf
-      amorce_alte_inf = '\once \override TextScript #\'script-priority = #-100 '
-      alte_inf =
-        case alte_inf
-        when '#' then '\sharp'
-        when 'b' then '\flat'
-        when 'n' then '\natural'
-        end
-      alte_inf = '^\markup { \hspace #0.5 \center-column { \teeny %s } }' % alte_inf
-    else
-      amorce_alte_inf = ''
-    end
     
-    "#{amorce_alte_inf}#{note}\\#{ornement}#{alte_inf}#{alte_sup}"
+    alte_inf = 
+      if alte_inf
+        hspace = alte_inf != '\sharp' ? ' \hspace #0.3' : ''
+        '%s\markup {%s \teeny %s }'.freeze % [position, hspace, alte_inf]
+      else '' end
+    alte_sup = 
+      if alte_sup
+        hspace = alte_sup != '\sharp' ? ' \hspace #0.3' : ''
+        '%s\markup {%s \teeny %s }'.freeze % [position, hspace, alte_sup]
+      else '' end
+
+    ornement = 
+      '%s\markup { \hspace #0.5 \musicglyph  "scripts.%s" }'.freeze % [position, ornement]
+
+    '%{over}%{note}%{ainf}%{ornement}%{asup}'.freeze % {
+      over: overrides,
+      note: "#{note}#{alter}#{octave}",
+      ornement: ornement,
+      ainf: alte_inf, asup: alte_sup
+    }
 
   end
+
+  return line  
 end
-ORNEMENTS = /(?<ornement>turn|prall|mordent)/.freeze
+
+ORNEMENTS = /(?<ornement>reverseturn|slashturn|haydnturn|turn|prall|mordent)/.freeze
 REG_ORNEMENTS_WITH_ALTE = /\\#{ORNEMENTS}(?<alte_sup>[#bn])/.freeze
-REG_ORNEMENTS_WITH_DBLE_ALTE = /(?<note>[a-z0-9,'’]+)\\#{ORNEMENTS}(?<alte_sup>[#bn])?\/(?<alte_inf>[#bn])/.freeze
+REG_ORNEMENTS_WITH_DBLE_ALTE = /#{REG_NOTE_DUREE_SIMPLE}(?<position>[_\^])?\\#{ORNEMENTS}(?<alte_sup>[#bn])?\/(?<alte_inf>[#bn])/.freeze
 
 # On ne traite ici que les reprises avec alternative, les autres
 # barres sont traitées plus simplement dans #translate_barres
