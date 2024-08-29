@@ -1,5 +1,6 @@
 # Pour tester l’affichage du numéro de page
 
+# --keep
 --page b6
 --page_numbers OFF
 

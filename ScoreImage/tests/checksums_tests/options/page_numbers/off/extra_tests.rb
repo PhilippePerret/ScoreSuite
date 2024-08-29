@@ -2,7 +2,10 @@ module ExtraTestMethods
 
   def proceed
     page_2_should_exist || return
-    page_2_should_match_checksum  
+    page_2_should_match_checksum
+    # Une fois le test fait, on place la page 2 dans le dossier
+    # principal
+    FileUtils.move(page2_path, page2_dest_path)
   end
 
   def page_2_should_exist
@@ -51,12 +54,15 @@ module ExtraTestMethods
     @page2_path ||= File.join(musfile.build_folder,'score-2.svg').freeze
   end
 
+  def page2_dest_path
+    @page2_dest_path ||= File.join(musfile.folder,'score-2.svg').freeze
+  end
 
   def display_pending_page2
     puts <<~MSG.bleu
     
     [Pending] #{musfile.relative_path}
-    Si l’image #{musfile.relative_path}/main/score-2.svg correspond 
+    Si l’image #{musfile.relative_path}/score-2.svg correspond 
     aux attentes, relancez le test pour le jouer vraiment. Sinon,
     détruisez le fichier CHECKSUM_p2, corrigez le test et recommencez
     l’opération.

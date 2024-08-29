@@ -95,6 +95,10 @@ class ExtraFile
     musfile.checksum_of(path)
   end
 
+  def move_to_main_folder
+    FileUtils.move(path, dest_path)
+  end
+
   def message_not_match
     @message_not_match ||= begin
       <<~MSG
@@ -108,11 +112,15 @@ class ExtraFile
     puts <<~MSG.bleu
     
     [Pending] #{musfile.relative_path}
-    Si le fichier #{designation} #{musfile.relative_path}/main/#{filename} 
+    Si le fichier #{designation} #{musfile.relative_path}/#{filename} 
     correspond aux attentes, rejouez le test pour lancer l’évaluation
     Sinon, détruisez le fichier #{checksum_filename}, corrigez 
     le code et recommencez l’opération.
     MSG
+  end
+
+  def dest_path
+    @dest_path ||= File.join(musfile.folder,params[:file_name]).freeze
   end
 
   def filename

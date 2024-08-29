@@ -576,6 +576,7 @@ end
 #/footer
 
 def option_page_numbers
+  puts "\noptions[:page_numbers] = #{options[:page_numbers].inspect}".bleu
   if options[:page_numbers] === false
     <<~TEXT.strip
     print-page-number = ##f
