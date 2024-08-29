@@ -23,7 +23,7 @@ class << self
     clear;clear
     reset
     display_table_options
-    must_fail_fast = CLI.options[:fail_fast]
+    must_fail_fast = CLI.option(:fail_fast)||CLI.option(:ff)
     tests_list(params).each_with_index do |musfile, idx|
       musfile.indice = idx + 1
       ###########################

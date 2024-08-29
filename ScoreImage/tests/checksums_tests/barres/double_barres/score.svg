@@ -15,35 +15,31 @@
 tspan { white-space: pre; }
 ]]></style>
   <g
-     transform="translate(0,5.779)"
+     transform="translate(12.3501,3.779)"
      id="g6">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="20.6401"
-       y2="0"
-       id="line4" />
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect4" />
   </g>
   <g
-     transform="translate(0,4.779)"
+     transform="translate(11.8601,3.779)"
      id="g10">
-    <line
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.1"
-       stroke="currentColor"
-       x1="0.050000001"
-       y1="0"
-       x2="20.6401"
-       y2="0"
-       id="line8" />
+    <rect
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
+       fill="currentColor"
+       id="rect8" />
   </g>
   <g
-     transform="translate(0,3.779)"
+     transform="translate(0,5.779)"
      id="g14">
     <line
        stroke-linejoin="round"
@@ -57,7 +53,7 @@ tspan { white-space: pre; }
        id="line12" />
   </g>
   <g
-     transform="translate(0,2.779)"
+     transform="translate(0,4.779)"
      id="g18">
     <line
        stroke-linejoin="round"
@@ -71,7 +67,7 @@ tspan { white-space: pre; }
        id="line16" />
   </g>
   <g
-     transform="translate(0,1.779)"
+     transform="translate(0,3.779)"
      id="g22">
     <line
        stroke-linejoin="round"
@@ -85,31 +81,35 @@ tspan { white-space: pre; }
        id="line20" />
   </g>
   <g
-     transform="translate(20.5001,3.779)"
+     transform="translate(0,2.779)"
      id="g26">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect24" />
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="20.6401"
+       y2="0"
+       id="line24" />
   </g>
   <g
-     transform="translate(12.3501,3.779)"
+     transform="translate(0,1.779)"
      id="g30">
-    <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4"
-       ry="0.0000"
-       fill="currentColor"
-       id="rect28" />
+    <line
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.1"
+       stroke="currentColor"
+       x1="0.050000001"
+       y1="0"
+       x2="20.6401"
+       y2="0"
+       id="line28" />
   </g>
   <g
-     transform="translate(11.8601,3.779)"
+     transform="translate(20.5001,3.779)"
      id="g34">
     <rect
        x="0"

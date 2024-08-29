@@ -1,0 +1,2 @@
+Durée totale : 1 mn 36.0 s
+f#   96  96.0 s

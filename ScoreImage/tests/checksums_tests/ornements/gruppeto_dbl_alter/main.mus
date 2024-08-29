@@ -1,7 +1,8 @@
 # Pour tester les doubles altérations dans un gruppeto
 
---keep
+# --keep
 
+--page b5
 
 turns=
 fis’\turn#/# fis,\turn#/b fis’\turnb/b fis,\turnb/# fis’\turnn/n fis,\turnb/n fis’\turnn/b fis,\turn#/n fis’\turnn/# fis,\turn/n fis’\turn/# fis,\turn/b 

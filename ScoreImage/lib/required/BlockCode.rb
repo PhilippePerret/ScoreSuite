@@ -30,6 +30,7 @@ REG_DEFINITION = /^[a-zA-Z0-9_\/\-]+\=\=?$/.freeze
 
 REG_TUNE = /(?<note>[a-g])(?<alte>es|is|d|b|#)?(?<mode>[m\-])?/i.freeze
 
+
 # ============ CLASSE ===============
 
 class << self

@@ -15,14 +15,14 @@
 tspan { white-space: pre; }
 ]]></style>
   <g
-     transform="translate(0,6.779)"
+     transform="translate(11.8601,3.779)"
      id="g6">
     <rect
-       x="5.3095002"
-       y="-0.1"
-       width="2.9430001"
-       height="0.2"
-       ry="0.1"
+       x="0"
+       y="-2"
+       width="0.19"
+       height="4"
+       ry="0.0000"
        fill="currentColor"
        id="rect4" />
   </g>
@@ -121,19 +121,19 @@ tspan { white-space: pre; }
        id="rect32" />
   </g>
   <g
-     transform="translate(20.0101,3.779)"
+     transform="translate(0,6.779)"
      id="g38">
     <rect
-       x="0"
-       y="-2"
-       width="0.19"
-       height="4"
-       ry="0.0000"
+       x="5.3095002"
+       y="-0.1"
+       width="2.9430001"
+       height="0.2"
+       ry="0.1"
        fill="currentColor"
        id="rect36" />
   </g>
   <g
-     transform="translate(11.8601,3.779)"
+     transform="translate(20.0101,3.779)"
      id="g42">
     <rect
        x="0"

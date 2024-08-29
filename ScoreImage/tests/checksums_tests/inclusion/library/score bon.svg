@@ -85,7 +85,7 @@ tspan { white-space: pre; }
        id="line20" />
   </g>
   <g
-     transform="translate(5.8,2.552)"
+     transform="translate(13.5626,0.552)"
      id="g26">
     <path
        transform="scale(0.004,-0.004)"
@@ -94,28 +94,31 @@ tspan { white-space: pre; }
        id="path24" />
   </g>
   <g
-     transform="translate(0.8,1.052)"
-     id="g30">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
-       fill="currentColor"
-       id="path28" />
-  </g>
-  <g
-     transform="translate(5.865,2.052)"
-     id="g34">
-    <rect
-       x="-0.064999998"
-       y="0.68610001"
-       width="0.13"
-       height="2.1171999"
-       ry="0.039999999"
-       fill="currentColor"
-       id="rect32" />
-  </g>
-  <g
      transform="translate(15.8169,5.052)"
+     id="g30">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 7.8526,-1.2 7.8526,-0.8 "
+       id="polygon28" />
+  </g>
+  <g
+     transform="translate(15.8169,5.862)"
+     id="g34">
+    <polygon
+       stroke-linejoin="round"
+       stroke-linecap="round"
+       stroke-width="0.08"
+       fill="currentColor"
+       stroke="currentColor"
+       points="0.04,0.2 0.04,-0.2 7.8526,-1.2 7.8526,-0.8 "
+       id="polygon32" />
+  </g>
+  <g
+     transform="translate(5.8,4.052)"
      id="g38">
     <polygon
        stroke-linejoin="round"
@@ -123,11 +126,11 @@ tspan { white-space: pre; }
        stroke-width="0.08"
        fill="currentColor"
        stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-1.2 7.8526,-0.8 "
+       points="0.04,0.2 0.04,-0.2 7.8526,-1.01 7.8526,-0.61 "
        id="polygon36" />
   </g>
   <g
-     transform="translate(15.8169,5.862)"
+     transform="translate(5.8,4.862)"
      id="g42">
     <polygon
        stroke-linejoin="round"
@@ -135,45 +138,51 @@ tspan { white-space: pre; }
        stroke-width="0.08"
        fill="currentColor"
        stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-1.2 7.8526,-0.8 "
+       points="0.04,0.2 0.04,-0.2 7.8526,-1.01 7.8526,-0.61 "
        id="polygon40" />
   </g>
   <g
-     transform="translate(5.8,4.052)"
+     transform="translate(5.8,2.552)"
      id="g46">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-1.01 7.8526,-0.61 "
-       id="polygon44" />
-  </g>
-  <g
-     transform="translate(5.8,4.862)"
-     id="g50">
-    <polygon
-       stroke-linejoin="round"
-       stroke-linecap="round"
-       stroke-width="0.08"
-       fill="currentColor"
-       stroke="currentColor"
-       points="0.04,0.2 0.04,-0.2 7.8526,-1.01 7.8526,-0.61 "
-       id="polygon48" />
-  </g>
-  <g
-     transform="translate(8.5542,0.552)"
-     id="g54">
     <path
        transform="scale(0.004,-0.004)"
        d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
-       id="path52" />
+       id="path44" />
+  </g>
+  <g
+     transform="translate(0.8,1.052)"
+     id="g50">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 557,-125 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z m 0,250 c 0,28 23,51 51,51 28,0 51,-23 51,-51 0,-28 -23,-51 -51,-51 -28,0 -51,23 -51,51 z M 232,263 c 172,0 293,-88 293,-251 0,-263 -263,-414 -516,-521 -3,-3 -6,-4 -9,-4 -7,0 -13,6 -13,13 0,3 1,6 4,9 202,118 412,265 412,493 0,120 -63,235 -171,235 -74,0 -129,-54 -154,-126 11,5 22,8 34,8 C 167,119 212,74 212,19 212,-39 168,-87 112,-87 52,-87 0,-40 0,19 0,152 102,263 232,263 Z"
+       fill="currentColor"
+       id="path48" />
+  </g>
+  <g
+     transform="translate(5.865,2.052)"
+     id="g54">
+    <rect
+       x="-0.064999998"
+       y="0.68610001"
+       width="0.13"
+       height="2.1171999"
+       ry="0.039999999"
+       fill="currentColor"
+       id="rect52" />
+  </g>
+  <g
+     transform="translate(8.5542,0.552)"
+     id="g58">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path56" />
   </g>
   <g
      transform="translate(8.6192,2.052)"
-     id="g58">
+     id="g62">
     <rect
        x="-0.064999998"
        y="-1.3139"
@@ -181,20 +190,20 @@ tspan { white-space: pre; }
        height="3.8346"
        ry="0.039999999"
        fill="currentColor"
-       id="rect56" />
+       id="rect60" />
   </g>
   <g
      transform="translate(10.8084,1.552)"
-     id="g62">
+     id="g66">
     <path
        transform="scale(0.004,-0.004)"
        d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
-       id="path60" />
+       id="path64" />
   </g>
   <g
      transform="translate(10.8734,2.052)"
-     id="g66">
+     id="g70">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -202,16 +211,7 @@ tspan { white-space: pre; }
        height="2.6032"
        ry="0.039999999"
        fill="currentColor"
-       id="rect64" />
-  </g>
-  <g
-     transform="translate(13.5626,0.552)"
-     id="g70">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-       fill="currentColor"
-       id="path68" />
+       id="rect68" />
   </g>
   <g
      transform="translate(13.6276,2.052)"

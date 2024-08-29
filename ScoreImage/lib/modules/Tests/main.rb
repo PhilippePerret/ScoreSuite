@@ -4,7 +4,15 @@
 # On appelle la méthode d’entrée #run avec ’score-image tests’
 # 
 
+unless defined?(ScoreImage::SHORT_OPTION_TO_LONG)
+  ScoreImage::SHORT_OPTION_TO_LONG = {}
+end
+
 ScoreImage::SHORT_OPTION_TO_LONG.merge!({
+  f:  :fail_fast,
+  ff: :fail_fast,
+})
+CLI.set_options_table({
   f:  :fail_fast,
   ff: :fail_fast,
 })

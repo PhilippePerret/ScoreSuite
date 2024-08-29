@@ -1,5 +1,5 @@
 \version "2.24.0"
-#(set-default-paper-size "b6" 'portrait)
+#(set-default-paper-size "a0" 'landscape)
 \paper{
   indent=0\mm
   oddFooterMarkup=##f
@@ -18,9 +18,7 @@
     \relative c' {
       \omit Staff.TimeSignature
       \clef "treble"
-      fis'^\markup \override #'(baseline-skip . 2) \halign #-0.7 \center-column { \teeny \sharp \musicglyph "scripts.turn" \teeny \flat }
-
-      fis,_\markup \override #'(baseline-skip . 2) \halign #-0.5 \center-column { \teeny \sharp \musicglyph "scripts.turn" \teeny \flat }
+      fis'
     }
   >>
   } %/fin de score

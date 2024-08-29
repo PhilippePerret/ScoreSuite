@@ -1,0 +1,2 @@
+Nombre total de notes : 1
+f#   1  1.0 s

@@ -1,5 +1,5 @@
 --piano
---keep
+# --keep
 
 altrmd=
 \once \override TextScript #'script-priority = #-100 a’1\mordent^\markup { \hspace #0.5 \center-column { \teeny \sharp } }

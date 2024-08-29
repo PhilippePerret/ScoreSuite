@@ -1,0 +1,2 @@
+Nombre total de notes : 96
+f#   96  96.0 s

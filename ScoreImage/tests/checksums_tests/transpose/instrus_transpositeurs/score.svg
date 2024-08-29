@@ -391,16 +391,13 @@ tspan { white-space: pre; }
        id="rect112" />
   </g>
   <g
-     transform="translate(6.5799078,17.279)"
+     transform="translate(25.066308,13.779)"
      id="g118">
-    <rect
-       x="0"
-       y="-15.55"
-       width="0.16"
-       height="31.1"
-       ry="0.050000001"
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
        fill="currentColor"
-       id="rect116" />
+       id="path116" />
   </g>
   <g
      transform="translate(16.054908,3.279)"
@@ -751,8 +748,20 @@ tspan { white-space: pre; }
        id="rect256" />
   </g>
   <g
-     transform="translate(22.129008,30.779)"
+     transform="translate(6.5799078,17.279)"
      id="g262">
+    <rect
+       x="0"
+       y="-15.55"
+       width="0.16"
+       height="31.1"
+       ry="0.050000001"
+       fill="currentColor"
+       id="rect260" />
+  </g>
+  <g
+     transform="translate(22.129008,30.779)"
+     id="g266">
     <rect
        x="-0.064999998"
        y="-0.31389999"
@@ -760,19 +769,10 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect260" />
+       id="rect264" />
   </g>
   <g
-     transform="translate(25.066308,1.779)"
-     id="g266">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-       fill="currentColor"
-       id="path264" />
-  </g>
-  <g
-     transform="translate(25.066308,13.779)"
+     transform="translate(25.066308,22.279)"
      id="g270">
     <path
        transform="scale(0.004,-0.004)"
@@ -781,7 +781,7 @@ tspan { white-space: pre; }
        id="path268" />
   </g>
   <g
-     transform="translate(25.066308,22.279)"
+     transform="translate(25.066308,29.779)"
      id="g274">
     <path
        transform="scale(0.004,-0.004)"
@@ -790,17 +790,8 @@ tspan { white-space: pre; }
        id="path272" />
   </g>
   <g
-     transform="translate(25.066308,29.779)"
-     id="g278">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
-       fill="currentColor"
-       id="path276" />
-  </g>
-  <g
      transform="translate(25.131308,3.779)"
-     id="g282">
+     id="g278">
     <rect
        x="-0.064999998"
        y="-1.8139"
@@ -808,11 +799,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect280" />
+       id="rect276" />
   </g>
   <g
      transform="translate(26.305508,12.779)"
-     id="g286">
+     id="g282">
     <rect
        x="-0.064999998"
        y="-2.5"
@@ -820,11 +811,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect284" />
+       id="rect280" />
   </g>
   <g
      transform="translate(26.305508,21.779)"
-     id="g290">
+     id="g286">
     <rect
        x="-0.064999998"
        y="-3"
@@ -832,11 +823,11 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect288" />
+       id="rect284" />
   </g>
   <g
      transform="translate(25.131308,30.779)"
-     id="g294">
+     id="g290">
     <rect
        x="-0.064999998"
        y="-0.81389999"
@@ -844,10 +835,19 @@ tspan { white-space: pre; }
        height="3.3139"
        ry="0.039999999"
        fill="currentColor"
-       id="rect292" />
+       id="rect288" />
   </g>
   <g
      transform="translate(30.140708,1.279)"
+     id="g294">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path292" />
+  </g>
+  <g
+     transform="translate(30.140708,13.279)"
      id="g298">
     <path
        transform="scale(0.004,-0.004)"
@@ -856,36 +856,36 @@ tspan { white-space: pre; }
        id="path296" />
   </g>
   <g
-     transform="translate(30.140708,13.279)"
-     id="g302">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-       fill="currentColor"
-       id="path300" />
-  </g>
-  <g
      transform="translate(0.26190781,31.5714)"
-     id="g308">
+     id="g304">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text306"><tspan
-         id="tspan304">Sax E</tspan></text>
+       id="text302"><tspan
+         id="tspan300">Sax E</tspan></text>
   </g>
   <g
      transform="translate(5.5672078,30.9714)"
-     id="g312">
+     id="g308">
     <path
        transform="scale(0.0036,-0.0036)"
        d="m 29,39 -2,-64 v -11 c 0,-22 2,-43 5,-65 44,38 91,80 91,138 0,33 -13,66 -42,66 C 50,103 30,72 29,39 Z m -57,415 c 9,5 18,8 28,8 10,0 19,-3 28,-8 L 21,111 c 25,23 58,36 92,36 51,0 87,-49 87,-103 0,-79 -84,-117 -144,-169 -16,-14 -25,-41 -47,-41 -14,0 -25,13 -25,27 z"
        fill="currentColor"
-       id="path310" />
+       id="path306" />
   </g>
   <g
      transform="translate(30.140708,21.779)"
+     id="g312">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
+       fill="currentColor"
+       id="path310" />
+  </g>
+  <g
+     transform="translate(30.140708,29.279)"
      id="g316">
     <path
        transform="scale(0.004,-0.004)"
@@ -894,65 +894,65 @@ tspan { white-space: pre; }
        id="path314" />
   </g>
   <g
-     transform="translate(30.140708,29.279)"
-     id="g320">
-    <path
-       transform="scale(0.004,-0.004)"
-       d="m 213,112 c -45,0 -69,-34 -69,-88 0,-102 89,-136 134,-136 45,0 69,34 69,88 0,102 -89,136 -134,136 z m 32,24 C 389,136 491,71 491,0 491,-71 389,-136 245,-136 101,-136 0,-71 0,0 0,71 101,136 245,136 Z"
-       fill="currentColor"
-       id="path318" />
-  </g>
-  <g
      transform="translate(0.44140781,22.5073)"
-     id="g326">
+     id="g322">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text324"><tspan
-         id="tspan322">Cor A.</tspan></text>
+       id="text320"><tspan
+         id="tspan318">Cor A.</tspan></text>
   </g>
   <g
      transform="translate(-0.07949219,13.3528)"
-     id="g332">
+     id="g328">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text330"><tspan
-         id="tspan328">Cl.(B</tspan></text>
+       id="text326"><tspan
+         id="tspan324">Cl.(B</tspan></text>
   </g>
   <g
      transform="translate(4.8502078,12.7528)"
-     id="g336">
+     id="g332">
     <path
        transform="scale(0.0036,-0.0036)"
        d="m 29,39 -2,-64 v -11 c 0,-22 2,-43 5,-65 44,38 91,80 91,138 0,33 -13,66 -42,66 C 50,103 30,72 29,39 Z m -57,415 c 9,5 18,8 28,8 10,0 19,-3 28,-8 L 21,111 c 25,23 58,36 92,36 51,0 87,-49 87,-103 0,-79 -84,-117 -144,-169 -16,-14 -25,-41 -47,-41 -14,0 -25,13 -25,27 z"
        fill="currentColor"
-       id="path334" />
+       id="path330" />
   </g>
   <g
      transform="translate(5.5629078,13.3528)"
-     id="g342">
+     id="g338">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text340"><tspan
-         id="tspan338">)</tspan></text>
+       id="text336"><tspan
+         id="tspan334">)</tspan></text>
   </g>
   <g
      transform="translate(3.8899078,4.5278)"
-     id="g348">
+     id="g344">
     <text
        font-family="serif"
        font-size="2.2px"
        text-anchor="start"
        fill="currentColor"
-       id="text346"><tspan
-         id="tspan344">Fl.</tspan></text>
+       id="text342"><tspan
+         id="tspan340">Fl.</tspan></text>
+  </g>
+  <g
+     transform="translate(25.066308,1.779)"
+     id="g348">
+    <path
+       transform="scale(0.004,-0.004)"
+       d="m 218,136 c 66,0 108,-36 108,-89 0,-89 -113,-183 -218,-183 -66,0 -108,36 -108,89 0,89 113,183 218,183 z"
+       fill="currentColor"
+       id="path346" />
   </g>
 </svg>

@@ -272,6 +272,10 @@ def traite_ornements_with_dbl_alterations(line)
     hspace_sup = alte_inf == '#' ? '0.7' : '0.8'
     hspace_inf = alte_inf == '#' ? '0.5' : '0.6'
 
+    # Légère rectification de la ligne de base en fonction
+    # de l’altération
+    baseline_skip = alte_inf == 'b' ? '2.4' : '2.1'
+
     alte_sup =
       case alte_sup
       when '#' then '\sharp'
@@ -291,10 +295,12 @@ def traite_ornements_with_dbl_alterations(line)
 
     posup = position == '^'
 
-    ornementation = '%{pos}\markup %{bskip} %{halign} \center-column {%{alte_sup} \musicglyph "scripts.turn"%{alte_inf} }'.freeze % {
+
+    ornementation = '%{pos}\markup %{bskip} %{halign} \center-column {%{alte_sup} \musicglyph "scripts.%{sign}"%{alte_inf} }'.freeze % {
       pos: position, # au-dessus ou au-dessous,
-      bskip: '\override #\'(baseline-skip . 2)'.freeze,
+      bskip: '\override #\'(baseline-skip . %s)'.freeze % [baseline_skip],
       halign: '\halign #-%s'.freeze % [posup ? hspace_sup : hspace_inf],
+      sign: ornement,
       alte_sup: alte_sup,
       alte_inf: alte_inf,
     }
