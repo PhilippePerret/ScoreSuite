@@ -27,4 +27,10 @@ class MusicScore
 
   CUR_DIR = ENV['CUR_DIR']||ENV['CURRENT_FOLDER']||ENV['PWD']
 
+  SHORT_OPTION_TO_LONG = {
+    o: :open
+  }
+
+  CLI.set_options_table(SHORT_OPTION_TO_LONG)
+
 end #/class MusicScore

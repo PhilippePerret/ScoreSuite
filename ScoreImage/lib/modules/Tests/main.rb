@@ -4,10 +4,10 @@
 # On appelle la méthode d’entrée #run avec ’score-image tests’
 # 
 
-SHORT_OPTION_TO_LONG = {
-  'f' => :fail_fast,
-  'ff' => :fail_fast,
-}
+ScoreImage::SHORT_OPTION_TO_LONG.merge!({
+  f:  :fail_fast,
+  ff: :fail_fast,
+})
 
 module ScoreImage
 class Test

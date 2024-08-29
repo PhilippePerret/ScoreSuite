@@ -50,7 +50,7 @@ class << self
       {name:"Ouvrir le test dans l’éditeur", value: :open_ide},
       {name:"Ne rien faire", value: :noting}
     ]
-    case Q.select("Dois-je ouvrir le dossier du tesst".jaune, choices, **{per_page:choices.count, cycle:true, filter:true})
+    case Q.select("Dois-je ouvrir le dossier du test".jaune, choices, **{per_page:choices.count, cycle:true, filter:true})
     when :open_finder then musfile.open
     when :open_ide    then musfile.open_in_ide
     else

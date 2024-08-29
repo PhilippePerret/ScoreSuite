@@ -32,16 +32,13 @@ class << self
     init
     mscore = MusicScore.new
     mscore.proceed(params)
-    if params[:can_open]
-      if Q.yes?("Dois-je ouvrir le dossier de l’image produite ?".jaune)
-        # mscore.open
-        if mscore.mus_file
-          puts "mscore.mus_file: #{mscore.mus_file}"
-        else
-          puts "Le music score n’a pas de mus_file, j’ouvre le dossier courant".jaune
-          sleep 2
-          `open -a Finder "#{CUR_DIR}/scores"`
-        end
+    if params[:can_open] && CLI.option(:open)
+      # mscore.open
+      if mscore.mus_file
+        puts "mscore.mus_file: #{mscore.mus_file}"
+      else
+        puts "Le music score n’a pas de mus_file, j’ouvre le dossier courant".jaune
+        `open -a Finder "#{CUR_DIR}/scores"`
       end
     end
   end
@@ -165,7 +162,7 @@ def parse_command_line
         argv, valu = parse_cline_element(argv[2..-1])
       elsif argv.start_with?('-')
         argv, valu = parse_cline_element(argv[1..-1])
-        argv = SHORT_OPTION_TO_LONG[argv] || raise("L'option -#{argv.inspect} n'est pas définie…")
+        argv = SHORT_OPTION_TO_LONG[argv.to_sym] || raise("L'option -#{argv.inspect} n'est pas définie…")
       end
       # puts "OPT: #{argv.inspect} => #{valu.inspect}"
       @options.merge!(argv.to_sym => valu)

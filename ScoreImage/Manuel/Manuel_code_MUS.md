@@ -1252,25 +1252,25 @@ Pour s’assurer que le rythme soit bon (et que les statistiques soient bien cal
 
 #### Ornements et signes d’interprétation
 
-| Objet | Code           | Description                                                  |
-| ----- | -------------- | ------------------------------------------------------------ |
-|       | c\mordent      | Mordant inférieur (au-dessus de la note)                     |
-|       | c_\mordent     | Mordant inférieur sous la note                               |
-|       | c\mordentb     | Mordant inférieur avec note bémolisée (au-dessus de la note)<br />Le bémol est le « b » après « mordent » |
-|       | c\mordent#     | Mordant inférieur avec note diésée (au-dessus de la note)<br />Le dièse est le « # » après « mordent » |
-|       | c\mordentn     | Mordant inférieur avec note bécarisée (au-dessus de la note)<br />Le bécarre est le « n » après « mordent » (« n » pour « natural ») |
-|       | c\prall        | Mordant supérieur (au-dessus)                                |
-|       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\prallb`, `c\prall#`, `c\pralln` et pour la note en dessous : `c\prall/b` `c\prall/#` et `c\prall/n`.<br />Pour le moment, on ne peut pas altérer les deux notes, mais plus tard, on pourra faire :<br />`c\prall#/#` |
-|       | c\prall#       | Mordant supérieur diésé                                      |
-|       | c\pralln       | Mordant supérieur bécarisé                                   |
-|       | c_\prall       | Mordant supérieur (sous la note)                             |
-|       | c\turn         | Gruppeto (sur la note)                                       |
-|       |                | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\turnb`, `c\turn#`, `c\turnn`. |
-|       | c_\turn        | Gruppeto (sous la note)                                      |
-|       | c\reverseturn  | Gruppeto inversé                                             |
-|       | c_\reverseturn | Gruppeto inversé (sous la note)                              |
-|       | c\fermata      | Point d’orgue                                                |
-|       | c_\fermata     | Point d’orgue en dessous                                     |
+| Objet                                                        |      | Code              | Description                                                  |
+| ------------------------------------------------------------ | ---- | ----------------- | ------------------------------------------------------------ |
+| <img src="images/mordant_inf_up.svg" alt="mordant_inf_up" style="zoom:140%;" /> |      | **`c'\mordent`**  | Mordant inférieur (au-dessus de la note)                     |
+| <img src="images/mordant_inf_down.svg" alt="mordant_inf_down" style="zoom:140%;" /> |      | **`c_\mordent`**  | Mordant inférieur sous la note                               |
+| <img src="images/mordant_inf_bemol.svg" alt="mordant_inf_bemol" style="zoom:120%;" /> |      | **`c'\mordentb`** | Mordant inférieur avec note bémolisée (au-dessus de la note)<br />Le bémol est le « b » après « mordent » |
+| <img src="images/mordant_inf_diese.svg" alt="mordant_inf_diese" style="zoom:120%;" /> |      | **`c'\mordent#`** | Mordant inférieur avec note diésée (au-dessus de la note)<br />Le dièse est le « # » après « mordent » |
+| <img src="images/mordant_inf_becarre.svg" alt="mordant_inf_becarre" style="zoom:120%;" /> |      | **`c’\mordentn`** | Mordant inférieur avec note bécarisée (au-dessus de la note)<br />Le bécarre est le « n » après « mordent » (« n » pour « natural ») |
+| <img src="images/mordant_sup.svg" alt="mordant_sup" style="zoom:120%;" /> |      | **`c'\prall`**    | Mordant supérieur (au-dessus)                                |
+| <img src="images/mordant_sup_diese.svg" alt="mordant_sup_diese" style="zoom:120%;" /> |      | **`c'\prall#`**   | Mordant supérieur diésé                                      |
+| <img src="images/mordant_sup_bemol.svg" alt="mordant_sup_bemol" style="zoom:120%;" /> |      | **`c’\prallb`**   | Mordant supérieur bémolisé                                   |
+| <img src="images/mordant_sup_becarre.svg" alt="mordant_sup_becarre" style="zoom:120%;" /> |      | **`c'\pralln`**   | Mordant supérieur bécarisé                                   |
+| <img src="images/mordant_sup_down.svg" alt="mordant_sup_down" style="zoom:120%;" /> |      | **`c_\prall`**    | Mordant supérieur sous la note                               |
+| <img src="images/gruppeto.svg" alt="gruppeto" style="zoom:120%;" /> |      | **`c'\turn`**     | Gruppeto (sur la note)                                       |
+|                                                              |      |                   | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\turnb`, `c\turn#`, `c\turnn`. |
+|                                                              |      | c_\turn           | Gruppeto (sous la note)                                      |
+|                                                              |      | c\reverseturn     | Gruppeto inversé                                             |
+|                                                              |      | c_\reverseturn    | Gruppeto inversé (sous la note)                              |
+|                                                              |      | c\fermata         | Point d’orgue                                                |
+|                                                              |      | c_\fermata        | Point d’orgue en dessous                                     |
 
 Pour d’autres ornements, voir [https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations](https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations).
 
