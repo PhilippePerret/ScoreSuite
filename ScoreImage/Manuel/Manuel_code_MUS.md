@@ -1252,29 +1252,57 @@ Pour s’assurer que le rythme soit bon (et que les statistiques soient bien cal
 
 #### Ornements et signes d’interprétation
 
-| Objet                                                        |      | Code              | Description                                                  |
-| ------------------------------------------------------------ | ---- | ----------------- | ------------------------------------------------------------ |
-| <img src="images/mordant_inf_up.svg" alt="mordant_inf_up" style="zoom:140%;" /> |      | **`c'\mordent`**  | Mordant inférieur (au-dessus de la note)                     |
-| <img src="images/mordant_inf_down.svg" alt="mordant_inf_down" style="zoom:140%;" /> |      | **`c_\mordent`**  | Mordant inférieur sous la note                               |
-| <img src="images/mordant_inf_bemol.svg" alt="mordant_inf_bemol" style="zoom:120%;" /> |      | **`c'\mordentb`** | Mordant inférieur avec note bémolisée (au-dessus de la note)<br />Le bémol est le « b » après « mordent » |
-| <img src="images/mordant_inf_diese.svg" alt="mordant_inf_diese" style="zoom:120%;" /> |      | **`c'\mordent#`** | Mordant inférieur avec note diésée (au-dessus de la note)<br />Le dièse est le « # » après « mordent » |
-| <img src="images/mordant_inf_becarre.svg" alt="mordant_inf_becarre" style="zoom:120%;" /> |      | **`c’\mordentn`** | Mordant inférieur avec note bécarisée (au-dessus de la note)<br />Le bécarre est le « n » après « mordent » (« n » pour « natural ») |
-| <img src="images/mordant_sup.svg" alt="mordant_sup" style="zoom:120%;" /> |      | **`c'\prall`**    | Mordant supérieur (au-dessus)                                |
-| <img src="images/mordant_sup_diese.svg" alt="mordant_sup_diese" style="zoom:120%;" /> |      | **`c'\prall#`**   | Mordant supérieur diésé                                      |
-| <img src="images/mordant_sup_bemol.svg" alt="mordant_sup_bemol" style="zoom:120%;" /> |      | **`c’\prallb`**   | Mordant supérieur bémolisé                                   |
-| <img src="images/mordant_sup_becarre.svg" alt="mordant_sup_becarre" style="zoom:120%;" /> |      | **`c'\pralln`**   | Mordant supérieur bécarisé                                   |
-| <img src="images/mordant_sup_down.svg" alt="mordant_sup_down" style="zoom:120%;" /> |      | **`c_\prall`**    | Mordant supérieur sous la note                               |
-| <img src="images/gruppeto.svg" alt="gruppeto" style="zoom:120%;" /> |      | **`c'\turn`**     | Gruppeto (sur la note)                                       |
-|                                                              |      |                   | Tout comment pour `\mordent` on peut utiliser, pour altérer les notes à jouer :<br />`c\turnb`, `c\turn#`, `c\turnn`. |
-|                                                              |      | c_\turn           | Gruppeto (sous la note)                                      |
-|                                                              |      | c\reverseturn     | Gruppeto inversé                                             |
-|                                                              |      | c_\reverseturn    | Gruppeto inversé (sous la note)                              |
-|                                                              |      | c\fermata         | Point d’orgue                                                |
-|                                                              |      | c_\fermata        | Point d’orgue en dessous                                     |
+| Objet                                                        |      | Code                    | Description                                                  |
+| ------------------------------------------------------------ | ---- | ----------------------- | ------------------------------------------------------------ |
+| <img src="images/mordant_inf_up.svg" alt="mordant_inf_up" style="width:120px;" /> |      | **`c'\mordent`**        | Mordant inférieur (au-dessus de la note)                     |
+| <img src="images/mordant_inf_down.svg" alt="mordant_inf_down" style="zoom:140%;" /> |      | **`c_\mordent`**        | Mordant inférieur sous la note                               |
+| <img src="images/mordant_inf_bemol.svg" alt="mordant_inf_bemol" style="zoom:120%;" /> |      | **`c'\mordentb`**       | Mordant inférieur avec note bémolisée (au-dessus de la note)<br />Le bémol est le « b » après « mordent » |
+| <img src="images/mordant_inf_diese.svg" alt="mordant_inf_diese" style="zoom:120%;" /> |      | **`c'\mordent#`**       | Mordant inférieur avec note diésée (au-dessus de la note)<br />Le dièse est le « # » après « mordent » |
+| <img src="images/mordant_inf_becarre.svg" alt="mordant_inf_becarre" style="zoom:120%;" /> |      | **`c’\mordentn`**       | Mordant inférieur avec note bécarisée (au-dessus de la note)<br />Le bécarre est le « n » après « mordent » (« n » pour « natural ») |
+| <img src="images/mordant_sup.svg" alt="mordant_sup" style="zoom:120%;" /> |      | **`c'\prall`**          | Mordant supérieur (au-dessus)                                |
+| <img src="images/mordant_sup_diese.svg" alt="mordant_sup_diese" style="zoom:120%;" /> |      | **`c'\prall#`**         | Mordant supérieur diésé                                      |
+| <img src="images/mordant_sup_bemol.svg" alt="mordant_sup_bemol" style="zoom:120%;" /> |      | **`c’\prallb`**         | Mordant supérieur bémolisé                                   |
+| <img src="images/mordant_sup_becarre.svg" alt="mordant_sup_becarre" style="zoom:120%;" /> |      | **`c'\pralln`**         | Mordant supérieur bécarisé                                   |
+| <img src="images/mordant_sup_down.svg" alt="mordant_sup_down" style="zoom:120%;" /> |      | **`c_\prall`**          | Mordant supérieur sous la note                               |
+| <img src="images/gruppeto.svg" alt="gruppeto" style="zoom:120%;" /> |      | **`c'\turn`**           | Gruppetto sur la note.                                       |
+| <img src="images/turn_force_audessus.svg" alt="turn_force_audessus" style="zoom:120%;" /> |      | **`c^\turn`**           | Pour forcer la gravure du gruppetto au-dessus de la note, on peut ajouter `^` conformément au langage LilyPond. Noter que dans l’exemple, c’est superflu. |
+| <img src="images/turn_b.svg" alt="turn_b" style="zoom:120%;" /> |      | **`c'\turnb`**          | Gruppetto sur la note avec note bémolée au-dessus            |
+| <img src="images/turn_d.svg" alt="turn_d" style="zoom:120%;" /> |      | **`c'\turn#`**          | Gruppetto sur la note avec note diésée au-dessus             |
+| <img src="images/turn_becarre.svg" alt="turn_becarre" style="zoom:120%;" /> |      | **`c'\turnn`**          | Gruppetto sur la note avec note bécarrisée au-dessus         |
+| <img src="images/turn_b_sous.svg" alt="turn_b_sous" style="zoom:120%;" /> |      | **`c'\turn/b`**         | Gruppetto sur la note avec note bémolée au-dessous           |
+| <img src="images/turn_d_sous.svg" alt="turn_d_sous" style="zoom:120%;" /> |      | **`c'\turn/#`**         | Gruppetto sur la note avec note diésée au-dessous            |
+| <img src="images/turn_becarre_sous.svg" alt="turn_becarre_sous" style="zoom:120%;" /> |      | **`c'\turn/n`**         | Gruppetto sur la note avec note bécarrisée au-dessous        |
+|                                                              |      |                         | Toutes les autres combinaisons sont possibles. Par exemple : |
+| <img src="images/turn_db.svg" alt="turn_db" style="zoom:120%;" /> |      | **`c'\turn#/b`**        | Gruppetto sur la note avec note diésée au-dessus et note bécarrisée au-dessous |
+| <img src="images/turn_bd.svg" alt="turn_bd" style="zoom:120%;" /> |      | **`c'\turnb/#`**        | Gruppetto sur la note avec note bémolée au-dessus et note diésées en dessous |
+| <img src="images/turn_nn.svg" alt="turn_nn" style="zoom:120%;" /> |      | **`c'\turnn/n`**        | Gruppetto sur la note avec note bécarrisée au-dessous et au-dessus |
+| <img src="images/turn_sous_note.svg" alt="turn_sous_note" style="zoom:120%;" /> |      | **`c'_\turn`**          | Gruppetto sous la note.                                      |
+| <img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/reverseturn.svg" alt="reverseturn" style="width:120px;" /> |      | **`c'\reverseturn`**    | Gruppetto inversé                                            |
+| <img src="images/reverseturn_db.svg" alt="reverseturn_db" style="zoom:120%;" /> |      | **`c'\reverseturn#/b`** | Gruppetto inversé avec notes altérées                        |
+| <img src="images/reverseturn_sous.svg" alt="reverseturn_sous" style="zoom:120%;" /> |      | **`c'_\reverseturn`**   | Gruppetto inversé sous la note                               |
+| <img src="images/haydnturn.svg" alt="haydnturn" style="zoom:120%;" /> |      | **`c'\haydnturn`**      | Gruppetto haydnien                                           |
+| <img src="images/haydnturn_dd.svg" alt="haydnturn_dd" style="zoom:120%;" /> |      | **`c'\haydnturn#/#`**   | Gruppetto haydnien en dessous avec notes altérées            |
+| <img src="images/slashturn_sous.svg" alt="slashturn_sous" style="zoom:120%;" /> |      | **`c'_\slashturn`**     | Gruppetto barré en dessous                                   |
+| <img src="images/slashturn_bb.svg" alt="slashturn_bb" style="zoom:120%;" /> |      | **`c^\slashturnb/b`**   | Gruppetto barré avec notes altérées                          |
+|                                                              |      |                         |                                                              |
+
 
 Pour d’autres ornements, voir [https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations](https://lilypond.org/doc/v2.21/Documentation/notation/list-of-articulations).
 
 Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation/notation/expressive-marks-attached-to-notes).
+
+---
+
+#### Signes d’interprétation
+
+
+| <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:300px;">Code</span> | <span style="display:inline-block;width:200px;">Description</span> |
+| ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| <img src="images/point_orgue.svg" alt="point_orgue" style="zoom:120%;" /> |                                                             | **`c'\fermata`**                                             |
+| <img src="images/point_orgue_sous.svg" alt="point_orgue_sous" style="zoom:120%;" /> |                                                             | **`c_\fermata`**                                             |
+|                                                              |                                                             |                                                              |
+
+---
 
 #### Trilles
 
@@ -1288,8 +1316,9 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | <img src="images/exemples/trille_note_precise.svg" style="  width:120px;" /> | **`\tr(cis' dis) `**                                        | Pour triller avec une autre note que la note naturelle.      |
 | <img src="images/exemples/trille_longue.svg" style="  width:100%;" /> | **`\tr(c'1)- c a\-tr`**                                     | Noter le “tr-” pour commencer et le “-tr” pour finir         |
 | <img src="./images/trille_longue_en_dessous.svg" style="width:100%;" /> | **`\_tr(c'1)- c a\-tr`**                                    | La même chose en forçant la trille en dessous.               |
-| <img src="images/exemples/trille_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Note quand même la logique générale. |
+| <img src="images/exemples/trille_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Noter quand même la logique générale. |
 | <img src="images/exemples/trille_non_naturelle_et_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1 dis)- (b16 cis)\-tr d1`**                      | On ajoute une note trillée avec une note étrangère           |
+|                                                              |                                                             |                                                              |
 
 
 
@@ -1310,6 +1339,7 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | **Acciaccature**                                             | **`\gr(note/-) note`**                                      |                                                              |
 | Exemple                                                      | `\gr(ais'16/-) b4`                                          | <img src="images/exemples/acciaccatura.svg" style=" width:90px;" /> |
 | **Quand plusieurs notes**                                    | **`\grace note[ note note note]`**<br />                    |                                                              |
+|                                                              |                                                             |                                                              |
 
 #### Notes « mergées »
 
