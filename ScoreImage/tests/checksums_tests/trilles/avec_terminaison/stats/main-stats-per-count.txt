@@ -1,0 +1,10 @@
+Nombre total de notes : 12
+f    2  3.75 s
+c#   2  3.75 s
+a    2  3.75 s
+d    1   4.0 s
+e    1  0.25 s
+g    1   4.0 s
+g#   1  0.25 s
+b    1  0.25 s
+bb   1   4.0 s

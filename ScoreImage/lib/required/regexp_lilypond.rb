@@ -52,4 +52,6 @@ class MusicScore
 
   REG_REPETITION_ASTERISK = /\b#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?\*(?<fois>[0-9]+)/.freeze
 
+  REG_TRILLE_WITH_TERM = /\\(?<pos>[\^_])?tr\((?<notesdep>.*?)\)\-(?<internotes>.*?)\((?<gnotes>.*?)\)\\\-tr/.freeze
+
 end #/class MusicScore

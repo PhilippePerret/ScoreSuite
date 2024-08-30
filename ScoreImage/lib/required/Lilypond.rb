@@ -768,23 +768,23 @@ private
     # qui doit donner : \afterGrace a'1\startTrillSpan { gis32[ a]\stopTrillSpan } b1
     # 
     # On peut avoir au départ '\tr(cis dis)' pour triller avec une note étrangère
-    str = str.gsub(/\\tr\((.*?)\)\-(.*?)\((.*?)\)\\\-tr/){
+    str = str.gsub(REG_TRILLE_WITH_TERM){
       seq = [] # pour construire le texte
       seq << '\afterGrace '
-      notesdep = $1.freeze.split(' ')
+      notesdep = $~[:notesdep].freeze.split(' ')
       note_depart = notesdep.shift
       note_trilled = notesdep.count > 0 ? notesdep[0] : nil
       if note_trilled
         seq << '\pitchedTrill '
       end
       seq << note_depart
-      seq << '\startTrillSpan '
+      seq << "#{$~[:pos]}\\startTrillSpan "
       if note_trilled
         seq << note_trilled + ' '
       end
-      inter_notes   = $2.freeze
+      inter_notes   = $~[:internotes].freeze
       seq << inter_notes
-      gnotes  = $3.freeze.split(' ')
+      gnotes  = $~[:gnotes].freeze.split(' ')
       seq << '{ '
       seq << gnotes.shift
       if gnotes.count > 0

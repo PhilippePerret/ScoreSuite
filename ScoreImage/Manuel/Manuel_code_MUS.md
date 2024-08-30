@@ -1317,6 +1317,8 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | <img src="images/exemples/trille_longue.svg" style="  width:100%;" /> | **`\tr(c'1)- c a\-tr`**                                     | Noter le “tr-” pour commencer et le “-tr” pour finir         |
 | <img src="./images/trille_longue_en_dessous.svg" style="width:100%;" /> | **`\_tr(c'1)- c a\-tr`**                                    | La même chose en forçant la trille en dessous.               |
 | <img src="images/exemples/trille_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1)- (b16 cis)\-tr d1`**                          | Noter ici la tournure différente à la fin, avec les deux grâce-note entre parenthèses. Noter quand même la logique générale. |
+| <img src="images/trille_longue_avec_term.svg" alt="trille_longue_avec_term" style="width:240px;" /> | **`\tr(a'1)-( (gis16 a)\-tr bes1)`**                        | Même chose avec une liaison.                                 |
+| <img src="images/trille_avec_term_et_slur_courte.svg" alt="trille_avec_term_et_slur_courte" style="width:240px;" /> | **`\tr(a'1)- (gis16( a))\-tr bes1`**                        | Même chose avec une liaison courte sur les deux petites notes |
 | <img src="images/exemples/trille_non_naturelle_et_notes_fins.svg" style="  width:240px;" /> | **`\tr(cis'1 dis)- (b16 cis)\-tr d1`**                      | On ajoute une note trillée avec une note étrangère           |
 |                                                              |                                                             |                                                              |
 

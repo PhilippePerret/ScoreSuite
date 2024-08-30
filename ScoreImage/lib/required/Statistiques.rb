@@ -74,6 +74,62 @@ class Statistiques
         end
       end
 
+      # D’une durée absolue vers une durée LilyPond
+      # 
+      # Par exemple 4 var donnée 1
+      def abs_duration_to_ll_duration(note, abs_duree)
+        dduree = decompose_abs_duration(abs_duree)
+
+        dduree.map do |llduree, nombre|
+          next if nombre == 0
+          "#{note}#{llduree}"
+        end.compact.join('~ ')
+
+      end
+      def decompose_abs_duration(abs_duree)
+        # puts "abs_duree (départ) : #{abs_duree}".jaune
+        dduree = {1 => 0, 2 => 0, 4 => 0, 8 => 0, 16 => 0, 32 => 0, 64 => 0}
+        llduree = abs_duree
+        nombre_rondes = (llduree / 4).to_i
+        # puts "nombre_rondes = #{nombre_rondes.inspect}".bleu
+        dduree[1] = nombre_rondes
+        llduree -= (nombre_rondes * 4)
+        return dduree if llduree <= 0
+        nombre_blanches = (llduree / 2).to_i
+        # puts "nombre_blanches = #{nombre_blanches.inspect}".bleu
+        dduree[2] = nombre_blanches
+        llduree -= nombre_blanches * 2
+        return dduree if llduree <= 0
+        nombre_noires   = (llduree / 1).to_i
+        # puts "nombre_noires : #{nombre_noires.inspect}".bleu
+        dduree[4] = nombre_noires
+        llduree -= nombre_noires * 1
+        return dduree if llduree <= 0
+        nombre_croches  = (llduree / 0.5).to_i
+        # puts "nombre_croches : #{nombre_croches}".bleu
+        dduree[8] = nombre_croches
+        llduree -= (nombre_croches * 0.5)
+        return dduree if llduree <= 0
+        nombre_doubles = (llduree / 0.25).to_i
+        # puts "nombre_doubles : #{nombre_doubles}".bleu
+        dduree[16] = nombre_doubles
+        llduree -= (nombre_doubles * 0.25)
+        return dduree if llduree <= 0
+        nombre_triples = (llduree / 0.125).to_i
+        # puts "nombre_triples : #{nombre_triples}".bleu
+        dduree[32] = nombre_triples
+        llduree -= (nombre_triples * 0.125)
+        return dduree if llduree <= 0
+        nombre_quadru = (llduree / 0.0625).to_i
+        # puts "nombre_quadru : #{nombre_quadru}".bleu
+        dduree[64] = nombre_quadru
+        llduree -= (nombre_quadru * 0.0625)
+
+        # puts "reste : #{llduree.inspect}".bleu
+
+        return dduree
+      end
+
     end #/<< self
 
     # ==================== INSTANCE ==================== #
@@ -448,6 +504,8 @@ class Statistiques
     end
   end
 
+  # Méthode principale qui parse (analyse) la ligne de code MUS 
+  # +line+ pour en tirer les notes
   def parse_line(line, add_notes = true)
 
     # puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
@@ -458,6 +516,9 @@ class Statistiques
     # On retire toutes les expressions lilypond qui peuvent comporter
     # des notes, à commencer par les \relative <note>
     line = epure_lily_expressions_with_notes_in(line)
+
+    # Traitement des trilles avec terminaisons
+    line = traite_trille_with_terminaisons_in(line)
 
     # Traitement des répétitions
     line = traitement_des_repetitions(line) 
@@ -530,6 +591,54 @@ class Statistiques
     return line  
   end
 
+
+  # Traitement des notes dans les terminaisons de trilles.
+  # 
+  # Typiquement, si on a l’expression :
+  # 
+  #   ’\_tr(<n1>)- (<n2> <n3>)\-tr’
+  # 
+  # … alors il faut retirer à <n1> la durée donnée à <n2> et <n3>
+  # 
+  def traite_trille_with_terminaisons_in(line)
+    return line unless line.match?(/\\\-tr/.freeze)
+    line = line.gsub(REG_TRILLE_WITH_TERM) do
+      raw_note_trilled = $~[:notesdep].freeze.split(' ').shift
+      inter_notes = $~[:internotes].freeze
+      term_notes_ini  = $~[:gnotes].freeze
+      term_notes = term_notes_ini.split(' ')
+
+      raw_note_trilled.scan(REG_NOTE_DUREE_SIMPLE)
+      note_trilled = StatNote.new([$~[:note],$~[:alter],$~[:octave],$~[:duration]])
+
+      last_duration = note_trilled.duration
+
+      # Les notes de la terminaison
+      term_notes = term_notes.map do |raw_note|
+        raw_note.scan(REG_NOTE_DUREE_SIMPLE)
+        no_note = $~[:note]
+        no_alte = $~[:alter]
+        no_octa = $~[:octave]
+        no_dure = $~[:duration] || last_duration
+        last_duration = no_dure.dup
+        StatNote.new([no_note, no_alte, no_octa, no_dure])
+      end
+
+      # On doit retirer à la durée de la note trillée la durée des
+      # petites notes de terminaisons
+      abs_duree_to_sup = term_notes.sum do |no|
+        no.abs_duration
+      end
+
+      new_duree = note_trilled.abs_duration - abs_duree_to_sup
+      new_note_trilled = StatNote.abs_duration_to_ll_duration(note_trilled.note_abs, new_duree)
+
+      # On reconstitue ce qu’il faut garder
+      "#{new_note_trilled} #{inter_notes} #{term_notes_ini}"
+    end
+
+    return line
+  end
 
   # Traite les répétitions dans la ligne, car elles sont traitées en tant que
   # telles
