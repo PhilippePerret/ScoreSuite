@@ -13,6 +13,8 @@ class MusicScore
   500: Pas de groupes imbriqués.
   501: Un groupe n’a pas été fermé.
 
+  1700: Une trille longue requiert impérativement sa maque de fin ’\\-tr’.
+
   TEXT
 
 

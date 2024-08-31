@@ -50,8 +50,8 @@ Quel que soit le test :
 ### … un test négatif
 
 * en cas d’erreur (ce qui est ok) :
-  * relever le code de l’erreur dans le message donné en console
-  * le placer dans un fichier **`FAILURE`** à la racine du test
+  * relever le code de l’erreur dans le message donné en console (cette erreur doit donc être consignée dans le fichier `constants.rb` — et plus tard dans les fichiers des locales  — et l’erreur doit être écrite avec la formule `ERREUR[<numéro erreur>` afin de produire le message adéquat).
+  * le placer dans un fichier **`FAILURE`** à la racine du test (donc le fichier `FAILURE` peut ne contenir que le numéro de l’erreur, par exemple `1702`)
   * relancer le test (qui doit alors passer)
 * en cas de succès (donc d’erreur…)
   * modifier le code de l’application jusqu’à ce qu’il produise l’erreur attendue,

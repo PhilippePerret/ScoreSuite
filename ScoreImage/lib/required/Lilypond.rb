@@ -760,9 +760,50 @@ private
   end
 
 
+  # === LES TRILLES ===
+  #
+  # Les trilles sont marquées de deux façons générales différentes :
+  # 
+  #   1. Avec le code réduit ’\tr(...)’
+  # 
+  #   2. Avec les mots ’\startTr’ et ’\stopTr’ (en cas de trilles
+  #      qui s’enchainent par exemple)
+  # 
   def translate_trilles_from_ms(str)
-    # === LES TRILLES ===
-    #
+    # Remplacer les marques \startTr et \stopTr
+    str = str.gsub(/(?<pos>[\^_]?\\)(?<what>start|stop)Tr /.freeze, '\k<pos>\k<what>TrillSpan ')
+    return str unless str.match?(REG_TRILL_START)
+    # Si l’expression comporte des trilles longue (repérables à
+    # leur écriture ’\tr(...)- ... \-tr’) on s’assure qu’elles aient
+    # bien leur terminaison ’\-tr’
+    if str.match?(REG_LONG_TRILL_START)
+      offset_in   = -1
+      offset_out  = -1
+      begin
+        while offset_in = str.index(REG_LONG_TRILL_START, offset_in + 1)
+
+          # Si le décalage trouvé est maintenant inférieur à la marque
+          # de fin de la trille, c’est qu’il manque une fermeture
+          if offset_in < offset_out
+            raise ERREUR[1700]
+          end
+          offset_out = str.index(REG_TRILL_END, offset_out + 1)
+          
+          # Si aucune marque de fin n’a été trouvée, on signale une
+          # erreur d’écriture
+          if not(offset_out)
+            raise ERREUR[1700]
+          end
+        end #/while
+      rescue Exception => e
+        if str.length > 300
+          offset_in = offset_in - 10
+          offset_in = 0 if offset_in < 0
+          str = str[offset_in..offset_in + 100]
+        end
+        raise "#{e.message} in ’#{str}’"
+      end
+    end
     # La formule complexe 'a \tr-(gis32 a) b \-tr'
     # Ou plutôt : \tr(a'1)- (gis32 a)\-tr b1 
     # qui doit donner : \afterGrace a'1\startTrillSpan { gis32[ a]\stopTrillSpan } b1

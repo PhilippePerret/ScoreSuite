@@ -62,7 +62,7 @@ class MusFile
         err_msgs +=  extra_tests.errors if not( extra_tests.errors.empty?)
         err_msgs = ['néant'] if err_msgs.empty?
         err_msgs = err_msgs.join(',')
-        @error_msg = MSG_NEGATIVE_ERROR % {relpath:relative_path, code: expected_error_code, texts: err_msgs}
+        @error_msg = MSG_NEGATIVE_ERROR % {relative_path:relative_path, code: expected_error_code, texts: err_msgs}
       end
     else
       #

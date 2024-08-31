@@ -1,0 +1,6 @@
+# Test de deux trilles longues qui s’enchainent
+
+--keep
+
+-> score
+ais’1 \startTr ais! ais \stopTr _\startTr ais! \stopTr

@@ -1,0 +1,10 @@
+# Test d’une trille longue où il manque le \-tr de fin.
+# Pour complexifier la chose, on met deux trilles longues dont 
+# seule la deuxième n’a pas ce qu’il faut.
+# Voir le test ’sans_manque_fin_trille’ qui reprend le même test
+# mais en mettant la fin
+
+# --keep
+
+-> score
+\tr(ais’1)- ais! g \tr(ais1)- ais! g\-tr

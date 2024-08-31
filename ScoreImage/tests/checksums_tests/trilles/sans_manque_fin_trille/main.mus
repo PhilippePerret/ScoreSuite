@@ -1,0 +1,8 @@
+# Test d’une trille longue où il ne manque plus le \-tr de fin.
+# C’est la contrepartie du test ’err_manque_fin_trille’ qui teste
+# le même code mais avec un manque de finale
+
+--keep
+
+-> score
+\tr(ais’1)- ais! g\-tr \tr(ais1)- ais! g\-tr
