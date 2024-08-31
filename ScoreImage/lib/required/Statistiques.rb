@@ -519,6 +519,8 @@ class Statistiques
 
     # Traitement des trilles avec terminaisons
     line = traite_trille_with_terminaisons_in(line)
+    # Épuration des marques de trilles
+    line = epure_trille_in(line)
 
     # Traitement des répétitions
     line = traitement_des_repetitions(line) 
@@ -527,7 +529,8 @@ class Statistiques
     line = decompose_chords_in(line)
 
     # On épure certaines marques qui pourraient gêner ensuite
-    # (typiquement, les triolets, duolet, etc. en ’3{...}’)
+    # (typiquement, les triolets, duolet, etc. en ’3{...}’), ainsi
+    # que les points d’exclamation et d’interrogation
     line = epure_expressions_speciales_in(line)
 
     # Traitement spécial des appogiatures
@@ -567,6 +570,8 @@ class Statistiques
       " #{notes} "
     end
 
+    line = line.gsub(/[\!\?]/.freeze,'')
+
     return line
   end
 
@@ -601,7 +606,7 @@ class Statistiques
   # … alors il faut retirer à <n1> la durée donnée à <n2> et <n3>
   # 
   def traite_trille_with_terminaisons_in(line)
-    return line unless line.match?(/\\\-tr/.freeze)
+    return line unless line.match?(REG_TRILL_END)
     line = line.gsub(REG_TRILLE_WITH_TERM) do
       raw_note_trilled = $~[:notesdep].freeze.split(' ').shift
       inter_notes = $~[:internotes].freeze
@@ -637,8 +642,24 @@ class Statistiques
       "#{new_note_trilled} #{inter_notes} #{term_notes_ini}"
     end
 
+    # puts "\nline = #{line.inspect}".bleu
+
     return line
   end
+
+  # Traitement des trilles (après la précédente)
+  # 
+  # Pour retirer les \tr et autre \-tr
+  # 
+  def epure_trille_in(line)
+    return line unless line.match?(REG_TRILL_START)
+
+    line
+      .gsub(REG_LONG_TRILL_START, '\k<inner>')
+      .gsub(REG_TRILL_END, '')
+
+  end
+
 
   # Traite les répétitions dans la ligne, car elles sont traitées en tant que
   # telles

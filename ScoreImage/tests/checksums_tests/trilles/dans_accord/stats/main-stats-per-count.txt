@@ -1,4 +1,3 @@
-Nombre total de notes : 3
-a    1  4.0 s
-a#   1  4.0 s
-c    1  4.0 s
+Nombre total de notes : 2
+a  1  4.0 s
+c  1  4.0 s

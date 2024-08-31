@@ -55,6 +55,6 @@ class MusicScore
   REG_TRILLE_WITH_TERM = /\\(?<pos>[\^_])?tr\((?<notesdep>.*?)\)\-(?<internotes>.*?)\((?<gnotes>.*?)\)\\\-tr/.freeze
 
   REG_TRILL_START = /\\([\^_])?tr/.freeze
-  REG_LONG_TRILL_START = /\\([\^_])?tr\(.*?\)\-/.freeze
+  REG_LONG_TRILL_START = /\\(?<pos>[\^_])?tr\((?<inner>.*?)\)\-/.freeze
   REG_TRILL_END   = /\\\-tr/.freeze
 end #/class MusicScore
