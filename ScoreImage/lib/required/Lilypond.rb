@@ -862,8 +862,8 @@ private
   #   - peut se finir par '/'   => shaded grace
   #   - peut contenir une ou plusieurs notes
   def translate_graces_notes_from_ms(str)
-    str.gsub(/\\gr\((.*?)\)/) do
-      note = $1.freeze # Peut-être plusieurs notes
+    str.gsub(/\\gr\((?<inner>.*?)\)/.freeze) do
+      note = $~[:inner].freeze # Peut-être plusieurs notes
       only_notes = note.sub(/[\/\-]{1,2}$/,'').split(' ')
       # puts "only_notes = #{only_notes.inspect}"
       first_note = only_notes.shift

@@ -1,0 +1,18 @@
+# Test du traitement des grâce-notes dans les statistiques
+--stats
+--tempo 60
+
+accaccia=
+\gr(ais’8/-) bis4
+
+mozart=
+\gr(fis’16-) e8 dis16 cis b4
+
+haydn=
+\cle F \gr(a8) g8 f16 e d4
+
+deuxgr=
+\cle G \gr(gis’16 b) a4
+
+-> score
+accaccia mozart haydn deuxgr

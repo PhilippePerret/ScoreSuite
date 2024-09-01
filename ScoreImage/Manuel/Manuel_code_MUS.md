@@ -298,8 +298,17 @@ Les statistiques relèvent donc la fréquence d’utilisation de chaque note de 
 Certains partis-pris ont été adoptés :
 
 * toutes **les répétitions** sont prises en compte (à l’avenir, si c’est nécessaire, on pourra imaginer une option qui permette de ne pas les prendre en compte)
-* pour **les ornements**, on ne compte que la note elle-même (sauf pour les « grace notes » — cf. ci-dessous). En effet, comment considérer une trille par exemple ? Elle devrait comporter deux notes (les deux notes utilisées pour triller) et un certain nombre d’itérations indéfinissable de façon stricte avec des durées tout aussi indéfinissables. On pourrait se retrouver aussi avec des statistiques faussées qui amplifieraient l’utilisation d’une note simplement parce qu’elle est produite par la trille (on pourrait objecter que cette note n’est pas « amplifiée » puisqu’elle est, de fait, jouée dans la musique…).
-* on fait une exception pour **les *grace notes*** (les ***petites notes***), donc, c’est-à-dire les notes explicitement écrites, avec une durée définie, qui sont prises en compte. Conformément à la tradition de jeu, pour l’appogiature « barrée » (petites notes barrées), on définit sa durée au quart de la note qui la suit, en retirant cette durée à la note suivante.
+* pour **les ornements**, on ne compte que la note elle-même (sauf pour les « grace notes » — cf. ci-dessous). En effet, comment considérer une trille par exemple ? Elle devrait comporter deux notes (les deux notes utilisées pour triller) et un certain nombre d’itérations indéfinissable de façon stricte avec des durées tout aussi indéfinissables. On pourrait se retrouver aussi avec des statistiques faussées qui amplifieraient l’utilisation d’une note simplement parce qu’elle est produite par la trille (on pourrait objecter que cette note n’est pas « amplifiée » puisqu’elle est, de fait, jouée dans la musique…).<a note="stats-petites-notes"></a>
+* on fait une exception pour **les *grace notes*** (les ***petites notes***), donc, c’est-à-dire les notes explicitement écrites, avec une durée définie, qui seront prises en compte. Mais conformément à la tradition de jeu, pour l’appogiature « barrée » (petites notes barrées), on définit sa durée en fonction de la note qui la suit.
+
+  Nous avons dû prendre certains partis au cause des écritures différentes selon les compositeurs. Par exemple, on trouver chez Mozart et chez Haydn deux écritures différentes pour le même effet :
+
+  | <span style="display:inline-block;width:340px!important;" >Mozart</span> | <span style="display:inline-block;width:340px!important;" >Haydn</span> | <span style="display:inline-block;width:340px!important;" >Effet</span> |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | <img src="images/grace_note_mozart.svg" alt="grace_note_mozart" style="width:140px!important;" /> | <img src="images/grace_note_haydn.svg" alt="grace_note_haydn" style="width:140px;" /> | <img src="images/grace_note_effet.svg" alt="grace_note_effet" style="width:140px;" /> |
+  | *Remarquer la petite note en double-croche et la liaison*    | *Remarquer la petite note en croche sans liaison*            | *Mais les deux écriture produiront ce résultat avec deux double-croches.* |
+
+   L'option prise est la suivante : la durée de la petite note, quelle que soit sa durée écrite, sera la moitié de celle de la note qui la suit. Dans les deux exemples ci-dessus, la petite note sera donc une double-croche, et la note suivante sera raccourcie d'autant, pour se rapprocher de l'effet produit.
 
 **Certaines erreurs découlent de l’écriture** même et, pour le moment, ne peuvent pas être évitées. C’est le cas dans l’utilisation d’un arpège (ou similaire) conduisant à un accord, comme dans la partition suivante :
 
@@ -1332,18 +1341,20 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | **Non liées non barrées**                                    | **`\gr(notes) note`**                                       |                                                              |
-| Exemple simple                                               | `\gr(b'16) a8 gis16 fais`                                   | <img src="images/exemples/grace_simple.svg" style=" width:170px;" /> |
-| Exemple multiple                                             | `\gr(b'16 gis) a4`                                          | <img src="images/exemples/grace_multiple.svg" style=" width:110px;" /> |
+| Exemple simple                                               | **`\gr(b'16) a8 gis16 fais`**                               | <img src="images/exemples/grace_simple.svg" style=" width:170px;" /> |
+| Exemple multiple                                             | **`\gr(b'16 gis) a4`**                                      | <img src="images/exemples/grace_multiple.svg" style=" width:110px;" /> |
 | **Non liées barrées**                                        | **`\gr(note/)`**                                            | Remarquer la barre finale qui symbolise la note barrée       |
-| Exemple                                                      | `\gr(b'8/) a4`                                              | <img  src="images/exemples/grace_slashed.svg" style=" width:100px;" /> |
-| Exemple multiple                                             | `\gr(b'16 gis/) a4`                                         | <img  src="images/exemples/grace_slashed_multiple.svg" style=" width:100px;" />(noter : non barré) |
+| Exemple                                                      | **`\gr(b'8/) a4`**                                          | <img  src="images/exemples/grace_slashed.svg" style=" width:100px;" /> |
+| Exemple multiple                                             | **`\gr(b'16 gis/) a4`**                                     | <img  src="images/exemples/grace_slashed_multiple.svg" style=" width:100px;" />(noter : non barré) |
 | **Appoggiature**                                             | **`\gr(note-)`**                                            |                                                              |
-| Exemple                                                      | `\gr(b'8-) a gis16 fis e4`                                  | <img src="images/exemples/grace_appoggiature.svg" style=" width:170px;" /> |
-| Exemple multiple                                             | `\gr(b'8 gis-) a4`                                          | <img src="images/exemples/grace_appoggiature_multiple.svg" style=" width:100px;" /> |
+| Exemple                                                      | **`\gr(b'8-) a gis16 fis e4`**                              | <img src="images/exemples/grace_appoggiature.svg" style=" width:170px;" /> |
+| Exemple multiple                                             | **`\gr(b'8 gis-) a4`**                                      | <img src="images/exemples/grace_appoggiature_multiple.svg" style=" width:100px;" /> |
 | **Acciaccature**                                             | **`\gr(note/-) note`**                                      |                                                              |
-| Exemple                                                      | `\gr(ais'16/-) b4`                                          | <img src="images/exemples/acciaccatura.svg" style=" width:90px;" /> |
+| Exemple                                                      | **`\gr(ais'16/-) b4`**                                      | <img src="images/exemples/acciaccatura.svg" style=" width:90px;" /> |
 | **Quand plusieurs notes**                                    | **`\grace note[ note note note]`**<br />                    |                                                              |
 |                                                              |                                                             |                                                              |
+
+> Au niveau des statistiques, voir les notes concernant le [traitements particulier des petites notes](#stats-petites-notes).
 
 #### Notes « mergées »
 

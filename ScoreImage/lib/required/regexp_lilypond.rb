@@ -25,7 +25,18 @@ class MusicScore
   #   notes.split(' ').first.match(/^#{REG_NOTE_WITH_DUREE_AND_REST}$/)
   REG_NOTE_WITH_DUREE_AND_REST = /#{REG_NOTE_CAPT}(?<duration>[0-9]+\.*)?(?<reste>.*?)/.freeze
 
-  REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)(?<sub_to_next>STN)?/.freeze
+  REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)(?<grace_note>GRN|ACA)?/.freeze
+
+  # Pour récupérer les paramètres d’une note, c’est-à-dire ce qui
+  # suit un "-" et peut comprendre l’articulation (-., ->, etc.) le
+  # doigté (-5), etc.
+  # Les récupérer avec $~[:note_params]
+  # 
+  # Mais bien souvent, il faut faire une expression propre.
+  # Noter que pour le moment, l’expression ’-12’ ne passera pas, car
+  # l’expression attend pour le moment un et un seul caractère après
+  # le tiret (caractère quelconque pour le moment)
+  REG_NOTE_PARAMS = /(?<note_params>(?:\-.)+)/.freeze
 
   # Expression régulière complète pour repérer une note et
   # sa durée
@@ -40,7 +51,13 @@ class MusicScore
 
   REG_NOTE_DUREE_SIMPLE = /#{REG_NOTE_CAPT}(#{REG_DUREE_CAPT})?/.freeze
 
-  REG_GRACE_NOTE = /\\gr\(#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?<slash>\/)?(?<link>\-)?\)/.freeze
+  REG_NOTE_WITH_PARAMS = /#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?:#{REG_NOTE_PARAMS})?/.freeze
+
+  REG_GRACE_NOTE = /\\gr\(#{REG_NOTE_WITH_PARAMS}(?<slash>\/)?(?<link>\-)?\)/.freeze
+
+  # Pour capturer plusieurs grace-notes, pas une seule
+  # Il faut ensuite traiter les notes en découpant par espace
+  REG_GRACE_NOTES = /\\gr\((?<notes>[^\)]*?)(?<slash>\/)?(?<link>\-)?\)/.freeze
 
   REG_MAYBE_CHORD = /<[a-g]/.freeze
 

@@ -1,0 +1,4 @@
+Nombre total de notes : 4
+a    2   1.5 s
+b    1  0.25 s
+g#   1  0.25 s

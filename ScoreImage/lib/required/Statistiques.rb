@@ -32,6 +32,12 @@ class Statistiques
       # Pour les max dans l’affichage
       attr_accessor :note_max_len, :count_max_len, :duree_max_len
 
+      # Pour pouvoir récupérer la valeur courante depuis partout
+      # avec :
+      #   [Statistiques::]StatNote.current_duration
+      # 
+      attr_reader :current_duration
+
       # Initialisation, au départ du calcul des statistiques
       def init
         @notes = []
@@ -63,14 +69,52 @@ class Statistiques
       # Lors de l’ajout de la note à la liste, on lui affecte la
       # dernière durée rencontrée si elle n’en a pas, ou on récupère
       # sa durée pour la mettre en durée courante si elle est définie
+      # 
       def check_note_duration(inote)
+        verbose? && puts("Check de la durée de #{inote.inspect}".jaune)
         if inote.duration
           @current_duration = inote.duration.dup
         else
           inote.duration=(@current_duration)
         end
-        if @notes[-2] && @notes[-2].sub_duration_to_next?
-          inote.duration_sub= @notes[-2].abs_duration
+        # - Cas particulier d’une durée qui doit être soustraite
+        #   (cas des grâces notes) -
+        # On prend l’avant-dernière note (puisque la dernière est 
+        # celle traitée) et l’on regarde. On doit tenir compte du
+        # fait que la précédente est peut-être elle-même une grâce-
+        # note
+        prec_note = @notes[-2]
+        if not(inote.grace_note?) && prec_note && prec_note.grace_note?
+          # Traitement de la durée en cas de grace-note
+          # 
+
+          # Il faut d’abord récupérer toutes les grâce-notes qui 
+          # précèdent la note traitée (il n’y en a en général pas
+          # plus de 2)
+          grace_notes = []; n = 2
+          while @notes[-n] && @notes[-n].grace_note?
+            grace_notes << @notes[-n]
+            n += 1
+          end
+
+          # Quelle que soit la durée définie pour les grâce note, 
+          # leur durée (totale) doit valoir la moitié de la durée de
+          # la note principale pour une note non barrée et le quart
+          # pour une note barrée
+          verbose? && puts("Durée absolue de la note courante : #{inote.abs_duration}".bleu)
+          diviseur = prec_note.accacciatura? ? 4 : 2
+          duree_pour_gns = inote.abs_duration.to_f / diviseur
+          verbose? && puts("Durée pour les/la grace-note(s) : #{duree_pour_gns}")
+          # Durée pour chaque grace-note :
+          duree_gn = (duree_pour_gns / grace_notes.count).round(2)
+          verbose? && puts("Durée pour chaque grace-note : #{duree_gn}")
+
+          # On affecte la durée absolue à chaque grace-note
+          grace_notes.each { |gn| gn.abs_duration = duree_gn }
+
+          # On retire la durée pour la note courante
+          # inote.duration_sub= duree_pour_gns
+          inote.abs_duration = inote.abs_duration - duree_pour_gns
         end
       end
 
@@ -132,7 +176,9 @@ class Statistiques
 
     end #/<< self
 
+
     # ==================== INSTANCE ==================== #
+
 
     attr_reader :data
 
@@ -151,6 +197,12 @@ class Statistiques
       # Par défaut, on ne doit retirer aucune durée à la note. Mais
       # ça peut arriver avec les petites notes (graces notes)
       @duration_sub = 0
+    end
+
+    def inspect
+      @finspect ||= begin
+        "#{as_note}"
+      end
     end
 
     # Par exemple "bes", "a" ou "cisis"
@@ -209,8 +261,17 @@ class Statistiques
 
     # = Volatile Data =
 
-    def sub_duration_to_next?; data[4] == 'STN' end
+    # @obsolete
+    # def sub_duration_to_next?; data[4] == 'STN' end
 
+    def grace_note?
+      :TRUE == @isgracenote ||= true_or_false(accacciatura? || data[4] == 'GRN')
+    end
+
+    def accacciatura?
+      :TRUE == @isaccacciatura ||= true_or_false(data[4] == 'ACA')
+    end
+      
     def linked?     ; @islinked    ||= data[5] == '~' end
     
     # @return [Float] La durée musicale "absolue", c’est-à-dire 
@@ -240,6 +301,12 @@ class Statistiques
         prol.length.times { dur += (c = c / 2) }
         dur - duration_sub
       end
+    end
+
+    # On peut forcer la durée absolue dans certains cas, par 
+    # exemple avec les grace-notes
+    def abs_duration=(v)
+      @abs_duration = v
     end
 
     # # = Fixed Data = #
@@ -534,14 +601,17 @@ class Statistiques
     line = epure_expressions_speciales_in(line)
 
     # Traitement spécial des appogiatures
-    line = traitement_des_appoggiatura_in(line)
+    line = traitement_des_graces_notes_in(line)
 
     # ======================================= #
     # ===     RÉCUPÉRATION DES NOTES      === #
     # ======================================= #
-    verbose? && puts("Line avant scan complet: #{line.inspect}".bleu)
     notes_scaned = line.scan(REG_NOTE_DUREE)
-    verbose? && puts("Scan complet: #{notes_scaned.to_a}")
+    verbose? && begin
+      puts("Line pour scan complet: #{line.inspect}".jaune)
+      puts("Scan complet: #{notes_scaned.to_a}")
+      puts "Rappel : une donnée note est composée de :\n[note, altération, octave, point, tilde]".gris
+    end
     notes_scaned.map do |data_note|
       # puts "data_note = #{data_note}".bleu
       # exit 12
@@ -575,22 +645,38 @@ class Statistiques
     return line
   end
 
-  # Traite les appogiatures (pour pouvoir réduire leur durée et
-  # la soustraire à la note suivante)
+  # Traite les appogiatures (pour pouvoir prendre leur durée et
+  # la soustraire à la note principale suivante)
   # 
-  def traitement_des_appoggiatura_in(line)
+  # @note 
+  #   Pour pouvoir soustraire à la note suivante, on utilise la
+  #   marque "STN" après la durée (qui signifie "SousTraire à la
+  #   Next") pour la supprimer dans la note suivante.
+  # 
+  def traitement_des_graces_notes_in(line)
     return line unless line.match?(/\\gr\(/.freeze)
 
-    line = line.gsub(REG_GRACE_NOTE) do
-      note        = $~[:note]
-      alter       = $~[:alter]
-      duration    = $~[:duration]
+    # TODO : sauf qu’il peut y en avoir plusieurs
+    line = line.gsub(REG_GRACE_NOTES) do
+      notes       = $~[:notes]
       is_slashed  = $~[:slash] == '/'
       is_linked   = $~[:link] == '-'
-      if is_slashed
-        duration = "#{(duration||4).to_i * 2}STN"
-      end
-      "#{note}#{alter}#{duration}"
+      curduree = StatNote.current_duration
+
+      mark_gr = is_slashed ? 'ACA' : 'GRN'
+
+      notes = notes.split(' ').map do |note_str|
+        note_str.scan(REG_NOTE_WITH_PARAMS)
+        note        = $~[:note]
+        alter       = $~[:alter]
+        duration    = ($~[:duration]||curduree)
+        curduree = duration
+        note_params = $~[:note_params]
+        "#{note}#{alter}#{duration}#{mark_gr}"
+      end.join(' ')
+      verbose? && puts("Grace-note(s) obtenue(s) : #{notes}".bleu)
+
+      notes
     end
 
     return line  

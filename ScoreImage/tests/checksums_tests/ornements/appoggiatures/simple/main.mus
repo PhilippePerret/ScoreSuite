@@ -1,0 +1,7 @@
+# Test simple des appogiatures
+# 
+# Regarder particulièrement les statistiques qui, pour les appoggia-
+# ture, retirent la valeur à la note suivante
+
+-> score
+\gr(ais’16-) b4 \gr(bis16-5->-) cis2

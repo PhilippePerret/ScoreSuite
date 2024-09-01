@@ -1,0 +1,10 @@
+# Test des grâces notes simples
+
+simple=
+\gr(b’16) a8 gis16 fis e4
+
+accent=
+\gr(bes’16-5->) aes8 g16-. f ees4
+
+-> score
+simple accent
