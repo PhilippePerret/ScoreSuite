@@ -7,7 +7,7 @@
   bookTitleMarkup = ##f
   scoreTitleMarkup = ##f
   print-page-number = ##t
-  page-number-type = #'roman-lower
+  page-number-type = #'roman-upper
 }
 % --- %
 \score {

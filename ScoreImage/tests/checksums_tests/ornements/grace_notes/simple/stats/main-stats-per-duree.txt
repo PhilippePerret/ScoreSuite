@@ -1,10 +1,11 @@
 Durée totale : 4.0 s
 e    1   1.0 s
 eb   1   1.0 s
-f    1   0.5 s
+b    1  0.25 s
 bb   1  0.25 s
+f    1  0.25 s
 f#   1  0.25 s
+g    1  0.25 s
 a    1  0.25 s
 g#   1  0.25 s
 ab   1  0.25 s
-b    1  0.25 s

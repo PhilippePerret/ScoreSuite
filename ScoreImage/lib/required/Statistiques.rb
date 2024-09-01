@@ -50,6 +50,7 @@ class Statistiques
 
       # Ajoute l’instance +inote+ à la liste des notes de la classe
       def add(inote)
+        puts "-> add(#{inote.inspect})".mauve
         @notes << inote
         # Définition de la durée ou récupération de la nouvelle durée
         check_note_duration(inote)
@@ -71,11 +72,14 @@ class Statistiques
       # sa durée pour la mettre en durée courante si elle est définie
       # 
       def check_note_duration(inote)
+        # verbose? && 
         verbose? && puts("Check de la durée de #{inote.inspect}".jaune)
         if inote.duration
           @current_duration = inote.duration.dup
+          verbose? && puts("Inote #{inote.inspect} met la durée à #{inote.duration}".jaune)
         else
           inote.duration=(@current_duration)
+          verbose? && puts("Durée de #{inote.inspect} mise à #{inote.duration} (#{@current_duration})".jaune)
         end
         # - Cas particulier d’une durée qui doit être soustraite
         #   (cas des grâces notes) -
@@ -575,33 +579,57 @@ class Statistiques
   # +line+ pour en tirer les notes
   def parse_line(line, add_notes = true)
 
+    # Mettre à true pour voir le traitement effectué par chaque
+    # méthode de préparation
+    decompose_debug = false
+
     # puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
+    decompose_debug && puts("LINE INITIALE : #{line.inspect}".jaune)
+
+    # Pour simplifier, on essaie de supprimer les paramètres des
+    # notes
+    # @note
+    #   Maintenant qu’on fait ça au tout départ, on pourrait
+    #   simplifier énormément la suite.
+    line = line.gsub(REG_NOTE_WITH_PARAMS) do
+      "#{$~[:note]}#{$~[:alter]}#{$~[:duration]}"
+    end
+    decompose_debug && puts("[0]line : #{line.inspect}")
+
 
     # Pour pouvoir utiliser les espaces comment délimiteurs partout
     line = " #{line} "
+    decompose_debug && puts("[1]line : #{line.inspect}")
 
     # On retire toutes les expressions lilypond qui peuvent comporter
     # des notes, à commencer par les \relative <note>
     line = epure_lily_expressions_with_notes_in(line)
+    decompose_debug && puts("[2]line : #{line.inspect}")
 
     # Traitement des trilles avec terminaisons
     line = traite_trille_with_terminaisons_in(line)
+    decompose_debug && puts("[3]line : #{line.inspect}")
     # Épuration des marques de trilles
     line = epure_trille_in(line)
+    decompose_debug && puts("[4]line : #{line.inspect}")
 
     # Traitement des répétitions
     line = traitement_des_repetitions(line) 
+    decompose_debug && puts("[5]line : #{line.inspect}")
 
     # On "sort" toutes les notes de leurs accords
     line = decompose_chords_in(line)
+    decompose_debug && puts("[6]line : #{line.inspect}")
 
     # On épure certaines marques qui pourraient gêner ensuite
     # (typiquement, les triolets, duolet, etc. en ’3{...}’), ainsi
     # que les points d’exclamation et d’interrogation
     line = epure_expressions_speciales_in(line)
+    decompose_debug && puts("[7]line : #{line.inspect}")
 
     # Traitement spécial des appogiatures
     line = traitement_des_graces_notes_in(line)
+    decompose_debug && puts("[8]line : #{line.inspect}")
 
     # ======================================= #
     # ===     RÉCUPÉRATION DES NOTES      === #
