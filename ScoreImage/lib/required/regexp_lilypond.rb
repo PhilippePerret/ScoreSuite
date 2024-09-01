@@ -36,7 +36,7 @@ class MusicScore
   # Noter que pour le moment, l’expression ’-12’ ne passera pas, car
   # l’expression attend pour le moment un et un seul caractère après
   # le tiret (caractère quelconque pour le moment)
-  REG_NOTE_PARAMS = /(?<note_params>(?:\-.)+)/.freeze
+  REG_NOTE_PARAMS = /(?<note_params>(?:\-[^)])+)/.freeze
 
   # Expression régulière complète pour repérer une note et
   # sa durée
@@ -57,7 +57,7 @@ class MusicScore
 
   # Pour capturer plusieurs grace-notes, pas une seule
   # Il faut ensuite traiter les notes en découpant par espace
-  REG_GRACE_NOTES = /\\gr\((?<notes>[^\)]*?)(?<slash>\/)?(?<link>\-)?\)/.freeze
+  REG_GRACE_NOTES = /\\gr\((?<notes>[^)]*?)(?<slash>\/)?(?<link>\-)?\)/.freeze
 
   REG_MAYBE_CHORD = /<[a-g]/.freeze
 

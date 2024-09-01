@@ -50,7 +50,7 @@ class Statistiques
 
       # Ajoute l’instance +inote+ à la liste des notes de la classe
       def add(inote)
-        puts "-> add(#{inote.inspect})".mauve
+        verbose? && puts("-> add(#{inote.inspect})".mauve)
         @notes << inote
         # Définition de la durée ou récupération de la nouvelle durée
         check_note_duration(inote)
@@ -695,6 +695,10 @@ class Statistiques
 
       notes = notes.split(' ').map do |note_str|
         note_str.scan(REG_NOTE_WITH_PARAMS)
+        if $~.nil?
+          puts "C’est null avec notes = #{notes.inspect} de la ligne\n#{line}"
+          exit 12
+        end
         note        = $~[:note]
         alter       = $~[:alter]
         duration    = ($~[:duration]||curduree)

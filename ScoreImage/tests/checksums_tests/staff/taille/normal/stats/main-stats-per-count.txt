@@ -1,8 +1,9 @@
-Nombre total de notes : 18
+Nombre total de notes : 20
 c  4  8.0 s
 r  4  6.0 s
-b  2  4.0 s
 d  2  4.0 s
-e  2  2.0 s
+a  2  4.0 s
 f  2  4.0 s
 g  2  2.0 s
+e  2  2.0 s
+b  2  4.0 s

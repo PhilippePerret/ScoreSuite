@@ -1,5 +1,5 @@
 Nombre total de notes : 4
-a#   1  0.25 s
-b    1  0.75 s
-b#   1  0.25 s
-c#   1  1.75 s
+a#   1  0.5 s
+b    1  0.5 s
+b#   1  1.0 s
+c#   1  1.0 s
