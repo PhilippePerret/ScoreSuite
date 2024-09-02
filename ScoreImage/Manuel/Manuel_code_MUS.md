@@ -1493,12 +1493,12 @@ Si l’**on ne tient pas à donner explicitement la durée exacte de chaque note
 
 #### Changement de portée
 
-Pour inscrire provisoirement les notes sur la portée au-dessus ou en dessous, utiliser `\up` et `\down`. Par exemple :
+Pour inscrire provisoirement les notes sur la portée au-dessus ou en dessous dans le mode « piano », utiliser `\up` et `\down`. Par exemple :
 
 ~~~lilypond
 --piano
-r1
-c, e g \up c e c \down g e c
+r1 r
+c8 e g \up c e c \down g e c
 ~~~
 
 … produira :
@@ -1509,16 +1509,25 @@ On peut indiquer explicitement le lien entre deux notes qui changent de portée 
 
 ~~~
 --piano
-
 r1 r1
-c e g \showStaffSwitch \up c e c \showStaffSwitch \down g e c4 r r2
+c8 e g \showStaffSwitch \up c e c \down g e c4 r r2
 ~~~
 
-Produira :
+… produira :
 
 ![change-staff-with-trait](./images/change-staff-with-trait.svg)
 
+Pour interrompre la marque de changement de portée, on utilise à l’inverse **`\hideStaffSwitch`**. Par exemple, le code :
 
+~~~
+--piano
+r1 r1
+c8 e g \showStaffSwitch \up c e c \hideStaffSwitch \down g e c4 r r2
+~~~
+
+…produira :
+
+<img src="images/stop_change_staff.svg" alt="stop_change_staff" style="zoom:100%;" />
 
 #### Marques d’octave
 
@@ -1527,6 +1536,14 @@ Pour inscrire la marque d’octave, on peut utiliser `\8ve` (descendra les notes
 On fait l’inverse avec `\-8ve` (pour remonter les notes d’une octave) et `\-15ve` (pour remonter les notes de deux octaves).
 
 On terminera toutes les marques précédentes avec `\0ve`.
+
+| Le code…                              | … produira :                                                 |
+| ------------------------------------- | ------------------------------------------------------------ |
+| **`\8ve c’’ d e f \0ve c, d e f`**    | <img src="images/mark_octave_up.svg" alt="mark_octave_up" style="zoom:120%;" /> |
+| **`\15ve c’’ d e f \0ve c, d e f`**   | <img src="images/mark_octave_up15.svg" alt="mark_octave_up15" style="zoom:120%;" /> |
+| **`\-8ve c, d e f \0ve c’ d e f`**    | <img src="/Users/philippeperret/Programmes/ScoreSuite/ScoreImage/Manuel/images/mark-octave-down.svg" alt="mark-octave-down" style="zoom:120%;" /> |
+| **`\-15ve c,, d e f \0ve c’’ d e f`** | <img src="images/mark-octave-down15.svg" alt="mark-octave-down15" style="zoom:120%;" /> |
+|                                       |                                                              |
 
 ---
 

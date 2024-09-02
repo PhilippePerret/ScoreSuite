@@ -1,0 +1,10 @@
+# Test du changement de portée
+# Le test montre un changement de portée avec ligne de suivi ou non
+# et interruption de cette marque de ligne de suivi
+
+--piano
+
+
+-> score
+c’8 g e \down c g \up c e g \showStaffSwitch \down \stemUp e \hideStaffSwitch c g \up c \showStaffSwitch \down g \hideStaffSwitch \up c e g c1
+c1 c c
