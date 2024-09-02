@@ -441,7 +441,6 @@ On définit les portées multiples à l’aide de  **`--staves_keys`** (pour les
 On doit les définir **de bas en haut**. C’est-à-dire que si on veut un violon au-dessus d’un piano, on doit définir :
 
 ~~~
---staves 3
 --staves_keys F,G,G
 --staves_names Piano,Piano,Violon
 ~~~
@@ -1660,13 +1659,13 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | forcer au-dessus                                             | **`a'^( b c d)`**                                           |                                                              |
 | Forcer en haut                                               | **`\slurUp`**                                               | Pour revenir au comportement par défaut : **`\slurNeutral`** |
 | Forcer en bas                                                | **`\slurDown`**                                             | Pour revenir au comportement par défaut : **`\slurNeutral`** |
-| Placement par défaut                                         | **`\slurNeutral`**                                          |                                                              |
+| Placement par défaut                                         | **`\slurOff`**                                              | **`\slurNeutral`** est la formule d’origine de LilyPond      |
 | **Liaison de durée**                                         | **`note~ note`**                                            |                                                              |
 | Exemple simple                                               | **`c1~ c2`**                                                | <img src="images/exemples/liaison-de-duree.svg" style=" width:150px;" /> |
 | Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  | <img src="images/exemples/liaison-accords.svg" style=" width:200px;" /> |
 | Forcer la liaison en haut                                    | **`\tieUp`**                                                | ![tie_down](images/tie_up.svg)                               |
 | Forcer la liaison en bas                                     | **`\tieDown`**                                              | ![tie_down](images/tie_down.svg)                             |
-| Pour revenir au comportement par défaut : **`\tieNeutral`**  | **`\tieNeutral`**                                           | ![tie_down](images/tie_neutral.svg)<br />Dans l’exemple ci-dessus, le `\tieNeutral` est inséré entre les deux notes. |
+| Revenir au comportement par défaut                           | **`\tieOff`**                                               | ![tie_down](images/tie_neutral.svg)<br />Dans l’exemple ci-dessus, le `\tieOff` est inséré entre les deux notes.<br />**`\tieNeutral`** est la formule d’origine de LilyPond |
 |                                                              |                                                             |                                                              |
 
 
@@ -1682,8 +1681,8 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | Exemple                                                      | **`e'16^[ e e e] e`**                                        | <img src="images/exemples/hampes-forced-haut.svg" style=" width:140px;" /> |
 | Forcer l'attache vers le bas                                 | **`note_[ notes]`**                                          |                                                              |
 | Exemple                                                      | **`a'16_[ a a a] a`**                                        | <img src="images/exemples/hampes-forced-bas.svg" style=" width:140px;" /> |
-| Forcer une hampe seule en haut                               | **`\stemUp e'4 \stemNeutral`**<br />**`e'4^[]`**             | <img src="images/exemples/hampes_vers_le_haut.svg" style=" width:80px;" /> |
-| Forcer les hampes de plusieurs notes non attachées (noires et blanches) | **`\stemUp e'4 f g f \stemNeutral`**<br />**`e'4^[] f^[] g^[] f^[]`** | N1 : Noter que si plusieurs notes (plusieurs noires par exemple) doivent être traitées ensemble et que ce ne sont pas les mêmes hauteurs, il ne faut pas utiliser `e'4^[ f g f]` car dans ce cas tous les hauts de hampes s’aligneraient à la même hauteur. Il est impératif d’utiliser le code ci-contre. Cf. ci-dessous. |
+| Forcer une hampe seule en haut                               | **`\stemUp e'4 \stemOff`**<br />**`e'4^[]`**                 | <img src="images/exemples/hampes_vers_le_haut.svg" style=" width:80px;" /> |
+| Forcer les hampes de plusieurs notes non attachées (noires et blanches) | **`\stemUp e'4 f g f \stemOff`**<br />**`e'4^[] f^[] g^[] f^[]`** | N1 : Noter que si plusieurs notes (plusieurs noires par exemple) doivent être traitées ensemble et que ce ne sont pas les mêmes hauteurs, il ne faut pas utiliser `e'4^[ f g f]` car dans ce cas tous les hauts de hampes s’aligneraient à la même hauteur. Il est impératif d’utiliser le code ci-contre. Cf. ci-dessous. |
 |                                                              | **`e'4^[ f g b, d f]`**                                      | <img src="images/exemples/hampes_plusieurs_vers_haut.svg" style=" width:160px;" /> |
 |                                                              | **`e'4^[] f^[] g^[] b,^[] d^[] f^[]`**                       | <img src="images/exemples/hampes_plusieurs_vers_haut_separees.svg" style=" width:160px;" /> |
 | Forcer une hampe seule en bas                                | **`g4_[]`**                                                  | <img src="images/exemples/hampes_vers_le_bas.svg" style=" width:80px;" /> |
@@ -1701,15 +1700,6 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 
 **`\partial <durée de l'anacrouse>`**
 
-#### Changement de positions des éléments
-
-~~~
-\slurUp    \slurDown    \slurNeutral		Lignes de liaison
-\stemUp    \stemDown    \stemNeutral		Hampes de notes
-~~~
-
-
-
 ---
 
 #### Voix simultanées
@@ -1723,22 +1713,6 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 
 Dans cette formule, les deux voix auront leur propre 'voice'.
 Mais il existe d'autres possibilités (cf. le mode d'emploi)
-
-#### Petites notes (grace notes)
-
-| <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
-| ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| **Non liées non barrées**                                    | **`\grace note note`**<br />**`\gr(note) note`**            |                                                              |
-| Exemple                                                      | `\grace ais'16  b4`<br />`\gr(ais'16) b4`                   | <img src="images/exemples/grace-note.svg" style=" width:90px;" /> |
-| **Non liées barrées**                                        | **`\slashedGrace note note`**<br />**`\gr(note/)`**         |                                                              |
-| Exemple                                                      | `\slashedGrace ais'16  b4`<br />`\gr(ais'16/)`              | <img src="images/exemples/slashed-grace-note.svg" style=" width:90px;" /> |
-| **Liées non barrées**                                        | **`\appoggiatura note note`**<br />**`\gr(note-)`**         |                                                              |
-| Exemple                                                      | `\appoggiatura ais'16  b4`<br />`\gr(ais'16-)`              | <img src="images/exemples/appoggiatura.svg" style=" width:90px;" /> |
-| **Liées barrées**                                            | **`\acciaccatura note note`**<br />**`\gr(note/-) note`**   |                                                              |
-| Exemple                                                      | `\acciaccatura ais'16  b4`<br />`\gr(ais'16/-) b4`          | <img src="images/exemples/acciaccatura.svg" style=" width:90px;" /> |
-| **Quand plusieurs notes**                                    | **`\grace note[ note note note]`**<br />                    |                                                              |
-
-
 
 
 
@@ -1873,10 +1847,97 @@ mes1<->4
 
 Cela signifie que le segment sera constitué des mesures 1 à 4.
 
+#### Définition par section
+
+Comprendre avant tout qu’il y a deux façons d’utiliser les variables. On peut utiliser une variable pour définir les mesures d’un instrument particulier, monodique. On assemblera ensuite les variables pour former l’ensemble. Par exemple :
+
+~~~
+flute=
+c d e f g ...
+
+basse=
+c c c c ...
+
+-> ensemble
+flute
+basse
+~~~
+
+On peut, à l’inverse, utiliser les variables pour définir des sections, en mettant toutes les voix dedans. Par exemple :
+
+~~~
+intro=
+c d e f g ...
+c c c c c ...
+
+couplet=
+e g e g e ...
+e e e e e ...
+
+refrain=
+f a c f ....
+f f f f ....
+
+-> morceau
+intro couplet couplet refrain couplet
+intro couplet couplet refrain couplet
+~~~
+
+> Noter, ci-dessus, qu’en l’absence de la définition du nombre de voix, on doit répéter la ligne.
+
+On peut bien entendu utiliser les deux types de définition en même temps :
+
+~~~
+intro_flute=
+c d e f g ...
+
+couplet_flute=
+e g e g e ...
+
+refrain_flute=
+f a c f ...
+
+intro_basse=
+c c c c ...
+
+couplet_basse=
+e e e e ...
+
+refrain_basse=
+f f f f ...
+
+intro=
+intro_flute
+intro_basse
+
+couplet=
+couplet_flute
+couplet_basse
+
+refrain=
+refrain_flute
+refrain_basse
+
+-> morceau_per_section
+intro couplet refrain
+
+# Et/ou
+
+flute=
+intro_flute couplet_flute refrain_flute couplet_flute ...
+
+basse=
+intro_basse couplet_basse couplet_basse refrain_basse ...
+
+-> morceau_per_instrument
+flute
+basse
+~~~
 
 
->  Noter que pour le moment, on ne peut pas utiliser en même temps, en  mode --piano, des définitions d'une seule main et des définitions  des deux mains. Si on adopte un mode, il doit être utilisé pour tout l'extrait.
->   Mais deux extraits différents peuvent utiliser deux modes qui diffèrent, par exemple :
+
+>  Noter qu'on ne peut pas utiliser en même temps, en  mode --piano, des définitions d'une seule main et des définitions  des deux mains. Si on adopte un mode, il doit être utilisé pour tout l'extrait.
+>   Mais deux scores différents peuvent utiliser deux modes qui diffèrent, par exemple :
 
 ~~~
 # Un extrait avec définition d'une seule main
@@ -1904,9 +1965,37 @@ mgd1
 
 #### NOTA BENE
 
-Noter un point très important : lors de l'utilisation de variables à plusieurs voix, l'expression lilypond ne peut qu'être exclusivement constituée de variables (sur une ligne, donc, puisque ce sont les définitions qui contiennent les différentes voix)
+Pour utiliser la fonctionnalité précédente avec autre chose que le piano, il faut définir explicitement le nombre de voix.
+
+L’exemple ci-dessous ne fonctionnera pas ou, plus exactement, ne produira que la voix supérieure.
 
 ~~~music-score
+md1=
+c2 e4 g
+
+mg1=
+g8( a b c) c2
+
+md2=
+b4. c8 c4 r
+
+mg2=
+d g f g c, g' e g
+
+# Définitions à voix multiples
+tout=
+md1 md2
+mg1 mg2
+
+-> fichier
+tout <====== NE FONCTIONNE PAS (PAS DE DÉFINITION DU NOMBRE DE VOIX)
+
+~~~
+
+Le code ci-dessus fonctionnera si on définit à l’aide de [l’option `staves_keys`](#options_portees) le nombre de voix :
+
+~~~
+--staves_keys G,G 	<===== DÉFINITION DU NOMBRE DE VOIX
 
 md1=
 c2 e4 g
@@ -1926,8 +2015,7 @@ md1 md2
 mg1 mg2
 
 -> fichier
-tout
-
+tout <====== FONCTIONNE !!!
 ~~~
 
 
@@ -1936,31 +2024,7 @@ tout
 
 
 
-#### Le fichier « build » dans Sublime Text
-
-> Note : je n’ai pas réussi à le faire remarcher, même en modifiant le première commande fautive qui appelle la version ruby 2.7.1.
-
-C’est le fichier qui permet de jouer `Cmd B` avec le fichier music-score (`.mus`) actif et de produire les images qu’il définit.
-
-Ce fichier est à mettre dans `/Library/Applications Support/Sublime Text 3/Packages/User/music-score.sublime-build`.
-
-~~~{
-	// "shell_cmd": "make"
-"cmd": [
-	"/Users/philippeperret/.rbenv/versions/2.7.1/bin/ruby", 
-	"/Users/philippeperret/Documents/ICARE_EDITIONS/Musique/xDev/scripts/music-score/music-score.rb", 
-	"$file"
-],
-"selector": "source.music",
-"file_patterns": ["*.mus"],
-"target": "ansi_color_build",
-"syntax": "Packages/ANSIescape/ANSI.sublime-syntax"
-}
-~~~
-
-> Depuis le crash de 2021, ce fichier fait partie des backups universels.
-
-#### Le fichier de coloration syntaxique pour Sublime Text
+### Fichier de coloration syntaxique pour Sublime Text
 
 Ce code est à placer dans `/Library/Applications Support/Sublime Text 3/Packages/User/music-score.sublime-syntax`
 
@@ -2052,9 +2116,11 @@ contexts:
 
 ~~~
 
+---
+
 <a name="annexe-arpege-to-chord"></a>
 
-#### Étapes pour « arpège vers accord tenu »
+### Étapes pour « arpège vers accord tenu »
 
 L'image suivante :
 
@@ -2100,7 +2166,13 @@ Et enfin nous avons mis les hampes dans le bon sens avec `\stemUp` :
 
 <img src="images/arpege-to-chord-simple-step_3.svg" alt="arpege-to-chord-simple-step_2" style="width:250px;" />
 
+---
 
+### Score Builder
+
+L’application ***Score-Builder*** permet de produire très facilement du code Mus, en voyant le résultat immédiatement. En plus, elle permet aussi d’avoir une partition de référence contenant la partition à produire.
+
+Pour utiliser *ScoreBuilder*, si l’application est installée, il suffit d’ouvrir un Terminal à un dossier (contenant par exemple la partition originale) et de jouer `score-builder` (ou plus simplement `score-b` suivi de la touche tabulation). L’assistant prendra les choses en main pour vous faire commencer.
 
 
 ---

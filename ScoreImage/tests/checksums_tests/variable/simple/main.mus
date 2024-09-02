@@ -1,0 +1,7 @@
+# Test simple de l’utilisation d’une variable
+
+var=
+c d e f
+
+-> score
+var var var var

@@ -1,0 +1,26 @@
+# Test de la définition d’un ensemble avec une variabl par
+# section
+
+intro=
+c’1
+g1
+e1
+c1
+
+couplet=
+f’1
+c1
+a1
+f1
+
+refrain=
+g’1
+d1
+b1
+g1
+
+-> score
+intro couplet couplet refrain couplet intro
+intro couplet couplet refrain couplet intro
+intro couplet couplet refrain couplet intro
+intro couplet couplet refrain couplet intro

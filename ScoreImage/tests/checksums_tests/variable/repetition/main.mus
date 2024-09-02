@@ -1,0 +1,8 @@
+# Test de la répétition d’une variable avec ’*X’
+
+
+var=
+c d e f
+
+-> score
+var*4

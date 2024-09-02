@@ -178,10 +178,14 @@ def parse
     end
   end
 
-  # Dans le cas d’un piano (option ’--piano’) et d’une définition
-  # unique des lignes de code ’lines_code’, on dédouble la ligne qui
-  # doit être composée de variables. Car pour le piano, on peut 
-  # faire :
+  # Dans le cas d’une ligne unique de code final pour l’image,
+  # il peut être nécessaire de doubler cette ligne.
+  #   - pour le piano (option --piano), on la double
+  #   - pour une définition de portées multiples, on la dédouble
+  #     en autant de portées.
+  # Pour pouvoir faire par exemple :
+  # 
+  # --piano (ou --staves_keys F,F)
   # 
   #   m1=
   #   c d e f
@@ -194,8 +198,15 @@ def parse
   #   -> score
   #   m1 m2
   # 
-  if options['piano'] && @lines_code.count == 1
-    @lines_code << @lines_code[0]
+  if @lines_code.count == 1
+    if options['piano'] && 
+      @lines_code << @lines_code[0]
+    elsif options[:staves_keys]
+      nombre_voix = options[:staves_keys].split(',').count
+      (nombre_voix - 1).times do
+        @lines_code << @lines_code[0]
+      end
+    end
   end
 
   # Cas particulier : plusieurs lignes de notes mais pas de mode

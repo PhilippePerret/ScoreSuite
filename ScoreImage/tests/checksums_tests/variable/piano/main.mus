@@ -1,0 +1,18 @@
+# Test variable avec piano
+
+
+--piano
+
+mgSeule=
+c d e f
+
+mdSeule=
+f e d c
+
+deuxmains=
+cis dis e fis
+fis e dis cis
+
+-> score
+mdSeule deuxmains
+mgSeule deuxmains

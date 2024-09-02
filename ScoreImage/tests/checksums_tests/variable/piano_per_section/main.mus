@@ -1,0 +1,21 @@
+# Test de la définition du piano par sections
+# 
+# La différence, ici, est qu’on a une seule ligne pour définir
+# la partition finale
+
+--piano
+
+intro=
+e1
+c1
+
+couplet=
+a’1
+f1
+
+refrain=
+b’1
+g’1
+
+-> score
+intro couplet couplet refrain couplet

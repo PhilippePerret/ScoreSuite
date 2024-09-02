@@ -1,0 +1,20 @@
+# Test de la définition d’un ensemble avec une variable par 
+# instrument 
+
+inst1=
+c d e f
+
+inst2=
+cis dis e fis
+
+inst3=
+des ees f ges
+
+inst4=
+fis gis ais b
+
+-> score
+inst1 inst4
+inst2 inst3
+inst3 inst2
+inst4 inst1

@@ -1,0 +1,8 @@
+# Test de la définition de l’octave après le nom de la variable
+
+var=
+c’ d e f
+
+
+-> score
+var var’ var, var

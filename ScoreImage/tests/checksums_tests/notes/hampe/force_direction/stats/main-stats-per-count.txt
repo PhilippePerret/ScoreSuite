@@ -1,0 +1,5 @@
+Nombre total de notes : 20
+c  5  5.0 s
+d  5  5.0 s
+e  5  5.0 s
+f  5  5.0 s

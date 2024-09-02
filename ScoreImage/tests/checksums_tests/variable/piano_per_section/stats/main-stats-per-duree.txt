@@ -1,0 +1,7 @@
+Durée totale : 40.0 s
+a  3  12.0 s
+f  3  12.0 s
+b  1   4.0 s
+c  1   4.0 s
+e  1   4.0 s
+g  1   4.0 s

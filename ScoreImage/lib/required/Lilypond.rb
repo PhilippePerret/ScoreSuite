@@ -668,6 +668,8 @@ end
 def translate_from_music_score(str)
   str = " #{str} "
 
+  str = translate_shortcuts_from_mus(str)
+
   str = translate_octaves_from_ms(str)
 
   # str = translate_barres_from_ms(str)
@@ -700,6 +702,13 @@ def translate_from_music_score(str)
 end
 
 private
+
+  def translate_shortcuts_from_mus(str)
+    
+    str = str.gsub(/(?<mark>tie|slur|stem)Off/.freeze, '\k<mark>Neutral'.freeze)
+
+    return str
+  end
 
   def translate_octaves_from_ms(str)
     # Les marques d'octave se font par \8ve, \15ve, \-15ve, \-8ve, \0ve

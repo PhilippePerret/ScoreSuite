@@ -1,0 +1,26 @@
+# Test de la définition d’un ensemble avec une variable par
+# section et définition des staves pour ne pas avoir à répéter 
+# les lignes comme dans per_section
+
+--staves_keys F,G,G,G
+
+intro=
+c’1
+g1
+e1
+c1
+
+couplet=
+f’1
+c1
+a’1
+f,1
+
+refrain=
+g’’1
+d1
+b1
+g1
+
+-> score
+intro couplet couplet refrain couplet intro

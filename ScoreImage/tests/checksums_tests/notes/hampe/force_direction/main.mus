@@ -1,0 +1,5 @@
+# Test du forcement de la position des hampes des notes
+
+
+-> score
+c4 d e f \stemDown c d e f \stemOff c’ d e f \stemUp c d e f \stemOff c d e f

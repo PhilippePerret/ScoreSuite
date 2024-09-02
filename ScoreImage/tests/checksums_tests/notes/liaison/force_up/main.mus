@@ -1,4 +1,4 @@
 # Test du placement forcé de la liaison
 
 -> score
-c( d e f g1) \slurUp c,4( d e f g1) \slurNeutral c,4( d e f g1)
+c( d e f g1) \slurUp c,4( d e f g1) \slurOff c,4( d e f g1)
