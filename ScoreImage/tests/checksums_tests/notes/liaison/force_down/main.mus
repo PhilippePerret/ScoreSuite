@@ -1,0 +1,4 @@
+# Forcer la liaison en dessous
+
+-> score
+c’4( d e f g1) \slurDown c,4( d e f g1) \slurNeutral c,4( d e f g1)

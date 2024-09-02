@@ -1645,11 +1645,10 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:140px;">Code</span> | <span style="display:inline-block;width:300px;">Description</span> |
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
-|                                                              | **`< notes >duree`**                                        | Bien noter que la durée est à l'extérieur de l'accord. Noter aussi que c'est la hauteur de la première note qui détermine la hauteur de référence pour la note suivante |
+|                                                              | **`<notes >duree`**                                         | Bien noter que la durée est à l'extérieur de l'accord. Noter aussi que c'est la hauteur de la première note qui détermine la hauteur de référence pour la note suivante |
 | Exemple                                                      | **<c e g c>2.**                                             | <img src="images/exemples/accord.svg" style=" width:100px;" /> |
-| Arpège                                                       | **`<c e g>\arpeggio`**                                      | Il suffit d’ajouter la marque `\arpegio` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /><br /><img src="./images/arpege-par-arp" alt="arpege" style="zoom:120%;" /> |
+| Arpège                                                       | **`<c e g>\arp`**                                           | Il suffit d’ajouter la marque `\arp` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /><br /><img src="./images/arpege-par-arp" alt="arpege" style="zoom:120%;" /> |
 |                                                              |                                                             |                                                              |
-| Snippet :                                                    | **`<`**                                                     |                                                              |
 
 #### Liaisons
 
@@ -1661,6 +1660,7 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | forcer au-dessus                                             | **`a'^( b c d)`**                                           |                                                              |
 | Forcer en haut                                               | **`\slurUp`**                                               | Pour revenir au comportement par défaut : **`\slurNeutral`** |
 | Forcer en bas                                                | **`\slurDown`**                                             | Pour revenir au comportement par défaut : **`\slurNeutral`** |
+| Placement par défaut                                         | **`\slurNeutral`**                                          |                                                              |
 | **Liaison de durée**                                         | **`note~ note`**                                            |                                                              |
 | Exemple simple                                               | **`c1~ c2`**                                                | <img src="images/exemples/liaison-de-duree.svg" style=" width:150px;" /> |
 | Exemple avec des accords                                     | **`<c c'>1~ <c c'>4 <c~ g'~>2. <c e g>2`**                  | <img src="images/exemples/liaison-accords.svg" style=" width:200px;" /> |

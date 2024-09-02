@@ -1,0 +1,4 @@
+# Forcer la liaison au-dessus
+
+-> score
+c1~ c1 \tieUp c1~ c1 \tieNeutral c1~ c1
