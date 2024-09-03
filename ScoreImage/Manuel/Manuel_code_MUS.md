@@ -382,6 +382,7 @@ Toutes les options dont nous allons parler peuvent être utilisées au début du
 | Statistiques                                                 | **`--stats`**                                                | Produit toujours les statistiques en même temps que la partition, dans un dossier `stats`. |
 | Tempo pour les statistisques et le fichier MIDI              | **`--tempo <valeur>`**                                       | Ne sert que pour les statistiques et le fichier MIDI. Si on doit ajouter l’indication « noire = valeur » au-dessus de la première portée, il ne faut pas le faire avec *ScoreImage*. |
 | Arrêt de la fusion des silences                              | **`--merge_rests OFF`**                                      | Cf. [Fusion des silences](#merge-rests).                     |
+| Suppression des doigtés                                      | **`--no_fingers`**                                           | Permet de supprimer l’écriture des doigtés.                  |
 |                                                              |                                                              |                                                              |
 
 ---
@@ -790,6 +791,10 @@ Notez plusieurs choses importantes ici :
   L’utilisation des variables, comme indiqué ci-dessus, permet de gérer ce problème, puisqu’une variable est forcément « isolée » dans le code LilyPond produit.
 
 * La marque `\not_merge_rests` est *définitive*. C’est-à-dire que tant que le *ScoreImage* ne rencontre pas de `\merge_rests`, les silences ne seront plus fusionnés.
+
+
+
+---
 
 ### Fichier de sortie MIDI
 
@@ -1559,6 +1564,67 @@ On peut simplifier la marque `\arpeggio` par la marque **`\arp`**.
 … produira :
 
 <img src="./images/arpege-par-arp.svg" alt="arpege-par-arp" style="zoom:120%;" />
+
+#### Doigtés
+
+Dans l’usage courant, les doigts en *mus* se marquent comment en lilypond, à l’aide de **-<nombre>**. Par exemple, pour un cinquième doigt sur un Do :
+
+~~~
+c-5
+~~~
+
+<img src="images/doigte_normal.svg" alt="doigte_normal" style="zoom:120%;" />
+
+Si on doit forcer le doigté à se placer en dessous, on utilise :
+
+~~~
+c_5
+~~~
+
+… qui produira :
+
+<img src="images/doigte_dessous.svg" alt="doigte_dessous" style="zoom:120%;" />
+
+Un raccourci permet d’écrire simplement les doigtés de substitution, à l’aide d’un **tilde** :
+
+~~~
+c-1~5 c_2~4
+~~~
+
+<img src="images/doigte_substitutions.svg" alt="doigte_substitutions" style="zoom:120%;" />
+
+
+> Note : On part du principe que le doigté est forcément un nombre de 1 à 5. Si pour une raison ou une autre (l’arrivée d’extraterrestres à mains de 8 doigts) le doigté devrait être différent, il faut écrire le code LilyPond explicite. Voir pour ça la page [Doigtés](https://lilypond.org/doc/v2.23/Documentation/notation/inside-the-staff#fingering-instructions).
+
+
+
+**SUPPRESSION DES DOIGTÉS**
+
+Les doigtés peuvent être supprimés ponctuellement de la gravure en utilisant l’option **`--no_fingers`**.
+
+Par exemple : 
+
+~~~
+c-1~5 c_2~4
+~~~
+
+… produira : 
+
+<img src="images/doigte_substitutions.svg" alt="doigte_substitutions" style="zoom:120%;" />
+
+Mais :
+
+~~~
+--no_fingers
+
+c-1~5 c_2~4
+~~~
+
+… produira :
+
+
+
+
 
 ---
 

@@ -28,6 +28,51 @@ class << self
 
 attr_reader :options
 
+
+# --- MÉTHODES DE TRANSLATION DU CODE MUSIC-SCORE VERS LILYPOND ---
+##
+# = main =
+#
+# Traduit un code music-score en un code Lilypond conforme
+#
+def translate_from_music_score(str)
+  str = " #{str} "
+
+  # P.e les \slurOff, les substitutions de doigtés (tilde)
+  str = translate_shortcuts_from_mus(str)
+
+  str = translate_octaves_from_ms(str)
+
+  # str = translate_barres_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_armure_from_mus(str)
+
+  str = " #{str.strip} "
+  str = translate_keys_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_percents_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_nuplets_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_trilles_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_graces_notes_from_ms(str)
+
+  str = " #{str.strip} "
+  str = translate_staff_change_from_ms(str)
+
+  # On échappe toutes les balances
+  str = str.gsub(/\\/, '\\')
+
+  return str
+end
+
+
 ##
 # = main =
 #
@@ -659,56 +704,23 @@ def markin_transposition
 end
 
 
-# --- MÉTHODES DE TRANSLATION DU CODE MUSIC-SCORE VERS LILYPOND ---
-##
-# = main =
-#
-# Traduit un code music-score en un code Lilypond conforme
-#
-def translate_from_music_score(str)
-  str = " #{str} "
-
-  str = translate_shortcuts_from_mus(str)
-
-  str = translate_octaves_from_ms(str)
-
-  # str = translate_barres_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_armure_from_mus(str)
-
-  str = " #{str.strip} "
-  str = translate_keys_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_percents_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_nuplets_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_trilles_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_graces_notes_from_ms(str)
-
-  str = " #{str.strip} "
-  str = translate_staff_change_from_ms(str)
-
-  # On échappe toutes les balances
-  str = str.gsub(/\\/, '\\')
-
-  return str
-end
-
 private
 
   def translate_shortcuts_from_mus(str)
     
     str = str.gsub(/(?<mark>tie|slur|stem)Off/.freeze, '\k<mark>Neutral'.freeze)
 
+    # Substitution de doigté
+
+    str = str.gsub(REG_SUBSTITUTION_DOIGTE) do
+      '%s\finger \markup \tied-lyric "%s~%s"'.freeze \
+        % [$~[:pos], $~[:doigt1],$~[:doigt2]]
+    end
+
     return str
   end
+
+  REG_SUBSTITUTION_DOIGTE = /(?<pos>[\-_\^])(?<doigt1>[1-5])\~(?<doigt2>[1-5])/.freeze
 
   def translate_octaves_from_ms(str)
     # Les marques d'octave se font par \8ve, \15ve, \-15ve, \-8ve, \0ve

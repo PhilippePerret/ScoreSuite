@@ -1,0 +1,2 @@
+Nombre total de notes : 2
+c  2  2.0 s

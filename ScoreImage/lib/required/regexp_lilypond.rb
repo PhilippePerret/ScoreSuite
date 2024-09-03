@@ -33,10 +33,16 @@ class MusicScore
   # Les récupérer avec $~[:note_params]
   # 
   # Mais bien souvent, il faut faire une expression propre.
-  # Noter que pour le moment, l’expression ’-12’ ne passera pas, car
-  # l’expression attend pour le moment un et un seul caractère après
-  # le tiret (caractère quelconque pour le moment)
-  REG_NOTE_PARAMS = /(?<note_params>(?:\-[^)])+)/.freeze
+  # 
+  # @notes
+  #   - pour le moment, l’expression ’-12’ ne passera pas, car
+  #     l’expression attend pour le moment un et un seul caractère 
+  #     après le tiret ou le trait plat (caractère quelconque pour 
+  #     le moment)
+  #   - le ’\~[1-5] permet de capter l’écriture des substitutions
+  #     de doigt.
+  # 
+  REG_NOTE_PARAMS = /(?<note_params>([_\-][^)\\](\~[0-5])?)+)/.freeze
 
   # Expression régulière complète pour repérer une note et
   # sa durée
