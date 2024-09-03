@@ -1622,7 +1622,7 @@ c-1~5 c_2~4
 
 … produira :
 
-
+<img src="images/no_fingers.svg" alt="no_fingers" style="zoom:120%;" />
 
 
 

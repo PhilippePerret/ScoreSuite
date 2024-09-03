@@ -1,0 +1,7 @@
+# Test de l’option --no_fingers qui permet de supprimer la 
+# gravure des doigtés même s’ils sont définis dans la partition
+
+--no_fingers
+
+-> score
+c-3 c_2 c-1~5 c_2~4

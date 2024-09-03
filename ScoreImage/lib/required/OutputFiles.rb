@@ -67,7 +67,7 @@ def build
   STDOUT.write "⚙️  Parsing du code MUS pour l'image #{relpath_image}".bleu
   codes = data.lines_code.map do |line_code|
     # puts "Je dois traduire : #{line_code.inspect}"
-    Lilypond.translate_from_music_score(line_code)
+    Lilypond.translate_from_music_score(line_code, data.options)
   end
   puts "\r🎼 Code parsé.#{' '*60}".vert
 

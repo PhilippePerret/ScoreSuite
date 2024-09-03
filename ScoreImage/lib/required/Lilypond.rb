@@ -35,7 +35,8 @@ attr_reader :options
 #
 # Traduit un code music-score en un code Lilypond conforme
 #
-def translate_from_music_score(str)
+def translate_from_music_score(str, options)
+  rationnalise_options(options)
   str = " #{str} "
 
   # P.e les \slurOff, les substitutions de doigtés (tilde)
@@ -95,6 +96,10 @@ end
 #             que le fichier MIDI.
 #
 def compose(code, options)
+  # Rationalisation des options
+  # Noter que maintenant (provisoirement si ça foire) elles ont été
+  # rationaliser une première fois dans #translate_from_music_score
+  # ci-dessus
   rationnalise_options(options)
   sep = "\n% --- %\n".freeze # délimiteur de partie
   beautify_code(header + sep + bloc_score(code,options) + sep + footer)
@@ -710,17 +715,20 @@ private
     
     str = str.gsub(/(?<mark>tie|slur|stem)Off/.freeze, '\k<mark>Neutral'.freeze)
 
-    # Substitution de doigté
-
-    str = str.gsub(REG_SUBSTITUTION_DOIGTE) do
-      '%s\finger \markup \tied-lyric "%s~%s"'.freeze \
-        % [$~[:pos], $~[:doigt1],$~[:doigt2]]
+    if options[:no_fingers]
+      puts "L’option no_fingers est activtée".jaune
+      str = str.gsub(REG_DOIGTE,EMPTY_STRING)
+    else
+      # Substitution de doigté
+      str = str.gsub(REG_SUBSTITUTION_DOIGTE) do
+        '%s\finger \markup \tied-lyric "%s~%s"'.freeze \
+          % [$~[:pos], $~[:doigt1],$~[:doigt2]]
+      end
     end
 
     return str
   end
 
-  REG_SUBSTITUTION_DOIGTE = /(?<pos>[\-_\^])(?<doigt1>[1-5])\~(?<doigt2>[1-5])/.freeze
 
   def translate_octaves_from_ms(str)
     # Les marques d'octave se font par \8ve, \15ve, \-15ve, \-8ve, \0ve

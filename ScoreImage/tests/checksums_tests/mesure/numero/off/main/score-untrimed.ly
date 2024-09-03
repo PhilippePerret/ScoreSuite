@@ -1,5 +1,5 @@
 \version "2.24.0"
-#(set-default-paper-size "a0" 'landscape)
+#(set-default-paper-size "b6")
 \paper{
   indent=0\mm
   oddFooterMarkup=##f
@@ -12,14 +12,15 @@
   \layout {
     \context {
       % On utilise context pour utiliser des context
+      \Score
+      \omit BarNumber
     }
   }
   \new Staff \with { \consists Merge_rests_engraver } <<
     \relative c' {
       \omit Staff.TimeSignature
       \clef "treble"
-      \key e \major
-      \relative c' { \tuplet 3/2 { gis8 cis e } } \relative c' { \tuplet 3/2 { gis8 cis e } } \relative c' { \tuplet 3/2 { gis8 cis e } } \relative c' { \tuplet 3/2 { gis8 cis e } }
+      c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2 c2
     }
   >>
   } %/fin de score

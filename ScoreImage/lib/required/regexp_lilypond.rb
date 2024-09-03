@@ -1,5 +1,7 @@
 class MusicScore
 
+  EMPTY_STRING = ''.freeze
+
   REG_SIMPLE_NOTE = /[a-g](isis|eses|is|es)?/.freeze
 
   REG_NOTE = /\b#{REG_SIMPLE_NOTE}\b/.freeze
@@ -80,4 +82,15 @@ class MusicScore
   REG_TRILL_START = /\\([\^_])?tr/.freeze
   REG_LONG_TRILL_START = /\\(?<pos>[\^_])?tr\((?<inner>.*?)\)\-/.freeze
   REG_TRILL_END   = /\\\-tr/.freeze
+
+
+
+  REG_DOIGTE = /(?<pos>[\-_\^])(?<doigt1>[1-5])(?:\~(?<doigt2>[1-5]))?/.freeze
+
+  # La différence avec REG_DOIGTE, c’est qu’ici la substitution n’est
+  # pas optionnelle, on cherche vraiment les doigtés avec substitu-
+  # tions
+  REG_SUBSTITUTION_DOIGTE = /(?<pos>[\-_\^])(?<doigt1>[1-5])\~(?<doigt2>[1-5])/.freeze
+
+
 end #/class MusicScore
