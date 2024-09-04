@@ -1575,6 +1575,16 @@ c-5
 
 <img src="images/doigte_normal.svg" alt="doigte_normal" style="zoom:120%;" />
 
+On peut indiquer plusieurs doigtés en multipliant les « `-X` ». On peut par exemple écrire un accord :
+
+~~~ 
+<c e g>-1-3-5
+~~~
+
+… qui produira :
+
+<img src="images/plusieurs_doigtes.svg" alt="plusieurs_doigtes" style="zoom:120%;" />
+
 Si on doit forcer le doigté à se placer en dessous, on utilise :
 
 ~~~
@@ -1584,6 +1594,18 @@ c_5
 … qui produira :
 
 <img src="images/doigte_dessous.svg" alt="doigte_dessous" style="zoom:120%;" />
+
+Si on doit forcer le doigté au-dessus, on utilise le **`^`** traditionnel. Cela se produit par exemple avec l’écriture à plusieurs voix :
+
+| Le code…                                                     | produira…                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **`<< \stemDown f // \stemUp c'-5 >> `**<br /> alors que le « 5 » devrait être au-dessus du Do. | <img src="images/doigte_bad_position.svg" alt="doigte_bad_position" style="zoom:120%;" /> |
+| On utilise alors le code **`<< \stemDown f // \stemUp c'^5 >>`** <br />pour forcer la marque au-dessus du Do. | <img src="images/doigte_force_dessus.svg" alt="doigte_force_dessus" style="zoom:120%;" /> |
+| Mais si on a deux doigts avec le code :<br />**`<< \stemDown f-1 // \stemUp c'^5 >>`** on obtient une collision <br /> du 5 et du 1 au-dessus de la portée. | <img src="images/doigte_force_dessus_collision.svg" alt="doigte_force_dessus_collision" style="zoom:120%;" /> |
+| Il faut donc utiliser le code <br />**`<< \stemDown f // \stemUp c'^1^5 >>`** | <img src="images/doigte_force_dessus_sans_collision.svg" alt="doigte_force_dessus_sans_collision" style="zoom:120%;" /> |
+|                                                              |                                                              |
+
+**DOIGTÉ DE SUBSTITUTION**
 
 Un raccourci permet d’écrire simplement les doigtés de substitution, à l’aide d’un **tilde** :
 

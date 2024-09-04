@@ -1,2 +1,2 @@
-Durée totale : 4.0 s
-c  4  4.0 s
+Durée totale : 7.0 s
+c  7  7.0 s

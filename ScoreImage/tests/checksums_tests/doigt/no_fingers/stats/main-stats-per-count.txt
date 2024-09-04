@@ -1,2 +1,2 @@
-Nombre total de notes : 4
-c  4  4.0 s
+Nombre total de notes : 7
+c  7  7.0 s
