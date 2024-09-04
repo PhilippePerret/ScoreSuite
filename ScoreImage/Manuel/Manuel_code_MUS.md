@@ -17,18 +17,32 @@ Pour produire facilement des images pour ce manuel :
 * jouer la commande :
 
   ~~~
-  score-i[TAB] << CODE
+  score-i[TAB] << 'MUS'
   # ici le code mus
   # dont :
   
-  -> nom-a-donner-a-image
-  # code mus
-  CODE
+  -> <nom-a-donner-a-image>
+  <code mus>
+  MUS
   ~~~
 
 * récupérer l’image dans le dossier `scores` du dossier images du manuel,
 
 * la glisser à l’endroit voulu dans ce manuel.
+
+> Note : Les apostrophes autour de « MUS » permettent de ne pas avoir d’évaluation du texte. Sans eux, on serait obligé d’échapper les caractères spéciaux, par exemple :
+>
+> ~~~
+> << { c e } \\\\ { g g } >>
+> ~~~
+>
+> Grâce aux apostrophes, on peut écrire l’expression exacte :
+>
+> ~~~
+> << { c e } \\ { g g } >>
+> ~~~
+
+---
 
 ### Le langage music-score (`mus`)
 
