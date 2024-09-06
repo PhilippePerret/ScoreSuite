@@ -9,6 +9,7 @@ const DATA_OPTIONS = {
   , number_per_5:   {name: "Numéroter de 5 en 5", default: false, depends_on: 'mesure_numbers'}
   , measure_number_under_staff: {name:"Numéro de mesure sous la portée", depends_on: 'mesure_numbers', default: false}
   , midi:           {name: "Produire le fichier MIDI", default: false}
+  , merge_rests:    {name: "Ne pas fusionner les silences", default: false, when_true: 'OFF'}
 }
 
 const OPTIONS_DIVERSES = Object.keys(DATA_OPTIONS)

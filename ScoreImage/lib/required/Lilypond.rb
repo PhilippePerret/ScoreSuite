@@ -451,7 +451,7 @@ end
 
 def mark_with_staff(params)
   withs = []
-  unless params[:merge_rests] === false
+  unless options[:merge_rests] === false
     # Pour le moment, par défaut, on merge les silences
     withs << '\consists Merge_rests_engraver'
   end
