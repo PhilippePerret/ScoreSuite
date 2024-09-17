@@ -1,0 +1,6 @@
+# Test qui s’assure que la durée et l’octave du silence influence
+# les notes suivantes
+
+
+-> score
+a,4 a’8\rest a a’’16\rest a
