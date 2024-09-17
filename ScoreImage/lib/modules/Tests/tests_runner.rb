@@ -28,6 +28,7 @@ class << self
     display_table_options
     must_fail_fast = CLI.option(:fail_fast)||CLI.option(:ff)
     tests_list(params).each_with_index do |musfile, idx|
+      musfile.good_name? || next
       musfile.indice = idx + 1
       ###########################
       ###    APPEL DU TEST    ###

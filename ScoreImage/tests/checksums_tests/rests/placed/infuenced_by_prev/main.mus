@@ -1,0 +1,5 @@
+# Test de l’influence de la durée et de l’octave qui précèdent
+
+
+-> score
+a’’4 a\rest a,8 a\rest a,16 a\rest

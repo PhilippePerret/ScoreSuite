@@ -227,6 +227,26 @@ class MusFile
     extra_tests.ok?
   end
 
+  # Le nom du test doit impérativement s’appeler "main.mus"
+  # 
+  # @note
+  #   À l’avenir, si on est obligé d’avoir plusieurs fichiers .mus
+  #   dans le dossier du test, il faudrait, en les relevant, ne 
+  #   prendre que le fichier ’main.mus’ lorsqu’il existe et ne 
+  #   prendre un autre fichier (pour générer cette erreur) que 
+  #   lorsque ce fichier main.mus n’existe pas (ou alors signaler
+  #   l’erreur à la relève des fichiers ?)
+  def good_name?
+    filename == 'main.mus' || begin
+      puts <<~ERR.rouge
+
+        Les fichiers de code doivent impérativement s’appeler ’main.mus’.
+        Il faut renommer le fichier ’#{relative_path}/#{filename}’.
+        ERR
+      false
+    end
+  end
+
   def extra_tests
     @extra_tests ||= ExtraTests.new(self)
   end
