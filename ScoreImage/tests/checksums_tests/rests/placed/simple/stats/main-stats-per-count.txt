@@ -1,0 +1,2 @@
+Nombre total de notes : 1
+r  1  0.5 s

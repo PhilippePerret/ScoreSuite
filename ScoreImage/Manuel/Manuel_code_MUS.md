@@ -768,6 +768,8 @@ On peut désactiver ce comportement par défaut en utilisant l’option **`--mer
 
 #### Arrêt ponctuel de la fusion des silences
 
+<font color="FF0000">**[pour le moment, ça ne semble pas fonctionner à tous les coups]**</font>
+
 Si l’on conserve le comportement par défaut, on peut néanmoins désactiver localement la fusion des silences grâce à la marque **`\not_merge_rests`** (et la faire reprendre à l’aide de **`\merge_rests`**) :
 
 ~~~
@@ -1802,6 +1804,16 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 
 **`\partial <durée de l'anacrouse>`**
 
+Par exemple, pour avoir deux temps avant la première mesure : 
+
+~~~
+\partial 2 c'4 c, f f f f
+~~~
+
+Produira :
+
+<img src="images/partial.svg" alt="partial" style="zoom:120%;" />
+
 ---
 
 #### Voix simultanées
@@ -1816,9 +1828,70 @@ Démarrage en levée de la mélodie, sans utiliser de silences invisibles avant 
 Dans cette formule, les deux voix auront leur propre 'voice'.
 Mais il existe d'autres possibilités (cf. le mode d'emploi)
 
+---
 
+#### Placement des silences
 
+Avec LilyPond, on peut placer les silences de façon très précise avec la formule :
 
+~~~
+<note><octave><duree>\rest
+~~~
+
+Le silence sera alors placé à l’endroit de la note (la « tête » du silence sera sur la tête de la note).
+
+Par exemple, pour placer un silence sur le Do 4 (ou Do 5 en anglais)
+
+| Placement naturel | Placement précis |
+| :---------------: | :--------------: |
+| <img src="images/rest_place_naturelle.svg" alt="rest_place_naturelle" style="zoom:120%;" /> | <img src="images/rest_sur_c4.svg" alt="rest_sur_c4" style="zoom:120%;" /> |
+| `r4`                  |`c'4\rest`                  |
+
+La durée courante influe sur la durée du silence, comme on peut le voir avec le code :
+
+~~~
+a'4 b\rest a8 b\rest a16 b\rest
+~~~
+
+… qui produira :
+
+<img src="images/rest_herite_duree.svg" alt="rest_herite_duree" style="zoom:120%;" />
+
+De la même manière, l’octave courante influe sur la hauteur du silence :
+
+~~~
+a,4 a\rest a' a\rest a'' a\rest
+~~~
+
+… produira :
+
+<img src="images/rest_influenced_by_octave.svg" alt="rest_influenced_by_octave" style="zoom:120%;" />
+
+Il faut noter un point important : en matière d’octave, la note du silence est influencée par l’octave précédente et influe sur l’octave (les notes ou les silences) suivants.
+
+Ainsi, le code :
+
+~~~
+f16 e d d\rest a' b c d d\rest
+~~~
+
+… produira :
+
+<img src="images/rest_herite_octave.svg" alt="rest_herite_octave" style="zoom:120%;" />
+
+… qui montre l’influence de l’octave et de la durée précédente sur le silence, tandis que le code :
+
+~~~
+c''8\rest f e d c,,4 g a b
+~~~
+
+… produira :
+
+<img src="images/rest_influe_octave_duree.svg" alt="rest_influe_octave_duree" style="zoom:120%;" />
+
+… qui montre l’influence de la durée et de la hauteur sur les notes suivants le silence.
+
+---
 
 ## Variable (aka « Definitions » )
 

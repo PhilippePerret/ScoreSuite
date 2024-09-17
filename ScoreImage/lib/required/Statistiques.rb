@@ -579,8 +579,8 @@ class Statistiques
   # +line+ pour en tirer les notes
   def parse_line(line, add_notes = true)
 
-    # Mettre à true pour voir le traitement effectué par chaque
-    # méthode de préparation
+    # Mettre à true si l’on veut voir en console le traitement
+    # effectué par chaque méthode de préparation
     decompose_debug = false
 
     # puts "Line à parser : #{line.inspect} #{' (sans ajout de note)' if !add_notes}".jaune
@@ -596,10 +596,15 @@ class Statistiques
     end
     decompose_debug && puts("[0]line : #{line.inspect}")
 
+    # On remplace les silences positionnés par de simple silences
+    # (sinon les notes de position sont prises en considération)
+    line = simplifie_silence_positioned_in(line)
+    decompose_debug && puts("[1.1]line : #{line.inspect}")
+
 
     # Pour pouvoir utiliser les espaces comment délimiteurs partout
     line = " #{line} "
-    decompose_debug && puts("[1]line : #{line.inspect}")
+    decompose_debug && puts("[1.2]line : #{line.inspect}")
 
     # On retire toutes les expressions lilypond qui peuvent comporter
     # des notes, à commencer par les \relative <note>
@@ -649,6 +654,22 @@ class Statistiques
     end
 
   end
+
+  # On remplace les :
+  #     <note><octave><duree>\rest 
+  # par des :
+  #     r<duree>
+  # 
+  def simplifie_silence_positioned_in(line)
+    
+    line = line.gsub(REG_POSITIONED_REST) do
+      TEMP_POSITIONED_REST % {duree: $~[:duree]||''}    
+    end
+
+    return line
+  end
+  REG_POSITIONED_REST = /(?<note>[a-g])(?<octave>[’',]*)(?<duree>[0-9]*)\\rest/.freeze
+  TEMP_POSITIONED_REST = 'r%{duree}'.freeze
 
   # Traitement d’expressions spéciales qui peuvent poser problème
   # 
