@@ -27,10 +27,11 @@ class OriginalScore {
 
   static buildVignettes(){
     this.vignettes = []
-    let largeur = this.container.offsetWidth
-    while ( (largeur - RESTE_SECU) > 0 ) {
+    // let largeur = this.container.offsetWidth
+    // while ( (largeur - RESTE_SECU) > 0 ) {
+    for (var i = 0; i < 10 ; ++i ) {
       this.vignettes.push(this.buildVignette())
-      largeur -= MINIATURE_WIDTH + MINIATURE_GUTTER;
+      // largeur -= MINIATURE_WIDTH + MINIATURE_GUTTER;
     }
   }
   static buildVignette(){
