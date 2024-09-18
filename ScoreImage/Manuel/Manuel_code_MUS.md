@@ -1830,6 +1830,17 @@ Mais il existe d'autres possibilités (cf. le mode d'emploi)
 
 ---
 
+#### Silence sur mesure entière
+
+Avec LilyPond, on met un silence sur une mesure entière avec un « R » (« r majuscule »).
+
+|                                                         |                                                              |                                                              |                                                         |
+| ------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
+| <span style="display:inline-block;width:100px"> </span> | **`r2.`**                                                    | **`--time 3/4`<br />`R2.`**                                  | <span style="display:inline-block;width:100px"> </span> |
+|                                                         | <img src="images/silence_normal.svg" alt="silence_normal" style="zoom:120%;" /> | <img src="images/silence_mesure.svg" alt="silence_mesure" style="zoom:120%;" /> |                                                         |
+
+
+
 #### Placement des silences
 
 Avec LilyPond, on peut placer les silences de façon très précise avec la formule :
