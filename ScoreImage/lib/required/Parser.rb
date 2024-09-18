@@ -49,13 +49,17 @@ def parse
   # 
   code = code.gsub(/^\-\>/, "\n->")
   #
+  # Suppression des lignes ne contenant que des espaces
+  # 
+  code = code.gsub(/^([  \t])+$/.freeze,''.freeze)
+  #
   # Réduction des retours chariot
   # 
-  code = code.gsub(/\n\n\n+/, "\n\n").strip
+  code = code.gsub(/\n\n\n+/.freeze, "\n\n".freeze).strip
   #
   # Remplacement des apostrophes courbes
   # 
-  code = code.gsub('’', '\'')
+  code = code.gsub('’'.freeze, '\''.freeze)
 
   #
   # Les options courantes

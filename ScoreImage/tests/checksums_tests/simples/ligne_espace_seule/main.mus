@@ -1,0 +1,10 @@
+# test pour s’assurer qu’une ligne composée seulement d’espaces
+# ou de tabulation ne sera pas prise en compte et plantera
+
+# La ligne est ci-dessous
+ 
+  
+
+
+-> score
+a b c d
