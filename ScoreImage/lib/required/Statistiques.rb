@@ -601,10 +601,13 @@ class Statistiques
     line = simplifie_silence_positioned_in(line)
     decompose_debug && puts("[1.1]line : #{line.inspect}")
 
+    # On remplace les silences R (silence sur mesure) par des r
+    line = line.gsub(/R([1-8]+[.]+)/.freeze,'r\1'.freeze)
+    decompose_debug && puts("[1.2]line : #{line.inspect}")
 
     # Pour pouvoir utiliser les espaces comment délimiteurs partout
     line = " #{line} "
-    decompose_debug && puts("[1.2]line : #{line.inspect}")
+    decompose_debug && puts("[1.3]line : #{line.inspect}")
 
     # On retire toutes les expressions lilypond qui peuvent comporter
     # des notes, à commencer par les \relative <note>

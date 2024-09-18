@@ -1,0 +1,7 @@
+# Ce test s’assure que les silences sur une mesure, marqué par
+# un R majuscule, soit pris en compte dans les statistiques
+
+--time 3/4
+
+-> score
+R2.
