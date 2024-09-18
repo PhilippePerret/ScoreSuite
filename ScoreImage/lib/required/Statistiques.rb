@@ -671,7 +671,7 @@ class Statistiques
 
     return line
   end
-  REG_POSITIONED_REST = /(?<note>[a-g])(?<octave>[’',]*)(?<duree>[0-9]*)\\rest/.freeze
+  REG_POSITIONED_REST = /(?<note>[a-g])(?<alter>is|es)?(?<octave>[’',]*)(?<duree>[0-9]*)\\rest/.freeze
   TEMP_POSITIONED_REST = 'r%{duree}'.freeze
 
   # Traitement d’expressions spéciales qui peuvent poser problème
