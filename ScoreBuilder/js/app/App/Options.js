@@ -194,10 +194,14 @@ class Options extends Panneau {
     const format = DGet('#option_format').value
     data.push(`--page ${format}`)
     // - Tempo -
-    const tempo_note = DGet('#option_tempo-note').value
-    if ( tempo_note != '-') {
-      const tempo_duree = Number(DGet('#option_tempo-duree').value);
-      const tempo = (function(tnote, tduree){
+    let tempo_note, tempo_duree, tempo; 
+    tempo_note = DGet('#option_tempo-note').value
+    if ( tempo_note == '-' ) {
+      tempo_note  = '4'
+      tempo_duree = tempo = '100'
+    } else {
+      tempo_duree = Number(DGet('#option_tempo-duree').value);
+      tempo = (function(tnote, tduree){
         switch(tempo_note){
         case '4' : return String(tduree);
         case '4.': return `${tduree}T`;
@@ -207,10 +211,12 @@ class Options extends Panneau {
         case '2.': return `${Math.round(tduree / 2)}T`;
         }
       })(tempo_note, tempo_duree)
-      data.push(`--tempo_note ${tempo_note}`)
-      data.push(`--tempo_duree ${tempo_duree}`)
-      data.push(`--tempo ${tempo}`)
     }
+    // Pour toujours définir un tempo, même lorsqu’il n’est pas
+    // défini par l’utilisateur
+    data.push(`--tempo_note ${tempo_note}`)
+    data.push(`--tempo_duree ${tempo_duree}`)
+    data.push(`--tempo ${tempo}`)
     // - Système -
     let system = this.menuSystems.value
     if ( system == "---"){

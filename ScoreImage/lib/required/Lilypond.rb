@@ -290,7 +290,9 @@ def tempo?
   not(tempo.nil?)
 end
 def tempo
-  @tempo ||= (options[:tempo]||CLI.option(:tempo)).to_s.freeze
+  @tempo ||= begin
+    (CLI.option(:tempo)||options[:tempo]).to_s.freeze
+  end
 end
 
 def system_for_solo(code, params)

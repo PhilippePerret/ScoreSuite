@@ -167,9 +167,12 @@ end
 
 # @return NIL en cas de succès ou l’erreur rencontrée
 def produce_midi_file
+  puts "Je passe par -> #produce_midi_file"
   nfile = File.basename(mus_file)
-  cmd = 'cd "%s" && score-image --midi "%s"'.freeze % [folder, nfile]
+  cmd = 'cd "%s" && score-image --midi "%s"'.freeze % [folder, mus_file.filename]
+  puts "cmd = #{cmd}"
   res = `#{cmd}`
+  puts "res = #{res}"
   allright = res.match?(/(success|succès)/)
 
   return allright ? nil : res
