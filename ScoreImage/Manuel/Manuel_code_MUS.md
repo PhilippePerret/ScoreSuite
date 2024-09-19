@@ -839,9 +839,15 @@ c d e f
 score-image moncode.mus -midi
 ~~~
 
-> Bien noter que la commande ci-dessus ne produira QUE le fichier midi (à partir du code du fichier « moncode.mus »).
+> Bien noter que la commande ci-dessus ne produira QUE le fichier midi (à partir du code du fichier « moncode.mus »). Ce qui est très pratique pour les très longues partitions qui demandent plusieurs dizaines de secondes en gravure des partitions.
 
+Si un tempo est ajouté à la ligne de commande, il supplante le tempo défini dans le fichier .mus :
 
+~~~
+score-image moncode.mus -midi --tempo=80
+~~~
+
+Cela permet de produire très rapidement des fichiers MIDI plus lents (pour contrôle des notes) ou plus rapides (pour le fun).
 
 ---
 
