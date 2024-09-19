@@ -67,6 +67,12 @@ def translate_from_music_score(str, options)
   str = " #{str.strip} "
   str = translate_staff_change_from_ms(str)
 
+  str = " #{str.strip} "
+  str = translate_parenthesis_from_muscode(str)
+
+  str = " #{str.strip} "
+  str = ensure_parenthesis_from_muscode(str) # à la fin
+
   # On échappe toutes les balances
   str = str.gsub(/\\/, '\\')
 
@@ -922,6 +928,38 @@ private
   #  Pbas => \change Staff = "down"
   def translate_staff_change_from_ms(str)
     str = str.gsub(/(Phaut|\\up)\b/, '\change Staff = "haute"').gsub(/(Pbas|\\down)\b/, '\change Staff = "basse"')
+  end
+
+  # Transforme les éléments entre parenthèses, qui sont repérés
+  # par \(...\) avec éventuellement une taille de parenthèse :
+  #   \(5...\)
+  def translate_parenthesis_from_muscode(str)
+    str = str.gsub(/\\\((?<fontsize>[0-9]*(\.[0-9])?)(?<inner>.+?)\\\)/.freeze) do
+      inner     = $~[:inner].freeze
+      fontsize  = $~[:fontsize].freeze.nil_if_empty
+      fontsize= ('\once \override Staff.Parentheses.font-size = %s '.freeze) % fontsize if fontsize
+      '%s\parenthesize { %s }'.freeze % [fontsize, inner]
+    end
+
+    return str
+  end
+
+  # En fin de processus, il faut modifier la place de certaines
+  # parenthèses. Par exemple, en écrivant \(\gr(e8)\) pour mettre
+  # la grace note entre parenthèses, on obient d’abord le code :
+  #   \parenthesize { \grace e8 } 
+  # Il faut inverser pour obtenir :
+  #   \grace \parenthesize { e8 } 
+  # 
+  def ensure_parenthesis_from_muscode(str)
+    
+    str = str.gsub(/\\parenthesize \{ \\(?<otype>grace|appoggiatura|acciaccatura) (?<inner>.+?) \}/.freeze) do
+      otype = $~[:otype] # ornement type
+      inner = $~[:inner]
+      '\once \override Parentheses.padding = #0.0 \once \override Staff.Parentheses.font-size = 2.5 \%s { \parenthesize %s }'.freeze % [otype, inner]
+    end
+
+    return str
   end
 
 end #/<< self
