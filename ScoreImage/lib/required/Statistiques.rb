@@ -594,7 +594,12 @@ class Statistiques
     line = line.gsub(REG_NOTE_WITH_PARAMS) do
       "#{$~[:note]}#{$~[:alter]}#{$~[:duration]}"
     end
-    decompose_debug && puts("[0]line : #{line.inspect}")
+    decompose_debug && puts("[0.1]line : #{line.inspect}")
+    
+    # On supprime les parenthèses éventuelles
+    decompose_debug && puts("[0.2]line : #{line.inspect}")
+    line = line.gsub(/(#{REG_REAL})?\\\((#{REG_REAL})?/.freeze, EMPTY_STRING)
+    line = line.gsub(/\\\)/.freeze, EMPTY_STRING)
 
     # On remplace les silences positionnés par de simple silences
     # (sinon les notes de position sont prises en considération)

@@ -15,6 +15,8 @@ class MusicScore
 
   1700: Une trille longue requiert impérativement sa maque de fin ’\\-tr’.
 
+  2000: Trop d’itérations pour supprimer les Parentheses.font-size dans ’%s’
+  2001: Trop d’itérations pour supprimer les Parentheses.padding dans ’%s’
   TEXT
 
 

@@ -934,11 +934,13 @@ private
   # par \(...\) avec éventuellement une taille de parenthèse :
   #   \(5...\)
   def translate_parenthesis_from_muscode(str)
-    str = str.gsub(/\\\((?<fontsize>[0-9]*(\.[0-9])?)(?<inner>.+?)\\\)/.freeze) do
-      inner     = $~[:inner].freeze
-      fontsize  = $~[:fontsize].freeze.nil_if_empty
-      fontsize= ('\once \override Staff.Parentheses.font-size = %s '.freeze) % fontsize if fontsize
-      '%s\parenthesize { %s }'.freeze % [fontsize, inner]
+    str = str.gsub(/(?<taille>#{REG_REAL})?\\\((?<padding>#{REG_REAL})?(?<inner>.+?)\\\)/.freeze) do
+      inner   = $~[:inner].freeze
+      taille  = $~[:taille].freeze.nil_if_empty || '1'
+      taille  = (' \once \override Parentheses.font-size = #%s '.freeze) % taille      
+      padding = $~[:padding].freeze
+      padding = padding.nil? ? '' : (' \once \override Parentheses.padding = #%s '.freeze % padding)
+      '%s %s \parenthesize %s '.freeze % [padding, taille, inner]
     end
 
     return str
@@ -953,12 +955,36 @@ private
   # 
   def ensure_parenthesis_from_muscode(str)
     
-    str = str.gsub(/\\parenthesize \{ \\(?<otype>grace|appoggiatura|acciaccatura) (?<inner>.+?) \}/.freeze) do
+    # Cas des petites notes
+    str = str.gsub(/\\parenthesize \\(?<otype>grace|appoggiatura|acciaccatura) (?<inner>.+?) /.freeze) do
       otype = $~[:otype] # ornement type
       inner = $~[:inner]
-      '\once \override Parentheses.padding = #0.0 \once \override Staff.Parentheses.font-size = 2.5 \%s { \parenthesize %s }'.freeze % [otype, inner]
+      '\once \override Parentheses.padding = #0.0 \once \override Parentheses.font-size = #2.5 \%s { \parenthesize %s }'.freeze % [otype, inner]
     end
 
+    # Cas des notes dans un accord
+    security = 0
+    while str.match?(/<[^>]+Parentheses.font-size[^>]+>/.freeze)
+      str = str.gsub(/<(?<avant>[^>]+)(?<taille>\\once \\override Parentheses.font-size = ##{REG_REAL})(?<apres>[^>]*)>/.freeze) do
+        avant   = $~[:avant]
+        apres   = $~[:apres]
+        taille  = $~[:taille]
+        '%s <%s%s>'.freeze % [taille, avant, apres]
+      end
+      security += 1
+      raise ERREUR[2000] % str if security > 1000
+    end
+    security = 0
+    while str.match?(/<([^>]+)Parentheses.padding([^>]+)>/.freeze)
+      str = str.gsub(/<(?<avant>[^>]+)(?<padding>\\once \\override Parentheses.padding = ##{REG_REAL})(?<apres>[^>]*)>/.freeze) do
+        avant     = $~[:avant]
+        apres     = $~[:apres]
+        padding   = $~[:padding]
+        '%s <%s%s>'.freeze % [padding, avant, apres]
+      end
+      security += 1
+      raise ERREUR[2001] % str if security > 1000
+    end
     return str
   end
 

@@ -1,0 +1,6 @@
+# Pour tester les parenthèses autour de plusieurs notes
+# QUI NE FONCTIONNENT PAS
+# --keep
+
+-> score
+c \(d e\) f

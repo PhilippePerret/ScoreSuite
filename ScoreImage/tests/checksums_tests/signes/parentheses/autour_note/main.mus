@@ -1,0 +1,5 @@
+# Pour tester les parenthèses autour d’une note
+--keep
+
+-> score
+c \(d\) e f

@@ -1,0 +1,6 @@
+# Pour tester les parenthèses autour de notes dans un accord
+
+# --keep
+
+-> score
+<\(c\) e g \(c\)>

@@ -1668,6 +1668,60 @@ c-1~5 c_2~4
 
 <img src="images/no_fingers.svg" alt="no_fingers" style="zoom:120%;" />
 
+---
+
+#### Parenthèses
+
+On peut ajouter des parenthèses autour d’un élément quelconque à l’aide du code générique :
+
+<center><b>`[&lt;taille>]\([&lt;padding ?]&lt;code>\)`</b></center>
+
+Sans définir de taille ou de padding, le code donne simplement :
+
+<center><b>`\(&lt;code>\)`</b></center>
+
+> Ne oublier les balances  « `\`» avant les parenthèses.
+
+Par exemple : 
+
+~~~
+c \(d\) e f
+~~~
+
+… produira : 
+
+<img src="images/parent_autour_note.svg" alt="parent_autour_note" style="zoom:120%;" />
+
+**PLUSIEURS NOTES**
+
+Noter qu’il est impossible, pour le moment, de mettre plusieurs notes successives à la suite. Par exemple, le code suivant ne produira aucun résultat particulier :
+
+~~~
+c \(d e f\)  # :( PAS DE PARENTHÈSES
+~~~
+
+**DIVERS CAS SPÉCIAUX**
+
+On peut mettre entre parenthèses 
+
+| Description                                                  | Code                              | Résultat                                                     |
+| ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
+| Un accord complet                                            | **`\(<c e g>\)`**                 | <img src="images/parent_autour_accord.svg" alt="parent_autour_accord" style="zoom:120%;" /> |
+| Des notes dans l’accord                                      | **`<\(c\) e g \(c\)>`**           | <img src="images/parent_notes_dans_accord.svg" alt="parent_notes_dans_accord" style="zoom:120%;" /> |
+| À l’intérieur d’un accord, on ne peut pas mettre des tailles ou des paddings différents. C’est toujours le premier qui l’emportera sur tous les autres. | **` <-1\(-0.5 c\) e g 5\(5c\)>`** | <img src="images/parent_notes_accord_custom.svg" alt="parent_notes_accord_custom" style="zoom:120%;" /> |
+| Pour des petites notes                                       | **`\(\gr(b8)\) c`**               | <img src="images/parent_grace_notes.svg" alt="parent_grace_notes" style="zoom:120%;" /> |
+| Petites notes avec parenthèses personnalisées (<font color="#ff0000"><b>ne fonctionne pas pour le moment</b></font>) | **`5\(-0.5\gr(b8)\) c`**          | <img src="images/parent_grace_notes_custom.svg" alt="parent_grace_notes_custom" style="zoom:120%;" /> |
+
+**CAS PARTICULIER DES PETITES NOTES**
+
+Pour les *petites notes* (les *grace notes*), penser à bien mettre les parenthèses autour de l’ornement, pas à l’intérieur :
+
+~~~
+\gr(\(b8\))   # :( ne fonctionnera pas
+
+\( \gr(b8) \) # :) OK !
+~~~
+
 
 
 ---

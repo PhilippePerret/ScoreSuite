@@ -2,6 +2,10 @@ class MusicScore
 
   EMPTY_STRING = ''.freeze
 
+  # Pour capturer un réel
+  # Par exemple /<?reel>#{REG_REAL})/
+  REG_REAL = /(?:\-)?[0-9]+(?:\.[0-9]+)?/.freeze
+
   REG_SIMPLE_NOTE = /[a-g](isis|eses|is|es)?/.freeze
 
   REG_NOTE = /\b#{REG_SIMPLE_NOTE}\b/.freeze
