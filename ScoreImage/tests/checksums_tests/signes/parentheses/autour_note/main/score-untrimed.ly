@@ -18,7 +18,7 @@
     \relative c' {
       \omit Staff.TimeSignature
       \clef "treble"
-      c   \once \override Staff.Parentheses.font-size = 1  \parenthesize d  e f
+      c   \once \override Parentheses.font-size = #1  \parenthesize d  e f
     }
   >>
   } %/fin de score

@@ -1,0 +1,6 @@
+# Test d’une répétition % avec une marque d’octave absolue
+
+
+-> score
+\cle F % c=,8 e g c %3
+

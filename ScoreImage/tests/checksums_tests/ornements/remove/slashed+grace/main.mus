@@ -1,0 +1,22 @@
+# Test de la suppression des APPOGIATURES
+--barres OFF
+--proximity 30
+
+
+--no_graces sg
+
+
+appo=
+\gr(e8-) f4
+
+accia=
+\gr(e8/-) f4
+
+grace=
+\gr(e8) f4
+
+slash=
+\gr(e8/) f4
+
+-> score
+appo accia grace slash appo accia grace slash

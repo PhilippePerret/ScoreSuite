@@ -1,0 +1,3 @@
+Durée totale : 1.0 s
+e  1  0.5 s
+f  1  0.5 s

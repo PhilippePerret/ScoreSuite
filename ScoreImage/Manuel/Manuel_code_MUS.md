@@ -323,6 +323,8 @@ Certains partis-pris ont été adoptés :
   | *Remarquer la petite note en double-croche et la liaison*    | *Remarquer la petite note en croche sans liaison*            | *Mais les deux écriture produiront ce résultat avec deux double-croches.* |
 
    L'option prise est la suivante : la durée de la petite note, quelle que soit sa durée écrite, sera la moitié de celle de la note qui la suit. Dans les deux exemples ci-dessus, la petite note sera donc une double-croche, et la note suivante sera raccourcie d'autant, pour se rapprocher de l'effet produit.
+  
+  > Pour les [petites notes supprimées](#suppression-petites-notes), le calcul n’est pas encore optimisé et il peut souvent survenir des erreurs de calculs (certaines petites notes n’étant pas retirées de la partition analysée).
 
 **Certaines erreurs découlent de l’écriture** même et, pour le moment, ne peuvent pas être évitées. C’est le cas dans l’utilisation d’un arpège (ou similaire) conduisant à un accord, comme dans la partition suivante :
 
@@ -844,10 +846,12 @@ score-image moncode.mus -midi
 Si un tempo est ajouté à la ligne de commande, il supplante le tempo défini dans le fichier .mus :
 
 ~~~
-score-image moncode.mus -midi --tempo=80
+score-image moncode.mus --midi --tempo=80
 ~~~
 
 Cela permet de produire très rapidement des fichiers MIDI plus lents (pour contrôle des notes) ou plus rapides (pour le fun).
+
+> Concernant le traitement des *petites notes* dans les fichiers MIDI, qui peuvent poser de gros problèmes, voir le chapitre [Suppression des petites notes](#suppression-petites-notes).
 
 ---
 
@@ -957,13 +961,35 @@ résultant de l'expression `c d e f`.
 
 ---
 
-## LANGAGE MUSIC-SCORE (*mus*)
+## Notation LilyPond simplifiée
 
-La partie ci-dessous présente les termes propres au langage « music-score ».
+Cette section présente les notations de l'expression pseudo-lilypond qui  diffèrent du langage original (toujours pour simplifier).
 
----
+### Répétitions
 
-### Handy code
+#### Marque de répétition avec le signe pourcentage
+
+Forme canonique : **`{ <contenu> }x<nombre de fois>`**
+
+Exemples :
+
+~~~
+{ c e g c }x2
+~~~
+
+Produira :
+
+<img src="images/repeat_with_mark_pourcent.svg" alt="repeat_with_mark_pourcent" style="zoom:120%;" />
+
+On peut indiquer des répétition de 2 à 4 :
+
+~~~
+{ c e g c }x4
+~~~
+
+Produira : 
+
+<img src="images/repeat_with_mark_pourcent_4x.svg" alt="repeat_with_mark_pourcent_4x" style="zoom:120%;" />
 
 #### Répétition d’une note avec `<note>*N`
 
@@ -1051,7 +1077,17 @@ Il est important, néanmoins, de surveiller l’octave à la fin de la chaine, c
 
 <img src="./images/montee-octaves.svg" alt="montee-octaves" style="zoom:120%;" />
 
-Dans ce cas, on peut préférer utiliser avec plus de sécurité le code normal de Lilypond :
+Dans ce cas, on peut utiliser les **marques d’octaves absolues** qui permettent de toujours repartir sur la même note en début de répétition :
+
+~~~
+\cle F % c=,8 e g c %3
+~~~
+
+… qui produira :
+
+<img src="images/repeat_with_abs_octave.svg" alt="repeat_with_abs_octave" style="zoom:120%;" />
+
+Dans les cas inextricables, on peut utiliser avec plus de sécurité le code normal de Lilypond :
 
 ~~~
 \cle F \repeat unfold 3 { c,,8 e g }
@@ -1063,14 +1099,11 @@ Dans ce cas, on peut préférer utiliser avec plus de sécurité le code normal 
 
 
 
-
----
-
-## Notation LilyPond simplifiée
+## 
 
 Cette section présente les notations de l'expression pseudo-lilypond qui  diffèrent du langage original (toujours pour simplifier).
 
-#### Les Barres
+### Les Barres
 
 
 | <span style="display:inline-block;width:200px;">Objet</span> | Code      | <span style="display:inline-block;width:300px;">Description</span> |
@@ -1100,7 +1133,7 @@ Les premières, deuxième, etc. fois se gèrent à l’aide **`|<X>`** où `<x>`
 
 ---
 
-#### Clé de l'expression
+### Clé de l'expression
 
 On peut utiliser les marques normale de LilyPond mais il peut être
 plus pratique d'utiliser :
@@ -1381,6 +1414,92 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 |                                                              |                                                             |                                                              |
 
 > Au niveau des statistiques, voir les notes concernant le [traitements particulier des petites notes](#stats-petites-notes).
+
+<a name="suppression-petites-notes"></a>
+
+##### Problèmes des petites notes dans les fichiers MIDI
+
+Certaines *petites notes* peuvent poser problème dans les fichiers midi, en décalant toutes les notes d’une voix (lorsque les notes sont prises pour leur durée réelle). Si le fichier midi doit servir à produire la musique, il convient alors de supprimer les petites notes aux endroits problématiques et de les remplacer par leur vrai valeur.
+
+S’il s’agit juste d’un fichier MIDI pour contrôler la partition par exemple, on peut utiliser les options `no_grace` pour spécifier les *petites notes* à supprimer (elles ne seront pas du tout jouées). 
+
+> Dès à présent, précisons que ces options peuvent changer les octaves des notes et qu’il convient donc, par précaution, de préciser cette hauteur de façon explicite dans la note suivante, comme cela est expliqué dans la section [Indication de l’octave exacte après une petite note](#set-octave-after-grace-note).
+
+Voici le sens de ces options :
+
+| <span style="display:inline-block;width:200px ">Option</span> | <span style="display:inline-block;width:200px;">Description</span> | Note                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| **`--no_grace`**                                             | Dans le code mus ou en ligne de commande, cette option supprime toutes les *petites notes*, quel que soit leur type. |                                                            |
+| **`--no_graces a`**                                          | Dans le code mus, cette option supprime toutes les appogiatures | En ligne de commande, ajouter « a » à **`--no_graces=`**.  |
+| **`--no_graces c`**                                          | Dans le code mus, cette option supprime toutes les acciaccatura | En ligne de commande, ajouter « c » à **`--no_graces=`**.  |
+| **`--no_graces g`**                                          | Dans le code mus, cette option supprime toutes les *grace notes* | En ligne de commande, ajouter « g » à **`--no_graces=`**.  |
+| **`--no_graces s`**                                          | Dans le code mus, cette option supprime toutes les *petites notes* barrées | En ligne de commande, ajouter « s » à **`--no_graces=`**.  |
+| **`--no_graces p`**                                          | Ne supprimer les *petites notes* que si elles sont entre parenthèses. | En ligne de commande, ajouter « p » à **`--no_graces=`** . |
+
+En ligne de commande, avec `--no_graces`, les lettres doivent être mises bout à bout. Par exemple :
+
+~~~
+score-image --midi --no_graces=agp score.mus
+# Supprime les  a: appoggiatures
+# 							g: grace notes
+# 							p: entre parenthèses
+~~~
+
+---
+
+<a name="set-octave-after-grace-note"></a>
+
+####  Indication de l’octave exacte après une petite note
+
+Lorsque les *petites notes* sont supprimées (cf. [ci-dessus](#suppression-petites-notes)) un problème d’octave peut se poser. Par exemple, le code :
+
+~~~
+\gr(a'8) b4
+~~~
+
+… produira de façon naturelle :
+
+<img src="images/grace_sans_option.svg" alt="grace_sans_option" style="zoom:120%;" />
+
+Mais si on lui ajoute l’option `--no_grace` qui supprimera toutes les *petites notes*, alors le code :
+
+~~~ 
+--no_grace
+
+\gr(a'8) b4
+~~~
+
+… produira l’image :
+
+<img src="images/grace_avec_no_grace.svg" alt="grace_avec_no_grace" style="zoom:120%;" />
+
+La note Si n’a plus été montée d’une octave par la *petite note* avant puisque cette *petite note* a été supprimée.
+
+Pour palier ce problème, il suffit d’indiquer explicitement l’octave de la note à l’aide du signe « = » (égal). Et dans ce cas, le code :
+
+~~~
+--no_grace
+
+\gr(a'8) b='4
+~~~
+
+… produira l’image :
+
+<img src="images/grace_avec_no_grace_egal.svg" alt="grace_avec_no_grace_egal" style="zoom:120%;" />
+
+Noter que pour l’octave médiane, il suffit de ne rien mettre après le signe égal :
+
+~~~
+--no_grace
+
+b'' \gr(a8) b=4
+~~~
+
+Ce code produira :
+
+<img src="images/grace_avec_no_grace_egal_octave0.svg" alt="grace_avec_no_grace_egal_octave0" style="zoom:120%;" />
+
+---
 
 #### Notes « mergées »
 
@@ -1702,7 +1821,7 @@ c \(d e f\)  # :( PAS DE PARENTHÈSES
 
 **DIVERS CAS SPÉCIAUX**
 
-On peut mettre entre parenthèses 
+On peut mettre entre parenthèses n’importe quel élément musical et non musical.
 
 | Description                                                  | Code                              | Résultat                                                     |
 | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |

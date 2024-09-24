@@ -207,12 +207,12 @@ def replace_repetition_code(line)
     segment     = $~[:segment]
     iterations  = $~[:iterations].to_i
     # Traitement d’une marque d’octave sur la première note : la
-    # supprimer pour les répétitions
+    # supprimer dans les itérations suivantes
     notes_maybe = segment.strip.split(' ')
     first_note  = notes_maybe.shift # note : on l’enlève vraiment
     segments = 
-      if first_note.match?(REG_MARK_OCTAVE)
-        first_note_n  = first_note.gsub(REG_MARK_OCTAVE, '')
+      if first_note.match?(REG_MARK_OCTAVE_NOT_ABS)
+        first_note_n  = first_note.gsub(REG_MARK_OCTAVE_NOT_ABS, '\1')
         segmentN      = "#{first_note_n} #{notes_maybe.join(' ')}"
         [segment] + Array.new(iterations - 1, segmentN)
       else

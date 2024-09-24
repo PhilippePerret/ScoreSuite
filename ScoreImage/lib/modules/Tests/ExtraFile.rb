@@ -6,7 +6,7 @@
 # 
 # @usage
 # 
-#   extrafile = ScoreImage::Test::ExtraFile.new(itest, **{
+#   extrafile = ScoreImage::Test::ExtraFile.new(self, **{
 #     file_name: 'nom.ext', # nom dans le "build folder"
 #     designation: 'ÇA',    # optionnellement
 #   })
@@ -15,6 +15,7 @@
 #   extrafile.test_match
 # 
 # Voir par exemple le test options/midi
+# 
 
 module ScoreImage
 class Test

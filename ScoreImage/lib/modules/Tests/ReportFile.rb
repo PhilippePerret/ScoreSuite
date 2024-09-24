@@ -39,7 +39,12 @@ class ReportFile
   def load
     @data ||= begin
       if exist?
-        Marshal.load(IO.read(path))
+        begin
+          Marshal.load(IO.read(path))
+        rescue Exception => e
+          verbose? && puts("Le dernier rapport n’a pas pu être chargé : #{e.message}")
+          {}
+        end
       else {} end
     end
   end

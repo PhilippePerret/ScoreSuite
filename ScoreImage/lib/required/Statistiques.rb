@@ -11,7 +11,7 @@
 #   <c e g>4. => c4. e4. g4.
 # 
 # 
-# Ce n’est pas forcément une espace ou la fin à la fin d’un note,
+# Ce n’est pas forcément une espace ou la fin à la fin d’une note,
 # on peut aussi trouver :
 #   a\fermata  b_\prall c^\markup
 # Donc ’\’, ’_’ et ’^’ sont aussi des délimiteurs de notes.
@@ -386,56 +386,18 @@ class Statistiques
   attr_reader :main_options
   attr_reader :tempo
 
+  attr_reader :options # peut poser un problème (ajouter pour le module GraceNotesModule)
+
   def initialize(music_score, lines, **main_options)
     @music_score  = music_score
     @lines        = lines
-    @main_options = main_options
+    @main_options = @options = main_options
     # Indiquer s’il y a une transposition
     self.class.transposition = main_options[:transpose]
   end
 
-
-  # class Statistique (Classe)
-  class << self
-    attr_reader :tempo_noire, :is_ternaire, :duree_noire
-
-    def tempo_noire ; @tempo_noire end
-    def is_ternaire ; @is_ternaire end
-    def duree_noire ; @duree_noire end
-    def calc_duree_noire(tempo)
-      @tempo_noire = 
-        if tempo.end_with?('T')
-          tempo[0...-1]
-        else
-          tempo
-        end
-      @is_ternaire = tempo.end_with?('T')
-      @duree_noire = begin
-        durn = 60.0 / tempo_noire.to_i
-        durn = (2.0 / 3) * durn if is_ternaire
-        durn
-      end
-    end
-
-    attr_accessor :transpositor
-
-    def transposition?
-      :TRUE == @hastransposition
-    end
-
-    def transposition=(value)
-      return if value.nil?
-      self.transpositor = Transposition.new(value)
-      @hastransposition = :TRUE
-    end
-
-    def transpose(note)
-      self.transpositor.transpose(note)
-    end
-
-  end #/ class << self
-
-
+  require_relative '../modules/grace_notes_module'
+  include GraceNotesModule
 
   # = main =
   # 
@@ -713,12 +675,20 @@ class Statistiques
   def traitement_des_graces_notes_in(line)
     return line unless line.match?(/\\gr\(/.freeze)
 
-    # TODO : sauf qu’il peut y en avoir plusieurs
+    # TODO : sauf qu’il peut y avoir plusieurs graces notes avant
+    # la note principale
     line = line.gsub(REG_GRACE_NOTES) do
       notes       = $~[:notes]
       is_slashed  = $~[:slash] == '/'
       is_linked   = $~[:link] == '-'
       curduree = StatNote.current_duration
+
+      if is_slashed 
+        puts "no_slashedgrace? = #{no_slashedgrace?.inspect}"
+        if no_slashedgrace?
+          next ""
+        end
+      end
 
       mark_gr = is_slashed ? 'ACA' : 'GRN'
 
@@ -1003,6 +973,48 @@ class Statistiques
   def folder
     @folder ||= ensure_folder(File.join(music_score.mus_file.folder,'stats'))
   end
+
+
+  # class Statistique (Classe)
+  class << self
+
+    attr_reader :tempo_noire, :is_ternaire, :duree_noire
+
+    def tempo_noire ; @tempo_noire end
+    def is_ternaire ; @is_ternaire end
+    def duree_noire ; @duree_noire end
+    def calc_duree_noire(tempo)
+      @tempo_noire = 
+        if tempo.end_with?('T')
+          tempo[0...-1]
+        else
+          tempo
+        end
+      @is_ternaire = tempo.end_with?('T')
+      @duree_noire = begin
+        durn = 60.0 / tempo_noire.to_i
+        durn = (2.0 / 3) * durn if is_ternaire
+        durn
+      end
+    end
+
+    attr_accessor :transpositor
+
+    def transposition?
+      :TRUE == @hastransposition
+    end
+
+    def transposition=(value)
+      return if value.nil?
+      self.transpositor = Transposition.new(value)
+      @hastransposition = :TRUE
+    end
+
+    def transpose(note)
+      self.transpositor.transpose(note)
+    end
+
+  end #/ class << self Statistiques
 
 end #/class Statistiques
 end #/class MusicScore

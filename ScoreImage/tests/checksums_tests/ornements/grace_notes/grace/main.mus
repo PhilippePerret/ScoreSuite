@@ -1,0 +1,4 @@
+# Test des pures grace notes
+
+-> score
+\gr(e8) f4

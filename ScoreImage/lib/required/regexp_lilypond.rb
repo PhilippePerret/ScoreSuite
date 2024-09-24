@@ -15,9 +15,11 @@ class MusicScore
   # d’octave
   REG_MARK_OCTAVE = /(['’,]+)/.freeze
 
+  REG_MARK_OCTAVE_NOT_ABS = /([^=])(['’,]+)/.freeze
+
 
   # Pour capture :note, :alter et :octave
-  REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?(?<octave>[,'’]*)/.freeze
+  REG_NOTE_CAPT = /(?<note>[a-grs])(?<alter>isis|eses|is|es)?=?(?<octave>[,'’]*)/.freeze
 
   # Pour capturer :
   #   $~[:note], 
@@ -65,7 +67,9 @@ class MusicScore
 
   REG_NOTE_WITH_PARAMS = /#{REG_NOTE_CAPT}(?:#{REG_DUREE_CAPT})?(?:#{REG_NOTE_PARAMS})?/.freeze
 
-  REG_GRACE_NOTE = /\\gr\(#{REG_NOTE_WITH_PARAMS}(?<slash>\/)?(?<link>\-)?\)/.freeze
+  REG_GRACE_INNER  = /\\gr\((?<inner>.*?)\)/.freeze
+  
+  REG_GRACE_NOTE    = /\\gr\(#{REG_NOTE_WITH_PARAMS}(?<slash>\/)?(?<link>\-)?\)/.freeze
 
   # Pour capturer plusieurs grace-notes, pas une seule
   # Il faut ensuite traiter les notes en découpant par espace

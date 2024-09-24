@@ -1,0 +1,45 @@
+# Pour tester la suppression de toutes les petites notes entre
+# parenthèses
+# 
+# Correction à faire : la première grace note, qui n’est pas entre
+# parenthèses, devrait être conservée
+# Ça doit se gérer au début de la méthode 
+#   #translate_graces_notes_from_ms
+--barres OFF
+--proximity 30
+
+accia=
+\gr(e8/-)
+
+acciap=
+\(\gr(e8/-)\)
+
+grace=
+\gr(e8)
+
+gracep=
+\(\gr(e8)\)
+
+slash=
+\gr(e8)
+
+slashp=
+\(\gr(e8)\)
+
+appo=
+\gr(e8-)
+
+appop=
+\(\gr(e8-)\)
+
+lecode=
+grace f4 gracep f4 slash f4 slashp f4 appo f4 appop f4 accia f4 acciap f4
+
+
+-> score_avec
+lecode
+
+--no_graces pacsg
+
+-> score_sans
+lecode

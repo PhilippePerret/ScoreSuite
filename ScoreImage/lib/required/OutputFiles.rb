@@ -61,6 +61,15 @@ end
 #
 def build
 
+  #
+  # Comme je m’y suis mal pris, je suis obligé de faire un reset
+  # de certaines valeurs qui doivent s’initialiser pour chaque
+  # nouvelle image (dans une refonte de l’application, il faudra
+  # utiliser des instances pour tout, pour éviter ce genre de 
+  # problème très lourd)
+  # 
+  Lilypond.reset
+  
   # 
   # Chaque ligne de code doit être traduite en pur Lilypond
   #

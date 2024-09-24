@@ -28,6 +28,11 @@ class << self
 
 attr_reader :options
 
+# À chaque nouvelle image, certaines propriétés en cache doivent
+# être ré-initialisées
+def reset
+  reset_graces_options
+end
 
 # --- MÉTHODES DE TRANSLATION DU CODE MUSIC-SCORE VERS LILYPOND ---
 ##
@@ -142,6 +147,7 @@ end
 def only_midi_file?
   :TRUE == @onlymidifileoutput ||= true_or_false(CLI.option(:midi))
 end
+
 
 
 
@@ -780,7 +786,7 @@ private
   end
 
   def translate_percents_from_ms(str)
-    str.gsub(/\{ (.+?) \}x([2-4]) /){
+    str.gsub(/\{ (.+?) \}x([0-9]+) /){
       "\\repeat percent #{$2} { #{$1} } "
     }
   end
@@ -899,29 +905,85 @@ private
   #   - peut se finir par '/'   => shaded grace
   #   - peut contenir une ou plusieurs notes
   def translate_graces_notes_from_ms(str)
-    str.gsub(/\\gr\((?<inner>.*?)\)/.freeze) do
-      note = $~[:inner].freeze # Peut-être plusieurs notes
-      only_notes = note.sub(/[\/\-]{1,2}$/,'').split(' ')
-      # puts "only_notes = #{only_notes.inspect}"
-      first_note = only_notes.shift
-      all_notes = if only_notes.count > 0 
-        '{ ' + first_note + ' ' + only_notes.join(' ') + ' }'
+    
+    # S’il ne faut aucune petite note entre parenthèses
+    if no_grace_in_parenthesis?
+      if no_grace?
+        # Aucune
+        str = str.gsub(/\\\(#{REG_GRACE_INNER}\\\)/.freeze, EMPTY_STRING)
       else
-        first_note
+        # Certaines en particulier
+        str = str.gsub(/\\\(#{REG_GRACE_INNER}\\\)/.freeze) do
+          tout  = $&.freeze
+          inner = $~[:inner].freeze
+          case grace_type_of(inner)
+          when :acciaccatura
+            no_acciaccatura? ? EMPTY_STRING : tout
+          when :slashed
+            no_slashedgrace? ? EMPTY_STRING : tout
+          when :appoggiatura
+            no_appoggiatura? ? EMPTY_STRING : tout
+          when :grace_note
+            no_grace_notes? ? EMPTY_STRING : tout
+          end
+        end
       end
-      seq = if note.end_with?('/-')
-        '\acciaccatura'
-      elsif note.end_with?('/')
-        '\slashedGrace'
-      elsif note.end_with?('-')
-        '\appoggiatura'
+    end
+
+
+    str.gsub(REG_GRACE_INNER) do
+      if no_grace?
+        # Le problème ici (et pour toute suppression de grace note)
+        # est que cette grace note définit peut-être un changement
+        # d’octave et que ce changement d’octave est perdu. Par 
+        # exemple, si le code est :
+        #     \gr(a’8) b4
+        # alors avec la suppression de \gr(a’8), la note Si se 
+        # retrouvera à l’octave inférieure. Il faudrait un système
+        # pour indiquer un changement d’octave sans rien ajouter.
+        # (octaveCheck ?)
+        # Pour le moment, pour palier ce problème le manuel recomman-
+        # de d’utiliser l’écriture de l’octave absolue, avec "=",
+        # pour la note suivante. Par exemple :
+        #     \gr(a’8) b=’4
+        # 
+        ""
       else
-        '\grace'
-      end + ' ' + all_notes
-      # puts "SEQ = #{seq}"
-      seq
+        note = $~[:inner].freeze # Peut-être plusieurs notes
+        only_notes = note.sub(/[\/\-]{1,2}$/,'').split(' ')
+        # puts "only_notes = #{only_notes.inspect}"
+        first_note = only_notes.shift
+        all_notes = if only_notes.count > 0 
+          '{ ' + first_note + ' ' + only_notes.join(' ') + ' }'
+        else
+          first_note
+        end
+
+        seq = case grace_type_of(note)
+          when :acciaccatura
+            no_acciaccatura? && gr_out_of_parenthesis? ? nil : '\acciaccatura'
+          when :slashed
+            no_slashedgrace? && gr_out_of_parenthesis? ? nil : '\slashedGrace'
+          when :appoggiatura
+            no_appoggiatura? && gr_out_of_parenthesis? ? nil : '\appoggiatura'
+          when :grace_note
+            no_grace_notes? && gr_out_of_parenthesis? ? nil : '\grace'
+          end
+
+        if seq.nil?
+          EMPTY_STRING
+        else
+          seq = seq + ' ' + all_notes
+        end
+        # puts "SEQ = #{seq}"
+        seq
+      end
     end
   end
+
+  require_relative '../modules/grace_notes_module'
+  include GraceNotesModule # extend?
+
 
   # Changement de portée
   #  Phaut => \change Staff = "up"
@@ -956,7 +1018,7 @@ private
   def ensure_parenthesis_from_muscode(str)
     
     # Cas des petites notes
-    str = str.gsub(/\\parenthesize \\(?<otype>grace|appoggiatura|acciaccatura) (?<inner>.+?) /.freeze) do
+    str = str.gsub(/\\parenthesize \\(?<otype>slashedGrace|grace|appoggiatura|acciaccatura) (?<inner>.+?) /.freeze) do
       otype = $~[:otype] # ornement type
       inner = $~[:inner]
       '\once \override Parentheses.padding = #0.0 \once \override Parentheses.font-size = #2.5 \%s { \parenthesize %s }'.freeze % [otype, inner]

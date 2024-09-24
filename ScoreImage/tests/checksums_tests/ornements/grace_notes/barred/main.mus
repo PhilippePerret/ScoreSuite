@@ -1,0 +1,4 @@
+# Test pour une grace note barrée non liée
+
+-> score
+\gr(e8/) f4

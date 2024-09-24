@@ -1,0 +1,10 @@
+# Test de la suppression de toutes les grace notes avec l’option
+# --no_grace
+
+-> score_avec
+\gr(a’8) b=’4 \gr(a’8-) b=’’4 \gr(a,,8/) b=4 \gr(a’8/-) b=’4
+
+--no_grace
+
+-> score_sans
+\gr(a’8) b=’4 \gr(a’8-) b=’’4 \gr(a,8/) b=4 \gr(a’8/-) b=’4
