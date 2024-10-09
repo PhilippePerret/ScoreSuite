@@ -22,6 +22,9 @@ class FolderAnalyzer
     @path = path
   end
 
+  REG_BAD_FOLDER_CHARS = /[\#,’\?\/\:]/.freeze
+  REG_BAD_FOLDER_PATH_CHARS = /[\#,’\?]/.freeze
+
   # @return true si le dossier dans lequel est joué la commande est
   # valide, c’est-à-dire s’il :
   # - contient un fichier .mus
@@ -30,6 +33,13 @@ class FolderAnalyzer
   # - définit une partition originale
   # 
   def valid?
+
+    # Avant toute chose, si le nom de dossier est mauvais, on ne
+    # fait rien du tout.
+    if bad_folder_name?
+      raise ScoreBuilder::AbandonException.new
+    end
+
     # Analyse du dossier
     @data = analyze
     mus_file_path = data[:mus_file] && File.join(data[:folder],data[:mus_file])
@@ -56,6 +66,24 @@ class FolderAnalyzer
     data[:original_score_pages] && !data[:original_score_pages].empty?
   end
 
+  def bad_folder_name?
+    folder_name = File.basename(ScoreBuilder::CURRENT_FOLDER)
+    folder_path = ScoreBuilder::CURRENT_FOLDER
+    bad_folder_name = 
+      !folder_name.match?(REG_BAD_FOLDER_CHARS).nil? || \
+      !folder_path.match?(REG_BAD_FOLDER_PATH_CHARS).nil?
+    
+    if bad_folder_name
+      bad_chars = (folder_name.scan(REG_BAD_FOLDER_CHARS) \
+              + folder_path.scan(REG_BAD_FOLDER_PATH_CHARS)).uniq.pretty_join
+      bad_chars = bad_chars.sub(/:/,'/')
+      msg = "NOM DE DOSSIER INVALIDE : #{folder_name}\nNe doit contenir aucun caractère spécial invalide dans une URL.\nIl contient des #{bad_chars}"
+      puts msg.rouge
+    end
+
+    return bad_folder_name
+  end
+
   # = main =
   # 
   # Pour procéder à l’analyse du dossier courant
@@ -70,6 +98,7 @@ class FolderAnalyzer
       # score_builder.yaml qu’on trouve à la racine du dossier)
       # 
       data = YAML.safe_load(IO.read(data_file_path),**YAML_OPTIONS)
+      puts "data = #{data}"
       data[:mus_file] ||= search_for_mus_file
       # Si les images de la partition originale n’existent plus, 
       # on va les rechercher.

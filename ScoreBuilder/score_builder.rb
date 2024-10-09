@@ -20,7 +20,8 @@ begin
     CLI.init
         
     # On regarde si le dossier courant est bon
-    ScoreBuilder::App.check_current_folder || raise(ScoreBuilder::AbandonException.new)
+    retourOK = ScoreBuilder::App.check_current_folder 
+    retourOK || raise(ScoreBuilder::AbandonException.new)
     
     params = ScoreBuilder::App.goto_params
     Dir.chdir(ScoreBuilder::CURRENT_FOLDER) do

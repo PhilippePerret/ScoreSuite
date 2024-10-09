@@ -28,6 +28,14 @@ class << self
   # Méthode qui s’assure, avant d’ouvrir la page, que le dossier
   # dans lequel l’application a été ouverte (ou en paramètre) est
   # un dossier correct.
+  # 
+  # Un dossier correct :
+  #   - ne possède pas de ’#’ ou de ’/’ dans son nom
+  #   - contient un fichier .mus
+  #   - produit les SVG d’après le code MUS
+  #   Optionnellement :
+  #     - définit une partition originale
+  # 
   def check_current_folder
     analyzer = FolderAnalyzer.new(current_folder)
     unless analyzer.valid?
