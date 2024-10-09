@@ -2575,3 +2575,9 @@ score-image /ceuxla/ -dir=mon/dossier
 En plus de l’image produite, les tests s’assurent aussi que toutes les statistiques soient correctes, ce qui permet un tour d’horizon parfait.
 
 Pour de plus amples informations, lire le fichier `tests/_ReadMe_.md`
+
+---
+
+### Collisions verticales
+
+Cf. la page [dans le manuel LilyPond](https://lilypond.org/doc/v2.25/Documentation/notation/vertical-collision-avoidance).

@@ -11,7 +11,7 @@ begin
     ScoreNumbering::CommandLine.show_help
   else
     curdir = ENV['CUR_DIR']
-    # puts "Dossier courant : #{curdir}"
+    verbose? && puts("Dossier courant : #{curdir}".bleu)
     ScoreNumbering::App.current_folder = curdir
     Dir.chdir(curdir) do
       WAA.goto File.join(__dir__,'main.html')
