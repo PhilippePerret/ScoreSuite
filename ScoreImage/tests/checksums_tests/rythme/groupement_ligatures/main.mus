@@ -6,7 +6,11 @@
 # groupées par 4 (3 x 4)
 
 --time 6/8
---keep
+# --keep
+
+# -> score
+# % e32 f %6 f8 a c \set subdivideBeams = ##t % e,32 f %6 f8 a c \set subdivideBeams = ##f % e,32 f %6 f8 a c
+
 
 -> score
-% e32 f %6 f8 a c \set subdivideBeams = ##t % e,32 f %6 f8 a c \set subdivideBeams = ##f % e,32 f %6 f8 a c
+% e32 f %6 f8 a c \subdiv % e,32 f %6 f8 a c \subdivOFF % e,32 f %6 f8 a c

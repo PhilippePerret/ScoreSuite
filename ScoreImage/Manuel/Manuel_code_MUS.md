@@ -1501,7 +1501,30 @@ Ce code produira :
 
 ---
 
-#### Notes « mergées »
+<a name="group-hampes"></a>
+
+### Regroupement des hampes
+
+On peut forcer le regroupement des hampes dans certains cas grâce à la marque simplifiée **` \subdiv`** qu’on interrompt à l’aide de **`\subdivOFF`**.
+
+Par exemple, le code : 
+
+~~~
+--time 9/8
+
+-> score
+% e32 f %6 \subdiv % e32 f %6 \subdivOFF % e32 f %6
+~~~
+
+… produira :
+
+<img src="images/force_subdivision.svg" alt="force_subdivision" style="zoom:120%;" />
+
+Notez le deuxième groupement de triples croches qui est affecté par la subdivision tandis que les autres ne le sont pas.
+
+---
+
+### Notes « mergées »
 
 « Merger » des notes signifie utiliser une seule tête pour deux notes. Ce merge permet de transformer :
 
@@ -1970,6 +1993,7 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 |                                                              | **`e'4^[] f^[] g^[] b,^[] d^[] f^[]`**                       | <img src="images/exemples/hampes_plusieurs_vers_haut_separees.svg" style=" width:160px;" /> |
 | Forcer une hampe seule en bas                                | **`g4_[]`**                                                  | <img src="images/exemples/hampes_vers_le_bas.svg" style=" width:80px;" /> |
 |                                                              |                                                              | Pour plusieurs noires ou plusieurs blanches, cf. la note N1 ci-dessus. |
+| Forcer le regroupement des notes                             |                                                              | cf. [Regroupement des hampes](#group-hampes)                 |
 
 Voir la page suivante pour la gestion des deux en même temps :
 https://lilypond.org/doc/v2.19/Documentation/notation/beams.fr.html

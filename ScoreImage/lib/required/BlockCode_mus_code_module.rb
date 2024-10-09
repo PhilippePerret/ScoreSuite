@@ -54,7 +54,9 @@ def traite_divers_remplacements_in(line)
   line = " #{line} "
   [
     ['arp', 'arpeggio'],
-    ['mergeNotes', 'mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn']
+    ['mergeNotes', 'mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn'],
+    ['subdiv', '\set subdivideBeams = ##t'],
+    ['subdivOFF', '\set subdivideBeams = ##f']
   ].each do |search, remp|
     line = line.gsub(REG_SIMPLE % search, REG_SIMPLE % remp)
   end

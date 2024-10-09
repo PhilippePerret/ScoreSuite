@@ -16,9 +16,9 @@
   }
   \new Staff \with { \consists Merge_rests_engraver } <<
     \relative c' {
-      \omit Staff.TimeSignature
+      \time 6/8
       \clef "treble"
-      fis'
+      e32 f e32 f e32 f e32 f e32 f e32 f f8 a c \set subdivideBeams = ##t e,32 f e32 f e32 f e32 f e32 f e32 f f8 a c \set subdivideBeams = ##f e,32 f e32 f e32 f e32 f e32 f e32 f f8 a c
     }
   >>
   } %/fin de score
