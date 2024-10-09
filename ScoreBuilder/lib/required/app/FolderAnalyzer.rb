@@ -69,9 +69,10 @@ class FolderAnalyzer
   def bad_folder_name?
     folder_name = File.basename(ScoreBuilder::CURRENT_FOLDER)
     folder_path = ScoreBuilder::CURRENT_FOLDER
-    bad_folder_name = 
-      !folder_name.match?(REG_BAD_FOLDER_CHARS).nil? || \
-      !folder_path.match?(REG_BAD_FOLDER_PATH_CHARS).nil?
+    bad_folder_name = folder_name.match?(REG_BAD_FOLDER_CHARS)
+    bad_folder_path = folder_path.match?(REG_BAD_FOLDER_PATH_CHARS)
+
+    bad_folder_name = bad_folder_name || bad_folder_path
     
     if bad_folder_name
       bad_chars = (folder_name.scan(REG_BAD_FOLDER_CHARS) \
