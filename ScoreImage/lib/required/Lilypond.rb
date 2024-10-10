@@ -40,6 +40,13 @@ end
 #
 # Traduit un code music-score en un code Lilypond conforme
 #
+# @note
+#   Si une transformation ne se trouve pas ici, il faut la chercher
+#   dans la méthode 
+#     #traite_as_code_mscore 
+#   du fichier
+#     BlockCode_mus_code_module
+#   
 def translate_from_music_score(str, options)
   rationnalise_options(options)
   str = " #{str} "
