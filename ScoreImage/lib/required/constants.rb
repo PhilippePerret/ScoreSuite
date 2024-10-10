@@ -3,6 +3,8 @@ class MusicScore
   LIB_FOLDER = File.dirname(__dir__)
   APP_FOLDER = File.dirname(LIB_FOLDER)
 
+  LANG = 'fr'
+
   YAML_OPTIONS = {symbolize_names:true, permitted_classes: [Date, Time, Symbol]}
 
   ERREUR_YAML = <<~TEXT

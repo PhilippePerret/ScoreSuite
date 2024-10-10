@@ -76,7 +76,11 @@ def translate_from_music_score(str, options)
   str = translate_parenthesis_from_muscode(str)
 
   str = " #{str.strip} "
+  str = translate_changmt_main_portee_from_muscode(str)
+
+  str = " #{str.strip} "
   str = ensure_parenthesis_from_muscode(str) # à la fin
+
 
   # On échappe toutes les balances
   str = str.gsub(/\\/, '\\')
@@ -118,6 +122,12 @@ end
 
 def bloc_score(code, options)
   c = []
+  if right_and_left_hand_bracket?
+    # Les marques pour indiquer, au piano, des notes qui doivent se
+    # jouer à la main gauche sur la portée du haut ou à la main 
+    # droite sur la portée du bas.
+    c << code_for_RL_hand_bracket
+  end
   c << '\score {'.freeze
   if midi?
     # Pas de bloc layout, mais la marque pour les articulations
@@ -148,8 +158,53 @@ def only_midi_file?
   :TRUE == @onlymidifileoutput ||= true_or_false(CLI.option(:midi))
 end
 
+def right_and_left_hand_bracket?
+  @rlhandindicator == :TRUE
+end
+def require_rl_hand_bracket
+  @rlhandindicator = :TRUE
+end
 
+def code_for_RL_hand_bracket
+  md, mg = case LANG
+  when 'fr' then ['m.d.','m.g.']
+  else ['r.h.','l.h.']
+  end
 
+  # Hand indicators
+  # 
+  #   Note: To use these correctly, the note MUST be part of a chord, even
+  #   if it's by itself, using, for example, the following syntax:
+  #
+  #   \set fingeringOrientations = #'(left)
+  #   <c\finger \lhMark>  %% or \lhMarkText to add "%{mg}" to the mark
+  #
+  # À l’origine, les 2.5 et les 3.5 sont des 1.5, ce qui fait que les
+  # traits sont plus long en hauteur ici
+  # 
+  <<~'MUS' % {md: md, mg: mg}
+
+  lhMarkText = \markup { 
+    \concat {
+      \override #'(font-encoding . latin1) \italic "%{mg} " 
+      \path #0.1 #'((moveto 0 -0.5)(rlineto 0 2.5)(rlineto 0.5 0))
+    }
+  }
+  rhMarkText = \markup {
+    \concat {
+      \override #'(font-encoding . latin1) \italic "%{md} "
+      \path #0.1 #'((moveto 0 1)(rlineto 0 -2.5)(rlineto 0.5 0))
+    }
+  }
+  lhMark = \markup { 
+    \path #0.1 #'((moveto -1 0)(rlineto 0 3.5)(rlineto 0.5 0))
+  }
+  rhMark = \markup { 
+    \path #0.1 #'((moveto -1 0)(rlineto 0 -3.5)(rlineto 0.5 0))
+  }
+
+MUS
+end
 
 # Méthode qui met en forme le texte du code pour qu’il soit plus
 # lisible, mieux présenté.
@@ -727,7 +782,7 @@ private
 
   def translate_shortcuts_from_mus(str)
     
-    str = str.gsub(/(?<mark>tie|slur|stem)Off/.freeze, '\k<mark>Neutral'.freeze)
+    str = str.gsub(/(?<mark>tie|slur|stem)(Off|OFF)/.freeze, '\k<mark>Neutral'.freeze)
 
     if options[:no_fingers]
       puts "L’option no_fingers est activtée".jaune
@@ -1007,6 +1062,41 @@ private
 
     return str
   end
+
+  REG_RIGHT_AND_LEFT_HAND = / \\(?<lrmark>(md|rh|mg|lh)t?) /.freeze
+
+  # Méthode (assez compliquée) qui permet d’indiquer un changement
+  # de main dans une portée de piano (ou autre instrument pouvant le
+  # faire)
+  # Concrètement, ça s’utilise lorsque une ou plusieurs notes de la
+  # portée supérieure du piano doivent être jouées par la main gauche
+  # et inversement lorsque une ou plusieurs notes de la portée inf.
+  # du piano doivent être jouées par la main droite.
+  # Dans le code Lilypond, ça s’indique par \md ou \rh et \mg ou \lh
+  # 
+  def translate_changmt_main_portee_from_muscode(str)
+    return str unless str.match?(REG_RIGHT_AND_LEFT_HAND)
+
+    if not(right_and_left_hand_bracket?)
+      require_rl_hand_bracket
+    end
+    str = str.gsub(/#{REG_RIGHT_AND_LEFT_HAND}#{REG_NOTE_WITH_DUREE_AND_REST}/) do
+      justnote = "#{$~[:note]}#{$~[:alter]}#{$~[:octave]}"
+      restnote = "#{$~[:duration]}#{$~[:reste]}"
+      lrmark = $~[:lrmark].freeze
+      mark = case lrmark
+      when /^(mg|lh)/ then 'lhMark'
+      when /^(md|rh)/ then 'rhMark'
+      end
+      mark = "#{mark}Text" if lrmark.end_with?('t')
+      ' \set fingeringOrientations = #\'(left) <%{note}\finger \%{mark}>%{rest} '.freeze % {note: justnote, mark: mark, rest:restnote}
+    end
+
+    return str
+  end
+
+
+
 
   # En fin de processus, il faut modifier la place de certaines
   # parenthèses. Par exemple, en écrivant \(\gr(e8)\) pour mettre

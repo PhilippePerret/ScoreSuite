@@ -477,7 +477,7 @@ L’espace vertical entre les systèmes se définit à l’aide de l’option **
 Par exemple :
 
 ~~~
---systems_vpace 30
+--systems_vspace 30
 ~~~
 
 Pour l’espacement vertical entre les portées d’un système, cf. ci-dessous.
@@ -1150,7 +1150,7 @@ plus pratique d'utiliser :
 | <img src="images/exemples/cle-ut-4e.svg" style="  width:100px;" />            |      **`\cle UT4`**        |      Clé d'UT 4<sup>e</sup> ligne                                                          |
 | <img src="images/exemples/cle-ut-5e.svg" style="  width:100px;" />            |      **`\cle UT5`**        |      Clé d'UT 5<sup>e</sup> ligne                                                          |
 
-#### Tonalité de l’expression (armure et changement)
+### Tonalité de l’expression (armure et changement)
 
 Pour la définition de l’armure, voir [Tonalité de la pièce](#tune).
 
@@ -1188,7 +1188,7 @@ c d e f \key ges ges f ees d ees2
 
 <a name="transposition"></a>
 
-#### Transposition
+### Transposition
 
 On peut transposer tout un fragment à l’aide de l’option **`--transpose`** en indiquant la note/tonalité de référence (aka la note de départ) puis la note/tonalité d’arrivée.
 
@@ -1301,7 +1301,7 @@ fl
 
 ---
 
-#### Triolet, quintolet et septolet
+### Triolet, quintolet et septolet
 
 On les notes  `3{note<duree> note note}`
 
@@ -1318,7 +1318,7 @@ Pour s’assurer que le rythme soit bon (et que les statistiques soient bien cal
 
 
 
-#### Ornements et signes d’interprétation
+### Ornements et signes d’interprétation
 
 | Objet                                                        |      | Code                    | Description                                                  |
 | ------------------------------------------------------------ | ---- | ----------------------- | ------------------------------------------------------------ |
@@ -1361,7 +1361,7 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 
 ---
 
-#### Signes d’interprétation
+### Signes d’interprétation
 
 
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:300px;">Code</span> | <span style="display:inline-block;width:200px;">Description</span> |
@@ -1372,7 +1372,7 @@ Voir aussi [Marques d’expression](https://lilypond.org/doc/v2.24/Documentation
 
 ---
 
-#### Trilles
+### Trilles
 
 
 | <span style="display:inline-block;width:200px;">Objet</span> | <span style="display:inline-block;width:300px;">Code</span> | <span style="display:inline-block;width:200px;">Description</span> |
@@ -1542,7 +1542,7 @@ On obtient ce merge en ajouant **`\mergeNotes`** avant les notes. Ce merge sera 
 
 ---
 
-#### Arpège vers accord tenu
+### Arpège vers accord tenu
 
 <a name="arpege-to-chord"></a>
 
@@ -1659,7 +1659,7 @@ Si l’**on ne tient pas à donner explicitement la durée exacte de chaque note
 
 <a name="change-staff"></a>
 
-#### Changement de portée
+### Changement de portée
 
 Pour inscrire provisoirement les notes sur la portée au-dessus ou en dessous dans le mode « piano », utiliser `\up` et `\down`. Par exemple :
 
@@ -1697,7 +1697,27 @@ c8 e g \showStaffSwitch \up c e c \hideStaffSwitch \down g e c4 r r2
 
 <img src="images/stop_change_staff.svg" alt="stop_change_staff" style="zoom:100%;" />
 
-#### Marques d’octave
+---
+
+### Note jouée par autre main (piano)
+
+Pour indiquer, par exemple dans une partition pour piano, qu’une note de la portée supérieure est jouée par la main gauche ou qu’une note de la portée inférieure est jouée par la main droite, on utilise les marques simplifiées **`\md`** (pour « Main Droite » — ou **`rh`** si la langue n’est pas française) ou **`\mg`** (pour « Main Gauche » — ou **`\lh`** en anglais). Ou leur équivalent avec le texte en ajoutant « t » à la fin de la marque.
+
+> Note 1 : pour le moment, le crochet se trouve un peu trop près de la note précédente lorsque l’on ne met pas le texte (donc avec `md` ou `mg`). On conseille d’utiliser toujours le texte pour la clarté, pour éloigner la note précédente.
+>
+> Note 2 : <font color="#ff0000"><b>on ne peut pas utiliser cette marque avec les accords pour le moment.</b></font>
+
+| Code                    | Image                                                        |
+| ----------------------- | ------------------------------------------------------------ |
+| **`c \mg c \md c c`**   | <img src="images/right_left_hand.svg" alt="right_left_hand" style="zoom:120%;" /> |
+| **`c \mgt c \mdt c c`** | <img src="images/right_left_hand_text.svg" alt="right_left_hand_text" style="zoom:120%;" /> |
+|                         |                                                              |
+
+
+
+---
+
+### Marques d’octave
 
 Pour inscrire la marque d’octave, on peut utiliser `\8ve` (descendra les notes d’une octave et ajoutera la marque), `\15ve` (descendra les notes de deux octaves et ajoutera la double marque).
 

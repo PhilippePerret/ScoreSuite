@@ -1,0 +1,8 @@
+# Pour tester la marque de main gauche et main droite au piano
+
+--piano
+# --keep
+
+-> score
+e8 e \mg gis8-.-5 b \md d f \md d e f \mgt c, \mdt c’4
+r2 f8 e d \md e \mg d \mdt f \mgt e

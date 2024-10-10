@@ -31,7 +31,8 @@ class MusicScore
   # Le mieux est d’isoler la note (par exemple en splitant avec des
   # espaces) et d’ajouter ’^’ et ’$’ autour de l’expression :
   #   notes.split(' ').first.match(/^#{REG_NOTE_WITH_DUREE_AND_REST}$/)
-  REG_NOTE_WITH_DUREE_AND_REST = /#{REG_NOTE_CAPT}(?<duration>[0-9]+\.*)?(?<reste>.*?)/.freeze
+  REG_NOTE_WITH_DUREE_AND_REST = /#{REG_NOTE_CAPT}(?<duration>[0-9]+\.*)?(?<reste>[^ \)]*)/.freeze
+  # REG_NOTE_WITH_DUREE_AND_REST = /#{REG_NOTE_CAPT}(?<duration>[0-9]+\.*)?(?<reste>.*?)/.freeze
 
   REG_DUREE_CAPT = /(?<duration>[0-9]+\.*)(?<grace_note>GRN|ACA)?/.freeze
 
