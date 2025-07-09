@@ -1,32 +1,27 @@
 #!/usr/bin/env ruby -U
 # encoding: UTF-8
 # frozen_string_literal: true
-require 'bundler/setup'
-Bundler.setup
-Bundler.require
+# require 'bundler/setup'
+# Bundler.setup
+# Bundler.require
 
 
 begin
   
+  CURRENT_DIR = ARGV.shift
+
+  # require_relative '../lib/required'
   require_relative 'required'
   
   # commande = ARGV[0]
   commande = CLI.main_command
-  # puts "[ScoreImage] commande: #{commande.inspect}"
-  # puts "[ScoreImage] Dossier courant: #{File.expand_path('.')}"
-  # puts "[ScoreImage] ENV['CUR_DIR']: #{ENV['CUR_DIR']}"
-  # puts "[ScoreImage] CLI.options: #{CLI.options}"
-  # puts "ARGV: #{ARGV}"
-  # puts "STDIN: #{STDIN.read}"
-
 
   if commande && commande.end_with?('.mus')
     # C’est un fichier mus spécifié
     if File.exist?(commande)
       mus_file_path = commande
     else
-      dossier = ENV['CUR_DIR']||ENV['CURRENT_FOLDER']||ENV['PWD']
-      mus_file_path = File.join(dossier, commande)
+    mus_file_path = File.join(CURRENT_DIR, commande)
     end
     if File.exist?(mus_file_path)
       commande = 'build'
@@ -62,10 +57,20 @@ begin
     end
   end
 rescue EMusicScore => e
-  puts "\n#{e.message}".rouge
-  puts e.backtrace.join("\n").rouge if verbose?
+  if "string".respond_to?(:rouge)
+    puts "\n#{e.message}".rouge
+    puts e.backtrace.join("\n").rouge if verbose?
+  else
+    puts "\n#{e.message}"
+    puts e.backtrace.join("\n") if verbose?
+  end
 rescue Exception => e
   exit 101 if e.message.match?('exit')
-  puts e.message.rouge
-  puts e.backtrace.join("\n").rouge
+  if "string".respond_to?(:rouge)
+    puts e.message.rouge
+    puts e.backtrace.join("\n").rouge
+  else
+    puts "\n#{e.message}"
+    puts e.backtrace.join("\n") if verbose?
+  end
 end

@@ -9,6 +9,12 @@ GEM
       tty-color (~> 0.5)
     precedences (1.7.1)
       clir (>= 0.16)
+    rexml (3.4.1)
+    rubyzip (2.4.1)
+    selenium-webdriver (4.9.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     terminal-notifier (2.0.0)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
@@ -20,6 +26,7 @@ GEM
       tty-screen (~> 0.8)
       wisper (~> 2.0)
     tty-screen (0.8.2)
+    websocket (1.2.11)
     wisper (2.0.1)
     yaml (0.3.0)
 
@@ -27,10 +34,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  clir
-  precedences
-  terminal-notifier
-  yaml
+  clir (= 0.24.2)
+  precedences (= 1.7.1)
+  selenium-webdriver (= 4.9.0)
+  terminal-notifier (= 2.0.0)
+  yaml (= 0.3.0)
 
 RUBY VERSION
    ruby 2.7.3p183

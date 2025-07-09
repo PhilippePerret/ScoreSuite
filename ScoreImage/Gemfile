@@ -4,9 +4,10 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-ruby '2.7.3' # '3.0.1'
+ruby '2.7.3'
 
-gem 'yaml'
-gem 'clir'
-gem 'terminal-notifier'
-gem 'precedences'
+gem 'yaml', '0.3.0'
+gem 'clir', '0.24.2'
+gem 'terminal-notifier', '2.0.0'
+gem 'precedences', '1.7.1'
+gem 'selenium-webdriver',  '4.9.0'
