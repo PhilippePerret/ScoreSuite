@@ -1,30 +1,14 @@
-#!/usr/bin/env ruby -U
+#!/usr/bin/env zsh
 
+# Dossier dans lequel est joué la commande
+# Passé en premier argument du script
+cur_folder="$(pwd)"
 
-bin_folder = __dir__
-app_folder = File.dirname(bin_folder)
+# Dossier de l'application
+APP_FOLDER="$(dirname "$(dirname "$(readlink -f "${BASH_SOURCE[0]:-$0}")")")"
 
-# Dossier courant (dans lequel est lancé la commande)
-current_dir = File.expand_path('.')
+# Si on veut voir quel est le dossier application
+# echo $APP_FOLDER
 
-env =
-  unless ENV['CUR_DIR']
-    {
-      'CUR_DIR' =>        current_dir,
-      'CURRENT_FOLDER' => current_dir
-    }
-  else
-    {}
-  end
-
-command = 'cd "%s" && bundle exec ruby %s %s'.freeze % [app_folder, 'score_numbering.rb', ARGV.join(' ')]
-
-options = {
-  out: STDOUT,
-  err: STDERR,
-}
-
-Process.spawn(env, command, options)
-Process.wait
-
-
+cd $APP_FOLDER
+bundle exec ruby score_numbering.rb "$cur_folder" $@

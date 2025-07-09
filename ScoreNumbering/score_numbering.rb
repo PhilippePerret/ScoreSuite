@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
-require 'bundler/setup'
-Bundler.setup
+
 
 begin
+  CUR_DIR = ARGV.shift
   require_relative 'lib/required'
   
   if help?
     require File.join(MOD_FOLDER,'help')
     ScoreNumbering::CommandLine.show_help
   else
-    curdir = ENV['CUR_DIR']
-    verbose? && puts("Dossier courant : #{curdir}".bleu)
-    ScoreNumbering::App.current_folder = curdir
-    Dir.chdir(curdir) do
+    CUR_DIR = ENV['CUR_DIR']
+    verbose? && puts("Dossier courant : #{CUR_DIR}".bleu)
+    ScoreNumbering::App.current_folder = CUR_DIR
+    Dir.chdir(CUR_DIR) do
       WAA.goto File.join(__dir__,'main.html')
       WAA.run
     end

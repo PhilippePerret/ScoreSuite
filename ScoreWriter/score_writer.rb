@@ -4,6 +4,10 @@
 
   Script maitre de l'application ScoreWriter
 
+  NOTE : Si ça ne démarre pas à cause des changements de version,
+  voir dans ScoreImage ou ScoreNumbering la nouvelle utilisation
+  efficace de bundler exec
+
 =end
 
 begin
