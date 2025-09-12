@@ -101,7 +101,7 @@ end
 #
 # @return [String]  
 #     Le code complet à copier dans le fichier lilypond final, pour 
-#     interprétation.
+#     interprétation par Lilypond.
 #
 # @param code     [Array] Les lignes de code (code Lilypond)
 # @param options  [Hash]  Les options
@@ -150,6 +150,10 @@ def bloc_score(code, options)
   c << '} %/fin de score'
 
   return c.join("\n")
+end
+
+def chiffrage?
+  options[:chiffrage] == true
 end
 
 def midi?
@@ -398,7 +402,10 @@ def system_for_piano(code, **params)
   params.merge!(name: 'PIANO') if params[:name]
   <<~LILYPOND
   \\new PianoStaff #{mark_with_staff(params)}<<
-    \\new Staff = "haute" {
+    \\new Staff = "haute" \\with {
+      \\consists Span_arpeggio_engraver 
+    }
+    {
       % enforce creation of all contexts at this point of time
       \\clef "treble"
       #{markin_transposition}\\relative c' {
@@ -409,7 +416,10 @@ def system_for_piano(code, **params)
         #{code[0]}
       }
     }
-    \\new Staff = "basse" {
+    \\new Staff = "basse" \\with {
+      \\consists Span_arpeggio_engraver 
+    }
+    {
       \\clef bass
       #{markin_transposition}\\relative c {
         #{option_no_time}
@@ -531,6 +541,10 @@ def mark_with_staff(params)
     # Pour le moment, par défaut, on merge les silences
     withs << '\consists Merge_rests_engraver'
   end
+  unless options[:dont_connect_arpeggios] === false
+    # Pour le moment, par défaut, on connect toujours les arpèges \arpeggio
+    withs << '\consists Span_arpeggio_engraver'
+  end
   if params[:name]
     withs << ('instrumentName = %s'.freeze % params[:name] )
   end
@@ -552,6 +566,7 @@ def header
 #{option_global_staff_size}
 
 #{'\include "articulate.ly"' if midi?}
+#{File.read("./lib/ly_modules/chiffrage.ly") if chiffrage?}
 
 \\paper{
   indent=0\\mm

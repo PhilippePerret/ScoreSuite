@@ -202,7 +202,7 @@ def parse_cline_element(argv)
 end
 
 ##
-# Instancie un parser pour parser l'expression fournie et parse le
+# Instancie un parser pour parser l'expression fournie et parser le
 # code (l'expression)
 #
 def parse_expression

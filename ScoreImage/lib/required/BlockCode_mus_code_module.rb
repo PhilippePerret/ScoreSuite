@@ -53,10 +53,11 @@ REG_SIMPLE = '\%s '.freeze
 def traite_divers_remplacements_in(line)
   line = " #{line} "
   [
+    ['conArp', '\set Staff.connectArpeggios = ##t'],
     ['arp', 'arpeggio'],
     ['mergeNotes', 'mergeDifferentlyHeadedOn \mergeDifferentlyDottedOn'],
     ['subdiv', '\set subdivideBeams = ##t'],
-    ['subdivOFF', '\set subdivideBeams = ##f']
+    ['subdivOFF', '\set subdivideBeams = ##f'],
   ].each do |search, remp|
     line = line.gsub(REG_SIMPLE % search, REG_SIMPLE % remp)
   end

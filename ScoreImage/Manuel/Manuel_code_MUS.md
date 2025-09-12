@@ -770,7 +770,7 @@ On peut désactiver ce comportement par défaut en utilisant l’option **`--mer
 
 #### Arrêt ponctuel de la fusion des silences
 
-<font color="FF0000">**[pour le moment, ça ne semble pas fonctionner à tous les coups]**</font>
+<font color="FF0000">**Pour le moment, ça ne fonctionne pas dans toutes les situation. Si c’est le cas, utiliser le [positionnement précis du silence](#positionnement-silences) p.e. `a'8\rest`**.</font>
 
 Si l’on conserve le comportement par défaut, on peut néanmoins désactiver localement la fusion des silences grâce à la marque **`\not_merge_rests`** (et la faire reprendre à l’aide de **`\merge_rests`**) :
 
@@ -964,6 +964,27 @@ résultant de l'expression `c d e f`.
 ## Notation LilyPond simplifiée
 
 Cette section présente les notations de l'expression pseudo-lilypond qui  diffèrent du langage original (toujours pour simplifier).
+
+### Chiffrage/harmonisation/Analyse mélodique
+
+Depuis la version de septembre 2025, on peut utiliser la librairie `chiffrage.ly` qui offre des fonctions pour marquer les accords et les notes.
+
+Pour l’utiliser, ajouter l’option `--chiffrage`.
+
+Puis utiliser les fonctions : 
+
+| Fonction                     | Description                                                  | <span style="display:inline-block;width:200px;">Aperçu</span> |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **`\chifName "<...>"`**      | Pour le nom de l’accord au-dessus de la portée. `c\chifName "Cm"` | ![accord-sur-portee](images/accord-sur-portee.png)           |
+| **`\chifDeg "<...>"`**       | Pour indiquer le degré ou la fonction de l’accord sous la portée. Par exemple `c\chifDeg "T"` va produire : | ![degre-sous-portee](images/degre-sous-portee.png)           |
+| **`\chifNote <type> <pos>`** | Pour indiquer une note particulière, de passage, broderie, double broderie, etc. Voir les exemples ci-dessous. |                                                              |
+|                              | **`c d\chifNote "np" #up`** ou **`c d\chifNP`**              | ![note-de-passage-up](images/note-de-passage-up.png)         |
+|                              | **`c d\chifNote "br" #up e\chifNote "npc" #down`**           | ![notes-quelconques](images/notes-quelconques.png)           |
+|                              | On peut utiliser de la même manière toute les marques de la police PhilNote (version 6 à l’heure où nous écrivons ces lignes). |                                                              |
+|                              | TODO Faire toutes les fonctions raccourcis **`\chifBR`** (pour « broderie ») etc. |                                                              |
+|                              |                                                              |                                                              |
+
+​		
 
 ### Répétitions
 
@@ -1522,6 +1543,8 @@ Par exemple, le code :
 
 Notez le deuxième groupement de triples croches qui est affecté par la subdivision tandis que les autres ne le sont pas.
 
+Voir aussi [Attache des hampes](#attache-hampe).
+
 ---
 
 ### Notes « mergées »
@@ -1737,7 +1760,7 @@ On terminera toutes les marques précédentes avec `\0ve`.
 
 <a name="arpege-par-arp"></a>
 
-#### Arpèges
+### Arpèges
 
 On peut simplifier la marque `\arpeggio` par la marque **`\arp`**.
 
@@ -1749,7 +1772,28 @@ On peut simplifier la marque `\arpeggio` par la marque **`\arp`**.
 
 <img src="./images/arpege-par-arp.svg" alt="arpege-par-arp" style="zoom:120%;" />
 
-#### Doigtés
+#### Notes connectés par \arp
+
+Lorsque plusieurs voix doivent être connectée par la même marque d’arpège, il faut utiliser la marque **`\connectArp`** au début de la mesure ou de la section.
+
+Par exemple :
+
+~~~
+--tune Cm
+\connectArp 
+<< 
+	c'2\arp d ees\arp d 
+// 
+	<c, ees g>2\arp <c ees g>\arp <c ees g>\arp 
+	<c ees g>\arp
+>>
+~~~
+
+… produira :
+
+<img src="images/arpeges-connected.svg" alt="Arpètes connecté" style="zoom:120%;" />
+
+### Doigtés
 
 Dans l’usage courant, les doigts en *mus* se marquent comment en lilypond, à l’aide de **-<nombre>**. Par exemple, pour un cinquième doigt sur un Do :
 
@@ -1972,7 +2016,7 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | ------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------ |
 |                                                              | **`<notes >duree`**                                         | Bien noter que la durée est à l'extérieur de l'accord. Noter aussi que c'est la hauteur de la première note qui détermine la hauteur de référence pour la note suivante |
 | Exemple                                                      | **<c e g c>2.**                                             | <img src="images/exemples/accord.svg" style=" width:100px;" /> |
-| Arpège                                                       | **`<c e g>\arp`**                                           | Il suffit d’ajouter la marque `\arp` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /><br /><img src="./images/arpege-par-arp" alt="arpege" style="zoom:120%;" /> |
+| Arpège                                                       | **`<c e g>\arp`**                                           | Il suffit d’ajouter la marque `\arp` après l’accord (et la durée) pour obtenir un arpège.<br /><img src="./images/arpege.svg" alt="arpege" style="zoom:120%;" /> |
 |                                                              |                                                             |                                                              |
 
 #### Liaisons
@@ -1996,6 +2040,8 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 
 
 
+<a name="attache-hampe"></a>
+
 #### Attache des hampes des notes
 
 
@@ -2003,6 +2049,7 @@ Ci-dessous la syntaxe propre à Lilypond, pour mémoire.
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Forcer l'attache                                             | **`note[ notes]`**                                           |                                                              |
 | Exemple                                                      | `a'16[ a a a a a a a]`                                       | <img src="images/exemples/hampes-accroched.svg" style=" width:200px;" /> |
+| Empêcher l’attache d’une note                                | a'16\noBeam a a a                                             | <img src="images/no-beam.svg" style=" width:120px;" />       |
 | Forcer l'attache vers le haut                                | **`note^[ notes]`**                                          |                                                              |
 | Exemple                                                      | **`e'16^[ e e e] e`**                                        | <img src="images/exemples/hampes-forced-haut.svg" style=" width:140px;" /> |
 | Forcer l'attache vers le bas                                 | **`note_[ notes]`**                                          |                                                              |
@@ -2063,6 +2110,8 @@ Avec LilyPond, on met un silence sur une mesure entière avec un « R » (« 
 |                                                         | <img src="images/silence_normal.svg" alt="silence_normal" style="zoom:120%;" /> | <img src="images/silence_mesure.svg" alt="silence_mesure" style="zoom:120%;" /> |                                                         |
 
 
+
+<a name="positionnement-silences"></a>
 
 #### Placement des silences
 
